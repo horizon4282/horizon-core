@@ -63,139 +63,91 @@
       from{opacity:0; transform:scale(.98);}
       to{opacity:1; transform:scale(1);}
     }
-  #terminal{
-
+ #terminal{
   position:fixed;
+  left:32px;
+  bottom:32px;
 
-  bottom:30px;
-  left:30px;
+  width:560px;
+  max-width:calc(100vw - 64px);
+  max-height:calc(100vh - 80px);
 
-  width:420px;
-  max-width:90%;
-
-  background:rgba(0,0,0,0.82);
-
+  background:rgba(0,0,0,0.84);
   border:1px solid rgba(80,160,255,0.25);
+  box-shadow:0 0 30px rgba(0,120,255,0.18);
+  backdrop-filter:blur(10px);
 
-  box-shadow:
-    0 0 20px rgba(0,120,255,0.12);
-
-  backdrop-filter:blur(8px);
-
-  color:#7fd3ff;
-
+  color:#bfe6ff;
   font-family:"Courier New", monospace;
-
   z-index:999;
 
   display:none;
-
   animation:terminalFade 0.4s ease;
-}
-
-.terminal-header{
-
-  padding:12px 15px;
-
-  border-bottom:1px solid rgba(255,255,255,0.08);
-
-  font-size:14px;
-
-  letter-spacing:2px;
-
-  color:#9ed7ff;
-}
-
-.terminal-content{
-
-  padding:18px;
-
-  font-size:14px;
-
-  line-height:1.45;
-
-  max-height:300px;
 
   overflow:hidden;
 }
 
+.terminal-header{
+  padding:14px 18px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+
+  text-align:center;
+  font-size:14px;
+  letter-spacing:5px;
+  color:#9ed7ff;
+}
+
+.terminal-content{
+  padding:20px 26px;
+
+  font-size:17px;
+  line-height:1.65;
+
+  max-height:calc(100vh - 230px);
+  overflow:hidden;
+}
+
+.terminal-content p{
+  margin-bottom:10px;
+  word-break:break-word;
+}
+
 .terminal-input-area{
-
   display:flex;
-
   align-items:center;
-
   gap:10px;
 
-  padding:15px 18px;
-
+  padding:16px 22px;
   border-top:1px solid rgba(255,255,255,0.08);
 
+  font-size:16px;
   color:#7fd3ff;
 }
 
 #terminalInput{
-
   flex:1;
-
   background:transparent;
-
   border:none;
-
   outline:none;
 
   color:#7fd3ff;
-
   font-family:"Courier New", monospace;
-
-  font-size:14px;
+  font-size:16px;
 }
 
 #terminalInput::placeholder{
-
-  color:rgba(127,211,255,0.3);
+  color:rgba(127,211,255,0.32);
 }
 
 .cursor{
-
   display:inline-block;
-
   width:3px;
-  height:18px;
-
+  height:16px;
   background:#7fd3ff;
-
   margin-left:8px;
-
   position:relative;
-
   top:3px;
-
   animation:blink 1s infinite;
-}
-
-@keyframes blink{
-
-  0%,50%{
-    opacity:1;
-  }
-
-  51%,100%{
-    opacity:0;
-  }
-}
-
-@keyframes terminalFade{
-
-  from{
-    opacity:0;
-    transform:translateY(10px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
 }
   </style>
 </head>
@@ -375,6 +327,7 @@ function typeLine(element, text){
     const interval = setInterval(() => {
 
       element.textContent += text.charAt(index);
+      trimTerminalLines();
 
       index++;
 
@@ -571,5 +524,14 @@ async function addSystemLine(text){
 
   await typeLine(p, text);
 
+}
+function trimTerminalLines(){
+  const terminalContent = document.getElementById("terminalContent");
+
+  const maxLines = 12;
+
+  while(terminalContent.children.length > maxLines){
+    terminalContent.removeChild(terminalContent.firstChild);
+  }
 }
 </script>
