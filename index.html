@@ -200,6 +200,61 @@
 
     }
 
+    .cursor{
+
+  display:inline-block;
+
+  width:10px;
+  height:18px;
+
+  background:#7fd3ff;
+
+  margin-left:8px;
+
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+
+  0%,50%{
+    opacity:1;
+  }
+
+  51%,100%{
+    opacity:0;
+  }
+
+}
+
+.flash{
+
+  position:absolute;
+
+  width:2px;
+  height:2px;
+
+  background:#8ec5ff;
+
+  border-radius:50%;
+
+  pointer-events:none;
+
+  animation:flashFade 2s linear forwards;
+}
+
+@keyframes flashFade{
+
+  from{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  to{
+    opacity:0;
+    transform:scale(4);
+  }
+
+}
   </style>
 </head>
 
@@ -214,6 +269,10 @@
     SIGNAL DETECTED
   </div>
 
+<div class="signal" id="signalText">
+  SIGNAL DETECTED
+</div>
+  
   <h1>HORIZON 4282</h1>
 
   <div class="subtitle">
@@ -226,10 +285,12 @@
 
 <div id="terminal">
 
-  <div class="terminal-header">
-    HORIZON TERMINAL
-  </div>
+<div class="terminal-header">
+  HORIZON TERMINAL
+  <span class="cursor"></span>
+</div>
 
+  
 <div class="terminal-content" id="terminalContent"></div>
 
     <p>  > connection established...</p>
@@ -399,6 +460,56 @@ document.addEventListener("keydown", function(e){
 
 });
 
+
+
+setInterval(()=>{
+
+  const flash = document.createElement("div");
+
+  flash.classList.add("flash");
+
+  flash.style.left =
+    Math.random() * window.innerWidth + "px";
+
+  flash.style.top =
+    Math.random() * window.innerHeight + "px";
+
+  document.body.appendChild(flash);
+
+  setTimeout(()=>{
+
+    flash.remove();
+
+  },2000);
+
+},800);
+
+
+  const signalMessages = [
+
+  "SIGNAL DETECTED",
+  "REMOTE LINK ACTIVE",
+  "OBSERVER ONLINE",
+  "TRANSMISSION FOUND",
+  "ARCHIVE SYNCHRONIZED",
+  "HIDDEN FREQUENCY",
+  "REALITY UNSTABLE"
+
+];
+
+setInterval(()=>{
+
+  const signal =
+    document.getElementById("signalText");
+
+  const random =
+    signalMessages[
+      Math.floor(Math.random() * signalMessages.length)
+    ];
+
+  signal.textContent = random;
+
+},5000);
 </script>
 
 
