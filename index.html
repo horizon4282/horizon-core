@@ -318,7 +318,7 @@
       atmosferas digitais e realidades ocultas.
     </div>
   </div>
-
+  <audio id="breachSound" src="assets/horizon-breach.mp3"></audio>
   <div id="terminal">
     <div class="terminal-header">
       HORIZON TERMINAL
@@ -666,6 +666,12 @@
     }
 
     function triggerBreach(){
+      const sound = document.getElementById("breachSound");
+
+sound.currentTime = 0;
+sound.volume = 0.4;
+
+sound.play();
       document.body.classList.add("breach");
 
       for(let i = 0; i < 20; i++){
