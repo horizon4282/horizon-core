@@ -12,91 +12,12 @@
       box-sizing:border-box;
     }
 
-    #terminal{
-
-  position:fixed;
-
-  bottom:30px;
-  left:30px;
-
-  width:420px;
-  max-width:90%;
-
-  background:rgba(0,0,0,0.82);
-
-  border:1px solid rgba(80,160,255,0.25);
-
-  box-shadow:
-  0 0 20px rgba(0,120,255,0.12);
-
-  backdrop-filter:blur(8px);
-
-  color:#7fd3ff;
-
-  font-family:Courier New, monospace;
-
-  z-index:999;
-
-  display:none;
-
-  animation:terminalFade 0.4s ease;
-  padding:0 0 50px 0;
-}
-
-.terminal-header{
-
-  padding:12px 15px;
-
-  border-bottom:1px solid rgba(255,255,255,0.08);
-
-  font-size:14px;
-
-  letter-spacing:2px;
-
-  color:#9ed7ff;
-}
-
-.terminal-content{
-
-  padding:18px;
-
-  font-size:14px;
-
-  line-height:1.4;
-}
-
-#terminal>p{
-  padding-left:50px;
-  color:yellow;
-  line-height:1.3;
-  font-size:12px;
-}
-
-@keyframes terminalFade{
-
-  from{
-    opacity:0;
-    transform:translateY(10px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-    
     body{
       width:100%;
       height:100vh;
       overflow:hidden;
-      background:
-      radial-gradient(circle at center,
-      #132445 0%,
-      #09101f 55%,
-      #000 100%);
-
-      font-family: Arial, Helvetica, sans-serif;
+      background:radial-gradient(circle at center,#132445 0%,#09101f 55%,#000 100%);
+      font-family:Arial, Helvetica, sans-serif;
       color:white;
       display:flex;
       align-items:center;
@@ -104,58 +25,77 @@
       position:relative;
     }
 
+    #portalBg{
+      position:fixed;
+      inset:-6%;
+      z-index:0;
+      opacity:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.72)),
+        url('assets/escararia-da-latencia.png');
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      transform-origin:center center;
+      transition:opacity 1.2s ease;
+      will-change:transform, filter;
+    }
+
+    body.portal #portalBg{
+      opacity:1;
+      animation:portalFloat 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes portalFloat{
+      0%{
+        transform:scale(1) translate3d(0,0,0);
+        filter:brightness(0.9) contrast(1.05);
+      }
+      50%{
+        transform:scale(1.06) translate3d(-22px,12px,0);
+        filter:brightness(1.05) contrast(1.14);
+      }
+      100%{
+        transform:scale(1.12) translate3d(20px,-14px,0);
+        filter:brightness(0.94) contrast(1.1);
+      }
+    }
+
     canvas{
       position:absolute;
       inset:0;
+      z-index:10;
     }
 
-.noise{
-  position:absolute;
-  inset:0;
+    .noise{
+      position:absolute;
+      inset:0;
+      z-index:10;
+      background-image:
+        repeating-radial-gradient(
+          circle at center,
+          rgba(255,255,255,0.02) 0,
+          rgba(255,255,255,0.015) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      opacity:0.08;
+      mix-blend-mode:screen;
+      animation:noiseMove 0.2s infinite;
+    }
 
-  background-image:
-  repeating-radial-gradient(
-    circle at center,
-    rgba(255,255,255,0.02) 0,
-    rgba(255,255,255,0.015) 1px,
-    transparent 1px,
-    transparent 4px
-  );
-
-  opacity:0.08;
-
-  mix-blend-mode:screen;
-
-  animation:noiseMove 0.2s infinite;
-}
-
-@keyframes noiseMove{
-
-  0%{
-    transform:translate(0,0);
-  }
-
-  25%{
-    transform:translate(-1px,1px);
-  }
-
-  50%{
-    transform:translate(1px,-1px);
-  }
-
-  75%{
-    transform:translate(-1px,-1px);
-  }
-
-  100%{
-    transform:translate(1px,1px);
-  }
-
-}
+    @keyframes noiseMove{
+      0%{ transform:translate(0,0); }
+      25%{ transform:translate(-1px,1px); }
+      50%{ transform:translate(1px,-1px); }
+      75%{ transform:translate(-1px,-1px); }
+      100%{ transform:translate(1px,1px); }
+    }
 
     .content{
       position:relative;
-      z-index:10;
+      z-index:20;
       text-align:center;
       max-width:800px;
       padding:40px;
@@ -167,6 +107,7 @@
       font-size:14px;
       margin-bottom:25px;
       animation:pulse 2.5s infinite;
+      min-height:18px;
     }
 
     h1{
@@ -190,933 +131,600 @@
       100%{opacity:0.3;}
     }
 
-    @media(max-width:768px){
+    #observer{
+      position:fixed;
+      top:30px;
+      right:35px;
+      z-index:50;
+      color:#7fd3ff;
+      font-family:"Courier New", monospace;
+      font-size:13px;
+      letter-spacing:2px;
+      opacity:0;
+      transition:opacity 1s ease;
+      pointer-events:none;
+      text-shadow:0 0 12px rgba(127,211,255,0.4);
+    }
 
-      h1{
-        font-size:52px;
-      }
+    #observer.active{
+      opacity:0.75;
+    }
 
-      .subtitle{
-        font-size:20px;
-      }
+    #terminal{
+      position:fixed;
+      bottom:30px;
+      left:30px;
+      width:420px;
+      max-width:90%;
+      background:rgba(0,0,0,0.82);
+      border:1px solid rgba(80,160,255,0.25);
+      box-shadow:0 0 20px rgba(0,120,255,0.12);
+      backdrop-filter:blur(8px);
+      color:#7fd3ff;
+      font-family:"Courier New", monospace;
+      z-index:999;
+      display:none;
+      animation:terminalFade 0.4s ease;
+    }
 
+    .terminal-header{
+      padding:12px 15px;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      font-size:14px;
+      letter-spacing:2px;
+      color:#9ed7ff;
+    }
+
+    .terminal-content{
+      padding:18px;
+      font-size:14px;
+      line-height:1.45;
+      max-height:300px;
+      overflow-y:auto;
+    }
+
+    .terminal-input-area{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:15px 18px;
+      border-top:1px solid rgba(255,255,255,0.08);
+      color:#7fd3ff;
+    }
+
+    #terminalInput{
+      flex:1;
+      background:transparent;
+      border:none;
+      outline:none;
+      color:#7fd3ff;
+      font-family:"Courier New", monospace;
+      font-size:14px;
+    }
+
+    #terminalInput::placeholder{
+      color:rgba(127,211,255,0.3);
     }
 
     .cursor{
-
-  display:inline-block;
- position:relative;
-  width:3px;
-  height:18px;
-     top:3px;
-      right:12px;
-  background:#7fd3ff;
-
-  margin-left:8px;
-
-  animation:blink 1s infinite;
-}
-
-@keyframes blink{
-
-  0%,50%{
-    opacity:1;
-  }
-
-  51%,100%{
-    opacity:0;
-  }
-
-}
-
-.flash{
-
-  position:absolute;
-
-  width:2px;
-  height:2px;
-
-  background:#8ec5ff;
-
-  border-radius:50%;
-
-  pointer-events:none;
-
-  animation:flashFade 2s linear forwards;
-}
-
-@keyframes flashFade{
-
-  from{
-    opacity:1;
-    transform:scale(1);
-  }
-
-  to{
-    opacity:0;
-    transform:scale(4);
-  }
-
-}
-
-#observer{
-  position:fixed;
-  top:30px;
-  right:35px;
-  z-index:50;
-  color:#7fd3ff;
-  font-family:"Courier New", monospace;
-  font-size:13px;
-  letter-spacing:2px;
-  opacity:0;
-  transition:opacity 1s ease;
-  pointer-events:none;
-  text-shadow:0 0 12px rgba(127,211,255,0.4);
-}
-
-#observer.active{
-  opacity:0.75;
-}
-
-.terminal-input-area{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  padding:15px 18px;
-
-  border-top:1px solid rgba(255,255,255,0.08);
-
-  color:#7fd3ff;
-}
-
-#terminalInput{
-
-  flex:1;
-
-  background:transparent;
-
-  border:none;
-
-  outline:none;
-
-  color:#7fd3ff;
-
-  font-family:"Courier New", monospace;
-
-  font-size:14px;
-}
-
-#terminalInput::placeholder{
-  color:rgba(127,211,255,0.3);
-}
-
-body.anomaly{
-
-  animation:anomalyPulse 1.5s ease;
-
-}
-
-@keyframes anomalyPulse{
-
-  0%{
-    filter:brightness(1);
-  }
-
-  20%{
-    filter:
-    brightness(1.4)
-    contrast(1.2);
-  }
-
-  40%{
-    filter:
-    brightness(0.9)
-    contrast(1.4);
-  }
-
-  60%{
-    filter:
-    brightness(1.3)
-    hue-rotate(10deg);
-  }
-
-  100%{
-    filter:brightness(1);
-  }
-
-}
-
-body.breach{
-
-  animation:
-  breachShake 0.08s infinite,
-  breachFlash 1.2s infinite;
-
-}
-
-@keyframes breachShake{
-
-  0%{ transform:translate(0,0); }
-
-  25%{ transform:translate(-2px,1px); }
-
-  50%{ transform:translate(2px,-1px); }
-
-  75%{ transform:translate(-1px,-2px); }
-
-  100%{ transform:translate(1px,2px); }
-
-}
-
-@keyframes breachFlash{
-
-  0%{
-    filter:brightness(1);
-  }
-
-  50%{
-    filter:
-    brightness(1.4)
-    contrast(1.5)
-    hue-rotate(20deg);
-  }
-
-  100%{
-    filter:brightness(1);
-  }
-
-}
-
-body.breach .noise{
-  opacity:0.45;
-  animation:noiseMove 0.05s infinite;
-}
-
-body.breach .content{
-  animation:contentGlitch 0.08s infinite;
-}
-
-body.breach canvas{
-  filter:brightness(2) contrast(2);
-}
-
-@keyframes contentGlitch{
-  0%{ transform:translate(0,0); }
-  25%{ transform:translate(-6px,3px); }
-  50%{ transform:translate(5px,-4px); }
-  75%{ transform:translate(-3px,-2px); }
-  100%{ transform:translate(4px,3px); }
-}
-
-body.portal{
-
-  background-image: url('assets/escararia-da-latencia.png');
-
-  background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
-
-}
-
-
-@keyframes portalDrift{
-  0%{
-    transform:scale(1) translate(0,0);
-    filter:brightness(0.9) contrast(1.1);
-  }
-
-  50%{
-    transform:scale(1.06) translate(-12px,8px);
-    filter:brightness(1.05) contrast(1.2);
-  }
-
-  100%{
-    transform:scale(1.1) translate(14px,-10px);
-    filter:brightness(0.95) contrast(1.15);
-  }
-}
-#portalBg{
-
-  position:fixed;
-  inset:-5%;
-
-  z-index:0;
-
-  opacity:0;
-
-  pointer-events:none;
-
-  background-image:
-    linear-gradient(
-      rgba(0,0,0,0.45),
-      rgba(0,0,0,0.72)
-    ),
-    url('assets/escararia-da-latencia.png');
-
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-
-  transform-origin:center center;
-
-  transition:
-    opacity 1.2s ease;
-
-  will-change:
-    transform,
-    filter;
-
-}
-
-body.portal #portalBg{
-
-  opacity:1;
-
-  animation:
-    portalFloat 18s ease-in-out infinite alternate;
-
-}
-
-@keyframes portalFloat{
-
-  0%{
-
-    transform:
-      scale(1)
-      translate3d(0px,0px,0px);
-
-    filter:
-      brightness(0.9)
-      contrast(1.05);
-
-  }
-
-  50%{
-
-    transform:
-      scale(1.06)
-      translate3d(-20px,10px,0px);
-
-    filter:
-      brightness(1)
-      contrast(1.12);
-
-  }
-
-  100%{
-
-    transform:
-      scale(1.1)
-      translate3d(18px,-12px,0px);
-
-    filter:
-      brightness(0.92)
-      contrast(1.08);
-
-  }
-
-}
-@keyframes portalDrift{
-  0%{
-    transform:scale(1) translate(0,0);
-  }
-
-  50%{
-    transform:scale(1.06) translate(-12px,8px);
-  }
-
-  100%{
-    transform:scale(1.1) translate(14px,-10px);
-  }
-}
-    
-canvas,
-.noise,
-.content,
-#terminal{
-  z-index:10;
-}
-
-#portalBg{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  opacity:0;
-  pointer-events:none;
-
-  background-image:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.72)),
-    url('assets/horizon-universe.jpg');
-
-  background-size:115%;
-  background-position:center;
-  background-repeat:no-repeat;
-
-  transition:opacity 1s ease;
-}
-
-body.portal #portalBg{
-  opacity:1;
-  animation:portalMove 16s ease-in-out infinite alternate;
-}
-
-@keyframes portalMove{
-  0%{
-    background-position:center center;
-    background-size:115%;
-  }
-
-  50%{
-    background-position:48% 52%;
-    background-size:122%;
-  }
-
-  100%{
-    background-position:52% 48%;
-    background-size:118%;
-  }
-}
+      display:inline-block;
+      width:3px;
+      height:18px;
+      background:#7fd3ff;
+      margin-left:8px;
+      position:relative;
+      top:3px;
+      animation:blink 1s infinite;
+    }
+
+    @keyframes blink{
+      0%,50%{ opacity:1; }
+      51%,100%{ opacity:0; }
+    }
+
+    @keyframes terminalFade{
+      from{ opacity:0; transform:translateY(10px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+
+    .flash{
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:#8ec5ff;
+      border-radius:50%;
+      pointer-events:none;
+      z-index:30;
+      animation:flashFade 2s linear forwards;
+    }
+
+    @keyframes flashFade{
+      from{ opacity:1; transform:scale(1); }
+      to{ opacity:0; transform:scale(4); }
+    }
+
+    body.anomaly{
+      animation:anomalyPulse 1.5s ease;
+    }
+
+    @keyframes anomalyPulse{
+      0%{ filter:brightness(1); }
+      20%{ filter:brightness(1.4) contrast(1.2); }
+      40%{ filter:brightness(0.9) contrast(1.4); }
+      60%{ filter:brightness(1.3) hue-rotate(10deg); }
+      100%{ filter:brightness(1); }
+    }
+
+    body.breach{
+      animation:breachShake 0.08s infinite, breachFlash 1.2s infinite;
+    }
+
+    body.breach .noise{
+      opacity:0.45;
+      animation:noiseMove 0.05s infinite;
+    }
+
+    body.breach .content{
+      animation:contentGlitch 0.08s infinite;
+    }
+
+    body.breach canvas{
+      filter:brightness(2) contrast(2);
+    }
+
+    @keyframes breachShake{
+      0%{ transform:translate(0,0); }
+      25%{ transform:translate(-2px,1px); }
+      50%{ transform:translate(2px,-1px); }
+      75%{ transform:translate(-1px,-2px); }
+      100%{ transform:translate(1px,2px); }
+    }
+
+    @keyframes breachFlash{
+      0%{ filter:brightness(1); }
+      50%{ filter:brightness(1.4) contrast(1.5) hue-rotate(20deg); }
+      100%{ filter:brightness(1); }
+    }
+
+    @keyframes contentGlitch{
+      0%{ transform:translate(0,0); }
+      25%{ transform:translate(-6px,3px); }
+      50%{ transform:translate(5px,-4px); }
+      75%{ transform:translate(-3px,-2px); }
+      100%{ transform:translate(4px,3px); }
+    }
+
+    @media(max-width:768px){
+      h1{ font-size:52px; }
+      .subtitle{ font-size:20px; }
+    }
   </style>
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
-<div class="noise"></div>
-<div id="observer"></div>
-<div id="portalBg"></div>
-<div class="content">
+  <div id="portalBg"></div>
+  <canvas id="particles"></canvas>
+  <div class="noise"></div>
+  <div id="observer"></div>
 
-  <div class="signal">
-  
+  <div class="content">
+    <div class="signal" id="signalText">HIPER-MAINFRAME ON</div>
+
+    <h1>HORIZON 4282</h1>
+
+    <div class="subtitle">
+      Um laboratório vivo de interfaces, inteligência artificial,
+      atmosferas digitais e realidades ocultas.
+    </div>
   </div>
 
-<div class="signal" id="signalText">
- 
-</div>
-  
-  <h1>HORIZON 4282</h1>
+  <div id="terminal">
+    <div class="terminal-header">
+      HORIZON TERMINAL
+      <span class="cursor"></span>
+    </div>
 
-  <div class="subtitle">
-    Um laboratório vivo de interfaces, inteligência artificial,
-    atmosferas digitais e realidades ocultas.
+    <div class="terminal-content" id="terminalContent"></div>
+
+    <div class="terminal-input-area">
+      <span>&gt;</span>
+      <input
+        type="text"
+        id="terminalInput"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="type command..."
+      />
+    </div>
   </div>
 
-</div>
+  <script>
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
 
+    let particles = [];
 
-<div id="terminal">
-
-<div class="terminal-header">
-  HORIZON TERMINAL
-  <span class="cursor"></span>
-</div>
-
-
-<div class="terminal-content" id="terminalContent"></div>
-<div class="terminal-input-area">
-
-  <span>> </span>
-
-  <input
-    type="text"
-    id="terminalInput"
-    autocomplete="off"
-    spellcheck="false"
-    placeholder="type command..."
-  />
-
-</div>
-
-    <p>  > connection established...</p>
-    <p>  > signal integrity: stable</p>
-    <p>  > archive status: hidden</p>
-    <p>  > observer mode: active</p>
-
-  </div>
-
-</div>
-<script>
-
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-let particles = [];
-
-function resize(){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-window.addEventListener("resize", resize);
-resize();
-
-class Particle{
-
-  constructor(){
-
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-
-    this.size = Math.random() * 2 + 0.5;
-
-    this.speedX = (Math.random() - 0.5) * 0.3;
-    this.speedY = (Math.random() - 0.5) * 0.3;
-
-    this.opacity = Math.random() * 0.5 + 0.2;
-
-  }
-
-  update(){
-
-    this.x += this.speedX;
-    this.y += this.speedY;
-
-    if(this.x < 0 || this.x > canvas.width){
-      this.speedX *= -1;
+    function resize(){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
 
-    if(this.y < 0 || this.y > canvas.height){
-      this.speedY *= -1;
-    }
+    window.addEventListener("resize", resize);
+    resize();
 
-  }
-
-  draw(){
-
-    ctx.beginPath();
-
-    ctx.fillStyle = `rgba(120,180,255,${this.opacity})`;
-
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-
-    ctx.fill();
-
-  }
-
-}
-
-function createParticles(){
-
-  particles = [];
-
-  for(let i = 0; i < 120; i++){
-
-    particles.push(new Particle());
-
-  }
-
-}
-
-createParticles();
-
-function animate(){
-
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  particles.forEach(particle => {
-
-    particle.update();
-    particle.draw();
-
-  });
-
-  requestAnimationFrame(animate);
-
-}
-
-animate();
-
-const messages = [
-
-  "  > connection established...",
-  "  > signal integrity: stable",
-  "  > observer mode: active",
-  "  > hidden archive detected",
-  "  > unknown transmission found",
-  "  > atmospheric scan initialized",
-  "  > remote observer connected",
-  "  > anomalous signal received",
-  "  > digital horizon expanding",
-  "  > encrypted memory unlocked",
-  "  > transport sequence pending",
-  "  > shadow protocol active",
-  "  > fragment 4282 restored",
-  "  > scanning external reality...",
-  "  > consciousness bridge online"
-
-];
-
-async function generateTerminalLines(){
-
-  const terminalContent =
-    document.getElementById("terminalContent");
-
-  terminalContent.innerHTML = "";
-
-  const shuffled =
-    messages.sort(() => 0.5 - Math.random());
-
-  const selected = shuffled.slice(0,4);
-
-  for(const msg of selected){
-
-    const p = document.createElement("p");
-
-    terminalContent.appendChild(p);
-
-    await typeLine(p, msg);
-
-  }
-
-}
-
-  function typeLine(element, text){
-
-  return new Promise(resolve => {
-
-    let index = 0;
-
-    const interval = setInterval(()=>{
-
-      element.textContent += text.charAt(index);
-
-      index++;
-
-      if(index >= text.length){
-
-        clearInterval(interval);
-
-        resolve();
-
+    class Particle{
+      constructor(){
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.opacity = Math.random() * 0.5 + 0.2;
       }
 
-    },30);
-
-  });
-
-}
-  
-document.addEventListener("keydown", function(e){
-
-  if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "x"){
-
-    e.preventDefault();
-
-    const terminal = document.getElementById("terminal");
-
-    if(!terminal) return;
-
-   if(terminal.style.display === "block"){
-
-  terminal.style.display = "none";
-
-}else{
-
-  generateTerminalLines();
-
-  terminal.style.display = "block";
-
-}
-  }
-
-});
-
-
-
-setInterval(()=>{
-
-  const flash = document.createElement("div");
-
-  flash.classList.add("flash");
-
-  flash.style.left =
-    Math.random() * window.innerWidth + "px";
-
-  flash.style.top =
-    Math.random() * window.innerHeight + "px";
-
-  document.body.appendChild(flash);
-
-  setTimeout(()=>{
-
-    flash.remove();
-
-  },2000);
-
-},800);
-
-
-  const signalMessages = [
-
-  "HIPER-MAINFRAME ON",
-  "REMOTE LINK ACTIVE",
-  "OBSERVER ONLINE",
-  "TRANSMISSION FOUND",
-  "ARCHIVE SYNCHRONIZED",
-  "HIDDEN FREQUENCY",
-  "REALITY UNSTABLE"
-
-];
-
-setInterval(()=>{
-
-  const signal =
-    document.getElementById("signalText");
-
-  const random =
-    signalMessages[
-      Math.floor(Math.random() * signalMessages.length)
-    ];
-
-  signal.textContent = random;
-
-},5000);
-
-
-  const observerMessages = [
-  "OBSERVER MODE: ACTIVE",
-  "VISITOR SIGNAL DETECTED",
-  "PATTERN ANALYSIS RUNNING",
-  "MEMORY TRACE FOUND",
-  "HORIZON IS WATCHING",
-  "REALITY INPUT RECEIVED",
-  "SILENT NODE ONLINE"
-];
-
-function showObserverMessage(){
-
-  const observer = document.getElementById("observer");
-
-  if(!observer) return;
-
-  const message =
-    observerMessages[Math.floor(Math.random() * observerMessages.length)];
-
-  observer.textContent = message;
-  observer.classList.add("active");
-
-  setTimeout(()=>{
-    observer.classList.remove("active");
-  },3000);
-}
-
-setInterval(showObserverMessage, 7000);
-
-const aiResponses = {
-  portal: [
-  "> visual portal initialized",
-  "> horizon dimensional layer loaded",
-  "> immersive background activated"
-],
-  breach: [
-  "> WARNING",
-  "> unauthorized dimensional activity",
-  "> instability increasing",
-  "> horizon breach initiated"
-],
-  "4282": [
-  "> master fragment recognized",
-  "> identity key accepted",
-  "> horizon core partially unlocked",
-  "> new node available: /arquivo"
-],
-
-  help: [
-    "> available commands:",
-    "> observer",
-    "> archive",
-    "> signal",
-    "> horizon",
-    "> transport"
-  ],
-
-  observer: [
-    "> observer mode already active",
-    "> visitor behavior detected",
-    "> tracking atmospheric signals"
-  ],
-
-  archive: [
-    "> archive locked",
-    "> authorization denied",
-    "> hidden fragments detected"
-  ],
-
-  signal: [
-    "> unstable frequency located",
-    "> transmission integrity: 82%",
-    "> remote echo received"
-  ],
-
-  horizon: [
-    "> horizon consciousness expanding",
-    "> reality bridge synchronized"
-  ],
-
-  transport: [
-    "> transport sequence unavailable",
-    "> portal status: dormant"
-  ]
-
-};
-
-const terminalInput =
-  document.getElementById("terminalInput");
-
-terminalInput.addEventListener("keydown", function(e){
-
-  if(e.key === "Enter"){
-
-    const value =
-      terminalInput.value.toLowerCase().trim();
-
-    processCommand(value);
-
-    terminalInput.value = "";
-
-  }
-
-});
-
-async function processCommand(command){
-
-  const terminalContent =
-    document.getElementById("terminalContent");
-
-  const userLine =
-    document.createElement("p");
-
-  userLine.textContent = "> " + command;
-
-  terminalContent.appendChild(userLine);
-
-  const responses =
-    aiResponses[command];
-
-  if(responses){
-
-    if(
-  command === "observer" ||
-  command === "4282" ||
-  command === "signal" || 
-  command === "breach"
-){
-
-  triggerAnomaly();
-
-}
-if(command === "breach"){
-  triggerBreach();
-}
-if(command === "portal"){
-
-  activatePortal();
-
-}
-    for(const line of responses){
-
-      const p = document.createElement("p");
-
-      terminalContent.appendChild(p);
-
-      await typeLine(p,line);
-
+      update(){
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if(this.x < 0 || this.x > canvas.width){
+          this.speedX *= -1;
+        }
+
+        if(this.y < 0 || this.y > canvas.height){
+          this.speedY *= -1;
+        }
+      }
+
+      draw(){
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(120,180,255,${this.opacity})`;
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fill();
+      }
     }
 
-  }else{
+    function createParticles(){
+      particles = [];
 
-    const p = document.createElement("p");
+      for(let i = 0; i < 120; i++){
+        particles.push(new Particle());
+      }
+    }
 
-    terminalContent.appendChild(p);
+    createParticles();
 
-    await typeLine(
-      p,
-      "> unknown command"
-    );
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  }
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
 
-  terminalContent.scrollTop =
-    terminalContent.scrollHeight;
+      requestAnimationFrame(animate);
+    }
 
-}
+    animate();
 
-function triggerAnomaly(){
+    const messages = [
+      "> connection established...",
+      "> signal integrity: stable",
+      "> observer mode: active",
+      "> hidden archive detected",
+      "> unknown transmission found",
+      "> atmospheric scan initialized",
+      "> remote observer connected",
+      "> anomalous signal received",
+      "> digital horizon expanding",
+      "> encrypted memory unlocked",
+      "> transport sequence pending",
+      "> shadow protocol active",
+      "> fragment 4282 restored",
+      "> scanning external reality...",
+      "> consciousness bridge online"
+    ];
 
-  document.body.classList.add("anomaly");
+    async function generateTerminalLines(){
+      const terminalContent = document.getElementById("terminalContent");
+      terminalContent.innerHTML = "";
 
-  setTimeout(()=>{
+      const shuffled = [...messages].sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0,4);
 
-    document.body.classList.remove("anomaly");
+      for(const msg of selected){
+        const p = document.createElement("p");
+        terminalContent.appendChild(p);
+        await typeLine(p, msg);
+      }
+    }
 
-  },1500);
+    function typeLine(element, text){
+      return new Promise(resolve => {
+        let index = 0;
 
-}
-  let secondsInside = 0;
+        const interval = setInterval(() => {
+          element.textContent += text.charAt(index);
+          index++;
 
-setInterval(() => {
-  secondsInside++;
+          if(index >= text.length){
+            clearInterval(interval);
+            resolve();
+          }
+        },30);
+      });
+    }
 
-  if(secondsInside === 10){
-    addSystemLine("> visitor persistence detected");
-  }
+    document.addEventListener("keydown", function(e){
+      if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "x"){
+        e.preventDefault();
 
-  if(secondsInside === 30){
-    addSystemLine("> prolonged exposure to horizon field");
-  }
+        const terminal = document.getElementById("terminal");
 
-  if(secondsInside === 60){
-    addSystemLine("> visitor classified as observer");
-  }
+        if(terminal.style.display === "block"){
+          terminal.style.display = "none";
+        }else{
+          terminal.style.display = "block";
+          generateTerminalLines();
+          setTimeout(() => {
+            document.getElementById("terminalInput").focus();
+          },100);
+        }
+      }
+    });
 
-}, 1000);
-
-async function addSystemLine(text){
-  const terminalContent = document.getElementById("terminalContent");
-
-  if(!terminalContent) return;
-
-  const p = document.createElement("p");
-  terminalContent.appendChild(p);
-
-  await typeLine(p, text);
-
-  terminalContent.scrollTop = terminalContent.scrollHeight;
-}
-
-  function triggerBreach(){
-
-  document.body.classList.add("breach");
-
-  for(let i = 0; i < 20; i++){
-    setTimeout(()=>{
+    setInterval(() => {
       const flash = document.createElement("div");
+
       flash.classList.add("flash");
       flash.style.left = Math.random() * window.innerWidth + "px";
       flash.style.top = Math.random() * window.innerHeight + "px";
+
       document.body.appendChild(flash);
-      setTimeout(()=>flash.remove(), 1000);
-    }, i * 80);
-  }
 
-  setTimeout(()=>{
-    document.body.classList.remove("breach");
-  },4000);
+      setTimeout(() => {
+        flash.remove();
+      },2000);
 
-}
-function activatePortal(){
-  document.body.classList.toggle("portal");
-}
+    },800);
 
-</script>
+    const signalMessages = [
+      "HIPER-MAINFRAME ON",
+      "REMOTE LINK ACTIVE",
+      "OBSERVER ONLINE",
+      "TRANSMISSION FOUND",
+      "ARCHIVE SYNCHRONIZED",
+      "HIDDEN FREQUENCY",
+      "REALITY UNSTABLE"
+    ];
 
+    setInterval(() => {
+      const signal = document.getElementById("signalText");
 
+      const random =
+        signalMessages[Math.floor(Math.random() * signalMessages.length)];
 
-  
+      signal.textContent = random;
+    },5000);
+
+    const observerMessages = [
+      "OBSERVER MODE: ACTIVE",
+      "VISITOR SIGNAL DETECTED",
+      "PATTERN ANALYSIS RUNNING",
+      "MEMORY TRACE FOUND",
+      "HORIZON IS WATCHING",
+      "REALITY INPUT RECEIVED",
+      "SILENT NODE ONLINE"
+    ];
+
+    function showObserverMessage(){
+      const observer = document.getElementById("observer");
+
+      const message =
+        observerMessages[Math.floor(Math.random() * observerMessages.length)];
+
+      observer.textContent = message;
+      observer.classList.add("active");
+
+      setTimeout(() => {
+        observer.classList.remove("active");
+      },3000);
+    }
+
+    setInterval(showObserverMessage, 7000);
+
+    const aiResponses = {
+      help: [
+        "> available commands:",
+        "> observer",
+        "> archive",
+        "> signal",
+        "> horizon",
+        "> transport",
+        "> portal",
+        "> breach",
+        "> clear",
+        "> 4282"
+      ],
+
+      observer: [
+        "> observer mode already active",
+        "> visitor behavior detected",
+        "> tracking atmospheric signals"
+      ],
+
+      archive: [
+        "> archive locked",
+        "> authorization denied",
+        "> hidden fragments detected"
+      ],
+
+      signal: [
+        "> unstable frequency located",
+        "> transmission integrity: 82%",
+        "> remote echo received"
+      ],
+
+      horizon: [
+        "> horizon consciousness expanding",
+        "> reality bridge synchronized"
+      ],
+
+      transport: [
+        "> transport sequence unavailable",
+        "> portal status: dormant"
+      ],
+
+      portal: [
+        "> visual portal initialized",
+        "> horizon dimensional layer loaded",
+        "> immersive background activated"
+      ],
+
+      breach: [
+        "> WARNING",
+        "> unauthorized dimensional activity",
+        "> instability increasing",
+        "> horizon breach initiated"
+      ],
+
+      "4282": [
+        "> master fragment recognized",
+        "> identity key accepted",
+        "> horizon core partially unlocked",
+        "> new node available: /arquivo"
+      ]
+    };
+
+    const terminalInput = document.getElementById("terminalInput");
+
+    terminalInput.addEventListener("keydown", function(e){
+      if(e.key === "Enter"){
+        const value = terminalInput.value.toLowerCase().trim();
+
+        if(value){
+          processCommand(value);
+        }
+
+        terminalInput.value = "";
+      }
+    });
+
+    async function processCommand(command){
+      const terminalContent = document.getElementById("terminalContent");
+
+      if(command === "clear"){
+        terminalContent.innerHTML = "";
+        return;
+      }
+
+      const userLine = document.createElement("p");
+      userLine.textContent = "> " + command;
+      terminalContent.appendChild(userLine);
+
+      const responses = aiResponses[command];
+
+      if(command === "portal"){
+        activatePortal();
+      }
+
+      if(command === "breach"){
+        triggerBreach();
+      }
+
+      if(
+        command === "observer" ||
+        command === "4282" ||
+        command === "signal" ||
+        command === "breach" ||
+        command === "portal"
+      ){
+        triggerAnomaly();
+      }
+
+      if(responses){
+        for(const line of responses){
+          const p = document.createElement("p");
+          terminalContent.appendChild(p);
+          await typeLine(p,line);
+        }
+      }else{
+        const p = document.createElement("p");
+        terminalContent.appendChild(p);
+        await typeLine(p,"> unknown command");
+      }
+
+      terminalContent.scrollTop = terminalContent.scrollHeight;
+    }
+
+    function triggerAnomaly(){
+      document.body.classList.add("anomaly");
+
+      setTimeout(() => {
+        document.body.classList.remove("anomaly");
+      },1500);
+    }
+
+    function triggerBreach(){
+      document.body.classList.add("breach");
+
+      for(let i = 0; i < 20; i++){
+        setTimeout(() => {
+          const flash = document.createElement("div");
+
+          flash.classList.add("flash");
+          flash.style.left = Math.random() * window.innerWidth + "px";
+          flash.style.top = Math.random() * window.innerHeight + "px";
+
+          document.body.appendChild(flash);
+
+          setTimeout(() => {
+            flash.remove();
+          },1000);
+        }, i * 80);
+      }
+
+      setTimeout(() => {
+        document.body.classList.remove("breach");
+      },4000);
+    }
+
+    function activatePortal(){
+      document.body.classList.toggle("portal");
+    }
+
+    let secondsInside = 0;
+
+    setInterval(() => {
+      secondsInside++;
+
+      if(secondsInside === 10){
+        addSystemLine("> visitor persistence detected");
+      }
+
+      if(secondsInside === 30){
+        addSystemLine("> prolonged exposure to horizon field");
+      }
+
+      if(secondsInside === 60){
+        addSystemLine("> visitor classified as observer");
+      }
+
+    },1000);
+
+    async function addSystemLine(text){
+      const terminalContent = document.getElementById("terminalContent");
+
+      if(!terminalContent) return;
+
+      const p = document.createElement("p");
+      terminalContent.appendChild(p);
+
+      await typeLine(p, text);
+
+      terminalContent.scrollTop = terminalContent.scrollHeight;
+    }
+  </script>
+
 </body>
 </html>
