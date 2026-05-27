@@ -605,6 +605,9 @@ body.dimension-3 #portalBg{
     setInterval(showObserverMessage, 7000);
 
     const aiResponses = {
+      access: [
+  "> enter access key"
+],
       scan: [
   "> scanning visual field...",
   "> anomaly density: 42%",
@@ -613,6 +616,7 @@ body.dimension-3 #portalBg{
 ],
       help: [
         "> available commands:",
+        "> access:",
         "> observer",
         "> archive",
         "> signal",
@@ -723,6 +727,36 @@ body.dimension-3 #portalBg{
     async function processCommand(command){
       const terminalContent = document.getElementById("terminalContent");
 
+      if(waitingAccessKey){
+
+  waitingAccessKey = false;
+
+  if(command === "4282-omega"){
+
+    await addSystemLine(
+      "> ACCESS GRANTED"
+    );
+
+    triggerBreach();
+
+    setTimeout(()=>{
+
+      window.location.href = "/core.html";
+
+    },2500);
+
+  }else{
+
+    await addSystemLine(
+      "> ACCESS DENIED"
+    );
+
+  }
+
+  return;
+
+}
+
       if(command === "clear"){
         terminalContent.innerHTML = "";
         return;
@@ -734,7 +768,12 @@ body.dimension-3 #portalBg{
       const userLine = document.createElement("p");
       userLine.textContent = "> " + command;
       terminalContent.appendChild(userLine);
+      
+if(command === "access"){
 
+  waitingAccessKey = true;
+
+}
       const responses = aiResponses[command];
 
       const archiveResponse =
@@ -890,6 +929,7 @@ function triggerScan(){
   },6000);
 
 }  
+    let waitingAccessKey = false;
   </script>
 
 </body>
