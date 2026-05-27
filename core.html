@@ -410,11 +410,7 @@ terminalInput.addEventListener("keydown", function(e){
     }
 
     terminalInput.value = "";
-    if(command === "home"){
-
-  returnHome();
-
-}
+ 
 
   }
 
@@ -424,6 +420,12 @@ async function processCommand(command){
 
   const terminalContent =
     document.getElementById("terminalContent");
+
+     if(command === "home"){
+
+  returnHome();
+
+}
 
   if(waitingAccessKey){
 
