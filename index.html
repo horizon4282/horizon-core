@@ -421,22 +421,7 @@ body.portal{
   background-attachment:fixed;
 
 }
-body.portal::after{
-  content:"";
-  position:fixed;
-  inset:-40px;
-  z-index:-10;
 
-  background-image:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.72)),
-    url('assets/horizon-universe.jpg');
-
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-
-  animation:portalDrift 18s ease-in-out infinite alternate;
-}
 
 @keyframes portalDrift{
   0%{
@@ -454,6 +439,88 @@ body.portal::after{
     filter:brightness(0.95) contrast(1.15);
   }
 }
+#portalBg{
+  position:fixed;
+  inset:-60px;
+  z-index:0;
+  opacity:0;
+  pointer-events:none;
+
+  background-image:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.72)),
+    url('assets/horizon-universe.jpg');
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  transition:opacity 1s ease;
+}
+
+body.portal #portalBg{
+  opacity:1;
+  animation:portalDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes portalDrift{
+  0%{
+    transform:scale(1) translate(0,0);
+  }
+
+  50%{
+    transform:scale(1.06) translate(-12px,8px);
+  }
+
+  100%{
+    transform:scale(1.1) translate(14px,-10px);
+  }
+}
+canvas,
+.noise,
+.content,
+#terminal{
+  z-index:10;
+}
+
+#portalBg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  opacity:0;
+  pointer-events:none;
+
+  background-image:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.72)),
+    url('assets/horizon-universe.jpg');
+
+  background-size:115%;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  transition:opacity 1s ease;
+}
+
+body.portal #portalBg{
+  opacity:1;
+  animation:portalMove 16s ease-in-out infinite alternate;
+}
+
+@keyframes portalMove{
+  0%{
+    background-position:center center;
+    background-size:115%;
+  }
+
+  50%{
+    background-position:48% 52%;
+    background-size:122%;
+  }
+
+  100%{
+    background-position:52% 48%;
+    background-size:118%;
+  }
+}
   </style>
 </head>
 
@@ -462,6 +529,7 @@ body.portal::after{
 <canvas id="particles"></canvas>
 <div class="noise"></div>
 <div id="observer"></div>
+<div id="portalBg"></div>
 <div class="content">
 
   <div class="signal">
@@ -983,10 +1051,9 @@ async function addSystemLine(text){
 
 }
 function activatePortal(){
-
   document.body.classList.toggle("portal");
-
 }
+
 </script>
 
 
