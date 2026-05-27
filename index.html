@@ -512,6 +512,7 @@ body.dimension-3 #portalBg{
     }
 
     function typeLine(element, text){
+      trimTerminalLines();
       return new Promise(resolve => {
         let index = 0;
 
@@ -527,6 +528,15 @@ body.dimension-3 #portalBg{
       });
     }
 
+    function trimTerminalLines(){
+  const terminalContent = document.getElementById("terminalContent");
+
+  const maxLines = 12;
+
+  while(terminalContent.children.length > maxLines){
+    terminalContent.removeChild(terminalContent.firstChild);
+  }
+}
     document.addEventListener("keydown", function(e){
       if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "x"){
         e.preventDefault();
