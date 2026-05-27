@@ -180,7 +180,7 @@
       font-size:14px;
       line-height:1.45;
       max-height:300px;
-      overflow-y:auto;
+      overflow:hidden;
     }
 
     .terminal-input-area{
@@ -785,7 +785,7 @@ body.dimension-3 #portalBg{
         await typeLine(p,"> unknown command");
       }
 
-      terminalContent.scrollTop = terminalContent.scrollHeight;
+     // terminalContent.scrollTop = terminalContent.scrollHeight;
     }
 
     function triggerAnomaly(){
@@ -859,7 +859,7 @@ sound.play();
 
       await typeLine(p, text);
 
-      terminalContent.scrollTop = terminalContent.scrollHeight;
+   //  terminalContent.scrollTop = terminalContent.scrollHeight;
     }
 let currentDimension = 1;
 
