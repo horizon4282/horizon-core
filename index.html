@@ -150,74 +150,119 @@
       opacity:0.75;
     }
 
-    #terminal{
-      position:fixed;
-      bottom:30px;
-      left:30px;
-      width:420px;
-      max-width:90%;
-      max-height:calc(100vh - 230px);
-      background:rgba(0,0,0,0.82);
-      border:1px solid rgba(80,160,255,0.25);
-      box-shadow:0 0 20px rgba(0,120,255,0.12);
-      backdrop-filter:blur(8px);
-      color:#7fd3ff;
-      font-family:"Courier New", monospace;
-      z-index:999;
-      display:none;
-      animation:terminalFade 0.4s ease;
-    }
+   #terminal{
 
-    .terminal-header{
-      padding:12px 15px;
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      font-size:14px;
-      letter-spacing:2px;
-      color:#9ed7ff;
-    }
+  position:fixed;
 
-    .terminal-content{
-      padding:18px;
-      font-size:14px;
-      line-height:1.45;
-      max-height:300px;
-      overflow:hidden;
-    }
+  left:32px;
+  bottom:32px;
 
-    .terminal-input-area{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:15px 18px;
-      border-top:1px solid rgba(255,255,255,0.08);
-      color:#7fd3ff;
-    }
+  width:560px;
+  max-width:calc(100vw - 64px);
 
-    #terminalInput{
-      flex:1;
-      background:transparent;
-      border:none;
-      outline:none;
-      color:#7fd3ff;
-      font-family:"Courier New", monospace;
-      font-size:14px;
-    }
+  background:rgba(0,0,0,0.84);
 
-    #terminalInput::placeholder{
-      color:rgba(127,211,255,0.3);
-    }
+  border:1px solid rgba(80,160,255,0.25);
 
-    .cursor{
-      display:inline-block;
-      width:3px;
-      height:18px;
-      background:#7fd3ff;
-      margin-left:8px;
-      position:relative;
-      top:3px;
-      animation:blink 1s infinite;
-    }
+  box-shadow:
+    0 0 30px rgba(0,120,255,0.18);
 
+  backdrop-filter:blur(10px);
+
+  color:#bfe6ff;
+
+  font-family:"Courier New", monospace;
+
+  z-index:999;
+
+  display:none;
+
+  animation:terminalFade 0.4s ease;
+
+  overflow:hidden;
+}
+
+.terminal-header{
+
+  padding:14px 18px;
+
+  border-bottom:1px solid rgba(255,255,255,0.08);
+
+  text-align:center;
+
+  font-size:14px;
+
+  letter-spacing:5px;
+
+  color:#9ed7ff;
+}
+
+.terminal-content{
+
+  padding:22px 28px;
+
+  font-size:17px;
+
+  line-height:1.7;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:flex-end;
+
+  min-height:120px;
+
+  max-height:none;
+
+  overflow:visible;
+}
+
+.terminal-content p{
+
+  margin-bottom:10px;
+
+  word-break:break-word;
+}
+
+.terminal-input-area{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  padding:16px 22px;
+
+  border-top:1px solid rgba(255,255,255,0.08);
+
+  color:#7fd3ff;
+
+  font-size:16px;
+}
+
+#terminalInput{
+
+  flex:1;
+
+  background:transparent;
+
+  border:none;
+
+  outline:none;
+
+  color:#7fd3ff;
+
+  font-family:"Courier New", monospace;
+
+  font-size:16px;
+}
+
+#terminalInput::placeholder{
+
+  color:rgba(127,211,255,0.32);
+}
     @keyframes blink{
       0%,50%{ opacity:1; }
       51%,100%{ opacity:0; }
@@ -512,7 +557,7 @@ body.dimension-3 #portalBg{
     }
 
     function typeLine(element, text){
-      trimTerminalLines();
+     
       return new Promise(resolve => {
         let index = 0;
 
@@ -528,15 +573,7 @@ body.dimension-3 #portalBg{
       });
     }
 
-    function trimTerminalLines(){
-  const terminalContent = document.getElementById("terminalContent");
 
-  const maxLines = 12;
-
-  while(terminalContent.children.length > maxLines){
-    terminalContent.removeChild(terminalContent.firstChild);
-  }
-}
     document.addEventListener("keydown", function(e){
       if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "x"){
         e.preventDefault();
