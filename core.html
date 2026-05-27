@@ -229,6 +229,11 @@ const messages = [
 ];
 
 const aiResponses = {
+  home: [
+  "> returning to primary horizon layer",
+  "> restoring default environment",
+  "> home synchronization complete"
+],
 
   help: [
     "> available commands:",
@@ -405,6 +410,11 @@ terminalInput.addEventListener("keydown", function(e){
     }
 
     terminalInput.value = "";
+    if(command === "home"){
+
+  returnHome();
+
+}
 
   }
 
@@ -539,5 +549,11 @@ function trimTerminalLines(){
   while(terminalContent.children.length > maxLines){
     terminalContent.removeChild(terminalContent.firstChild);
   }
+}
+
+  function returnHome(){
+
+  window.location.href = "/index.html";
+
 }
 </script>
