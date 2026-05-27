@@ -12,6 +12,72 @@
       box-sizing:border-box;
     }
 
+    #terminal{
+
+  position:fixed;
+
+  bottom:30px;
+  left:30px;
+
+  width:420px;
+  max-width:90%;
+
+  background:rgba(0,0,0,0.82);
+
+  border:1px solid rgba(80,160,255,0.25);
+
+  box-shadow:
+  0 0 20px rgba(0,120,255,0.12);
+
+  backdrop-filter:blur(8px);
+
+  color:#7fd3ff;
+
+  font-family:Courier New, monospace;
+
+  z-index:999;
+
+  display:none;
+
+  animation:terminalFade 0.4s ease;
+}
+
+.terminal-header{
+
+  padding:12px 15px;
+
+  border-bottom:1px solid rgba(255,255,255,0.08);
+
+  font-size:13px;
+
+  letter-spacing:2px;
+
+  color:#9ed7ff;
+}
+
+.terminal-content{
+
+  padding:18px;
+
+  font-size:14px;
+
+  line-height:1.9;
+}
+
+@keyframes terminalFade{
+
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+    
     body{
       width:100%;
       height:100vh;
@@ -242,7 +308,45 @@ function animate(){
 
 animate();
 
+  const terminal = document.getElementById("terminal");
+
+document.addEventListener("keydown", (e)=>{
+
+  if(e.ctrlKey && e.key.toLowerCase() === "h"){
+
+    if(terminal.style.display === "block"){
+
+      terminal.style.display = "none";
+
+    }else{
+
+      terminal.style.display = "block";
+
+    }
+
+  }
+
+});
+
 </script>
 
+
+<div id="terminal">
+
+  <div class="terminal-header">
+    HORIZON TERMINAL
+  </div>
+
+  <div class="terminal-content">
+
+    <p>> connection established...</p>
+    <p>> signal integrity: stable</p>
+    <p>> archive status: hidden</p>
+    <p>> observer mode: active</p>
+
+  </div>
+
+</div>
+  
 </body>
 </html>
