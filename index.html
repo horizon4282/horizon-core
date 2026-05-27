@@ -2,62 +2,202 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Horizon 4282</title>
 
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: radial-gradient(circle at center, #1b2a4a 0%, #05070d 65%, #000 100%);
-      color: #e8f1ff;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      width:100%;
+      height:100vh;
+      overflow:hidden;
+      background:
+      radial-gradient(circle at center,
+      #132445 0%,
+      #09101f 55%,
+      #000 100%);
+
       font-family: Arial, Helvetica, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
     }
 
-    .container {
-      max-width: 720px;
-      padding: 40px;
+    canvas{
+      position:absolute;
+      inset:0;
     }
 
-    h1 {
-      font-size: 4rem;
-      letter-spacing: 6px;
-      margin-bottom: 10px;
+    .content{
+      position:relative;
+      z-index:10;
+      text-align:center;
+      max-width:800px;
+      padding:40px;
     }
 
-    .subtitle {
-      font-size: 1.2rem;
-      color: #9fb8d9;
-      margin-bottom: 30px;
+    .signal{
+      color:#4fa7ff;
+      letter-spacing:6px;
+      font-size:14px;
+      margin-bottom:25px;
+      animation:pulse 2.5s infinite;
     }
 
-    .signal {
-      font-size: 0.9rem;
-      color: #6ee7ff;
-      letter-spacing: 3px;
-      animation: pulse 2s infinite;
+    h1{
+      font-size:88px;
+      font-weight:700;
+      letter-spacing:5px;
+      margin-bottom:20px;
+      text-shadow:0 0 20px rgba(255,255,255,0.08);
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 0.35; }
-      50% { opacity: 1; }
+    .subtitle{
+      font-size:28px;
+      color:#c4d7ff;
+      line-height:1.5;
+      opacity:0.9;
     }
+
+    @keyframes pulse{
+      0%{opacity:0.3;}
+      50%{opacity:1;}
+      100%{opacity:0.3;}
+    }
+
+    @media(max-width:768px){
+
+      h1{
+        font-size:52px;
+      }
+
+      .subtitle{
+        font-size:20px;
+      }
+
+    }
+
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="signal">SIGNAL DETECTED</div>
-    <h1>HORIZON 4282</h1>
-    <p class="subtitle">
-      Um laboratório vivo de interfaces, inteligência artificial,
-      atmosferas digitais e realidades ocultas.
-    </p>
+
+<canvas id="particles"></canvas>
+
+<div class="content">
+
+  <div class="signal">
+    SIGNAL DETECTED
   </div>
+
+  <h1>HORIZON 4282</h1>
+
+  <div class="subtitle">
+    Um laboratório vivo de interfaces, inteligência artificial,
+    atmosferas digitais e realidades ocultas.
+  </div>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", resize);
+resize();
+
+class Particle{
+
+  constructor(){
+
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+
+    this.size = Math.random() * 2 + 0.5;
+
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = (Math.random() - 0.5) * 0.3;
+
+    this.opacity = Math.random() * 0.5 + 0.2;
+
+  }
+
+  update(){
+
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if(this.x < 0 || this.x > canvas.width){
+      this.speedX *= -1;
+    }
+
+    if(this.y < 0 || this.y > canvas.height){
+      this.speedY *= -1;
+    }
+
+  }
+
+  draw(){
+
+    ctx.beginPath();
+
+    ctx.fillStyle = `rgba(120,180,255,${this.opacity})`;
+
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+
+    ctx.fill();
+
+  }
+
+}
+
+function createParticles(){
+
+  particles = [];
+
+  for(let i = 0; i < 120; i++){
+
+    particles.push(new Particle());
+
+  }
+
+}
+
+createParticles();
+
+function animate(){
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach(particle => {
+
+    particle.update();
+    particle.draw();
+
+  });
+
+  requestAnimationFrame(animate);
+
+}
+
+animate();
+
+</script>
+
 </body>
 </html>
