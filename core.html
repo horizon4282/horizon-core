@@ -63,6 +63,140 @@
       from{opacity:0; transform:scale(.98);}
       to{opacity:1; transform:scale(1);}
     }
+  #terminal{
+
+  position:fixed;
+
+  bottom:30px;
+  left:30px;
+
+  width:420px;
+  max-width:90%;
+
+  background:rgba(0,0,0,0.82);
+
+  border:1px solid rgba(80,160,255,0.25);
+
+  box-shadow:
+    0 0 20px rgba(0,120,255,0.12);
+
+  backdrop-filter:blur(8px);
+
+  color:#7fd3ff;
+
+  font-family:"Courier New", monospace;
+
+  z-index:999;
+
+  display:none;
+
+  animation:terminalFade 0.4s ease;
+}
+
+.terminal-header{
+
+  padding:12px 15px;
+
+  border-bottom:1px solid rgba(255,255,255,0.08);
+
+  font-size:14px;
+
+  letter-spacing:2px;
+
+  color:#9ed7ff;
+}
+
+.terminal-content{
+
+  padding:18px;
+
+  font-size:14px;
+
+  line-height:1.45;
+
+  max-height:300px;
+
+  overflow:hidden;
+}
+
+.terminal-input-area{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  padding:15px 18px;
+
+  border-top:1px solid rgba(255,255,255,0.08);
+
+  color:#7fd3ff;
+}
+
+#terminalInput{
+
+  flex:1;
+
+  background:transparent;
+
+  border:none;
+
+  outline:none;
+
+  color:#7fd3ff;
+
+  font-family:"Courier New", monospace;
+
+  font-size:14px;
+}
+
+#terminalInput::placeholder{
+
+  color:rgba(127,211,255,0.3);
+}
+
+.cursor{
+
+  display:inline-block;
+
+  width:3px;
+  height:18px;
+
+  background:#7fd3ff;
+
+  margin-left:8px;
+
+  position:relative;
+
+  top:3px;
+
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+
+  0%,50%{
+    opacity:1;
+  }
+
+  51%,100%{
+    opacity:0;
+  }
+}
+
+@keyframes terminalFade{
+
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
   </style>
 </head>
 
@@ -84,5 +218,358 @@
     </div>
   </div>
 
+  <audio id="breachSound" src="assets/horizon-breach.mp3"></audio>
+
+<div id="terminal">
+
+  <div class="terminal-header">
+    HORIZON TERMINAL
+    <span class="cursor"></span>
+  </div>
+
+  <div class="terminal-content" id="terminalContent"></div>
+
+  <div class="terminal-input-area">
+
+    <span>&gt;</span>
+
+    <input
+      type="text"
+      id="terminalInput"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder="type command..."
+    />
+
+  </div>
+
+</div>
 </body>
 </html>
+
+<script>
+  let waitingAccessKey = false;
+
+const messages = [
+
+  "> connection established...",
+  "> signal integrity: stable",
+  "> observer mode: active",
+  "> hidden archive detected",
+  "> unknown transmission found",
+  "> atmospheric scan initialized",
+  "> remote observer connected",
+  "> anomalous signal received",
+  "> digital horizon expanding",
+  "> encrypted memory unlocked",
+  "> transport sequence pending",
+  "> shadow protocol active",
+  "> fragment 4282 restored",
+  "> scanning external reality...",
+  "> consciousness bridge online"
+
+];
+
+const aiResponses = {
+
+  help: [
+    "> available commands:",
+    "> access",
+    "> observer",
+    "> archive",
+    "> signal",
+    "> horizon",
+    "> transport",
+    "> portal",
+    "> breach",
+    "> clear",
+    "> scan",
+    "> unknown commands may exist..."
+  ],
+
+  access: [
+    "> enter access key"
+  ],
+
+  scan: [
+    "> scanning visual field...",
+    "> anomaly density: 42%",
+    "> visitor pattern indexed",
+    "> observer synchronization complete"
+  ],
+
+  observer: [
+    "> observer mode already active",
+    "> visitor behavior detected",
+    "> tracking atmospheric signals"
+  ],
+
+  portal: [
+    "> visual portal initialized",
+    "> horizon dimensional layer loaded",
+    "> immersive background activated"
+  ],
+
+  breach: [
+    "> WARNING",
+    "> unauthorized dimensional activity",
+    "> instability increasing",
+    "> horizon breach initiated"
+  ],
+
+  "4282": [
+    "> master fragment recognized",
+    "> identity key accepted",
+    "> horizon core partially unlocked"
+  ]
+
+};
+
+const archiveFiles = {
+
+  "open fragment_01.log": [
+    "> fragment_01.log",
+    "> signal recovered from unknown layer",
+    "> temporal distortion detected",
+    "> observer presence confirmed"
+  ],
+
+  "open observer_notes.txt": [
+    "> observer_notes.txt",
+    "> the system reacts to prolonged exposure",
+    "> visitors become part of the horizon"
+  ]
+
+};
+
+async function generateTerminalLines(){
+
+  const terminalContent =
+    document.getElementById("terminalContent");
+
+  terminalContent.innerHTML = "";
+
+  const shuffled =
+    [...messages].sort(() => 0.5 - Math.random());
+
+  const selected = shuffled.slice(0,4);
+
+  for(const msg of selected){
+
+    const p = document.createElement("p");
+
+    terminalContent.appendChild(p);
+
+    await typeLine(p, msg);
+
+  }
+
+}
+
+function typeLine(element, text){
+
+  return new Promise(resolve => {
+
+    let index = 0;
+
+    const interval = setInterval(() => {
+
+      element.textContent += text.charAt(index);
+
+      index++;
+
+      if(index >= text.length){
+
+        clearInterval(interval);
+
+        resolve();
+
+      }
+
+    },30);
+
+  });
+
+}
+
+document.addEventListener("keydown", function(e){
+
+  if(
+    e.ctrlKey &&
+    e.shiftKey &&
+    e.key.toLowerCase() === "x"
+  ){
+
+    e.preventDefault();
+
+    const terminal =
+      document.getElementById("terminal");
+
+    if(terminal.style.display === "block"){
+
+      terminal.style.display = "none";
+
+    }else{
+
+      terminal.style.display = "block";
+
+      generateTerminalLines();
+
+      setTimeout(() => {
+
+        document
+          .getElementById("terminalInput")
+          .focus();
+
+      },100);
+
+    }
+
+  }
+
+});
+
+const terminalInput =
+  document.getElementById("terminalInput");
+
+terminalInput.addEventListener("keydown", function(e){
+
+  if(e.key === "Enter"){
+
+    const value =
+      terminalInput.value.toLowerCase().trim();
+
+    if(value){
+
+      processCommand(value);
+
+    }
+
+    terminalInput.value = "";
+
+  }
+
+});
+
+async function processCommand(command){
+
+  const terminalContent =
+    document.getElementById("terminalContent");
+
+  if(waitingAccessKey){
+
+    waitingAccessKey = false;
+
+    if(command === "4282-omega"){
+
+      await addSystemLine(
+        "> ACCESS GRANTED"
+      );
+
+      setTimeout(() => {
+
+        window.location.href =
+          "/core.html";
+
+      },2500);
+
+    }else{
+
+      await addSystemLine(
+        "> ACCESS DENIED"
+      );
+
+    }
+
+    return;
+
+  }
+
+  if(command === "clear"){
+
+    terminalContent.innerHTML = "";
+
+    return;
+
+  }
+
+  const userLine =
+    document.createElement("p");
+
+  userLine.textContent =
+    "> " + command;
+
+  terminalContent.appendChild(userLine);
+
+  if(command === "access"){
+
+    waitingAccessKey = true;
+
+  }
+
+  const responses =
+    aiResponses[command];
+
+  const archiveResponse =
+    archiveFiles[command];
+
+  if(archiveResponse){
+
+    for(const line of archiveResponse){
+
+      const p =
+        document.createElement("p");
+
+      terminalContent.appendChild(p);
+
+      await typeLine(p,line);
+
+    }
+
+    return;
+
+  }
+
+  if(responses){
+
+    for(const line of responses){
+
+      const p =
+        document.createElement("p");
+
+      terminalContent.appendChild(p);
+
+      await typeLine(p,line);
+
+    }
+
+  }else{
+
+    const p =
+      document.createElement("p");
+
+    terminalContent.appendChild(p);
+
+    await typeLine(
+      p,
+      "> unknown command"
+    );
+
+  }
+
+}
+
+async function addSystemLine(text){
+
+  const terminalContent =
+    document.getElementById("terminalContent");
+
+  const p =
+    document.createElement("p");
+
+  terminalContent.appendChild(p);
+
+  await typeLine(p, text);
+
+}
+</script>
