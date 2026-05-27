@@ -411,6 +411,21 @@ body.breach canvas{
   75%{ transform:translate(-3px,-2px); }
   100%{ transform:translate(4px,3px); }
 }
+
+body.portal{
+
+  background-image:
+  linear-gradient(
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.7)
+  ),
+  url('assets/escadaria-da-latencia.png');
+
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+
+}
   </style>
 </head>
 
@@ -738,6 +753,11 @@ function showObserverMessage(){
 setInterval(showObserverMessage, 7000);
 
 const aiResponses = {
+  portal: [
+  "> visual portal initialized",
+  "> horizon dimensional layer loaded",
+  "> immersive background activated"
+],
   breach: [
   "> WARNING",
   "> unauthorized dimensional activity",
@@ -838,6 +858,11 @@ async function processCommand(command){
 if(command === "breach"){
   triggerBreach();
 }
+if(command === "portal"){
+
+  activatePortal();
+
+}
     for(const line of responses){
 
       const p = document.createElement("p");
@@ -927,6 +952,11 @@ async function addSystemLine(text){
   setTimeout(()=>{
     document.body.classList.remove("breach");
   },4000);
+
+}
+function activatePortal(){
+
+  document.body.classList.toggle("portal");
 
 }
 </script>
