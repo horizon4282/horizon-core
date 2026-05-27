@@ -349,6 +349,47 @@ body.anomaly{
   }
 
 }
+
+body.breach{
+
+  animation:
+  breachShake 0.08s infinite,
+  breachFlash 1.2s infinite;
+
+}
+
+@keyframes breachShake{
+
+  0%{ transform:translate(0,0); }
+
+  25%{ transform:translate(-2px,1px); }
+
+  50%{ transform:translate(2px,-1px); }
+
+  75%{ transform:translate(-1px,-2px); }
+
+  100%{ transform:translate(1px,2px); }
+
+}
+
+@keyframes breachFlash{
+
+  0%{
+    filter:brightness(1);
+  }
+
+  50%{
+    filter:
+    brightness(1.4)
+    contrast(1.5)
+    hue-rotate(20deg);
+  }
+
+  100%{
+    filter:brightness(1);
+  }
+
+}
   </style>
 </head>
 
@@ -676,6 +717,12 @@ function showObserverMessage(){
 setInterval(showObserverMessage, 7000);
 
 const aiResponses = {
+  breach: [
+  "> WARNING",
+  "> unauthorized dimensional activity",
+  "> instability increasing",
+  "> horizon breach initiated"
+],
   "4282": [
   "> master fragment recognized",
   "> identity key accepted",
@@ -760,11 +807,15 @@ async function processCommand(command){
     if(
   command === "observer" ||
   command === "4282" ||
-  command === "signal"
+  command === "signal" || 
+  command === "breach"
 ){
 
   triggerAnomaly();
 
+}
+if(command === "breach"){
+  triggerBreach();
 }
     for(const line of responses){
 
