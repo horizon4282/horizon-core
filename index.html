@@ -804,6 +804,37 @@ function triggerAnomaly(){
   },1500);
 
 }
+  let secondsInside = 0;
+
+setInterval(() => {
+  secondsInside++;
+
+  if(secondsInside === 10){
+    addSystemLine("> visitor persistence detected");
+  }
+
+  if(secondsInside === 30){
+    addSystemLine("> prolonged exposure to horizon field");
+  }
+
+  if(secondsInside === 60){
+    addSystemLine("> visitor classified as observer");
+  }
+
+}, 1000);
+
+async function addSystemLine(text){
+  const terminalContent = document.getElementById("terminalContent");
+
+  if(!terminalContent) return;
+
+  const p = document.createElement("p");
+  terminalContent.appendChild(p);
+
+  await typeLine(p, text);
+
+  terminalContent.scrollTop = terminalContent.scrollHeight;
+}
 </script>
 
 
