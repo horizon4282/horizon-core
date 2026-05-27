@@ -390,6 +390,27 @@ body.breach{
   }
 
 }
+
+body.breach .noise{
+  opacity:0.45;
+  animation:noiseMove 0.05s infinite;
+}
+
+body.breach .content{
+  animation:contentGlitch 0.08s infinite;
+}
+
+body.breach canvas{
+  filter:brightness(2) contrast(2);
+}
+
+@keyframes contentGlitch{
+  0%{ transform:translate(0,0); }
+  25%{ transform:translate(-6px,3px); }
+  50%{ transform:translate(5px,-4px); }
+  75%{ transform:translate(-3px,-2px); }
+  100%{ transform:translate(4px,3px); }
+}
   </style>
 </head>
 
@@ -842,6 +863,26 @@ if(command === "breach"){
 
   terminalContent.scrollTop =
     terminalContent.scrollHeight;
+
+}
+function triggerBreach(){
+
+  document.body.classList.add("breach");
+
+  for(let i = 0; i < 20; i++){
+    setTimeout(()=>{
+      const flash = document.createElement("div");
+      flash.classList.add("flash");
+      flash.style.left = Math.random() * window.innerWidth + "px";
+      flash.style.top = Math.random() * window.innerHeight + "px";
+      document.body.appendChild(flash);
+      setTimeout(()=>flash.remove(), 1000);
+    }, i * 80);
+  }
+
+  setTimeout(()=>{
+    document.body.classList.remove("breach");
+  },4000);
 
 }
 function triggerAnomaly(){
