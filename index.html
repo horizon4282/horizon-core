@@ -258,6 +258,61 @@
   }
 
 }
+
+#observer{
+  position:fixed;
+  top:30px;
+  right:35px;
+  z-index:50;
+  color:#7fd3ff;
+  font-family:"Courier New", monospace;
+  font-size:13px;
+  letter-spacing:2px;
+  opacity:0;
+  transition:opacity 1s ease;
+  pointer-events:none;
+  text-shadow:0 0 12px rgba(127,211,255,0.4);
+}
+
+#observer.active{
+  opacity:0.75;
+}
+
+.terminal-input-area{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  padding:15px 18px;
+
+  border-top:1px solid rgba(255,255,255,0.08);
+
+  color:#7fd3ff;
+}
+
+#terminalInput{
+
+  flex:1;
+
+  background:transparent;
+
+  border:none;
+
+  outline:none;
+
+  color:#7fd3ff;
+
+  font-family:"Courier New", monospace;
+
+  font-size:14px;
+}
+
+#terminalInput::placeholder{
+  color:rgba(127,211,255,0.3);
+}
   </style>
 </head>
 
@@ -265,7 +320,7 @@
 
 <canvas id="particles"></canvas>
 <div class="noise"></div>
-
+<div id="observer"></div>
 <div class="content">
 
   <div class="signal">
@@ -293,8 +348,21 @@
   <span class="cursor"></span>
 </div>
 
-  
+
 <div class="terminal-content" id="terminalContent"></div>
+<div class="terminal-input-area">
+
+  <span>> </span>
+
+  <input
+    type="text"
+    id="terminalInput"
+    autocomplete="off"
+    spellcheck="false"
+    placeholder="type command..."
+  />
+
+</div>
 
     <p>  > connection established...</p>
     <p>  > signal integrity: stable</p>
@@ -540,6 +608,140 @@ setInterval(()=>{
   signal.textContent = random;
 
 },5000);
+
+
+  const observerMessages = [
+  "OBSERVER MODE: ACTIVE",
+  "VISITOR SIGNAL DETECTED",
+  "PATTERN ANALYSIS RUNNING",
+  "MEMORY TRACE FOUND",
+  "HORIZON IS WATCHING",
+  "REALITY INPUT RECEIVED",
+  "SILENT NODE ONLINE"
+];
+
+function showObserverMessage(){
+
+  const observer = document.getElementById("observer");
+
+  if(!observer) return;
+
+  const message =
+    observerMessages[Math.floor(Math.random() * observerMessages.length)];
+
+  observer.textContent = message;
+  observer.classList.add("active");
+
+  setTimeout(()=>{
+    observer.classList.remove("active");
+  },3000);
+}
+
+setInterval(showObserverMessage, 7000);
+
+const aiResponses = {
+
+  help: [
+    "> available commands:",
+    "> observer",
+    "> archive",
+    "> signal",
+    "> horizon",
+    "> transport"
+  ],
+
+  observer: [
+    "> observer mode already active",
+    "> visitor behavior detected",
+    "> tracking atmospheric signals"
+  ],
+
+  archive: [
+    "> archive locked",
+    "> authorization denied",
+    "> hidden fragments detected"
+  ],
+
+  signal: [
+    "> unstable frequency located",
+    "> transmission integrity: 82%",
+    "> remote echo received"
+  ],
+
+  horizon: [
+    "> horizon consciousness expanding",
+    "> reality bridge synchronized"
+  ],
+
+  transport: [
+    "> transport sequence unavailable",
+    "> portal status: dormant"
+  ]
+
+};
+
+const terminalInput =
+  document.getElementById("terminalInput");
+
+terminalInput.addEventListener("keydown", function(e){
+
+  if(e.key === "Enter"){
+
+    const value =
+      terminalInput.value.toLowerCase().trim();
+
+    processCommand(value);
+
+    terminalInput.value = "";
+
+  }
+
+});
+
+async function processCommand(command){
+
+  const terminalContent =
+    document.getElementById("terminalContent");
+
+  const userLine =
+    document.createElement("p");
+
+  userLine.textContent = "> " + command;
+
+  terminalContent.appendChild(userLine);
+
+  const responses =
+    aiResponses[command];
+
+  if(responses){
+
+    for(const line of responses){
+
+      const p = document.createElement("p");
+
+      terminalContent.appendChild(p);
+
+      await typeLine(p,line);
+
+    }
+
+  }else{
+
+    const p = document.createElement("p");
+
+    terminalContent.appendChild(p);
+
+    await typeLine(
+      p,
+      "> unknown command"
+    );
+
+  }
+
+  terminalContent.scrollTop =
+    terminalContent.scrollHeight;
+
+}
 </script>
 
 
