@@ -426,6 +426,39 @@ body.portal{
   background-attachment:fixed;
 
 }
+body.portal::after{
+  content:"";
+  position:fixed;
+  inset:-40px;
+  z-index:-1;
+
+  background-image:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.72)),
+    url('assets/horizon-universe.jpg');
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  animation:portalDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes portalDrift{
+  0%{
+    transform:scale(1) translate(0,0);
+    filter:brightness(0.9) contrast(1.1);
+  }
+
+  50%{
+    transform:scale(1.06) translate(-12px,8px);
+    filter:brightness(1.05) contrast(1.2);
+  }
+
+  100%{
+    transform:scale(1.1) translate(14px,-10px);
+    filter:brightness(0.95) contrast(1.15);
+  }
+}
   </style>
 </head>
 
