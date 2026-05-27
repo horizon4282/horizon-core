@@ -325,6 +325,49 @@ function animate(){
 
 animate();
 
+const messages = [
+
+  "> connection established...",
+  "> signal integrity: stable",
+  "> observer mode: active",
+  "> hidden archive detected",
+  "> unknown transmission found",
+  "> atmospheric scan initialized",
+  "> remote observer connected",
+  "> anomalous signal received",
+  "> digital horizon expanding",
+  "> encrypted memory unlocked",
+  "> transport sequence pending",
+  "> shadow protocol active",
+  "> fragment 4282 restored",
+  "> scanning external reality...",
+  "> consciousness bridge online"
+
+];
+
+function generateTerminalLines(){
+
+  const terminalContent =
+    document.getElementById("terminalContent");
+
+  terminalContent.innerHTML = "";
+
+  const shuffled =
+    messages.sort(() => 0.5 - Math.random());
+
+  const selected = shuffled.slice(0,4);
+
+  selected.forEach(msg => {
+
+    const p = document.createElement("p");
+
+    p.textContent = msg;
+
+    terminalContent.appendChild(p);
+
+  });
+
+}
 document.addEventListener("keydown", function(e){
 
   if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "x"){
@@ -335,8 +378,17 @@ document.addEventListener("keydown", function(e){
 
     if(!terminal) return;
 
-    terminal.style.display =
-      terminal.style.display === "block" ? "none" : "block";
+   if(terminal.style.display === "block"){
+
+  terminal.style.display = "none";
+
+}else{
+
+  generateTerminalLines();
+
+  terminal.style.display = "block";
+
+}
   }
 
 });
