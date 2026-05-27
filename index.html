@@ -308,24 +308,18 @@ function animate(){
 
 animate();
 
-const terminal = document.getElementById("terminal");
-
 document.addEventListener("keydown", function(e){
 
   if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "x"){
 
     e.preventDefault();
 
-    if(terminal.style.display === "block"){
+    const terminal = document.getElementById("terminal");
 
-      terminal.style.display = "none";
+    if(!terminal) return;
 
-    }else{
-
-      terminal.style.display = "block";
-
-    }
-
+    terminal.style.display =
+      terminal.style.display === "block" ? "none" : "block";
   }
 
 });
