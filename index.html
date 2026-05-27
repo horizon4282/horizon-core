@@ -308,11 +308,13 @@ function animate(){
 
 animate();
 
-  const terminal = document.getElementById("terminal");
+const terminal = document.getElementById("terminal");
 
-document.addEventListener("keydown", (e)=>{
+document.addEventListener("keydown", function(e){
 
-  if(e.ctrlKey && e.key.toLowerCase() === "x"){
+  if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "x"){
+
+    e.preventDefault();
 
     if(terminal.style.display === "block"){
 
