@@ -865,26 +865,7 @@ if(command === "breach"){
     terminalContent.scrollHeight;
 
 }
-function triggerBreach(){
 
-  document.body.classList.add("breach");
-
-  for(let i = 0; i < 20; i++){
-    setTimeout(()=>{
-      const flash = document.createElement("div");
-      flash.classList.add("flash");
-      flash.style.left = Math.random() * window.innerWidth + "px";
-      flash.style.top = Math.random() * window.innerHeight + "px";
-      document.body.appendChild(flash);
-      setTimeout(()=>flash.remove(), 1000);
-    }, i * 80);
-  }
-
-  setTimeout(()=>{
-    document.body.classList.remove("breach");
-  },4000);
-
-}
 function triggerAnomaly(){
 
   document.body.classList.add("anomaly");
@@ -926,6 +907,27 @@ async function addSystemLine(text){
   await typeLine(p, text);
 
   terminalContent.scrollTop = terminalContent.scrollHeight;
+}
+
+  function triggerBreach(){
+
+  document.body.classList.add("breach");
+
+  for(let i = 0; i < 20; i++){
+    setTimeout(()=>{
+      const flash = document.createElement("div");
+      flash.classList.add("flash");
+      flash.style.left = Math.random() * window.innerWidth + "px";
+      flash.style.top = Math.random() * window.innerHeight + "px";
+      document.body.appendChild(flash);
+      setTimeout(()=>flash.remove(), 1000);
+    }, i * 80);
+  }
+
+  setTimeout(()=>{
+    document.body.classList.remove("breach");
+  },4000);
+
 }
 </script>
 
