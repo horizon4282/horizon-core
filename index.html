@@ -331,7 +331,7 @@ body.scan-active #scanLine{
 
   opacity:1;
 
-  animation:scanMove 2.5s ease-in-out;
+  animation:scanMove 6s ease-in-out;
 
 }
 
@@ -346,11 +346,32 @@ body.scan-active #scanLine{
   }
 
 }
+    body.dimension-2 #portalBg{
+
+  background-image:
+    linear-gradient(
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.72)
+    ),
+    url('assets/horizon-dimension-2.png');
+
+}
+
+body.dimension-3 #portalBg{
+
+  background-image:
+    linear-gradient(
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.72)
+    ),
+    url('assets/horizon-dimension-3.png');
+
+}
 
   </style>
 </head>
 
-<body>
+<body class="dimension-1">
 
   <div id="portalBg"></div>
   <div id="scanLine"></div>
@@ -789,7 +810,9 @@ sound.play();
 
       terminalContent.scrollTop = terminalContent.scrollHeight;
     }
-    function triggerScan(){
+let currentDimension = 1;
+
+function triggerScan(){
 
   document.body.classList.add("scan-active");
 
@@ -797,9 +820,25 @@ sound.play();
 
     document.body.classList.remove("scan-active");
 
-  },2500);
+    currentDimension++;
 
-}
+    if(currentDimension > 3){
+      currentDimension = 1;
+    }
+
+    document.body.classList.remove(
+      "dimension-1",
+      "dimension-2",
+      "dimension-3"
+    );
+
+    document.body.classList.add(
+      "dimension-" + currentDimension
+    );
+
+  },6000);
+
+}  
   </script>
 
 </body>
