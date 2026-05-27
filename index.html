@@ -440,28 +440,86 @@ body.portal{
   }
 }
 #portalBg{
+
   position:fixed;
-  inset:-60px;
+  inset:-5%;
+
   z-index:0;
+
   opacity:0;
+
   pointer-events:none;
 
   background-image:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.72)),
-    url('assets/horizon-universe.jpg');
+    linear-gradient(
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.72)
+    ),
+    url('assets/escararia-da-latencia.png');
 
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
 
-  transition:opacity 1s ease;
+  transform-origin:center center;
+
+  transition:
+    opacity 1.2s ease;
+
+  will-change:
+    transform,
+    filter;
+
 }
 
 body.portal #portalBg{
+
   opacity:1;
-  animation:portalDrift 18s ease-in-out infinite alternate;
+
+  animation:
+    portalFloat 18s ease-in-out infinite alternate;
+
 }
 
+@keyframes portalFloat{
+
+  0%{
+
+    transform:
+      scale(1)
+      translate3d(0px,0px,0px);
+
+    filter:
+      brightness(0.9)
+      contrast(1.05);
+
+  }
+
+  50%{
+
+    transform:
+      scale(1.06)
+      translate3d(-20px,10px,0px);
+
+    filter:
+      brightness(1)
+      contrast(1.12);
+
+  }
+
+  100%{
+
+    transform:
+      scale(1.1)
+      translate3d(18px,-12px,0px);
+
+    filter:
+      brightness(0.92)
+      contrast(1.08);
+
+  }
+
+}
 @keyframes portalDrift{
   0%{
     transform:scale(1) translate(0,0);
