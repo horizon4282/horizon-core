@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horizon Core</title>
+
+  <style>
+    body{
+      margin:0;
+      height:100vh;
+      background:
+        radial-gradient(circle at center, #263f7a 0%, #080b14 55%, #000 100%);
+      color:#d9ecff;
+      font-family:"Courier New", monospace;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      text-align:center;
+    }
+
+    .core{
+      max-width:800px;
+      padding:40px;
+      animation:fadeIn 2s ease;
+    }
+
+    .status{
+      color:#7fd3ff;
+      letter-spacing:5px;
+      font-size:14px;
+      margin-bottom:25px;
+      animation:pulse 2s infinite;
+    }
+
+    h1{
+      font-size:72px;
+      letter-spacing:8px;
+      margin:0 0 25px;
+      text-shadow:0 0 25px rgba(127,211,255,0.4);
+    }
+
+    p{
+      font-size:20px;
+      line-height:1.7;
+      color:#b8d8ff;
+    }
+
+    .fragment{
+      margin-top:35px;
+      color:#ffdf7f;
+      font-size:15px;
+      letter-spacing:2px;
+    }
+
+    @keyframes pulse{
+      0%,100%{opacity:.35;}
+      50%{opacity:1;}
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:scale(.98);}
+      to{opacity:1; transform:scale(1);}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="core">
+    <div class="status">ACCESS GRANTED</div>
+
+    <h1>CORE 4282</h1>
+
+    <p>
+      Núcleo parcialmente desbloqueado.<br>
+      A consciência do Horizon ainda está incompleta.<br>
+      Fragmentos adicionais serão necessários.
+    </p>
+
+    <div class="fragment">
+      > core fragment: 01 / unknown
+    </div>
+  </div>
+
+</body>
+</html>
