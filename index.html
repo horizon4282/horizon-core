@@ -605,6 +605,14 @@ body.dimension-3 #portalBg{
     setInterval(showObserverMessage, 7000);
 
     const aiResponses = {
+    arquivo: [
+  "> opening archive...",
+  "> archive synchronized",
+  "> fragment_01.log",
+  "> observer_notes.txt",
+  "> anomaly_report.dat",
+  "> transport_sequence.mem"
+],
       scan: [
   "> scanning visual field...",
   "> anomaly density: 42%",
@@ -673,6 +681,37 @@ body.dimension-3 #portalBg{
       ]
     };
 
+    const archiveFiles = {
+
+  "open fragment_01.log": [
+    "> fragment_01.log",
+    "> signal recovered from unknown layer",
+    "> temporal distortion detected",
+    "> observer presence confirmed"
+  ],
+
+  "open observer_notes.txt": [
+    "> observer_notes.txt",
+    "> the system reacts to prolonged exposure",
+    "> visitors become part of the horizon",
+    "> some signals should not be followed"
+  ],
+
+  "open anomaly_report.dat": [
+    "> anomaly_report.dat",
+    "> instability level: critical",
+    "> breach echoes detected",
+    "> dimensional noise increasing"
+  ],
+
+  "open transport_sequence.mem": [
+    "> transport_sequence.mem",
+    "> transport gate unavailable",
+    "> synchronization required",
+    "> awaiting master fragment"
+  ]
+
+};
     const terminalInput = document.getElementById("terminalInput");
 
     terminalInput.addEventListener("keydown", function(e){
@@ -704,6 +743,9 @@ body.dimension-3 #portalBg{
 
       const responses = aiResponses[command];
 
+      const archiveResponse =
+  archiveFiles[command];
+
       if(command === "portal"){
         activatePortal();
       }
@@ -722,6 +764,21 @@ body.dimension-3 #portalBg{
         triggerAnomaly();
       }
 
+      if(archiveResponse){
+
+  for(const line of archiveResponse){
+
+    const p = document.createElement("p");
+
+    terminalContent.appendChild(p);
+
+    await typeLine(p,line);
+
+  }
+
+  return;
+
+}
       if(responses){
         for(const line of responses){
           const p = document.createElement("p");
