@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>4282 Horizon | Open Library</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI, Arial, sans-serif;
+    background:#05070d;
+    color:#ffffff;
+}
+
+.hero{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(5,7,13,.95)),
+    url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2000') center center;
+    background-size:cover;
+
+    display:flex;
+    flex-direction:column;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 40px;
+}
+
+.logo{
+    font-size:1.4rem;
+    font-weight:bold;
+    letter-spacing:3px;
+}
+
+#langBtn{
+    background:none;
+    color:white;
+    border:1px solid white;
+    padding:10px 18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#langBtn:hover{
+    background:white;
+    color:black;
+}
+
+.hero-content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:0 8%;
+    max-width:900px;
+}
+
+.tagline{
+    color:#6ec8ff;
+    letter-spacing:4px;
+    margin-bottom:20px;
+    text-transform:uppercase;
+}
+
+.hero-content h1{
+    font-size:clamp(3rem,7vw,6rem);
+    line-height:1;
+    margin-bottom:25px;
+}
+
+.hero-content p{
+    font-size:1.3rem;
+    line-height:1.7;
+    color:#d0d0d0;
+}
+
+.section{
+    padding:80px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#c2c2c2;
+}
+
+.library{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#0f1420;
+    border:1px solid #1f304a;
+    border-radius:18px;
+    padding:30px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.category{
+    color:#6ec8ff;
+    font-size:.8rem;
+    letter-spacing:3px;
+}
+
+.card h3{
+    margin:18px 0;
+    font-size:1.7rem;
+}
+
+.card p{
+    color:#c7c7c7;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.card a{
+    color:#6ec8ff;
+    text-decoration:none;
+}
+
+.future{
+    background:#0b1018;
+    text-align:center;
+}
+
+.future p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.8;
+    color:#d0d0d0;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:1px solid #182436;
+    color:#7d8ba0;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+
+<nav>
+<div class="logo">4282 HORIZON</div>
+<button id="langBtn">EN</button>
+</nav>
+
+<div class="hero-content">
+
+<div class="tagline"
+data-pt="Biblioteca Aberta"
+data-en="Open Library">
+Biblioteca Aberta
+</div>
+
+<h1
+data-pt="Narrativas Gratuitas Para Explorar Novos Mundos"
+data-en="Free Narratives To Explore New Worlds">
+Narrativas Gratuitas Para Explorar Novos Mundos
+</h1>
+
+<p
+data-pt="Bem-vindo à Open Library da 4282 Horizon. Um arquivo vivo de histórias, experimentos narrativos, ficção científica, aventuras, mistérios e universos criados para serem compartilhados livremente."
+data-en="Welcome to the 4282 Horizon Open Library. A living archive of stories, narrative experiments, science fiction, adventures, mysteries and worlds created to be freely shared.">
+Bem-vindo à Open Library da 4282 Horizon. Um arquivo vivo de histórias, experimentos narrativos, ficção científica, aventuras, mistérios e universos criados para serem compartilhados livremente.
+</p>
+
+</div>
+
+</header>
+
+<section class="section">
+
+<div class="section-title">
+
+<h2
+data-pt="Coleções"
+data-en="Collections">
+Coleções
+</h2>
+
+<p
+data-pt="Explore nossos universos narrativos."
+data-en="Explore our narrative universes.">
+Explore nossos universos narrativos.
+</p>
+
+</div>
+
+<div class="library">
+
+<div class="card">
+
+<div class="category">SANTEE</div>
+
+<h3>O Diário de Santee</h3>
+
+<p
+data-pt="Mistério, ficção científica, portais, experimentos e segredos escondidos além da realidade."
+data-en="Mystery, science fiction, portals, experiments and secrets hidden beyond reality.">
+Mistério, ficção científica, portais, experimentos e segredos escondidos além da realidade.
+</p>
+
+<a href="#">Ler História →</a>
+
+</div>
+
+<div class="card">
+
+<div class="category">HORIZON</div>
+
+<h3>Crônicas Horizon</h3>
+
+<p
+data-pt="Registros de futuros possíveis, inteligências desconhecidas e arquivos esquecidos."
+data-en="Records of possible futures, unknown intelligences and forgotten archives.">
+Registros de futuros possíveis, inteligências desconhecidas e arquivos esquecidos.
+</p>
+
+<a href="#">Ler História →</a>
+
+</div>
+
+<div class="card">
+
+<div class="category">4282</div>
+
+<h3>Corredor 4282</h3>
+
+<p
+data-pt="Aventuras heroicas que unem imaginação, coragem e valores positivos."
+data-en="Heroic adventures that combine imagination, courage and positive values.">
+Aventuras heroicas que unem imaginação, coragem e valores positivos.
+</p>
+
+<a href="#">Ler História →</a>
+
+</div>
+
+<div class="card">
+
+<div class="category">LIAH</div>
+
+<h3>Liah</h3>
+
+<p
+data-pt="Viagens inspiradas pela fé, amizade e descobertas através das histórias bíblicas."
+data-en="Journeys inspired by faith, friendship and discoveries through biblical stories.">
+Viagens inspiradas pela fé, amizade e descobertas através das histórias bíblicas.
+</p>
+
+<a href="#">Ler História →</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section future">
+
+<div class="section-title">
+
+<h2
+data-pt="O Arquivo Continua Crescendo"
+data-en="The Archive Keeps Growing">
+O Arquivo Continua Crescendo
+</h2>
+
+</div>
+
+<p
+data-pt="A Open Library da 4282 Horizon foi concebida como um arquivo vivo. Novas histórias, universos, documentos narrativos e experimentos criativos serão adicionados continuamente ao longo dos próximos anos."
+data-en="The 4282 Horizon Open Library was conceived as a living archive. New stories, universes, narrative documents and creative experiments will be continuously added over the coming years.">
+A Open Library da 4282 Horizon foi concebida como um arquivo vivo. Novas histórias, universos, documentos narrativos e experimentos criativos serão adicionados continuamente ao longo dos próximos anos.
+</p>
+
+</section>
+
+<footer>
+
+© 2026 Studio 4282 • 4282 Horizon Open Library
+
+</footer>
+
+<script>
+
+let currentLang = "pt";
+
+const button = document.getElementById("langBtn");
+
+button.addEventListener("click",()=>{
+
+currentLang = currentLang === "pt" ? "en" : "pt";
+
+document.querySelectorAll("[data-pt][data-en]").forEach(el=>{
+
+el.innerHTML = el.dataset[currentLang];
+
+});
+
+button.innerText = currentLang === "pt" ? "EN" : "PT";
+
+document.documentElement.lang =
+currentLang === "pt" ? "pt-BR" : "en";
+
+});
+
+</script>
+
+</body>
+</html>
