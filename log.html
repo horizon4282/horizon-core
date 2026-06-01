@@ -1,279 +1,928 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horizon 4282</title>
 
-<title>Horizon 4282 - Development Log</title>
+  <style>
+    *{ margin:0; padding:0; box-sizing:border-box; }
 
-<style>
+    body{
+      width:100%;
+      height:100vh;
+      overflow:hidden;
+      background:radial-gradient(circle at center,#132445 0%,#09101f 55%,#000 100%);
+      font-family:Arial, Helvetica, sans-serif;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+    #portalBg{
+      position:fixed;
+      inset:-6%;
+      z-index:0;
+      opacity:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.72)),
+        url('assets/escararia-da-latencia.png');
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      transform-origin:center;
+      transition:opacity 1.2s ease;
+      will-change:transform, filter;
+    }
 
-body{
+    body.portal #portalBg{
+      opacity:1;
+      animation:portalFloat 18s ease-in-out infinite alternate;
+    }
 
-  background:
-    radial-gradient(
-      circle at center,
-      #132445 0%,
-      #09101f 55%,
-      #000 100%
-    );
+    @keyframes portalFloat{
+      0%{ transform:scale(1) translate3d(0,0,0); filter:brightness(.9) contrast(1.05); }
+      50%{ transform:scale(1.06) translate3d(-22px,12px,0); filter:brightness(1.05) contrast(1.14); }
+      100%{ transform:scale(1.12) translate3d(20px,-14px,0); filter:brightness(.94) contrast(1.1); }
+    }
 
-  color:#d5ecff;
+    body.dimension-2 #portalBg{
+      background-image:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.72)),
+        url('assets/horizon-dimension-2.png');
+    }
 
-  font-family:
-    "Courier New",
-    monospace;
+    body.dimension-3 #portalBg{
+      background-image:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.72)),
+        url('assets/horizon-dimension-3.png');
+    }
 
-  min-height:100vh;
+    canvas{
+      position:absolute;
+      inset:0;
+      z-index:10;
+    }
 
-}
+    .noise{
+      position:absolute;
+      inset:0;
+      z-index:10;
+      background-image:
+        repeating-radial-gradient(
+          circle at center,
+          rgba(255,255,255,.02) 0,
+          rgba(255,255,255,.015) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      opacity:.08;
+      mix-blend-mode:screen;
+      animation:noiseMove .2s infinite;
+    }
 
-.header{
+    @keyframes noiseMove{
+      0%{ transform:translate(0,0); }
+      25%{ transform:translate(-1px,1px); }
+      50%{ transform:translate(1px,-1px); }
+      75%{ transform:translate(-1px,-1px); }
+      100%{ transform:translate(1px,1px); }
+    }
 
-  padding:60px 40px 30px;
+    .language-switch{
+      position:fixed;
+      top:24px;
+      left:24px;
+      z-index:1000;
+      display:flex;
+      gap:8px;
+    }
 
-  text-align:center;
+    .language-switch button{
+      background:rgba(0,0,0,.5);
+      border:1px solid rgba(127,211,255,.35);
+      color:#7fd3ff;
+      font-family:"Courier New", monospace;
+      padding:8px 12px;
+      cursor:pointer;
+      letter-spacing:2px;
+    }
 
-  border-bottom:
-    1px solid rgba(255,255,255,0.08);
+    .language-switch button:hover{
+      background:rgba(127,211,255,.12);
+    }
 
-}
+    .content{
+      position:relative;
+      z-index:20;
+      text-align:center;
+      max-width:850px;
+      padding:40px;
+    }
 
-.header h1{
+    .signal{
+      color:#4fa7ff;
+      letter-spacing:6px;
+      font-size:14px;
+      margin-bottom:25px;
+      animation:pulse 2.5s infinite;
+      min-height:18px;
+    }
 
-  font-size:58px;
+    h1{
+      font-size:88px;
+      font-weight:700;
+      letter-spacing:5px;
+      margin-bottom:20px;
+      text-shadow:0 0 20px rgba(255,255,255,.08);
+    }
 
-  letter-spacing:8px;
+    .subtitle{
+      font-size:28px;
+      color:#c4d7ff;
+      line-height:1.5;
+      opacity:.9;
+    }
 
-  margin-bottom:12px;
+    .public-log-link{
+      position:fixed;
+      right:28px;
+      bottom:24px;
+      z-index:80;
+      color:rgba(127,211,255,.55);
+      font-family:"Courier New", monospace;
+      font-size:12px;
+      letter-spacing:3px;
+      text-decoration:none;
+      transition:.3s ease;
+    }
 
-}
+    .public-log-link:hover{
+      color:#7fd3ff;
+      text-shadow:0 0 12px rgba(127,211,255,.6);
+    }
 
-.header p{
+    @keyframes pulse{
+      0%{opacity:.3;}
+      50%{opacity:1;}
+      100%{opacity:.3;}
+    }
 
-  color:#8dbfff;
+    #observer{
+      position:fixed;
+      top:30px;
+      right:35px;
+      z-index:50;
+      color:#7fd3ff;
+      font-family:"Courier New", monospace;
+      font-size:13px;
+      letter-spacing:2px;
+      opacity:0;
+      transition:opacity 1s ease;
+      pointer-events:none;
+      text-shadow:0 0 12px rgba(127,211,255,.4);
+    }
 
-  letter-spacing:3px;
+    #observer.active{ opacity:.75; }
 
-}
+    #terminal{
+      position:fixed;
+      left:32px;
+      bottom:32px;
+      width:560px;
+      max-width:calc(100vw - 64px);
+      background:rgba(0,0,0,.84);
+      border:1px solid rgba(80,160,255,.25);
+      box-shadow:0 0 30px rgba(0,120,255,.18);
+      backdrop-filter:blur(10px);
+      color:#bfe6ff;
+      font-family:"Courier New", monospace;
+      z-index:999;
+      display:none;
+      animation:terminalFade .4s ease;
+      overflow:hidden;
+    }
 
-.container{
+    .terminal-header{
+      padding:14px 18px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      text-align:center;
+      font-size:14px;
+      letter-spacing:5px;
+      color:#9ed7ff;
+    }
 
-  max-width:1000px;
+    .terminal-content{
+      padding:22px 28px;
+      font-size:17px;
+      line-height:1.7;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      min-height:120px;
+      overflow:visible;
+    }
 
-  margin:auto;
+    .terminal-content p{
+      margin-bottom:10px;
+      word-break:break-word;
+    }
 
-  padding:50px 30px 100px;
+    .terminal-input-area{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:16px 22px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:#7fd3ff;
+      font-size:16px;
+    }
 
-}
+    #terminalInput{
+      flex:1;
+      background:transparent;
+      border:none;
+      outline:none;
+      color:#7fd3ff;
+      font-family:"Courier New", monospace;
+      font-size:16px;
+    }
 
-.day{
+    #terminalInput::placeholder{
+      color:rgba(127,211,255,.32);
+    }
 
-  margin-bottom:50px;
+    .cursor{
+      display:inline-block;
+      width:3px;
+      height:18px;
+      background:#7fd3ff;
+      margin-left:8px;
+      position:relative;
+      top:3px;
+      animation:blink 1s infinite;
+    }
 
-  padding-bottom:40px;
+    @keyframes blink{
+      0%,50%{ opacity:1; }
+      51%,100%{ opacity:0; }
+    }
 
-  border-bottom:
-    1px solid rgba(255,255,255,0.06);
+    @keyframes terminalFade{
+      from{ opacity:0; transform:translateY(10px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
 
-}
+    .flash{
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:#8ec5ff;
+      border-radius:50%;
+      pointer-events:none;
+      z-index:30;
+      animation:flashFade 2s linear forwards;
+    }
 
-.day-title{
+    @keyframes flashFade{
+      from{ opacity:1; transform:scale(1); }
+      to{ opacity:0; transform:scale(4); }
+    }
 
-  color:#7fd3ff;
+    body.anomaly{ animation:anomalyPulse 1.5s ease; }
 
-  font-size:22px;
+    @keyframes anomalyPulse{
+      0%{ filter:brightness(1); }
+      20%{ filter:brightness(1.4) contrast(1.2); }
+      40%{ filter:brightness(.9) contrast(1.4); }
+      60%{ filter:brightness(1.3) hue-rotate(10deg); }
+      100%{ filter:brightness(1); }
+    }
 
-  letter-spacing:4px;
+    body.breach{
+      animation:breachShake .08s infinite, breachFlash 2.2s infinite;
+    }
 
-  margin-bottom:20px;
+    body.breach .noise{
+      opacity:.45;
+      animation:noiseMove .05s infinite;
+    }
 
-}
+    body.breach .content{
+      animation:contentGlitch .08s infinite;
+    }
 
-.section{
+    body.breach canvas{
+      filter:brightness(2) contrast(2);
+    }
 
-  margin-top:15px;
-  margin-bottom:15px;
+    @keyframes breachShake{
+      0%{ transform:translate(0,0); }
+      25%{ transform:translate(-2px,1px); }
+      50%{ transform:translate(2px,-1px); }
+      75%{ transform:translate(-1px,-2px); }
+      100%{ transform:translate(1px,2px); }
+    }
 
-}
+    @keyframes breachFlash{
+      0%{ filter:brightness(1); }
+      50%{ filter:brightness(1.4) contrast(1.5) hue-rotate(20deg); }
+      100%{ filter:brightness(1); }
+    }
 
-.label{
+    @keyframes contentGlitch{
+      0%{ transform:translate(0,0); }
+      25%{ transform:translate(-6px,3px); }
+      50%{ transform:translate(5px,-4px); }
+      75%{ transform:translate(-3px,-2px); }
+      100%{ transform:translate(4px,3px); }
+    }
 
-  color:#ffd97a;
+    #scanLine{
+      position:fixed;
+      left:0;
+      top:-10%;
+      width:100%;
+      height:4px;
+      background:linear-gradient(90deg, transparent, rgba(120,200,255,.9), transparent);
+      box-shadow:0 0 20px rgba(120,200,255,.8);
+      z-index:9999;
+      opacity:0;
+      pointer-events:none;
+    }
 
-}
+    body.scan-active #scanLine{
+      opacity:1;
+      animation:scanMove 6s ease-in-out;
+    }
 
-.status{
+    @keyframes scanMove{
+      0%{ top:-10%; }
+      100%{ top:110%; }
+    }
 
-  margin-top:15px;
+    [data-lang]{ display:none; }
 
-  color:#90ffb3;
-
-}
-
-.home-link{
-
-  position:fixed;
-
-  top:25px;
-  left:25px;
-
-  color:#7fd3ff;
-
-  text-decoration:none;
-
-  letter-spacing:3px;
-
-  font-size:13px;
-
-}
-
-.home-link:hover{
-
-  text-shadow:
-    0 0 12px rgba(127,211,255,0.8);
-
-}
-
-</style>
+    @media(max-width:768px){
+      h1{ font-size:52px; }
+      .subtitle{ font-size:20px; }
+      #terminal{ left:16px; bottom:16px; max-width:calc(100vw - 32px); }
+      .public-log-link{ right:18px; bottom:18px; }
+    }
+  </style>
 </head>
 
-<body>
+<body class="dimension-1">
 
-<a href="index.html" class="home-link">
-← HOME
-</a>
+  <div id="portalBg"></div>
+  <div id="scanLine"></div>
+  <canvas id="particles"></canvas>
+  <div class="noise"></div>
+  <div id="observer"></div>
 
-<div class="header">
+  <div class="language-switch">
+    <button onclick="setLanguage('pt')">PT</button>
+    <button onclick="setLanguage('en')">EN</button>
+  </div>
 
-  <h1>HORIZON 4282</h1>
+  <div class="content">
 
-  <p>
-    DEVELOPMENT LOG
-  </p>
+    <!-- PORTUGUÊS -->
+    <div data-lang="pt">
+      <div class="signal" id="signalTextPt">HIPER-MAINFRAME ON</div>
 
-</div>
+      <h1>HORIZON 4282</h1>
 
-<div class="container">
-
-  <div class="day">
-
-    <div class="day-title">
-      DAY 001
+      <div class="subtitle">
+        Um laboratório vivo de interfaces, inteligência artificial,
+        atmosferas digitais e realidades ocultas.
+      </div>
     </div>
 
-    <div class="section">
+    <!-- ENGLISH -->
+    <div data-lang="en">
+      <div class="signal" id="signalTextEn">HYPER-MAINFRAME ON</div>
 
-      Primeira versão pública do Horizon.
+      <h1>HORIZON 4282</h1>
 
-    </div>
-
-    <div class="section">
-
-      <span class="label">Human:</span><br>
-      Registrou o domínio horizon4282.com.br<br>
-      Configurou GitHub Pages<br>
-      Definiu a visão do projeto
-
-    </div>
-
-    <div class="section">
-
-      <span class="label">AI:</span><br>
-      Estruturou o portal inicial<br>
-      Criou a arquitetura visual<br>
-      Definiu a base do terminal
-
-    </div>
-
-    <div class="status">
-
-      STATUS: ONLINE
-
+      <div class="subtitle">
+        A living laboratory of interfaces, artificial intelligence,
+        digital atmospheres and hidden realities.
+      </div>
     </div>
 
   </div>
 
-  <div class="day">
+  <a href="log.html" class="public-log-link">DEVELOPMENT LOG</a>
 
-    <div class="day-title">
-      DAY 002
+  <audio id="breachSound" src="assets/horizon-breach.mp3"></audio>
+
+  <div id="terminal">
+    <div class="terminal-header">
+      HORIZON TERMINAL
+      <span class="cursor"></span>
     </div>
 
-    <div class="section">
+    <div class="terminal-content" id="terminalContent"></div>
 
-      Implementação do terminal oculto.
-
+    <div class="terminal-input-area">
+      <span>&gt;</span>
+      <input
+        type="text"
+        id="terminalInput"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="type command..."
+      />
     </div>
-
-    <div class="section">
-
-      <span class="label">Human:</span><br>
-      Definiu navegação por comandos
-
-    </div>
-
-    <div class="section">
-
-      <span class="label">AI:</span><br>
-      Implementou terminal secreto<br>
-      Digitação simulada<br>
-      Sistema inicial de comandos
-
-    </div>
-
-    <div class="status">
-
-      STATUS: ACTIVE
-
-    </div>
-
   </div>
 
-  <div class="day">
+  <script>
+    function setLanguage(lang){
+      document.querySelectorAll("[data-lang]").forEach(block => {
+        block.style.display = "none";
+      });
 
-    <div class="day-title">
-      DAY 003
-    </div>
+      document.querySelectorAll(`[data-lang="${lang}"]`).forEach(block => {
+        block.style.display = "block";
+      });
 
-    <div class="section">
+      localStorage.setItem("horizonLanguage", lang);
+      document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+    }
 
-      Sistema dimensional ativado.
+    const savedLanguage = localStorage.getItem("horizonLanguage") || "pt";
+    setLanguage(savedLanguage);
 
-    </div>
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
 
-    <div class="section">
+    let particles = [];
 
-      <span class="label">Human:</span><br>
-      Selecionou artes do universo Horizon
+    function resize(){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
 
-    </div>
+    window.addEventListener("resize", resize);
+    resize();
 
-    <div class="section">
+    class Particle{
+      constructor(){
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.opacity = Math.random() * 0.5 + 0.2;
+      }
 
-      <span class="label">AI:</span><br>
-      Implementou portal<br>
-      Implementou scan<br>
-      Implementou breach<br>
-      Implementou sistema de arquivos
+      update(){
+        this.x += this.speedX;
+        this.y += this.speedY;
 
-    </div>
+        if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
 
-    <div class="status">
+      draw(){
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(120,180,255,${this.opacity})`;
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fill();
+      }
+    }
 
-      STATUS: PORTAL OPEN
+    function createParticles(){
+      particles = [];
+      for(let i = 0; i < 120; i++) particles.push(new Particle());
+    }
 
-    </div>
+    createParticles();
 
-  </div>
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      requestAnimationFrame(animate);
+    }
 
-</div>
+    animate();
+
+    let waitingAccessKey = false;
+    let currentDimension = 1;
+
+    const messages = [
+      "> connection established...",
+      "> signal integrity: stable",
+      "> observer mode: active",
+      "> hidden archive detected",
+      "> unknown transmission found",
+      "> atmospheric scan initialized",
+      "> remote observer connected",
+      "> anomalous signal received",
+      "> digital horizon expanding",
+      "> encrypted memory unlocked",
+      "> transport sequence pending",
+      "> shadow protocol active",
+      "> fragment 4282 restored",
+      "> scanning external reality...",
+      "> consciousness bridge online"
+    ];
+
+    async function generateTerminalLines(){
+      const terminalContent = document.getElementById("terminalContent");
+      terminalContent.innerHTML = "";
+
+      const shuffled = [...messages].sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0,4);
+
+      for(const msg of selected){
+        const p = document.createElement("p");
+        terminalContent.appendChild(p);
+        await typeLine(p, msg);
+      }
+    }
+
+    function typeLine(element, text){
+      return new Promise(resolve => {
+        let index = 0;
+
+        const interval = setInterval(() => {
+          element.textContent += text.charAt(index);
+          index++;
+
+          if(index >= text.length){
+            clearInterval(interval);
+            resolve();
+          }
+        },30);
+      });
+    }
+
+    document.addEventListener("keydown", function(e){
+      if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "x"){
+        e.preventDefault();
+
+        const terminal = document.getElementById("terminal");
+
+        if(terminal.style.display === "block"){
+          terminal.style.display = "none";
+        }else{
+          terminal.style.display = "block";
+          generateTerminalLines();
+
+          setTimeout(() => {
+            document.getElementById("terminalInput").focus();
+          },100);
+        }
+      }
+    });
+
+    setInterval(() => {
+      const flash = document.createElement("div");
+      flash.classList.add("flash");
+      flash.style.left = Math.random() * window.innerWidth + "px";
+      flash.style.top = Math.random() * window.innerHeight + "px";
+      document.body.appendChild(flash);
+
+      setTimeout(() => flash.remove(), 2000);
+    },800);
+
+    const signalMessagesPt = [
+      "HIPER-MAINFRAME ON",
+      "LINK REMOTO ATIVO",
+      "OBSERVADOR ONLINE",
+      "TRANSMISSÃO ENCONTRADA",
+      "ARQUIVO SINCRONIZADO",
+      "FREQUÊNCIA OCULTA",
+      "REALIDADE INSTÁVEL"
+    ];
+
+    const signalMessagesEn = [
+      "HYPER-MAINFRAME ON",
+      "REMOTE LINK ACTIVE",
+      "OBSERVER ONLINE",
+      "TRANSMISSION FOUND",
+      "ARCHIVE SYNCHRONIZED",
+      "HIDDEN FREQUENCY",
+      "REALITY UNSTABLE"
+    ];
+
+    setInterval(() => {
+      const pt = document.getElementById("signalTextPt");
+      const en = document.getElementById("signalTextEn");
+
+      pt.textContent = signalMessagesPt[Math.floor(Math.random() * signalMessagesPt.length)];
+      en.textContent = signalMessagesEn[Math.floor(Math.random() * signalMessagesEn.length)];
+    },5000);
+
+    const observerMessages = [
+      "OBSERVER MODE: ACTIVE",
+      "VISITOR SIGNAL DETECTED",
+      "PATTERN ANALYSIS RUNNING",
+      "MEMORY TRACE FOUND",
+      "HORIZON IS WATCHING",
+      "REALITY INPUT RECEIVED",
+      "SILENT NODE ONLINE"
+    ];
+
+    function showObserverMessage(){
+      const observer = document.getElementById("observer");
+      const message = observerMessages[Math.floor(Math.random() * observerMessages.length)];
+
+      observer.textContent = message;
+      observer.classList.add("active");
+
+      setTimeout(() => observer.classList.remove("active"), 3000);
+    }
+
+    setInterval(showObserverMessage, 7000);
+
+    const aiResponses = {
+      help: [
+        "> available commands:",
+        "> access",
+        "> observer",
+        "> archive",
+        "> signal",
+        "> horizon",
+        "> transport",
+        "> portal",
+        "> breach",
+        "> scan",
+        "> log",
+        "> home",
+        "> clear",
+        "> unknown commands may exist..."
+      ],
+
+      access: ["> enter access key"],
+
+      scan: [
+        "> scanning visual field...",
+        "> anomaly density: 42%",
+        "> visitor pattern indexed",
+        "> observer synchronization complete"
+      ],
+
+      observer: [
+        "> observer mode already active",
+        "> visitor behavior detected",
+        "> tracking atmospheric signals"
+      ],
+
+      archive: [
+        "> opening archive...",
+        "> archive synchronized",
+        "> fragment_01.log",
+        "> observer_notes.txt",
+        "> anomaly_report.dat",
+        "> transport_sequence.mem"
+      ],
+
+      signal: [
+        "> unstable frequency located",
+        "> transmission integrity: 82%",
+        "> remote echo received"
+      ],
+
+      horizon: [
+        "> horizon consciousness expanding",
+        "> reality bridge synchronized"
+      ],
+
+      transport: [
+        "> transport sequence unavailable",
+        "> portal status: dormant"
+      ],
+
+      portal: [
+        "> visual portal initialized",
+        "> horizon dimensional layer loaded",
+        "> immersive background activated"
+      ],
+
+      breach: [
+        "> WARNING",
+        "> unauthorized dimensional activity",
+        "> instability increasing",
+        "> horizon breach initiated"
+      ],
+
+      log: [
+        "> opening development log...",
+        "> human + ai record found",
+        "> redirecting to /log.html"
+      ],
+
+      home: [
+        "> returning to primary horizon layer",
+        "> restoring default environment"
+      ],
+
+      "4282": [
+        "> master fragment recognized",
+        "> identity key accepted",
+        "> horizon core partially unlocked",
+        "> new node available: /arquivo"
+      ]
+    };
+
+    const archiveFiles = {
+      "open fragment_01.log": [
+        "> fragment_01.log",
+        "> signal recovered from unknown layer",
+        "> temporal distortion detected",
+        "> observer presence confirmed"
+      ],
+
+      "open observer_notes.txt": [
+        "> observer_notes.txt",
+        "> the system reacts to prolonged exposure",
+        "> visitors become part of the horizon",
+        "> some signals should not be followed"
+      ],
+
+      "open anomaly_report.dat": [
+        "> anomaly_report.dat",
+        "> instability level: critical",
+        "> breach echoes detected",
+        "> dimensional noise increasing"
+      ],
+
+      "open transport_sequence.mem": [
+        "> transport_sequence.mem",
+        "> transport gate unavailable",
+        "> synchronization required",
+        "> awaiting master fragment"
+      ]
+    };
+
+    const terminalInput = document.getElementById("terminalInput");
+
+    terminalInput.addEventListener("keydown", function(e){
+      if(e.key === "Enter"){
+        const value = terminalInput.value.toLowerCase().trim();
+
+        if(value) processCommand(value);
+
+        terminalInput.value = "";
+      }
+    });
+
+    async function processCommand(command){
+      const terminalContent = document.getElementById("terminalContent");
+
+      if(waitingAccessKey){
+        waitingAccessKey = false;
+
+        if(command === "4282-omega"){
+          await addSystemLine("> ACCESS GRANTED");
+          triggerBreach();
+
+          setTimeout(() => {
+            window.location.href = "/core.html";
+          },2500);
+        }else{
+          await addSystemLine("> ACCESS DENIED");
+        }
+
+        return;
+      }
+
+      if(command === "clear"){
+        terminalContent.innerHTML = "";
+        return;
+      }
+
+      const userLine = document.createElement("p");
+      userLine.textContent = "> " + command;
+      terminalContent.appendChild(userLine);
+
+      if(command === "access") waitingAccessKey = true;
+      if(command === "scan") triggerScan();
+      if(command === "portal") activatePortal();
+      if(command === "breach") triggerBreach();
+
+      if(command === "home"){
+        returnHome();
+      }
+
+      if(command === "log"){
+        setTimeout(() => {
+          window.location.href = "/log.html";
+        },1500);
+      }
+
+      if(
+        command === "observer" ||
+        command === "4282" ||
+        command === "signal" ||
+        command === "breach" ||
+        command === "portal"
+      ){
+        triggerAnomaly();
+      }
+
+      const responses = aiResponses[command];
+      const archiveResponse = archiveFiles[command];
+
+      if(archiveResponse){
+        for(const line of archiveResponse){
+          const p = document.createElement("p");
+          terminalContent.appendChild(p);
+          await typeLine(p,line);
+        }
+        return;
+      }
+
+      if(responses){
+        for(const line of responses){
+          const p = document.createElement("p");
+          terminalContent.appendChild(p);
+          await typeLine(p,line);
+        }
+      }else{
+        const p = document.createElement("p");
+        terminalContent.appendChild(p);
+        await typeLine(p,"> unknown command");
+      }
+    }
+
+    async function addSystemLine(text){
+      const terminalContent = document.getElementById("terminalContent");
+      const p = document.createElement("p");
+      terminalContent.appendChild(p);
+      await typeLine(p, text);
+    }
+
+    function triggerAnomaly(){
+      document.body.classList.add("anomaly");
+      setTimeout(() => document.body.classList.remove("anomaly"),1500);
+    }
+
+    function triggerBreach(){
+      const sound = document.getElementById("breachSound");
+
+      sound.currentTime = 0;
+      sound.volume = 0.4;
+      sound.play();
+
+      document.body.classList.add("breach");
+
+      for(let i = 0; i < 20; i++){
+        setTimeout(() => {
+          const flash = document.createElement("div");
+          flash.classList.add("flash");
+          flash.style.left = Math.random() * window.innerWidth + "px";
+          flash.style.top = Math.random() * window.innerHeight + "px";
+          document.body.appendChild(flash);
+          setTimeout(() => flash.remove(),1000);
+        }, i * 80);
+      }
+
+      setTimeout(() => document.body.classList.remove("breach"),4000);
+    }
+
+    function activatePortal(){
+      document.body.classList.toggle("portal");
+    }
+
+    function triggerScan(){
+      document.body.classList.add("scan-active");
+
+      setTimeout(() => {
+        document.body.classList.remove("scan-active");
+
+        currentDimension++;
+
+        if(currentDimension > 3) currentDimension = 1;
+
+        document.body.classList.remove("dimension-1","dimension-2","dimension-3");
+        document.body.classList.add("dimension-" + currentDimension);
+      },6000);
+    }
+
+    function returnHome(){
+      window.location.href = "/";
+    }
+
+    let secondsInside = 0;
+
+    setInterval(() => {
+      secondsInside++;
+
+      if(secondsInside === 10) addSystemLine("> visitor persistence detected");
+      if(secondsInside === 30) addSystemLine("> prolonged exposure to horizon field");
+      if(secondsInside === 60) addSystemLine("> visitor classified as observer");
+    },1000);
+  </script>
 
 </body>
 </html>
