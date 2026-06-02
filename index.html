@@ -465,11 +465,33 @@ body.dimension-3 #portalBg{
 
 }
 
+.language-switch{
+  position:fixed;
+  top:24px;
+  right:24px;
+  z-index:1000;
+  display:flex;
+  gap:8px;
+}
+
+.language-switch button{
+  background:rgba(0,0,0,.5);
+  border:1px solid rgba(127,211,255,.35);
+  color:#7fd3ff;
+  font-family:"Courier New", monospace;
+  padding:8px 12px;
+  cursor:pointer;
+  letter-spacing:2px;
+}
   </style>
 </head>
 
 <body class="dimension-1">
 
+<div class="language-switch">
+  <button onclick="setLanguage('pt')">PT</button>
+  <button onclick="setLanguage('en')">EN</button>
+</div>
 
  
 
@@ -485,12 +507,19 @@ body.dimension-3 #portalBg{
 
     <h1>HORIZON 4282</h1>
 
-    <div class="subtitle">
+    <div class="subtitle" data-lang="pt">
       Um laboratório vivo de interfaces, inteligência artificial,
       atmosferas digitais e realidades ocultas.
-      <br /> CTRL+SHIFT+X
+      <br /> Teste o atalho <code>CTRL+SHIFT+X</code>
+    </div>
+
+        <div class="subtitle" data-lang="en">
+     A living laboratory of interfaces, artificial intelligence,
+digital atmospheres, and hidden realities.
+<br /> Discover the hidden terminal with <code>CTRL+SHIFT+X</code>
     </div>
   </div>
+  
   <audio id="breachSound" src="assets/horizon-breach.mp3"></audio>
   <div id="terminal">
     <div class="terminal-header">
@@ -1053,6 +1082,25 @@ function triggerScan(){
 
 }  
     let waitingAccessKey = false;
+
+  function setLanguage(lang){
+  document.querySelectorAll("[data-lang]").forEach(block => {
+    block.style.display = "none";
+  });
+
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach(block => {
+    block.style.display = "block";
+  });
+
+  localStorage.setItem("horizonLanguage", lang);
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+}
+
+const savedLanguage =
+  localStorage.getItem("horizonLanguage") || "pt";
+
+setLanguage(savedLanguage);
+
   </script>
 
 </body>
