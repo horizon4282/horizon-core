@@ -485,6 +485,70 @@ body.dimension-3 #portalBg{
   cursor:pointer;
   letter-spacing:2px;
 }
+    .terminal-hint{
+  margin-top:24px;
+  color:#7fd3ff;
+  font-size:16px;
+  letter-spacing:2px;
+  opacity:.85;
+}
+
+.terminal-hint code{
+  color:#d5ecff;
+}
+
+
+.footer{
+
+  position:fixed;
+
+  bottom:20px;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  text-align:center;
+
+  z-index:50;
+
+  color:rgba(213,236,255,.55);
+
+  font-family:"Courier New", monospace;
+
+  pointer-events:none;
+
+}
+
+.footer-title{
+
+  font-size:11px;
+
+  letter-spacing:4px;
+
+  margin-bottom:4px;
+
+}
+
+.footer-subtitle{
+
+  font-size:10px;
+
+  letter-spacing:2px;
+
+  margin-bottom:4px;
+
+}
+
+.footer-day{
+
+  font-size:10px;
+
+  letter-spacing:3px;
+
+  color:#7fd3ff;
+
+}
   </style>
 </head>
 
@@ -511,12 +575,24 @@ body.dimension-3 #portalBg{
 
     <div class="subtitle" data-lang="pt">
       Um laboratório vivo de interfaces, inteligência artificial,
-      atmosferas digitais e realidades ocultas. Teste o atalho <code>CTRL+SHIFT+X</code>
+      atmosferas digitais e realidades ocultas. 
+
+       <div class="terminal-hint">
+    ────────────────────
+    <br>    
+    ⚡Teste o atalho <code>CTRL+SHIFT+X</code>
+       </div>
     </div>
 
         <div class="subtitle" data-lang="en">
      A living laboratory of interfaces, artificial intelligence,
-digital atmospheres, and hidden realities. Discover the hidden terminal with <code>CTRL+SHIFT+X</code>
+digital atmospheres, and hidden realities.
+
+             <div class="terminal-hint">
+    ────────────────────
+    <br> 
+    ⚡Discover the hidden terminal with <code>CTRL+SHIFT+X</code>
+       </div>
     </div>
   </div>
   
@@ -544,22 +620,107 @@ digital atmospheres, and hidden realities. Discover the hidden terminal with <co
    <div class="main-menu">
 
   <a href="library.html" class="menu-card">
+   <div class="card-title">
     OPEN LIBRARY
+  </div>
+
+  <div class="card-subtitle" data-lang="pt">
+    Narrativas, experimentos
+    e universos digitais.
+  </div>
+
+  <div class="card-subtitle" data-lang="en">
+    Narratives, experiments
+    and digital worlds.
+  </div>
   </a>
 
   <a href="log.html" class="menu-card">
-    DEVELOPMENT LOG
+       <div class="card-title">
+   DEVELOPMENT LOG
+  </div>
+
+  <div class="card-subtitle" data-lang="pt">
+   Registro oficial dos
+5000 dias do projeto.
+  </div>
+
+  <div class="card-subtitle" data-lang="en">
+Official record of the
+5000-day journey.
+  </div>
+   
   </a>
 
   <a href="research.html" class="menu-card">
-    RESEARCH
+         <div class="card-title">
+  RESEARCH
+  </div>
+
+  <div class="card-subtitle" data-lang="pt">
+  Ideias, conceitos,
+notas e descobertas.
+  </div>
+
+  <div class="card-subtitle" data-lang="en">
+Ideas, concepts,
+notes and discoveries.
+  </div>
   </a>
 
   <a href="about.html" class="menu-card">
-    ABOUT
+          <div class="card-title">
+  ABOUT
+  </div>
+
+  <div class="card-subtitle" data-lang="pt">
+Manifesto, visão
+e filosofia do Horizon.
+  </div>
+
+  <div class="card-subtitle" data-lang="en">
+Manifesto, vision
+and Horizon philosophy.
+  </div>
   </a>
 
 </div>
+
+<footer class="footer">
+
+  <div data-lang="pt">
+
+    <div class="footer-title">
+      HORIZON 4282 v0.1 ALPHA
+    </div>
+
+    <div class="footer-subtitle">
+      Laboratório Criativo Humano + IA
+    </div>
+
+    <div class="footer-day">
+      Dia 004 de 5000
+    </div>
+
+  </div>
+
+  <div data-lang="en">
+
+    <div class="footer-title">
+      HORIZON 4282 v0.1 ALPHA
+    </div>
+
+    <div class="footer-subtitle">
+      Human + AI Creative Laboratory
+    </div>
+
+    <div class="footer-day">
+      Day 004 of 5000
+    </div>
+
+  </div>
+
+</footer>
   <script>
     const canvas = document.getElementById("particles");
     const ctx = canvas.getContext("2d");
