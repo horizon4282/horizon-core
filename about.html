@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About - Horizon 4282</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+
+  background:
+  radial-gradient(
+    circle at center,
+    #132445 0%,
+    #09101f 55%,
+    #000 100%
+  );
+
+  color:#d5ecff;
+
+  font-family:
+    "Segoe UI",
+    sans-serif;
+
+  min-height:100vh;
+
+}
+
+.language-switch{
+
+  position:fixed;
+
+  top:25px;
+  left:25px;
+
+  z-index:999;
+}
+
+.language-switch button{
+
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(127,211,255,.25);
+
+  color:#7fd3ff;
+
+  padding:8px 12px;
+
+  cursor:pointer;
+
+  margin-right:5px;
+
+}
+
+.home-link{
+
+  position:fixed;
+
+  top:25px;
+  right:25px;
+
+  color:#7fd3ff;
+
+  text-decoration:none;
+
+  letter-spacing:2px;
+}
+
+.container{
+
+  max-width:1000px;
+
+  margin:auto;
+
+  padding:120px 40px 80px;
+
+}
+
+h1{
+
+  font-size:70px;
+
+  text-align:center;
+
+  margin-bottom:15px;
+
+  letter-spacing:6px;
+
+}
+
+.subtitle{
+
+  text-align:center;
+
+  color:#7fd3ff;
+
+  letter-spacing:4px;
+
+  margin-bottom:60px;
+
+}
+
+.section{
+
+  margin-bottom:50px;
+
+}
+
+.section h2{
+
+  color:#7fd3ff;
+
+  margin-bottom:15px;
+
+  letter-spacing:3px;
+
+}
+
+.section p{
+
+  line-height:1.8;
+
+  font-size:20px;
+
+  color:#d5ecff;
+
+}
+
+.quote{
+
+  margin:60px 0;
+
+  padding:30px;
+
+  border-left:
+  3px solid #7fd3ff;
+
+  background:
+  rgba(255,255,255,.03);
+
+  font-style:italic;
+
+  font-size:22px;
+
+}
+
+[data-lang]{
+  display:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="language-switch">
+  <button onclick="setLanguage('pt')">PT</button>
+  <button onclick="setLanguage('en')">EN</button>
+</div>
+
+<a href="index.html" class="home-link">
+HOME
+</a>
+
+<!-- PORTUGUÊS -->
+
+<div class="container" data-lang="pt">
+
+<h1>HORIZON 4282</h1>
+
+<div class="subtitle">
+LABORATÓRIO CRIATIVO HUMANO + IA
+</div>
+
+<div class="section">
+
+<h2>O QUE É O HORIZON?</h2>
+
+<p>
+
+Horizon 4282 é um laboratório vivo de criatividade,
+interfaces digitais, inteligência artificial,
+experimentos visuais, narrativas,
+jogos, sistemas e exploração tecnológica.
+
+Não é uma empresa.
+
+Não é uma startup.
+
+Não é uma plataforma tradicional.
+
+É um projeto de longo prazo dedicado à experimentação.
+
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>COLABORAÇÃO HUMANO + IA</h2>
+
+<p>
+
+Todo o conteúdo deste projeto nasce da colaboração
+entre um criador humano e sistemas de inteligência artificial.
+
+O humano fornece visão,
+curadoria,
+imaginação e propósito.
+
+A IA atua como ferramenta,
+parceira criativa e aceleradora de ideias.
+
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>O PROJETO DOS 5000 DIAS</h2>
+
+<p>
+
+O Horizon 4282 foi concebido para evoluir ao longo de aproximadamente
+5000 dias.
+
+Cada experimento,
+cada descoberta,
+cada erro,
+cada narrativa e cada sistema construído
+serão registrados no Development Log.
+
+</p>
+
+</div>
+
+<div class="quote">
+
+"De graça recebi,
+de graça vos entrego."
+
+</div>
+
+</div>
+
+<!-- ENGLISH -->
+
+<div class="container" data-lang="en">
+
+<h1>HORIZON 4282</h1>
+
+<div class="subtitle">
+HUMAN + AI CREATIVE LABORATORY
+</div>
+
+<div class="section">
+
+<h2>WHAT IS HORIZON?</h2>
+
+<p>
+
+Horizon 4282 is a living laboratory of creativity,
+digital interfaces,
+artificial intelligence,
+visual experiments,
+narratives,
+games,
+systems,
+and technological exploration.
+
+It is not a company.
+
+It is not a startup.
+
+It is not a traditional platform.
+
+It is a long-term experimental project.
+
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>HUMAN + AI COLLABORATION</h2>
+
+<p>
+
+Every creation within this project emerges from the collaboration
+between a human creator and artificial intelligence systems.
+
+The human provides vision,
+curation,
+imagination,
+and purpose.
+
+The AI acts as a tool,
+creative partner,
+and accelerator of ideas.
+
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>THE 5000-DAY PROJECT</h2>
+
+<p>
+
+Horizon 4282 was designed to evolve over approximately
+5000 days.
+
+Every experiment,
+every discovery,
+every mistake,
+every narrative,
+and every system built
+will be documented through the Development Log.
+
+</p>
+
+</div>
+
+<div class="quote">
+
+"Freely you have received;
+freely give."
+
+</div>
+
+</div>
+
+<script>
+
+function setLanguage(lang){
+
+  document.querySelectorAll("[data-lang]")
+    .forEach(item => {
+
+      item.style.display = "none";
+
+    });
+
+  document.querySelectorAll(
+    `[data-lang="${lang}"]`
+  ).forEach(item => {
+
+    item.style.display = "block";
+
+  });
+
+  localStorage.setItem(
+    "horizonLanguage",
+    lang
+  );
+
+}
+
+const savedLanguage =
+localStorage.getItem(
+  "horizonLanguage"
+) || "pt";
+
+setLanguage(savedLanguage);
+
+</script>
+
+</body>
+</html>
