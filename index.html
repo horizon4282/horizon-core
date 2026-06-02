@@ -414,11 +414,84 @@ body.dimension-3 #portalBg{
 
 }
 
+.main-menu{
+
+  margin-top:50px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2, 240px);
+
+  gap:20px;
+
+  justify-content:center;
+
+}
+
+.menu-card{
+
+  padding:22px;
+
+  text-decoration:none;
+
+  color:#d5ecff;
+
+  border:
+    1px solid rgba(127,211,255,0.15);
+
+  background:
+    rgba(255,255,255,0.03);
+
+  backdrop-filter:blur(10px);
+
+  letter-spacing:3px;
+
+  font-size:14px;
+
+  transition:0.3s;
+
+}
+
+.menu-card:hover{
+
+  transform:translateY(-4px);
+
+  border-color:
+    rgba(127,211,255,0.55);
+
+  box-shadow:
+    0 0 20px rgba(127,211,255,0.18);
+
+}
+
   </style>
 </head>
 
 <body class="dimension-1">
 
+
+  <div class="main-menu">
+
+  <a href="library.html" class="menu-card">
+    OPEN LIBRARY
+  </a>
+
+  <a href="log.html" class="menu-card">
+    DEVELOPMENT LOG
+  </a>
+
+  <a href="research.html" class="menu-card">
+    RESEARCH
+  </a>
+
+  <a href="about.html" class="menu-card">
+    ABOUT
+  </a>
+
+</div>
+
+  
   <div id="portalBg"></div>
   <div id="scanLine"></div>
   <canvas id="particles"></canvas>
