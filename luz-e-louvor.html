@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luz e Louvor - Discografia</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Luz e Louvor Experience</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
   min-height:100vh;
-  background:radial-gradient(circle at center,#132445 0%,#09101f 55%,#000 100%);
-  color:#d5ecff;
+  background:
+    radial-gradient(circle at top,#3b2b12 0%,#08111f 42%,#000 100%);
+  color:#f8e7bd;
   font-family:"Courier New", monospace;
 }
 
@@ -19,13 +20,15 @@ body{
   position:fixed;
   top:24px;
   left:24px;
-  z-index:10;
+  z-index:1000;
+  display:flex;
+  gap:8px;
 }
 
 .language-switch button{
   background:rgba(0,0,0,.5);
-  border:1px solid rgba(127,211,255,.35);
-  color:#7fd3ff;
+  border:1px solid rgba(255,220,140,.35);
+  color:#f8e7bd;
   padding:8px 12px;
   cursor:pointer;
   letter-spacing:2px;
@@ -35,68 +38,172 @@ body{
   position:fixed;
   top:24px;
   right:24px;
-  color:#7fd3ff;
+  z-index:1000;
+  color:#f8e7bd;
   text-decoration:none;
   letter-spacing:3px;
+  font-size:13px;
 }
 
-.container{
-  max-width:1100px;
+.hero{
+  max-width:1000px;
   margin:auto;
-  padding:110px 30px 80px;
-}
-
-h1{
+  padding:120px 30px 40px;
   text-align:center;
-  font-size:52px;
-  letter-spacing:6px;
-  margin-bottom:12px;
 }
 
-.subtitle{
+.hero h1{
+  font-size:58px;
+  letter-spacing:7px;
+  margin-bottom:18px;
+}
+
+.hero .subtitle{
+  font-size:20px;
+  line-height:1.7;
+  color:#ffe9b8;
+  opacity:.9;
+}
+
+.hero .tag{
+  margin-top:24px;
+  color:#ffcf72;
+  letter-spacing:4px;
+  font-size:13px;
+}
+
+.music-player{
+  max-width:980px;
+  margin:40px auto;
+  padding:0 24px;
+}
+
+.player-label{
   text-align:center;
-  color:#7fd3ff;
-  letter-spacing:3px;
-  margin-bottom:60px;
+  margin-bottom:16px;
+  color:#ffcf72;
+  letter-spacing:4px;
+  font-size:13px;
 }
 
-.album-grid{
+.player-frame{
+  width:100%;
+  aspect-ratio:16 / 9;
+  overflow:hidden;
+  border-radius:18px;
+  box-shadow:0 0 55px rgba(255,220,140,.18);
+  background:#000;
+}
+
+.player-frame iframe{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+
+.section-title{
+  max-width:980px;
+  margin:70px auto 24px;
+  padding:0 24px;
+  color:#ffcf72;
+  letter-spacing:4px;
+  font-size:18px;
+}
+
+.album-list{
+  max-width:980px;
+  margin:0 auto 70px;
+  padding:0 24px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:24px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
 }
 
 .album-card{
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(127,211,255,.18);
-  padding:24px;
-  backdrop-filter:blur(8px);
+  padding:20px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,220,140,.22);
+  color:#f8e7bd;
+  cursor:pointer;
+  transition:.3s ease;
+  text-align:left;
 }
 
-.album-card h2{
-  color:#fff;
-  font-size:20px;
-  margin-bottom:14px;
+.album-card:hover{
+  background:rgba(255,220,140,.12);
+  transform:translateY(-4px);
+  box-shadow:0 0 24px rgba(255,220,140,.12);
 }
 
-.album-card ul{
-  list-style:none;
+.album-title{
+  font-size:16px;
+  letter-spacing:2px;
+  margin-bottom:10px;
+  color:#fff3d1;
 }
 
-.album-card li{
-  margin-bottom:8px;
-  color:rgba(213,236,255,.78);
-  font-size:14px;
-}
-
-.status{
-  margin-top:16px;
-  color:#7fd3ff;
+.album-meta{
   font-size:12px;
+  color:rgba(248,231,189,.7);
+  letter-spacing:1px;
+  line-height:1.5;
+}
+
+.stats{
+  max-width:980px;
+  margin:0 auto 80px;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:16px;
+}
+
+.stat{
+  padding:24px;
+  text-align:center;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,220,140,.16);
+}
+
+.stat-number{
+  font-size:34px;
+  color:#fff;
+  margin-bottom:8px;
+}
+
+.stat-label{
+  font-size:12px;
+  color:#ffcf72;
   letter-spacing:2px;
 }
 
 [data-lang]{display:none}
+
+@media(max-width:768px){
+  .hero{
+    padding:100px 20px 30px;
+  }
+
+  .hero h1{
+    font-size:36px;
+    letter-spacing:4px;
+  }
+
+  .hero .subtitle{
+    font-size:16px;
+  }
+
+  .home-link{
+    top:70px;
+    left:24px;
+    right:auto;
+  }
+
+  .section-title{
+    margin-top:48px;
+  }
+}
 </style>
 </head>
 
@@ -109,162 +216,212 @@ h1{
 
 <a href="index.html" class="home-link">HOME</a>
 
-<div class="container" data-lang="pt">
+<!-- PORTUGUÊS -->
+<div data-lang="pt">
 
-  <h1>LUZ E LOUVOR</h1>
-  <div class="subtitle">DISCOGRAFIA OFICIAL</div>
+  <section class="hero">
+    <h1>LUZ E LOUVOR</h1>
 
-  <div class="album-grid">
-
-    <div class="album-card">
-      <h2>Tua Aliança</h2>
-      <ul>
-        <li>Luz da Salvação</li>
-        <li>Em tua luz descansar</li>
-        <li>Sabedoria Imensa</li>
-        <li>Não há glória sem cruz</li>
-        <li>Faz da vida um vaso farto</li>
-        <li>Vem me libertar</li>
-        <li>Coração batendo forte</li>
-        <li>Só quero te seguir</li>
-      </ul>
-      <div class="status">ÁLBUM 2026</div>
+    <div class="subtitle">
+      Música, oração e contemplação.<br>
+      Uma experiência sonora de fé, esperança e adoração.
     </div>
 
-    <div class="album-card">
-      <h2>Adonai</h2>
-      <ul>
-        <li>Eis que tua palavra se cumpre</li>
-        <li>Vem Jesus me libertar</li>
-        <li>Até a última alma</li>
-        <li>Alegria perene</li>
-        <li>Brilho do amor de Deus</li>
-        <li>Águas infinitas</li>
-        <li>Tua luz, Tua luz</li>
-        <li>Quero que me transforme</li>
-      </ul>
-      <div class="status">ÁLBUM 2026</div>
+    <div class="tag">
+      EXPERIÊNCIA MUSICAL DO HORIZON 4282
+    </div>
+  </section>
+
+  <section class="music-player">
+    <div class="player-label">NOW PLAYING</div>
+
+    <div class="player-frame">
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/8m7pE2z08pQ?si=x3ay8wC-JJp9-d-X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="section-title">ÁLBUNS EM DESTAQUE</div>
+
+  <section class="album-list">
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_1')">
+      <div class="album-title">Tua Aliança</div>
+      <div class="album-meta">Álbum 2026 · Adoração</div>
     </div>
 
-    <div class="album-card">
-      <h2>Lar do Altíssimo</h2>
-      <ul>
-        <li>Caminho do Silêncio</li>
-        <li>Cenáculo com Jesus</li>
-        <li>Caminho de Nazaré</li>
-        <li>Luz do Alto</li>
-        <li>Rios de Cura</li>
-        <li>Veredas da Graça</li>
-        <li>Som do Santíssimo</li>
-        <li>Monte da Presença</li>
-        <li>Sopro do Altíssimo</li>
-        <li>Jardim da Eternidade</li>
-      </ul>
-      <div class="status">INSTRUMENTAL</div>
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_2')">
+      <div class="album-title">Adonai</div>
+      <div class="album-meta">Álbum 2026 · Fé e transformação</div>
     </div>
 
-    <div class="album-card">
-      <h2>Perseverança</h2>
-      <ul>
-        <li>Atende nossa oração</li>
-        <li>Predestinados pela Redenção</li>
-        <li>Jornada Santa</li>
-        <li>Judas, Judas</li>
-        <li>Faz-me dócil a tua Vontade</li>
-        <li>Me guio pelo Espírito</li>
-        <li>Tende piedade Jesus</li>
-        <li>Nos protege com tua Luz</li>
-      </ul>
-      <div class="status">ÁLBUM OFICIAL</div>
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_3')">
+      <div class="album-title">Lar do Altíssimo</div>
+      <div class="album-meta">Instrumental · Contemplação</div>
     </div>
 
-    <div class="album-card">
-      <h2>Hallel</h2>
-      <ul>
-        <li>O Incrível Vai Acontecer</li>
-        <li>Lembra, Lembra</li>
-        <li>Em Deus Você Será Capaz</li>
-        <li>Tua Mão que Eu Procuro</li>
-        <li>Revestido do Senhor</li>
-        <li>Permanece em Mim</li>
-        <li>Quero Ser Tua Casa</li>
-        <li>Semente de Deus</li>
-      </ul>
-      <div class="status">ÁLBUM OFICIAL</div>
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_4')">
+      <div class="album-title">Perseverança</div>
+      <div class="album-meta">Álbum oficial · Caminho espiritual</div>
     </div>
 
-    <div class="album-card">
-      <h2>Liberta-me</h2>
-      <ul>
-        <li>Infância Interrompida</li>
-        <li>Liberta-me</li>
-        <li>Acalenta Minha Alma</li>
-        <li>Me Faz Obediência</li>
-        <li>Já não sigo mais sozinho</li>
-        <li>Jesus, em tudo me define</li>
-        <li>Não me deixe sozinho</li>
-      </ul>
-      <div class="status">ÁLBUM OFICIAL</div>
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_5')">
+      <div class="album-title">Hallel</div>
+      <div class="album-meta">Álbum oficial · Louvor e esperança</div>
     </div>
 
-  </div>
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_6')">
+      <div class="album-title">Liberta-me</div>
+      <div class="album-meta">Álbum oficial · Cura e libertação</div>
+    </div>
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_7')">
+      <div class="album-title">Sopro Divino</div>
+      <div class="album-meta">Álbum oficial · Espírito Santo</div>
+    </div>
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_8')">
+      <div class="album-title">Recebe o Meu Sim</div>
+      <div class="album-meta">Álbum oficial · Entrega e missão</div>
+    </div>
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_9')">
+      <div class="album-title">Nasci pra Te Adorar</div>
+      <div class="album-meta">Álbum oficial · Adoração</div>
+    </div>
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_10')">
+      <div class="album-title">Quietude da Alma</div>
+      <div class="album-meta">Instrumental · Paz e oração</div>
+    </div>
+
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-number">200+</div>
+      <div class="stat-label">CANÇÕES</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">30+</div>
+      <div class="stat-label">ÁLBUNS</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">PT/EN</div>
+      <div class="stat-label">IDIOMAS</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">∞</div>
+      <div class="stat-label">ORAÇÃO</div>
+    </div>
+  </section>
+
 </div>
 
-<div class="container" data-lang="en">
+<!-- ENGLISH -->
+<div data-lang="en">
 
-  <h1>LUZ E LOUVOR</h1>
-  <div class="subtitle">OFFICIAL DISCOGRAPHY</div>
+  <section class="hero">
+    <h1>LUZ E LOUVOR</h1>
 
-  <div class="album-grid">
-
-    <div class="album-card">
-      <h2>Tua Aliança</h2>
-      <ul>
-        <li>Luz da Salvação</li>
-        <li>Em tua luz descansar</li>
-        <li>Sabedoria Imensa</li>
-        <li>Não há glória sem cruz</li>
-        <li>Faz da vida um vaso farto</li>
-        <li>Vem me libertar</li>
-        <li>Coração batendo forte</li>
-        <li>Só quero te seguir</li>
-      </ul>
-      <div class="status">2026 ALBUM</div>
+    <div class="subtitle">
+      Music, prayer and contemplation.<br>
+      A sonic experience of faith, hope and worship.
     </div>
 
-    <div class="album-card">
-      <h2>Adonai</h2>
-      <ul>
-        <li>Eis que tua palavra se cumpre</li>
-        <li>Vem Jesus me libertar</li>
-        <li>Até a última alma</li>
-        <li>Alegria perene</li>
-        <li>Brilho do amor de Deus</li>
-        <li>Águas infinitas</li>
-        <li>Tua luz, Tua luz</li>
-        <li>Quero que me transforme</li>
-      </ul>
-      <div class="status">2026 ALBUM</div>
+    <div class="tag">
+      HORIZON 4282 MUSICAL EXPERIENCE
+    </div>
+  </section>
+
+  <section class="music-player">
+    <div class="player-label">NOW PLAYING</div>
+
+    <div class="player-frame">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/8m7pE2z08pQ?si=x3ay8wC-JJp9-d-X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="section-title">FEATURED ALBUMS</div>
+
+  <section class="album-list">
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_1')">
+      <div class="album-title">Tua Aliança</div>
+      <div class="album-meta">2026 Album · Worship</div>
     </div>
 
-    <div class="album-card">
-      <h2>Lar do Altíssimo</h2>
-      <ul>
-        <li>Caminho do Silêncio</li>
-        <li>Cenáculo com Jesus</li>
-        <li>Caminho de Nazaré</li>
-        <li>Luz do Alto</li>
-        <li>Rios de Cura</li>
-        <li>Veredas da Graça</li>
-        <li>Som do Santíssimo</li>
-        <li>Monte da Presença</li>
-        <li>Sopro do Altíssimo</li>
-        <li>Jardim da Eternidade</li>
-      </ul>
-      <div class="status">INSTRUMENTAL</div>
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_2')">
+      <div class="album-title">Adonai</div>
+      <div class="album-meta">2026 Album · Faith and transformation</div>
     </div>
 
-  </div>
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_3')">
+      <div class="album-title">Lar do Altíssimo</div>
+      <div class="album-meta">Instrumental · Contemplation</div>
+    </div>
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_4')">
+      <div class="album-title">Perseverança</div>
+      <div class="album-meta">Official album · Spiritual journey</div>
+    </div>
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_5')">
+      <div class="album-title">Hallel</div>
+      <div class="album-meta">Official album · Praise and hope</div>
+    </div>
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_6')">
+      <div class="album-title">Liberta-me</div>
+      <div class="album-meta">Official album · Healing and freedom</div>
+    </div>
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_7')">
+      <div class="album-title">Sopro Divino</div>
+      <div class="album-meta">Official album · Holy Spirit</div>
+    </div>
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_8')">
+      <div class="album-title">Recebe o Meu Sim</div>
+      <div class="album-meta">Official album · Surrender and mission</div>
+    </div>
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_9')">
+      <div class="album-title">Nasci pra Te Adorar</div>
+      <div class="album-meta">Official album · Worship</div>
+    </div>
+
+    <div class="album-card" onclick="loadAlbum('VIDEO_ID_10')">
+      <div class="album-title">Quietude da Alma</div>
+      <div class="album-meta">Instrumental · Peace and prayer</div>
+    </div>
+
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-number">200+</div>
+      <div class="stat-label">SONGS</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">30+</div>
+      <div class="stat-label">ALBUMS</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">PT/EN</div>
+      <div class="stat-label">LANGUAGES</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-number">∞</div>
+      <div class="stat-label">PRAYER</div>
+    </div>
+  </section>
+
 </div>
 
 <script>
@@ -283,6 +440,29 @@ function setLanguage(lang){
 
 const savedLanguage = localStorage.getItem("horizonLanguage") || "pt";
 setLanguage(savedLanguage);
+
+const randomVideos = [
+  "8m7pE2z08pQ?si=x3ay8wC-JJp9-d-X"
+];
+
+function loadAlbum(videoId){
+  const src = `https://www.youtube.com/embed/${videoId}`;
+
+  const playerPt = document.getElementById("youtubePlayer");
+  const playerEn = document.getElementById("youtubePlayerEn");
+
+  if(playerPt) playerPt.src = src;
+  if(playerEn) playerEn.src = src;
+}
+
+function loadRandomVideo(){
+  const random =
+    randomVideos[Math.floor(Math.random() * randomVideos.length)];
+
+  loadAlbum(random);
+}
+
+//loadRandomVideo();
 </script>
 
 </body>
