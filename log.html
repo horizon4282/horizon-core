@@ -141,6 +141,25 @@ body{
 
 }
 
+.language-switch{
+  position:fixed;
+  top:24px;
+  left:24px;
+  z-index:1000;
+  display:flex;
+  gap:8px;
+}
+
+.language-switch button{
+  background:rgba(0,0,0,.5);
+  border:1px solid rgba(127,211,255,.35);
+  color:#7fd3ff;
+  font-family:"Courier New", monospace;
+  padding:8px 12px;
+  cursor:pointer;
+  letter-spacing:2px;
+}
+
 </style>
 </head>
 
@@ -149,6 +168,13 @@ body{
 <a href="index.html" class="home-link">
 ← HOME
 </a>
+
+
+<div class="language-switch">
+  <button onclick="setLanguage('pt')">PT</button>
+  <button onclick="setLanguage('en')">EN</button>
+</div>
+
 
 <div class="header">
 
@@ -160,7 +186,122 @@ body{
 
 </div>
 
-<div class="container">
+<div class="container" data-lang="en">
+
+  <div class="day">
+
+    <div class="day-title">
+      DAY 001
+    </div>
+
+    <div class="section">
+
+      First public version of Horizon.
+
+    </div>
+
+    <div class="section">
+
+      <span class="label">Human:</span><br>
+      Registered the domain horizon4282.com.br<br>
+      Configured GitHub Pages<br>
+      Defined the project vision
+
+    </div>
+
+    <div class="section">
+
+      <span class="label">AI:</span><br>
+      Structured the initial portal<br>
+      Created the visual architecture<br>
+      Defined the terminal foundation
+
+    </div>
+
+    <div class="status">
+
+      STATUS: ONLINE
+
+    </div>
+
+  </div>
+
+  <div class="day">
+
+    <div class="day-title">
+      DAY 002
+    </div>
+
+    <div class="section">
+
+      Hidden terminal implementation.
+
+    </div>
+
+    <div class="section">
+
+      <span class="label">Human:</span><br>
+      Defined command-based navigation
+
+    </div>
+
+    <div class="section">
+
+      <span class="label">AI:</span><br>
+      Implemented secret terminal<br>
+      Added simulated typing<br>
+      Created the initial command system
+
+    </div>
+
+    <div class="status">
+
+      STATUS: ACTIVE
+
+    </div>
+
+  </div>
+
+  <div class="day">
+
+    <div class="day-title">
+      DAY 003
+    </div>
+
+    <div class="section">
+
+      Dimensional system activated.
+
+    </div>
+
+    <div class="section">
+
+      <span class="label">Human:</span><br>
+      Selected Horizon universe artwork
+
+    </div>
+
+    <div class="section">
+
+      <span class="label">AI:</span><br>
+      Implemented portal<br>
+      Implemented scan<br>
+      Implemented breach<br>
+      Implemented archive system
+
+    </div>
+
+    <div class="status">
+
+      STATUS: PORTAL OPEN
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="container"  data-lang="pt">
 
   <div class="day">
 
@@ -277,3 +418,26 @@ body{
 
 </body>
 </html>
+
+<script>
+function setLanguage(lang){
+  document.querySelectorAll("[data-lang]").forEach(block => {
+    block.style.display = "none";
+  });
+
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach(block => {
+    block.style.display = "block";
+  });
+
+  localStorage.setItem("horizonLanguage", lang);
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+}
+
+const savedLanguage =
+  localStorage.getItem("horizonLanguage") || "pt";
+
+setLanguage(savedLanguage);
+</script>
+
+
+
