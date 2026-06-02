@@ -10,8 +10,7 @@
 
 body{
   min-height:100vh;
-  background:
-    radial-gradient(circle at top,#3b2b12 0%,#08111f 42%,#000 100%);
+  background:#050608;
   color:#f8e7bd;
   font-family:"Courier New", monospace;
 }
@@ -25,13 +24,15 @@ body{
   gap:8px;
 }
 
-.language-switch button{
-  background:rgba(0,0,0,.5);
-  border:1px solid rgba(255,220,140,.35);
+.language-switch button,
+.home-link{
+  background:rgba(0,0,0,.55);
+  border:1px solid rgba(255,220,140,.32);
   color:#f8e7bd;
   padding:8px 12px;
-  cursor:pointer;
+  text-decoration:none;
   letter-spacing:2px;
+  font-family:"Courier New", monospace;
 }
 
 .home-link{
@@ -39,60 +40,27 @@ body{
   top:24px;
   right:24px;
   z-index:1000;
-  color:#f8e7bd;
-  text-decoration:none;
-  letter-spacing:3px;
-  font-size:13px;
 }
 
-.hero{
-  max-width:1000px;
+.page{
+  max-width:1500px;
   margin:auto;
-  padding:120px 30px 40px;
-  text-align:center;
+  padding:90px 38px 70px;
 }
 
-.hero h1{
-  font-size:58px;
-  letter-spacing:7px;
-  margin-bottom:18px;
-}
-
-.hero .subtitle{
-  font-size:20px;
-  line-height:1.7;
-  color:#ffe9b8;
-  opacity:.9;
-}
-
-.hero .tag{
-  margin-top:24px;
-  color:#ffcf72;
-  letter-spacing:4px;
-  font-size:13px;
-}
-
-.music-player{
-  max-width:980px;
-  margin:40px auto;
-  padding:0 24px;
-}
-
-.player-label{
-  text-align:center;
-  margin-bottom:16px;
-  color:#ffcf72;
-  letter-spacing:4px;
-  font-size:13px;
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:28px;
+  align-items:start;
 }
 
 .player-frame{
   width:100%;
-  aspect-ratio:16 / 9;
-  overflow:hidden;
-  border-radius:18px;
-  box-shadow:0 0 55px rgba(255,220,140,.18);
+  aspect-ratio:16/9;
   background:#000;
+  overflow:hidden;
+  box-shadow:0 0 55px rgba(255,220,140,.12);
 }
 
 .player-frame iframe{
@@ -102,106 +70,183 @@ body{
   display:block;
 }
 
-.section-title{
-  max-width:980px;
-  margin:70px auto 24px;
-  padding:0 24px;
-  color:#ffcf72;
-  letter-spacing:4px;
+.identity-panel{
+  min-height:100%;
+  padding:50px 40px;
+  background:
+    linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.75)),
+    radial-gradient(circle at top,#4a3515 0%,#111 55%,#050608 100%);
+  text-align:center;
+  border:1px solid rgba(255,220,140,.18);
+}
+
+.identity-panel h1{
+  font-size:52px;
+  letter-spacing:12px;
+  margin-bottom:30px;
+  color:#fff2c8;
+}
+
+.identity-panel p{
   font-size:18px;
-}
-
-.album-list{
-  max-width:980px;
-  margin:0 auto 70px;
-  padding:0 24px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:16px;
-}
-
-.album-card{
-  padding:20px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,220,140,.22);
+  line-height:1.8;
   color:#f8e7bd;
-  cursor:pointer;
-  transition:.3s ease;
-  text-align:left;
 }
 
-.album-card:hover{
-  background:rgba(255,220,140,.12);
-  transform:translateY(-4px);
-  box-shadow:0 0 24px rgba(255,220,140,.12);
-}
-
-.album-title{
-  font-size:16px;
-  letter-spacing:2px;
-  margin-bottom:10px;
-  color:#fff3d1;
-}
-
-.album-meta{
+.tag{
+  margin-top:34px;
+  color:#ffcf72;
+  letter-spacing:6px;
   font-size:12px;
-  color:rgba(248,231,189,.7);
-  letter-spacing:1px;
-  line-height:1.5;
+}
+
+.now-playing{
+  margin-top:50px;
+  color:#ffcf72;
+  letter-spacing:6px;
+  font-size:12px;
+}
+
+.content-grid{
+  margin-top:28px;
+  display:grid;
+  grid-template-columns:1fr .95fr;
+  gap:28px;
 }
 
 .stats{
-  max-width:980px;
-  margin:0 auto 80px;
-  padding:0 24px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:16px;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  align-self:end;
 }
 
 .stat{
-  padding:24px;
+  padding:22px 12px;
   text-align:center;
-  background:rgba(255,255,255,.035);
   border:1px solid rgba(255,220,140,.16);
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
 }
 
 .stat-number{
-  font-size:34px;
+  font-size:28px;
   color:#fff;
   margin-bottom:8px;
 }
 
 .stat-label{
-  font-size:12px;
-  color:#ffcf72;
+  font-size:10px;
   letter-spacing:2px;
+  color:#ffcf72;
+}
+
+.albums{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.album-card{
+  min-height:130px;
+  padding:24px;
+  border:1px solid rgba(255,220,140,.18);
+  background:linear-gradient(160deg,rgba(13,22,35,.94),rgba(5,6,8,.98));
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.album-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,220,140,.55);
+  box-shadow:0 0 28px rgba(255,220,140,.12);
+}
+
+.album-title{
+  font-size:17px;
+  letter-spacing:3px;
+  margin-bottom:14px;
+  color:#fff3d1;
+}
+
+.album-meta{
+  font-size:12px;
+  color:rgba(248,231,189,.72);
+  line-height:1.6;
+}
+
+.section-title{
+  grid-column:1/-1;
+  color:#ffcf72;
+  letter-spacing:5px;
+  font-size:13px;
+  margin-bottom:-4px;
+}
+
+.streaming{
+  margin-top:60px;
+  padding:30px;
+  border:1px solid rgba(255,220,140,.16);
+  background:rgba(255,255,255,.025);
+  text-align:center;
+}
+
+.streaming-title{
+  color:#ffcf72;
+  letter-spacing:5px;
+  margin-bottom:22px;
+}
+
+.streaming-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+}
+
+.streaming-links a{
+  color:#f8e7bd;
+  text-decoration:none;
+  border:1px solid rgba(255,220,140,.22);
+  padding:12px 18px;
+  letter-spacing:2px;
+  font-size:12px;
+}
+
+.streaming-links a:hover{
+  background:rgba(255,220,140,.1);
 }
 
 [data-lang]{display:none}
 
-@media(max-width:768px){
-  .hero{
-    padding:100px 20px 30px;
+@media(max-width:900px){
+  .page{padding:90px 18px 60px}
+
+  .hero-grid,
+  .content-grid{
+    grid-template-columns:1fr;
   }
 
-  .hero h1{
-    font-size:36px;
-    letter-spacing:4px;
+  .identity-panel{
+    padding:34px 22px;
   }
 
-  .hero .subtitle{
-    font-size:16px;
+  .identity-panel h1{
+    font-size:34px;
+    letter-spacing:7px;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .albums{
+    grid-template-columns:1fr;
   }
 
   .home-link{
     top:70px;
     left:24px;
     right:auto;
-  }
-
-  .section-title{
-    margin-top:48px;
   }
 }
 </style>
@@ -216,210 +261,133 @@ body{
 
 <a href="index.html" class="home-link">HOME</a>
 
-<!-- PORTUGUÊS -->
-<div data-lang="pt">
+<div class="page">
 
-  <section class="hero">
-    <h1>LUZ E LOUVOR</h1>
-
-    <div class="subtitle">
-      Música, oração e contemplação.<br>
-      Uma experiência sonora de fé, esperança e adoração.
-    </div>
-
-    <div class="tag">
-      EXPERIÊNCIA MUSICAL DO HORIZON 4282
-    </div>
-  </section>
-
-  <section class="music-player">
-    <div class="player-label">NOW PLAYING</div>
+  <section class="hero-grid">
 
     <div class="player-frame">
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/8m7pE2z08pQ?si=x3ay8wC-JJp9-d-X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-  </section>
-
-  <div class="section-title">ÁLBUNS EM DESTAQUE</div>
-
-  <section class="album-list">
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_1')">
-      <div class="album-title">Tua Aliança</div>
-      <div class="album-meta">Álbum 2026 · Adoração</div>
+      <iframe
+        id="youtubePlayer"
+        src=""
+        title="Luz e Louvor Player"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
     </div>
 
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_2')">
-      <div class="album-title">Adonai</div>
-      <div class="album-meta">Álbum 2026 · Fé e transformação</div>
-    </div>
+    <div class="identity-panel">
 
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_3')">
-      <div class="album-title">Lar do Altíssimo</div>
-      <div class="album-meta">Instrumental · Contemplação</div>
-    </div>
+      <div data-lang="pt">
+        <h1>LUZ E LOUVOR</h1>
+        <p>
+          Música, oração e contemplação.<br>
+          Uma experiência sonora de fé, esperança e adoração.
+        </p>
+        <div class="tag">EXPERIÊNCIA MUSICAL DO HORIZON 4282</div>
+        <div class="now-playing">NOW PLAYING</div>
+      </div>
 
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_4')">
-      <div class="album-title">Perseverança</div>
-      <div class="album-meta">Álbum oficial · Caminho espiritual</div>
-    </div>
+      <div data-lang="en">
+        <h1>LUZ E LOUVOR</h1>
+        <p>
+          Music, prayer and contemplation.<br>
+          A sonic experience of faith, hope and worship.
+        </p>
+        <div class="tag">HORIZON 4282 MUSICAL EXPERIENCE</div>
+        <div class="now-playing">NOW PLAYING</div>
+      </div>
 
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_5')">
-      <div class="album-title">Hallel</div>
-      <div class="album-meta">Álbum oficial · Louvor e esperança</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_6')">
-      <div class="album-title">Liberta-me</div>
-      <div class="album-meta">Álbum oficial · Cura e libertação</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_7')">
-      <div class="album-title">Sopro Divino</div>
-      <div class="album-meta">Álbum oficial · Espírito Santo</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_8')">
-      <div class="album-title">Recebe o Meu Sim</div>
-      <div class="album-meta">Álbum oficial · Entrega e missão</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_9')">
-      <div class="album-title">Nasci pra Te Adorar</div>
-      <div class="album-meta">Álbum oficial · Adoração</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_10')">
-      <div class="album-title">Quietude da Alma</div>
-      <div class="album-meta">Instrumental · Paz e oração</div>
     </div>
 
   </section>
 
-  <section class="stats">
-    <div class="stat">
-      <div class="stat-number">200+</div>
-      <div class="stat-label">CANÇÕES</div>
+  <section class="content-grid">
+
+    <div class="left-zone">
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-number">200+</div>
+          <div class="stat-label" data-lang="pt">CANÇÕES</div>
+          <div class="stat-label" data-lang="en">SONGS</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number">30+</div>
+          <div class="stat-label" data-lang="pt">ÁLBUNS</div>
+          <div class="stat-label" data-lang="en">ALBUMS</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number">PT/EN</div>
+          <div class="stat-label" data-lang="pt">IDIOMAS</div>
+          <div class="stat-label" data-lang="en">LANGUAGES</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number">∞</div>
+          <div class="stat-label" data-lang="pt">ORAÇÃO</div>
+          <div class="stat-label" data-lang="en">PRAYER</div>
+        </div>
+      </div>
+
+      <div class="streaming">
+        <div class="streaming-title" data-lang="pt">OUÇA TAMBÉM</div>
+        <div class="streaming-title" data-lang="en">LISTEN ALSO</div>
+
+        <div class="streaming-links">
+          <a href="#" target="_blank">SPOTIFY</a>
+          <a href="#" target="_blank">YOUTUBE MUSIC</a>
+          <a href="#" target="_blank">DEEZER</a>
+          <a href="#" target="_blank">TIKTOK MUSIC</a>
+        </div>
+      </div>
+
     </div>
 
-    <div class="stat">
-      <div class="stat-number">30+</div>
-      <div class="stat-label">ÁLBUNS</div>
+    <div class="albums">
+
+      <div class="section-title" data-lang="pt">ÁLBUNS EM DESTAQUE</div>
+      <div class="section-title" data-lang="en">FEATURED ALBUMS</div>
+
+      <div class="album-card" onclick="loadAlbum('VIDEO_ID_1')">
+        <div class="album-title">Tua Aliança</div>
+        <div class="album-meta" data-lang="pt">Álbum 2026 · Adoração</div>
+        <div class="album-meta" data-lang="en">2026 Album · Worship</div>
+      </div>
+
+      <div class="album-card" onclick="loadAlbum('VIDEO_ID_2')">
+        <div class="album-title">Adonai</div>
+        <div class="album-meta" data-lang="pt">Álbum 2026 · Fé e transformação</div>
+        <div class="album-meta" data-lang="en">2026 Album · Faith and transformation</div>
+      </div>
+
+      <div class="album-card" onclick="loadAlbum('VIDEO_ID_3')">
+        <div class="album-title">Hallel</div>
+        <div class="album-meta" data-lang="pt">Álbum oficial · Louvor e esperança</div>
+        <div class="album-meta" data-lang="en">Official album · Praise and hope</div>
+      </div>
+
+      <div class="album-card" onclick="loadAlbum('VIDEO_ID_4')">
+        <div class="album-title">Liberta-me</div>
+        <div class="album-meta" data-lang="pt">Álbum oficial · Cura e libertação</div>
+        <div class="album-meta" data-lang="en">Official album · Healing and freedom</div>
+      </div>
+
+      <div class="album-card" onclick="loadAlbum('VIDEO_ID_5')">
+        <div class="album-title">Nasci pra Te Adorar</div>
+        <div class="album-meta" data-lang="pt">Álbum oficial · Adoração</div>
+        <div class="album-meta" data-lang="en">Official album · Worship</div>
+      </div>
+
+      <div class="album-card" onclick="loadAlbum('VIDEO_ID_6')">
+        <div class="album-title">Quietude da Alma</div>
+        <div class="album-meta" data-lang="pt">Instrumental · Paz e oração</div>
+        <div class="album-meta" data-lang="en">Instrumental · Peace and prayer</div>
+      </div>
+
     </div>
 
-    <div class="stat">
-      <div class="stat-number">PT/EN</div>
-      <div class="stat-label">IDIOMAS</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-number">∞</div>
-      <div class="stat-label">ORAÇÃO</div>
-    </div>
-  </section>
-
-</div>
-
-<!-- ENGLISH -->
-<div data-lang="en">
-
-  <section class="hero">
-    <h1>LUZ E LOUVOR</h1>
-
-    <div class="subtitle">
-      Music, prayer and contemplation.<br>
-      A sonic experience of faith, hope and worship.
-    </div>
-
-    <div class="tag">
-      HORIZON 4282 MUSICAL EXPERIENCE
-    </div>
-  </section>
-
-  <section class="music-player">
-    <div class="player-label">NOW PLAYING</div>
-
-    <div class="player-frame">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/8m7pE2z08pQ?si=x3ay8wC-JJp9-d-X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-  </section>
-
-  <div class="section-title">FEATURED ALBUMS</div>
-
-  <section class="album-list">
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_1')">
-      <div class="album-title">Tua Aliança</div>
-      <div class="album-meta">2026 Album · Worship</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_2')">
-      <div class="album-title">Adonai</div>
-      <div class="album-meta">2026 Album · Faith and transformation</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_3')">
-      <div class="album-title">Lar do Altíssimo</div>
-      <div class="album-meta">Instrumental · Contemplation</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_4')">
-      <div class="album-title">Perseverança</div>
-      <div class="album-meta">Official album · Spiritual journey</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_5')">
-      <div class="album-title">Hallel</div>
-      <div class="album-meta">Official album · Praise and hope</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_6')">
-      <div class="album-title">Liberta-me</div>
-      <div class="album-meta">Official album · Healing and freedom</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_7')">
-      <div class="album-title">Sopro Divino</div>
-      <div class="album-meta">Official album · Holy Spirit</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_8')">
-      <div class="album-title">Recebe o Meu Sim</div>
-      <div class="album-meta">Official album · Surrender and mission</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_9')">
-      <div class="album-title">Nasci pra Te Adorar</div>
-      <div class="album-meta">Official album · Worship</div>
-    </div>
-
-    <div class="album-card" onclick="loadAlbum('VIDEO_ID_10')">
-      <div class="album-title">Quietude da Alma</div>
-      <div class="album-meta">Instrumental · Peace and prayer</div>
-    </div>
-
-  </section>
-
-  <section class="stats">
-    <div class="stat">
-      <div class="stat-number">200+</div>
-      <div class="stat-label">SONGS</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-number">30+</div>
-      <div class="stat-label">ALBUMS</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-number">PT/EN</div>
-      <div class="stat-label">LANGUAGES</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-number">∞</div>
-      <div class="stat-label">PRAYER</div>
-    </div>
   </section>
 
 </div>
@@ -442,17 +410,15 @@ const savedLanguage = localStorage.getItem("horizonLanguage") || "pt";
 setLanguage(savedLanguage);
 
 const randomVideos = [
-  "8m7pE2z08pQ?si=x3ay8wC-JJp9-d-X"
+  "NA08t49GIhg?si=sf-gd7zRPBmhRGlK",
+  "8m7pE2z08pQ?si=cHDb1Z3VsUSlulol",
+  "AI1OJAr1hfs?si=RI7mYe1A3UxKFvFt",
+  "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH"
 ];
 
 function loadAlbum(videoId){
-  const src = `https://www.youtube.com/embed/${videoId}`;
-
-  const playerPt = document.getElementById("youtubePlayer");
-  const playerEn = document.getElementById("youtubePlayerEn");
-
-  if(playerPt) playerPt.src = src;
-  if(playerEn) playerEn.src = src;
+  const player = document.getElementById("youtubePlayer");
+  player.src = `https://www.youtube.com/embed/${videoId}?rel=0`;
 }
 
 function loadRandomVideo(){
@@ -462,7 +428,7 @@ function loadRandomVideo(){
   loadAlbum(random);
 }
 
-//loadRandomVideo();
+loadRandomVideo();
 </script>
 
 </body>
