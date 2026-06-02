@@ -414,20 +414,28 @@ body.dimension-3 #portalBg{
 
 }
 
-.main-menu{
+.end-user-menu{
 
   margin-top:50px;
 
   display:grid;
 
   grid-template-columns:
-    repeat(2, 240px);
+    repeat(1, 240px);
 
   gap:20px;
 
   justify-content:center;
 
   z-index: 10001;
+
+  position:absolute;
+
+  right:50px;
+
+  top:140px;
+
+  diplay:none;
 
 }
 
@@ -443,7 +451,7 @@ body.dimension-3 #portalBg{
     1px solid rgba(127,211,255,0.15);
 
   background:
-    rgba(255,255,255,0.1);
+    rgba(127,211,255,0.5);
 
   backdrop-filter:blur(10px);
 
@@ -557,7 +565,7 @@ body.dimension-3 #portalBg{
 
 .menu-toggle{
   position:fixed;
-  top:24px;
+  top:140px;
   right:24px;
   z-index:1200;
 
@@ -570,48 +578,6 @@ body.dimension-3 #portalBg{
   color:#7fd3ff;
   font-size:24px;
   cursor:pointer;
-}
-
-.end-user-menu{
-  position:fixed;
-  top:78px;
-  right:24px;
-  z-index:1100;
-
-  display:none;
-  flex-direction:column;
-  gap:12px;
-
-  width:260px;
-  padding:18px;
-
-  background:rgba(0,0,0,.78);
-  border:1px solid rgba(127,211,255,.25);
-  backdrop-filter:blur(12px);
-  box-shadow:0 0 25px rgba(0,120,255,.16);
-}
-
-.end-user-menu.active{
-  display:flex;
-}
-
-.end-user-menu a{
-  color:#d5ecff;
-  text-decoration:none;
-  font-family:"Courier New", monospace;
-  font-size:13px;
-  letter-spacing:3px;
-
-  padding:14px;
-  border:1px solid rgba(127,211,255,.12);
-  background:rgba(255,255,255,.03);
-  transition:.3s ease;
-}
-
-.end-user-menu a:hover{
-  color:#7fd3ff;
-  border-color:rgba(127,211,255,.55);
-  transform:translateX(-4px);
 }
 
  
