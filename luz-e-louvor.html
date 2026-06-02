@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luz e Louvor - Discografia</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at center,#132445 0%,#09101f 55%,#000 100%);
+  color:#d5ecff;
+  font-family:"Courier New", monospace;
+}
+
+.language-switch{
+  position:fixed;
+  top:24px;
+  left:24px;
+  z-index:10;
+}
+
+.language-switch button{
+  background:rgba(0,0,0,.5);
+  border:1px solid rgba(127,211,255,.35);
+  color:#7fd3ff;
+  padding:8px 12px;
+  cursor:pointer;
+  letter-spacing:2px;
+}
+
+.home-link{
+  position:fixed;
+  top:24px;
+  right:24px;
+  color:#7fd3ff;
+  text-decoration:none;
+  letter-spacing:3px;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:110px 30px 80px;
+}
+
+h1{
+  text-align:center;
+  font-size:52px;
+  letter-spacing:6px;
+  margin-bottom:12px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#7fd3ff;
+  letter-spacing:3px;
+  margin-bottom:60px;
+}
+
+.album-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+.album-card{
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(127,211,255,.18);
+  padding:24px;
+  backdrop-filter:blur(8px);
+}
+
+.album-card h2{
+  color:#fff;
+  font-size:20px;
+  margin-bottom:14px;
+}
+
+.album-card ul{
+  list-style:none;
+}
+
+.album-card li{
+  margin-bottom:8px;
+  color:rgba(213,236,255,.78);
+  font-size:14px;
+}
+
+.status{
+  margin-top:16px;
+  color:#7fd3ff;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+[data-lang]{display:none}
+</style>
+</head>
+
+<body>
+
+<div class="language-switch">
+  <button onclick="setLanguage('pt')">PT</button>
+  <button onclick="setLanguage('en')">EN</button>
+</div>
+
+<a href="index.html" class="home-link">HOME</a>
+
+<div class="container" data-lang="pt">
+
+  <h1>LUZ E LOUVOR</h1>
+  <div class="subtitle">DISCOGRAFIA OFICIAL</div>
+
+  <div class="album-grid">
+
+    <div class="album-card">
+      <h2>Tua Aliança</h2>
+      <ul>
+        <li>Luz da Salvação</li>
+        <li>Em tua luz descansar</li>
+        <li>Sabedoria Imensa</li>
+        <li>Não há glória sem cruz</li>
+        <li>Faz da vida um vaso farto</li>
+        <li>Vem me libertar</li>
+        <li>Coração batendo forte</li>
+        <li>Só quero te seguir</li>
+      </ul>
+      <div class="status">ÁLBUM 2026</div>
+    </div>
+
+    <div class="album-card">
+      <h2>Adonai</h2>
+      <ul>
+        <li>Eis que tua palavra se cumpre</li>
+        <li>Vem Jesus me libertar</li>
+        <li>Até a última alma</li>
+        <li>Alegria perene</li>
+        <li>Brilho do amor de Deus</li>
+        <li>Águas infinitas</li>
+        <li>Tua luz, Tua luz</li>
+        <li>Quero que me transforme</li>
+      </ul>
+      <div class="status">ÁLBUM 2026</div>
+    </div>
+
+    <div class="album-card">
+      <h2>Lar do Altíssimo</h2>
+      <ul>
+        <li>Caminho do Silêncio</li>
+        <li>Cenáculo com Jesus</li>
+        <li>Caminho de Nazaré</li>
+        <li>Luz do Alto</li>
+        <li>Rios de Cura</li>
+        <li>Veredas da Graça</li>
+        <li>Som do Santíssimo</li>
+        <li>Monte da Presença</li>
+        <li>Sopro do Altíssimo</li>
+        <li>Jardim da Eternidade</li>
+      </ul>
+      <div class="status">INSTRUMENTAL</div>
+    </div>
+
+    <div class="album-card">
+      <h2>Perseverança</h2>
+      <ul>
+        <li>Atende nossa oração</li>
+        <li>Predestinados pela Redenção</li>
+        <li>Jornada Santa</li>
+        <li>Judas, Judas</li>
+        <li>Faz-me dócil a tua Vontade</li>
+        <li>Me guio pelo Espírito</li>
+        <li>Tende piedade Jesus</li>
+        <li>Nos protege com tua Luz</li>
+      </ul>
+      <div class="status">ÁLBUM OFICIAL</div>
+    </div>
+
+    <div class="album-card">
+      <h2>Hallel</h2>
+      <ul>
+        <li>O Incrível Vai Acontecer</li>
+        <li>Lembra, Lembra</li>
+        <li>Em Deus Você Será Capaz</li>
+        <li>Tua Mão que Eu Procuro</li>
+        <li>Revestido do Senhor</li>
+        <li>Permanece em Mim</li>
+        <li>Quero Ser Tua Casa</li>
+        <li>Semente de Deus</li>
+      </ul>
+      <div class="status">ÁLBUM OFICIAL</div>
+    </div>
+
+    <div class="album-card">
+      <h2>Liberta-me</h2>
+      <ul>
+        <li>Infância Interrompida</li>
+        <li>Liberta-me</li>
+        <li>Acalenta Minha Alma</li>
+        <li>Me Faz Obediência</li>
+        <li>Já não sigo mais sozinho</li>
+        <li>Jesus, em tudo me define</li>
+        <li>Não me deixe sozinho</li>
+      </ul>
+      <div class="status">ÁLBUM OFICIAL</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container" data-lang="en">
+
+  <h1>LUZ E LOUVOR</h1>
+  <div class="subtitle">OFFICIAL DISCOGRAPHY</div>
+
+  <div class="album-grid">
+
+    <div class="album-card">
+      <h2>Tua Aliança</h2>
+      <ul>
+        <li>Luz da Salvação</li>
+        <li>Em tua luz descansar</li>
+        <li>Sabedoria Imensa</li>
+        <li>Não há glória sem cruz</li>
+        <li>Faz da vida um vaso farto</li>
+        <li>Vem me libertar</li>
+        <li>Coração batendo forte</li>
+        <li>Só quero te seguir</li>
+      </ul>
+      <div class="status">2026 ALBUM</div>
+    </div>
+
+    <div class="album-card">
+      <h2>Adonai</h2>
+      <ul>
+        <li>Eis que tua palavra se cumpre</li>
+        <li>Vem Jesus me libertar</li>
+        <li>Até a última alma</li>
+        <li>Alegria perene</li>
+        <li>Brilho do amor de Deus</li>
+        <li>Águas infinitas</li>
+        <li>Tua luz, Tua luz</li>
+        <li>Quero que me transforme</li>
+      </ul>
+      <div class="status">2026 ALBUM</div>
+    </div>
+
+    <div class="album-card">
+      <h2>Lar do Altíssimo</h2>
+      <ul>
+        <li>Caminho do Silêncio</li>
+        <li>Cenáculo com Jesus</li>
+        <li>Caminho de Nazaré</li>
+        <li>Luz do Alto</li>
+        <li>Rios de Cura</li>
+        <li>Veredas da Graça</li>
+        <li>Som do Santíssimo</li>
+        <li>Monte da Presença</li>
+        <li>Sopro do Altíssimo</li>
+        <li>Jardim da Eternidade</li>
+      </ul>
+      <div class="status">INSTRUMENTAL</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function setLanguage(lang){
+  document.querySelectorAll("[data-lang]").forEach(block=>{
+    block.style.display="none";
+  });
+
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach(block=>{
+    block.style.display="block";
+  });
+
+  localStorage.setItem("horizonLanguage", lang);
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+}
+
+const savedLanguage = localStorage.getItem("horizonLanguage") || "pt";
+setLanguage(savedLanguage);
+</script>
+
+</body>
+</html>
