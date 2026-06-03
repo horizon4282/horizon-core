@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Open Reader — Fantastic Narratives</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  min-height:100vh;
+  background:#050608;
+  color:#d5ecff;
+  font-family:"Courier New", monospace;
+}
+
+.language-switch{
+  position:fixed;
+  top:20px;
+  left:20px;
+  z-index:1000;
+  display:flex;
+  gap:8px;
+}
+
+.language-switch button,
+.home-link{
+  background:rgba(0,0,0,.65);
+  border:1px solid rgba(127,211,255,.32);
+  color:#7fd3ff;
+  padding:8px 12px;
+  text-decoration:none;
+  letter-spacing:2px;
+  font-family:"Courier New", monospace;
+  cursor:pointer;
+}
+
+.home-link{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:1000;
+}
+
+.page{
+  max-width:1400px;
+  margin:auto;
+  padding:90px 34px 70px;
+}
+
+.story-header{
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:42px;
+  margin-bottom:42px;
+  align-items:stretch;
+}
+
+.story-cover{
+  background:#000;
+  border:1px solid rgba(127,211,255,.18);
+  box-shadow:0 0 35px rgba(0,120,255,.12);
+}
+
+.story-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.story-info{
+  padding:40px;
+  background:
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.9)),
+    radial-gradient(circle at top,#132445 0%,#050608 70%);
+  border:1px solid rgba(127,211,255,.16);
+}
+
+.reader-label{
+  color:#7fd3ff;
+  letter-spacing:4px;
+  font-size:12px;
+  margin-bottom:22px;
+}
+
+.story-info h1{
+  font-size:54px;
+  letter-spacing:6px;
+  margin-bottom:22px;
+  color:#fff;
+}
+
+.story-info p{
+  max-width:800px;
+  line-height:1.8;
+  font-size:17px;
+  color:rgba(213,236,255,.82);
+  margin-bottom:26px;
+}
+
+.story-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:24px 0 30px;
+}
+
+.meta-item{
+  border:1px solid rgba(127,211,255,.18);
+  padding:9px 12px;
+  color:#7fd3ff;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.story-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.story-actions button,
+.story-actions a{
+  background:rgba(127,211,255,.08);
+  border:1px solid rgba(127,211,255,.25);
+  color:#d5ecff;
+  padding:13px 16px;
+  text-decoration:none;
+  font-family:"Courier New", monospace;
+  cursor:pointer;
+  letter-spacing:2px;
+  font-size:12px;
+}
+
+.story-actions button:hover,
+.story-actions a:hover{
+  border-color:rgba(127,211,255,.6);
+  box-shadow:0 0 18px rgba(127,211,255,.12);
+}
+
+.reader-shell{
+  border:1px solid rgba(127,211,255,.14);
+  background:rgba(255,255,255,.02);
+  padding:18px;
+  margin-bottom:34px;
+}
+
+.reader-toolbar{
+  height:44px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid rgba(127,211,255,.12);
+  background:rgba(0,0,0,.38);
+  padding:0 16px;
+  color:rgba(213,236,255,.72);
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:18px;
+}
+
+.toolbar-actions{
+  display:flex;
+  gap:10px;
+}
+
+.toolbar-actions a,
+.toolbar-actions button{
+  background:transparent;
+  border:1px solid rgba(127,211,255,.18);
+  color:#7fd3ff;
+  padding:7px 10px;
+  font-family:"Courier New", monospace;
+  text-decoration:none;
+  cursor:pointer;
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.reader-frame{
+  width:100%;
+  height:760px;
+  border:1px solid rgba(127,211,255,.12);
+  background:#fff;
+  overflow:hidden;
+}
+
+.reader-frame iframe{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+  background:#fff;
+}
+
+.episodes-section{
+  margin-top:34px;
+}
+
+.section-title{
+  color:#7fd3ff;
+  letter-spacing:4px;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.episode-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+}
+
+.episode-button{
+  min-height:100px;
+  padding:18px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(127,211,255,.16);
+  color:#d5ecff;
+  font-family:"Courier New", monospace;
+  text-align:left;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.episode-button:hover,
+.episode-button.active{
+  border-color:rgba(127,211,255,.6);
+  background:rgba(127,211,255,.08);
+  transform:translateY(-4px);
+}
+
+.episode-number{
+  color:#7fd3ff;
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
+
+.episode-title{
+  font-size:14px;
+  letter-spacing:1px;
+  line-height:1.4;
+}
+
+.footer{
+  margin-top:60px;
+  text-align:center;
+  color:rgba(213,236,255,.45);
+  font-size:11px;
+  letter-spacing:3px;
+}
+
+[data-lang]{display:none}
+
+@media(max-width:900px){
+  .page{
+    padding:90px 18px 50px;
+  }
+
+  .story-header{
+    grid-template-columns:1fr;
+  }
+
+  .story-cover{
+    max-width:360px;
+    margin:auto;
+  }
+
+  .story-info{
+    padding:28px 22px;
+  }
+
+  .story-info h1{
+    font-size:36px;
+  }
+
+  .reader-frame{
+    height:70vh;
+  }
+
+  .reader-toolbar{
+    height:auto;
+    padding:12px;
+    gap:12px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="language-switch">
+  <button onclick="setLanguage('pt')">PT</button>
+  <button onclick="setLanguage('en')">EN</button>
+</div>
+
+<a href="../../index.html" class="home-link">HOME</a>
+
+<div class="page">
+
+  <section class="story-header">
+
+    <div class="story-cover">
+      <img src="assets/master-wave-poster.jpg" alt="Master Wave Poster">
+    </div>
+
+    <div class="story-info">
+
+      <div data-lang="pt">
+        <div class="reader-label">OPEN READER · HORIZON 4282</div>
+
+        <h1>MASTER WAVE</h1>
+
+        <p>
+          O mundo escondeu a verdade. Eles vão sintonizar o futuro.
+          Uma narrativa fantástica de mistério, frequência, destino e
+          realidades ocultas.
+        </p>
+
+        <div class="story-meta">
+          <div class="meta-item">FICÇÃO CIENTÍFICA</div>
+          <div class="meta-item">MISTÉRIO</div>
+          <div class="meta-item">EPISÓDIOS</div>
+          <div class="meta-item">HORIZON 4282</div>
+        </div>
+
+        <div class="story-actions">
+          <button onclick="scrollToReader()">LER AGORA</button>
+          <a id="openIsolatedPt" href="episodio-001.html" target="_blank">ABRIR EPISÓDIO</a>
+        </div>
+      </div>
+
+      <div data-lang="en">
+        <div class="reader-label">OPEN READER · HORIZON 4282</div>
+
+        <h1>MASTER WAVE</h1>
+
+        <p>
+          The world hid the truth. They will tune into the future.
+          A fantastic narrative of mystery, frequency, destiny and
+          hidden realities.
+        </p>
+
+        <div class="story-meta">
+          <div class="meta-item">SCI-FI</div>
+          <div class="meta-item">MYSTERY</div>
+          <div class="meta-item">EPISODES</div>
+          <div class="meta-item">HORIZON 4282</div>
+        </div>
+
+        <div class="story-actions">
+          <button onclick="scrollToReader()">READ NOW</button>
+          <a id="openIsolatedEn" href="episodio-001.html" target="_blank">OPEN EPISODE</a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="reader-shell" id="readerArea">
+
+    <div class="reader-toolbar">
+
+      <div id="currentEpisodeLabel">
+        EPISODE 001
+      </div>
+
+      <div class="toolbar-actions">
+        <a id="openIsolated" href="episodio-001.html" target="_blank">
+          OPEN PAGE
+        </a>
+
+        <button onclick="reloadEpisode()">
+          RELOAD
+        </button>
+      </div>
+
+    </div>
+
+    <div class="reader-frame">
+      <iframe
+        id="episodeFrame"
+        src="episodio-001.html"
+        title="Horizon 4282 Open Reader">
+      </iframe>
+    </div>
+
+  </section>
+
+  <section class="episodes-section">
+
+    <div class="section-title" data-lang="pt">EPISÓDIOS DISPONÍVEIS</div>
+    <div class="section-title" data-lang="en">AVAILABLE EPISODES</div>
+
+    <div class="episode-grid">
+
+      <button class="episode-button active" onclick="loadEpisode('episodio-001.html', this)">
+        <div class="episode-number">EPISODE 001</div>
+        <div class="episode-title">A Estação Submersa</div>
+      </button>
+
+      <button class="episode-button" onclick="loadEpisode('episodio-002.html', this)">
+        <div class="episode-number">EPISODE 002</div>
+        <div class="episode-title">A Camada Escura</div>
+      </button>
+
+      <button class="episode-button" onclick="loadEpisode('episodio-003.html', this)">
+        <div class="episode-number">EPISODE 003</div>
+        <div class="episode-title">O Céu Não Navegável</div>
+      </button>
+
+      <button class="episode-button" onclick="loadEpisode('episodio-004.html', this)">
+        <div class="episode-number">EPISODE 004</div>
+        <div class="episode-title">Frequência Perdida</div>
+      </button>
+
+    </div>
+
+  </section>
+
+  <div class="footer">
+    OPEN READER · MASTER WAVE · HORIZON 4282
+  </div>
+
+</div>
+
+<script>
+function setLanguage(lang){
+  document.querySelectorAll("[data-lang]").forEach(block=>{
+    block.style.display="none";
+  });
+
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach(block=>{
+    block.style.display="block";
+  });
+
+  localStorage.setItem("horizonLanguage", lang);
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+}
+
+const savedLanguage = localStorage.getItem("horizonLanguage") || "pt";
+setLanguage(savedLanguage);
+
+function loadEpisode(url, button){
+  const frame = document.getElementById("episodeFrame");
+  const openLink = document.getElementById("openIsolated");
+  const openPt = document.getElementById("openIsolatedPt");
+  const openEn = document.getElementById("openIsolatedEn");
+  const label = document.getElementById("currentEpisodeLabel");
+
+  frame.src = url;
+  openLink.href = url;
+  openPt.href = url;
+  openEn.href = url;
+
+  document.querySelectorAll(".episode-button").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  if(button){
+    button.classList.add("active");
+
+    const episodeNumber =
+      button.querySelector(".episode-number").textContent;
+
+    label.textContent = episodeNumber;
+  }
+
+  scrollToReader();
+}
+
+function reloadEpisode(){
+  const frame = document.getElementById("episodeFrame");
+  frame.src = frame.src;
+}
+
+function scrollToReader(){
+  document.getElementById("readerArea").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+</script>
+
+</body>
+</html>
