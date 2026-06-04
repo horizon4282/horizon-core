@@ -232,6 +232,63 @@ body{
   color:#fff;
   text-decoration:none;
 }
+
+.download-btn{
+  padding:12px 22px;
+  border:0;
+  border-radius:12px;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.popup-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.popup-overlay.active{
+  display:flex;
+}
+
+.popup-box{
+  width:100%;
+  max-width:420px;
+  background:#f7f4ec;
+  color:#111;
+  border-radius:22px;
+  padding:28px;
+  box-sizing:border-box;
+  text-align:center;
+  position:relative;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.45),
+    inset 0 0 20px rgba(0,0,0,.08);
+}
+
+.close-btn{
+  position:absolute;
+  top:12px;
+  right:14px;
+  border:0;
+  background:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.qrcode{
+  width:180px;
+  max-width:80%;
+  margin-top:10px;
+}
   
 [data-lang]{display:none}
 
@@ -328,7 +385,7 @@ body{
         <button onclick="reloadEpisode()">RELOAD</button>
       </div>
       <div>
-         <a class="pdf-btn" href="historia.pdf" download>
+         <a class="pdf-btn" href="historia.pdf" download onclick="openPopup()">
       Baixar PDF
     </a>
       </div>
@@ -396,6 +453,31 @@ awakens upon hearing the static hum of the processor's clock.
 
 </div>
 
+
+<div id="popup" class="popup-overlay">
+  <div class="popup-box">
+
+    <button class="close-btn" onclick="closePopup()">×</button>
+
+    <h2>Baixar história em PDF</h2>
+
+    <p>
+      Você pode baixar esta história gratuitamente.
+      Caso deseje, também pode colaborar voluntariamente com o projeto.
+    </p>
+
+    <hr>
+
+    <h3>Colaboração voluntária</h3>
+
+    <p>Escaneie o QR Code abaixo:</p>
+
+    <img class="qrcode" src="qrcode-pix.png" alt="QR Code para colaboração voluntária">
+
+  </div>
+</div>
+
+  
 <script>
 function setLanguage(lang){
   document.querySelectorAll("[data-lang]").forEach(block=>{
@@ -434,6 +516,14 @@ function loadEpisode(url, button){
 function reloadEpisode(){
   const frame = document.getElementById("episodeFrame");
   frame.src = frame.src;
+}
+
+function openPopup(){
+  document.getElementById("popup").classList.add("active");
+}
+
+function closePopup(){
+  document.getElementById("popup").classList.remove("active");
 }
 </script>
 
