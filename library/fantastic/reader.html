@@ -577,9 +577,15 @@ function copyPix(){
     navigator.clipboard.writeText(chave)
     .then(() => {
 
+      
         document.getElementById("copyMessage")
         .innerHTML =
         "✅ Chave PIX copiada!";
+
+      setTimeout(() => {
+        document.getElementById("copyMessage")
+        .innerHTML ="";
+    }, 3000);
 
     })
     .catch(() => {
