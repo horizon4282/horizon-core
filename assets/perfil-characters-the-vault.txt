@@ -5,6 +5,7 @@
 ------------------------------------------------------------------------
 1. O INTRUSO (A ANOMALIA ORIGINAL)
 ------------------------------------------------------------------------
+
 * IDENTIDADE ANTERIOR: Era um NPC humano comum, habitando o nível do 
   "Véu" (a simulação da nossa Terra). Trabalhava como um arquivista na 
   superfície, até começar a ouvir o "zumbido de fundo" e sintonizar com 
@@ -36,6 +37,7 @@
 ------------------------------------------------------------------------
 2. O OPERADOR (O DAEMON DE MANUTENÇÃO)
 ------------------------------------------------------------------------
+
 * IDENTIDADE ANTERIOR: Acreditava ser um ser humano real, um operário de 
   manutenção fabril de classe média que batia cartão no turno da noite. 
   Tinha uma vida social estruturada no "Subúrbio Cinzento", com direito 
@@ -69,6 +71,7 @@
 ------------------------------------------------------------------------
 3. A DINÂMICA DA DUPLA (A ALIANÇA DOS DOIS REFUGIADOS)
 ------------------------------------------------------------------------
+
 * Relação Simbiótica: Eles funcionam como uma mente única dividida em 
   duas funções. O Operador cede o corpo físico, a locomoção e o 
   conhecimento geográfico do ambiente industrial. O Intruso (na fita) 
@@ -79,4 +82,5 @@
   a "Greve Geral de Threads", forçando 80 milhões de NPCs a recusarem o 
   trabalho, colapsando o sistema mãe por Kernel Panic. São, atualmente, 
   as maiores ameaças ativas ao Hypervisor.
+
 ========================================================================
