@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Open Library | Horizon 4282</title>
+
+  <meta name="description" content="Open Library of Horizon 4282: a Human + AI creative library with stories, graphic novels, music, courses, games, tools, research and digital museum collections.">
+
+  <link rel="canonical" href="https://horizon4282.com.br/open-library.html">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at center, #132445 0%, #07101f 55%, #000 100%);
+      color:#d5ecff;
+      font-family:"Courier New", monospace;
+      overflow-x:hidden;
+    }
+
+    .language-switch{
+      position:fixed;
+      top:20px;
+      left:20px;
+      z-index:1000;
+      display:flex;
+      gap:8px;
+    }
+
+    .language-switch button{
+      background:rgba(0,0,0,.55);
+      border:1px solid rgba(127,211,255,.35);
+      color:#7fd3ff;
+      padding:8px 12px;
+      font-family:"Courier New", monospace;
+      letter-spacing:2px;
+      cursor:pointer;
+    }
+
+    .home-link{
+      position:fixed;
+      top:24px;
+      right:28px;
+      z-index:1000;
+      color:rgba(127,211,255,.65);
+      text-decoration:none;
+      letter-spacing:3px;
+      font-size:12px;
+    }
+
+    .home-link:hover{
+      color:#7fd3ff;
+      text-shadow:0 0 12px rgba(127,211,255,.6);
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:300px 1fr;
+      gap:30px;
+      padding:95px 40px 50px;
+      max-width:1600px;
+      margin:auto;
+    }
+
+    aside{
+      border:1px solid rgba(127,211,255,.18);
+      background:rgba(0,0,0,.35);
+      padding:28px;
+      min-height:calc(100vh - 145px);
+    }
+
+    .side-label{
+      color:#7fd3ff;
+      letter-spacing:5px;
+      font-size:12px;
+      margin-bottom:24px;
+    }
+
+    .side-title{
+      font-size:28px;
+      letter-spacing:3px;
+      margin-bottom:28px;
+      color:#fff;
+    }
+
+    .category-list{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .category-btn{
+      background:rgba(255,255,255,.025);
+      border:1px solid rgba(127,211,255,.13);
+      color:#d5ecff;
+      padding:15px;
+      text-align:left;
+      cursor:pointer;
+      font-family:"Courier New", monospace;
+      letter-spacing:2px;
+      transition:.25s ease;
+    }
+
+    .category-btn:hover,
+    .category-btn.active{
+      border-color:rgba(127,211,255,.6);
+      background:rgba(127,211,255,.08);
+      transform:translateX(4px);
+    }
+
+    main{
+      min-width:0;
+    }
+
+    .hero{
+      border:1px solid rgba(127,211,255,.18);
+      background:rgba(0,0,0,.28);
+      padding: 15px 0 0 36px;
+      margin-bottom:30px;
+    }
+
+    .hero-label{
+      color:#7fd3ff;
+      letter-spacing:6px;
+      font-size:13px;
+      margin-bottom:18px;
+      background-color: #132445cb;
+      padding:5px;
+    }
+
+    h1{
+      font-size:54px;
+      letter-spacing:7px;
+      margin-bottom:20px;
+      color:#fff;
+    }
+
+    .hero p{
+      max-width:900px;
+      color:#b8d8ff;
+      line-height:1.7;
+      font-size:17px;
+    }
+
+    .category-heading{
+      margin-bottom:24px;
+      padding:24px;
+      border:1px solid rgba(127,211,255,.12);
+      background:rgba(255,255,255,.025);
+    }
+
+    .category-heading h2{
+      letter-spacing:4px;
+      font-size:28px;
+      margin-bottom:12px;
+      color:#fff;
+    }
+
+    .category-heading p{
+      color:#a9cfff;
+      line-height:1.6;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+      gap:22px;
+    }
+
+    .card{
+      display:block;
+      min-height:210px;
+      padding:24px;
+      border:1px solid rgba(127,211,255,.16);
+      background:
+        linear-gradient(160deg, rgba(127,211,255,.06), rgba(255,255,255,.015));
+      color:#d5ecff;
+      text-decoration:none;
+      transition:.3s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(127,211,255,.65);
+      box-shadow:0 0 25px rgba(127,211,255,.16);
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:auto -20% -40% -20%;
+      height:90px;
+      background:rgba(127,211,255,.06);
+      filter:blur(25px);
+    }
+
+    .card-type{
+      color:#7fd3ff;
+      font-size:12px;
+      letter-spacing:3px;
+      margin-bottom:18px;
+    }
+
+    .card-title{
+      font-size:22px;
+      line-height:1.25;
+      color:#fff;
+      margin-bottom:16px;
+    }
+
+    .card-desc{
+      font-size:14px;
+      line-height:1.6;
+      color:#a9cfff;
+    }
+
+    .card-status{
+      margin-top:24px;
+      color:#ffd97a;
+      font-size:12px;
+      letter-spacing:2px;
+    }
+
+    [data-lang]{
+      display:none;
+    }
+
+    @media(max-width:900px){
+      .layout{
+        grid-template-columns:1fr;
+        padding:95px 20px 40px;
+      }
+
+      aside{
+        min-height:auto;
+      }
+
+      h1{
+        font-size:38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="language-switch">
+    <button onclick="setLanguage('pt')">PT</button>
+    <button onclick="setLanguage('en')">EN</button>
+  </div>
+
+  <a href="index.html" class="home-link">HOME</a>
+
+  <!-- PORTUGUÊS -->
+  <div data-lang="pt">
+    <div class="layout">
+
+      <aside>
+        <div class="side-label">OPEN LIBRARY</div>
+        <div class="side-title">Dimensões</div>
+
+        <div class="category-list">
+          <button class="category-btn active" onclick="showCategory('fantastic', this)">LEITURA FANTÁSTICA</button>
+          <button class="category-btn" onclick="showCategory('graphic', this)">GRAPHIC NOVEL</button>
+          <button class="category-btn" onclick="showCategory('prayMusic', this)">PRAY MUSIC</button>
+          <button class="category-btn" onclick="showCategory('cultureMusic', this)">CULTURE MUSIC</button>
+          <button class="category-btn" onclick="showCategory('deepMind', this)">DEEP MIND IA</button>
+          <button class="category-btn" onclick="showCategory('courses', this)">COURSES</button>
+          <button class="category-btn" onclick="showCategory('human', this)">HUMAN ASPECTS</button>
+          <button class="category-btn" onclick="showCategory('prayReader', this)">PRAY READER</button>
+          <button class="category-btn" onclick="showCategory('comicKids', this)">COMIC PRAY KIDS</button>
+          <button class="category-btn" onclick="showCategory('games', this)">JOGOS</button>
+          <button class="category-btn" onclick="showCategory('utils', this)">UTILS</button>
+          <button class="category-btn" onclick="showCategory('museum', this)">DIGITAL MUSEUM HORIZON</button>
+        </div>
+      </aside>
+
+      <main>
+        <section class="hero">
+          <div class="hero-label">O HORIZON 4282 É UM <strong>PORTAL DE CONTEÚDO GRATUITO</strong></div>
+          <h1>OPEN LIBRARY</h1>
+        </section>
+
+        <section class="category-heading">
+          <h2 id="categoryTitlePt">LEITURA FANTÁSTICA</h2>
+          <p id="categoryDescPt">
+            Narrativas de ficção, universos alternativos e histórias especulativas.
+          </p>
+        </section>
+
+        <section class="cards" id="cardsPt"></section>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- ENGLISH -->
+  <div data-lang="en">
+    <div class="layout">
+
+      <aside>
+        <div class="side-label">OPEN LIBRARY</div>
+        <div class="side-title">Dimensions</div>
+
+        <div class="category-list">
+          <button class="category-btn active" onclick="showCategory('fantastic', this)">FANTASTIC READING</button>
+          <button class="category-btn" onclick="showCategory('graphic', this)">GRAPHIC NOVEL</button>
+          <button class="category-btn" onclick="showCategory('prayMusic', this)">PRAY MUSIC</button>
+          <button class="category-btn" onclick="showCategory('cultureMusic', this)">CULTURE MUSIC</button>
+          <button class="category-btn" onclick="showCategory('deepMind', this)">DEEP MIND AI</button>
+          <button class="category-btn" onclick="showCategory('courses', this)">COURSES</button>
+          <button class="category-btn" onclick="showCategory('human', this)">HUMAN ASPECTS</button>
+          <button class="category-btn" onclick="showCategory('prayReader', this)">PRAY READER</button>
+          <button class="category-btn" onclick="showCategory('comicKids', this)">COMIC PRAY KIDS</button>
+          <button class="category-btn" onclick="showCategory('games', this)">GAMES</button>
+          <button class="category-btn" onclick="showCategory('utils', this)">UTILS</button>
+          <button class="category-btn" onclick="showCategory('museum', this)">DIGITAL MUSEUM HORIZON</button>
+        </div>
+      </aside>
+
+      <main>
+        <section class="hero">
+          <div class="hero-label">HORIZON 4282 IS A FREE CONTENT PORTAL</div>
+          <h1>OPEN LIBRARY</h1>
+        </section>
+
+        <section class="category-heading">
+          <h2 id="categoryTitleEn">FANTASTIC READING</h2>
+          <p id="categoryDescEn">
+            Fictional narratives, alternate universes and speculative stories.
+          </p>
+        </section>
+
+        <section class="cards" id="cardsEn"></section>
+      </main>
+
+    </div>
+  </div>
+
+  <script>
+    const categories = {
+      fantastic: {
+        ptTitle: "LEITURA FANTÁSTICA",
+        enTitle: "FANTASTIC READING",
+        ptDesc: "Narrativas de ficção, universos alternativos e histórias especulativas.",
+        enDesc: "Fictional narratives, alternate universes and speculative stories.",
+        items: [
+          {
+            type:"OPEN LIBRARY",
+            title:"The Vault",
+            descPt:"Uma narrativa sci-fi em episódios dentro do universo Horizon.",
+            descEn:"A sci-fi episodic narrative inside the Horizon universe.",
+            status:"ONLINE",
+            url:"reader.html"
+          },
+          {
+            type:"FICTION",
+            title:"Master Wave",
+            descPt:"Narrativa de ficção científica e mistério tecnológico.",
+            descEn:"A science fiction narrative about mystery and technology.",
+            status:"COMING SOON",
+            url:"#"
+          },
+          {
+            type:"FICTION",
+            title:"REM",
+            descPt:"Uma história sobre consciência, memória e realidade.",
+            descEn:"A story about consciousness, memory and reality.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      },
+
+      graphic: {
+        ptTitle: "GRAPHIC NOVEL",
+        enTitle: "GRAPHIC NOVEL",
+        ptDesc: "Histórias visuais, HQs, séries ilustradas e experiências narrativas gráficas.",
+        enDesc: "Visual stories, comics, illustrated series and graphic narrative experiences.",
+        items: [
+          {
+            type:"GRAPHIC NOVEL",
+            title:"Diário de Santee",
+            descPt:"Universo narrativo de mistério, ficção e aventura.",
+            descEn:"A narrative universe of mystery, fiction and adventure.",
+            status:"COMING SOON",
+            url:"#"
+          },
+          {
+            type:"COMIC",
+            title:"Corredor 4282",
+            descPt:"HQs e aventuras do herói Corredor 4282.",
+            descEn:"Comics and adventures of the hero Runner 4282.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      },
+
+      prayMusic: {
+        ptTitle: "PRAY MUSIC",
+        enTitle: "PRAY MUSIC",
+        ptDesc: "Músicas, álbuns, letras, reflexões e projetos espirituais.",
+        enDesc: "Songs, albums, lyrics, reflections and spiritual projects.",
+        items: [
+          {
+            type:"MUSIC",
+            title:"Ministério Luz e Louvor",
+            descPt:"Discografia, letras, álbuns e projetos do ministério.",
+            descEn:"Discography, lyrics, albums and ministry projects.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      },
+
+      cultureMusic: {
+        ptTitle: "CULTURE MUSIC",
+        enTitle: "CULTURE MUSIC",
+        ptDesc: "Projetos musicais culturais, populares e experimentais.",
+        enDesc: "Cultural, popular and experimental music projects.",
+        items: [
+          {
+            type:"MUSIC",
+            title:"Samba UP",
+            descPt:"Experimentos de samba, pagode e música brasileira.",
+            descEn:"Experiments in samba, pagode and Brazilian music.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      },
+
+      deepMind: {
+        ptTitle: "DEEP MIND IA",
+        enTitle: "DEEP MIND AI",
+        ptDesc: "Pesquisa, reflexões e experimentos sobre inteligência artificial e cognição.",
+        enDesc: "Research, reflections and experiments on artificial intelligence and cognition.",
+        items: [
+          {
+            type:"RESEARCH",
+            title:"Human + AI Notes",
+            descPt:"Anotações sobre colaboração criativa entre humano e IA.",
+            descEn:"Notes on creative collaboration between human and AI.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      },
+
+      courses: {
+        ptTitle: "COURSES",
+        enTitle: "COURSES",
+        ptDesc: "Cursos, trilhas de aprendizagem e conteúdos educacionais.",
+        enDesc: "Courses, learning paths and educational content.",
+        items: [
+          {
+            type:"COURSE",
+            title:"Artificial Intelligence Course",
+            descPt:"Curso introdutório de Inteligência Artificial para todos os públicos.",
+            descEn:"Introductory Artificial Intelligence course for all audiences.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      },
+
+      human: {
+        ptTitle: "HUMAN ASPECTS",
+        enTitle: "HUMAN ASPECTS",
+        ptDesc: "Reflexões sobre comportamento humano, criatividade, fé, trabalho e propósito.",
+        enDesc: "Reflections on human behavior, creativity, faith, work and purpose.",
+        items: [
+          {
+            type:"REFLECTION",
+            title:"Human Notes",
+            descPt:"Textos e reflexões sobre a experiência humana.",
+            descEn:"Texts and reflections about the human experience.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      },
+
+      prayReader: {
+        ptTitle: "PRAY READER",
+        enTitle: "PRAY READER",
+        ptDesc: "Pregações, devocionais, meditações e textos espirituais.",
+        enDesc: "Preachings, devotionals, meditations and spiritual texts.",
+        items: [
+          {
+            type:"READER",
+            title:"Prayer Reflections",
+            descPt:"Textos de oração, fé e meditação cristã.",
+            descEn:"Texts of prayer, faith and Christian meditation.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      },
+
+      comicKids: {
+        ptTitle: "COMIC PRAY KIDS",
+        enTitle: "COMIC PRAY KIDS",
+        ptDesc: "HQs infantis, histórias cristãs e conteúdos para crianças.",
+        enDesc: "Kids comics, Christian stories and content for children.",
+        items: [
+          {
+            type:"KIDS",
+            title:"Liah Universe",
+            descPt:"Histórias infantis cristãs com Liah e seus amigos.",
+            descEn:"Christian kids stories with Liah and her friends.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      },
+
+      games: {
+        ptTitle: "JOGOS",
+        enTitle: "GAMES",
+        ptDesc: "Mini games, experimentos JavaScript e jogos criativos.",
+        enDesc: "Mini games, JavaScript experiments and creative games.",
+        items: [
+          {
+            type:"GAME",
+            title:"Horizon Tetris Node",
+            descPt:"Experimento futuro de jogo em JavaScript.",
+            descEn:"Future JavaScript game experiment.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      },
+
+      utils: {
+        ptTitle: "UTILS",
+        enTitle: "UTILS",
+        ptDesc: "Ferramentas, utilitários, conversores e pequenos sistemas.",
+        enDesc: "Tools, utilities, converters and small systems.",
+        items: [
+          {
+            type:"UTILITY",
+            title:"Creative Tools",
+            descPt:"Ferramentas digitais para criação e organização.",
+            descEn:"Digital tools for creation and organization.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      },
+
+      museum: {
+        ptTitle: "DIGITAL MUSEUM HORIZON",
+        enTitle: "DIGITAL MUSEUM HORIZON",
+        ptDesc: "Coleções visuais, acervos digitais, arte sacra, fauna, Bíblia e mundos futuros.",
+        enDesc: "Visual collections, digital archives, sacred art, fauna, Bible imagery and future worlds.",
+        items: [
+          {
+            type:"MUSEUM",
+            title:"Sacred Art Collection",
+            descPt:"Acervo de arte sacra digital em expansão.",
+            descEn:"An expanding digital sacred art collection.",
+            status:"COMING SOON",
+            url:"#"
+          },
+          {
+            type:"MUSEUM",
+            title:"Bible Image Archive",
+            descPt:"Acervo visual inspirado na Bíblia Sagrada.",
+            descEn:"A visual archive inspired by the Holy Bible.",
+            status:"COMING SOON",
+            url:"#"
+          },
+          {
+            type:"MUSEUM",
+            title:"Terrestrial Fauna Archive",
+            descPt:"Coleção visual de fauna terrestre.",
+            descEn:"A visual collection of terrestrial fauna.",
+            status:"COMING SOON",
+            url:"#"
+          }
+        ]
+      }
+    };
+
+    function setLanguage(lang){
+      document.querySelectorAll("[data-lang]").forEach(block => {
+        block.style.display = "none";
+      });
+
+      document.querySelectorAll(`[data-lang="${lang}"]`).forEach(block => {
+        block.style.display = "block";
+      });
+
+      localStorage.setItem("horizonLanguage", lang);
+      document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+
+      showCategory("fantastic");
+    }
+
+    function showCategory(key, btn){
+      const category = categories[key];
+
+      if(!category) return;
+
+      const lang = localStorage.getItem("horizonLanguage") || "pt";
+
+      const title = document.getElementById(lang === "pt" ? "categoryTitlePt" : "categoryTitleEn");
+      const desc = document.getElementById(lang === "pt" ? "categoryDescPt" : "categoryDescEn");
+      const cards = document.getElementById(lang === "pt" ? "cardsPt" : "cardsEn");
+
+      title.textContent = lang === "pt" ? category.ptTitle : category.enTitle;
+      desc.textContent = lang === "pt" ? category.ptDesc : category.enDesc;
+
+      cards.innerHTML = "";
+
+      category.items.forEach(item => {
+        const card = document.createElement("a");
+        card.className = "card";
+        card.href = item.url;
+
+        card.innerHTML = `
+          <div class="card-type">${item.type}</div>
+          <div class="card-title">${item.title}</div>
+          <div class="card-desc">${lang === "pt" ? item.descPt : item.descEn}</div>
+          <div class="card-status">${item.status}</div>
+        `;
+
+        cards.appendChild(card);
+      });
+
+      document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+
+      if(btn){
+        const text = btn.textContent.trim();
+
+        document.querySelectorAll(".category-btn").forEach(b => {
+          if(b.textContent.trim() === text){
+            b.classList.add("active");
+          }
+        });
+      }
+    }
+
+    const savedLanguage = localStorage.getItem("horizonLanguage") || "pt";
+    setLanguage(savedLanguage);
+  </script>
+
+</body>
+</html>
