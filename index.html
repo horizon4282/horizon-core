@@ -429,33 +429,10 @@ body.dimension-3 #portalBg{
 
   position:absolute;
 
-  right:-14%;
-
-  top:375px;
+  top:30px;
 
 }
 
-.active{
-    margin-top:50px;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(1, 240px);
-
-  gap:5px;
-
-  justify-content:center;
-
-  z-index: 10001;
-
-  position:absolute;
-
-  right:15px;
-
-  top:200px;
- 
-}
 
 
 .menu-card{
@@ -466,17 +443,17 @@ body.dimension-3 #portalBg{
 
   color:#d5ecff;
 
+  text-align: center;
+
   border:
     1px solid rgba(127,211,255,0.15);
 
-  background:
-    rgba(127,211,255,0.5);
-
+  
   backdrop-filter:blur(10px);
 
   letter-spacing:3px;
 
-  font-size:14px;
+  font-size:12px;
 
   transition:0.3s;
 
@@ -529,7 +506,7 @@ body.dimension-3 #portalBg{
 
   position:fixed;
 
-  bottom:20px;
+  bottom:150px;
 
   left:50%;
 
@@ -601,12 +578,19 @@ body.dimension-3 #portalBg{
 
  @media(max-width:768px){
     .main-menu{
-    grid-template-columns:repeat(1, 240px);
-    right: 35%;
-    top: 330px;
+    grid-template-columns:repeat(2, 180px);
+    right: 0;
+    top: 150px;
+    width:95%;
  }
+   .main-menu a{
+    font-size:10px;
+   }
 .content{
-  top: -50%;
+  top: 0;
+}
+.terminal-hint{
+  display: none;
 }
  }
  
@@ -626,37 +610,7 @@ body.dimension-3 #portalBg{
   <button onclick="setLanguage('en')">EN</button>
 </div>
 
- 
-
-  
-  <div id="portalBg"></div>
-  <div id="scanLine"></div>
-  <canvas id="particles"></canvas>
-  <div class="noise"></div>
-  <div id="observer"></div>
-
-  <div class="content">
-    <div class="signal" id="signalText">HIPER-MAINFRAME ON</div>
-
-    <h1>HORIZON 4282</h1>
-
-    <div class="subtitle" data-lang="pt">
-      Um laboratório vivo de interfaces, inteligência artificial,
-      atmosferas digitais e realidades ocultas. 
-
-       <div class="terminal-hint">
-    ────────────────────
-    <br>    
-    ⚡Teste o atalho <code>CTRL+SHIFT+X</code>
-       </div>
-    </div>
-
-        <div class="subtitle" data-lang="en">
-     A living laboratory of interfaces, artificial intelligence,
-digital atmospheres, and hidden realities.
-
-      
-  <div class="main-menu">
+    <div class="main-menu">
 
   <a href="/library/fantastic/reader" class="menu-card">
    <div class="card-title">
@@ -683,6 +637,34 @@ digital atmospheres, and hidden realities.
   </a>
 
 </div>
+
+  
+  <div id="portalBg"></div>
+  <div id="scanLine"></div>
+  <canvas id="particles"></canvas>
+  <div class="noise"></div>
+  <div id="observer"></div>
+
+  <div class="content">
+   
+    <div class="signal" id="signalText">HIPER-MAINFRAME ON</div>
+
+    <h1>HORIZON 4282</h1>
+
+    <div class="subtitle" data-lang="pt">
+      Um laboratório vivo de interfaces, inteligência artificial,
+      atmosferas digitais e realidades ocultas. 
+
+       <div class="terminal-hint">
+    ────────────────────
+    <br>    
+    ⚡Teste o atalho <code>CTRL+SHIFT+X</code>
+       </div>
+    </div>
+
+        <div class="subtitle" data-lang="en">
+     A living laboratory of interfaces, artificial intelligence,
+digital atmospheres, and hidden realities.
 
              <div class="terminal-hint">
     ────────────────────
@@ -731,6 +713,7 @@ digital atmospheres, and hidden realities.
  </div>
   
   <div data-lang="en">
+
 
     <div class="footer-title">
       HORIZON 4282 v0.1 ALPHA
