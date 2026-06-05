@@ -565,6 +565,7 @@ awakens upon hearing the static hum of the processor's clock.
   
 <script>
 function setLanguage(lang){
+  loadBtPDF();
   document.querySelectorAll("[data-lang]").forEach(block=>{
     block.style.display="none";
   });
@@ -650,13 +651,18 @@ function copyPix(){
 
 }
 
+function loadBtPDF(){
+
   if( localStorage.getItem("horizonLanguage") == 'pt'){
       document.getElementById("pdf-en").style.display="none";
-      document.getElementById("pdf-pt").style.display="flex";
+      document.getElementById("pdf-pt").style.display="inline-block";
   } else{
-    document.getElementById("pdf-en").style.display="flex";
+    document.getElementById("pdf-en").style.display="inline-block";
     document.getElementById("pdf-pt").style.display="none";
   }
+}
+
+loadBtPDF();
 
 </script>
 
