@@ -652,25 +652,41 @@
           <div class="card-desc">${lang === "pt" ? item.descPt : item.descEn}</div>
           <div class="card-status">${item.status}</div>
         `;
-
+      
         cards.appendChild(card);
+        comingSoon();
+        
       });
+ 
 
-      document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
 
       if(btn){
         const text = btn.textContent.trim();
 
         document.querySelectorAll(".category-btn").forEach(b => {
           if(b.textContent.trim() === text){
-            b.classList.add("active");
-          }
+            b.classList.add("active");      
+         }
         });
       }
     }
 
+         
+function comingSoon (){
+      document.querySelectorAll(".card-status").forEach((b,i) => {
+        if(b.textContent.trim() === "COMING SOON"){
+        document.querySelectorAll(".card")[i].style.opacity = "0.6"
+        document.querySelectorAll(".card")[i].style.filter ="grayscale(80)"
+        document.querySelectorAll(".card")[i].style.cursor ="default"
+       }
+        })
+
+  }
+
     const savedLanguage = localStorage.getItem("horizonLanguage") || "pt";
     setLanguage(savedLanguage);
+    comingSoon();
   </script>
 
 </body>
