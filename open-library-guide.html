@@ -266,7 +266,6 @@
     <div class="layout">
 
       <aside>
-        <div class="side-label">OPEN LIBRARY</div>
         <div class="side-title">Dimensões</div>
 
         <div class="category-list">
@@ -309,7 +308,6 @@
     <div class="layout">
 
       <aside>
-        <div class="side-label">OPEN LIBRARY</div>
         <div class="side-title">Dimensions</div>
 
         <div class="category-list">
@@ -358,6 +356,7 @@
           {
             type:"OPEN LIBRARY",
             title:"The Vault",
+            image:"/assets/the-vault-thumb.jpg",
             descPt:"Uma narrativa sci-fi em episódios dentro do universo Horizon.",
             descEn:"A sci-fi episodic narrative inside the Horizon universe.",
             status:"ONLINE",
@@ -366,6 +365,7 @@
           {
             type:"FICTION",
             title:"Master Wave",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Narrativa de ficção científica e mistério tecnológico.",
             descEn:"A science fiction narrative about mystery and technology.",
             status:"COMING SOON",
@@ -374,6 +374,7 @@
           {
             type:"FICTION",
             title:"REM",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Uma história sobre consciência, memória e realidade.",
             descEn:"A story about consciousness, memory and reality.",
             status:"COMING SOON",
@@ -391,6 +392,7 @@
           {
             type:"GRAPHIC NOVEL",
             title:"Diário de Santee",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Universo narrativo de mistério, ficção e aventura.",
             descEn:"A narrative universe of mystery, fiction and adventure.",
             status:"COMING SOON",
@@ -399,6 +401,7 @@
           {
             type:"COMIC",
             title:"Corredor 4282",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"HQs e aventuras do herói Corredor 4282.",
             descEn:"Comics and adventures of the hero Runner 4282.",
             status:"COMING SOON",
@@ -416,6 +419,7 @@
           {
             type:"MUSIC",
             title:"Ministério Luz e Louvor",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Discografia, letras, álbuns e projetos do ministério.",
             descEn:"Discography, lyrics, albums and ministry projects.",
             status:"COMING SOON",
@@ -433,6 +437,7 @@
           {
             type:"MUSIC",
             title:"Samba UP",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Experimentos de samba, pagode e música brasileira.",
             descEn:"Experiments in samba, pagode and Brazilian music.",
             status:"COMING SOON",
@@ -450,6 +455,7 @@
           {
             type:"RESEARCH",
             title:"Human + AI Notes",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Anotações sobre colaboração criativa entre humano e IA.",
             descEn:"Notes on creative collaboration between human and AI.",
             status:"COMING SOON",
@@ -467,6 +473,7 @@
           {
             type:"COURSE",
             title:"Artificial Intelligence Course",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Curso introdutório de Inteligência Artificial para todos os públicos.",
             descEn:"Introductory Artificial Intelligence course for all audiences.",
             status:"COMING SOON",
@@ -484,6 +491,7 @@
           {
             type:"REFLECTION",
             title:"Human Notes",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Textos e reflexões sobre a experiência humana.",
             descEn:"Texts and reflections about the human experience.",
             status:"COMING SOON",
@@ -501,6 +509,7 @@
           {
             type:"READER",
             title:"Prayer Reflections",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Textos de oração, fé e meditação cristã.",
             descEn:"Texts of prayer, faith and Christian meditation.",
             status:"COMING SOON",
@@ -518,6 +527,7 @@
           {
             type:"KIDS",
             title:"Liah Universe",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Histórias infantis cristãs com Liah e seus amigos.",
             descEn:"Christian kids stories with Liah and her friends.",
             status:"COMING SOON",
@@ -535,6 +545,7 @@
           {
             type:"GAME",
             title:"Horizon Tetris Node",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Experimento futuro de jogo em JavaScript.",
             descEn:"Future JavaScript game experiment.",
             status:"COMING SOON",
@@ -552,6 +563,7 @@
           {
             type:"UTILITY",
             title:"Creative Tools",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Ferramentas digitais para criação e organização.",
             descEn:"Digital tools for creation and organization.",
             status:"COMING SOON",
@@ -569,6 +581,7 @@
           {
             type:"MUSEUM",
             title:"Sacred Art Collection",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Acervo de arte sacra digital em expansão.",
             descEn:"An expanding digital sacred art collection.",
             status:"COMING SOON",
@@ -577,6 +590,7 @@
           {
             type:"MUSEUM",
             title:"Bible Image Archive",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Acervo visual inspirado na Bíblia Sagrada.",
             descEn:"A visual archive inspired by the Holy Bible.",
             status:"COMING SOON",
@@ -585,6 +599,7 @@
           {
             type:"MUSEUM",
             title:"Terrestrial Fauna Archive",
+            image:"/assets/the-guess-thumb.jpg",
             descPt:"Coleção visual de fauna terrestre.",
             descEn:"A visual collection of terrestrial fauna.",
             status:"COMING SOON",
@@ -633,6 +648,7 @@
         card.innerHTML = `
           <div class="card-type">${item.type}</div>
           <div class="card-title">${item.title}</div>
+          <div class="card-title"><img src="${item.image}" width="100%" /></div>
           <div class="card-desc">${lang === "pt" ? item.descPt : item.descEn}</div>
           <div class="card-status">${item.status}</div>
         `;
