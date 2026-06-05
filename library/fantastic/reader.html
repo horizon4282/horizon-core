@@ -224,7 +224,7 @@ body{
 
 
 .pdf-btn{
-  display:inline-block;
+  display:none;
   margin:15px 0;
   padding:12px 22px;
   border-radius:10px;
@@ -413,13 +413,13 @@ body{
       <button onclick="reloadEpisode()">RELOAD</button>
       </div>
       <div>
-         <a class="pdf-btn"  download onclick="openPopup()">
+         <a class="pdf-btn" id="pdf-pt" download onclick="openPopup()">
       Baixar PDF
     </a>
       </div>
 
         <div>
-         <a class="pdf-btn"  download onclick="openPopupEn()">
+         <a class="pdf-btn" id="pdf-en" download onclick="openPopupEn()">
       PDF Download
     </a>
       </div>
@@ -649,6 +649,14 @@ function copyPix(){
     });
 
 }
+
+  if( localStorage.getItem("horizonLanguage") == 'pt'{
+      document.getElementById("pdf-en").style.display="none";
+      document.getElementById("pdf-pt").style.display="flex";
+  } else{
+    document.getElementById("pdf-en").style.display="flex";
+    document.getElementById("pdf-pt").style.display="none";
+  }
 
 </script>
 
