@@ -565,7 +565,7 @@ awakens upon hearing the static hum of the processor's clock.
   
 <script>
 function setLanguage(lang){
-  loadBtPDF();
+ 
   document.querySelectorAll("[data-lang]").forEach(block=>{
     block.style.display="none";
   });
@@ -576,6 +576,7 @@ function setLanguage(lang){
 
   localStorage.setItem("horizonLanguage", lang);
   document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+   loadBtPDF();
 }
 
 const savedLanguage = localStorage.getItem("horizonLanguage") || "pt";
