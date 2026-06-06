@@ -263,6 +263,17 @@ body{
   display: block;
 }
 
+.pdf-btn-screen{
+  margin:15px 0;
+  padding:12px 22px;
+  border-radius:10px;
+  background:#e0392d;
+  color:#fff;
+  text-decoration:none;
+  cursor:pointer;
+  display: block;
+}
+
 .download-btn{
   padding:12px 22px;
   border:0;
@@ -381,8 +392,8 @@ body{
 <body>
 
 <div class="language-switch">
-  <button onclick="setLanguage('pt')">PT</button>
-  <button onclick="setLanguage('en')">EN</button>
+  <button onclick="setLanguage('pt');reloadEpisode('assets/cap1-cap2-the-vault.html')">PT</button>
+  <button onclick="setLanguage('en');reloadEpisode('assets/cap1-cap2-the-vault-en.html')">EN</button>
 </div>
 
 <a href="../../index.html" class="home-link">HOME</a>
@@ -521,7 +532,7 @@ body{
   <aside class="right-panel">
 
     <div class="cover">
-      <img src="/assets/ChatGPT Image 4 de jun. de 2026, 10_50_28.png" alt="The Vault Poster">
+      <img src="/assets/the-vaul-poster.png" alt="The Vault Poster">
     </div>
 
     <div data-lang="pt">
@@ -536,6 +547,8 @@ como O Véu. Nossas rotinas, dores e memórias são linhas de comando feitas
 para mascarar o processamento de dados em tempo real.A história começa quando O Intruso, 
 um arquivista humano comum, desperta ao ouvir o zumbido estático do clock do processador.
       </div>
+
+      <div>  <a class="pdf-btn-screen" href="screenplay.pdf" download>Screenplay PDF (PT-BR)</a></div>
 
 <div class="author">
  <pre>Created by
@@ -568,6 +581,7 @@ Our routines, pains, and memories are command lines designed to mask real-time d
 The story begins when The Intruder, an ordinary human archivist, 
 awakens upon hearing the static hum of the processor's clock.
       </div>
+          <div>  <a class="pdf-btn-screen" href="screenplay.pdf" download>Screenplay PDF (PT-BR)</a></div>
 
       <div class="author">
  <pre>Created by
@@ -603,7 +617,7 @@ Human + AI Collaboration
       Você pode baixar esta história gratuitamente.
       Caso deseje, também pode colaborar voluntariamente com o projeto.
     </p>
-     <a class="pdf-btn" href="historia.pdf" download>Baixar PDF Gratuito</a>
+     <a class="pdf-btn" href="the-vault-pt.pdf" download>Baixar PDF Gratuito</a>
     <hr>
 
     <h2>Colaboração voluntária</h2>
@@ -640,7 +654,7 @@ Human + AI Collaboration
      You can download this story free of charge.
   If you wish, you may also support the project through a voluntary contribution.
     </p>
-     <a class="pdf-btn" href="historia.pdf" download>Download Free PDF</a>
+     <a class="pdf-btn" href="the-vault-en.pdf" download>Download Free PDF</a>
     <hr>
 
     <h2>Voluntary Contribution</h2>
@@ -686,11 +700,8 @@ setLanguage(savedLanguage);
 
 function loadEpisode(url, button){
   const frame = document.getElementById("episodeFrame");
- // const openLink = document.getElementById("openIsolated");
   const label = document.getElementById("currentEpisodeLabel");
-
   frame.src = url;
-//  openLink.href = url;
 
   document.querySelectorAll(".episode-button").forEach(btn=>{
     btn.classList.remove("active");
@@ -702,9 +713,9 @@ function loadEpisode(url, button){
   }
 }
 
-function reloadEpisode(){
+function reloadEpisode(src){
   const frame = document.getElementById("episodeFrame");
-  frame.src = frame.src;
+  frame.src = src;
 }
 
 function openPopup(){
@@ -796,8 +807,14 @@ function loadBtPDF(){
   }
 }
 
-loadBtPDF();
 
+function firstFrameEpisode(){
+if(localStorage.getItem("horizonLanguage") == "pt"){
+reloadEpisode("assets/cap1-cap2-the-vault.html") } else
+  { reloadEpisode("assets/cap1-cap2-the-vault-en.html")  }
+}
+loadBtPDF();
+firstFrameEpisode();
 </script>
 
 </body>
