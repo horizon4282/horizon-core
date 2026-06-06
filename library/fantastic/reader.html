@@ -392,8 +392,8 @@ body{
 <body>
 
 <div class="language-switch">
-  <button onclick="setLanguage('pt');reloadEpisode('assets/cap1-cap2-the-vault.html')">PT</button>
-  <button onclick="setLanguage('en');reloadEpisode('assets/cap1-cap2-the-vault-en.html')">EN</button>
+  <button onclick="setLanguage('pt');reloadEpisode('/library/fantastic/assets/cap1-cap2-the-vault.html')">PT</button>
+  <button onclick="setLanguage('en');reloadEpisode('/library/fantastic/assets/cap1-cap2-the-vault-en.html')">EN</button>
 </div>
 
 <a href="../../index.html" class="home-link">HOME</a>
@@ -810,8 +810,8 @@ function loadBtPDF(){
 
 function firstFrameEpisode(){
 if(localStorage.getItem("horizonLanguage") == "pt"){
-reloadEpisode("assets/cap1-cap2-the-vault.html") } else
-  { reloadEpisode("assets/cap1-cap2-the-vault-en.html")  }
+reloadEpisode("/library/fantastic/assets/cap1-cap2-the-vault.html") } else
+  { reloadEpisode("/library/fantastic/assets/cap1-cap2-the-vault-en.html")  }
 }
 loadBtPDF();
 firstFrameEpisode();
