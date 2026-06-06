@@ -270,7 +270,7 @@ body{
   background:#e0392d;
   color:#fff;
   text-decoration:none;
-  cursor:pointer;
+   cursor:pointer;
   display: block;
 }
 
@@ -548,7 +548,7 @@ para mascarar o processamento de dados em tempo real.A história começa quando 
 um arquivista humano comum, desperta ao ouvir o zumbido estático do clock do processador.
       </div>
 
-      <div>  <a class="pdf-btn-screen" href="screenplay.pdf" download>Screenplay PDF (PT-BR)</a></div>
+      <div>  <a class="pdf-btn-screen" download onclick="openPopupscrPlay()">Screenplay PDF (PT-BR)</a></div>
 
 <div class="author">
  <pre>Created by
@@ -643,6 +643,42 @@ Human + AI Collaboration
 
 
 
+<div id="popup-scrPlay" class="popup-overlay">
+  <div class="popup-box">
+
+    <button class="close-btn" onclick="closePopupscrPlay()">×</button>
+
+    <h2>Baixar ScreenPlay em PDF</h2>
+
+    <p>
+     Você pode baixar o Screenplay completo do filme gratuitamente.
+      Caso deseje, também pode colaborar voluntariamente com o projeto.
+    </p>
+     <a class="pdf-btn" href="https://f005.backblazeb2.com/file/horizon4282/screenplay-the-vault.pdf" download>Download Free PDF</a>
+    <hr>
+
+    <h2>Colaboração voluntária</h2>
+ <p>
+   A sua colaboração nos ajuda a manter o projeto vivo e criação de novas obras.
+   Toda contribuição é bem-vinda, independentemente do valor. ❤️<br>
+   Deus abençoe grandemente. 🙏
+
+    <img class="qrcode" src="/assets/qr-code-horizon.jpg" alt="QR Code para colaboração voluntária">
+
+  <p id="pixKey-scrPlay" style="display:none;">
+00020126580014br.gov.bcb.pix013640ec89d6-130d-4c29-ba37-8fce9d8dc6fe5204000053039865802BR5924Roque Fernando Marcos So6009Sao Paulo62230519daqr6151064563851776304688F
+</p>
+
+<button class="pix-btn" onclick="copyPixscrPlay()">
+📋 Copiar Chave PIX
+</button>
+
+<div id="copyMessage-scrPlay"></div>
+  </div>
+
+</div>
+
+
 <div id="popup-en" class="popup-overlay">
   <div class="popup-box">
 
@@ -734,6 +770,15 @@ function closePopupEn(){
   document.getElementById("popup-en").classList.remove("active");
 }
 
+function openPopupscrPlay(){
+  document.getElementById("popup-scrPlay").classList.add("active");
+}
+
+function closePopupscrPlay(){
+  document.getElementById("popup-scrPlay").classList.remove("active");
+}
+
+
 function copyPix(){
 
     const chave =
@@ -791,6 +836,37 @@ function copyPixEn(){
         document.getElementById("copyMessage-en")
         .innerHTML =
         "❌ Sorry, could not be copied.";
+
+    });
+
+}
+
+function copyPixscrPlay(){
+
+    const chave =
+        document.getElementById("pixKey-en")
+        .innerText
+        .trim();
+
+    navigator.clipboard.writeText(chave)
+    .then(() => {
+
+      
+        document.getElementById("copyMessage-scrPlay")
+        .innerHTML =
+        "✅ Chave PIX Copiada!";
+
+      setTimeout(() => {
+        document.getElementById("copyMessage-scrPlay")
+        .innerHTML ="";
+    }, 3000);
+
+    })
+    .catch(() => {
+
+        document.getElementById("copyMessage-scrPlay")
+        .innerHTML =
+        "❌ O código não foi copiado :(.";
 
     });
 
