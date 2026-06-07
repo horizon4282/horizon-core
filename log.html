@@ -4,10 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Horizon 4282 - Development Log</title>
+<title>Development Log | Horizon 4282</title>
+
+<meta name="description" content="Official Development Log of Horizon 4282, documenting the ongoing Human + AI creative collaboration.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://horizon4282.com.br/log.html">
 
 <style>
-
 *{
   margin:0;
   padding:0;
@@ -15,130 +18,25 @@
 }
 
 body{
-
-  background:
-    radial-gradient(
-      circle at center,
-      #132445 0%,
-      #09101f 55%,
-      #000 100%
-    );
-
+  background:radial-gradient(circle at center,#132445 0%,#09101f 55%,#000 100%);
   color:#d5ecff;
-
-  font-family:
-    "Courier New",
-    monospace;
-
+  font-family:"Courier New", monospace;
   min-height:100vh;
-
-}
-
-.header{
-
-  padding:60px 40px 30px;
-
-  text-align:center;
-
-  border-bottom:
-    1px solid rgba(255,255,255,0.08);
-
-}
-
-.header h1{
-
-  font-size:58px;
-
-  letter-spacing:8px;
-
-  margin-bottom:12px;
-
-}
-
-.header p{
-
-  color:#8dbfff;
-
-  letter-spacing:3px;
-
-}
-
-.container{
-
-  max-width:1000px;
-
-  margin:auto;
-
-  padding:50px 30px 100px;
-
-}
-
-.day{
-
-  margin-bottom:50px;
-
-  padding-bottom:40px;
-
-  border-bottom:
-    1px solid rgba(255,255,255,0.06);
-
-}
-
-.day-title{
-
-  color:#7fd3ff;
-
-  font-size:22px;
-
-  letter-spacing:4px;
-
-  margin-bottom:20px;
-
-}
-
-.section{
-
-  margin-top:15px;
-  margin-bottom:15px;
-
-}
-
-.label{
-
-  color:#ffd97a;
-
-}
-
-.status{
-
-  margin-top:15px;
-
-  color:#90ffb3;
-
 }
 
 .home-link{
-
   position:fixed;
-
   top:25px;
   left:25px;
-
   color:#7fd3ff;
-
   text-decoration:none;
-
   letter-spacing:3px;
-
   font-size:13px;
-
+  z-index:1000;
 }
 
 .home-link:hover{
-
-  text-shadow:
-    0 0 12px rgba(127,211,255,0.8);
-
+  text-shadow:0 0 12px rgba(127,211,255,0.8);
 }
 
 .language-switch{
@@ -160,345 +58,625 @@ body{
   letter-spacing:2px;
 }
 
+.header{
+  padding:70px 40px 35px;
+  text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.header h1{
+  font-size:58px;
+  letter-spacing:8px;
+  margin-bottom:12px;
+}
+
+.header p{
+  color:#8dbfff;
+  letter-spacing:3px;
+  margin-bottom:14px;
+}
+
+.project-day{
+  color:#ffd97a;
+  letter-spacing:3px;
+  font-size:14px;
+}
+
+.container{
+  max-width:1050px;
+  margin:auto;
+  padding:50px 30px 100px;
+}
+
+.status-panel{
+  border:1px solid rgba(127,211,255,.18);
+  background:rgba(0,0,0,.25);
+  padding:26px;
+  margin-bottom:55px;
+}
+
+.status-panel h2{
+  color:#7fd3ff;
+  letter-spacing:4px;
+  font-size:20px;
+  margin-bottom:18px;
+}
+
+.status-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+
+.status-item{
+  color:#d5ecff;
+  line-height:1.6;
+}
+
+.status-item span{
+  color:#ffd97a;
+}
+
+.day{
+  margin-bottom:55px;
+  padding-bottom:42px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.day-title{
+  color:#7fd3ff;
+  font-size:22px;
+  letter-spacing:4px;
+  margin-bottom:22px;
+}
+
+.section{
+  margin-top:16px;
+  margin-bottom:16px;
+  line-height:1.7;
+}
+
+.label{
+  color:#ffd97a;
+}
+
+.features{
+  margin-top:18px;
+  line-height:1.8;
+}
+
+.status{
+  margin-top:18px;
+  color:#90ffb3;
+  letter-spacing:2px;
+}
+
+.note{
+  margin-top:20px;
+  color:#b8d8ff;
+  line-height:1.7;
+  border-left:2px solid rgba(127,211,255,.35);
+  padding-left:18px;
+}
+
+[data-lang]{
+  display:none;
+}
+
+@media(max-width:700px){
+  .header h1{
+    font-size:36px;
+  }
+
+  .home-link{
+    position:absolute;
+  }
+
+  .language-switch{
+    position:absolute;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<a href="index.html" class="home-link">
-← HOME
-</a>
-
+<a href="index.html" class="home-link">← HOME</a>
 
 <div class="language-switch">
   <button onclick="setLanguage('pt')">PT</button>
   <button onclick="setLanguage('en')">EN</button>
 </div>
 
-
 <div class="header">
-
   <h1>HORIZON 4282</h1>
-
-  <p>
-    DEVELOPMENT LOG
-  </p>
-
+  <p>DEVELOPMENT LOG</p>
+  <div class="project-day">PROJECT DAY 008 / 5000</div>
 </div>
 
+<!-- ENGLISH -->
 <div class="container" data-lang="en">
 
+  <div class="status-panel">
+    <h2>PROJECT STATUS</h2>
+    <div class="status-grid">
+      <div class="status-item"><span>Days Logged:</span><br>8</div>
+      <div class="status-item"><span>Public Pages:</span><br>Index, Open Library, Log, Core</div>
+      <div class="status-item"><span>Languages:</span><br>PT / EN</div>
+      <div class="status-item"><span>Storage:</span><br>Backblaze B2 Online</div>
+      <div class="status-item"><span>Search:</span><br>Google Indexing Active</div>
+      <div class="status-item"><span>First Product:</span><br>The Vault</div>
+    </div>
+  </div>
+
   <div class="day">
+    <div class="day-title">DAY 001 — FOUNDATION</div>
 
-    <div class="day-title">
-      DAY 001 - FOUNDATION
-    </div>
-
-    <div class="section">
-
-      First public version of Horizon.
-
-    </div>
+    <div class="section">First public version of Horizon.</div>
 
     <div class="section">
-
       <span class="label">Human:</span><br>
       Registered the domain horizon4282.com.br<br>
-      Setup CloudFlare<br>
+      Set up Cloudflare<br>
       Configured GitHub Pages<br>
       Defined the project vision
-
     </div>
 
     <div class="section">
-
       <span class="label">AI:</span><br>
       Structured the initial portal<br>
       Created the visual architecture<br>
       Defined the terminal foundation
-
     </div>
 
-    <div class="status">
-
-      STATUS: ONLINE
-
-    </div>
-
+    <div class="status">STATUS: ONLINE</div>
   </div>
 
   <div class="day">
+    <div class="day-title">DAY 002 — TERMINAL</div>
 
-    <div class="day-title">
-      DAY 002 - TERMINAL
-    </div>
-
-    <div class="section">
-
-      Hidden terminal implementation.
-
-    </div>
+    <div class="section">Hidden terminal implementation.</div>
 
     <div class="section">
-
       <span class="label">Human:</span><br>
       Defined command-based navigation
-
     </div>
 
     <div class="section">
-
       <span class="label">AI:</span><br>
       Implemented secret terminal<br>
       Added simulated typing<br>
       Created the initial command system
-
     </div>
 
-    <div class="status">
-
-      STATUS: ACTIVE
-
-    </div>
-
+    <div class="status">STATUS: ACTIVE</div>
   </div>
 
   <div class="day">
+    <div class="day-title">DAY 003 — DIMENSIONAL SYSTEM</div>
 
-    <div class="day-title">
-      DAY 003 - DIMENSIONAL SYSTEM
-    </div>
-
-    <div class="section">
-
-      Dimensional system activated.
-
-    </div>
+    <div class="section">Dimensional system activated.</div>
 
     <div class="section">
-
       <span class="label">Human:</span><br>
       Selected Horizon universe artwork
-
     </div>
 
     <div class="section">
-
       <span class="label">AI:</span><br>
       Implemented portal command<br>
       Implemented scan command<br>
       Implemented breach command<br>
       Implemented archive system
-
     </div>
 
-    <div class="status">
-
-      STATUS: PORTAL OPEN
-
-    </div>
-
+    <div class="status">STATUS: PORTAL OPEN</div>
   </div>
 
-    <div class="day">
+  <div class="day">
+    <div class="day-title">DAY 004 — DEVELOPMENT LOG</div>
 
-    <div class="day-title">
-      DAY 004 - DEVELOPMENT LOG
-    </div>
-
-    <div class="section">
-
-      First public version of the Development Log..
-
-    </div>
+    <div class="section">First public version of the Development Log.</div>
 
     <div class="section">
-
       <span class="label">Human:</span><br>
-      Defined the Development Log as a visible element for end users.<br>
-      Established native PT/EN support across the Horizon ecosystem.<br>
-      Defined the Development Log as the official record of the Human + AI collaboration.
-
+      Defined the Development Log as a visible element for end users<br>
+      Established native PT/EN support across the Horizon ecosystem<br>
+      Defined the Development Log as the official record of the Human + AI collaboration
     </div>
 
     <div class="section">
-
       <span class="label">AI:</span><br>
-      Structured the shared language system.<br>
-      Standardized the internationalization mechanism.<br>
-      Prepared the log architecture for future expansion over the 5,000-day project timeline.
-
+      Structured the shared language system<br>
+      Standardized the internationalization mechanism<br>
+      Prepared the log architecture for future expansion over the 5,000-day project timeline
     </div>
 
-    <div class="status">
+    <div class="status">STATUS: LOG ONLINE</div>
 
-      STATUS:LOG ONLINE
-
+    <div class="note">
+      <span class="label">Project Note:</span><br>
+      The Development Log serves as the official historical record of Horizon 4282 and documents the ongoing collaboration between a human creator and an AI system.
     </div>
-<div>
-
-<div  class="status">  
-   <span class="label">Project Note:</span>
-The Development Log serves as the official historical record of Horizon 4282 and documents the ongoing collaboration between a human creator and an AI system.
-</div>
-</div>
-</div>
-
-</div>
-  
-
-<div class="container"  data-lang="pt">
+  </div>
 
   <div class="day">
+    <div class="day-title">DAY 005 — OPEN LIBRARY GUIDE</div>
 
-    <div class="day-title">
-      DAY 001 - FUNDAÇÃO
-    </div>
-
-    <div class="section">
-
-      Primeira versão pública do Horizon.
-
-    </div>
+    <div class="section">Creation of the Open Library public navigation layer.</div>
 
     <div class="section">
-
       <span class="label">Human:</span><br>
+      Defined Open Library as the central hub for Horizon dimensions<br>
+      Designed the user navigation model for end users and hard users<br>
+      Established the first public library structure
+    </div>
+
+    <div class="section">
+      <span class="label">AI:</span><br>
+      Structured the Open Library architecture<br>
+      Proposed reusable category and card models<br>
+      Organized the library into multiple creative dimensions
+    </div>
+
+    <div class="features">
+      <span class="label">Features Released:</span><br>
+      ✓ Fantastic Reading<br>
+      ✓ Graphic Novel<br>
+      ✓ Pray Music<br>
+      ✓ Culture Music<br>
+      ✓ Deep Mind AI<br>
+      ✓ Courses<br>
+      ✓ Human Aspects<br>
+      ✓ Pray Reader<br>
+      ✓ Comic Pray Kids<br>
+      ✓ Games<br>
+      ✓ Utils<br>
+      ✓ Digital Museum Horizon
+    </div>
+
+    <div class="status">STATUS: OPEN LIBRARY ONLINE</div>
+  </div>
+
+  <div class="day">
+    <div class="day-title">DAY 006 — THE VAULT</div>
+
+    <div class="section">Launch of the first public Horizon 4282 product.</div>
+
+    <div class="section">
+      <span class="label">Human:</span><br>
+      Published the first narrative of the Horizon universe<br>
+      Defined The Vault as the flagship Fantastic Reading collection<br>
+      Structured the content ecosystem around the project
+    </div>
+
+    <div class="section">
+      <span class="label">AI:</span><br>
+      Assisted with narrative structure<br>
+      Supported worldbuilding and content organization<br>
+      Helped design the reading experience and extras
+    </div>
+
+    <div class="features">
+      <span class="label">Features Released:</span><br>
+      ✓ PT Version<br>
+      ✓ EN Version<br>
+      ✓ Book Reader<br>
+      ✓ PDF Download<br>
+      ✓ Bible References<br>
+      ✓ Character Profiles<br>
+      ✓ Screenplay for Cinema
+    </div>
+
+    <div class="status">STATUS: THE VAULT RELEASED</div>
+  </div>
+
+  <div class="day">
+    <div class="day-title">DAY 007 — STORAGE INFRASTRUCTURE</div>
+
+    <div class="section">Deployment of external storage infrastructure.</div>
+
+    <div class="section">
+      <span class="label">Human:</span><br>
+      Configured Backblaze B2 cloud storage<br>
+      Organized project assets and public files<br>
+      Established scalable storage for images and PDFs
+    </div>
+
+    <div class="section">
+      <span class="label">AI:</span><br>
+      Assisted with infrastructure planning<br>
+      Recommended storage organization strategies<br>
+      Defined asset management best practices
+    </div>
+
+    <div class="features">
+      <span class="label">Features Released:</span><br>
+      ✓ Image Storage<br>
+      ✓ PDF Storage<br>
+      ✓ Public Asset Hosting<br>
+      ✓ Open Library Asset Delivery
+    </div>
+
+    <div class="status">STATUS: STORAGE ONLINE</div>
+  </div>
+
+  <div class="day">
+    <div class="day-title">DAY 008 — SEARCH INDEXING</div>
+
+    <div class="section">First public search engine indexing configuration.</div>
+
+    <div class="section">
+      <span class="label">Human:</span><br>
+      Created and configured Google Search Console<br>
+      Submitted sitemap.xml<br>
+      Connected Horizon 4282 to Google indexing infrastructure
+    </div>
+
+    <div class="section">
+      <span class="label">AI:</span><br>
+      Structured SEO metadata<br>
+      Created Open Graph strategy<br>
+      Prepared sitemap and robots configuration<br>
+      Designed the social sharing image strategy
+    </div>
+
+    <div class="features">
+      <span class="label">Features Released:</span><br>
+      ✓ Sitemap.xml<br>
+      ✓ robots.txt<br>
+      ✓ Open Graph<br>
+      ✓ Social Card<br>
+      ✓ Google Search Console<br>
+      ✓ Search Indexing Pipeline
+    </div>
+
+    <div class="status">STATUS: GOOGLE INDEXING ACTIVE</div>
+  </div>
+
+</div>
+
+<!-- PORTUGUÊS -->
+<div class="container" data-lang="pt">
+
+  <div class="status-panel">
+    <h2>STATUS DO PROJETO</h2>
+    <div class="status-grid">
+      <div class="status-item"><span>Dias registrados:</span><br>8</div>
+      <div class="status-item"><span>Páginas públicas:</span><br>Index, Open Library, Log, Core</div>
+      <div class="status-item"><span>Idiomas:</span><br>PT / EN</div>
+      <div class="status-item"><span>Storage:</span><br>Backblaze B2 Online</div>
+      <div class="status-item"><span>Busca:</span><br>Indexação Google ativa</div>
+      <div class="status-item"><span>Primeiro produto:</span><br>The Vault</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-title">DIA 001 — FUNDAÇÃO</div>
+
+    <div class="section">Primeira versão pública do Horizon.</div>
+
+    <div class="section">
+      <span class="label">Humano:</span><br>
       Registrou o domínio horizon4282.com.br<br>
-      Conectou CloudFlare<br>
+      Conectou Cloudflare<br>
       Configurou GitHub Pages<br>
       Definiu a visão do projeto
-
     </div>
 
     <div class="section">
-
-      <span class="label">AI:</span><br>
+      <span class="label">IA:</span><br>
       Estruturou o portal inicial<br>
       Criou a arquitetura visual<br>
       Definiu a base do terminal
-
     </div>
 
-    <div class="status">
-
-      STATUS: ONLINE
-
-    </div>
-
+    <div class="status">STATUS: ONLINE</div>
   </div>
 
   <div class="day">
+    <div class="day-title">DIA 002 — TERMINAL</div>
 
-    <div class="day-title">
-      DAY 002 - TERMINAL
-    </div>
-
-    <div class="section">
-
-      Implementação do terminal oculto.
-
-    </div>
+    <div class="section">Implementação do terminal oculto.</div>
 
     <div class="section">
-
-      <span class="label">Human:</span><br>
+      <span class="label">Humano:</span><br>
       Definiu navegação por comandos
-
     </div>
 
     <div class="section">
-
-      <span class="label">AI:</span><br>
+      <span class="label">IA:</span><br>
       Implementou terminal secreto<br>
-      Digitação simulada<br>
-      Sistema inicial de comandos
-
+      Adicionou digitação simulada<br>
+      Criou o sistema inicial de comandos
     </div>
 
-    <div class="status">
-
-      STATUS: ACTIVE
-
-    </div>
-
+    <div class="status">STATUS: ACTIVE</div>
   </div>
 
   <div class="day">
+    <div class="day-title">DIA 003 — SISTEMA DIMENSIONAL</div>
 
-    <div class="day-title">
-      DAY 003 - SISTEMA DIMENSIONAL
-    </div>
-
-    <div class="section">
-
-      Sistema dimensional ativado.
-
-    </div>
+    <div class="section">Sistema dimensional ativado.</div>
 
     <div class="section">
-
-      <span class="label">Human:</span><br>
+      <span class="label">Humano:</span><br>
       Selecionou artes do universo Horizon
-
     </div>
 
     <div class="section">
-
-      <span class="label">AI:</span><br>
+      <span class="label">IA:</span><br>
       Implementou comando portal<br>
       Implementou comando scan<br>
       Implementou comando breach<br>
       Implementou sistema de arquivos
-
     </div>
 
-    <div class="status">
-
-      STATUS: PORTAL OPEN
-
-    </div>
-
+    <div class="status">STATUS: PORTAL OPEN</div>
   </div>
 
   <div class="day">
+    <div class="day-title">DIA 004 — DEVELOPMENT LOG</div>
 
-    <div class="day-title">
-      DAY 004 - DEVELOPMENT LOG
+    <div class="section">Primeira versão pública do Development Log.</div>
+
+    <div class="section">
+      <span class="label">Humano:</span><br>
+      Definiu o Development Log como elemento visível para usuários finais<br>
+      Estabeleceu suporte nativo PT/EN no ecossistema Horizon<br>
+      Definiu o Log como registro oficial da colaboração Humano + IA
     </div>
 
     <div class="section">
-
-      Primeira versão pública do Development Log.
-
+      <span class="label">IA:</span><br>
+      Estruturou o sistema compartilhado de idiomas<br>
+      Padronizou o mecanismo de internacionalização<br>
+      Preparou a arquitetura do Log para expansão futura ao longo do projeto de 5.000 dias
     </div>
 
-    <div class="section">
+    <div class="status">STATUS: LOG ONLINE</div>
 
-      <span class="label">Human:</span><br>
-Definiu o log como elemento visível para o usuário final.<br>
-Definiu suporte nativo a PT/EN.
-
-    </div>
-
-    <div class="section">
-
-      <span class="label">AI:</span><br>
-Estruturou o sistema de idiomas compartilhado.<br>
-Padronizou o mecanismo de internacionalização.
-
-    </div>
-
-    <div class="status">
-
-      STATUS: LOG ONLINE
-
+    <div class="note">
+      <span class="label">Nota do Projeto:</span><br>
+      O Development Log serve como registro histórico oficial do Horizon 4282 e documenta a colaboração contínua entre um criador humano e um sistema de IA.
     </div>
   </div>
-</div>
 
-</body>
-</html>
+  <div class="day">
+    <div class="day-title">DIA 005 — OPEN LIBRARY GUIDE</div>
+
+    <div class="section">Criação da camada pública de navegação da Open Library.</div>
+
+    <div class="section">
+      <span class="label">Humano:</span><br>
+      Definiu a Open Library como hub central das dimensões do Horizon<br>
+      Desenhou o modelo de navegação para usuários finais e exploradores técnicos<br>
+      Estabeleceu a primeira estrutura pública da biblioteca
+    </div>
+
+    <div class="section">
+      <span class="label">IA:</span><br>
+      Estruturou a arquitetura da Open Library<br>
+      Propôs modelos reutilizáveis de categorias e cards<br>
+      Organizou a biblioteca em múltiplas dimensões criativas
+    </div>
+
+    <div class="features">
+      <span class="label">Recursos lançados:</span><br>
+      ✓ Leitura Fantástica<br>
+      ✓ Graphic Novel<br>
+      ✓ Pray Music<br>
+      ✓ Culture Music<br>
+      ✓ Deep Mind IA<br>
+      ✓ Courses<br>
+      ✓ Human Aspects<br>
+      ✓ Pray Reader<br>
+      ✓ Comic Pray Kids<br>
+      ✓ Jogos<br>
+      ✓ Utils<br>
+      ✓ Digital Museum Horizon
+    </div>
+
+    <div class="status">STATUS: OPEN LIBRARY ONLINE</div>
+  </div>
+
+  <div class="day">
+    <div class="day-title">DIA 006 — THE VAULT</div>
+
+    <div class="section">Lançamento do primeiro produto público do Horizon 4282.</div>
+
+    <div class="section">
+      <span class="label">Humano:</span><br>
+      Publicou a primeira narrativa do universo Horizon<br>
+      Definiu The Vault como coleção principal de Leitura Fantástica<br>
+      Estruturou o ecossistema de conteúdo ao redor do projeto
+    </div>
+
+    <div class="section">
+      <span class="label">IA:</span><br>
+      Auxiliou na estrutura narrativa<br>
+      Apoiou a construção de mundo e a organização do conteúdo<br>
+      Ajudou no desenho da experiência de leitura e extras
+    </div>
+
+    <div class="features">
+      <span class="label">Recursos lançados:</span><br>
+      ✓ Versão PT<br>
+      ✓ Versão EN<br>
+      ✓ Book Reader<br>
+      ✓ Download do PDF<br>
+      ✓ Referências Bíblicas<br>
+      ✓ Perfil dos Personagens<br>
+      ✓ Screenplay para Cinema
+    </div>
+
+    <div class="status">STATUS: THE VAULT RELEASED</div>
+  </div>
+
+  <div class="day">
+    <div class="day-title">DIA 007 — STORAGE INFRASTRUCTURE</div>
+
+    <div class="section">Implantação da infraestrutura externa de armazenamento.</div>
+
+    <div class="section">
+      <span class="label">Humano:</span><br>
+      Configurou o Backblaze B2 Cloud Storage<br>
+      Organizou os assets e arquivos públicos do projeto<br>
+      Estabeleceu armazenamento escalável para imagens e PDFs
+    </div>
+
+    <div class="section">
+      <span class="label">IA:</span><br>
+      Auxiliou no planejamento da infraestrutura<br>
+      Recomendou estratégias de organização de storage<br>
+      Definiu boas práticas de gerenciamento de assets
+    </div>
+
+    <div class="features">
+      <span class="label">Recursos lançados:</span><br>
+      ✓ Storage de imagens<br>
+      ✓ Storage de PDFs<br>
+      ✓ Hospedagem pública de assets<br>
+      ✓ Entrega de arquivos da Open Library
+    </div>
+
+    <div class="status">STATUS: STORAGE ONLINE</div>
+  </div>
+
+  <div class="day">
+    <div class="day-title">DIA 008 — SEARCH INDEXING</div>
+
+    <div class="section">Primeira configuração pública de indexação nos mecanismos de busca.</div>
+
+    <div class="section">
+      <span class="label">Humano:</span><br>
+      Criou e configurou o Google Search Console<br>
+      Enviou o sitemap.xml<br>
+      Conectou o Horizon 4282 à infraestrutura de indexação do Google
+    </div>
+
+    <div class="section">
+      <span class="label">IA:</span><br>
+      Estruturou os metadados de SEO<br>
+      Criou a estratégia de Open Graph<br>
+      Preparou a configuração de sitemap e robots<br>
+      Desenhou a estratégia de imagem para compartilhamento social
+    </div>
+
+    <div class="features">
+      <span class="label">Recursos lançados:</span><br>
+      ✓ Sitemap.xml<br>
+      ✓ robots.txt<br>
+      ✓ Open Graph<br>
+      ✓ Social Card<br>
+      ✓ Google Search Console<br>
+      ✓ Pipeline de indexação
+    </div>
+
+    <div class="status">STATUS: GOOGLE INDEXING ACTIVE</div>
+  </div>
+
+</div>
 
 <script>
 function setLanguage(lang){
@@ -520,5 +698,5 @@ const savedLanguage =
 setLanguage(savedLanguage);
 </script>
 
-
-
+</body>
+</html>
