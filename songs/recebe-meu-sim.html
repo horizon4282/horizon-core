@@ -135,6 +135,49 @@ body{
   border:0;
   display:block;
 }
+
+.share-btn{
+
+  background:transparent;
+
+  border:1px solid rgba(245,214,135,.35);
+
+  color:#f5d687;
+
+  padding:12px 20px;
+
+  cursor:pointer;
+
+  letter-spacing:2px;
+
+  font-family:"Courier New", monospace;
+
+  transition:.3s;
+
+}
+
+.share-btn:hover{
+
+  background:#f5d687;
+
+  color:#000;
+
+}
+
+.horizon-divider{
+
+  text-align:left;
+
+  color:#d4b26a;
+
+  letter-spacing:6px;
+
+  margin:10px 0;
+
+  font-size:12px;
+
+}
+
 @media(max-width:900px){
   .layout{
     grid-template-columns:1fr;
@@ -146,7 +189,7 @@ body{
 <body>
 
 <div class="topbar">
-  <a href="luz-e-louvor.html">← VOLTAR</a>
+  <a href="/luz-e-louvor.html">← VOLTAR</a>
   <button id="langBtn">EN</button>
 </div>
 
@@ -156,8 +199,8 @@ body{
     MINISTÉRIO LUZ E LOUVOR
   </div>
 
-  <h1 data-pt="NOME DA CANÇÃO" data-en="SONG TITLE">
-    NOME DA CANÇÃO
+  <h1 data-pt="RECEBE MEU SIM" data-en="RECEBE MEU SIM">
+    RECEBE MEU SIM
   </h1>
 
   <p data-pt="Letra, cifra e informações oficiais da canção."
@@ -276,6 +319,38 @@ Me leva às águas profundas
 Espírito, Espírito Santo
 Liberta, cura e renova
 Recebe hoje o meu SIM </pre>
+
+<div class="horizon-divider">
+◉────────────── HORIZON 4282 ──────────────◉
+</div>
+
+<pre>✨ Recebe Hoje o Meu Sim ✨
+
+Uma canção de entrega, confiança e amor ao Deus que nunca
+abandona aqueles que caminham pela fé.
+Este louvor nasceu como uma oração sincera de quem deseja
+abrir o coração para a vontade do Senhor e dizer: “Eis-me aqui.” 🤍
+
+🙏 Que esta música fortaleça sua esperança, renove sua fé e aproxime 
+sua alma da presença de Deus.
+
+🎵 Ministério Luz e Louvor
+
+As letras desta canção foram inspiradas em reflexões espirituais
+e mensagens voltadas ao amor, à fé e à entrega total ao Senhor.
+
+Os cantores, vozes e instrumentos apresentados nesta produção são 
+criações digitais desenvolvidas com auxílio de Inteligência Artificial, 
+utilizada como ferramenta artística para compartilhar mensagens cristãs 
+através da música.
+
+🕊️ Ouça, compartilhe e permita que esta mensagem alcance mais vidas.
+</pre>
+    </div>
+    <div>
+      <button data-pt="COMPARTILHAR" data-en="SHARING" class="share-btn" onclick="sharePage()">
+📤 COMPARTILHAR
+</button>
     </div>
   </section>
 
@@ -287,11 +362,28 @@ Recebe hoje o meu SIM </pre>
       </div>
 
       <div class="info-list">
-        <div><span data-pt="Álbum:" data-en="Album:">Álbum:</span> Tua Aliança</div>
-        <div><span data-pt="Ano:" data-en="Year:">Ano:</span> 2026</div>
-        <div><span data-pt="Tom:" data-en="Key:">Tom:</span> G</div>
+        
+        <div><span data-pt="Álbum:" data-en="Album:">Álbum:</span> Recebe meu Sim</div>
+        <div><span data-pt="Ano:" data-en="Year:">Ano:</span> 2025</div>
+        <div><span data-pt="Tom:" data-en="Key:">Tom:</span> Dm</div>
         <div><span data-pt="Estilo:" data-en="Style:">Estilo:</span> Adoração</div>
         <div><span data-pt="Ministério:" data-en="Ministry:">Ministério:</span> Luz e Louvor</div>
+            <button data-pt="COMPARTILHAR" data-en="SHARING" class="share-btn" onclick="sharePage()">
+📤 COMPARTILHAR
+</button>
+ <section class="panel" style="margin-top:30px;">
+      <div class="section-title" data-pt="OUÇA TAMBÉM" data-en="LISTEN ALSO">
+        OUÇA TAMBÉM
+      </div>
+
+      <div class="streaming">
+        <a href="#">SPOTIFY</a>
+        <a href="#">YOUTUBE</a>
+        <a href="#">DEEZER</a>
+        <a href="#">TIKTOK</a>
+      </div>
+    </section>
+
       </div>
     </section>
 
@@ -405,19 +497,6 @@ Recebe hoje o meu SIM
       </div>
     </section>
 
-    <section class="panel" style="margin-top:30px;">
-      <div class="section-title" data-pt="OUÇA TAMBÉM" data-en="LISTEN ALSO">
-        OUÇA TAMBÉM
-      </div>
-
-      <div class="streaming">
-        <a href="#">SPOTIFY</a>
-        <a href="#">YOUTUBE</a>
-        <a href="#">DEEZER</a>
-        <a href="#">TIKTOK</a>
-      </div>
-    </section>
-
   </aside>
 
 </main>
@@ -454,6 +533,42 @@ function loadAlbum(videoId){
 }
 
 loadAlbum("NbGZ6mCVDT8?si=m-9lOqhjhUBI-U2o")
+
+async function sharePage(){
+
+  const shareData = {
+
+    title: document.title,
+
+    text: document.title,
+
+    url: window.location.href
+
+  };
+
+  if(navigator.share){
+
+    try{
+
+      await navigator.share(shareData);
+
+    }catch(err){
+
+      console.log("Compartilhamento cancelado");
+
+    }
+
+  }else{
+
+    navigator.clipboard.writeText(
+      window.location.href
+    );
+
+    alert("Link copiado para a área de transferência.");
+
+  }
+
+}
 
 </script>
 
