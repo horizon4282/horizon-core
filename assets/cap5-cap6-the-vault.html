@@ -11,7 +11,7 @@
     margin:0;
     padding:0;
     background:#000;
-    font-family:Georgia, serif;    
+    font-family:courier;    
 }
 
 body::-webkit-scrollbar{
@@ -55,17 +55,16 @@ body::-webkit-scrollbar-thumb:hover{
     aspect-ratio: 1 / 1.414; /* proporção A4 */
     min-height: 90vh;
     overflow-y:auto;
-        background:#e0e0e3;
-
-            border-radius:25px;
-            border: solid #454343 25px;
-
+    background:#FAFAF5;
+    color:#1A1A1A;
+    font-family:courier;
+    border-radius:25px;
+    border: solid #454343 25px;
     padding:18px;
-
     box-shadow:
-        inset 0 2px 4px rgba(255,255,255,.08),
-        inset 0 -3px 10px rgba(0,0,0,.8),
-        0 15px 40px rgba(0,0,0,.5);
+    inset 0 2px 4px rgba(255,255,255,.08),
+    inset 0 -3px 10px rgba(0,0,0,.8),
+    0 15px 40px rgba(0,0,0,.5);
 }
 .page pre{  
   
@@ -79,14 +78,41 @@ body::-webkit-scrollbar-thumb:hover{
   word-break:break-word;
 }
 
-@media (max-width:768px){
+.navigation{
+  text-align:right;
+  color:#1A1A1A;
+  font-family:Arial;
+}
+.reader-page{
+ color:#1A1A1A;
+font-family:courier;
+}
+
+.cap-title{
+  border-top:1px dashed #ccc;
+  border-bottom:1px dashed #ccc;
+  padding:12px 0 0 12px 0;
+  margin: 0 0 20px 0;
+}
+@media (max-width:894px){
   .page{
          border: solid #454343 18px;
          border-radius:18px;
+         background:#FAFAF5;
+         color:#1A1A1A;
     }
+ pre{
+  overflow-x:auto;
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    overflow-wrap:break-word;
+  }
 }
 
 
+</style>
 </style>
 
 <body>
