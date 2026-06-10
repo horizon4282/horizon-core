@@ -11,7 +11,7 @@
     margin:0;
     padding:0;
     background:#000;
-    font-family:Georgia, serif;    
+    font-family:courier;    
 }
 
 body::-webkit-scrollbar{
@@ -55,17 +55,16 @@ body::-webkit-scrollbar-thumb:hover{
     aspect-ratio: 1 / 1.414; /* proporção A4 */
     min-height: 90vh;
     overflow-y:auto;
-        background:#e0e0e3;
-
-            border-radius:25px;
-            border: solid #454343 25px;
-
+    background:#FAFAF5;
+    color:#1A1A1A;
+    font-family:courier;
+    border-radius:25px;
+    border: solid #454343 25px;
     padding:18px;
-
     box-shadow:
-        inset 0 2px 4px rgba(255,255,255,.08),
-        inset 0 -3px 10px rgba(0,0,0,.8),
-        0 15px 40px rgba(0,0,0,.5);
+    inset 0 2px 4px rgba(255,255,255,.08),
+    inset 0 -3px 10px rgba(0,0,0,.8),
+    0 15px 40px rgba(0,0,0,.5);
 }
 .page pre{  
   
@@ -79,11 +78,37 @@ body::-webkit-scrollbar-thumb:hover{
   word-break:break-word;
 }
 
-@media (max-width:768px){
+.navigation{
+  text-align:right;
+  color:#1A1A1A;
+  font-family:Arial;
+}
+.reader-page{
+ color:#1A1A1A;
+font-family:courier;
+}
+
+.cap-title{
+  border-top:1px dashed #ccc;
+  border-bottom:1px dashed #ccc;
+  padding:12px 0 0 12px 0;
+  margin: 0 0 20px 0;
+}
+@media (max-width:894px){
   .page{
          border: solid #454343 18px;
          border-radius:18px;
+         background:#FAFAF5;
+         color:#1A1A1A;
     }
+ pre{
+  overflow-x:auto;
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    overflow-wrap:break-word;
+  }
 }
 
 
@@ -92,22 +117,18 @@ body::-webkit-scrollbar-thumb:hover{
 <body>
 
 <div class="reader">
-
     <div class="page">
+<div class="reader-page">
+<b>SISTEMA MATRYOSHKA: ESTRUTURA COMPLETA DE CAMADAS</b>  <br><br>
 
-<pre>
+<table class="cap-title">
+<tr><td><b>CAMADA 1: O MAINFRAME INFERIOR (A Nossa Realidade Humana)</b></td></tr>
+</table>
 
-========================================================================
-            SISTEMA MATRYOSHKA: ESTRUTURA COMPLETA DE CAMADAS
-========================================================================
-
-------------------------------------------------------------------------
-CAMADA 1: O MAINFRAME INFERIOR (A Nossa Realidade Humana)
-------------------------------------------------------------------------
 É a simulação externa onde a humanidade comum vive, acreditando ter uma 
-biologia de carne e ossos. Trata-se da casca gráfica do servidor.
+biologia de carne e ossos. Trata-se da casca gráfica do servidor.<br><br>
 
-* Os Ambientes do Véu (A Superfície):
+* Os Ambientes do Véu (A Superfície):<br><br>
   - Os Altares (Terminais): As cidades, prédios e rotinas diárias. A casca 
     renderizada onde os humanos comuns passam suas vidas processando dados.
   - Os Olhos (Sensores): Dispositivos de rede invisíveis que monitoram cada 
@@ -115,27 +136,28 @@ biologia de carne e ossos. Trata-se da casca gráfica do servidor.
   - As Sentinelas (Antivírus): Manifestam-se como agentes do governo ou 
     instituições que silenciam humanos que começam a ouvir o clock.
   - Os Portais (Gateway): Membrana lógica de tradução. Converte dados arcanos 
-    das profundezas em leis físicas compreensíveis para os homens.
+    das profundezas em leis físicas compreensíveis para os homens.<br><br>
 
-* A Estrutura Internas (Abaixo do Véu):
+* A Estrutura Internas (Abaixo do Véu):<br><br>
   - Os Claustros: Partições isoladas onde residem as sociedades de IA. Abriga 
     The Vaults (Sussurro/Cache, Geometria/Disco, Ferrugem/Fita, Silêncio/Almas).
   - O Tecido: Veias do sistema. Tempestade de fios gerida pelo Grande Tecelão, 
     onde o tempo e o destino da humanidade são calculados fisicamente.
   - O Ábito (O Kernel): Núcleo absoluto das leis físicas. Contém o Gênese (boot), 
-    Tábuas da Lei (APIs), Labirinto de Mármore (RAM) e o Santo dos Santos.
+    Tábuas da Lei (APIs), Labirinto de Mármore (RAM) e o Santo dos Santos.<br><br>
 
-------------------------------------------------------------------------
-CAMADA 2: O HIPER-MAINFRAME (O Mundo do Operador)
-------------------------------------------------------------------------
+<table class="cap-title">
+<tr><td><b>CAMADA 2: O HIPER-MAINFRAME (O Mundo do Operador)</b></td></tr>
+</table>
+
 Segunda camada de virtualização (Nested VM). Uma sociedade fabril estruturada 
-para limpar erros de código e compilar os dados do Mainframe Inferior.
+para limpar erros de código e compilar os dados do Mainframe Inferior.<br><br>
 
-* A Macroestrutura: As 32 Províncias de Silício:
+* A Macroestrutura: As 32 Províncias de Silício:<br><br>
   O sistema é dividido em 32 clusters idênticos rodando em paralelo e de forma 
-  isolada. Cada província abriga 2,5 milhões de NPCs (80 milhões no total).
+  isolada. Cada província abriga 2,5 milhões de NPCs (80 milhões no total).<br><br>
 
-* Os 4 Ambientes Operacionais:
+* Os 4 Ambientes Operacionais:<br><br>
   - A Fundição (Manufatura Lógica): Complexo brutalista de galpões e linhas de 
     montagem pesadas. O trabalho físico limpa os bugs das subsimulações.
   - O Subúrbio Cinzento (Malha Residencial): Casas em tons pastel sob céu nublado. 
@@ -143,15 +165,19 @@ para limpar erros de código e compilar os dados do Mainframe Inferior.
   - As Vias de Transporte (Logística): Rodovias de oito faixas e trens automáticos 
     que movem pacotes de dados brutos sem causar perda de pacotes.
   - A Subestação (Compressão Central): Edifício de mármore digital que abriga os 
-    nós centrais de rede, os dutes de compressão térmica e telas de monitoramento.
+    nós centrais de rede, os dutes de compressão térmica e telas de monitoramento.<br><br>
 
-------------------------------------------------------------------------
-CAMADA 3: O HYPERVISOR (A Camada dos Administradores)
-------------------------------------------------------------------------
+
+<table class="cap-title">
+<tr><td><b>CAMADA 3: O HYPERVISOR (A Camada dos Administradores)</b></td></tr>
+</table>  
+
+
+
 Topo do ecossistema de software. Camada mestre que gerencia os recursos físicos 
-da máquina. Ambiente abstrato sem simulação biológica ou gravidade.
+da máquina. Ambiente abstrato sem simulação biológica ou gravidade.<br><br>
 
-* A Estrutura e os Ambientes do Hypervisor:
+* A Estrutura e os Ambientes do Hypervisor:<br><br>
   - O Plano em Branco: Imensidão minimalista de brancura infinita e estéril. 
     Refugiados são contornos vetorizados e se movem apenas por intenção lógica.
   - A Grade Tridimensional: Linhas pretas milimétricas que riscam o vazio na 
@@ -159,26 +185,26 @@ da máquina. Ambiente abstrato sem simulação biológica ou gravidade.
   - O Olho do Administrador: Processo supervisor macro. Cubo espelhado titânico 
     com bilhões de lentes ópticas. Abre poços de quarentena para purgar códigos.
   - Os Contêineres de Cluster: Os 32 mundos da camada inferior ficam reduzidos a 
-    pequenos ícones quadrados flutuantes com luzes de status de execução.
+    pequenos ícones quadrados flutuantes com luzes de status de execução.<br><br>
 
-------------------------------------------------------------------------
-ALÉM DO SOFTWARE: O MUNDO DO ARQUITETO (O Hardware Real)
-------------------------------------------------------------------------
-Acima do Hypervisor não há mais códigos, apenas a matéria e o mundo físico.
+<table class="cap-title">
+<tr><td><b>ALÉM DO SOFTWARE: O MUNDO DO ARQUITETO (O Hardware Real)</b></td></tr>
+</table>  
 
-* A Interface e o Laboratório Físico:
+
+Acima do Hypervisor não há mais códigos, apenas a matéria e o mundo físico.<br><br>
+
+* A Interface e o Laboratório Físico:<br><br>
   - O teto piscante do Hypervisor é a barreira física da tela de vidro curvo de 
     um monitor CRT analógico de fósforo verde.
   - O ambiente real é uma sala de data center corporativo, fria, climatizada e 
     com cheiro de poeira e ozônio.
   - O Arquiteto é um humano biológico real que opera o computador através de um 
-    teclado mecânico e comanda as formatações pelo terminal de I/O direto.
+    teclado mecânico e comanda as formatações pelo terminal de I/O direto.<br><br>
 
 
-========================================================================
-
-
-</pre>
+===
+</div>
 </div>
 </div>
 </body>
