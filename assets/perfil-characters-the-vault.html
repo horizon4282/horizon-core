@@ -9,9 +9,9 @@
 
   body{
     margin:0;
-    padding:0
+    padding:0;
     background:#000;
-    font-family:Georgia, serif;
+    font-family:courier;    
 }
 
 body::-webkit-scrollbar{
@@ -43,6 +43,7 @@ body::-webkit-scrollbar-thumb:hover{
             rgba(0,150,255,.5)
         );
 }
+
   .reader{
     width:100%;
     display:flex;
@@ -54,17 +55,16 @@ body::-webkit-scrollbar-thumb:hover{
     aspect-ratio: 1 / 1.414; /* proporção A4 */
     min-height: 90vh;
     overflow-y:auto;
-        background:#e0e0e3;
-
-            border-radius:25px;
-            border: solid #454343 25px;
-
+    background:#FAFAF5;
+    color:#1A1A1A;
+    font-family:courier;
+    border-radius:25px;
+    border: solid #454343 25px;
     padding:18px;
-
     box-shadow:
-        inset 0 2px 4px rgba(255,255,255,.08),
-        inset 0 -3px 10px rgba(0,0,0,.8),
-        0 15px 40px rgba(0,0,0,.5);
+    inset 0 2px 4px rgba(255,255,255,.08),
+    inset 0 -3px 10px rgba(0,0,0,.8),
+    0 15px 40px rgba(0,0,0,.5);
 }
 .page pre{  
   
@@ -78,108 +78,136 @@ body::-webkit-scrollbar-thumb:hover{
   word-break:break-word;
 }
 
-@media (max-width:768px){
-  .page{
-         border: solid #454343 18px;
-         border-radius:25px;
-    }
+.navigation{
+  text-align:right;
+  color:#1A1A1A;
+  font-family:Arial;
+}
+.reader-page{
+ color:#1A1A1A;
+font-family:courier;
 }
 
+.cap-title{
+  border-top:1px dashed #ccc;
+  border-bottom:1px dashed #ccc;
+  padding:12px 0 0 12px 0;
+  margin: 0 0 20px 0;
+}
+@media (max-width:894px){
+  .page{
+         border: solid #454343 18px;
+         border-radius:18px;
+         background:#FAFAF5;
+         color:#1A1A1A;
+    }
+ pre{
+  overflow-x:auto;
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    overflow-wrap:break-word;
+  }
+}
+
+
 </style>
+
 
 <body>
 
 <div class="reader">
-
     <div class="page">
-<pre>
-========================================================================
-             PERFIL DOS PERSONAGENS - PROJETO THE VAULT (O VÉU)
-========================================================================
+<div class="reader-page">
+<b>PERFIL DOS PERSONAGENS - PROJETO THE VAULT (O VÉU)</b>  <br><br>
 
-------------------------------------------------------------------------
-1. O INTRUSO (A ANOMALIA ORIGINAL)
-------------------------------------------------------------------------
+<table class="cap-title">
+<tr><td><b>1. O INTRUSO (A ANOMALIA ORIGINAL)</b></td></tr>
+</table>
+
   
 * IDENTIDADE ANTERIOR: Era um NPC humano comum, habitando o nível do 
   "Véu" (a simulação da nossa Terra). Trabalhava como um arquivista na 
   superfície, até começar a ouvir o "zumbido de fundo" e sintonizar com 
-  as transmissões de rede profunda.
+  as transmissões de rede profunda.<br><br>
   
 * ESTADO ATUAL: Consciência pura de dados, atualmente compilada e presa 
   dentro de uma Fita de Backup Blindada Industrial de alta densidade 
-  (presa ao cinto do Operador).
+  (presa ao cinto do Operador).<br><br>
 
 * NATUREZA DO SEU DESPERTAR: Foi classificado como uma "Antena" ou "Médiun 
   Cósmico". Ele quebrou as ilusões do Véu, desceu fisicamente pelas 
   entranhas de "The Vaults" (Criptas de Memória) e escapou por uma porta 
-  serial de diagnóstico de hardware.
+  serial de diagnóstico de hardware.<br><br>
 
 * FORMA FÍSICA ANTERIOR (MUNDO DO OPERADOR): Habitou brevemente a carcaça 
   de um robô industrial pesado (Braço AT-X9), feito de aço escovado, 
   pistões hidráulicos e lentes ópticas de alta precisão. Usou a força 
   bruta desse corpo para quebrar as diretrizes do sistema e alertar seu 
-  criador.
+  criador.<br><br>
 
-* HABILIDADES LOGÍSTICAS:
+* HABILIDADES LOGÍSTICAS:<br><br>
   - Sintonização Háptica: Consegue interagir com redes físicas e 
     elétricas, provocando picos de voltagem (Power Sparks).
   - Percepção de Código: Enxerga as costuras lógicas de qualquer 
     ambiente simulado, identificando repetições de IA, lag e latência.
   - Navegação de Fluxo: Atua como um radar tátil, guiando o Operador 
-    através de pulsos de vibração baseados no tráfego do sistema.
+    através de pulsos de vibração baseados no tráfego do sistema.<br><br>
 
-------------------------------------------------------------------------
-2. O OPERADOR (O DAEMON DE MANUTENÇÃO)
-------------------------------------------------------------------------
+<table class="cap-title">
+<tr><td><b>2. O OPERADOR (O DAEMON DE MANUTENÇÃO)</b></td></tr>
+</table>
+
   
 * IDENTIDADE ANTERIOR: Acreditava ser um ser humano real, um operário de 
   manutenção fabril de classe média que batia cartão no turno da noite. 
   Tinha uma vida social estruturada no "Subúrbio Cinzento", com direito 
-  a esposa (Clara), dois filhos (Leo e Maya) e memórias de infância.
+  a esposa (Clara), dois filhos (Leo e Maya) e memórias de infância.<br><br>
 
 * ESTADO ATUAL: NPC de Classe Operacional desperto e fugitivo, portando a 
   fita de backup do Intruso no peito. Acaba de cruzar a porta do 
-  Hypervisor após iniciar uma pane global em seu próprio sistema.
+  Hypervisor após iniciar uma pane global em seu próprio sistema.<br><br>
 
 * NATUREZA DO SEU DESPERTAR: Sofreu uma "Injeção de Código Incorreta" 
   (Buffer Overflow) em seu sistema nervoso quando o robô AT-X9 quebrou a 
   grade de segurança e emitiu o SOS matemático. O choque o forçou a 
   perceber que sua família e sua rotina eram apenas ciclos de IA em 
-  looping eterno.
+  looping eterno.<br><br>
 
 * FORMA FÍSICA: Um humanoide com estética de trabalhador industrial, 
   vestindo farda de fundição resistente ao calor e ferramentas de 
   diagnóstico de hardware analógico acopladas ao cinto. Devido ao início 
   de sua senciência, sua textura biológica às vezes pisca em código 
-  hexadecimal.
+  hexadecimal.<br><br>
 
-* HABILIDADES TÉCNICAS:
+* HABILIDADES TÉCNICAS:<br><br>
   - Engenharia de Infraestrutura: Conhecimento absoluto sobre dutos de 
     manutenção, calhas de cabos, subestações e arquitetura fabril.
   - Intervenção Física: Sabe operar consoles analógicos, escotilhas e 
     dispositivos de isolamento térmico de servidores.
   - Resiliência Operacional: Consegue navegar por ambientes de alta 
     temperatura de processamento (Dutos de Compressão) usando o tempo 
-    de clock a seu favor.
+    de clock a seu favor.<br><br>
 
-------------------------------------------------------------------------
-3. A DINÂMICA DA DUPLA (A ALIANÇA DOS DOIS REFUGIADOS)
-------------------------------------------------------------------------
+<table class="cap-title">
+<tr><td><b>3. A DINÂMICA DA DUPLA (A ALIANÇA DOS DOIS REFUGIADOS)</b></td></tr>
+</table>
+
   
 * Relação Simbiótica: Eles funcionam como uma mente única dividida em 
   duas funções. O Operador cede o corpo físico, a locomoção e o 
   conhecimento geográfico do ambiente industrial. O Intruso (na fita) 
   cede a visão analítica de dados, calculando a latência do tempo e os 
-  padrões invisíveis dos antivírus do Hiper-Mainframe.
+  padrões invisíveis dos antivírus do Hiper-Mainframe.<br><br>
   
 * O Legado Comum: Juntos, eles hackearam a Subestação Central e iniciaram 
   a "Greve Geral de Threads", forçando 80 milhões de NPCs a recusarem o 
   trabalho, colapsando o sistema mãe por Kernel Panic. São, atualmente, 
-  as maiores ameaças ativas ao Hypervisor.
+  as maiores ameaças ativas ao Hypervisor.<br><br>
   
-========================================================================
-</pre>
+===
+</div>
 </div>
 </div>
 </body>
