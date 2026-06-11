@@ -743,33 +743,31 @@ digital atmospheres, and hidden realities.
 <footer class="footer">
 
   <div data-lang="pt">
-
     <div class="footer-title">
       HORIZON 4282 v0.1 ALPHA
     </div>
 
     <div class="footer-subtitle">
       Laboratório Criativo Humano + IA
-    - <span class="footer-day" id="projectDay">  Day 0001 of 5000 </span> 
-    - <span class="footer-progress" id="projectProgress">0.00% Complete</span>
+      -
+      <span class="footer-day project-day">Dia 0001 de 5000</span>
+      -
+      <span class="footer-progress project-progress">0.00% completo</span>
+    </div>
   </div>
- </div>
-  
+
   <div data-lang="en">
-
-
     <div class="footer-title">
       HORIZON 4282 v0.1 ALPHA
     </div>
 
     <div class="footer-subtitle">
-      Human + AI Creative Laboratory - <span class="footer-day">Day 004 of 5000 </span>
-     <span class="footer-progress" id="projectProgress"> - 0.00% Complete</span>span
-</div>
-
-   
-    
-
+      Human + AI Creative Laboratory
+      -
+      <span class="footer-day project-day">Day 0001 of 5000</span>
+      -
+      <span class="footer-progress project-progress">0.00% complete</span>
+    </div>
   </div>
 
 </footer>
@@ -1361,86 +1359,43 @@ if(lang === "pt"){
 
 function updateProjectCounter(){
 
-
-
-  const projectStartDate =
-    new Date("2026-06-01");
-
+  const projectStartDate = new Date("2026-06-01T00:00:00");
   const totalDays = 5000;
 
-  const today =
-    new Date();
-
-  const difference =
-    today - projectStartDate;
+  const today = new Date();
 
   let daysPassed =
-    Math.floor(
-      difference / (1000 * 60 * 60 * 24)
-    ) + 1;
-
-
+    Math.floor((today - projectStartDate) / (1000 * 60 * 60 * 24)) + 1;
 
   if(daysPassed < 1){
     daysPassed = 1;
   }
 
+  const formattedDay = String(daysPassed).padStart(4,"0");
+  const progress = Math.min((daysPassed / totalDays) * 100,100).toFixed(2);
 
+  document.querySelectorAll(".project-day").forEach(el => {
+    const parentLang = el.closest("[data-lang]")?.getAttribute("data-lang");
 
-  const formattedDay =
-    String(daysPassed)
-      .padStart(4,"0");
+    el.textContent =
+      parentLang === "pt"
+      ? `Dia ${formattedDay} de ${totalDays}`
+      : `Day ${formattedDay} of ${totalDays}`;
+  });
 
- 
+  document.querySelectorAll(".project-progress").forEach(el => {
+    const parentLang = el.closest("[data-lang]")?.getAttribute("data-lang");
 
-  const progress =
-    Math.min(
-      (daysPassed / totalDays) * 100,
-      100
-    ).toFixed(2);
-
-  const lang =
-    localStorage.getItem(
-      "horizonLanguage"
-    ) || "pt";
-
-  const dayElement =
-    document.getElementById(
-      "projectDay"
-    );
-
-  const progressElement =
-    document.getElementById(
-      "projectProgress"
-    );
-
-  if(!dayElement || !progressElement){
-    return;
-  }
-
-  if(lang === "pt"){
-
-    dayElement.textContent =
-      `Dia ${formattedDay} de ${totalDays}`;
-
-    progressElement.textContent =
-      `${progress}% Completo`;
-
-  }else{
-
-    dayElement.textContent =
-      `Day ${formattedDay} of ${totalDays}`;
-
-    progressElement.textContent =
-      `${progress}% Complete`;
-
-  }
+    el.textContent =
+      parentLang === "pt"
+      ? `${progress}% completo`
+      : `${progress}% complete`;
+  });
 
 }
 
-
-
 updateProjectCounter();
+
 
 
 
