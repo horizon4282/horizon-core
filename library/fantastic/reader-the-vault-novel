@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+  <meta name="keywords"
+  content="Horizon 4282, Artificial Intelligence, Human AI Collaboration, Creative Laboratory, Research, Experiments, Interfaces, Digital Art, Storytelling, Innovation">
+  <meta name="author" content="Roque Fernando Marcos Sousa">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://horizon4282.com.br">
+  <meta property="og:site_name" content="Horizon 4282">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="pt_BR">
+  <meta property="og:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.pn">
+  <meta name="robots" content="index,follow">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.pn">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+<title>The Vault | Horizon 4282</title>
+
+<meta name="description"
+content="The Vault is the first public narrative released by Horizon 4282. A science fiction and mystery experience exploring forgotten archives, hidden dimensions, artificial realities and the limits of human perception.">
+
+<link rel="canonical"
+href="https://horizon4282.com.br/library/fantastic/reader.html">
+
+<meta property="og:title"
+content="The Vault | Horizon 4282">
+
+<meta property="og:description"
+content="A science fiction journey through hidden archives, mysteries and forgotten realities.">
+
+<meta property="og:url"
+content="https://horizon4282.com.br/library/fantastic/reader.html">
+
+<meta name="twitter:title"
+content="The Vault | Horizon 4282">
+
+<meta name="twitter:description"
+content="The first public Horizon 4282 narrative experience.">
+
+
+  <link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.pn">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  min-height:100vh;
+  background:#050608;
+  color:#d5ecff;
+  font-family:"Courier New", monospace;
+  overflow:hidden;
+}
+
+.language-switch{
+  position:fixed;
+  top:18px;
+  left:18px;
+  z-index:1000;
+  display:flex;
+  gap:8px;
+}
+
+.language-switch button,
+.home-link{
+  background:rgba(0,0,0,.65);
+  border:1px solid rgba(127,211,255,.32);
+  color:#7fd3ff;
+  padding:8px 12px;
+  text-decoration:none;
+  letter-spacing:2px;
+  font-family:"Courier New", monospace;
+  cursor:pointer;
+}
+
+.home-link{
+  position:fixed;
+  top:18px;
+  right:18px;
+  z-index:1000;
+}
+
+.reader-layout{
+  height:100vh;
+  display:grid;
+  grid-template-columns:280px minmax(520px, 820px) 320px;
+  gap:24px;
+  padding:78px 28px 28px;
+}
+
+.left-panel,
+.right-panel{
+  background:
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.92)),
+    radial-gradient(circle at top,#132445 0%,#050608 70%);
+  border:1px solid rgba(127,211,255,.16);
+  padding:24px;
+  overflow:auto;
+}
+
+.left-panel::-webkit-scrollbar{
+    width:5px;
+}
+
+.left-panel::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.left-panel::-webkit-scrollbar-thumb{
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,255,255,.25),
+            rgba(0,150,255,.25)
+        );
+
+    border-radius:30px;
+}
+
+.left-panel::-webkit-scrollbar-thumb:hover{
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,255,255,.5),
+            rgba(0,150,255,.5)
+        );
+}
+.right-panel,.center-reader,.reader-frame{
+     overflow-y:auto;
+    overflow-x:hidden;
+
+    /* Firefox */
+    scrollbar-width:none;
+
+    /* IE/Edge antigo*/
+    -ms-overflow-style:none;
+}
+
+.panel-label{
+  color:#7fd3ff;
+  letter-spacing:4px;
+  font-size:11px;
+  margin-bottom:18px;
+}
+
+.left-panel h1,
+.right-panel h2{
+  font-size:22px;
+  letter-spacing:3px;
+  line-height:1.25;
+  margin-bottom:24px;
+}
+
+.reader-description{
+  font-size:12px;
+  line-height:1.7;
+  color:rgba(213,236,255,.65);
+  margin-bottom:28px;
+}
+
+.episode-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.episode-button{
+  width:100%;
+  padding:16px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(127,211,255,.16);
+  color:#d5ecff;
+  font-family:"Courier New", monospace;
+  text-align:left;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.episode-button:hover,
+.episode-button.active{
+  border-color:rgba(127,211,255,.6);
+  background:rgba(127,211,255,.08);
+}
+
+.episode-number{
+  color:#7fd3ff;
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:7px;
+}
+
+.episode-title{
+  font-size:13px;
+  line-height:1.4;
+}
+
+.center-reader{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+
+}
+
+.reader-toolbar{
+  height:48px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid rgba(127,211,255,.14);
+  background:rgba(0,0,0,.42);
+  padding:0 16px;
+  color:rgba(213,236,255,.75);
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:14px;
+}
+
+.toolbar-actions{
+  display:flex;
+  gap:10px;
+}
+
+.toolbar-actions a,
+.toolbar-actions button{
+  background:transparent;
+  border:1px solid rgba(127,211,255,.18);
+  color:#7fd3ff;
+  padding:7px 10px;
+  font-family:"Courier New", monospace;
+  text-decoration:none;
+  cursor:pointer;
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.reader-frame{
+  flex:1;
+  border:1px solid rgba(127,211,255,.14);
+  background:#000;
+  overflow:auto;
+  box-shadow:0 0 35px rgba(0,120,255,.08);
+}
+
+.reader-frame iframe{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+  background:#000;
+  padding:25px;
+}
+
+.cover{
+  width:100%;
+  aspect-ratio:2/3;
+  border:1px solid rgba(127,211,255,.18);
+  background-image:url(https://f005.backblazeb2.com/file/horizon4282/the-vault-novel/the-vault-006.pn);
+  background-position:-400px -300px;
+  overflow:hidden;
+  margin-bottom:22px;
+}
+
+.cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.synopsis{
+  font-size:13px;
+  line-height:1.8;
+  color:rgba(213,236,255,.72);
+  margin-bottom:24px;
+}
+
+.meta{
+  display:grid;
+  gap:10px;
+}
+
+.meta-item{
+  border:1px solid rgba(127,211,255,.14);
+  padding:10px;
+  color:#7fd3ff;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+
+.pdf-btn{
+  margin:15px 0;
+  padding:12px 22px;
+  border-radius:10px;
+  background:#e0392d;
+  color:#fff;
+  text-decoration:none;
+  cursor:pointer;
+  display: block;
+}
+
+.pdf-btn-screen{
+  margin:15px 0;
+  padding:12px 22px;
+  border-radius:10px;
+  background:#e0392d;
+  color:#fff;
+  text-decoration:none;
+   cursor:pointer;
+  display: block;
+}
+
+.download-btn{
+  padding:12px 22px;
+  border:0;
+  border-radius:12px;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.popup-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.popup-overlay.active{
+  display:flex;
+}
+
+.popup-box{
+  width:100%;
+  max-width:420px;
+  background:#f7f4ec;
+  color:#111;
+  border-radius:22px;
+  padding:28px;
+  box-sizing:border-box;
+  text-align:center;
+  position:relative;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.45),
+    inset 0 0 20px rgba(0,0,0,.08);
+}
+
+.close-btn{
+  position:absolute;
+  top:12px;
+  right:14px;
+  border:0;
+  background:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.qrcode{
+  width:180px;
+  max-width:80%;
+  margin-top:10px;
+}
+
+.pix-btn{
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#1d1d1d;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+}
+
+#copyMessage{
+
+    margin-top:10px;
+
+    font-size:14px;
+
+    color:#2d7a2d;
+
+}
+
+.page{
+  border:solid 1px #fff;
+  position:relative;
+  min-height:50vh;
+}
+.text-page{
+  position:absolute;
+  top:50%; right:5%;
+  font-size:16px;
+  font-family:'Courier New', Courier, monospace;
+  color:yellow;
+}
+.upcase{
+  text-transform: uppercase;
+}
+.ibm-plex-mono-thin {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.ibm-plex-mono-extralight {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.ibm-plex-mono-light {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ibm-plex-mono-regular {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ibm-plex-mono-medium {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.ibm-plex-mono-semibold {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.ibm-plex-mono-bold {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ibm-plex-mono-thin-italic {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.ibm-plex-mono-extralight-italic {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.ibm-plex-mono-light-italic {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.ibm-plex-mono-regular-italic {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ibm-plex-mono-medium-italic {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.ibm-plex-mono-semibold-italic {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.ibm-plex-mono-bold-italic {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+[data-lang]{display:none}
+
+@media(max-width:1050px){
+  body{
+    overflow:auto;
+  }
+
+   
+  .reader-layout{
+    height:auto;
+    grid-template-columns:1fr;
+    padding:86px 18px 30px;
+  }
+
+  .center-reader{
+    height:78vh;
+  }
+
+  .right-panel{
+    order:-1;
+  }
+}
+
+@media (max-width:900px){
+  .reader-frame iframe{
+        padding:0;
+    }
+  .text-page{
+
+  font-size:1.7vw;
+
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="language-switch">
+  <button onclick="setLanguage('pt');">PT</button>
+  <button onclick="setLanguage('en');">EN</button>
+</div>
+
+<a href="../../index.html" class="home-link">HOME</a>
+
+<div class="reader-layout">
+
+  <aside class="left-panel">
+
+    <div data-lang="pt">
+      <div class="panel-label">DIGITAL ART</div>
+      <h1>GRAPHIC NOVEL</h1>
+      <div class="reader-description">
+        Bem vindo ao Cofre
+      </div>
+    </div>
+
+    <div data-lang="en">
+      <div class="panel-label">DIGITAL ART</div>
+      <h1>GRAPHIC NOVEL</h1>
+      <div class="reader-description">
+        Welcome to The Vault
+      </div>
+    </div>
+
+    <div class="episode-list" data-lang="pt">
+
+
+
+<div style="font-size:18px;font-weight:bold;margin:0 0 15px 0">THE VAULT - ONLINE</div>
+    Fragmentos recuperadosa partir de 
+    baixas camadas da realidade.<br><br>
+    <span class="upcase" style="color:yellow">Continue com a rolagem da tela --></span>
+
+
+    </div>
+
+    <div class="episode-list" data-lang="en">
+
+<div style="font-size:18px;font-weight:bold;margin:0 0 15px 0">THE VAULT - ONLINE</div>
+Fragments recovered from the lower layers of reality.<br><br>
+<span class="upcase" style="color:yellow">Continue scrolling --></span>
+ 
+    </div>
+
+  </aside>
+
+  <main class="center-reader">
+
+    <div class="reader-toolbar">
+      <div id="currentEpisodeLabel">GRAPHIC/ THE VAULT</div>
+
+     
+    
+
+      
+    </div>
+
+    <div class="reader-frame" data-lang="pt">
+      <div class="page">
+        <div class="text-page ibm-plex-mono-medium">
+          A poeira magnética subia em pequenas <br>
+          espirais cinzentas a cada passo.<br>
+          O ar dos Desfiladeiros de Fita tinha gosto<br>
+           de ozônio e ferro velho.</div>
+        <img src="https://f005.backblazeb2.com/file/horizon4282/the-vault-novel/the-vault-001.pn" style="width:100%"/>
+      </div>
+
+      <div class="page">
+        <div class="text-page ibm-plex-mono-medium">
+         <span class="upcase">Escadarias de Latência.</span><br><br>
+        Nível 2.4.<br>
+        A gravidade mudava a cada passo.<br>
+        Então o zumbido parou.<br>
+        E o silêncio pareceu pior.</div>
+        <img src="https://f005.backblazeb2.com/file/horizon4282/the-vault-novel/the-vault-002.pn" style="width:100%"/>
+      </div>
+
+            <div class="page">
+        <div class="text-page ibm-plex-mono-medium" style="top:10%">
+           <span class="upcase">Passagem dos Órfãos.</span><br><br>
+          Entre os blocos e memórias frias,<br>
+          humanos esquecidos permaneciam arquivados.<br>
+          À esquerda e à direita, os Sarcófagos de Ferro<br> 
+          giravam sem descanso. Eras inteiras da história <br>
+          da Terra eram lidas em silêncio.</div>
+        <img src="https://f005.backblazeb2.com/file/horizon4282/the-vault-novel/the-vault-003.pn" style="width:100%"/>
+      </div>
+
+
+                  <div class="page">
+        <div class="text-page ibm-plex-mono-medium" style="top:50%">
+         
+            O eco mecânico cessou.<br>
+            O zumbido mudou.<br>
+            Algo estava procurando por eles.<br>
+            Então os feixes vermelhos apareceram.</div>
+
+        <img src="https://f005.backblazeb2.com/file/horizon4282/the-vault-novel/the-vault-004.pn" style="width:100%"/>
+      </div>
+
+      <iframe
+        id="episodeFrame"
+        src="/assets/cap1-cap2-the-vault.html"
+        title="Horizon Text Reader" style="display:none;">
+      </iframe>
+    </div>
+
+
+
+    <div class="reader-frame" data-lang="en">
+      <div class="page">
+        <div class="text-page ibm-plex-mono-medium">
+           The magnetic dust rose in small gray<br>
+           spirals with each step. The air in the <br>
+           Fita Gorges tasted of ozone and scrap metal.</div>
+        <img src="https://f005.backblazeb2.com/file/horizon4282/the-vault-novel/the-vault-001.pn" style="width:100%"/>
+      </div>
+
+      <div class="page">
+        <div class="text-page ibm-plex-mono-medium">
+         <span class="upcase">Stairs of Latency</span><br>
+          Level 2.4.<br><br>
+
+          Gravity shifted with every step.<br>
+          Then the buzzing stopped.<br>
+          And the silence seemed worse.</div>
+        <img src="https://f005.backblazeb2.com/file/horizon4282/the-vault-novel/the-vault-002.pn" style="width:100%"/>
+      </div>
+
+            <div class="page">
+        <div class="text-page ibm-plex-mono-medium" style="top:10%">
+           <span class="upcase">Passage of the Orphans</span><br><br>
+              Among the blocks and cold memories,<br>
+              forgotten humans remained archived.<br>
+              To the left and to the right, the Iron Sarcophagi<br>
+              spun restlessly. Entire eras of Earth's history<br>
+              were read in silence.</div>
+        <img src="https://f005.backblazeb2.com/file/horizon4282/the-vault-novel/the-vault-003.pn" style="width:100%"/>
+      </div>
+
+
+                  <div class="page">
+        <div class="text-page ibm-plex-mono-medium" style="top:50%">
+         
+          The mechanical echo processed.<br>
+          The hum changed.<br>
+          Something was searching for them.<br>
+          Then the red beams appeared.<br></div>
+
+        <img src="https://f005.backblazeb2.com/file/horizon4282/the-vault-novel/the-vault-004.pn" style="width:100%"/>
+      </div></div>
+
+  </main>
+
+  <aside class="right-panel">
+
+    <div class="cover">
+      
+    </div>
+
+    <div data-lang="pt">
+      <div class="panel-label">GRAPHIC NOVEL</div>
+      <h2>The Vault (O Cofre)</h2>
+
+      <div class="synopsis">
+Em um universo onde a realidade biológica é uma farsa, a humanidade atual 
+nada mais é do que uma imensa massa de NPCs (Personagens Não-Jogáveis) 
+operando na camada mais externa de um supercomputador titânico conhecido 
+como O Véu. Nossas rotinas, dores e memórias são linhas de comando feitas 
+para mascarar o processamento de dados em tempo real.A história começa quando O Intruso, 
+um arquivista humano comum, desperta ao ouvir o zumbido estático do clock do processador.
+      </div>
+
+
+<div class="author">
+ <pre>Created by
+Roque Fernando M. Sousa
+Human + AI Collaboration
+
+<a  style="color:yellow;text-decoration: none;font-style: italic;" href="/log.html#the-vault">historical log</a>
+
+
+</pre>
+
+</div>
+      <div class="meta">
+        <div class="meta-item">FICÇÃO CIENTÍFICA</div>
+        <div class="meta-item">MISTÉRIO</div>
+        <div class="meta-item">TEXTO SERIALIZADO</div>
+        <div class="meta-item">HORIZON 4282</div>
+      </div>
+    </div>
+
+    <div data-lang="en">
+      <div class="panel-label">GRAPHIC NOVEL</div>
+      <h2>The Vault</h2>
+
+      <div class="synopsis">
+        In a universe where biological reality is a farce, 
+humanity today is nothing more than a massive mass of NPCs (Non-Player Characters) 
+operating on the outermost layer of a titanic supercomputer known as The Veil. 
+Our routines, pains, and memories are command lines designed to mask real-time data processing. 
+The story begins when The Intruder, an ordinary human archivist, 
+awakens upon hearing the static hum of the processor's clock.
+      </div>
+   
+
+      <div class="author">
+ <pre>Created by
+Roque Fernando M. Sousa
+Human + AI Collaboration
+
+<a  style="color:yellow;text-decoration: none;font-style: italic;" href="/log.html#the-vault-en">historical log</a>
+
+
+</pre>
+
+      <div class="meta">
+        <div class="meta-item">SCI-FI</div>
+        <div class="meta-item">MYSTERY</div>
+        <div class="meta-item">SERIAL TEXT</div>
+        <div class="meta-item">HORIZON 4282</div>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+
+  
+<script>
+function setLanguage(lang){
+ 
+  document.querySelectorAll("[data-lang]").forEach(block=>{
+    block.style.display="none";
+  });
+
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach(block=>{
+    block.style.display="block";
+  });
+
+  localStorage.setItem("horizonLanguage", lang);
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+   loadBtPDF();
+}
+
+const savedLanguage = localStorage.getItem("horizonLanguage") || "pt";
+setLanguage(savedLanguage);
+
+function loadEpisode(url, button){
+  const frame = document.getElementById("episodeFrame");
+  const label = document.getElementById("currentEpisodeLabel");
+  frame.src = url;
+
+  document.querySelectorAll(".episode-button").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  if(button){
+    button.classList.add("active");
+    label.textContent = "GRAPHIC NOVEL / THE VAULT"
+  }
+}
+
+</script>
+
+</body>
+</html>
