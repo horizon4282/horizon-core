@@ -620,7 +620,7 @@ Our routines, pains, and memories are command lines designed to mask real-time d
 The story begins when The Intruder, an ordinary human archivist, 
 awakens upon hearing the static hum of the processor's clock.
       </div>
-      <div>  <a class="pdf-btn-screen" download onclick="openPopupscrPlay()">Screenplay PDF (PT-BR)</a></div>
+      <div>  <a class="pdf-btn-screen" download onclick="openPopupscrPlayEn()">Screenplay PDF (PT-BR)</a></div>
 
       <div class="author">
  <pre>Created by
@@ -693,7 +693,7 @@ Human + AI Collaboration
      Você pode baixar o Screenplay completo do filme gratuitamente.
       Caso deseje, também pode colaborar voluntariamente com o projeto.
     </p>
-     <a class="pdf-btn" href="https://f005.backblazeb2.com/file/horizon4282/screenplay-the-vault.pdf" download>Download Free PDF</a>
+     <a class="pdf-btn" href="https://f005.backblazeb2.com/file/horizon4282/screenplay-the-vault-refined.pdf" download>Download Free PDF</a>
     <hr>
 
     <h2>Colaboração voluntária</h2>
@@ -704,18 +704,53 @@ Human + AI Collaboration
 
     <img class="qrcode" src="/assets/qr-code-horizon.jpg" alt="QR Code para colaboração voluntária">
 
-  <p id="pixKey-scrPlay" style="display:none;">
+      <p id="pixKey-scr" style="display:none;">
 00020126580014br.gov.bcb.pix013640ec89d6-130d-4c29-ba37-8fce9d8dc6fe5204000053039865802BR5924Roque Fernando Marcos So6009Sao Paulo62230519daqr6151064563851776304688F
 </p>
-
-<button class="pix-btn" onclick="copyPixscrPlay()">
+ 
+<button class="pix-btn" onclick="copyPixScr()">
 📋 Copiar Chave PIX
 </button>
 
-<div id="copyMessage-scrPlay"></div>
+<div id="copyMessage-scr"></div>
   </div>
 
 </div>
+
+
+
+<div id="popup-scrPlay-en" class="popup-overlay">
+  <div class="popup-box">
+
+    <button class="close-btn" onclick="closePopupscrPlayEn()">×</button>
+
+    <h2>Download PDF ScreenPlay</h2>
+
+    <p>
+      You can download the full screenplay of the movie for free. If you wish, you can also volunteer to contribute to the project.
+    </p>
+     <a class="pdf-btn" href="https://f005.backblazeb2.com/file/horizon4282/screenplay-the-vault-en-refined.pdf" download>Download Free PDF</a>
+    <hr>
+
+    <h2>Voluntary collaboration</h2>
+ <p>
+   Your collaboration helps us keep the project alive and allows for the creation of new works.
+Every contribution is welcome, regardless of the amount. ❤️<br>
+   God bless you greatly. 🙏
+
+    <img class="qrcode" src="/assets/qr-code-horizon.jpg" alt="QR Code para colaboração voluntária">
+
+
+
+<button class="pix-btn" onclick="copyPixScrEn()">
+📋 Copy Key PIX
+</button>
+
+<div id="copyMessage-scr-en"></div>
+  </div>
+
+</div>
+
 
 
 <div id="popup-en" class="popup-overlay">
@@ -817,8 +852,14 @@ function closePopupscrPlay(){
   document.getElementById("popup-scrPlay").classList.remove("active");
 }
 
+function openPopupscrPlayEn(){
+  document.getElementById("popup-scrPlay-en").classList.add("active");
+}
 
-function copyPix(){
+function closePopupscrPlayEn(){
+  document.getElementById("popup-scrPlay-en").classList.remove("active");
+}
+function copyPixScrEn(){
 
     const chave =
         document.getElementById("pixKey")
@@ -829,21 +870,21 @@ function copyPix(){
     .then(() => {
 
       
-        document.getElementById("copyMessage")
+        document.getElementById("copyMessage-scr-en")
         .innerHTML =
-        "✅ Chave PIX copiada!";
+        "✅ Key PIX Copied!";
 
       setTimeout(() => {
-        document.getElementById("copyMessage")
+        document.getElementById("copyMessage-scr-en")
         .innerHTML ="";
     }, 3000);
 
     })
     .catch(() => {
 
-        document.getElementById("copyMessage")
+        document.getElementById("copyMessage-scr-en")
         .innerHTML =
-        "❌ Não foi possível copiar.";
+        "❌ Don't work :(";
 
     });
 
@@ -862,7 +903,7 @@ function copyPixEn(){
       
         document.getElementById("copyMessage-en")
         .innerHTML =
-        "✅ Pix key copied!";
+        "✅ Key PIX copied!";
 
       setTimeout(() => {
         document.getElementById("copyMessage-en")
@@ -880,10 +921,10 @@ function copyPixEn(){
 
 }
 
-function copyPixscrPlay(){
+function copyPixScr(){
 
     const chave =
-        document.getElementById("pixKey-en")
+        document.getElementById("pixKey-scr")
         .innerText
         .trim();
 
@@ -891,19 +932,19 @@ function copyPixscrPlay(){
     .then(() => {
 
       
-        document.getElementById("copyMessage-scrPlay")
+        document.getElementById("copyMessage-scr")
         .innerHTML =
         "✅ Chave PIX Copiada!";
 
       setTimeout(() => {
-        document.getElementById("copyMessage-scrPlay")
+        document.getElementById("copyMessage-scr")
         .innerHTML ="";
     }, 3000);
 
     })
     .catch(() => {
 
-        document.getElementById("copyMessage-scrPlay")
+        document.getElementById("copyMessage-scr")
         .innerHTML =
         "❌ O código não foi copiado :(.";
 
@@ -922,6 +963,48 @@ function loadBtPDF(){
   }
 }
 
+
+function copyPix(){
+
+    const chave =
+        document.getElementById("pixKey")
+        .innerText
+        .trim();
+
+    navigator.clipboard.writeText(chave)
+    .then(() => {
+
+      
+        document.getElementById("copyMessage")
+        .innerHTML =
+        "✅ Chave PIX Copiada!";
+
+      setTimeout(() => {
+        document.getElementById("copyMessage")
+        .innerHTML ="";
+    }, 3000);
+
+    })
+    .catch(() => {
+
+        document.getElementById("copyMessage")
+        .innerHTML =
+        "❌ O código não foi copiado :(.";
+
+    });
+
+}
+
+function loadBtPDF(){
+
+  if( localStorage.getItem("horizonLanguage") == 'pt'){
+      document.getElementById("pdf-en").style.display="none";
+      document.getElementById("pdf-pt").style.display="inline-block";
+  } else{
+    document.getElementById("pdf-en").style.display="inline-block";
+    document.getElementById("pdf-pt").style.display="none";
+  }
+}
 
 function firstFrameEpisode(){
 if(localStorage.getItem("horizonLanguage") == "pt"){
