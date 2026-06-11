@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Coming Soon | Horizon 4282</title>
+
+<meta name="description" content="This Horizon 4282 section is currently under development and will be released soon.">
+<meta name="robots" content="noindex,follow">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at center,#132445 0%,#07101f 55%,#000 100%);
+  color:#d5ecff;
+  font-family:"Courier New", monospace;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
+
+.language-switch{
+  position:fixed;
+  top:24px;
+  left:24px;
+  display:flex;
+  gap:8px;
+}
+
+.language-switch button,
+.home-link{
+  background:rgba(0,0,0,.5);
+  border:1px solid rgba(127,211,255,.35);
+  color:#7fd3ff;
+  padding:10px 14px;
+  font-family:"Courier New", monospace;
+  letter-spacing:2px;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.home-link{
+  position:fixed;
+  top:24px;
+  right:24px;
+}
+
+.box{
+  max-width:800px;
+  padding:40px;
+}
+
+.signal{
+  color:#7fd3ff;
+  letter-spacing:6px;
+  font-size:13px;
+  margin-bottom:28px;
+}
+
+h1{
+  font-size:clamp(3rem,8vw,6rem);
+  letter-spacing:8px;
+  color:#fff;
+  margin-bottom:25px;
+}
+
+p{
+  color:#b8d8ff;
+  line-height:1.8;
+  font-size:1.15rem;
+}
+
+.status{
+  margin-top:35px;
+  color:#ffd97a;
+  letter-spacing:4px;
+}
+
+.horizon-divider{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  color:#d4b26a;
+  margin:45px 0;
+  letter-spacing:4px;
+  font-size:12px;
+}
+
+.horizon-divider::before,
+.horizon-divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(to right,transparent,rgba(212,178,106,.7),transparent);
+}
+
+@media(max-width:700px){
+  .language-switch{
+    top:16px;
+    left:16px;
+  }
+
+  .home-link{
+    top:16px;
+    right:16px;
+  }
+
+  .box{
+    padding:30px 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="language-switch">
+  <button onclick="setLanguage('pt')">PT</button>
+  <button onclick="setLanguage('en')">EN</button>
+</div>
+
+<a href="index.html" class="home-link">HOME</a>
+
+<div class="box">
+
+  <div class="signal"
+  data-pt="NÓ EM CONSTRUÇÃO"
+  data-en="NODE UNDER CONSTRUCTION">
+    NÓ EM CONSTRUÇÃO
+  </div>
+
+  <h1
+  data-pt="EM BREVE"
+  data-en="COMING SOON">
+    EM BREVE
+  </h1>
+
+  <p
+  data-pt="Esta dimensão do Horizon 4282 ainda está sendo construída. Novos conteúdos, arquivos, experiências e coleções serão disponibilizados em breve."
+  data-en="This Horizon 4282 dimension is still under construction. New content, archives, experiences and collections will be released soon.">
+    Esta dimensão do Horizon 4282 ainda está sendo construída. Novos conteúdos, arquivos, experiências e coleções serão disponibilizados em breve.
+  </p>
+
+  <div class="horizon-divider">
+    ◉ 4282 ◉
+  </div>
+
+  <div class="status"
+  data-pt="STATUS: AGUARDANDO SINCRONIZAÇÃO"
+  data-en="STATUS: AWAITING SYNCHRONIZATION">
+    STATUS: AGUARDANDO SINCRONIZAÇÃO
+  </div>
+
+</div>
+
+<script>
+function setLanguage(lang){
+  document.querySelectorAll("[data-pt][data-en]").forEach(el=>{
+    el.innerHTML = el.dataset[lang];
+  });
+
+  localStorage.setItem("horizonLanguage", lang);
+
+  document.documentElement.lang =
+  lang === "pt" ? "pt-BR" : "en";
+}
+
+const savedLanguage =
+localStorage.getItem("horizonLanguage") || "pt";
+
+setLanguage(savedLanguage);
+</script>
+
+</body>
+</html>
