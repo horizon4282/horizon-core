@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Horizon 4282 Stamp Archive</title>
+
+<meta name="description" content="Horizon 4282 Stamp Archive is a digital collection of visual stamps from the Horizon universe, documenting creative dimensions, symbols, narratives and digital artifacts.">
+<meta name="robots" content="index,follow">
+
+<link rel="canonical" href="https://horizon4282.com.br/horizon-stamps.html">
+
+<meta property="og:title" content="Horizon 4282 Stamp Archive">
+<meta property="og:description" content="A digital stamp collection from the Horizon 4282 universe.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://horizon4282.com.br/horizon-stamps.html">
+<meta property="og:site_name" content="Horizon 4282">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Horizon 4282 Stamp Archive">
+<meta name="twitter:description" content="A digital stamp collection from the Horizon 4282 universe.">
+<meta name="twitter:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
+
+<meta name="theme-color" content="#081425">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at center,#132445 0%,#07101f 55%,#000 100%);
+  color:#d5ecff;
+  font-family:"Courier New", monospace;
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:25px 40px;
+}
+
+.logo{
+  letter-spacing:4px;
+  font-weight:bold;
+  color:#fff;
+}
+
+.nav-actions{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.nav-actions a,
+#langBtn{
+  background:transparent;
+  border:1px solid rgba(127,211,255,.35);
+  color:#7fd3ff;
+  padding:10px 16px;
+  text-decoration:none;
+  font-family:"Courier New", monospace;
+  letter-spacing:2px;
+  cursor:pointer;
+}
+
+.hero{
+  padding:70px 8% 50px;
+  max-width:1100px;
+}
+
+.kicker{
+  color:#7fd3ff;
+  letter-spacing:5px;
+  margin-bottom:22px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-size:4vw;
+  line-height:1;
+  margin-bottom:26px;
+  color:#fff;
+}
+
+.hero p{
+  max-width:900px;
+  color:#b8d8ff;
+  font-size:1.15rem;
+  line-height:1.8;
+}
+
+.status-panel{
+  margin:0 8% 50px;
+  border:1px solid rgba(127,211,255,.18);
+  background:rgba(0,0,0,.28);
+  padding:28px;
+}
+
+.status-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:18px;
+}
+
+.status-item{
+  color:#d5ecff;
+  line-height:1.7;
+}
+
+.status-item span{
+  color:#ffd97a;
+}
+
+.collection{
+  padding:0 8% 90px;
+}
+
+.section-title{
+  margin-bottom:30px;
+}
+
+.section-title h2{
+  font-size:2.2rem;
+  margin-bottom:12px;
+  letter-spacing:3px;
+}
+
+.section-title p{
+  color:#a9cfff;
+  line-height:1.7;
+}
+
+.stamp-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:28px;
+}
+
+.stamp-card{
+  border:1px solid rgba(127,211,255,.18);
+  background:linear-gradient(160deg,rgba(127,211,255,.06),rgba(255,255,255,.015));
+  padding:18px;
+  transition:.3s;
+}
+
+.stamp-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(127,211,255,.65);
+  box-shadow:0 0 25px rgba(127,211,255,.16);
+}
+
+.stamp-image{
+  aspect-ratio:3/4;
+  background:
+    linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.55)),
+    url('assets/stamps/hst-000001.jpg') center/cover;
+  border:1px solid rgba(255,255,255,.12);
+  margin-bottom:18px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:16px;
+}
+
+.stamp-code{
+  color:#ffd97a;
+  letter-spacing:3px;
+  font-size:.8rem;
+  margin-bottom:12px;
+}
+
+.stamp-title{
+  color:#fff;
+  font-size:1.3rem;
+  margin-bottom:12px;
+}
+
+.stamp-desc{
+  color:#a9cfff;
+  line-height:1.6;
+  font-size:.95rem;
+}
+
+.stamp-meta{
+  margin-top:16px;
+  color:#7fd3ff;
+  font-size:.8rem;
+  letter-spacing:2px;
+}
+
+.card-actions{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+
+.card-actions a{
+  flex:1;
+  text-align:center;
+  border:1px solid rgba(127,211,255,.28);
+  color:#7fd3ff;
+  text-decoration:none;
+  padding:10px;
+  font-size:.78rem;
+  letter-spacing:2px;
+}
+
+.card-actions a:hover{
+  background:rgba(127,211,255,.12);
+}
+
+.principles{
+  padding:70px 8%;
+  background:#070b12;
+}
+
+.principles-box{
+  max-width:1000px;
+  border:1px solid rgba(127,211,255,.18);
+  padding:36px;
+  background:rgba(255,255,255,.03);
+}
+
+.principles-box h2{
+  margin-bottom:20px;
+}
+
+.principles-box p{
+  color:#d0d0d0;
+  line-height:1.8;
+  margin-bottom:15px;
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:#8da7c7;
+}
+
+.stamp-modal{
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,.92);
+
+  z-index:99999;
+
+  display:none;
+
+  justify-content:center;
+
+  align-items:center;
+
+}
+
+.stamp-modal.active{
+
+  display:flex;
+
+}
+
+.stamp-modal-content{
+
+  width:min(95vw,1400px);
+
+  height:90vh;
+
+  display:grid;
+
+  grid-template-columns:80% 20%;
+
+  gap:25px;
+
+}
+
+.stamp-image-area{
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  overflow:hidden;
+
+}
+
+.stamp-image-area img{
+
+  height:80vh;
+
+  max-width:100%;
+
+  object-fit:contain;
+
+  border:1px solid rgba(255,255,255,.15);
+
+}
+
+.stamp-info-area{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:20px;
+
+  color:#d5ecff;
+
+  padding:50px 10px 10px 10px;
+
+}
+
+.stamp-info-area h2{
+
+  color:#fff;
+
+  font-size:2rem;
+
+}
+
+.download-btn{
+
+  display:block;
+
+  text-align:center;
+
+  text-decoration:none;
+
+  border:1px solid rgba(127,211,255,.4);
+
+  color:#7fd3ff;
+
+  padding:15px;
+
+  letter-spacing:3px;
+
+}
+
+
+.close-modal{
+
+  position:absolute;
+
+  top:20px;
+
+  right:25px;
+
+  width:50px;
+
+  height:50px;
+
+  border:none;
+
+  background:none;
+
+  color:white;
+
+  font-size:28px;
+
+  cursor:pointer;
+
+}
+
+
+.pdf-btn{
+  margin:15px 0;
+  padding:12px 22px;
+  border-radius:10px;
+  background:#e0392d;
+  color:#fff;
+  text-decoration:none;
+  cursor:pointer;
+  display: block;
+}
+
+
+.download-btn{
+  padding:12px 22px;
+  border:0;
+  border-radius:12px;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.popup-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:120000;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.popup-overlay.active{
+  display:flex;
+}
+
+.popup-box{
+  width:100%;
+  max-width:420px;
+  background:#f7f4ec;
+  color:#111;
+  border-radius:22px;
+  padding:28px;
+  box-sizing:border-box;
+  text-align:center;
+  position:relative;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.45),
+    inset 0 0 20px rgba(0,0,0,.08);
+}
+
+.close-btn{
+  position:absolute;
+  top:12px;
+  right:14px;
+  border:0;
+  background:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.qrcode{
+  width:180px;
+  max-width:80%;
+  margin-top:10px;
+}
+
+.pix-btn{
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#1d1d1d;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+}
+
+#copyMessage{
+
+    margin-top:10px;
+
+    font-size:14px;
+
+    color:#2d7a2d;
+
+}
+@media(max-width:900px){
+
+   .stamp-modal-content{
+
+    grid-template-columns:1fr;
+
+    overflow-y:auto;
+
+  }
+
+  .stamp-image-area img{
+
+    height:auto;
+
+    max-height:70vh;
+
+  }
+  nav{
+    padding:20px;
+    align-items:flex-start;
+    gap:15px;
+  }
+
+  .logo{
+    font-size:.9rem;
+  }
+
+  .nav-actions{
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+
+  .nav-actions a,
+  #langBtn{
+    padding:8px 10px;
+    font-size:.75rem;
+  }
+
+  .hero{
+    padding:50px 6%;
+  }
+
+  .hero h1{
+  font-size:7vw;
+}
+
+.hero p{
+  font-size:1rem;
+}
+
+  .status-panel,
+  .collection,
+  .principles{
+    margin-left:0;
+    margin-right:0;
+    padding-left:6%;
+    padding-right:6%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">HORIZON 4282</div>
+
+  <div class="nav-actions">
+    <a href="/index.html" data-pt="INÍCIO" data-en="HOME">INÍCIO</a>
+    <a href="/open-library.html">OPEN LIBRARY</a>
+    <button id="langBtn">EN</button>
+  </div>
+</nav>
+
+<section class="hero">
+
+  <div class="kicker"
+  data-pt="Museu Digital Horizon"
+  data-en="Digital Museum Horizon">
+    Museu Digital Horizon
+  </div>
+
+  <h1
+  data-pt="Acervo Digital de Selos"
+  data-en="Digital Stamp Archive">
+    Acervo Digital de Selos
+  </h1>
+
+  <p
+  data-pt="Uma coleção visual em formato de selos digitais do universo Horizon 4282. Cada selo registra uma dimensão, símbolo, narrativa, descoberta ou artefato criativo desenvolvido ao longo da jornada Human + AI."
+  data-en="A visual collection of digital stamps from the Horizon 4282 universe. Each stamp records a dimension, symbol, narrative, discovery or creative artifact developed throughout the Human + AI journey.">
+    Uma coleção visual em formato de selos digitais do universo Horizon 4282. Cada selo registra uma dimensão, símbolo, narrativa, descoberta ou artefato criativo desenvolvido ao longo da jornada Human + AI.
+  </p>
+
+</section>
+
+<section class="status-panel">
+  <div class="status-grid">
+
+    <div class="status-item">
+      <span data-pt="Coleção:" data-en="Collection:">Coleção:</span><br>
+      HSA — Horizon Stamp Archive
+    </div>
+
+    <div class="status-item">
+      <span data-pt="Formato:" data-en="Format:">Formato:</span><br>
+      Digital Stamps
+    </div>
+
+    <div class="status-item">
+      <span data-pt="Idiomas:" data-en="Languages:">Idiomas:</span><br>
+      PT / EN
+    </div>
+
+    <div class="status-item">
+      <span data-pt="Status:" data-en="Status:">Status:</span><br>
+      ONLINE
+    </div>
+
+  </div>
+</section>
+
+<section class="collection">
+
+  <div class="section-title">
+    <h2 data-pt="Primeira Série" data-en="First Series">Primeira Série</h2>
+
+    <p
+    data-pt="A primeira série de selos digitais documenta os sinais iniciais, portais, arquivos e símbolos fundamentais do Horizon 4282."
+    data-en="The first series of digital stamps documents the initial signals, portals, archives and foundational symbols of Horizon 4282.">
+      A primeira série de selos digitais documenta os sinais iniciais, portais, arquivos e símbolos fundamentais do Horizon 4282.
+    </p>
+  </div>
+
+  <div class="stamp-grid">
+
+    <article class="stamp-card">
+       <div class="card-actions">
+        <a href="javascript:;" onclick="openStampModal(
+'https://f005.backblazeb2.com/file/horizon4282/filatelia/0001-day-01.png',
+'First Signal',
+'HST-000003',
+'The first visual record of Horizon 4282 as a living system.'
+); return false;" data-pt="VISUALIZAR" data-en="VIEW" style="margin:0 0 15px 0;">VISUALIZAR</a>
+      
+      </div>
+      <div class="stamp-image" style="background-image:url(https://f005.backblazeb2.com/file/horizon4282/filatelia/0001-day-01.png);background-size: 100%;background-repeat:no-repeat"></div>
+
+      <div class="stamp-code">HST-000003</div>
+
+      <div class="stamp-title"
+      data-pt="Primeiro Sinal"
+      data-en="First Signal">
+        Primeiro Sinal
+      </div>
+
+      <div class="stamp-desc"
+      data-pt="O primeiro registro visual do Horizon 4282 como sistema vivo."
+      data-en="The first visual record of Horizon 4282 as a living system.">
+        O primeiro registro visual do Horizon 4282 como sistema vivo.
+      </div>
+
+      
+
+      
+    </article>
+
+    <article class="stamp-card">
+      <div class="card-actions">
+        <a href="javascript:;" onclick="openStampModal(
+'https://f005.backblazeb2.com/file/horizon4282/filatelia/selo-4282-0002.png',
+'The Vault',
+'HST-000005',
+'A stamp dedicated to the first public fantastic literature product from Horizon.'
+); return false;" data-pt="VISUALIZAR" data-en="VIEW" style="margin:0 0 15px 0;">VISUALIZAR</a>
+      
+      </div>
+      
+      <div class="stamp-image"
+       style="background-image:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.55)),url('assets/stamps/hst-000002.jpg');background-image:url(https://f005.backblazeb2.com/file/horizon4282/filatelia/selo-4282-0002.png);background-size: 100%;background-repeat:no-repeat"">
+      
+      </div>
+
+      <div class="stamp-code">HST-000005</div>
+
+      <div class="stamp-title">The Vault</div>
+
+      <div class="stamp-desc"
+      data-pt="Selo dedicado ao primeiro produto público de literatura fantástica do Horizon."
+      data-en="A stamp dedicated to the first public fantastic literature product from Horizon.">
+        Selo dedicado ao primeiro produto público de literatura fantástica do Horizon.
+      </div>
+
+
+     
+    </article>
+
+    <article class="stamp-card">
+       <div class="card-actions">
+        <a href="javascript:;" onclick="openStampModal(
+'https://f005.backblazeb2.com/file/horizon4282/filatelia/0003-portal.png',
+'Portal Layer',
+'HST-000003',
+'A visual record of the dimensional layer activated by the portal command.'
+); return false;" data-pt="VISUALIZAR" data-en="VIEW" style="margin:0 0 15px 0;">VISUALIZAR</a>
+      
+      </div>
+      <div class="stamp-image" style="background-image:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.55)),url('assets/stamps/hst-000003.jpg');background-image:url(https://f005.backblazeb2.com/file/horizon4282/filatelia/0003-portal.png);background-size: 100%;background-repeat:no-repeat"></div>
+
+      <div class="stamp-code">HST-000003</div>
+
+      <div class="stamp-title"
+      data-pt="Camada Portal"
+      data-en="Portal Layer">
+        Camada Portal
+      </div>
+
+      <div class="stamp-desc"
+      data-pt="Registro visual da camada dimensional ativada pelo comando portal."
+      data-en="A visual record of the dimensional layer activated by the portal command.">
+        Registro visual da camada dimensional ativada pelo comando portal.
+      </div>
+
+    
+    </article>
+
+    <article class="stamp-card">
+       <div class="card-actions">
+        <a href="javascript:;" onclick="openStampModal(
+'https://f005.backblazeb2.com/file/horizon4282/filatelia/0004-observer-node.png',
+'Observer Node',
+'HST-000004',
+'A stamp for observer mode, symbolizing the silent presence of the system.'
+); return false;" data-pt="VISUALIZAR" data-en="VIEW" style="margin:0 0 15px 0;">VISUALIZAR</a>
+      
+      </div>
+      <div class="stamp-image" style="background-image:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.55)),url('assets/stamps/hst-000004.jpg');background-image:url(https://f005.backblazeb2.com/file/horizon4282/filatelia/0004-observer-node.png);background-size: 100%;background-repeat:no-repeat""></div>
+
+      <div class="stamp-code">HST-000004</div>
+
+      <div class="stamp-title"
+      data-pt="Nó Observador"
+      data-en="Observer Node">
+        Nó Observador
+      </div>
+
+      <div class="stamp-desc"
+      data-pt="Selo do modo observador, símbolo da presença silenciosa do sistema."
+      data-en="A stamp for observer mode, symbolizing the silent presence of the system.">
+        Selo do modo observador, símbolo da presença silenciosa do sistema.
+      </div>
+
+    </article>
+
+  </div>
+</section>
+
+<section class="principles">
+ <div class="principles-box">
+
+    
+    <p>
+     <a style="color:#fff;text-decoration: none;border:1px solid #fff;padding:15px;" href="/coming-soon.html"  data-pt="Visite a galeria completa"
+    data-en="View all gallery"> Visite a galeria completa.</a> 
+    </p>
+
+  </div>
+  <div class="principles-box">
+
+    <h2
+    data-pt="Sobre o Acervo"
+    data-en="About the Archive">
+      Sobre o Acervo
+    </h2>
+
+    <p
+    data-pt="O Acervo Digital de Selos do Horizon 4282 foi criado para organizar pequenas peças visuais colecionáveis que representam momentos, mundos, personagens, sistemas e descobertas do projeto."
+    data-en="The Horizon 4282 Digital Stamp Archive was created to organize small collectible visual pieces representing moments, worlds, characters, systems and discoveries from the project.">
+      O Acervo Digital de Selos do Horizon 4282 foi criado para organizar pequenas peças visuais colecionáveis que representam momentos, mundos, personagens, sistemas e descobertas do projeto.
+    </p>
+
+    <p
+    data-pt="Cada selo funciona como um fragmento visual da memória do Horizon, conectando arte, narrativa, tecnologia e documentação histórica."
+    data-en="Each stamp works as a visual fragment of Horizon's memory, connecting art, narrative, technology and historical documentation.">
+      Cada selo funciona como um fragmento visual da memória do Horizon, conectando arte, narrativa, tecnologia e documentação histórica.
+    </p>
+
+  </div>
+
+</section>
+
+<footer>
+  <span
+  data-pt="© 2026 Studio 4282 • Acervo Digital de Selos Horizon 4282"
+  data-en="© 2026 Studio 4282 • Horizon 4282 Digital Stamp Archive">
+    © 2026 Studio 4282 • Acervo Digital de Selos Horizon 4282
+  </span>
+</footer>
+
+
+<div id="stampModal" class="stamp-modal">
+
+  <div class="stamp-modal-content">
+
+    <button class="close-modal" onclick="closeStampModal()">
+      ✕
+    </button>
+
+    <div class="stamp-image-area">
+
+      <img
+        id="stampModalImage"
+        src=""
+        alt="Stamp">
+
+    </div>
+
+    <div class="stamp-info-area">
+
+      <h2 id="stampModalTitle">
+        First Signal
+      </h2>
+
+      <div id="stampModalCode" class="stamp-code">
+        HST-000001
+      </div>
+
+      <p id="stampModalDescription">
+        Description...
+      </p>
+
+      <a id="stampDownloadBtn" href="javascript:;" download
+        class="pdf-btn" download onclick="openPopup()">DOWNLOAD</a>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+<div id="popup" class="popup-overlay">
+  <div class="popup-box">
+
+    <button class="close-btn" onclick="closePopup()">×</button>
+
+    <h2>Baixar história em PDF</h2>
+
+    <p>
+      Você pode baixar esta imagem gratuitamente.
+      Caso deseje, também pode colaborar voluntariamente com o projeto.
+    </p>
+    <a class="pdf-btn" id="stampDownloadBT" download>Baixar Imagem Gratuita</a>
+    <hr>
+
+    <h2>Colaboração voluntária</h2>
+ <p>
+   A sua colaboração nos ajuda a manter o projeto vivo e criação de novas obras.
+   Toda contribuição é bem-vinda, independentemente do valor. ❤️<br>
+   Deus abençoe grandemente. 🙏
+
+    <img class="qrcode" src="/assets/qr-code-horizon.jpg" alt="QR Code para colaboração voluntária">
+
+  <p id="pixKey" style="display:none;">
+00020126580014br.gov.bcb.pix013640ec89d6-130d-4c29-ba37-8fce9d8dc6fe5204000053039865802BR5924Roque Fernando Marcos So6009Sao Paulo62230519daqr6151064563851776304688F
+</p>
+
+<button class="pix-btn" onclick="copyPix()">
+📋 Copiar Chave PIX
+</button>
+
+<div id="copyMessage"></div>
+  </div>
+
+</div>
+
+<script>
+const button = document.getElementById("langBtn");
+
+let currentLang =
+localStorage.getItem("horizonLanguage") || "pt";
+
+function applyLanguage(){
+
+  document.querySelectorAll("[data-pt][data-en]").forEach(el=>{
+    el.innerHTML = el.dataset[currentLang];
+  });
+
+  button.innerText =
+  currentLang === "pt" ? "EN" : "PT";
+
+  document.documentElement.lang =
+  currentLang === "pt" ? "pt-BR" : "en";
+
+  localStorage.setItem("horizonLanguage", currentLang);
+}
+
+button.addEventListener("click",()=>{
+  currentLang = currentLang === "pt" ? "en" : "pt";
+  applyLanguage();
+});
+
+applyLanguage();
+
+function openStampModal(
+  image,
+  title,
+  code,
+  description
+){
+
+  document
+    .getElementById("stampModalImage")
+    .src = image;
+
+  document
+    .getElementById("stampModalTitle")
+    .innerText = title;
+
+  document
+    .getElementById("stampModalCode")
+    .innerText = code;
+
+  document
+    .getElementById("stampModalDescription")
+    .innerText = description;
+
+  document
+    .getElementById("stampDownloadBT")
+    .href = image;
+
+  document
+    .getElementById("stampModal")
+    .classList
+    .add("active");
+
+}
+
+function closeStampModal(){
+
+  document
+    .getElementById("stampModal")
+    .classList
+    .remove("active");
+
+}
+
+function openPopup(){
+  document.getElementById("popup").classList.add("active");
+}
+
+function closePopup(){
+  document.getElementById("popup").classList.remove("active");
+}
+
+function copyPix(){
+
+    const chave =
+        document.getElementById("pixKey")
+        .innerText
+        .trim();
+
+    navigator.clipboard.writeText(chave)
+    .then(() => {
+
+      
+        document.getElementById("copyMessage")
+        .innerHTML =
+        "✅ Chave PIX Copiada!";
+
+      setTimeout(() => {
+        document.getElementById("copyMessage")
+        .innerHTML ="";
+    }, 3000);
+
+    })
+    .catch(() => {
+
+        document.getElementById("copyMessage")
+        .innerHTML =
+        "❌ O código não foi copiado :(.";
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
