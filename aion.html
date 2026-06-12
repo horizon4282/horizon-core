@@ -914,6 +914,28 @@ renderConversations();
 startAion();
 renderMessages();
 saveState();
+
+function readQueryFromIndex(){
+  const params = new URLSearchParams(window.location.search);
+  const question = params.get("q");
+
+  if(!question) return;
+
+  const input = document.getElementById("userInput");
+
+  if(input){
+    input.value = question;
+    setTimeout(() => {
+      sendMessage();
+    }, 500);
+  }
+
+  // limpa a URL depois de receber a pergunta
+  const cleanUrl = window.location.origin + window.location.pathname;
+  window.history.replaceState({}, document.title, cleanUrl);
+}
+
+readQueryFromIndex();
 </script>
 
 </body>
