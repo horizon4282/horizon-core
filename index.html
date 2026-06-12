@@ -662,6 +662,33 @@ body.dimension-3 #portalBg{
 }
 
 
+  #artifact{
+
+  position:fixed;
+
+  width:14px;
+  height:14px;
+
+  border:1px solid rgba(127,211,255,.9);
+
+  z-index:15;
+
+  pointer-events:none;
+
+  opacity:0;
+
+  transition:opacity .4s;
+
+  box-shadow:
+    0 0 10px rgba(127,211,255,.5);
+
+}
+
+#artifact.active{
+
+  opacity:1;
+
+}
  @media(max-width:894px){
     .main-menu{
     grid-template-columns:repeat(2, 180px);
@@ -691,6 +718,7 @@ body.dimension-3 #portalBg{
 
 <body class="dimension-1">
 
+  <div id="artifact"></div>
   <div id="flyingObject"></div>
 
 <button class="menu-toggle" onclick="toggleMenu()">
@@ -1476,7 +1504,36 @@ function launchFlyingObject(){
 
 launchFlyingObject();
 
+function spawnArtifact(){
 
+  const artifact =
+    document.getElementById("artifact");
+
+  if(!artifact) return;
+
+  const x =
+    Math.random() *
+    (window.innerWidth - 30);
+
+  const y =
+    Math.random() *
+    (window.innerHeight - 30);
+
+  artifact.style.left =
+    x + "px";
+
+  artifact.style.top =
+    y + "px";
+
+  artifact.classList.add("active");
+
+  setTimeout(()=>{
+
+    artifact.classList.remove("active");
+
+  },1200);
+
+}
 
   </script>
 
