@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Horizon 4282 — AION</title>
+
+<style>
+:root{
+  --bg:#05070b;
+  --text:#eaf2ff;
+  --muted:#9bb0c8;
+  --accent:#69e7ff;
+  --accent2:#b88cff;
+  --line:rgba(255,255,255,.08);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(105,231,255,.12),transparent 35%),
+    radial-gradient(circle at 80% 80%,rgba(184,140,255,.16),transparent 38%),
+    #071021;
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:44px 44px;
+  opacity:.55;
+  pointer-events:none;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,.018) 0px,
+      rgba(255,255,255,.018) 1px,
+      transparent 1px,
+      transparent 90px
+    );
+  opacity:.3;
+  pointer-events:none;
+}
+
+.topbar{
+  position:relative;
+  z-index:2;
+  height:72px;
+  padding:0 34px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  background:rgba(5,7,11,.78);
+  backdrop-filter:blur(12px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.brand-main{
+  font-size:22px;
+  letter-spacing:6px;
+  font-weight:bold;
+}
+
+.brand-sub{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.menu{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.menu a{
+  color:var(--text);
+  text-decoration:none;
+  font-size:14px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.menu a:hover{
+  color:#02040a;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
+
+.home{
+  position:relative;
+  z-index:1;
+  min-height:calc(100vh - 72px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 22px;
+}
+
+.hero{
+  width:100%;
+  max-width:980px;
+  text-align:center;
+}
+
+.horizon-logo{
+  font-size:clamp(25px,3vw,50px);
+  letter-spacing:clamp(8px,1.5vw,22px);
+  font-weight:300;
+  margin-bottom:18px;
+}
+
+.aion-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  margin-bottom:22px;
+  border-radius:999px;
+  background:rgba(105,231,255,.08);
+  border:1px solid rgba(105,231,255,.22);
+  color:var(--accent);
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.pulse{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 16px var(--accent);
+}
+
+.hero h1{
+  margin:0 0 14px;
+  font-size:clamp(21px,3vw,21px);
+}
+
+.hero p{
+  margin:0 auto 34px;
+  max-width:720px;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.6;
+}
+
+.ask-box{
+  max-width:760px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  border-radius:28px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 0 0 1px rgba(105,231,255,.04),
+    0 30px 80px rgba(0,0,0,.28);
+}
+
+.ask-box input{
+  flex:1;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--text);
+  padding:18px 16px;
+  font-size:17px;
+}
+
+.ask-box input::placeholder{
+  color:#788da6;
+}
+
+.send-arrow{
+  width:52px;
+  height:52px;
+  flex:0 0 52px;
+  border:0;
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#02040a;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  transition:.25s;
+}
+
+.send-arrow:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 0 20px rgba(105,231,255,.35),
+    0 0 32px rgba(184,140,255,.25);
+}
+
+.send-arrow svg{
+  width:22px;
+  height:22px;
+}
+
+.quick-links{
+  margin:34px auto 0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  max-width:850px;
+}
+
+.quick-links a{
+  text-decoration:none;
+  color:var(--text);
+  padding:18px;
+  min-height:94px;
+  border-radius:20px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
+  text-align:left;
+  transition:.25s;
+}
+
+.quick-links a:hover{
+  transform:translateY(-3px);
+  border-color:rgba(105,231,255,.35);
+  background:rgba(105,231,255,.075);
+}
+
+.quick-links strong{
+  display:block;
+  margin-bottom:7px;
+}
+
+.quick-links span{
+  display:block;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4;
+}
+
+.footer-link{
+  margin-top:28px;
+}
+
+.footer-link a{
+  color:#72859b;
+  text-decoration:none;
+  font-size:13px;
+}
+
+.footer-link a:hover{
+  color:var(--accent);
+}
+
+.floating-archive{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+}
+
+.floating-archive span{
+  position:absolute;
+  color:rgba(255,255,255,1);
+  font-size:13px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  opacity:.2;
+  filter:blur(1px);
+  animation:floatArchive 90s linear infinite reverse;
+}
+
+.floating-archive span:nth-child(1){left:8%; top:18%; animation-duration:10s;}
+.floating-archive span:nth-child(2){left:72%; top:22%; animation-duration:20s;}
+.floating-archive span:nth-child(3){left:18%; top:76%; animation-duration:15s;}
+.floating-archive span:nth-child(4){left:82%; top:68%; animation-duration:35s;}
+.floating-archive span:nth-child(5){left:42%; top:14%; animation-duration:20s;}
+.floating-archive span:nth-child(6){left:58%; top:82%; animation-duration:15s;}
+.floating-archive span:nth-child(7){left:10%; top:48%; animation-duration:8s;}
+.floating-archive span:nth-child(8){left:76%; top:44%; animation-duration:10s;}
+.floating-archive span:nth-child(9){left:34%; top:60%; animation-duration:8s;}
+.floating-archive span:nth-child(10){left:50%; top:35%; animation-duration:30s;}
+
+@keyframes floatArchive{
+  0%{
+    transform:translateY(0) translateX(0) rotate(0deg);
+  }
+
+  50%{
+    transform:translateY(-40px) translateX(28px) rotate(2deg);
+  }
+
+  100%{
+    transform:translateY(0) translateX(0) rotate(0deg);
+  }
+}
+
+#archive-lightning{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  opacity:0;
+  background:rgba(105,231,255,.1);
+}
+
+#archive-lightning::before{
+  content:"";
+  position:absolute;
+  top:-10%;
+  left:55%;
+  width:1px;
+  height:120%;
+  background:linear-gradient(
+    to bottom,
+    transparent,
+    #69e7ff,
+    #b88cff,
+    transparent
+  );
+  transform:rotate(65deg);
+  filter:
+    blur(3px)
+    drop-shadow(0 0 16px #fffd69)
+    drop-shadow(0 0 32px #b88cff);
+}
+
+.lang-toggle{
+  color:var(--text);
+  font-size:14px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(105,231,255,.08);
+  border:1px solid rgba(105,231,255,.25);
+  cursor:pointer;
+}
+
+@media(max-width:860px){
+  body{
+    overflow:auto;
+  }
+
+  .topbar{
+    height:auto;
+    padding:18px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+  }
+
+  .menu{
+    flex-wrap:wrap;
+  }
+
+  .home{
+    min-height:auto;
+    padding:54px 18px;
+  }
+
+  .quick-links{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:520px){
+  .quick-links{
+    grid-template-columns:1fr;
+  }
+
+  .ask-box{
+    border-radius:22px;
+  }
+
+  .brand{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:4px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+
+<div id="archive-lightning"></div>
+
+<div class="floating-archive">
+  <span>ARCHIVE</span>
+  <span>AION</span>
+  <span>THE VAULT</span>
+  <span>NODE-4282</span>
+  <span>OPEN LIBRARY</span>
+  <span>OBSERVER</span>
+  <span>RESEARCH</span>
+  <span>DAY 5000</span>
+  <span>PASSWORD</span>
+  <span>HORIZON</span>
+</div>
+
+<header class="topbar">
+  <div class="brand">
+    
+<button class="lang-toggle" onclick="toggleLang()" id="langBtn">EN</button>
+    <div class="brand-main">HORIZON 4282</div>
+    <div class="brand-sub">Archive · Laboratory · Memory</div>
+  </div>
+
+  <nav class="menu">
+    <a href="https://horizon4282.com.br/open-library-guide">Open Library</a>
+    <a href="https://horizon4282.com.br/about.html">About</a>
+    <a href="https://horizon4282.com.br/research.html">Research</a>
+    <a href="https://horizon4282.com.br/log.html">Log</a>
+    <a href="https://horizon4282.com.br/luz-e-louvor.html">Luz e Louvor</a>
+    <a href="https://horizon4282.com.br/libray/stamp-guides.html">Stamps</a>
+  </nav>
+</header>
+
+<main class="home">
+  <section class="hero">
+
+    <div class="horizon-logo">HORIZON 4282</div>
+
+   <h1 id="mainTitle">Você pode navegar pelo menu tradicional da Horizon ☝️, ou perguntar ao Aion.</h1>
+
+  <p id="mainText">
+      <span style="color:rgba(255, 255, 0, 0.637)"><b>Aion é o primeiro habitante</b> do Horizon 4282, capaz de se comunicar com um ser humano e guiar você
+      por histórias, pesquisas, música, memória, selos e registros preservados.</span>
+    </p>
+    <div class="aion-badge">
+      <span class="pulse"></span>
+      AION ONLINE
+    </div>
+    <div class="ask-box">
+      <input
+        id="questionInput"
+        type="text"
+        placeholder="Olá eu sou o Aion, habitante da Horizon. O que você deseja encontrar?"
+        onkeydown="handleKey(event)"
+      />
+
+      <button class="send-arrow" onclick="goToAion()" aria-label="Enviar pergunta para AION">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 19V5M12 5L6 11M12 5L18 11"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="quick-links">
+      <a href="https://horizon4282.com.br/open-library-guide">
+        <strong>Open Library</strong>
+        <span id="subLibrary">Histórias, screenplays e leituras preservadas.</span>
+      </a>
+
+      <a href="https://horizon4282.com.br/research">
+        <strong>Research</strong>
+        <span id="subResearch">Experimentos, ideias e laboratório.</span>
+      </a>
+
+      <a href="https://horizon4282.com.br/luz-e-louvor">
+        <strong>Luz e Louvor</strong>
+        <span id="subLuzlouvor">Música, fé, álbuns e registros do ministério.</span>
+      </a>
+
+      <a href="https://horizon4282.com.br/libray/stamp-guides">
+        <strong>Stamps</strong>
+        <span id="subStamps">Selos, símbolos e fragmentos do Horizon.</span>
+      </a>
+    </div>
+
+    <div class="footer-link">
+      <a id="terminalLink" href="https://horizon4282.com.br/terminal.html">acessar terminal clássico →</a>
+    </div>
+
+  </section>
+</main>
+
+<script>
+function goToAion(){
+  const input = document.getElementById("questionInput");
+  const question = input.value.trim();
+
+  if(question){
+    window.location.href = "aion.html?q=" + encodeURIComponent(question);
+  }else{
+    window.location.href = "aion.html";
+  }
+}
+
+function handleKey(event){
+  if(event.key === "Enter"){
+    goToAion();
+  }
+}
+
+function triggerLightning(){
+  const lightning = document.getElementById("archive-lightning");
+
+  if(!lightning){
+    console.log("archive-lightning não encontrado");
+    return;
+  }
+
+  lightning.style.opacity = "1";
+
+  setTimeout(() => {
+    lightning.style.opacity = "0";
+  }, 120);
+
+  const next = Math.random() * 20000 + 16000;
+  setTimeout(triggerLightning, next);
+}
+
+setTimeout(triggerLightning, 2000);
+
+
+let currentLang = localStorage.getItem("horizon_lang") || "pt";
+
+const texts = {
+  pt: {
+    btn: "EN",
+    title: "Você pode navegar pelo menu tradicional da Horizon ☝️, ou perguntar ao AION.",
+    text: "AION é o primeiro habitante do Horizon 4282, capaz de se comunicar com um ser humano e guiar você por histórias, pesquisas, música, memória, selos e registros preservados.",
+    placeholder: "Olá, eu sou AION, habitante da Horizon. O que você deseja encontrar?",
+    terminal: "acessar terminal clássico →",
+    sublibrary:"Histórias, screenplays e registros preservados",
+    subresearch:"Experimentos,ideias e laboratório",
+    subluzlouvor:"Música,álbuns, registros do ministério",
+    substamps:"Selos, simbolos e fragmentos do Horizon"
+  },
+
+  en: {
+    btn: "PT",
+    title: "You can browse Horizon through the traditional menu ☝️, or ask AION.",
+    text: "AION is the first inhabitant of Horizon 4282, capable of communicating with humans and guiding you through stories, research, music, memory, stamps, and preserved records.",
+    placeholder: "Hello, I am AION. What would you like to discover within Horizon?",
+    terminal: "access classic terminal →",
+    sublibrary: "Stories, screenplays and preserved readings",
+    subresearch:"Experiments,ideas and laboratory",
+    subluzlouvor:"Music,albuns and ministry registers",
+    substamps:"Stamps, symbols and Horizon fragments"
+  }
+};
+
+
+function applyLang(){
+  const t = texts[currentLang];
+
+  document.getElementById("langBtn").textContent = t.btn;
+  document.getElementById("mainTitle").textContent = t.title;
+  document.getElementById("mainText").textContent = t.text;
+  document.getElementById("questionInput").placeholder = t.placeholder;
+  document.getElementById("terminalLink").textContent = t.terminal;
+  document.getElementById("subLibrary").textContent = t.sublibrary;
+  document.getElementById("subResearch").textContent = t.subresearch;
+  document.getElementById("subLuzlouvor").textContent = t.subluzlouvor;
+  document.getElementById("subStamps").textContent = t.substamps;
+
+  localStorage.setItem("horizon_lang", currentLang);
+}
+
+function toggleLang(){
+  currentLang = currentLang === "pt" ? "en" : "pt";
+  applyLang();
+}
+
+applyLang();
+</script>
+
+</body>
+</html>
