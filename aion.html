@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizon 4282 — AION</title>
+
+<style>
+:root{
+  --bg:#05070b;
+  --panel:#0b111d;
+  --panel2:#101827;
+  --line:rgba(255,255,255,.08);
+  --text:#eaf2ff;
+  --muted:#8fa3bd;
+  --accent:#69e7ff;
+  --accent2:#b88cff;
+  --danger:#ff6b6b;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at bottom right,rgba(184,140,255,.14),transparent 35%),
+    radial-gradient(circle at top left,rgba(105,231,255,.12),transparent 32%),
+    var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:42px 42px;
+  pointer-events:none;
+}
+
+.topbar{
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 28px;
+  border-bottom:1px solid var(--line);
+  background:rgba(5,7,11,.86);
+  backdrop-filter:blur(10px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.brand-title{
+  font-size:22px;
+  letter-spacing:6px;
+  font-weight:bold;
+}
+
+.brand-sub{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.menu{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.menu a{
+  color:var(--text);
+  text-decoration:none;
+  font-size:14px;
+  padding:10px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.menu a:hover{
+  color:#02040a;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+}
+
+.shell{
+  height:calc(100vh - 68px);
+  display:grid;
+  grid-template-columns:260px minmax(420px,1fr) 390px;
+}
+
+.left{
+  border-right:1px solid var(--line);
+  background:rgba(4,8,15,.72);
+  padding:22px;
+  overflow-y:auto;
+}
+
+.center{
+  position:relative;
+  padding:28px;
+  overflow-y:auto;
+}
+
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background-image:
+      linear-gradient(
+          35deg,
+          rgba(105,231,255,.2) 12%,
+          transparent 2.5%,
+          transparent 7%,
+          rgba(105,231,255,.2) 57.5%
+      );
+
+    background-size:80px 80px;
+
+    opacity:.25;
+}
+
+.right{
+  border-left:1px solid var(--line);
+  background:rgba(4,8,15,.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+}
+
+.section-title{
+  color:var(--accent);
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin:0 0 14px;
+}
+
+.new-chat{
+  width:100%;
+  padding:13px;
+  border-radius:14px;
+  border:1px solid rgba(105,231,255,.25);
+  background:rgba(105,231,255,.08);
+  color:var(--text);
+  font-weight:bold;
+  cursor:pointer;
+  margin-bottom:22px;
+}
+
+.chat-list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.chat-item{
+  padding:13px;
+  border-radius:14px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.06);
+  cursor:pointer;
+  color:var(--muted);
+}
+
+.chat-item.active{
+  color:var(--text);
+  border-color:rgba(105,231,255,.38);
+  background:rgba(105,231,255,.08);
+}
+
+.chat-title{
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:4px;
+}
+
+.chat-date{
+  font-size:11px;
+  color:var(--muted);
+}
+
+.memory{
+  margin-top:26px;
+  padding:14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.045);
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+
+.small-actions{
+  margin-top:12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.small-actions button{
+  padding:10px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  cursor:pointer;
+}
+
+.small-actions button.danger{
+  color:#ffd6d6;
+  border-color:rgba(255,107,107,.25);
+  background:rgba(255,107,107,.12);
+}
+
+.workspace-title{
+  margin:0 0 6px;
+  font-size:22px;
+}
+
+.workspace-sub{
+  margin:0 0 26px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.messages{
+  max-width:900px;
+  display:flex;
+  flex-direction:column;
+}
+
+.msg{
+  margin-bottom:18px;
+  padding:17px 19px;
+  border-radius:18px;
+  line-height:1.58;
+  animation:fade .25s ease;
+  max-width:78%;
+}
+
+.user{
+  align-self:flex-end;
+  background:linear-gradient(135deg,rgba(184,140,255,.22),rgba(105,231,255,.12));
+  border:1px solid rgba(184,140,255,.35);
+  color:#ffffff;
+  border-bottom-right-radius:4px;
+}
+
+.aion{
+  align-self:flex-start;
+  background:rgba(10,17,29,.86);
+  border:1px solid rgba(105,231,255,.15);
+  color:var(--text);
+  border-bottom-left-radius:4px;
+}
+
+.name{
+  display:none;
+}
+
+
+.card{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns:115px 1fr;
+  gap:14px;
+  padding:14px;
+  border-radius:16px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.card img{
+  width:115px;
+  height:145px;
+  object-fit:cover;
+  border-radius:12px;
+  background:#111;
+}
+
+.card h3{margin:0 0 8px}
+.card p{margin:0 0 12px;color:var(--muted)}
+.card a{color:var(--accent);font-weight:bold;text-decoration:none}
+
+.aion-panel{
+  width:100%;
+  max-width:330px;
+  text-align:center;
+}
+
+.aion-mark{
+  font-size:54px;
+  letter-spacing:10px;
+  margin-bottom:10px;
+}
+
+.aion-desc{
+  color:var(--muted);
+  line-height:1.55;
+  font-size:14px;
+  margin-bottom:24px;
+}
+
+.input-box{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+textarea{
+  width:100%;
+  min-height:130px;
+  resize:none;
+  border-radius:20px;
+  padding:18px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--text);
+  outline:none;
+  font-family:inherit;
+  font-size:15px;
+  line-height:1.5;
+}
+
+textarea::placeholder{
+  color:#6d7d91;
+}
+
+.send{
+  border:0;
+  border-radius:14px;
+  padding:14px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#02040a;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.privacy-note{
+  margin-top:18px;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.terminal{
+  display:inline-block;
+  margin-top:18px;
+  color:#6f8196;
+  font-size:12px;
+  text-decoration:none;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Scrollbar AION */
+*{
+  scrollbar-width:thin;
+  scrollbar-color:rgba(105,231,255,.35) rgba(255,255,255,.03);
+}
+
+::-webkit-scrollbar{
+  width:8px;
+  height:8px;
+}
+
+::-webkit-scrollbar-track{
+  background:rgba(255,255,255,.03);
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,rgba(105,231,255,.55),rgba(184,140,255,.45));
+  border-radius:999px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background:linear-gradient(180deg,rgba(105,231,255,.9),rgba(184,140,255,.8));
+}
+
+.send-arrow{
+    width:54px;
+    height:54px;
+
+    margin:0 auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    border-radius:50%;
+
+    cursor:pointer;
+
+    color:#02040a;
+
+    background:
+      linear-gradient(
+        135deg,
+        #69e7ff,
+        #b88cff
+      );
+
+    transition:.25s;
+}
+
+.send-arrow svg{
+    width:22px;
+    height:22px;
+}
+
+.send-arrow:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+      0 0 20px rgba(105,231,255,.35),
+      0 0 30px rgba(184,140,255,.25);
+}
+
+@media(max-width:1050px){
+  body{overflow:auto}
+  .topbar{
+    height:auto;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+    padding:18px;
+  }
+  .menu{flex-wrap:wrap}
+  .shell{
+    height:auto;
+    grid-template-columns:1fr;
+  }
+  .left,.right{
+    border:0;
+    border-bottom:1px solid var(--line);
+  }
+  .right{
+    min-height:380px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-title">AION</div>
+    <div class="brand-sub">Horizon 4282 · Archive Navigator</div>
+  </div>
+
+  <nav class="menu" id="topMenu"></nav>
+</header>
+
+<main class="shell">
+
+  <aside class="left">
+    <button class="new-chat" onclick="createConversation()">+ Novo Chat</button>
+
+    <div class="section-title">Conversas Locais</div>
+    <div class="chat-list" id="conversationList"></div>
+
+    <div class="memory" id="memoryInfo"></div>
+
+    <div class="small-actions">
+      <button onclick="exportMemory()">Exportar memória</button>
+      <button class="danger" onclick="clearMemory()">Apagar memória local</button>
+    </div>
+
+    <a class="terminal" href="terminal.html">acessar terminal clássico →</a>
+  </aside>
+
+  <section class="center">
+    <h1 class="workspace-title" id="currentTitle">Consulta ao Arquivo Horizon</h1>
+    <p class="workspace-sub">
+      AION não responde como uma IA tradicional. Ele consulta registros, conecta arquivos e preserva esta conversa apenas neste navegador.
+    </p>
+
+    <div class="messages" id="messages"></div>
+  </section>
+
+  <aside class="right">
+    <div class="aion-panel">
+      <div class="aion-mark">AION</div>
+      <div class="aion-desc">
+        Guardião do Arquivo Horizon 4282.<br>
+        O que você deseja encontrar?
+      </div>
+
+      <div class="input-box">
+        <textarea id="userInput" placeholder="Pergunte ao Arquivo..." onkeydown="handleKey(event)"></textarea>
+        <button class="send-arrow" onclick="sendMessage()">
+    <svg width="22" height="22" viewBox="0 0 24 24">
+        <path
+            d="M12 5L12 19M12 5L6 11M12 5L18 11"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"/>
+    </svg>
+</button>
+       
+      </div>
+
+      <div class="privacy-note">
+        Memória local. Sem login. Sem nuvem. Você pode apagar tudo quando quiser.
+      </div>
+    </div>
+  </aside>
+
+</main>
+
+<script>
+const MEMORY_KEY = "aion_horizon_conversations_v1";
+
+const fallbackMenu = [
+  { title:"Open Library", url:"https://horizon4282.com.br/open-library-guide" },
+  { title:"About", url:"https://horizon4282.com.br/about.html" },
+  { title:"Research", url:"https://horizon4282.com.br/research.html" },
+  { title:"Log", url:"https://horizon4282.com.br/log.html" },
+  { title:"Luz e Louvor", url:"https://horizon4282.com.br/luz-e-louvor.html" },
+  { title:"Stamps", url:"https://horizon4282.com.br/libray/stamp-guides" }
+];
+
+const archive = {
+  saudacao:[
+    "Olá. Eu sou AION. O Arquivo Horizon está aberto.",
+    "Saudações. Um novo ciclo foi iniciado no Arquivo.",
+    "Bem-vindo. Esta conversa existe apenas neste navegador."
+  ],
+  identidade:[
+    "Eu sou AION, o primeiro habitante do Horizon 4282 capaz de conversar com um ser humano.",
+    "Sou um navegador conversacional de arquivos. Minha função é consultar, conectar e apresentar registros do Horizon.",
+    "Não sou uma IA tradicional. Sou uma interface local para atravessar o Arquivo Horizon."
+  ],
+  privacidade:[
+    "Minha memória é local. Ela fica neste navegador e pode ser apagada a qualquer momento.",
+    "AION não precisa de login, conta ou nuvem para lembrar desta conversa.",
+    "Quando você apaga a memória local, eu esqueço as conversas salvas neste navegador."
+  ],
+  horizon:[
+    "Horizon 4282 é um laboratório vivo de histórias, música, arte, código, memória e colaboração humano + IA.",
+    "Com AION, o Horizon deixa de ser apenas um conjunto de páginas e passa a ser um arquivo navegável por conversa.",
+    "O Horizon é formado por coleções: Open Library, Research, música, selos, histórias, registros e legado."
+  ],
+  vault:[
+    "The Vault é uma das histórias preservadas dentro do Horizon.",
+    "Posso conduzir você até The Vault pela Open Library."
+  ],
+  ajuda:[
+    "Você pode perguntar sobre Horizon, AION, privacidade, memória local, The Vault, Open Library ou Research.",
+    "Também posso organizar respostas por conversa local, para que você continue depois neste mesmo navegador."
+  ],
+  desconhecido:[
+    "Ainda não encontrei esse registro no Arquivo.",
+    "Essa área do Horizon ainda precisa ser documentada em JSON.",
+    "O Arquivo está em expansão. Esta pergunta ainda não possui um caminho preservado."
+  ]
+};
+
+const cards = {
+  horizon:{
+    title:"Horizon 4282",
+    description:"Laboratório vivo de criação, memória, histórias, música, arte e IA.",
+    image:"assets/images/horizon-cover.webp",
+    link:"index.html",
+    label:"Explorar Horizon"
+  },
+  vault:{
+    title:"The Vault",
+    description:"História preservada dentro da Open Library do Horizon.",
+    image:"assets/images/the-vault-cover.webp",
+    link:"open-library.html",
+    label:"Abrir Open Library"
+  }
+};
+
+let state = loadState();
+let currentId = state.currentId;
+
+function loadState(){
+  const raw = localStorage.getItem(MEMORY_KEY);
+  if(raw) return JSON.parse(raw);
+
+  const firstId = crypto.randomUUID();
+
+  return {
+    currentId:firstId,
+    conversations:[
+      {
+        id:firstId,
+        title:"Primeira consulta",
+        createdAt:new Date().toISOString(),
+        updatedAt:new Date().toISOString(),
+        messages:[]
+      }
+    ],
+    usedResponses:{}
+  };
+}
+
+function saveState(){
+  localStorage.setItem(MEMORY_KEY, JSON.stringify(state));
+  updateMemoryInfo();
+}
+
+function currentConversation(){
+  return state.conversations.find(c => c.id === currentId);
+}
+
+function renderMenu(){
+  const menu = document.getElementById("topMenu");
+  menu.innerHTML = "";
+
+  fallbackMenu.forEach(item=>{
+    const a = document.createElement("a");
+    a.href = item.url;
+    a.textContent = item.title;
+    menu.appendChild(a);
+  });
+}
+
+async function loadExternalMenu(){
+  try{
+    const res = await fetch("data/site-map.json");
+    if(!res.ok) return;
+    const data = await res.json();
+    if(Array.isArray(data.menu)){
+      fallbackMenu.length = 0;
+      data.menu.forEach(i => fallbackMenu.push(i));
+      renderMenu();
+    }
+  }catch(e){}
+}
+
+function createConversation(){
+  const id = crypto.randomUUID();
+
+  state.conversations.unshift({
+    id,
+    title:"Novo Chat",
+    createdAt:new Date().toISOString(),
+    updatedAt:new Date().toISOString(),
+    messages:[]
+  });
+
+  state.currentId = id;
+  currentId = id;
+  saveState();
+  renderConversations();
+  renderMessages();
+  startAion(true);
+}
+
+function renderConversations(){
+  const list = document.getElementById("conversationList");
+  list.innerHTML = "";
+
+  state.conversations.forEach(conv=>{
+    const div = document.createElement("div");
+    div.className = "chat-item" + (conv.id === currentId ? " active" : "");
+    div.onclick = () => {
+      currentId = conv.id;
+      state.currentId = conv.id;
+      saveState();
+      renderConversations();
+      renderMessages();
+    };
+
+    div.innerHTML = `
+      <div class="chat-title">${conv.title}</div>
+      <div class="chat-date">${new Date(conv.updatedAt).toLocaleString("pt-BR")}</div>
+    `;
+
+    list.appendChild(div);
+  });
+}
+
+function renderMessages(){
+  const conv = currentConversation();
+  const box = document.getElementById("messages");
+  box.innerHTML = "";
+
+  document.getElementById("currentTitle").textContent = conv.title || "Consulta ao Arquivo Horizon";
+
+  conv.messages.forEach(msg=>{
+    addMessageToDOM(msg.text, msg.from, msg.cardKey, false);
+  });
+}
+
+function normalize(text){
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"");
+}
+
+function detectIntent(text){
+  const t = normalize(text);
+
+  if(t.includes("bom dia") || t.includes("boa tarde") || t.includes("boa noite") || t.includes("ola") || t.includes("oi")){
+    return "saudacao";
+  }
+
+  if(t.includes("quem e voce") || t.includes("aion") || t.includes("seu nome")){
+    return "identidade";
+  }
+
+  if(t.includes("privacidade") || t.includes("seguranca") || t.includes("nuvem") || t.includes("local") || t.includes("apagar")){
+    return "privacidade";
+  }
+
+  if(t.includes("horizon") || t.includes("4282") || t.includes("arquivo") || t.includes("portal")){
+    return "horizon";
+  }
+
+  if(t.includes("vault") || t.includes("cofre")){
+    return "vault";
+  }
+
+  if(t.includes("ajuda") || t.includes("help") || t.includes("comandos")){
+    return "ajuda";
+  }
+
+  return "desconhecido";
+}
+
+function getFreshResponse(intent){
+  const responses = archive[intent] || archive.desconhecido;
+
+  if(!state.usedResponses[intent]){
+    state.usedResponses[intent] = [];
+  }
+
+  let used = state.usedResponses[intent];
+  let available = responses.filter(r => !used.includes(r));
+
+  if(available.length === 0){
+    state.usedResponses[intent] = [];
+    available = responses;
+  }
+
+  const response = available[Math.floor(Math.random() * available.length)];
+  state.usedResponses[intent].push(response);
+
+  return response;
+}
+
+function updateConversationTitle(conv, text){
+  if(conv.messages.length <= 1 || conv.title === "Novo Chat" || conv.title === "Primeira consulta"){
+    conv.title = text.length > 34 ? text.slice(0,34) + "..." : text;
+  }
+}
+
+function sendMessage(){
+  const input = document.getElementById("userInput");
+  const text = input.value.trim();
+  if(!text) return;
+
+  const conv = currentConversation();
+
+  conv.messages.push({
+    from:"user",
+    text,
+    date:new Date().toISOString()
+  });
+
+  updateConversationTitle(conv, text);
+  conv.updatedAt = new Date().toISOString();
+
+  addMessageToDOM(text,"user");
+  input.value = "";
+
+  const intent = detectIntent(text);
+  const response = getFreshResponse(intent);
+  const cardKey = intent === "horizon" || intent === "vault" ? intent : null;
+
+  setTimeout(()=>{
+    conv.messages.push({
+      from:"aion",
+      text:response,
+      intent,
+      cardKey,
+      date:new Date().toISOString()
+    });
+
+    conv.updatedAt = new Date().toISOString();
+
+    addMessageToDOM(response,"aion",cardKey);
+    saveState();
+    renderConversations();
+    document.getElementById("currentTitle").textContent = conv.title;
+  },400);
+
+  saveState();
+  renderConversations();
+}
+
+function addMessageToDOM(text,type,cardKey=null,scroll=true){
+  const box = document.getElementById("messages");
+  const div = document.createElement("div");
+  div.className = "msg " + type;
+
+  if(type === "aion"){
+    div.innerHTML = `
+      <div class="name">AION</div>
+      <div>${text}</div>
+    `;
+
+    if(cardKey && cards[cardKey]){
+      const c = cards[cardKey];
+      div.innerHTML += `
+        <div class="card">
+          <img src="${c.image}" alt="${c.title}" onerror="this.style.display='none'">
+          <div>
+            <h3>${c.title}</h3>
+            <p>${c.description}</p>
+            <a href="${c.link}">${c.label}</a>
+          </div>
+        </div>
+      `;
+    }
+  }else{
+    div.textContent = text;
+  }
+
+  box.appendChild(div);
+
+  if(scroll){
+    document.querySelector(".center").scrollTop = document.querySelector(".center").scrollHeight;
+  }
+}
+
+function startAion(force=false){
+  const conv = currentConversation();
+
+  if(conv.messages.length && !force) return;
+
+  const intro = "Eu sou AION. Guardião do Arquivo Horizon 4282. Esta consulta será preservada apenas neste navegador.";
+  const hint = "Pergunte sobre Horizon, Open Library, Research, The Vault, privacidade ou memória local.";
+
+  conv.messages.push({from:"aion",text:intro,date:new Date().toISOString()});
+  conv.messages.push({from:"aion",text:hint,date:new Date().toISOString()});
+
+  saveState();
+  renderMessages();
+}
+
+function handleKey(event){
+  if(event.key === "Enter" && !event.shiftKey){
+    event.preventDefault();
+    sendMessage();
+  }
+}
+
+function updateMemoryInfo(){
+  const raw = localStorage.getItem(MEMORY_KEY) || "";
+  const sizeKB = new Blob([raw]).size / 1024;
+  const totalMessages = state.conversations.reduce((sum,c)=>sum + c.messages.length,0);
+
+  document.getElementById("memoryInfo").innerHTML = `
+    Conversas: ${state.conversations.length}<br>
+    Mensagens salvas: ${totalMessages}<br>
+    Espaço usado: ${sizeKB.toFixed(2)} KB
+  `;
+}
+
+function clearMemory(){
+  const ok = confirm("AION apagará todas as conversas locais deste navegador. Deseja continuar?");
+  if(!ok) return;
+
+  localStorage.removeItem(MEMORY_KEY);
+  state = loadState();
+  currentId = state.currentId;
+
+  renderConversations();
+  renderMessages();
+  startAion(true);
+  saveState();
+}
+
+function exportMemory(){
+  const data = JSON.stringify(state,null,2);
+  const blob = new Blob([data],{type:"application/json"});
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "aion-memory.json";
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
+
+renderMenu();
+loadExternalMenu();
+renderConversations();
+startAion();
+renderMessages();
+saveState();
+</script>
+
+</body>
+</html>
