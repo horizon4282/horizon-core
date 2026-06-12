@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arte Sacra Digital - Horizon 4282</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at center,#132445 0%,#07101f 55%,#000 100%);
+  color:#d5ecff;
+  font-family:"Courier New", monospace;
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:25px 40px;
+}
+
+.logo{
+  letter-spacing:4px;
+  font-weight:bold;
+  color:#fff;
+}
+
+.nav-actions{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.nav-actions a,
+#langBtn{
+  background:transparent;
+  border:1px solid rgba(127,211,255,.35);
+  color:#7fd3ff;
+  padding:10px 16px;
+  text-decoration:none;
+  font-family:"Courier New", monospace;
+  letter-spacing:2px;
+  cursor:pointer;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  padding:40px 8% 60px;
+}
+
+.hero{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.kicker{
+  color:#7fd3ff;
+  letter-spacing:5px;
+  margin-bottom:22px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-size:3.2vw;
+  line-height:1.1;
+  color:#fff;
+}
+
+.status-panel{
+  border:1px solid rgba(127,211,255,.18);
+  background:rgba(0,0,0,.28);
+  padding:28px;
+}
+
+.status-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.status-item{
+  color:#d5ecff;
+  line-height:1.7;
+}
+
+.status-item span{
+  color:#ffd97a;
+}
+
+.status-description{
+  margin-top:20px;
+  padding-top:15px;
+  border-top:1px dashed cyan;
+  color:#d5ecff;
+  line-height:1.6;
+}
+
+.collection{
+  padding:0 8% 90px;
+}
+
+.section-title{
+  margin-bottom:30px;
+}
+
+.section-title h2{
+  font-size:2.2rem;
+  margin-bottom:12px;
+  letter-spacing:3px;
+}
+
+.section-title p{
+  color:#a9cfff;
+  line-height:1.7;
+}
+
+.art-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:28px;
+}
+
+.art-card{
+  border:1px solid rgba(127,211,255,.18);
+  background:linear-gradient(160deg,rgba(127,211,255,.06),rgba(255,255,255,.015));
+  padding:18px;
+  transition:.3s;
+}
+
+.art-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(127,211,255,.65);
+  box-shadow:0 0 25px rgba(127,211,255,.16);
+}
+
+.card-actions{
+  margin-bottom:18px;
+}
+
+.card-actions a{
+  display:block;
+  text-align:center;
+  border:1px solid rgba(127,211,255,.28);
+  color:#7fd3ff;
+  text-decoration:none;
+  padding:10px;
+  font-size:.78rem;
+  letter-spacing:2px;
+}
+
+.card-actions a:hover{
+  background:rgba(127,211,255,.12);
+}
+
+.art-image{
+  aspect-ratio:16/9;
+  background:#050b14 center/cover no-repeat;
+  border:1px solid rgba(255,255,255,.12);
+  margin-bottom:18px;
+}
+
+.art-code{
+  color:#ffd97a;
+  letter-spacing:3px;
+  font-size:.8rem;
+  margin-bottom:12px;
+}
+
+.art-title{
+  color:#fff;
+  font-size:1.25rem;
+  margin-bottom:12px;
+}
+
+.art-desc{
+  color:#a9cfff;
+  line-height:1.6;
+  font-size:.95rem;
+}
+
+.art-meta{
+  margin-top:16px;
+  color:#7fd3ff;
+  font-size:.78rem;
+  line-height:1.6;
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:#8da7c7;
+}
+
+.art-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.92);
+  z-index:99999;
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.art-modal.active{
+  display:flex;
+}
+
+.art-modal-content{
+  width:min(95vw,1400px);
+  height:90vh;
+  display:grid;
+  grid-template-columns:75% 25%;
+  gap:25px;
+}
+
+.art-image-area{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.art-image-area img{
+  max-height:82vh;
+  max-width:100%;
+  object-fit:contain;
+  border:1px solid rgba(255,255,255,.15);
+}
+
+.art-info-area{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  color:#d5ecff;
+  padding:50px 10px 10px;
+}
+
+.art-info-area h2{
+  color:#fff;
+  font-size:1.8rem;
+}
+
+.close-modal{
+  position:absolute;
+  top:20px;
+  right:25px;
+  width:50px;
+  height:50px;
+  border:none;
+  background:none;
+  color:white;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.download-btn{
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  border:1px solid rgba(127,211,255,.4);
+  color:#7fd3ff;
+  padding:15px;
+  letter-spacing:3px;
+}
+
+@media(max-width:900px){
+  nav{
+    padding:20px;
+    align-items:flex-start;
+    gap:15px;
+  }
+
+  .nav-actions{
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+    padding:40px 6%;
+  }
+
+  .hero h1{
+    font-size:8vw;
+  }
+
+  .collection{
+    padding-left:6%;
+    padding-right:6%;
+  }
+
+  .status-grid{
+    grid-template-columns:1fr;
+  }
+
+  .art-modal-content{
+    grid-template-columns:1fr;
+    overflow-y:auto;
+  }
+
+  .art-image-area img{
+    max-height:65vh;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">HORIZON 4282</div>
+
+  <div class="nav-actions">
+    <a href="/index.html">HOME</a>
+    <a href="/open-library-guide.html">OPEN LIBRARY</a>
+  </div>
+</nav>
+
+<div class="cards">
+  <section class="hero">
+    <div class="kicker">Digital Museum Horizon</div>
+    <h1>Arte Sacra Digital</h1>
+  </section>
+
+  <section class="status-panel">
+    <div class="status-grid">
+      <div class="status-item">
+        <span>Collection:</span><br>
+        ASD — Arte Sacra Digital
+      </div>
+
+      <div class="status-item">
+        <span>Format:</span><br>
+        Digital Sacred Art
+      </div>
+
+      <div class="status-item">
+        <span>Languages:</span><br>
+        PT / EN
+      </div>
+
+      <div class="status-item">
+        <span>Status:</span><br>
+        ONLINE
+      </div>
+    </div>
+
+    <p class="status-description">
+      Uma coleção católica de arte sacra digital criada em ação híbrida Humano + IA,
+      preservando temas bíblicos, históricos, devocionais e litúrgicos.
+    </p>
+  </section>
+</div>
+
+<section class="collection">
+  <div class="section-title">
+    <h2>Primeira Série</h2>
+    <p>
+      A primeira série da Arte Sacra Digital reúne obras catalogadas do acervo,
+      organizadas por código, categoria, escola artística e tema.
+    </p>
+  </div>
+
+  <div id="artGrid" class="art-grid"></div>
+</section>
+
+<footer>
+  © 2026 Studio 4282 • Arte Sacra Digital • Horizon 4282
+</footer>
+
+<div id="artModal" class="art-modal">
+  <div class="art-modal-content">
+
+    <button class="close-modal" onclick="closeArtModal()">✕</button>
+
+    <div class="art-image-area">
+      <img id="modalImage" src="" alt="">
+    </div>
+
+    <div class="art-info-area">
+      <h2 id="modalTitle"></h2>
+      <div id="modalCode" class="art-code"></div>
+      <p id="modalDescription"></p>
+      <p id="modalMeta"></p>
+      <a id="modalDownload" class="download-btn" href="#" download>DOWNLOAD</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const JSON_PATH = "data/digital-sacred.json";
+const IMAGE_BASE_PATH = "https://f005.backblazeb2.com/file/horizon4282/filatelia/";
+
+async function loadSacredArt(){
+  try{
+    const response = await fetch(JSON_PATH);
+
+    if(!response.ok){
+      throw new Error("JSON não encontrado");
+    }
+
+    const artworks = await response.json();
+    renderArtworks(artworks);
+
+  }catch(error){
+    document.getElementById("artGrid").innerHTML = `
+      <p style="color:#ffd97a;">
+        Não foi possível carregar o arquivo JSON.
+        Verifique o caminho: ${JSON_PATH}
+      </p>
+    `;
+  }
+}
+
+function renderArtworks(artworks){
+  const grid = document.getElementById("artGrid");
+  grid.innerHTML = "";
+
+  artworks.forEach(item=>{
+    const imagePath = IMAGE_BASE_PATH + item.image;
+
+    const article = document.createElement("article");
+    article.className = "art-card";
+
+    article.innerHTML = `
+      <div class="card-actions">
+        <a href="javascript:;" data-id="${item.id}">VIEW</a>
+      </div>
+
+      <div class="art-image" style="background-image:url('${imagePath}')"></div>
+
+      <div class="art-code">${item.code}</div>
+
+      <div class="art-title">${item.title}</div>
+
+      <div class="art-desc">${item.description}</div>
+
+      <div class="art-meta">
+        ${item.category}<br>
+        ${item.artSchool}<br>
+        ${item.period} · ${item.format}
+      </div>
+    `;
+
+    article.querySelector("a").addEventListener("click",()=>{
+      openArtModal(item);
+    });
+
+    grid.appendChild(article);
+  });
+}
+
+function openArtModal(item){
+  const imagePath = IMAGE_BASE_PATH + item.image;
+
+  document.getElementById("modalImage").src = imagePath;
+  document.getElementById("modalImage").alt = item.title;
+
+  document.getElementById("modalTitle").innerText = item.title;
+  document.getElementById("modalCode").innerText = item.code;
+  document.getElementById("modalDescription").innerText = item.description;
+
+  document.getElementById("modalMeta").innerHTML = `
+    <strong>Category:</strong> ${item.category}<br>
+    <strong>Subcategory:</strong> ${item.subcategory}<br>
+    <strong>Art School:</strong> ${item.artSchool}<br>
+    <strong>Period:</strong> ${item.period}<br>
+    <strong>Format:</strong> ${item.format}<br>
+    <strong>Status:</strong> ${item.status}<br>
+    <strong>Artist:</strong> ${item.artist}
+  `;
+
+  document.getElementById("modalDownload").href = imagePath;
+
+  document.getElementById("artModal").classList.add("active");
+}
+
+function closeArtModal(){
+  document.getElementById("artModal").classList.remove("active");
+}
+
+loadSacredArt();
+</script>
+
+</body>
+</html>
