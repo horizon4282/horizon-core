@@ -607,6 +607,61 @@ body.dimension-3 #portalBg{
   cursor:pointer;
 }
 
+
+#flyingObject{
+  position:fixed;
+  top:28%;
+  right:-140px;
+
+  width:90px;
+  height:18px;
+
+  z-index:18;
+  pointer-events:none;
+
+  opacity:0;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(127,211,255,.95),
+    rgba(255,255,255,.9)
+  );
+
+  border-radius:50px;
+
+  box-shadow:
+    0 0 18px rgba(127,211,255,.8),
+    0 0 45px rgba(127,211,255,.35);
+
+  transform:rotate(-8deg);
+}
+
+#flyingObject.active{
+  animation:flyAcross 4.5s ease-in-out forwards;
+}
+
+@keyframes flyAcross{
+  0%{
+    right:-160px;
+    opacity:0;
+  }
+
+  10%{
+    opacity:1;
+  }
+
+  85%{
+    opacity:1;
+  }
+
+  100%{
+    right:110vw;
+    opacity:0;
+  }
+}
+
+
  @media(max-width:894px){
     .main-menu{
     grid-template-columns:repeat(2, 180px);
@@ -636,6 +691,7 @@ body.dimension-3 #portalBg{
 
 <body class="dimension-1">
 
+  <div id="flyingObject"></div>
 
 <button class="menu-toggle" onclick="toggleMenu()">
   ☰
@@ -1404,6 +1460,21 @@ function updateProjectCounter(){
 
 updateProjectCounter();
 
+function launchFlyingObject(){
+
+  const object = document.getElementById("flyingObject");
+
+  if(!object) return;
+
+  setTimeout(()=>{
+
+    object.classList.add("active");
+
+  },2500);
+
+}
+
+launchFlyingObject();
 
 
 
