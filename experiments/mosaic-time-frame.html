@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mosaico Antropoceno v2 — Horizon Image Pool</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;user-select:none}
+html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+#canvas-container{position:absolute;inset:0;z-index:1}canvas{width:100%;height:100%;display:block}
+#ui-layer{position:absolute;inset:0;z-index:10;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;padding:30px}
+header,footer,.controls,.inspector,.status-panel{pointer-events:auto}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.title-area h1{font-size:1.15rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-shadow:0 2px 4px rgba(0,0,0,.8)}
+.title-area p{font-size:.8rem;color:#888;margin-top:4px}
+.live-indicator{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);padding:6px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}
+.pulse-dot{width:8px;height:8px;background:#ff3b30;border-radius:50%;animation:pulse 1.5s infinite}@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+.controls{position:absolute;left:30px;top:40%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px}
+.btn{background:rgba(20,20,20,.62);border:1px solid rgba(255,255,255,.1);color:#aaa;padding:12px 18px;border-radius:4px;cursor:pointer;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;transition:.3s ease;backdrop-filter:blur(10px);text-align:left}
+.btn:hover,.btn.active{color:#fff;border-color:#fff;background:rgba(255,255,255,.1)}
+.status-panel{position:absolute;left:30px;bottom:110px;width:300px;background:rgba(10,10,10,.72);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:12px;backdrop-filter:blur(14px);font-family:monospace;font-size:.68rem;color:#888;line-height:1.55}
+.status-panel strong{color:#ddd}
+.inspector{position:absolute;right:30px;top:30px;width:320px;background:rgba(10,10,10,.78);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:16px;backdrop-filter:blur(15px);opacity:0;transform:translateX(20px);transition:.4s cubic-bezier(.16,1,.3,1)}
+.inspector.active{opacity:1;transform:translateX(0)}
+.preview-box{width:100%;height:180px;background-size:cover;background-position:center;border-radius:4px;margin-bottom:12px;border:1px solid rgba(255,255,255,.08);background-color:#222;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#777;font-family:monospace;cursor:zoom-in;position:relative;overflow:hidden}
+.preview-box::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.45));pointer-events:none}
+.meta-label{font-size:.65rem;color:#666;text-transform:uppercase;letter-spacing:.5px;margin-top:8px}
+.meta-value{font-size:.8rem;color:#ddd;margin-bottom:4px;line-height:1.35}
+.source-link{font-size:.68rem;color:#7dd3fc;text-decoration:none;font-family:monospace}.source-link:hover{text-decoration:underline}
+footer{width:100%;display:flex;flex-direction:column;gap:10px;background:linear-gradient(transparent,rgba(0,0,0,.8));padding:20px 0 0}
+.timeline-container{width:100%;height:40px;display:flex;align-items:center;position:relative}.timeline-track{width:100%;height:2px;background:rgba(255,255,255,.15);position:absolute}.timeline-fill{width:45%;height:2px;background:#fff;position:absolute}
+.timeline-slider{width:100%;-webkit-appearance:none;appearance:none;background:transparent;outline:none;position:relative;z-index:5;cursor:pointer}
+.timeline-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 10px rgba(255,255,255,.8)}
+.time-labels{display:flex;justify-content:space-between;font-size:.7rem;color:#555;padding:0 4px}
+.image-modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:24px}
+.image-modal.active{display:flex}.modal-frame{width:min(1100px,96vw);height:min(760px,92vh);background:#060606;border:1px solid rgba(255,255,255,.18);display:grid;grid-template-rows:auto 1fr auto;box-shadow:0 40px 120px rgba(0,0,0,.8)}
+.modal-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.1);font-family:monospace;font-size:.75rem;color:#ccc}
+.modal-top button{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:#fff;padding:8px 12px;cursor:pointer}
+.modal-body{overflow:hidden;display:flex;align-items:center;justify-content:center;background:#020202}#modalImage{max-width:100%;max-height:100%;object-fit:contain}
+.modal-caption{padding:12px 14px;border-top:1px solid rgba(255,255,255,.1);font-size:.75rem;color:#aaa;line-height:1.4}
+.back-home{
+    position:absolute;
+    top:100px;
+    left:20px;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 14px;
+
+    background:rgba(0,0,0,.55);
+    border:1px solid rgba(255,255,255,.15);
+
+    color:#d0d0d0;
+    text-decoration:none;
+
+    font-size:.72rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    backdrop-filter:blur(12px);
+
+    transition:.25s;
+}
+
+.back-home:hover{
+    color:#fff;
+    border-color:#fff;
+    background:rgba(255,255,255,.08);
+    transform:translateX(-2px);
+}
+@media(max-width:768px){#ui-layer{padding:18px}header{flex-direction:column}.controls{left:18px;top:auto;bottom:92px;transform:none;flex-direction:row;flex-wrap:wrap}.btn{padding:9px 12px;font-size:.65rem}.inspector{right:18px;top:18px;width:calc(100% - 36px)}.status-panel{display:none}.title-area h1{font-size:.95rem}.title-area p{font-size:.72rem}}
+</style>
+</head>
+<body>
+    <a href="/experiments.html" class="back-home">
+    ← HORIZON / EXPERIMENTS
+</a>
+<div id="canvas-container"><canvas id="mosaicCanvas"></canvas></div>
+<div id="ui-layer">
+<header><div class="title-area"><h1>O Mosaico Antropoceno</h1><p>Horizon Image Pool — 8.000 cubos conectados a fragmentos visuais temáticos</p></div><div class="live-indicator"><div class="pulse-dot"></div>
+    
+    
+    <span id="live-clock" style="font-size:.75rem;font-family:monospace;letter-spacing:1px">UTC 00:00:00</span>
+
+</div></header>
+<div class="controls"><button class="btn active" onclick="switchMode('all',this)">Visão Global</button><button class="btn" onclick="switchMode('urban',this)">Pulsar Urbano</button><button class="btn" onclick="switchMode('infra',this)">Infraestrutura</button><button class="btn" onclick="switchMode('nature',this)">Natureza Isolada</button></div>
+<div class="status-panel" id="poolStatus"><strong>IMAGE POOL:</strong> inicializando...<br>Fonte primária: Wikimedia Commons<br>Fallback: Picsum Photos<br>Cada cubo recebe uma imagem própria.</div>
+<div class="inspector" id="inspector"><div class="preview-box" id="inspect-img" onclick="openImageModal()">SELECIONE UM CUBO</div><div class="meta-label">Fragmento / Origem</div><div class="meta-value" id="inspect-title">—</div><div class="meta-label">Coordenadas Geográficas</div><div class="meta-value" id="inspect-loc">—</div><div class="meta-label">Timestamp do Frame</div><div class="meta-value" id="inspect-time" style="font-family:monospace">—</div><div class="meta-label">Fluxo de Dados</div><div class="meta-value" id="inspect-cat" style="color:#888">—</div><a class="source-link" id="inspect-link" href="#" target="_blank" rel="noopener noreferrer">Fonte indisponível</a></div>
+<footer><div class="timeline-container"><div class="timeline-track"></div><div class="timeline-fill" id="time-fill"></div>
+    <input type="range" min="0" max="86400" value="37740" class="timeline-slider" disable id="timeSlider"></div><div class="time-labels"><span>00:00:00</span><span>06:00:00</span><span>12:00:00</span><span>18:00:00</span><span>24:00:00</span></div></footer>
+</div>
+<div class="image-modal" id="imageModal"><div class="modal-frame"><div class="modal-top"><span id="modalTitle">FRAGMENTO AMPLIADO</span><button onclick="closeImageModal()">FECHAR</button></div><div class="modal-body"><img id="modalImage" src="" alt="Fragmento ampliado"></div><div class="modal-caption" id="modalCaption">—</div></div></div>
+<script>
+const canvas=document.getElementById("mosaicCanvas"),ctx=canvas.getContext("2d"),inspector=document.getElementById("inspector"),slider=document.getElementById("timeSlider"),timeFill=document.getElementById("time-fill"),liveClock=document.getElementById("live-clock"),poolStatus=document.getElementById("poolStatus");
+let width=0,height=0,particles=[],currentMode="all",mouse={x:null,y:null,active:false},hoverParticle=null,selectedParticle=null;
+const particleCount=8000,desktopHitRadius=92,mobileHitRadius=132;
+const categoryNames={all:"VISÃO GLOBAL",urban:"PULSAR URBANO",infra:"INFRAESTRUTURA",nature:"NATUREZA ISOLADA"};
+const sources=[
+{name:"Tóquio, Japão",cat:"urban",lat:"35.6764",lon:"139.6500",terms:["Tokyo city","Tokyo street","Shibuya crossing","Tokyo skyline"]},
+{name:"Nova York, EUA",cat:"urban",lat:"40.7128",lon:"-74.0060",terms:["New York City","Manhattan skyline","Times Square","Brooklyn Bridge"]},
+{name:"São Paulo, Brasil",cat:"urban",lat:"-23.5505",lon:"-46.6333",terms:["São Paulo city","Avenida Paulista","São Paulo skyline","São Paulo Brazil"]},
+{name:"Servidores, Islândia",cat:"infra",lat:"64.1466",lon:"-21.9426",terms:["data center","server room","computer servers","Iceland data center"]},
+{name:"Porto de Roterdã",cat:"infra",lat:"51.9244",lon:"4.4777",terms:["Port of Rotterdam","container port","cargo ship port","Rotterdam harbor"]},
+{name:"Parque Eólico, Mar do Norte",cat:"infra",lat:"56.0000",lon:"3.0000",terms:["offshore wind farm","North Sea wind farm","wind turbine ocean","wind power"]},
+{name:"Floresta Amazônica",cat:"nature",lat:"-3.4653",lon:"-62.2159",terms:["Amazon rainforest","Amazon River forest","Brazil rainforest","rainforest canopy"]},
+{name:"Deserto do Saara",cat:"nature",lat:"23.4162",lon:"25.6628",terms:["Sahara Desert","desert dunes","Sahara dunes","North Africa desert"]},
+{name:"Recife de Corais, Austrália",cat:"nature",lat:"-18.2871",lon:"147.6992",terms:["Great Barrier Reef","coral reef Australia","coral reef underwater","reef ocean"]}
+];
+const imagePools={urban:[],infra:[],nature:[]};let allItems=[];
+function resize(){width=canvas.width=window.innerWidth;height=canvas.height=window.innerHeight}window.addEventListener("resize",()=>{resize();particles.forEach(p=>p.reset(true))});resize();
+function commonsUrl(term){const params=new URLSearchParams({action:"query",format:"json",origin:"*",generator:"search",gsrsearch:term,gsrnamespace:"6",gsrlimit:"20",prop:"imageinfo",iiprop:"url|mime|extmetadata"});return"https://commons.wikimedia.org/w/api.php?"+params.toString()}
+function validImage(url,mime){if(!url)return false;return /^image\/(jpeg|png|gif|webp)$/i.test(mime||"")&&!/\.(svg|tif|tiff|pdf|djvu|webm|ogg|mp4)(\?.*)?$/i.test(url)}
+function fallbackItem(src,index){const seed=encodeURIComponent(src.name+"-"+src.cat+"-"+index);return{title:src.name+" — fallback visual "+index,location:src.name,lat:src.lat,lon:src.lon,cat:src.cat,url:"https://picsum.photos/seed/"+seed+"/640/420",link:"https://picsum.photos/",source:"Picsum fallback"}}
+async function fetchImagesForSource(src){const results=[];for(const term of src.terms){try{const r=await fetch(commonsUrl(term));if(!r.ok)continue;const d=await r.json();if(!d.query||!d.query.pages)continue;Object.values(d.query.pages).filter(p=>p.imageinfo&&p.imageinfo[0]).forEach(p=>{const info=p.imageinfo[0];const item={title:(p.title||"Arquivo sem título").replace(/^File:/,""),location:src.name,lat:src.lat,lon:src.lon,cat:src.cat,url:info.url,mime:info.mime,link:info.descriptionurl||("https://commons.wikimedia.org/wiki/"+encodeURIComponent(p.title||"")),source:"Wikimedia Commons"};if(validImage(item.url,item.mime))results.push(item)})}catch(e){}}const unique=[],seen=new Set();results.forEach(item=>{if(!seen.has(item.url)){seen.add(item.url);unique.push(item)}});if(unique.length<8){for(let i=1;i<=40;i++)unique.push(fallbackItem(src,i))}return unique}
+async function buildImagePools(){poolStatus.innerHTML="<strong>IMAGE POOL:</strong> recuperando imagens temáticas...";for(const src of sources){const items=await fetchImagesForSource(src);imagePools[src.cat].push(...items);allItems.push(...items);updatePoolStatus()}particles.forEach(p=>p.assignItem());updatePoolStatus()}
+function updatePoolStatus(){poolStatus.innerHTML="<strong>IMAGE POOL:</strong><br>Urban: "+imagePools.urban.length+" imagens<br>Infra: "+imagePools.infra.length+" imagens<br>Nature: "+imagePools.nature.length+" imagens<br>Total: "+allItems.length+" fragmentos"}
+function pick(arr){return arr&&arr.length?arr[Math.floor(Math.random()*arr.length)]:null}
+function randomColor(cat){const a=Math.random()*.7+.3;if(cat==="urban")return"rgba(242,108,79,"+a+")";if(cat==="infra")return"rgba(79,172,254,"+a+")";return"rgba(42,193,114,"+a+")"}
+class ImageParticle{constructor(){this.reset(true);const angle=Math.random()*Math.PI*2,radius=Math.random()*(Math.min(width,height)*.35);this.x=width/2+Math.cos(angle)*radius;this.y=height/2+Math.sin(angle)*radius}reset(keep=false){this.targetX=Math.random()*width;this.targetY=Math.random()*height;this.size=Math.random()*2.5+1;this.baseSize=this.size;this.speed=Math.random()*.02+.01;this.meta=pick(sources);this.color=randomColor(this.meta.cat);this.assignItem();if(!keep){this.x=Math.random()*width;this.y=Math.random()*height}}assignItem(){this.item=pick(imagePools[this.meta.cat])||fallbackItem(this.meta,Math.floor(Math.random()*9999))}update(){if(currentMode!=="all"&&this.meta.cat!==currentMode){this.targetX=this.x+(this.x-width/2)*.05;this.size*=.95}else{this.size+=(this.baseSize-this.size)*.08;if(Math.random()>.995){this.targetX+=(Math.random()-.5)*60;this.targetY+=(Math.random()-.5)*60}}if(this===hoverParticle)this.size=this.baseSize*4.2;this.x+=(this.targetX-this.x)*this.speed;this.y+=(this.targetY-this.y)*this.speed;if(this.x<-80||this.x>width+80||this.y<-80||this.y>height+80)this.reset()}draw(){if(this.size<.2)return;ctx.fillStyle=this.color;ctx.fillRect(this.x,this.y,this.size,this.size)}}
+function init(){particles=[];for(let i=0;i<particleCount;i++)particles.push(new ImageParticle())}
+function animate(){ctx.fillStyle="rgba(5,5,5,.25)";ctx.fillRect(0,0,width,height);particles.forEach(p=>{p.update();p.draw()});if(mouse.active){const radius=getHitRadius();ctx.strokeStyle="rgba(255,255,255,.12)";ctx.beginPath();ctx.arc(mouse.x,mouse.y,radius,0,Math.PI*2);ctx.stroke();if(hoverParticle){ctx.strokeStyle="rgba(255,255,255,.65)";ctx.beginPath();ctx.arc(hoverParticle.x,hoverParticle.y,10,0,Math.PI*2);ctx.stroke()}}requestAnimationFrame(animate)}
+function switchMode(mode,el){currentMode=mode;document.querySelectorAll(".btn").forEach(b=>b.classList.remove("active"));el.classList.add("active");particles.forEach(p=>{if(mode==="all"||p.meta.cat===mode)p.reset(true)})}window.switchMode=switchMode;
+function getHitRadius(){return window.innerWidth<=768?mobileHitRadius:desktopHitRadius}function isVisible(p){return currentMode==="all"||p.meta.cat===currentMode}
+function getClosestParticle(x,y){let closest=null,minDist=getHitRadius();particles.forEach(p=>{if(!isVisible(p))return;const dx=x-p.x,dy=y-p.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<minDist){minDist=dist;closest=p}});return closest}
+function openInspectorFor(p){selectedParticle=p;const item=p.item||fallbackItem(p.meta,1),img=document.getElementById("inspect-img");img.style.backgroundImage="url('"+item.url+"')";img.innerText="";document.getElementById("inspect-title").innerText=item.title;document.getElementById("inspect-loc").innerText=item.location+" | LAT: "+item.lat+" | LON: "+item.lon;document.getElementById("inspect-cat").innerText=categoryNames[item.cat]||item.cat.toUpperCase();document.getElementById("inspect-time").innerText=liveClock.innerText;const link=document.getElementById("inspect-link");link.href=item.link||"#";link.innerText=item.source||"Fonte";inspector.classList.add("active")}
+function openImageModal(){if(!selectedParticle||!selectedParticle.item)return;const item=selectedParticle.item;document.getElementById("modalImage").src=item.url;document.getElementById("modalTitle").innerText="HZN MOSAIC // "+item.location+" // "+item.cat.toUpperCase();document.getElementById("modalCaption").innerText=item.title+" | LAT "+item.lat+" | LON "+item.lon+" | Fonte: "+item.source;document.getElementById("imageModal").classList.add("active")}window.openImageModal=openImageModal;
+function closeImageModal(){document.getElementById("imageModal").classList.remove("active")}window.closeImageModal=closeImageModal;
+window.addEventListener("mousemove",e=>{mouse.x=e.clientX;mouse.y=e.clientY;mouse.active=true;hoverParticle=getClosestParticle(mouse.x,mouse.y);canvas.style.cursor=hoverParticle?"pointer":"crosshair"});
+window.addEventListener("mouseleave",()=>{mouse.active=false;hoverParticle=null;canvas.style.cursor="default"});
+window.addEventListener("click",e=>{if(e.target.closest(".inspector")||e.target.closest(".controls"))return;const closest=getClosestParticle(e.clientX,e.clientY);if(closest)openInspectorFor(closest);else inspector.classList.remove("active")});
+window.addEventListener("touchstart",e=>{const t=e.touches[0];if(!t)return;mouse.x=t.clientX;mouse.y=t.clientY;mouse.active=true;hoverParticle=getClosestParticle(mouse.x,mouse.y);if(hoverParticle)openInspectorFor(hoverParticle)},{passive:true});
+function formatSeconds(total){const s=Number(total)||0,h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;return String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0")}
+
+
+function updateTimeline(v){timeFill.style.width=(v/86400)*100+"%";liveClock.innerText=formatSeconds(v)}
+slider.addEventListener("input",e=>{const v=Number(e.target.value);updateTimeline(v);particles.forEach(p=>{if(Math.random()>.85){p.targetX+=(Math.random()-.5)*40;p.targetY+=(Math.random()-.5)*40}})});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeImageModal()});
+
+updateTimeline(Number(slider.value));
+updateRealTimeClock();
+setInterval(updateRealTimeClock,1000);
+
+init();animate();buildImagePools();
+
+function updateRealTimeClock(){
+
+    const now = new Date();
+
+    const seconds =
+        now.getHours() * 3600 +
+        now.getMinutes() * 60 +
+        now.getSeconds();
+
+    slider.value = seconds;
+
+    updateTimeline(seconds);
+
+    
+
+}
+</script>
+</body>
+</html>
