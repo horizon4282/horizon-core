@@ -491,38 +491,38 @@
 }
 
 loadData();
-    function renderPage() {
-      const data = pageData[currentLang];
+function renderPage() {
+  const page = pageData[currentLang];
 
-      document.documentElement.lang = currentLang === "pt" ? "pt-BR" : "en";
-      document.getElementById("heroEyebrow").textContent = data.eyebrow;
-      document.getElementById("heroTitle").textContent = data.title;
-      document.getElementById("heroText").textContent = data.text;
-      document.getElementById("sectionTitle").textContent = data.section;
+  document.documentElement.lang = currentLang === "pt" ? "pt-BR" : "en";
 
-      const gallery = document.getElementById("gallery");
-      gallery.innerHTML = "";
+  document.getElementById("heroEyebrow").textContent = page.eyebrow;
+  document.getElementById("heroTitle").textContent = page.title;
+  document.getElementById("heroText").textContent = page.text;
+  document.getElementById("sectionTitle").textContent = page.section;
 
-      artworks.forEach((art, index) => {
-        const title = currentLang === "pt" ? art.title_pt : art.title_en;
-        const desc = currentLang === "pt" ? art.description_pt : art.description_en;
+  const gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
 
-        const card = document.createElement("article");
-        card.className = "card";
-        card.onclick = () => openModal(index);
+  artworks.forEach((art, index) => {
+    const item = art[currentLang];
 
-        card.innerHTML = `
-          <div class="art-image">${art.code}</div>
-          <div class="card-body">
-            <div class="code">${art.code}</div>
-            <h2>${title}</h2>
-            <p>${desc}</p>
-          </div>
-        `;
+    const card = document.createElement("article");
+    card.className = "card";
+    card.onclick = () => openModal(index);
 
-        gallery.appendChild(card);
-      });
-    }
+    card.innerHTML = `
+      <div class="art-image" style="background-image:url('${art.image}')"></div>
+      <div class="card-body">
+        <div class="code">${art.code}</div>
+        <h2>${item.title}</h2>
+        <p>${item.description}</p>
+      </div>
+    `;
+
+    gallery.appendChild(card);
+  });
+}
 
     function toggleLanguage() {
       currentLang = currentLang === "pt" ? "en" : "pt";
