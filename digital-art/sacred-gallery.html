@@ -317,6 +317,9 @@
       margin-bottom: 24px;
       font-family: var(--font-title);
       font-size: 28px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .modal h3 {
@@ -537,17 +540,21 @@ function renderPage() {
       }
     }
 
-    function openModal(index) {
-      const art = artworks[index];
-      document.getElementById("modal").classList.add("open");
-      document.getElementById("modalImage").textContent = art.code;
-      document.getElementById("modalCode").textContent = art.code;
-      document.getElementById("modalTitle").textContent =
-        currentLang === "pt" ? art.title_pt : art.title_en;
-      document.getElementById("modalDescription").textContent =
-        currentLang === "pt" ? art.description_pt : art.description_en;
-    }
+function openModal(index) {
+  const art = artworks[index];
+  const item = art[currentLang];
 
+  const imageUrl = `https://f005.backblazeb2.com/file/horizon4282/sacred-art/${art.image}`;
+
+  const modalImage = document.getElementById("modalImage");
+  modalImage.style.backgroundImage = `url('${imageUrl}')`;
+  modalImage.textContent = "";
+
+  document.getElementById("modal").classList.add("open");
+  document.getElementById("modalCode").textContent = art.code;
+  document.getElementById("modalTitle").textContent = item.title;
+  document.getElementById("modalDescription").textContent = item.description;
+}
     function closeModal(event) {
       if (!event || event.target.id === "modal") {
         document.getElementById("modal").classList.remove("open");
