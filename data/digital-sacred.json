@@ -1,5 +1,5 @@
 {
-  "page": {
+  "page": { 
     "pt": {
       "eyebrow": "Coleção Horizon",
       "title": "Arte Sacra Digital",
@@ -13,234 +13,146 @@
       "section": "Cataloged artworks"
     }
   },
-"artworks": [
-  {
-    "id": "00001",
-    "code": "ASD-00001",
-    "title": "A Grande Comunhão dos Séculos",
-    "slug": "a-grande-comunhao-dos-seculos",
-    "category": "Igreja Universal",
-    "subcategory": "Comunhão dos Santos",
-    "artSchool": "Épica Histórica Monumental",
-    "period": "Atemporal",
-    "format": "21:9",
-    "language": "pt-BR",
-    "description": "Cristo glorificado reunindo simbolicamente os dois mil anos da história da Igreja Católica.",
-    "tags": ["Cristo", "Igreja Universal", "Santos", "História da Igreja", "Comunhão dos Santos"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00001.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  },
-  {
-    "id": "00002",
-    "code": "ASD-00002",
-    "title": "Triunfo da Igreja através dos Séculos",
-    "slug": "triunfo-da-igreja-atraves-dos-seculos",
-    "category": "Igreja Universal",
-    "subcategory": "História da Igreja",
-    "artSchool": "Retábulo Monumental Contemporâneo",
-    "period": "Atemporal",
-    "format": "21:9",
-    "language": "pt-BR",
-    "description": "Grande assembleia de santos, missionários, mártires e fiéis representando a Igreja através dos séculos.",
-    "tags": ["Igreja", "Santos", "Missionários", "Mártires", "História Católica"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00002.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  },
-  {
-    "id": "00003",
-    "code": "ASD-00003",
-    "title": "Cristo Pantocrator, Senhor dos Séculos",
-    "slug": "cristo-pantocrator-senhor-dos-seculos",
-    "category": "Cristologia",
-    "subcategory": "Cristo Rei",
-    "artSchool": "Mosaico Bizantino",
-    "period": "Atemporal",
-    "format": "16:9",
-    "language": "pt-BR",
-    "description": "Cristo entronizado como Senhor da História, rodeado por santos, anjos e testemunhas da fé.",
-    "tags": ["Cristo Pantocrator", "Cristo Rei", "Bizantino", "Anjos", "Santos"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00003.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  },
-  {
-    "id": "00004",
-    "code": "ASD-00004",
-    "title": "Coroação de Maria",
-    "slug": "coroacao-de-maria",
-    "category": "Mariologia",
-    "subcategory": "Glorificação de Maria",
-    "artSchool": "Barroco Sacro Monumental",
-    "period": "Atemporal",
-    "format": "16:9",
-    "language": "pt-BR",
-    "description": "Maria glorificada diante da corte celeste, cercada por santos e pela comunhão dos fiéis.",
-    "tags": ["Maria", "Coroação de Maria", "Mariologia", "Céu", "Barroco"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00004.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  },
-  {
-    "id": "00005",
-    "code": "ASD-00005",
-    "title": "Os Monges Copistas de Monte Cassino",
-    "slug": "os-monges-copistas-de-monte-cassino",
-    "category": "Monaquismo",
-    "subcategory": "Preservação do Conhecimento",
-    "artSchool": "Realismo Histórico",
-    "period": "Século VI",
-    "format": "16:9",
-    "language": "pt-BR",
-    "description": "Monges beneditinos dedicados à cópia de manuscritos, preservando a fé, a cultura e o conhecimento.",
-    "tags": ["Monges", "Monte Cassino", "Beneditinos", "Manuscritos", "Monaquismo"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00005.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  },
-  {
-    "id": "00006",
-    "code": "ASD-00006",
-    "title": "A Primeira Missa no Brasil",
-    "slug": "a-primeira-missa-no-brasil",
-    "category": "Missões Católicas",
-    "subcategory": "Evangelização da América",
-    "artSchool": "Pintura Missionária Monumental",
-    "period": "Século XVI",
-    "format": "16:9",
-    "language": "pt-BR",
-    "description": "Celebração da primeira missa em terras brasileiras, simbolizando o início da evangelização católica no país.",
-    "tags": ["Primeira Missa", "Brasil", "Missões", "Evangelização", "América"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00006.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  },
-  {
-    "id": "00007",
-    "code": "ASD-00007",
-    "title": "O Primeiro Concílio de Niceia",
-    "slug": "o-primeiro-concilio-de-niceia",
-    "category": "Concílios da Igreja",
-    "subcategory": "Definição Doutrinal",
-    "artSchool": "Realismo Histórico Sacro",
-    "period": "Século IV",
-    "format": "16:9",
-    "language": "pt-BR",
-    "description": "Bispos reunidos em Niceia no ano 325 para discutir e proclamar os fundamentos da fé cristã.",
-    "tags": ["Niceia", "Concílio", "Bispos", "Doutrina", "Igreja Antiga"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00007.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  },
-  {
-    "id": "00008",
-    "code": "ASD-00008",
-    "title": "São Bento Entregando a Regra Beneditina",
-    "slug": "sao-bento-entregando-a-regra-beneditina",
-    "category": "Grandes Santos",
-    "subcategory": "Fundadores de Ordens",
-    "artSchool": "Realismo Monástico",
-    "period": "Século VI",
-    "format": "16:9",
-    "language": "pt-BR",
-    "description": "São Bento entrega a Regra Beneditina, marco espiritual e organizacional da vida monástica ocidental.",
-    "tags": ["São Bento", "Regra Beneditina", "Beneditinos", "Monaquismo", "Santos"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00008.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  },
-  {
-    "id": "00009",
-    "code": "ASD-00009",
-    "title": "Martírio de Santo Estêvão",
-    "slug": "martirio-de-santo-estevao",
-    "category": "Mártires",
-    "subcategory": "Igreja Primitiva",
-    "artSchool": "Realismo Clássico Sacro",
-    "period": "Século I",
-    "format": "16:9",
-    "language": "pt-BR",
-    "description": "Santo Estêvão, primeiro mártir cristão, testemunha a fé diante da perseguição.",
-    "tags": ["Santo Estêvão", "Mártir", "Igreja Primitiva", "Testemunho", "Século I"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00009.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  },
-  {
-    "id": "00010",
-    "code": "ASD-00010",
-    "title": "São Pedro Recebe as Chaves",
-    "slug": "sao-pedro-recebe-as-chaves",
-    "category": "Apóstolos",
-    "subcategory": "Fundação da Igreja",
-    "artSchool": "Renascimento Italiano",
-    "period": "Século I",
-    "format": "16:9",
-    "language": "pt-BR",
-    "description": "Cristo entrega as chaves a São Pedro, simbolizando o primado apostólico e a fundação visível da Igreja.",
-    "tags": ["São Pedro", "Cristo", "Chaves", "Apóstolos", "Fundação da Igreja"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00010.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  },
-  {
-    "id": "00011",
-    "code": "ASD-00011",
-    "title": "Pentecostes",
-    "slug": "pentecostes",
-    "category": "Igreja Primitiva",
-    "subcategory": "Descida do Espírito Santo",
-    "artSchool": "Afresco Renascentista Monumental",
-    "period": "Século I",
-    "format": "16:9",
-    "language": "pt-BR",
-    "description": "Descida do Espírito Santo sobre Maria e os Apóstolos.",
-    "tags": ["Pentecostes", "Espírito Santo", "Maria", "Apóstolos", "Igreja Primitiva"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00011.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  },
-  {
-    "id": "00012",
-    "code": "ASD-00012",
-    "title": "São Francisco de Assis e os Pássaros",
-    "slug": "sao-francisco-de-assis-e-os-passaros",
-    "category": "Grandes Santos",
-    "subcategory": "Franciscanismo",
-    "artSchool": "Pintura Renascentista Italiana",
-    "period": "Século XIII",
-    "format": "16:9",
-    "language": "pt-BR",
-    "description": "São Francisco de Assis contempla a criação de Deus em harmonia com os pássaros e a natureza.",
-    "tags": ["São Francisco", "Franciscanismo", "Natureza", "Pássaros", "Santos"],
-    "collection": "Arte Sacra Digital",
-    "status": "Catalogada",
-    "image": "ASD-00012.png",
-    "yearCreated": 2026,
-    "artist": "Ação Híbrida Humano + IA"
-  }
- ]
+  "artworks": [
+    {
+      "id": "00001",
+      "code": "ASD-00001",
+      "slug": "a-grande-comunhao-dos-seculos",
+      "format": "21:9",
+      "image": "ASD-00001.png",
+      "yearCreated": 2026,
+
+      "pt": {
+        "title": "A Grande Comunhão dos Séculos",
+        "category": "Igreja Universal",
+        "subcategory": "Comunhão dos Santos",
+        "artSchool": "Épica Histórica Monumental",
+        "period": "Atemporal",
+        "description": "Cristo glorificado reunindo simbolicamente os dois mil anos da história da Igreja Católica.",
+        "tags": [
+          "Cristo",
+          "Igreja Universal",
+          "Santos",
+          "História da Igreja",
+          "Comunhão dos Santos"
+        ],
+        "collection": "Arte Sacra Digital",
+        "status": "Catalogada",
+        "artist": "Ação Híbrida Humano + IA"
+      },
+
+      "en": {
+        "title": "The Great Communion of the Ages",
+        "category": "Universal Church",
+        "subcategory": "Communion of Saints",
+        "artSchool": "Monumental Historical Epic",
+        "period": "Timeless",
+        "description": "The glorified Christ symbolically gathering two thousand years of Catholic Church history.",
+        "tags": [
+          "Christ",
+          "Universal Church",
+          "Saints",
+          "Church History",
+          "Communion of Saints"
+        ],
+        "collection": "Digital Sacred Art",
+        "status": "Cataloged",
+        "artist": "Hybrid Human + AI Action"
+      }
+    },
+
+    {
+      "id": "00002",
+      "code": "ASD-00002",
+      "slug": "triunfo-da-igreja-atraves-dos-seculos",
+      "format": "21:9",
+      "image": "ASD-00002.png",
+      "yearCreated": 2026,
+
+      "pt": {
+        "title": "Triunfo da Igreja através dos Séculos",
+        "category": "Igreja Universal",
+        "subcategory": "História da Igreja",
+        "artSchool": "Retábulo Monumental Contemporâneo",
+        "period": "Atemporal",
+        "description": "Grande assembleia de santos, missionários, mártires e fiéis representando a Igreja através dos séculos.",
+        "tags": [
+          "Igreja",
+          "Santos",
+          "Missionários",
+          "Mártires",
+          "História Católica"
+        ],
+        "collection": "Arte Sacra Digital",
+        "status": "Catalogada",
+        "artist": "Ação Híbrida Humano + IA"
+      },
+
+      "en": {
+        "title": "Triumph of the Church Through the Centuries",
+        "category": "Universal Church",
+        "subcategory": "Church History",
+        "artSchool": "Contemporary Monumental Altarpiece",
+        "period": "Timeless",
+        "description": "A great assembly of saints, missionaries, martyrs and faithful representing the Church through the centuries.",
+        "tags": [
+          "Church",
+          "Saints",
+          "Missionaries",
+          "Martyrs",
+          "Catholic History"
+        ],
+        "collection": "Digital Sacred Art",
+        "status": "Cataloged",
+        "artist": "Hybrid Human + AI Action"
+      }
+    },
+
+    {
+      "id": "00003",
+      "code": "ASD-00003",
+      "slug": "cristo-pantocrator-senhor-dos-seculos",
+      "format": "16:9",
+      "image": "ASD-00003.png",
+      "yearCreated": 2026,
+
+      "pt": {
+        "title": "Cristo Pantocrator, Senhor dos Séculos",
+        "category": "Cristologia",
+        "subcategory": "Cristo Rei",
+        "artSchool": "Mosaico Bizantino",
+        "period": "Atemporal",
+        "description": "Cristo entronizado como Senhor da História, rodeado por santos, anjos e testemunhas da fé.",
+        "tags": [
+          "Cristo Pantocrator",
+          "Cristo Rei",
+          "Bizantino",
+          "Anjos",
+          "Santos"
+        ],
+        "collection": "Arte Sacra Digital",
+        "status": "Catalogada",
+        "artist": "Ação Híbrida Humano + IA"
+      },
+
+      "en": {
+        "title": "Christ Pantocrator, Lord of the Ages",
+        "category": "Christology",
+        "subcategory": "Christ the King",
+        "artSchool": "Byzantine Mosaic",
+        "period": "Timeless",
+        "description": "Christ enthroned as Lord of History, surrounded by saints, angels and witnesses of the faith.",
+        "tags": [
+          "Christ Pantocrator",
+          "Christ the King",
+          "Byzantine",
+          "Angels",
+          "Saints"
+        ],
+        "collection": "Digital Sacred Art",
+        "status": "Cataloged",
+        "artist": "Hybrid Human + AI Action"
+      }
+    }
+  ]
 }
