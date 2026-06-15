@@ -793,38 +793,36 @@
 
       state.style.display = "none";
 
-      items.forEach(item => {
-        const localized = item[currentLang] || item.en || item.pt || item;
+items.forEach(item => {
+  const localized = item[currentLang] || item.en || item.pt || item;
 
-        const card = document.createElement("article");
-        card.className = "card";
-     if(item.status !== "coming-soon"){
+  const card = document.createElement("article");
+  card.className = "card";
 
+  if (item.status !== "coming-soon") {
     card.onclick = () => {
-        if(item.url){
-            window.location.href = item.url;
-        }
+      if (item.url) {
+        window.location.href = item.url;
+      }
     };
-
-}else{
-
+  } else {
     card.style.cursor = "default";
+  }
 
-}
-        };
+  card.innerHTML = `
+    <div class="art-image ${item.status || ""}" style="background-image:url('${item.image || ""}')"></div>
+    <div class="card-body">
+      <div class="code">${item.code || item.category || "HORIZON"}</div>
+      <h2>${localized.title || item.title || "Untitled"}</h2>
+      <p>${localized.description || item.description || ""}</p>
+      <div class="status ${item.status || ""}">
+        ${item.status === "coming-soon" ? "COMING SOON" : item.status === "online" ? "ONLINE" : ""}
+      </div>
+    </div>
+  `;
 
-        card.innerHTML = `
-       <div class="art-image ${item.status}"  style="background-image:url('${item.image || ""}')"></div>
-          <div class="card-body">
-            <div class="code">${item.code || item.category || "HORIZON"}</div>
-            <h2>${localized.title || item.title || "Untitled"}</h2>
-            <p>${localized.description || item.description || ""}</p>
-          </div>
-        `;
-
-        gallery.appendChild(card);
-      });
-    }
+  gallery.appendChild(card);
+});
 
     window.addEventListener("resize", () => {
       if (window.innerWidth <= 900) {
