@@ -1,0 +1,58 @@
+{
+  "page": {
+    "pt": {
+      "eyebrow": "Leitura Fantástica",
+      "title": "Leitura Fantástica",
+      "text": "Narrativas ficcionais, universos alternativos e histórias especulativas."
+    },
+    "en": {
+      "eyebrow": "Fantastic Reading",
+      "title": "Fantastic Reading",
+      "text": "Fictional narratives, alternate universes and speculative stories."
+    }
+  },
+
+  "poster": "https://f005.backblazeb2.com/file/horizon4282/open-library/fantastic-reading-banner.jpg",
+
+  "items": [
+    {
+      "id": "FR-0001",
+      "code": "GRAPHIC NOVEL",
+      "status": "online",
+
+      "image": "https://f005.backblazeb2.com/file/horizon4282/open-library/the-vault-cover.jpg",
+
+      "url": "/the-vault/",
+
+      "pt": {
+        "title": "The Vault",
+        "description": "Um universo narrativo de mistério, ficção e aventura."
+      },
+
+      "en": {
+        "title": "The Vault",
+        "description": "A narrative universe of mystery, fiction and adventure."
+      }
+    },
+
+    {
+      "id": "FR-0002",
+      "code": "COMIC",
+      "status": "coming-soon",
+
+      "image": "https://f005.backblazeb2.com/file/horizon4282/open-library/corredor-4282.jpg",
+
+      "url": "/corredor-4282/",
+
+      "pt": {
+        "title": "Corredor 4282",
+        "description": "Quadrinhos e aventuras do herói Corredor 4282."
+      },
+
+      "en": {
+        "title": "Runner 4282",
+        "description": "Comics and adventures of Runner 4282."
+      }
+    }
+  ]
+}
