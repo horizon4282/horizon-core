@@ -597,7 +597,7 @@
   <div id="popup-en" class="popup-overlay">
   <div class="popup-box">
 
-    <button class="close-btn-download" onclick="closePopupEn()">×</button>
+    <button class="close-btn-download" onclick="closePopupEn()">X</button>
 
     <h2>Download Image</h2>
 
@@ -606,7 +606,7 @@
       If you would like, you can support our project with a voluntary contribution.
     </p>
 
-    <a class="pdf-btn" href="" download>
+    <a id="stampDownloadBtn" class="pdf-btn" href="" download>
       Download
     </a>
 
@@ -638,7 +638,7 @@
 <div id="popup" class="popup-overlay">
   <div class="popup-box">
 
-    <button class="close-btn-download" onclick="closePopup()">×</button>
+    <button class="close-btn-download" onclick="closePopup()">X</button>
 
     <h2>Baixar Imagem</h2>
 
@@ -746,6 +746,7 @@ function openModal(index) {
   document.getElementById("modalCode").textContent = art.code;
   document.getElementById("modalTitle").textContent = item.title;
   document.getElementById("modalDescription").textContent = item.description;
+  document.getElementById("stampDownloadBT").href = art.image;
 }
     function closeModal(event) {
       if (!event || event.target.id === "modal") {
