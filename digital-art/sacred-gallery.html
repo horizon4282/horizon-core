@@ -769,9 +769,9 @@ function closePopup(){
 
 function openPopupEn(){
   document.getElementById("popup-en").classList.add("active");
-  let btnStamp =  document.getElmentById("stampDownloadBtn");
-  let urlFundo = document.getElementById("modalImage").backgroundImage;
- btnStamp.href= urlFundo.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+  let btnStamp =  document.getElementById("stampDownloadBtn");
+  let urlFundo = document.getElementById("modalImage").style.backgroundImage;
+  btnStamp.href= urlFundo.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
 }
 
 function closePopupEn(){
