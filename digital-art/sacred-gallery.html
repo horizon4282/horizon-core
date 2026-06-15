@@ -585,7 +585,7 @@
 
        <div style="display:flex; justify-content: space-around;margin-bottom:20px;">
     <div class="code" id="modalCode"></div>
-    <div><button class="" onclick="openPopupEn();">Download</button></div>
+    <div><button id="pop" class="pdf-btn">Download</button></div>
        </div>
       
       <h3 id="modalTitle"></h3>
@@ -741,11 +741,14 @@ function openModal(index) {
   const modalImage = document.getElementById("modalImage");
   modalImage.style.backgroundImage = `url('${imageUrl}')`;
   modalImage.textContent = "";
-
   document.getElementById("modal").classList.add("open");
   document.getElementById("modalCode").textContent = art.code;
   document.getElementById("modalTitle").textContent = item.title;
   document.getElementById("modalDescription").textContent = item.description;
+
+   document.getElementById("pop").click = function(){
+   if(currentLang === "pt"){ openPopup();}else{ openPoupEn()};
+   }
 }
     function closeModal(event) {
       if (!event || event.target.id === "modal") {
