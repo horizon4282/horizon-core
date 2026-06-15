@@ -344,6 +344,104 @@
       cursor: pointer;
     }
 
+      .pdf-btn-screen{
+  margin:15px 0;
+  padding:12px 22px;
+  border-radius:10px;
+  background:#e0392d;
+  color:#fff;
+  text-decoration:none;
+   cursor:pointer;
+  display: block;
+}
+
+.download-btn{
+  padding:12px 22px;
+  border:0;
+  border-radius:12px;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.popup-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.popup-overlay.active{
+  display:flex;
+}
+
+.popup-box{
+  width:100%;
+  max-width:420px;
+  background:#f7f4ec;
+  color:#111;
+  border-radius:22px;
+  padding:28px;
+  box-sizing:border-box;
+  text-align:center;
+  position:relative;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.45),
+    inset 0 0 20px rgba(0,0,0,.08);
+}
+
+.close-btn{
+  position:absolute;
+  top:12px;
+  right:14px;
+  border:0;
+  background:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.qrcode{
+  width:180px;
+  max-width:80%;
+  margin-top:10px;
+}
+
+.pix-btn{
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#1d1d1d;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+}
+
+#copyMessage{
+
+    margin-top:10px;
+
+    font-size:14px;
+
+    color:#2d7a2d;
+
+}
+.popup-overlay.active{
+  display:flex;
+}
     @media (max-width: 900px) {
       body {
         --sidebar-width: var(--sidebar-open);
@@ -470,6 +568,7 @@
   <div class="modal" id="modal" onclick="closeModal(event)">
     <div class="modal-box">
       <button class="close-btn" style="margin:0 0 0 14px" onclick="closeModal()">Fechar</button>
+       <button class="" onclick="openPopupEn()">PopupEn</button>
       <div class="modal-image" id="modalImage"></div>
       <div class="code" id="modalCode"></div>
       <h3 id="modalTitle"></h3>
@@ -477,6 +576,82 @@
     </div>
   </div>
 
+
+  <div id="popup-en" class="popup-overlay">
+  <div class="popup-box">
+
+    <button class="close-btn" onclick="closePopupEn()">×</button>
+
+    <h2>Download Image</h2>
+
+    <p>
+      You may download this image free of charge.
+      If you would like, you can support our project with a voluntary contribution.
+    </p>
+
+    <a class="pdf-btn" href="https://f005.backblazeb2.com/file/horizon4282/the-vault-en.pdf" download>
+      Download
+    </a>
+
+    <hr>
+
+    <h2>Voluntary Contribution</h2>
+
+    <p>
+      Your contribution helps us keep this project alive and create new collections, galleries, and experiences.
+      Every contribution is greatly appreciated, regardless of the amount ❤️
+      <br>May God bless you abundantly. 🙏
+   
+
+    <img class="qrcode" src="/assets/qr-code-horizon.jpg" alt="QR Code para colaboração voluntária">
+ </p>
+  <p id="pixKey-en" style="display:none;">
+00020126580014br.gov.bcb.pix013640ec89d6-130d-4c29-ba37-8fce9d8dc6fe5204000053039865802BR5924Roque Fernando Marcos So6009Sao Paulo62230519daqr6151064563851776304688F
+</p>
+
+<button class="pix-btn" onclick="copyPixEn()">
+📋 Copy key PIX
+</button>
+
+<div id="copyMessage-en"></div>
+  </div>
+
+</div>
+
+<div id="popup" class="popup-overlay">
+  <div class="popup-box">
+
+    <button class="close-btn" onclick="closePopup()">×</button>
+
+    <h2>Baixar Imagem</h2>
+
+    <p>
+     Você pode fazer o download gratuitamente.
+     Se quiser, pode ajudar o nosso projeto com a sua contribuição voluntária.
+    </p>
+     <a class="pdf-btn" href="https://f005.backblazeb2.com/file/horizon4282/the-vault-en.pdf" download>Download</a>
+    <hr>
+
+    <h2>Contribuição Voluntária</h2>
+ <p>
+  Sua contribuição nos ajuda a manter esse projeto vivo e a criar novas seções.
+  Toda ajuda é bem vinda, independente do valor ❤️
+  <br>Deus abençoe grandemente.🙏
+
+    <img class="qrcode" src="/assets/qr-code-horizon.jpg" alt="QR Code para colaboração voluntária">
+
+  <p id="pixKey" style="display:none;">
+00020126580014br.gov.bcb.pix013640ec89d6-130d-4c29-ba37-8fce9d8dc6fe5204000053039865802BR5924Roque Fernando Marcos So6009Sao Paulo62230519daqr6151064563851776304688F
+</p>
+
+<button class="pix-btn" onclick="copyPix()">
+📋 Copiar Chave PIX
+</button>
+
+<div id="copyMessage"></div>
+  </div>
+
+</div>
   <script>
     let currentLang = "pt";
     
@@ -567,6 +742,83 @@ function openModal(index) {
       }
     });
 
+    function openPopup(){
+  document.getElementById("popup").classList.add("active");
+}
+
+function closePopup(){
+  document.getElementById("popup").classList.remove("active");
+}
+
+function openPopupEn(){
+  document.getElementById("popup-en").classList.add("active");
+}
+
+function closePopupEn(){
+  document.getElementById("popup-en").classList.remove("active");
+}
+
+
+  function copyPix(){
+    const chave =
+        document.getElementById("pixKey")
+        .innerText
+        .trim();
+
+    navigator.clipboard.writeText(chave)
+    .then(() => {
+
+      
+        document.getElementById("copyMessage")
+        .innerHTML =
+        "✅ Chave PIX Copiada!";
+
+      setTimeout(() => {
+        document.getElementById("copyMessage")
+        .innerHTML ="";
+    }, 3000);
+
+    })
+    .catch(() => {
+
+        document.getElementById("copyMessage")
+        .innerHTML =
+        "❌ O código não foi copiado :(.";
+
+    });
+
+}
+
+function copyPixEn(){
+
+    const chave =
+        document.getElementById("pixKey-en")
+        .innerText
+        .trim();
+
+    navigator.clipboard.writeText(chave)
+    .then(() => {
+
+      
+        document.getElementById("copyMessage-en")
+        .innerHTML =
+        "✅ Key PIX copied!";
+
+      setTimeout(() => {
+        document.getElementById("copyMessage-en")
+        .innerHTML ="";
+    }, 3000);
+
+    })
+    .catch(() => {
+
+        document.getElementById("copyMessage-en")
+        .innerHTML =
+        "❌ Sorry, could not be copied.";
+
+    });
+
+}
   
   </script>
 </body>
