@@ -761,6 +761,7 @@
             <div class="code">${item.code || item.category || "HORIZON"}</div>
             <h2>${localized.title || item.title || "Untitled"}</h2>
             <p>${localized.description || item.description || ""}</p>
+            <div class="status ${item.status || ""}">  ${item.status === "coming-soon"   ? "COMING SOON"  : item.status === "online"  ? "ONLINE"  : ""} </div>
           </div>
         `;
 
