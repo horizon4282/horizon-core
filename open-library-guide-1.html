@@ -398,6 +398,10 @@
       color: rgba(255,255,255,.45);
       font-size: 20px;
     }
+    .art-image.coming-soon{
+    opacity:.5;
+    filter:grayscale(.35);
+}
 
     .card-body {
       padding: 18px;
@@ -794,14 +798,23 @@
 
         const card = document.createElement("article");
         card.className = "card";
-        card.onclick = () => {
-          if (item.url) {
+     if(item.status !== "coming-soon"){
+
+    card.onclick = () => {
+        if(item.url){
             window.location.href = item.url;
-          }
+        }
+    };
+
+}else{
+
+    card.style.cursor = "default";
+
+}
         };
 
         card.innerHTML = `
-          <div class="art-image" style="background-image:url('${item.image || ""}')"></div>
+       <div class="art-image ${item.status}"  style="background-image:url('${item.image || ""}')"></div>
           <div class="card-body">
             <div class="code">${item.code || item.category || "HORIZON"}</div>
             <h2>${localized.title || item.title || "Untitled"}</h2>
