@@ -12,15 +12,15 @@
     }
   },
 
-  "poster": "https://f005.backblazeb2.com/file/horizon4282/open-library/fantastic-reading-banner.jpg",
+  "poster": "https://horizon4282.com.br/assets/the-vault-thumb.png",
 
   "items": [
     {
       "id": "FR-0001",
-      "code": "GRAPHIC NOVEL",
+      "code": "The Vault",
       "status": "online",
 
-      "image": "https://f005.backblazeb2.com/file/horizon4282/open-library/the-vault-cover.jpg",
+      "image": "https://horizon4282.com.br/assets/the-vault-thumb.png",
 
       "url": "/the-vault/",
 
@@ -40,7 +40,7 @@
       "code": "COMIC",
       "status": "coming-soon",
 
-      "image": "https://f005.backblazeb2.com/file/horizon4282/open-library/corredor-4282.jpg",
+      "image": "https://horizon4282.com.br/assets/the-guess-thumb.png",
 
       "url": "/corredor-4282/",
 
