@@ -770,6 +770,8 @@ function closePopup(){
 
 function openPopupEn(){
   document.getElementById("popup-en").classList.add("active");
+  let urlFundo = document.getElementById("modalImage").backgroundImage;
+  document.getElmentById("stampDownloadBtn").href= urlFundo.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
 }
 
 function closePopupEn(){
