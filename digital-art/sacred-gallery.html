@@ -344,15 +344,15 @@
       cursor: pointer;
     }
 
-      .pdf-btn-screen{
-  margin:15px 0;
-  padding:12px 22px;
-  border-radius:10px;
-  background:#e0392d;
-  color:#fff;
-  text-decoration:none;
-   cursor:pointer;
-  display: block;
+  .pdf-btn-screen{
+    padding: 12px 22px;
+    border-radius: 10px;
+    background: #a7322aad;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    text-transform: uppercase;
 }
 
 .pdf-btn{
@@ -365,6 +365,8 @@
   cursor:pointer;
   display: block;
 }
+
+
 
 .download-btn{
   padding:12px 22px;
@@ -585,7 +587,7 @@
 
        <div style="display:flex; justify-content: space-around;margin-bottom:20px;">
     <div class="code" id="modalCode"></div>
-    <div><button id="pop" class="pdf-btn">Download</button></div>
+    <div><button id="pop" class="pdf-btn-screen">Download</button></div>
        </div>
       
       <h3 id="modalTitle"></h3>
@@ -746,8 +748,8 @@ function openModal(index) {
   document.getElementById("modalTitle").textContent = item.title;
   document.getElementById("modalDescription").textContent = item.description;
 
-   document.getElementById("pop").click = function(){
-   if(currentLang === "pt"){ openPopup();}else{ openPoupEn()};
+   document.getElementById("pop").onclick = function(){
+   if(currentLang === "pt"){ openPopup();}else{ openPopupEn()};
    }
 }
     function closeModal(event) {
