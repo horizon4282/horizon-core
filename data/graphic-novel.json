@@ -1,0 +1,58 @@
+{
+  "page": {
+    "pt": {
+      "eyebrow": "Graphic Novel",
+      "title": "Graphic Novel",
+      "text": "Uma jornada através de memórias arquivadas, realidades artificiais e universos em colapso."
+    },
+    "en": {
+      "eyebrow": "Graphic Novel",
+      "title": "Graphic Novel",
+      "text": "A journey through archived memories, artificial realities, and worlds on the brink of collapse."
+    }
+  },
+
+  "poster": "https://horizon4282.com.br/assets/the-vault-thumb.png",
+
+  "items": [
+    {
+      "id": "FR-0001",
+      "code": "The Vault",
+      "status": "online",
+
+      "image": "https://f005.backblazeb2.com/file/horizon4282/the-vault-novel/capa-the-vault-novel.png",
+
+      "url": "/library/fantastic/reader/",
+
+      "pt": {
+        "title": "The Vault",
+        "description": "Um universo narrativo de mistério, ficção e aventura."
+      },
+
+      "en": {
+        "title": "The Vault",
+        "description": "A narrative universe of mystery, fiction and adventure."
+      }
+    },
+
+    {
+      "id": "FR-0002",
+      "code": "COMIC",
+      "status": "coming-soon",
+
+      "image": "https://horizon4282.com.br/assets/the-guess-thumb.png",
+
+      "url": "/corredor-4282/",
+
+      "pt": {
+        "title": "Corredor 4282",
+        "description": "Quadrinhos e aventuras do herói Corredor 4282."
+      },
+
+      "en": {
+        "title": "Runner 4282",
+        "description": "Comics and adventures of Runner 4282."
+      }
+    }
+  ]
+}
