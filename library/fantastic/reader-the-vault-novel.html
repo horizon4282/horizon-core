@@ -537,6 +537,7 @@ body{
   page {
     min-height: 33vh;
 }
+}
 </style>
 </head>
 
@@ -781,26 +782,12 @@ function setLanguage(lang){
 
   localStorage.setItem("horizonLanguage", lang);
   document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
-   loadBtPDF();
 }
 
 const savedLanguage = localStorage.getItem("horizonLanguage") || "pt";
 setLanguage(savedLanguage);
 
-function loadEpisode(url, button){
-  const frame = document.getElementById("episodeFrame");
-  const label = document.getElementById("currentEpisodeLabel");
-  frame.src = url;
 
-  document.querySelectorAll(".episode-button").forEach(btn=>{
-    btn.classList.remove("active");
-  });
-
-  if(button){
-    button.classList.add("active");
-    label.textContent = "GRAPHIC NOVEL / THE VAULT"
-  }
-}
 
 </script>
 
