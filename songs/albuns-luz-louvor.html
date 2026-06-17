@@ -73,6 +73,21 @@ body::before{
 body.sidebar-collapsed{--sidebar-width:var(--sidebar-closed)}
 body:not(.sidebar-collapsed){--sidebar-width:var(--sidebar-open)}
 
+.player-frame{
+  width:80%;
+  margin:18px auto 0;
+  aspect-ratio:16/9;
+  background:#000;
+  border:1px solid var(--line);
+}
+
+.player-frame iframe{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+
 .app{
   display:flex;
   min-height:100vh;
@@ -636,7 +651,7 @@ const sections = {
       {
         code: "2026 ALBUM",
         status: "online",
-        image: "https://f005.backblazeb2.com/file/horizon4282/luz-e-louvor/tua-alianca.jpg",
+        image: "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH",
         url: "#",
         pt: {
           title: "Tua Aliança",
@@ -711,7 +726,7 @@ const sections = {
       {
         code: "PRAYER",
         status: "online",
-        image: "https://f005.backblazeb2.com/file/horizon4282/luz-e-louvor/sao-miguel.jpg",
+        image: "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH",
         url: "#",
         pt: {
           title: "São Miguel Arcanjo",
@@ -725,7 +740,7 @@ const sections = {
       {
         code: "PRAYER",
         status: "coming-soon",
-        image: "https://f005.backblazeb2.com/file/horizon4282/open-library/coming-soon.jpg",
+        image: "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH",
         url: "",
         pt: {
           title: "Novena Cantada",
@@ -758,7 +773,7 @@ const sections = {
       {
         code: "MARIAN ALBUM",
         status: "online",
-        image: "https://f005.backblazeb2.com/file/horizon4282/luz-e-louvor/torre-de-marfim.jpg",
+        image: "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH",
         url: "#",
         pt: {
           title: "Torre de Marfim",
@@ -791,7 +806,7 @@ const sections = {
       {
         code: "CHILDREN",
         status: "online",
-        image: "https://f005.backblazeb2.com/file/horizon4282/luz-e-louvor/inocencia.jpg",
+        image: "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH",
         url: "#",
         pt: {
           title: "Inocência",
@@ -824,7 +839,7 @@ const sections = {
       {
         code: "ENGLISH ALBUM",
         status: "online",
-        image: "https://f005.backblazeb2.com/file/horizon4282/luz-e-louvor/jesus-my-essence.jpg",
+        image: "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH",
         url: "#",
         pt: {
           title: "Jesus, My Essence",
@@ -982,11 +997,8 @@ function renderSection(data){
            
       <div class="player-frame">
       
-        <iframe
-        id="youtubePlayer" src='${item.image || ""}'
-        title="Luz e Louvor Player"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
+        <iframe id="youtubePlayer" src="https://www.youtube.com/embed/${item.image || ''}"
+        title="Luz e Louvor Player"    allow="autoplay; encrypted-media"  allowfullscreen>
       </iframe>
     </div>
       
