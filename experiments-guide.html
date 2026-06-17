@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Horizon 4282 — Experiments</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#030508;
+  --panel:rgba(255,255,255,.035);
+  --line:rgba(255,255,255,.11);
+  --text:#e5e7eb;
+  --muted:#71717a;
+  --cyan:#38bdf8;
+  --green:#22c55e;
+  --amber:#f59e0b;
+  --red:#f43f5e;
+}
+html,body{
+  min-height:100%;
+  background:
+    radial-gradient(circle at 80% 15%,rgba(56,189,248,.13),transparent 28%),
+    radial-gradient(circle at 15% 80%,rgba(244,63,94,.08),transparent 32%),
+    var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:46px 46px;
+  mask-image:radial-gradient(circle at center,black,transparent 78%);
+  pointer-events:none;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.18) 50%);
+  background-size:100% 3px;
+  opacity:.45;
+}
+.page{
+  position:relative;
+  z-index:2;
+  width:min(1280px,calc(100% - 40px));
+  margin:0 auto;
+  padding:34px 0 52px;
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  margin-bottom:42px;
+}
+.brand{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.brand-code{
+  font-family:"Courier New",monospace;
+  font-size:.72rem;
+  letter-spacing:2px;
+  color:var(--cyan);
+  text-transform:uppercase;
+}
+.brand h1{
+  font-size:clamp(1.9rem,4vw,4.2rem);
+  line-height:.95;
+  letter-spacing:-2px;
+  font-weight:650;
+}
+.nav-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.nav-actions a{
+  color:#d4d4d8;
+  text-decoration:none;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.25);
+  padding:10px 13px;
+  border-radius:999px;
+  font-size:.72rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  transition:.25s ease;
+}
+.nav-actions a:hover{
+  color:#fff;
+  border-color:rgba(255,255,255,.35);
+  background:rgba(255,255,255,.07);
+}
+.hero{
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+  border-radius:18px;
+  padding:28px;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:28px;
+  box-shadow:0 30px 90px rgba(0,0,0,.35);
+  margin-bottom:28px;
+  overflow:hidden;
+  position:relative;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  right:-120px;
+  top:-160px;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(56,189,248,.18),transparent 65%);
+}
+.hero-text{
+  position:relative;
+  z-index:1;
+}
+.kicker{
+  color:var(--cyan);
+  font-family:"Courier New",monospace;
+  letter-spacing:2px;
+  font-size:.72rem;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.hero h2{
+  font-size:clamp(1.7rem,3vw,3rem);
+  line-height:1.05;
+  letter-spacing:-1.4px;
+  margin-bottom:16px;
+}
+.hero p{
+  color:#a1a1aa;
+  line-height:1.65;
+  max-width:760px;
+  font-size:.98rem;
+}
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  position:relative;
+  z-index:1;
+}
+.metric{
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(0,0,0,.25);
+  border-radius:14px;
+  padding:16px;
+}
+.metric strong{
+  display:block;
+  font-size:1.65rem;
+  color:#fff;
+  margin-bottom:5px;
+  font-family:"Courier New",monospace;
+}
+.metric span{
+  color:var(--muted);
+  font-size:.78rem;
+}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:18px;
+  margin:30px 0 16px;
+}
+.section-head h3{
+  font-size:1.1rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+.section-head p{
+  color:var(--muted);
+  font-size:.83rem;
+  max-width:620px;
+  text-align:right;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.card{
+  min-height:300px;
+  border:1px solid var(--line);
+  background:rgba(10,13,18,.72);
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+  transition:.28s ease;
+  display:flex;
+  flex-direction:column;
+}
+.card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(56,189,248,.42);
+  box-shadow:0 22px 60px rgba(0,0,0,.45),0 0 24px rgba(56,189,248,.08);
+}
+.visual{
+  height:132px;
+  position:relative;
+  overflow:hidden;
+  background:#070a10;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.visual::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-size:40px 40px;
+  background-image:
+    linear-gradient(to right,rgba(56,189,248,.07) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(56,189,248,.07) 1px,transparent 1px);
+}
+.visual::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 50%,transparent,rgba(0,0,0,.8));
+}
+.orb{
+  position:absolute;
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  border:1px solid rgba(56,189,248,.45);
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 34px rgba(56,189,248,.14),inset 0 0 30px rgba(56,189,248,.06);
+}
+.orb::before,.orb::after{
+  content:"";
+  position:absolute;
+  inset:24px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;
+}
+.orb::after{
+  inset:50px;
+  background:rgba(56,189,248,.25);
+}
+.mosaic-dots{
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.55) 1px,transparent 1px);
+  background-size:13px 13px;
+  opacity:.55;
+}
+.timeline-line{
+  position:absolute;
+  left:30px;
+  right:30px;
+  top:65px;
+  height:2px;
+  background:rgba(255,255,255,.16);
+}
+.timeline-line::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  height:2px;
+  width:62%;
+  background:#fff;
+  box-shadow:0 0 12px rgba(255,255,255,.7);
+}
+.card-body{
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+.card-code{
+  font-family:"Courier New",monospace;
+  color:var(--cyan);
+  font-size:.68rem;
+  letter-spacing:1.4px;
+  margin-bottom:9px;
+}
+.card h4{
+  font-size:1.15rem;
+  margin-bottom:10px;
+}
+.card p{
+  color:#9ca3af;
+  line-height:1.52;
+  font-size:.86rem;
+  margin-bottom:16px;
+}
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:auto;
+  margin-bottom:16px;
+}
+.tag{
+  font-size:.63rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#cbd5e1;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.035);
+  border-radius:999px;
+  padding:6px 8px;
+}
+.card-actions{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
+.card-actions a{
+  flex:1;
+  min-width:120px;
+  text-align:center;
+  color:#e0f2fe;
+  text-decoration:none;
+  border:1px solid rgba(56,189,248,.25);
+  background:rgba(56,189,248,.07);
+  border-radius:8px;
+  padding:10px;
+  font-size:.7rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  transition:.22s;
+}
+.card-actions a:hover{
+  border-color:var(--cyan);
+  background:rgba(56,189,248,.15);
+}
+.card-actions a.secondary{
+  color:#cbd5e1;
+  border-color:rgba(255,255,255,.12);
+  background:rgba(255,255,255,.035);
+}
+.lab-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.mini{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+  border-radius:12px;
+  padding:16px;
+  min-height:120px;
+}
+.mini strong{
+  display:block;
+  color:#fff;
+  margin-bottom:8px;
+  font-size:.88rem;
+}
+.mini span{
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.45;
+}
+.footer{
+  margin-top:34px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  color:#52525b;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  font-family:"Courier New",monospace;
+  font-size:.68rem;
+}
+@media(max-width:980px){
+  .topbar,.hero{grid-template-columns:1fr;flex-direction:column;align-items:flex-start}
+  .nav-actions{justify-content:flex-start}
+  .grid{grid-template-columns:1fr}
+  .lab-grid{grid-template-columns:1fr 1fr}
+  .section-head{flex-direction:column;align-items:flex-start}
+  .section-head p{text-align:left}
+}
+@media(max-width:560px){
+  .page{width:calc(100% - 26px);padding-top:22px}
+  .hero{padding:20px}
+  .metrics{grid-template-columns:1fr}
+  .lab-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-code">HORIZON 4282 / LABORATÓRIO VIVO</div>
+      <h1>Experiments</h1>
+    </div>
+    <nav class="nav-actions">
+      <a href="https://horizon4282.com.br/">Horizon Home</a>
+      <a href="/open-library-guide/">Open Library</a>
+      <a href="/library/fantastic/reader/">The Vault</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="kicker">Experimental Systems Registry</div>
+      <h2>Instrumentos de exploração visual, temporal e narrativa.</h2>
+      <p>
+        Esta página reúne os módulos experimentais do Horizon 4282. Alguns são acervos vivos,
+        outros são ferramentas de descoberta. Todos funcionam como protótipos de navegação
+        pelo conhecimento, pela memória e pelos fragmentos visuais da humanidade.
+      </p>
+    </div>
+    <div class="metrics">
+      <div class="metric"><strong>03</strong><span>ativos experimentais principais</span></div>
+      <div class="metric"><strong>02</strong><span>exploradores vivos</span></div>
+      <div class="metric"><strong>01</strong><span>mosaico global de imagens</span></div>
+      <div class="metric"><strong>∞</strong><span>expansão contínua</span></div>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h3>Ativos em Operação</h3>
+    <p>Os módulos abaixo representam os primeiros experimentos oficiais do ecossistema Horizon.</p>
+  </div>
+
+  <section class="grid">
+    <article class="card">
+      <div class="visual">
+        <div class="timeline-line"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-code">HZN-EXP-001 / TEMPORAL EXPLORER</div>
+        <h4>Time Frame Horizon</h4>
+        <p>Explorador temporal para organizar eras, eventos, períodos históricos e camadas de memória do Horizon.</p>
+        <div class="tags">
+          <span class="tag">Tempo</span><span class="tag">História</span><span class="tag">Timeline</span>
+        </div>
+        <div class="card-actions">
+          <a>Abrir</a>
+          <a class="secondary" href="#">Status: ativo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="visual">
+        <div class="orb"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-code">HZN-EXP-002 / VISUAL RECOVERY</div>
+        <h4>Observer.Node</h4>
+        <p>Terminal de recuperação visual com busca temática, fluxo sem repetição, cache local, telemetria e zoom de inspeção.</p>
+        <div class="tags">
+          <span class="tag">Wikimedia</span><span class="tag">Busca</span><span class="tag">Observer</span>
+        </div>
+        <div class="card-actions">
+          <a href="/experiments/observer-node/">Abrir</a>
+          <a class="secondary" href="#">Status: ativo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="visual">
+        <div class="mosaic-dots"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-code">HZN-EXP-003 / GLOBAL MOSAIC</div>
+        <h4>Mosaico Antropoceno</h4>
+        <p>Instalação visual com milhares de cubos conectados a imagens temáticas, coordenadas geográficas e fragmentos ampliáveis.</p>
+        <div class="tags">
+          <span class="tag">Mosaico</span><span class="tag">Geodados</span><span class="tag">Image Pool</span>
+        </div>
+        <div class="card-actions">
+          <a href="/experiments/mosaic-time-frame/">Abrir</a>
+          <a class="secondary" href="#">Status: ativo</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <div class="section-head">
+    <h3>Próximos Laboratórios</h3>
+    <p>Ideias já alinhadas para futuras expansões do Horizon Experiments.</p>
+  </div>
+
+  <section class="lab-grid">
+    <div class="mini"><strong>Geo.Frame</strong><span>Explorador geográfico para mapas, cidades, rotas e coordenadas.</span></div>
+    <div class="mini"><strong>Sound Archive</strong><span>Explorador sonoro para músicas, vozes, ruídos e memória acústica.</span></div>
+    <div class="mini"><strong>Culture Scanner</strong><span>Ferramenta para cruzar símbolos, objetos, culturas e épocas.</span></div>
+    <div class="mini"><strong>Memory Stream</strong><span>Fluxo contínuo de memórias digitais, imagens e fragmentos narrativos.</span></div>
+  </section>
+
+  <footer class="footer">
+    <span>HORIZON 4282 // EXPERIMENTS INDEX</span>
+    <span>1 humano + IA // laboratório criativo vivo</span>
+  </footer>
+</main>
+</body>
+</html>
