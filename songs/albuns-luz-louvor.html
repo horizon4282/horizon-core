@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Luz e Louvor | Horizon 4282</title>
+
+<meta name="description" content="Luz e Louvor é a dimensão musical do Horizon 4282: músicas, álbuns, oração, fé e contemplação.">
+<meta name="keywords" content="Luz e Louvor, música católica, oração cantada, ministério luz e louvor, Horizon 4282, louvor, fé, álbuns católicos">
+<meta name="author" content="Roque Fernando Marcos Sousa">
+<meta name="robots" content="index,follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Luz e Louvor | Horizon 4282">
+<meta property="og:description" content="Music, prayer and contemplation inside the Horizon 4282 universe.">
+<meta property="og:url" content="https://horizon4282.com.br/luz-e-louvor.html">
+<meta property="og:site_name" content="Horizon 4282">
+<meta property="og:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Luz e Louvor | Horizon 4282">
+<meta name="twitter:description" content="Music, prayer and contemplation.">
+<meta name="twitter:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
+
+<link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+
+<style>
+:root {
+  --bg:#030712;
+  --bg-soft:#07111f;
+  --panel:rgba(15,31,54,.72);
+  --panel-strong:rgba(20,52,82,.88);
+  --line:rgba(96,165,250,.22);
+  --line-strong:rgba(125,211,252,.45);
+  --text:#eef6ff;
+  --muted:#8ca3bd;
+  --accent:#7dd3fc;
+  --gold:#f5b740;
+  --cyan:#00f2ff;
+  --sidebar-open:315px;
+  --sidebar-closed:82px;
+  --font-main:"Courier New", Courier, monospace;
+  --font-title:"Courier New", Courier, monospace;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,rgba(14,165,233,.12),transparent 34%),
+    radial-gradient(circle at bottom right,rgba(6,182,212,.08),transparent 34%),
+    var(--bg);
+  color:var(--text);
+  font-family:var(--font-main);
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.20) 50%),
+    linear-gradient(90deg,rgba(255,0,0,.035),rgba(0,255,255,.018),rgba(0,0,255,.035));
+  background-size:100% 3px,3px 100%;
+  z-index:999;
+  opacity:.55;
+}
+
+body.sidebar-collapsed{--sidebar-width:var(--sidebar-closed)}
+body:not(.sidebar-collapsed){--sidebar-width:var(--sidebar-open)}
+
+.app{
+  display:flex;
+  min-height:100vh;
+}
+
+.sidebar{
+  position:fixed;
+  inset:0 auto 0 0;
+  width:var(--sidebar-width);
+  background:rgba(3,7,18,.94);
+  border-right:1px solid var(--line);
+  backdrop-filter:blur(18px);
+  z-index:50;
+  transition:width .25s ease,transform .25s ease;
+  overflow:hidden;
+}
+
+.sidebar-header{
+  height:78px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:0 18px;
+  border-bottom:1px solid var(--line);
+}
+
+.toggle-btn{
+  min-width:44px;
+  width:44px;
+  height:44px;
+  border:1px solid var(--line);
+  background:rgba(8,21,38,.78);
+  color:var(--accent);
+  cursor:pointer;
+  font-size:18px;
+  font-family:var(--font-main);
+}
+
+.toggle-btn:hover{
+  border-color:var(--line-strong);
+  color:#fff;
+}
+
+.brand{
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+.brand strong{
+  display:block;
+  color:var(--accent);
+  font-size:13px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+
+.brand span{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  margin-top:4px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+body.sidebar-collapsed .brand,
+body.sidebar-collapsed .nav span,
+body.sidebar-collapsed .sidebar-footer,
+body.sidebar-collapsed .sidebar-label{
+  display:none;
+}
+
+.nav{
+  padding:18px 12px;
+  overflow-y:auto;
+  max-height:calc(100vh - 160px);
+  scrollbar-width:thin;
+  scrollbar-color:rgba(125,211,252,.25) transparent;
+}
+
+.nav::-webkit-scrollbar{width:4px}
+.nav::-webkit-scrollbar-track{background:transparent}
+.nav::-webkit-scrollbar-thumb{
+  background:rgba(125,211,252,.18);
+  border-radius:20px;
+}
+.nav::-webkit-scrollbar-thumb:hover{background:rgba(125,211,252,.35)}
+
+.sidebar-label{
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  margin:12px 10px 10px;
+}
+
+.nav button,
+.nav a{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-height:48px;
+  padding:0 14px;
+  margin-bottom:8px;
+  border:1px solid rgba(125,211,252,.14);
+  background:rgba(8,21,38,.45);
+  color:var(--text);
+  text-decoration:none;
+  transition:.2s;
+  white-space:nowrap;
+  font-family:var(--font-main);
+  cursor:pointer;
+  text-align:left;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+.nav button:hover,
+.nav button.active,
+.nav a:hover{
+  background:rgba(8,80,102,.52);
+  border-color:var(--line-strong);
+  color:var(--gold);
+}
+
+.nav i{
+  width:22px;
+  text-align:center;
+  font-style:normal;
+  color:var(--accent);
+}
+
+.sidebar-footer{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:22px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.mobile-topbar{display:none}
+
+.main{
+  width:100%;
+  margin-left:var(--sidebar-width);
+  transition:margin-left .25s ease;
+}
+
+.content{
+  width:min(1420px,calc(100% - 64px));
+  margin:0 auto;
+  padding:44px 0 90px;
+}
+
+.top-mini{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+  gap:16px;
+}
+
+.lang-switch{
+  display:flex;
+  gap:10px;
+}
+
+.lang-switch button{
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--accent);
+  padding:10px 16px;
+  cursor:pointer;
+  font-family:var(--font-main);
+  letter-spacing:.16em;
+}
+
+.lang-switch button.active{
+  background:rgba(14,165,233,.13);
+  color:#fff;
+}
+
+.home-link{
+  color:var(--accent);
+  text-decoration:none;
+  letter-spacing:.18em;
+  font-size:11px;
+  text-transform:uppercase;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:1fr;
+}
+
+.hero{
+  padding:38px 40px;
+  min-height:210px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border:1px solid var(--line);
+  background:rgba(8,21,38,.62);
+  margin-bottom:24px;
+}
+
+.eyebrow{
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+
+h1{
+  font-family:var(--font-title);
+  font-size:clamp(36px,4vw,58px);
+  line-height:1.05;
+  margin:0 0 16px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.hero p{
+  max-width:850px;
+  color:#b4c7df;
+  font-size:17px;
+  line-height:1.7;
+  margin:0;
+}
+
+.section-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:26px 0 18px;
+  gap:16px;
+}
+
+.section-title{
+  font-size:13px;
+  color:var(--accent);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+
+.counter{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(360px,1fr));
+  gap:30px;
+}
+
+.card{
+  border:1px solid var(--line);
+  background:rgba(15,31,54,.64);
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .2s ease,background .2s ease,border-color .2s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  background:rgba(20,52,82,.82);
+  border-color:var(--line-strong);
+}
+
+.card.coming-soon{
+  cursor:default;
+}
+
+.art-image{
+  width:80%;
+  margin:18px auto 0;
+  aspect-ratio:4/5;
+  background:
+    linear-gradient(135deg,rgba(14,165,233,.18),rgba(8,21,38,.35)),
+    #111827;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.card.coming-soon .art-image{
+  opacity:.5;
+  filter:grayscale(.35);
+}
+
+.card-body{
+  padding:26px 28px 30px;
+}
+
+.code{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.card h2{
+  font-size:28px;
+  font-weight:500;
+  margin:0 0 12px;
+  line-height:1.25;
+  color:var(--text);
+  letter-spacing:.08em;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.7;
+  margin:0;
+  font-size:16px;
+  max-width:90%;
+}
+
+.status{
+  margin-top:22px;
+  font-size:13px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+
+.status.online{
+  color:var(--gold);
+}
+
+.status.coming-soon{
+  color:#7f8da3;
+}
+
+.platform-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:30px;
+}
+
+.platform{
+  border:1px solid var(--line);
+  background:rgba(8,21,38,.45);
+  padding:20px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--text);
+  transition:.2s;
+}
+
+.platform:hover{
+  border-color:var(--line-strong);
+  background:rgba(8,80,102,.35);
+  transform:translateY(-3px);
+}
+
+.platform strong{
+  display:block;
+  color:var(--gold);
+  letter-spacing:.14em;
+  margin-bottom:8px;
+}
+
+.platform span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.loading{
+  border:1px solid var(--line);
+  background:rgba(8,21,38,.52);
+  padding:30px;
+  color:var(--muted);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+@media(max-width:1100px){
+  .gallery{
+    grid-template-columns:1fr;
+  }
+  .art-image{
+    width:78%;
+  }
+  .platform-row{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:900px){
+  body{--sidebar-width:var(--sidebar-open)}
+  .sidebar{
+    transform:translateX(-100%);
+    width:315px;
+  }
+  body.mobile-menu-open .sidebar{
+    transform:translateX(0);
+  }
+  .main{
+    margin-left:0;
+  }
+  .mobile-topbar{
+    height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    border-bottom:1px solid var(--line);
+    background:rgba(3,7,18,.9);
+    backdrop-filter:blur(18px);
+    position:sticky;
+    top:0;
+    z-index:40;
+  }
+}
+
+@media(max-width:700px){
+  .content{
+    width:calc(100% - 28px);
+  }
+  .art-image{
+    width:88%;
+  }
+  .card h2{
+    font-size:23px;
+  }
+  .platform-row{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+      <div class="brand">
+        <strong>Horizon 4282</strong>
+        <span>Luz e Louvor</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="/"><i>⌂</i><span>Home</span></a>
+
+      <div class="sidebar-label">Luz e Louvor</div>
+
+      <button class="active" data-section="albums" onclick="loadSection(this)">
+        <i>♫</i><span>Featured Albums</span>
+      </button>
+
+      <button data-section="prayers" onclick="loadSection(this)">
+        <i>✚</i><span>Prayer Songs</span>
+      </button>
+
+      <button data-section="marian" onclick="loadSection(this)">
+        <i>✦</i><span>Marian Songs</span>
+      </button>
+
+      <button data-section="child" onclick="loadSection(this)">
+        <i>☼</i><span>Children Songs</span>
+      </button>
+
+      <button data-section="english" onclick="loadSection(this)">
+        <i>EN</i><span>English Songs</span>
+      </button>
+
+      <button data-section="platforms" onclick="loadSection(this)">
+        <i>▣</i><span>Listen Online</span>
+      </button>
+
+      <button data-section="radio" onclick="loadSection(this)">
+        <i>◎</i><span>Radio Luz e Louvor</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      Studio 4282<br>
+      Music · Prayer · Memory
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="mobile-topbar">
+      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+      <div style="text-align:right">
+        <strong style="display:block;font-size:14px;letter-spacing:.08em;text-transform:uppercase">Horizon 4282</strong>
+        <span style="color:var(--muted);font-size:12px">Luz e Louvor</span>
+      </div>
+    </header>
+
+    <section class="content">
+      <div class="top-mini">
+        <div class="lang-switch">
+          <button id="ptBtn" onclick="setLanguage('pt')">PT</button>
+          <button id="enBtn" class="active" onclick="setLanguage('en')">EN</button>
+        </div>
+
+        <a class="home-link" href="/">Home</a>
+      </div>
+
+      <div class="layout">
+        <section>
+          <div class="hero">
+            <div class="eyebrow" id="heroEyebrow">Luz e Louvor</div>
+            <h1 id="heroTitle">Featured Albums</h1>
+            <p id="heroText">Music, prayer and contemplation. A sonic experience of faith, hope and worship.</p>
+          </div>
+
+          <div class="section-bar">
+            <div class="section-title" id="sectionTitle">Gallery</div>
+            <div class="counter" id="counter">0 items</div>
+          </div>
+
+          <div class="gallery" id="gallery"></div>
+          <div class="platform-row" id="platformRow" style="display:none"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+</div>
+
+<script>
+let currentLang = localStorage.getItem("horizonLanguage") || "en";
+let currentSection = "albums";
+
+const sections = {
+  albums: {
+    page: {
+      pt: {
+        eyebrow: "Luz e Louvor",
+        title: "Álbuns em Destaque",
+        text: "Música, oração e contemplação. Uma experiência sonora de fé, esperança e adoração.",
+        section: "Galeria"
+      },
+      en: {
+        eyebrow: "Luz e Louvor",
+        title: "Featured Albums",
+        text: "Music, prayer and contemplation. A sonic experience of faith, hope and worship.",
+        section: "Gallery"
+      }
+    },
+    items: [
+      {
+        code: "2026 ALBUM",
+        status: "online",
+        image: "https://f005.backblazeb2.com/file/horizon4282/luz-e-louvor/tua-alianca.jpg",
+        url: "#",
+        pt: {
+          title: "Tua Aliança",
+          description: "Álbum de louvor e adoração do Ministério Luz e Louvor."
+        },
+        en: {
+          title: "Tua Aliança",
+          description: "Worship album by Ministério Luz e Louvor."
+        }
+      },
+      {
+        code: "2026 ALBUM",
+        status: "online",
+        image: "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH",
+        url: "#",
+        pt: {
+          title: "Adonai",
+          description: "Canções de fé, entrega e transformação."
+        },
+        en: {
+          title: "Adonai",
+          description: "Songs of faith, surrender and transformation."
+        }
+      },
+      {
+        code: "OFFICIAL ALBUM",
+        status: "online",
+        image: "AI1OJAr1hfs?si=RI7mYe1A3UxKFvFt",
+        url: "#",
+        pt: {
+          title: "Hallel",
+          description: "Louvor, esperança e alegria em forma de canção."
+        },
+        en: {
+          title: "Hallel",
+          description: "Praise, hope and joy in song form."
+        }
+      },
+      {
+        code: "OFFICIAL ALBUM",
+        status: "online",
+        image: "8m7pE2z08pQ?si=cHDb1Z3VsUSlulol",
+        url: "#",
+        pt: {
+          title: "Liberta-me",
+          description: "Músicas de cura, liberdade e recomeço."
+        },
+        en: {
+          title: "Liberta-me",
+          description: "Songs of healing, freedom and new beginnings."
+        }
+      }
+    ]
+  },
+
+  prayers: {
+    page: {
+      pt: {
+        eyebrow: "Luz e Louvor",
+        title: "Orações Cantadas",
+        text: "Canções devocionais para oração, proteção espiritual e contemplação.",
+        section: "Galeria"
+      },
+      en: {
+        eyebrow: "Luz e Louvor",
+        title: "Prayer Songs",
+        text: "Devotional songs for prayer, spiritual protection and contemplation.",
+        section: "Gallery"
+      }
+    },
+    items: [
+      {
+        code: "PRAYER",
+        status: "online",
+        image: "https://f005.backblazeb2.com/file/horizon4282/luz-e-louvor/sao-miguel.jpg",
+        url: "#",
+        pt: {
+          title: "São Miguel Arcanjo",
+          description: "Poderosa oração cantada dedicada a São Miguel Arcanjo."
+        },
+        en: {
+          title: "Saint Michael",
+          description: "A powerful sung prayer dedicated to Saint Michael the Archangel."
+        }
+      },
+      {
+        code: "PRAYER",
+        status: "coming-soon",
+        image: "https://f005.backblazeb2.com/file/horizon4282/open-library/coming-soon.jpg",
+        url: "",
+        pt: {
+          title: "Novena Cantada",
+          description: "Série devocional em desenvolvimento."
+        },
+        en: {
+          title: "Sung Novena",
+          description: "A devotional series currently in development."
+        }
+      }
+    ]
+  },
+
+  marian: {
+    page: {
+      pt: {
+        eyebrow: "Luz e Louvor",
+        title: "Canções Marianas",
+        text: "Músicas dedicadas à Virgem Maria e à espiritualidade mariana.",
+        section: "Galeria"
+      },
+      en: {
+        eyebrow: "Luz e Louvor",
+        title: "Marian Songs",
+        text: "Songs dedicated to the Virgin Mary and Marian spirituality.",
+        section: "Gallery"
+      }
+    },
+    items: [
+      {
+        code: "MARIAN ALBUM",
+        status: "online",
+        image: "https://f005.backblazeb2.com/file/horizon4282/luz-e-louvor/torre-de-marfim.jpg",
+        url: "#",
+        pt: {
+          title: "Torre de Marfim",
+          description: "Álbum mariano do Ministério Luz e Louvor."
+        },
+        en: {
+          title: "Tower of Ivory",
+          description: "A Marian album by Ministério Luz e Louvor."
+        }
+      }
+    ]
+  },
+
+  child: {
+    page: {
+      pt: {
+        eyebrow: "Luz e Louvor",
+        title: "Canções Infantis",
+        text: "Músicas cristãs para crianças, catequese e família.",
+        section: "Galeria"
+      },
+      en: {
+        eyebrow: "Luz e Louvor",
+        title: "Children Songs",
+        text: "Christian songs for children, catechesis and family.",
+        section: "Gallery"
+      }
+    },
+    items: [
+      {
+        code: "CHILDREN",
+        status: "online",
+        image: "https://f005.backblazeb2.com/file/horizon4282/luz-e-louvor/inocencia.jpg",
+        url: "#",
+        pt: {
+          title: "Inocência",
+          description: "Álbum infantil cristão com canções de fé e alegria."
+        },
+        en: {
+          title: "Inocência",
+          description: "A Christian children’s album with songs of faith and joy."
+        }
+      }
+    ]
+  },
+
+  english: {
+    page: {
+      pt: {
+        eyebrow: "Luz e Louvor",
+        title: "Canções em Inglês",
+        text: "Produções internacionais do Ministério Luz e Louvor.",
+        section: "Galeria"
+      },
+      en: {
+        eyebrow: "Luz e Louvor",
+        title: "English Songs",
+        text: "International productions by Ministério Luz e Louvor.",
+        section: "Gallery"
+      }
+    },
+    items: [
+      {
+        code: "ENGLISH ALBUM",
+        status: "online",
+        image: "https://f005.backblazeb2.com/file/horizon4282/luz-e-louvor/jesus-my-essence.jpg",
+        url: "#",
+        pt: {
+          title: "Jesus, My Essence",
+          description: "Álbum em inglês com canções de entrega e amor a Jesus."
+        },
+        en: {
+          title: "Jesus, My Essence",
+          description: "An English album with songs of surrender and love for Jesus."
+        }
+      }
+    ]
+  },
+
+  platforms: {
+    page: {
+      pt: {
+        eyebrow: "Luz e Louvor",
+        title: "Ouça Online",
+        text: "Acesse o Ministério Luz e Louvor nas principais plataformas digitais.",
+        section: "Plataformas"
+      },
+      en: {
+        eyebrow: "Luz e Louvor",
+        title: "Listen Online",
+        text: "Access Ministério Luz e Louvor on major digital platforms.",
+        section: "Platforms"
+      }
+    },
+    platforms: [
+      {title:"Spotify", text:"Streaming", url:"#"},
+      {title:"YouTube", text:"Vídeos e lyrics", url:"#"},
+      {title:"Deezer", text:"Álbuns oficiais", url:"#"},
+      {title:"TikTok Music", text:"Trechos e canções", url:"#"}
+    ],
+    items: []
+  },
+
+  radio: {
+    page: {
+      pt: {
+        eyebrow: "Luz e Louvor",
+        title: "Rádio Luz e Louvor",
+        text: "Projeto de rádio devocional com louvor, oração, Palavra e programação especial.",
+        section: "Em breve"
+      },
+      en: {
+        eyebrow: "Luz e Louvor",
+        title: "Radio Luz e Louvor",
+        text: "A devotional radio project with praise, prayer, Word and special programming.",
+        section: "Coming Soon"
+      }
+    },
+    items: [
+      {
+        code: "RADIO",
+        status: "coming-soon",
+        image: "https://f005.backblazeb2.com/file/horizon4282/open-library/coming-soon.jpg",
+        url: "",
+        pt: {
+          title: "Rádio Luz e Louvor",
+          description: "Experiência devocional em áudio em desenvolvimento."
+        },
+        en: {
+          title: "Radio Luz e Louvor",
+          description: "A devotional audio experience currently in development."
+        }
+      }
+    ]
+  }
+};
+
+function toggleSidebar(){
+  if(window.innerWidth <= 900){
+    document.body.classList.toggle("mobile-menu-open");
+  }else{
+    document.body.classList.toggle("sidebar-collapsed");
+  }
+}
+
+function setLanguage(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+  document.getElementById("ptBtn").classList.toggle("active", lang === "pt");
+  document.getElementById("enBtn").classList.toggle("active", lang === "en");
+  localStorage.setItem("horizonLanguage", lang);
+  renderSection(sections[currentSection]);
+}
+
+function loadSection(button){
+  document.querySelectorAll(".nav button").forEach(btn=>btn.classList.remove("active"));
+  button.classList.add("active");
+  currentSection = button.dataset.section;
+  renderSection(sections[currentSection]);
+
+  if(window.innerWidth <= 900){
+    document.body.classList.remove("mobile-menu-open");
+  }
+}
+
+function renderSection(data){
+  const page = data.page[currentLang] || data.page.en || data.page.pt;
+
+  document.getElementById("heroEyebrow").textContent = page.eyebrow;
+  document.getElementById("heroTitle").textContent = page.title;
+  document.getElementById("heroText").textContent = page.text;
+  document.getElementById("sectionTitle").textContent = page.section;
+
+  const gallery = document.getElementById("gallery");
+  const platformRow = document.getElementById("platformRow");
+
+  gallery.innerHTML = "";
+  platformRow.innerHTML = "";
+
+  if(data.platforms){
+    document.getElementById("counter").textContent = data.platforms.length + " links";
+    gallery.style.display = "none";
+    platformRow.style.display = "grid";
+
+    data.platforms.forEach(platform=>{
+      const a = document.createElement("a");
+      a.className = "platform";
+      a.href = platform.url || "#";
+      a.target = "_blank";
+      a.innerHTML = `
+        <strong>${platform.title}</strong>
+        <span>${platform.text}</span>
+      `;
+      platformRow.appendChild(a);
+    });
+
+    return;
+  }
+
+  const items = data.items || [];
+  document.getElementById("counter").textContent = items.length + " items";
+  gallery.style.display = "grid";
+  platformRow.style.display = "none";
+
+  items.forEach(item=>{
+    const localized = item[currentLang] || item.en || item.pt || item;
+    const status = item.status || "online";
+
+    const card = document.createElement("article");
+    card.className = "card " + status;
+
+    if(status !== "coming-soon" && item.url){
+      card.onclick = ()=>{
+        window.location.href = item.url;
+      };
+    }else{
+      card.style.cursor = "default";
+    }
+
+    card.innerHTML = `
+           
+      <div class="player-frame">
+      
+        <iframe
+        id="youtubePlayer" src='${item.image || ""}'
+        title="Luz e Louvor Player"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
+      
+    <div class="card-body">
+        <div class="code">${item.code || "LUZ E LOUVOR"}</div>
+        <h2>${localized.title || item.title || "Untitled"}</h2>
+        <p>${localized.description || item.description || ""}</p>
+
+        <div class="status ${status}">
+          ${status === "coming-soon" ? "COMING SOON" : status === "online" ? "ONLINE" : status.toUpperCase()}
+        </div>
+      </div>
+    `;
+
+    gallery.appendChild(card);
+  });
+}
+
+window.addEventListener("resize",()=>{
+  if(window.innerWidth <= 900){
+    document.body.classList.add("sidebar-collapsed");
+  }
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  setLanguage(currentLang);
+  renderSection(sections.albums);
+});
+
+function loadAlbum(videoId){
+  const player = document.getElementById("youtubePlayer");
+  player.src = `https://www.youtube.com/embed/${videoId}?rel=0`;
+}
+</script>
+
+</body>
+</html>
