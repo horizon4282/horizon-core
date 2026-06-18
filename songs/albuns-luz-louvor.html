@@ -552,31 +552,47 @@ h1{
       <div class="sidebar-label">Luz e Louvor</div>
 
       <button class="active" data-section="albums" onclick="loadSection(this)">
-        <i>♫</i><span>Featured Albums</span>
+        <i>♫</i><span>Worship</span>
       </button>
 
-      <button data-section="prayers" onclick="loadSection(this)">
-        <i>✚</i><span>Prayer Songs</span>
+      <button data-section="spirit" onclick="loadSection(this)">
+        <i>✚</i><span>Holy Spirit</span>
       </button>
 
       <button data-section="marian" onclick="loadSection(this)">
-        <i>✦</i><span>Marian Songs</span>
+        <i>✦</i><span>Jesus Christ</span>
       </button>
 
       <button data-section="child" onclick="loadSection(this)">
-        <i>☼</i><span>Children Songs</span>
+        <i>☼</i><span>Mary</span>
       </button>
 
       <button data-section="english" onclick="loadSection(this)">
-        <i>EN</i><span>English Songs</span>
+        <i>☼</i><span>Healing</span>
       </button>
 
       <button data-section="platforms" onclick="loadSection(this)">
-        <i>▣</i><span>Listen Online</span>
+        <i>▣</i><span>Platforms</span>
       </button>
 
       <button data-section="radio" onclick="loadSection(this)">
-        <i>◎</i><span>Radio Luz e Louvor</span>
+        <i>◎</i><span>Perseverance</span>
+      </button>
+
+       <button data-section="radio" onclick="loadSection(this)">
+        <i>◎</i><span>Thanksgiving</span>
+      </button>
+
+       <button data-section="radio" onclick="loadSection(this)">
+        <i>◎</i><span>Merci</span>
+      </button>
+
+       <button data-section="radio" onclick="loadSection(this)">
+        <i>◎</i><span>Christmas</span>
+      </button>
+
+       <button data-section="radio" onclick="loadSection(this)">
+        <i>◎</i><span>Evangelism</span>
       </button>
     </nav>
 
@@ -636,13 +652,13 @@ const sections = {
     page: {
       pt: {
         eyebrow: "Luz e Louvor",
-        title: "Álbuns em Destaque",
+        title: "Canções em Destaque",
         text: "Música, oração e contemplação. Uma experiência sonora de fé, esperança e adoração.",
         section: "Galeria"
       },
       en: {
         eyebrow: "Luz e Louvor",
-        title: "Featured Albums",
+        title: "Featured Sons",
         text: "Music, prayer and contemplation. A sonic experience of faith, hope and worship.",
         section: "Gallery"
       }
@@ -707,48 +723,34 @@ const sections = {
     ]
   },
 
-  prayers: {
+  spirit: {
     page: {
       pt: {
         eyebrow: "Luz e Louvor",
-        title: "Orações Cantadas",
+        title: "Espírito Santo",
         text: "Canções devocionais para oração, proteção espiritual e contemplação.",
         section: "Galeria"
       },
       en: {
         eyebrow: "Luz e Louvor",
-        title: "Prayer Songs",
+        title: "Holy Spirit",
         text: "Devotional songs for prayer, spiritual protection and contemplation.",
         section: "Gallery"
       }
     },
     items: [
       {
-        code: "PRAYER",
+        code: "SPIRIT",
         status: "online",
         image: "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH",
         url: "#",
         pt: {
-          title: "São Miguel Arcanjo",
-          description: "Poderosa oração cantada dedicada a São Miguel Arcanjo."
+          title: "Repousa em Mim",
+          description: "Canção dedicada a unção do espírito de Deus."
         },
         en: {
-          title: "Saint Michael",
-          description: "A powerful sung prayer dedicated to Saint Michael the Archangel."
-        }
-      },
-      {
-        code: "PRAYER",
-        status: "coming-soon",
-        image: "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH",
-        url: "",
-        pt: {
-          title: "Novena Cantada",
-          description: "Série devocional em desenvolvimento."
-        },
-        en: {
-          title: "Sung Novena",
-          description: "A devotional series currently in development."
+         title: "Rest in Me",
+description: "A song dedicated to the anointing of the Holy Spirit, inspiring peace, trust, and rest in God's presence."
         }
       }
     ]
