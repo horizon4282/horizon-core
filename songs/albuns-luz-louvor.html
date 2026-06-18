@@ -547,52 +547,52 @@ h1{
     </div>
 
     <nav class="nav">
-      <a href="/"><i>⌂</i><span>Home</span></a>
+      <a href="/"><i>⌂</i><span data-pt="Início" data-en="Home">Home</span></a>
 
-      <div class="sidebar-label">Luz e Louvor</div>
+      <div class="sidebar-label" data-pt="Luz e Louvor" data-en="Light & Praise">Luz e Louvor</div>
 
-      <button class="active" data-section="albums" onclick="loadSection(this)">
-        <i>♫</i><span>Worship</span>
+      <button class="active" data-section="worship" onclick="loadSection(this)">
+        <i>♫</i><span data-pt="Adoração" data-en="Worship">Worship</span>
       </button>
 
       <button data-section="spirit" onclick="loadSection(this)">
-        <i>✚</i><span>Holy Spirit</span>
+        <i>✚</i><span data-pt="Espírito Santo" data-en="Holy Spirit">Holy Spirit</span>
       </button>
 
       <button data-section="marian" onclick="loadSection(this)">
-        <i>✦</i><span>Jesus Christ</span>
+        <i>✦</i><span data-pt="Jesus Cristo" data-en="Jesus Christ">Jesus Christ</span>
       </button>
 
       <button data-section="child" onclick="loadSection(this)">
-        <i>☼</i><span>Mary</span>
+        <i>☼</i><span data-pt="Maria" data-en="Mary">Mary</span>
       </button>
 
       <button data-section="english" onclick="loadSection(this)">
-        <i>☼</i><span>Healing</span>
+        <i>☼</i><span data-pt="Cura" data-en="Healing">Healing</span>
       </button>
 
       <button data-section="platforms" onclick="loadSection(this)">
-        <i>▣</i><span>Platforms</span>
+        <i>▣</i><span data-pt="Plataformas" data-en="Platforms">Platforms</span>
       </button>
 
       <button data-section="radio" onclick="loadSection(this)">
-        <i>◎</i><span>Perseverance</span>
+        <i>◎</i><span data-pt="Perseverança" data-en="Perseverance">Perseverance</span>
       </button>
 
        <button data-section="radio" onclick="loadSection(this)">
-        <i>◎</i><span>Thanksgiving</span>
+        <i>◎</i><span data-pt="Gratidão" data-en="Thanksgiving">Thanksgiving</span>
       </button>
 
        <button data-section="radio" onclick="loadSection(this)">
-        <i>◎</i><span>Merci</span>
+        <i>◎</i><span data-pt="Misericórdia" data-en="Mercy">Mercy</span>
       </button>
 
        <button data-section="radio" onclick="loadSection(this)">
-        <i>◎</i><span>Christmas</span>
+        <i>◎</i><span data-pt="Natal" data-en="Christmas">Christmas</span>
       </button>
 
        <button data-section="radio" onclick="loadSection(this)">
-        <i>◎</i><span>Evangelism</span>
+        <i>◎</i><span data-pt="Evangelização" data-en="Evangelism">Evangelism</span>
       </button>
     </nav>
 
@@ -618,7 +618,7 @@ h1{
           <button id="enBtn" class="active" onclick="setLanguage('en')">EN</button>
         </div>
 
-        <a class="home-link" href="/">Home</a>
+        <a class="home-link" href="/" data-pt="Início" data-en="Home">Home</a>
       </div>
 
       <div class="layout">
@@ -648,18 +648,18 @@ let currentLang = localStorage.getItem("horizonLanguage") || "en";
 let currentSection = "albums";
 
 const sections = {
-  albums: {
+  worship: {
     page: {
       pt: {
         eyebrow: "Luz e Louvor",
-        title: "Canções em Destaque",
-        text: "Música, oração e contemplação. Uma experiência sonora de fé, esperança e adoração.",
+        title: "Louvor e Adoração",
+        text: "Uma experiência sonora de fé, esperança e adoração.",
         section: "Galeria"
       },
       en: {
         eyebrow: "Luz e Louvor",
-        title: "Featured Sons",
-        text: "Music, prayer and contemplation. A sonic experience of faith, hope and worship.",
+        title: "Worship",
+        text: "A sonic experience of faith, hope and worship.",
         section: "Gallery"
       }
     },
@@ -667,57 +667,15 @@ const sections = {
       {
         code: "2026 ALBUM",
         status: "online",
-        image: "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH",
+        image: "JN1L7zVoWb0?si=1v-_e_CbixN4NyLv",
         url: "#",
         pt: {
-          title: "Tua Aliança",
-          description: "Álbum de louvor e adoração do Ministério Luz e Louvor."
+          title: "Sei Que Cuidas de Mim",
+          description: "Cação de louvor e adoração do Ministério Luz e Louvor."
         },
         en: {
-          title: "Tua Aliança",
-          description: "Worship album by Ministério Luz e Louvor."
-        }
-      },
-      {
-        code: "2026 ALBUM",
-        status: "online",
-        image: "GsxkLORSW7U?si=Uh_mWYeqBC-1EDCH",
-        url: "#",
-        pt: {
-          title: "Adonai",
-          description: "Canções de fé, entrega e transformação."
-        },
-        en: {
-          title: "Adonai",
-          description: "Songs of faith, surrender and transformation."
-        }
-      },
-      {
-        code: "OFFICIAL ALBUM",
-        status: "online",
-        image: "AI1OJAr1hfs?si=RI7mYe1A3UxKFvFt",
-        url: "#",
-        pt: {
-          title: "Hallel",
-          description: "Louvor, esperança e alegria em forma de canção."
-        },
-        en: {
-          title: "Hallel",
-          description: "Praise, hope and joy in song form."
-        }
-      },
-      {
-        code: "OFFICIAL ALBUM",
-        status: "online",
-        image: "8m7pE2z08pQ?si=cHDb1Z3VsUSlulol",
-        url: "#",
-        pt: {
-          title: "Liberta-me",
-          description: "Músicas de cura, liberdade e recomeço."
-        },
-        en: {
-          title: "Liberta-me",
-          description: "Songs of healing, freedom and new beginnings."
+          title: "Sei Que Cuidas de Mim",
+          description: "Worship song by Ministério Luz e Louvor."
         }
       }
     ]
@@ -924,8 +882,14 @@ function toggleSidebar(){
 function setLanguage(lang){
   currentLang = lang;
   document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+
   document.getElementById("ptBtn").classList.toggle("active", lang === "pt");
   document.getElementById("enBtn").classList.toggle("active", lang === "en");
+
+  document.querySelectorAll("[data-pt][data-en]").forEach(el => {
+    el.textContent = el.dataset[lang];
+  });
+
   localStorage.setItem("horizonLanguage", lang);
   renderSection(sections[currentSection]);
 }
