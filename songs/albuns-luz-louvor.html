@@ -980,7 +980,6 @@ function renderSection(data){
     return;
   }
 
-  function makeList(){
   const items = data.items || [];
   document.getElementById("counter").textContent = items.length + " items";
   gallery.style.display = "grid";
@@ -1025,7 +1024,6 @@ function renderSection(data){
     gallery.appendChild(card);
   });
 }
-}
 
 window.addEventListener("resize",()=>{
   if(window.innerWidth <= 900){
@@ -1039,7 +1037,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 
 function loadAlbum(videoId){
-  makeList()
   const player = document.getElementById("youtubePlayer");
   player.src = `https://open.spotify.com/embed/track/${videoId}?rel=0`;
 }
