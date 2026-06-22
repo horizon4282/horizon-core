@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Horizon City Builder | Horizon 4282</title>
+
+<meta name="description" content="Horizon City Builder é um experimento interativo de simulação urbana do Horizon 4282.">
+<meta name="author" content="Roque Fernando Marcos Sousa">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#030712">
+
+<link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+
+<style>
+:root{
+  --bg:#030712;
+  --panel:rgba(8,21,38,.76);
+  --line:rgba(125,211,252,.22);
+  --line-strong:rgba(125,211,252,.55);
+  --text:#eef6ff;
+  --muted:#8ca3bd;
+  --accent:#7dd3fc;
+  --gold:#f5b740;
+  --grass:#143f2b;
+  --road:#64748b;
+  --res:#2563eb;
+  --com:#f97316;
+  --ind:#9333ea;
+  --power:#facc15;
+  --water:#06b6d4;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  min-height:100vh;
+}
+
+body{
+  background:
+    radial-gradient(circle at top left,rgba(14,165,233,.15),transparent 32%),
+    radial-gradient(circle at bottom right,rgba(245,183,64,.08),transparent 34%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Courier New",monospace;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.20) 50%),
+    linear-gradient(90deg,rgba(255,0,0,.03),rgba(0,255,255,.015),rgba(0,0,255,.03));
+  background-size:100% 3px,3px 100%;
+  opacity:.5;
+  z-index:999;
+}
+
+.topbar{
+  position:relative;
+  z-index:2;
+  min-height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:18px 28px;
+  border-bottom:1px solid var(--line);
+  background:rgba(3,7,18,.82);
+  backdrop-filter:blur(18px);
+}
+
+.brand strong{
+  display:block;
+  color:var(--accent);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-size:14px;
+}
+
+.brand span{
+  display:block;
+  margin-top:5px;
+  color:var(--muted);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-size:11px;
+}
+
+.top-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.lang-btn,
+.home-link,
+.small-btn{
+  border:1px solid var(--line);
+  background:rgba(8,21,38,.55);
+  color:var(--accent);
+  padding:10px 14px;
+  text-decoration:none;
+  font-family:inherit;
+  letter-spacing:.16em;
+  cursor:pointer;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+.lang-btn.active,
+.lang-btn:hover,
+.home-link:hover,
+.small-btn:hover{
+  border-color:var(--line-strong);
+  color:#fff;
+  background:rgba(14,165,233,.12);
+}
+
+.page{
+  position:relative;
+  z-index:1;
+  width:min(1620px,calc(100% - 44px));
+  margin:30px auto 60px;
+}
+
+.hero{
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(8,21,38,.78),rgba(3,7,18,.78));
+  padding:30px;
+  margin-bottom:18px;
+}
+
+.eyebrow{
+  color:var(--gold);
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  font-size:12px;
+  margin-bottom:12px;
+}
+
+.hero h1{
+  margin:0 0 12px;
+  font-size:clamp(32px,4vw,58px);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.hero p{
+  max-width:980px;
+  color:#b4c7df;
+  line-height:1.7;
+  font-size:16px;
+}
+
+.dashboard-bar{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.dash-card{
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:13px 12px;
+  text-align:center;
+}
+
+.dash-card span{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.dash-card strong{
+  display:block;
+  margin-top:8px;
+  color:var(--gold);
+  font-size:24px;
+  line-height:1;
+}
+
+.game-shell{
+  display:grid;
+  grid-template-columns:230px 1fr 310px;
+  gap:20px;
+  align-items:start;
+}
+
+.panel{
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:18px;
+}
+
+.panel-title{
+  color:var(--accent);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-size:12px;
+  margin-bottom:14px;
+}
+
+.tools-panel{
+  position:sticky;
+  top:18px;
+}
+
+.tools{
+  display:grid;
+  gap:9px;
+}
+
+.tool{
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid rgba(125,211,252,.16);
+  background:rgba(8,21,38,.52);
+  color:var(--text);
+  padding:0 12px;
+  font-family:inherit;
+  cursor:pointer;
+  text-align:left;
+}
+
+.tool:hover,
+.tool.active{
+  border-color:var(--line-strong);
+  background:rgba(14,165,233,.13);
+  color:#fff;
+}
+
+.tool i{
+  width:26px;
+  text-align:center;
+  font-style:normal;
+}
+
+.center{
+  min-width:0;
+}
+
+.city-toolbar{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  border:1px solid var(--line);
+  background:rgba(8,21,38,.55);
+  padding:12px 14px;
+  margin-bottom:14px;
+}
+
+#message{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.grid-wrap{
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(14,165,233,.08),rgba(0,0,0,.2));
+  padding:14px;
+  overflow:auto;
+}
+
+#grid{
+  display:grid;
+  grid-template-columns:repeat(16,42px);
+  grid-template-rows:repeat(16,42px);
+  gap:2px;
+  width:max-content;
+  margin:0 auto;
+  background:rgba(0,0,0,.35);
+  border:1px solid rgba(125,211,252,.12);
+}
+
+.cell{
+  width:42px;
+  height:42px;
+  background:var(--grass);
+  border:1px solid rgba(255,255,255,.04);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  user-select:none;
+  transition:.12s;
+  position:relative;
+  font-size:20px;
+}
+
+.cell:hover{
+  filter:brightness(1.25);
+  transform:scale(1.04);
+  z-index:2;
+}
+
+.cell.residential{background:linear-gradient(135deg,var(--res),#0f172a)}
+.cell.commercial{background:linear-gradient(135deg,var(--com),#0f172a)}
+.cell.industrial{background:linear-gradient(135deg,var(--ind),#0f172a)}
+.cell.road{background:linear-gradient(135deg,var(--road),#1e293b)}
+.cell.power{background:linear-gradient(135deg,var(--power),#78350f)}
+.cell.water{background:linear-gradient(135deg,var(--water),#083344)}
+
+.cell.disconnected::after,
+.cell.polluted::after{
+  position:absolute;
+  right:2px;
+  top:2px;
+  font-size:11px;
+}
+
+.cell.disconnected::after{content:"⚠️"}
+.cell.polluted::after{content:"☣"}
+
+.rules{
+  display:grid;
+  gap:10px;
+  color:#b4c7df;
+  line-height:1.55;
+  font-size:13px;
+}
+
+.rule{
+  border:1px solid rgba(125,211,252,.13);
+  padding:12px;
+  background:rgba(0,0,0,.18);
+}
+
+.rule strong{
+  color:var(--gold);
+}
+
+.legend{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:14px;
+}
+
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.swatch{
+  width:18px;
+  height:18px;
+  border:1px solid rgba(255,255,255,.14);
+}
+
+footer{
+  margin-top:30px;
+  border-top:1px solid rgba(125,211,252,.14);
+  padding-top:24px;
+  color:var(--muted);
+  text-align:center;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:5000;
+}
+
+.modal-overlay.active{
+    display:flex;
+}
+
+.modal-window{
+    width:min(900px,90vw);
+    max-height:80vh;
+    overflow:auto;
+
+    border:1px solid var(--line-strong);
+
+    background:
+    linear-gradient(
+      135deg,
+      rgba(8,21,38,.95),
+      rgba(3,7,18,.95)
+    );
+
+    padding:24px;
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.modal-header h2{
+    color:var(--accent);
+    letter-spacing:.2em;
+}
+
+.modal-close{
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+    font-size:24px;
+}
+
+.tip-card{
+    border:1px solid rgba(125,211,252,.15);
+    padding:16px;
+    margin-bottom:12px;
+    background:rgba(255,255,255,.03);
+}
+
+.tip-card h3{
+    color:var(--gold);
+    margin-bottom:8px;
+}
+
+.tip-card p{
+    color:#c8d6e5;
+    line-height:1.6;
+}
+
+@media(max-width:1180px){
+  .dashboard-bar{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .game-shell{
+    grid-template-columns:230px 1fr;
+  }
+
+  .rules-panel{
+    grid-column:1 / -1;
+  }
+}
+
+@media(max-width:860px){
+  .dashboard-bar{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .game-shell{
+    grid-template-columns:1fr;
+  }
+
+  .tools-panel{
+    position:relative;
+    top:auto;
+  }
+}
+
+@media(max-width:700px){
+  .page{
+    width:calc(100% - 24px);
+  }
+
+  .topbar{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  #grid{
+    grid-template-columns:repeat(16,34px);
+    grid-template-rows:repeat(16,34px);
+  }
+
+  .cell{
+    width:34px;
+    height:34px;
+    font-size:16px;
+  }
+
+  .city-toolbar{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <strong>Horizon 4282</strong>
+    <span data-pt="Simulador Urbano Experimental" data-en="Experimental City Simulator">Simulador Urbano Experimental</span>
+  </div>
+
+  <div class="top-actions">
+    <button id="ptBtn" class="lang-btn" onclick="setLanguage('pt')">PT</button>
+    <button id="enBtn" class="lang-btn" onclick="setLanguage('en')">EN</button>
+    <a class="home-link" href="/" data-pt="Início" data-en="Home">Início</a>
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="hero">
+    <div class="eyebrow" data-pt="Experimento Interativo · Level 1" data-en="Interactive Experiment Level · 1">Experimento Interativo · Level 1</div>
+    <h1>Horizon City Builder</h1>
+    <p data-pt="Construa uma pequena cidade, conecte zonas por estradas, forneça energia e água, controle a poluição e faça a economia crescer."
+       data-en="Build a small city, connect zones with roads, provide power and water, control pollution and grow the economy.">
+      Construa uma pequena cidade, conecte zonas por estradas, forneça energia e água, controle a poluição e faça a economia crescer.
+    </p>
+  </section>
+
+  <section class="dashboard-bar">
+    <div class="dash-card">
+      <span data-pt="CAIXA" data-en="MONEY">CAIXA</span>
+      <strong>$<b id="money">1000</b></strong>
+    </div>
+
+    <div class="dash-card">
+      <span data-pt="POPULAÇÃO" data-en="POPULATION">POPULAÇÃO</span>
+      <strong><b id="population">0</b></strong>
+    </div>
+
+    <div class="dash-card">
+      <span data-pt="RECEITA" data-en="REVENUE">RECEITA</span>
+      <strong>$<b id="revenue">0</b></strong>
+    </div>
+
+    <div class="dash-card">
+      <span data-pt="FELICIDADE" data-en="HAPPINESS">FELICIDADE</span>
+      <strong><b id="happiness">100</b>%</strong>
+    </div>
+
+    <div class="dash-card">
+      <span data-pt="POLUIÇÃO" data-en="POLLUTION">POLUIÇÃO</span>
+      <strong><b id="pollution">0</b>%</strong>
+    </div>
+
+    <div class="dash-card">
+      <span data-pt="CICLO" data-en="CYCLE">CICLO</span>
+      <strong><b id="cycle">0</b></strong>
+    </div>
+  </section>
+
+  <section class="game-shell">
+
+    <aside class="panel tools-panel">
+      <div class="panel-title" data-pt="Ferramentas" data-en="Tools">Ferramentas</div>
+
+      <div class="tools">
+        <button class="tool active" data-tool="grass">
+          <i>🚜</i><span data-pt="Demolir / Grama — $10" data-en="Demolish / Grass — $10">Demolir / Grama — $10</span>
+        </button>
+
+        <button class="tool" data-tool="road">
+          <i>🛣️</i><span data-pt="Estrada — $20" data-en="Road — $20">Estrada — $20</span>
+        </button>
+
+        <button class="tool" data-tool="residential">
+          <i>🏠</i><span data-pt="Residencial — $100" data-en="Residential — $100">Residencial — $100</span>
+        </button>
+
+        <button class="tool" data-tool="commercial">
+          <i>🏢</i><span data-pt="Comercial — $150" data-en="Commercial — $150">Comercial — $150</span>
+        </button>
+
+        <button class="tool" data-tool="industrial">
+          <i>🏭</i><span data-pt="Industrial — $200" data-en="Industrial — $200">Industrial — $200</span>
+        </button>
+
+        <button class="tool" data-tool="power">
+          <i>⚡</i><span data-pt="Energia — $300" data-en="Power — $300">Energia — $300</span>
+        </button>
+
+        <button class="tool" data-tool="water">
+          <i>💧</i><span data-pt="Água — $250" data-en="Water — $250">Água — $250</span>
+        </button>
+      </div>
+    </aside>
+
+    <section class="center">
+      <div class="city-toolbar">
+        <div id="message" data-pt="Selecione uma ferramenta e clique no mapa." data-en="Select a tool and click the map.">
+          Selecione uma ferramenta e clique no mapa.
+        </div>
+
+        <div class="top-actions">
+          <button class="small-btn" onclick="saveGame()" data-pt="Salvar" data-en="Save">Salvar</button>
+          <button class="small-btn" onclick="resetGame()" data-pt="Resetar" data-en="Reset">Resetar</button>
+          <button class="small-btn" onclick="openHelpModal()" data-pt="Ajuda" data-en="Help"> Ajuda</button>
+        </div>
+      </div>
+
+      <div class="grid-wrap">
+        <div id="grid"></div>
+      </div>
+    </section>
+
+    <aside class="panel rules-panel">
+      <div class="panel-title" data-pt="Regras do Jogo" data-en="Game Rules">Regras do Jogo</div>
+
+      <div class="rules">
+        <div class="rule" data-pt="<strong>Estradas:</strong> zonas residenciais, comerciais e industriais só funcionam se estiverem conectadas a uma estrada próxima."
+             data-en="<strong>Roads:</strong> residential, commercial and industrial zones only work when connected to a nearby road.">
+          <strong>Estradas:</strong> zonas residenciais, comerciais e industriais só funcionam se estiverem conectadas a uma estrada próxima.
+        </div>
+
+        <div class="rule" data-pt="<strong>Energia e água:</strong> a cidade precisa de pelo menos uma usina e uma estação de água para funcionar plenamente."
+             data-en="<strong>Power and water:</strong> the city needs at least one power plant and one water station to work properly.">
+          <strong>Energia e água:</strong> a cidade precisa de pelo menos uma usina e uma estação de água para funcionar plenamente.
+        </div>
+
+        <div class="rule" data-pt="<strong>Indústria:</strong> gera mais dinheiro, mas aumenta a poluição e reduz a felicidade."
+             data-en="<strong>Industry:</strong> generates more money, but increases pollution and lowers happiness.">
+          <strong>Indústria:</strong> gera mais dinheiro, mas aumenta a poluição e reduz a felicidade.
+        </div>
+
+        <div class="rule" data-pt="<strong>Crescimento:</strong> felicidade alta aumenta a receita. Felicidade baixa reduz o crescimento."
+             data-en="<strong>Growth:</strong> high happiness increases revenue. Low happiness slows growth.">
+          <strong>Crescimento:</strong> felicidade alta aumenta a receita. Felicidade baixa reduz o crescimento.
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><span class="swatch" style="background:var(--grass)"></span><span data-pt="Grama" data-en="Grass">Grama</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--road)"></span><span data-pt="Estrada" data-en="Road">Estrada</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--res)"></span><span data-pt="Residencial" data-en="Residential">Residencial</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--com)"></span><span data-pt="Comercial" data-en="Commercial">Comercial</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--ind)"></span><span data-pt="Industrial" data-en="Industrial">Industrial</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--power)"></span><span data-pt="Energia" data-en="Power">Energia</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--water)"></span><span data-pt="Água" data-en="Water">Água</span></div>
+      </div>
+    </aside>
+
+  </section>
+
+  <footer>Studio 4282 · Horizon City Builder · Human + AI Creative Laboratory</footer>
+
+</main>
+
+<div id="helpModal" class="modal-overlay">
+
+  <div class="modal-window">
+
+    <div class="modal-header">
+
+      <h2 id="helpTitle">GAME GUIDE</h2>
+
+      <button class="modal-close"
+              onclick="closeHelpModal()">
+        ✕
+      </button>
+
+    </div>
+
+    <div class="modal-content" id="helpContent">
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+const GRID_SIZE = 16;
+const TOTAL_CELLS = GRID_SIZE * GRID_SIZE;
+
+let currentLang = localStorage.getItem("horizonLanguage") || "pt";
+let currentTool = "grass";
+let money = 1000;
+let population = 0;
+let revenue = 0;
+let happiness = 100;
+let pollution = 0;
+let cycle = 0;
+let cityMap = Array(TOTAL_CELLS).fill("grass");
+
+const costs = {
+  grass:10,
+  road:20,
+  residential:100,
+  commercial:150,
+  industrial:200,
+  power:300,
+  water:250
+};
+
+const emojis = {
+  grass:"",
+  road:"═",
+  residential:"🏠",
+  commercial:"🏢",
+  industrial:"🏭",
+  power:"⚡",
+  water:"💧"
+};
+
+const grid = document.getElementById("grid");
+
+function t(pt,en){
+  return currentLang === "pt" ? pt : en;
+}
+
+function setLanguage(lang){
+  currentLang = lang;
+
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+
+  document.getElementById("ptBtn").classList.toggle("active", lang === "pt");
+  document.getElementById("enBtn").classList.toggle("active", lang === "en");
+
+  document.querySelectorAll("[data-pt][data-en]").forEach(el=>{
+    el.innerHTML = el.dataset[lang];
+  });
+
+  localStorage.setItem("horizonLanguage", lang);
+  updateDashboard();
+}
+
+function setMessage(pt,en){
+  document.getElementById("message").textContent = t(pt,en);
+}
+
+document.querySelectorAll(".tool").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".tool").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    currentTool = btn.dataset.tool;
+    setMessage("Ferramenta selecionada.", "Selected tool.");
+  });
+});
+
+function createGrid(){
+  grid.innerHTML = "";
+
+  cityMap.forEach((type,index)=>{
+    const cell = document.createElement("div");
+    cell.className = "cell";
+    cell.dataset.index = index;
+    cell.addEventListener("click",()=>handleCellClick(index));
+    grid.appendChild(cell);
+  });
+
+  renderGrid();
+}
+
+function renderGrid(){
+  document.querySelectorAll(".cell").forEach((cell,index)=>{
+    const type = cityMap[index];
+
+    cell.className = "cell";
+
+    if(type !== "grass"){
+      cell.classList.add(type);
+    }
+
+    if(isZone(type) && !isConnected(index)){
+      cell.classList.add("disconnected");
+    }
+
+    if(type === "industrial"){
+      cell.classList.add("polluted");
+    }
+
+    cell.textContent = emojis[type] || "";
+  });
+}
+
+function handleCellClick(index){
+  if(cityMap[index] === currentTool) return;
+
+  const cost = costs[currentTool];
+
+  if(money < cost){
+    setMessage("Dinheiro insuficiente.", "Not enough money.");
+    return;
+  }
+
+  money -= cost;
+  cityMap[index] = currentTool;
+
+  calculateCity();
+  renderGrid();
+  updateDashboard();
+  saveGame(false);
+}
+
+function isZone(type){
+  return ["residential","commercial","industrial"].includes(type);
+}
+
+function neighbors(index){
+  const row = Math.floor(index / GRID_SIZE);
+  const col = index % GRID_SIZE;
+  const list = [];
+
+  if(row > 0) list.push(index - GRID_SIZE);
+  if(row < GRID_SIZE - 1) list.push(index + GRID_SIZE);
+  if(col > 0) list.push(index - 1);
+  if(col < GRID_SIZE - 1) list.push(index + 1);
+
+  return list;
+}
+
+function isConnected(index){
+  return neighbors(index).some(i=>cityMap[i] === "road");
+}
+
+function count(type){
+  return cityMap.filter(cell=>cell === type).length;
+}
+
+function activeCount(type){
+  return cityMap.reduce((total,cell,index)=>{
+    if(cell === type && isConnected(index)){
+      return total + 1;
+    }
+
+    return total;
+  },0);
+}
+
+function calculateCity(){
+  const res = activeCount("residential");
+  const com = activeCount("commercial");
+  const ind = activeCount("industrial");
+  const roads = count("road");
+  const hasPower = count("power") > 0;
+  const hasWater = count("water") > 0;
+
+  pollution = Math.min(100, ind * 8);
+
+  happiness = 100;
+
+  if(!hasPower) happiness -= 25;
+  if(!hasWater) happiness -= 25;
+
+  happiness -= pollution * .35;
+  happiness -= Math.max(0, roads - 50) * .15;
+  happiness = Math.max(5, Math.round(happiness));
+
+  const serviceMultiplier = hasPower && hasWater ? 1 : .45;
+  const happinessMultiplier = happiness / 100;
+
+  population = Math.floor(res * 14 * serviceMultiplier * happinessMultiplier);
+
+  revenue = Math.floor(
+    ((res * 6) + (com * 32) + (ind * 55) - (roads * 1) - (count("power") * 12) - (count("water") * 10))
+    * serviceMultiplier
+    * (0.55 + happinessMultiplier)
+  );
+}
+
+function updateDashboard(){
+  document.getElementById("money").textContent = money;
+  document.getElementById("population").textContent = population;
+  document.getElementById("revenue").textContent = revenue >= 0 ? "+" + revenue : revenue;
+  document.getElementById("happiness").textContent = happiness;
+  document.getElementById("pollution").textContent = pollution;
+  document.getElementById("cycle").textContent = cycle;
+}
+
+setInterval(()=>{
+  cycle++;
+  calculateCity();
+  money += revenue;
+  renderGrid();
+  updateDashboard();
+  saveGame(false);
+},4000);
+
+function saveGame(showAlert=true){
+  const data = {
+    money,
+    population,
+    revenue,
+    happiness,
+    pollution,
+    cycle,
+    cityMap
+  };
+
+  localStorage.setItem("horizon_city_builder", JSON.stringify(data));
+
+  if(showAlert){
+    setMessage("Cidade salva localmente.", "City saved locally.");
+  }
+}
+
+function loadGame(){
+  const saved = localStorage.getItem("horizon_city_builder");
+
+  if(saved){
+    try{
+      const data = JSON.parse(saved);
+
+      money = data.money ?? 1000;
+      population = data.population ?? 0;
+      revenue = data.revenue ?? 0;
+      happiness = data.happiness ?? 100;
+      pollution = data.pollution ?? 0;
+      cycle = data.cycle ?? 0;
+
+      cityMap = Array.isArray(data.cityMap) && data.cityMap.length === TOTAL_CELLS
+        ? data.cityMap
+        : Array(TOTAL_CELLS).fill("grass");
+    }catch(e){
+      cityMap = Array(TOTAL_CELLS).fill("grass");
+    }
+  }
+
+  calculateCity();
+  createGrid();
+  updateDashboard();
+}
+
+function resetGame(){
+  const ok = confirm(t("Resetar a cidade?", "Reset the city?"));
+
+  if(!ok) return;
+
+  money = 1000;
+  population = 0;
+  revenue = 0;
+  happiness = 100;
+  pollution = 0;
+  cycle = 0;
+  cityMap = Array(TOTAL_CELLS).fill("grass");
+
+  localStorage.removeItem("horizon_city_builder");
+
+  calculateCity();
+  createGrid();
+  updateDashboard();
+  setMessage("Cidade resetada.", "City reset.");
+}
+
+setLanguage(currentLang);
+loadGame();
+
+function openHelpModal(){
+
+    document
+      .getElementById("helpModal")
+      .classList.add("active");
+
+    buildHelpContent();
+}
+
+function closeHelpModal(){
+
+    document
+      .getElementById("helpModal")
+      .classList.remove("active");
+}
+
+function buildHelpContent(){
+
+const tipsPT = [
+
+{
+title:"Dica 01",
+text:"Antes de construir casas, instale energia e água."
+},
+
+{
+title:"Dica 02",
+text:"Casas precisam estar conectadas a estradas."
+},
+
+{
+title:"Dica 03",
+text:"Comece pequeno e cresça gradualmente."
+},
+
+{
+title:"Dica 04",
+text:"Comércio gera receita."
+},
+
+{
+title:"Dica 05",
+text:"Indústria gera dinheiro mas aumenta a poluição."
+},
+
+{
+title:"Dica 06",
+text:"Felicidade alta aumenta o crescimento."
+},
+
+{
+title:"Dica 07",
+text:"Receita negativa pode quebrar sua cidade."
+},
+
+{
+title:"Dica 08",
+text:"Equilibre residências, comércio e indústria."
+},
+
+{
+title:"Dica 09",
+text:"Tente alcançar 100 habitantes rapidamente."
+},
+
+{
+title:"Dica 10",
+text:"Meta recomendada: 20 residências, 8 comércios e 4 indústrias."
+}
+
+];
+
+const tipsEN = [
+
+{
+title:"Tip 01",
+text:"Before building houses, place power and water."
+},
+
+{
+title:"Tip 02",
+text:"Houses must be connected to roads."
+},
+
+{
+title:"Tip 03",
+text:"Start small and grow gradually."
+},
+
+{
+title:"Tip 04",
+text:"Commercial zones generate revenue."
+},
+
+{
+title:"Tip 05",
+text:"Industry generates money but increases pollution."
+},
+
+{
+title:"Tip 06",
+text:"High happiness increases growth."
+},
+
+{
+title:"Tip 07",
+text:"Negative revenue can bankrupt your city."
+},
+
+{
+title:"Tip 08",
+text:"Balance residential, commercial and industrial zones."
+},
+
+{
+title:"Tip 09",
+text:"Try reaching 100 citizens quickly."
+},
+
+{
+title:"Tip 10",
+text:"Recommended target: 20 residential, 8 commercial and 4 industrial zones."
+}
+
+];
+
+const tips =
+currentLang === "pt"
+? tipsPT
+: tipsEN;
+
+document.getElementById("helpTitle").textContent =
+currentLang === "pt"
+? "GUIA DO PREFEITO"
+: "MAYOR'S GUIDE";
+
+document.getElementById("helpContent").innerHTML =
+tips.map(t => `
+<div class="tip-card">
+  <h3>${t.title}</h3>
+  <p>${t.text}</p>
+</div>
+`).join("");
+
+}
+</script>
+
+</body>
+</html>
