@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Browser Games Guide | Horizon 4282</title>
+
+<meta name="description" content="Guia de games de navegador do Horizon 4282: jogos em HTML, CSS e JavaScript, city builder, estratégia, levels e experiências interativas.">
+<meta name="keywords" content="Horizon 4282, browser games, jogos de navegador, HTML games, JavaScript games, city builder, Horizon City Builder, jogos grátis, vanilla js">
+<meta name="author" content="Roque Fernando Marcos Sousa">
+<meta name="robots" content="index,follow">
+
+<link rel="canonical" href="https://horizon4282.com.br/browser-games-guide.html">
+<link rel="alternate" hreflang="pt-BR" href="https://horizon4282.com.br/browser-games-guide.html">
+<link rel="alternate" hreflang="en" href="https://horizon4282.com.br/browser-games-guide.html">
+<link rel="alternate" hreflang="x-default" href="https://horizon4282.com.br/browser-games-guide.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Browser Games Guide | Horizon 4282">
+<meta property="og:description" content="A guide to Horizon 4282 browser games: city builders, strategy, levels and interactive experiments.">
+<meta property="og:url" content="https://horizon4282.com.br/browser-games-guide.html">
+<meta property="og:site_name" content="Horizon 4282">
+<meta property="og:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Browser Games Guide | Horizon 4282">
+<meta name="twitter:description" content="Browser games, HTML experiments and interactive strategy experiences.">
+<meta name="twitter:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
+
+<link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+<meta name="theme-color" content="#030508">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#030508;
+  --panel:rgba(255,255,255,.035);
+  --line:rgba(255,255,255,.11);
+  --text:#e5e7eb;
+  --muted:#71717a;
+  --cyan:#38bdf8;
+  --green:#22c55e;
+  --amber:#f59e0b;
+  --red:#f43f5e;
+}
+html,body{
+  min-height:100%;
+  background:
+    radial-gradient(circle at 80% 15%,rgba(56,189,248,.13),transparent 28%),
+    radial-gradient(circle at 15% 80%,rgba(244,63,94,.08),transparent 32%),
+    var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:46px 46px;
+  mask-image:radial-gradient(circle at center,black,transparent 78%);
+  pointer-events:none;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.18) 50%);
+  background-size:100% 3px;
+  opacity:.45;
+}
+.page{
+  position:relative;
+  z-index:2;
+  width:min(1280px,calc(100% - 40px));
+  margin:0 auto;
+  padding:34px 0 52px;
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  margin-bottom:42px;
+}
+.brand{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.brand-code{
+  font-family:"Courier New",monospace;
+  font-size:.72rem;
+  letter-spacing:2px;
+  color:var(--cyan);
+  text-transform:uppercase;
+}
+.brand h1{
+  font-size:clamp(1.9rem,4vw,4.2rem);
+  line-height:.95;
+  letter-spacing:-2px;
+  font-weight:650;
+}
+.nav-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.nav-actions a,
+.nav-actions button{
+  color:#d4d4d8;
+  text-decoration:none;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.25);
+  padding:10px 13px;
+  border-radius:999px;
+  font-size:.72rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  transition:.25s ease;
+  cursor:pointer;
+  font-family:inherit;
+}
+.nav-actions a:hover,
+.nav-actions button:hover,
+.nav-actions button.active{
+  color:#fff;
+  border-color:rgba(255,255,255,.35);
+  background:rgba(255,255,255,.07);
+}
+.hero{
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+  border-radius:18px;
+  padding:28px;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:28px;
+  box-shadow:0 30px 90px rgba(0,0,0,.35);
+  margin-bottom:28px;
+  overflow:hidden;
+  position:relative;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  right:-120px;
+  top:-160px;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(56,189,248,.18),transparent 65%);
+}
+.hero-text{
+  position:relative;
+  z-index:1;
+}
+.kicker{
+  color:var(--cyan);
+  font-family:"Courier New",monospace;
+  letter-spacing:2px;
+  font-size:.72rem;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.hero h2{
+  font-size:clamp(1.7rem,3vw,3rem);
+  line-height:1.05;
+  letter-spacing:-1.4px;
+  margin-bottom:16px;
+}
+.hero p{
+  color:#a1a1aa;
+  line-height:1.65;
+  max-width:760px;
+  font-size:.98rem;
+}
+.hero-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+.cta{
+  color:#e0f2fe;
+  border:1px solid rgba(56,189,248,.35);
+  background:rgba(238,111,44,.15);
+  border-radius:10px;
+  padding:12px 16px;
+  font-size:.72rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  text-decoration:none;
+}
+.cta:hover{
+  border-color:var(--cyan);
+  background:rgba(56,189,248,.16);
+}
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  position:relative;
+  z-index:1;
+}
+.metric{
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(0,0,0,.25);
+  border-radius:14px;
+  padding:16px;
+}
+.metric strong{
+  display:block;
+  font-size:1.65rem;
+  color:#fff;
+  margin-bottom:5px;
+  font-family:"Courier New",monospace;
+}
+.metric span{
+  color:var(--muted);
+  font-size:.78rem;
+}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:18px;
+  margin:30px 0 16px;
+}
+.section-head h3{
+  font-size:1.1rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+.section-head p{
+  color:var(--muted);
+  font-size:.83rem;
+  max-width:620px;
+  text-align:right;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.card{
+  min-height:330px;
+  border:1px solid var(--line);
+  background:rgba(10,13,18,.72);
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+  transition:.28s ease;
+  display:flex;
+  flex-direction:column;
+}
+.card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(56,189,248,.42);
+  box-shadow:0 22px 60px rgba(0,0,0,.45),0 0 24px rgba(56,189,248,.08);
+}
+.visual{
+  height:150px;
+  position:relative;
+  overflow:hidden;
+  background:#070a10;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.visual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  opacity:.78;
+}
+.visual::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 50%,transparent,rgba(0,0,0,.72));
+}
+.visual.grid-only::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-size:38px 38px;
+  background-image:
+    linear-gradient(to right,rgba(56,189,248,.08) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(56,189,248,.08) 1px,transparent 1px);
+}
+.orb{
+  position:absolute;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:1px solid rgba(56,189,248,.45);
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 34px rgba(56,189,248,.14),inset 0 0 30px rgba(56,189,248,.06);
+}
+.card-body{
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+.card-code{
+  font-family:"Courier New",monospace;
+  color:var(--cyan);
+  font-size:.68rem;
+  letter-spacing:1.4px;
+  margin-bottom:9px;
+}
+.card h4{
+  font-size:1.15rem;
+  margin-bottom:10px;
+}
+.card p{
+  color:#9ca3af;
+  line-height:1.52;
+  font-size:.86rem;
+  margin-bottom:16px;
+}
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:auto;
+  margin-bottom:16px;
+}
+.tag{
+  font-size:.63rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#cbd5e1;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.035);
+  border-radius:999px;
+  padding:6px 8px;
+}
+.card-actions{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
+.card-actions a{
+  flex:1;
+  min-width:120px;
+  text-align:center;
+  color:#e0f2fe;
+  text-decoration:none;
+  border:1px solid rgba(56,189,248,.25);
+  background:rgba(56,189,248,.07);
+  border-radius:8px;
+  padding:10px;
+  font-size:.7rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  transition:.22s;
+}
+.card-actions a:hover{
+  border-color:var(--cyan);
+  background:rgba(56,189,248,.15);
+}
+.card-actions a.secondary{
+  color:#cbd5e1;
+  border-color:rgba(255,255,255,.12);
+  background:rgba(255,255,255,.035);
+}
+.lab-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.mini{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+  border-radius:12px;
+  padding:16px;
+  min-height:120px;
+}
+.mini strong{
+  display:block;
+  color:#fff;
+  margin-bottom:8px;
+  font-size:.88rem;
+}
+.mini span{
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.45;
+}
+.footer{
+  margin-top:34px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  color:#52525b;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  font-family:"Courier New",monospace;
+  font-size:.68rem;
+}
+@media(max-width:980px){
+  .topbar,.hero{grid-template-columns:1fr;flex-direction:column;align-items:flex-start}
+  .nav-actions{justify-content:flex-start}
+  .grid{grid-template-columns:1fr}
+  .lab-grid{grid-template-columns:1fr 1fr}
+  .section-head{flex-direction:column;align-items:flex-start}
+  .section-head p{text-align:left}
+}
+@media(max-width:560px){
+  .page{width:calc(100% - 26px);padding-top:22px}
+  .hero{padding:20px}
+  .metrics{grid-template-columns:1fr}
+  .lab-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<main class="page">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-code">HORIZON 4282 / BROWSER GAMES</div>
+      <h1 data-pt="Guia de Games" data-en="Games Guide">Guia de Games</h1>
+    </div>
+
+    <nav class="nav-actions">
+      <a href="https://horizon4282.com.br/" data-pt="Home Horizon" data-en="Horizon Home">Home Horizon</a>
+      <a href="/experiments-guide.html" data-pt="Experimentos" data-en="Experiments">Experimentos</a>
+      <a href="/open-library-guide.html">Open Library</a>
+      <button id="ptBtn" onclick="setLanguage('pt')">PT</button>
+      <button id="enBtn" onclick="setLanguage('en')">EN</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="kicker" data-pt="Guia Oficial de Jogos de Navegador" data-en="Official Browser Games Guide">Guia Oficial de Jogos de Navegador</div>
+
+      <h2 data-pt="Jogos leves, gratuitos e feitos para rodar direto no navegador." data-en="Lightweight, free games built to run directly in the browser.">
+        Jogos leves, gratuitos e feitos para rodar direto no navegador.
+      </h2>
+
+      <p data-pt="Esta página organiza os games do Horizon 4282: experimentos jogáveis em HTML, CSS e JavaScript, sem instalação, sem cadastro obrigatório e com foco em estratégia, descoberta e criatividade."
+         data-en="This page organizes Horizon 4282 games: playable experiments in HTML, CSS and JavaScript, with no installation, no required registration and a focus on strategy, discovery and creativity.">
+        Esta página organiza os games do Horizon 4282: experimentos jogáveis em HTML, CSS e JavaScript, sem instalação, sem cadastro obrigatório e com foco em estratégia, descoberta e criatividade.
+      </p>
+
+      <div class="hero-actions">
+        <a class="cta" href="/games/horizon-city-builder-level-1.html" data-pt="City Builder Level 1" data-en="City Builder Level 1">Jogar Level 1</a>
+        <a class="cta" href="/games/horizon-city-builder-level-2.html" data-pt="City Builder  Level 2" data-en="City Builder Level 2">Jogar Level 2</a>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><strong>02</strong><span data-pt="levels publicados" data-en="published levels">levels publicados</span></div>
+      <div class="metric"><strong>100%</strong><span data-pt="rodando no navegador" data-en="browser based">rodando no navegador</span></div>
+      <div class="metric"><strong>0</strong><span data-pt="instalações necessárias" data-en="installations required">instalações necessárias</span></div>
+      <div class="metric"><strong>∞</strong><span data-pt="expansão contínua" data-en="continuous expansion">expansão contínua</span></div>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h3 data-pt="Games Disponíveis" data-en="Available Games">Games Disponíveis</h3>
+    <p data-pt="Os primeiros jogos do Horizon funcionam como laboratórios de estratégia e design interativo."
+       data-en="The first Horizon games work as laboratories for strategy and interactive design.">
+      Os primeiros jogos do Horizon funcionam como laboratórios de estratégia e design interativo.
+    </p>
+  </div>
+
+  <section class="grid">
+
+    <article class="card">
+      <div class="visual">
+        <img src="https://f005.backblazeb2.com/file/horizon4282/top_down_screenshot_like_game_ui_illustration_a_c.png" alt="Horizon City Builder Level 1">
+      </div>
+
+      <div class="card-body">
+        <div class="card-code">HZN-GAME-001 / CITY BUILDER</div>
+        <h4>Horizon City Builder — Level 1</h4>
+
+        <p data-pt="Construa uma cidade inicial, conecte casas e zonas por estradas, forneça energia e água, controle poluição, felicidade e receita."
+           data-en="Build an early city, connect houses and zones with roads, provide power and water, control pollution, happiness and revenue.">
+          Construa uma cidade inicial, conecte casas e zonas por estradas, forneça energia e água, controle poluição, felicidade e receita.
+        </p>
+
+        <div class="tags">
+          <span class="tag">City Builder</span>
+          <span class="tag" data-pt="Estratégia" data-en="Strategy">Estratégia</span>
+          <span class="tag">Level 1</span>
+        </div>
+
+        <div class="card-actions">
+          <a href="/games/horizon-city-builder-level-1.html" data-pt="Jogar" data-en="Play">Jogar</a>
+          <a class="secondary" href="/guides/horizon-city-builder-level-1.html" data-pt="Guia" data-en="Guide">Guia</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="visual">
+        <img src="https://f005.backblazeb2.com/file/horizon4282/a_clean_high_detail_game_tutorial_style_illustrat.png" alt="Horizon City Builder Level 2">
+      </div>
+
+      <div class="card-body">
+        <div class="card-code">HZN-GAME-002 / ADVANCED CITY</div>
+        <h4>Horizon City Builder — Level 2</h4>
+
+        <p data-pt="Expanda sua cidade com escolas, hospitais, parques, aeroporto, porto, turismo, pesquisa e universidade."
+           data-en="Expand your city with schools, hospitals, parks, airport, port, tourism, research and university.">
+          Expanda sua cidade com escolas, hospitais, parques, aeroporto, porto, turismo, pesquisa e universidade.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Advanced</span>
+          <span class="tag" data-pt="Gestão" data-en="Management">Gestão</span>
+          <span class="tag">Level 2</span>
+        </div>
+
+        <div class="card-actions">
+          <a href="/games/horizon-city-builder-level-2.html" data-pt="Jogar" data-en="Play">Jogar</a>
+          <a class="secondary" href="/guides/horizon-city-builder-level-2.html" data-pt="Guia" data-en="Guide">Guia</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="visual grid-only">
+        <div class="orb"></div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-code">HZN-GAME-003 / COMING SOON</div>
+
+        <h4 data-pt="Próximo Experimento Jogável" data-en="Next Playable Experiment">Próximo Experimento Jogável</h4>
+
+        <p data-pt="Novos jogos de navegador serão adicionados ao Horizon como módulos experimentais independentes."
+           data-en="New browser games will be added to Horizon as independent experimental modules.">
+          Novos jogos de navegador serão adicionados ao Horizon como módulos experimentais independentes.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Coming Soon</span>
+          <span class="tag">HTML</span>
+          <span class="tag">Vanilla JS</span>
+        </div>
+
+        <div class="card-actions">
+          <a class="secondary" href="#" data-pt="Em breve" data-en="Coming Soon">Em breve</a>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <div class="section-head">
+    <h3 data-pt="Como Jogar" data-en="How to Play">Como Jogar</h3>
+    <p data-pt="Todos os jogos seguem a filosofia Horizon: interfaces simples, descoberta gradual e aprendizado pela interação."
+       data-en="All games follow the Horizon philosophy: simple interfaces, gradual discovery and learning through interaction.">
+      Todos os jogos seguem a filosofia Horizon: interfaces simples, descoberta gradual e aprendizado pela interação.
+    </p>
+  </div>
+
+  <section class="lab-grid">
+    <div class="mini">
+      <strong data-pt="1. Escolha uma ferramenta" data-en="1. Choose a tool">1. Escolha uma ferramenta</strong>
+      <span data-pt="Use o painel lateral para selecionar estrada, casas, comércio, energia, água e outros recursos."
+            data-en="Use the side panel to select roads, houses, commerce, power, water and other resources.">
+        Use o painel lateral para selecionar estrada, casas, comércio, energia, água e outros recursos.
+      </span>
+    </div>
+
+    <div class="mini">
+      <strong data-pt="2. Clique no terreno" data-en="2. Click the land">2. Clique no terreno</strong>
+      <span data-pt="Cada célula do mapa pode receber uma construção. Planeje antes de gastar seus recursos."
+            data-en="Each map cell can receive a building. Plan before spending your resources.">
+        Cada célula do mapa pode receber uma construção. Planeje antes de gastar seus recursos.
+      </span>
+    </div>
+
+    <div class="mini">
+      <strong data-pt="3. Observe o painel" data-en="3. Watch the dashboard">3. Observe o painel</strong>
+      <span data-pt="Dinheiro, população, receita, felicidade e poluição mostram se sua cidade está funcionando."
+            data-en="Money, population, revenue, happiness and pollution show whether your city is working.">
+        Dinheiro, população, receita, felicidade e poluição mostram se sua cidade está funcionando.
+      </span>
+    </div>
+
+    <div class="mini">
+      <strong data-pt="4. Evolua com estratégia" data-en="4. Grow with strategy">4. Evolua com estratégia</strong>
+      <span data-pt="Uma cidade equilibrada combina infraestrutura, residências, comércio, indústria e serviços."
+            data-en="A balanced city combines infrastructure, residences, commerce, industry and services.">
+        Uma cidade equilibrada combina infraestrutura, residências, comércio, indústria e serviços.
+      </span>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>HORIZON 4282 // BROWSER GAMES GUIDE</span>
+    <span data-pt="Jogos de navegador · HTML · CSS · JavaScript" data-en="Browser games · HTML · CSS · JavaScript">Jogos de navegador · HTML · CSS · JavaScript</span>
+  </footer>
+
+</main>
+
+<script>
+let currentLang = localStorage.getItem("horizonLanguage") || "pt";
+
+function setLanguage(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+
+  document.getElementById("ptBtn").classList.toggle("active", lang === "pt");
+  document.getElementById("enBtn").classList.toggle("active", lang === "en");
+
+  document.querySelectorAll("[data-pt][data-en]").forEach(el=>{
+    el.innerHTML = el.dataset[lang];
+  });
+
+  localStorage.setItem("horizonLanguage", lang);
+}
+
+setLanguage(currentLang);
+</script>
+
+</body>
+</html>
