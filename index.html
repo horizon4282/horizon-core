@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portal Vanilla Tech | Horizon 4282</title>
+
+<meta name="description" content="Explore narrativas de ficção científica, jogos online, acervos digitais, museus culturais, música, inteligência artificial e experiências Human + AI.">
+<meta name="keywords" content="Horizon 4282, Portal Vanilla Tech, jogos de navegador, ficção científica, museu digital, música católica, inteligência artificial, Human AI, vanilla js">
+<meta name="author" content="Roque Fernando Marcos Sousa">
+<meta name="robots" content="index,follow">
+
+<link rel="canonical" href="https://horizon4282.com.br/portal-vanilla-tech.html">
+<link rel="alternate" hreflang="pt-BR" href="https://horizon4282.com.br/">
+<link rel="alternate" hreflang="en" href="https://horizon4282.com.br/">
+<link rel="alternate" hreflang="x-default" href="https://horizon4282.com.br/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Portal Vanilla Tech | Horizon 4282">
+<meta property="og:description" content="A cultural portal for sci-fi narratives, browser games, digital museums, music and Human + AI experiments.">
+<meta property="og:url" content="https://horizon4282.com.br/portal-vanilla-tech.html">
+<meta property="og:site_name" content="Horizon 4282">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portal Vanilla Tech | Horizon 4282">
+<meta name="twitter:description" content="Sci-fi, games, digital museum, AI and Human + AI experiments.">
+<meta name="twitter:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
+
+<link rel="alternate" type="application/rss+xml" title="Horizon 4282 Feed" href="/feed-pt.xml">
+<link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+<meta name="theme-color" content="#030712">
+
+<style>
+:root{
+  --bg:#030712;
+  --panel:rgba(8,21,38,.80);
+  --panel-strong:rgba(15,31,54,.88);
+  --line:rgba(125,211,252,.22);
+  --line-strong:rgba(125,211,252,.55);
+  --text:#eef6ff;
+  --muted:#8ca3bd;
+  --accent:#7dd3fc;
+  --cyan:#00f2ff;
+  --gold:#f5b740;
+  --pink:#f35588;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,body{
+  min-height:100%;
+}
+
+body{
+   background:url(https://f005.backblazeb2.com/file/horizon4282/backgound-home.webp);
+   background-position:500px 200px;
+   background-repeat:no-repeat;
+   background-color:#000;
+  /* background:
+    radial-gradient(circle at 18% 10%,rgba(14,165,233,.16),transparent 30%),
+    radial-gradient(circle at 82% 72%,rgba(168,85,247,.12),transparent 34%),
+    var(--bg);*/
+   
+
+  color:var(--text);
+  font-family:"Courier New", Courier, monospace;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  opacity:0.8;
+  pointer-events:none;
+  /*background:
+    linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.20) 50%),
+    linear-gradient(90deg,rgba(255,0,0,.03),rgba(0,255,255,.018),rgba(0,0,255,.03));*/
+   background-size:100% 3px,3px 100%;
+   background-color:#000;
+   opacity:.2;
+  z-index:999;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  min-height:74px;
+  border-bottom:1px solid var(--line);
+  background:rgba(3,7,18,.84);
+  backdrop-filter:blur(18px);
+}
+
+.nav-inner{
+  width:min(1520px,calc(100% - 44px));
+  margin:0 auto;
+  min-height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-width:max-content;
+}
+
+.brand-icon{
+  width:42px;
+  height:42px;
+  border:1px solid var(--line-strong);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--cyan);
+  background:rgba(14,165,233,.08);
+}
+
+.brand strong{
+  display:block;
+  color:var(--accent);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-size:14px;
+}
+
+.brand span{
+  display:block;
+  color:var(--muted);
+  margin-top:4px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-size:11px;
+}
+
+.menu{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.menu a,
+.lang-btn{
+  border:1px solid rgba(125,211,252,.18);
+  color:var(--text);
+  background:rgba(8,21,38,.52);
+  padding:9px 13px;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-family:inherit;
+  cursor:pointer;
+}
+
+.menu a:hover,
+.lang-btn:hover,
+.lang-btn.active{
+  border-color:var(--line-strong);
+  background:rgba(14,165,233,.12);
+  color:#fff;
+}
+
+.support{
+  border-color:rgba(245,183,64,.42)!important;
+  color:var(--gold)!important;
+}
+
+.page{
+  position:relative;
+  z-index:1;
+  width:min(1520px,calc(100% - 44px));
+  margin:0 auto;
+}
+
+.hero{
+  min-height:520px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:40px;
+  align-items:center;
+  padding:74px 0 58px;
+}
+
+.eyebrow{
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(36px,4vw,54px);
+  line-height:1.02;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+
+.hero p{
+  color:#b4c7df;
+  max-width:760px;
+  line-height:1.75;
+  font-size:17px;
+  margin-bottom:34px;
+  background-color:#000;
+}
+
+.hero-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.btn-main,
+.btn-ghost{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  border:1px solid var(--line-strong);
+  padding:0 20px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+.btn-main{
+  background:linear-gradient(90deg,rgba(0,242,255,.22),rgba(125,211,252,.08));
+  color:#fff;
+}
+
+.btn-ghost{
+  background:rgba(8,21,38,.52);
+  color:var(--accent);
+}
+
+.btn-main:hover,
+.btn-ghost:hover{
+  background:rgba(14,165,233,.16);
+}
+
+.hero-visual{
+  border:1px solid var(--line);
+  background:
+    radial-gradient(circle at 50% 45%,rgba(0,242,255,.16),transparent 34%),
+    linear-gradient(135deg,rgba(8,21,38,.8),rgba(3,7,18,.85));
+  min-height:360px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.btn-about{
+    position:absolute;
+    right:280px;
+    top:-20px;
+}
+
+.hero-visual::before{
+  content:"";
+  position:absolute;
+  inset:26px;
+  border:1px solid rgba(125,211,252,.18);
+}
+
+.hero-visual::after{
+  content:"";
+  position:absolute;
+  width:280px;
+  height:280px;
+  border:1px solid rgba(0,242,255,.25);
+  border-radius:50%;
+  box-shadow:0 0 80px rgba(0,242,255,.08);
+}
+
+.visual-core{
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
+
+.visual-core .symbol{
+  font-size:70px;
+  color:var(--cyan);
+  margin-bottom:18px;
+  text-shadow:0 0 30px rgba(0,242,255,.5);
+}
+
+.visual-core strong{
+  display:block;
+  letter-spacing:.32em;
+  color:#fff;
+  text-transform:uppercase;
+}
+
+.visual-core span{
+  display:block;
+  margin-top:12px;
+  color:var(--muted);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+.section{
+  padding:46px 0;
+  border-top:1px solid rgba(125,211,252,.12);
+}
+
+.section-head{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-bottom:26px;
+}
+
+.section-head span{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(125,211,252,.35),transparent);
+}
+
+.section-head h2{
+  color:var(--accent);
+  letter-spacing:.36em;
+  text-transform:uppercase;
+  font-size:14px;
+  white-space:nowrap;
+  background-color:#000;
+  padding:0 20px 0 20px;
+}
+
+.grid-cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.card{
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:26px;
+  min-height:240px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:.25s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  border-color:var(--line-strong);
+  background:var(--panel-strong);
+}
+
+.card-tag{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+.card h3{
+  font-size:24px;
+  line-height:1.2;
+  margin-bottom:16px;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.65;
+  font-size:15px;
+  margin-bottom:24px;
+}
+
+.card-footer{
+  color:var(--pink);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+.tools-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.tool-card{
+  border:1px solid rgba(245,183,64,.22);
+  background:rgba(8,21,38,.54);
+  padding:20px;
+  color:var(--text);
+}
+
+.tool-card strong{
+  display:block;
+  color:var(--gold);
+  margin-bottom:8px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.tool-card span{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+.footer{
+  border-top:1px solid rgba(125,211,252,.12);
+  padding:36px 0;
+  color:var(--muted);
+}
+
+.footer-grid{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.footer-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.footer-links a{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.footer-links a:hover{
+  color:#fff;
+}
+
+.copyright{
+  width:100%;
+  margin-top:22px;
+  padding-top:22px;
+  border-top:1px solid rgba(125,211,252,.08);
+  text-align:center;
+  font-size:12px;
+  letter-spacing:.12em;
+}
+
+@media(max-width:1100px){
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .grid-cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .tools-row{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:760px){
+  .nav-inner{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:18px 0;
+  }
+
+  .hero{
+    padding-top:46px;
+  }
+
+  .grid-cards,
+  .tools-row{
+    grid-template-columns:1fr;
+  }
+
+  .section-head h2{
+    letter-spacing:.18em;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="nav-inner">
+    <a class="brand">
+      <div class="brand-icon">◇</div>
+      <div>
+        <strong>Horizon 4282</strong>
+        <span data-pt="Portal de Utilidade Cultural" data-en="Cultural Utility Portal">Portal de Utilidade Cultural</span>
+      </div>
+    </a>
+
+    <nav class="menu">
+      <a href="/" data-pt="Galeria de Arte Digital" data-en="Digital Art Gallery">Digital Art Gallery</a>
+      <a href="/open-library-guide.html" data-pt="Narrarium" data-en="Narrarium">Open Library</a>
+      <a href="/experiments.html" data-pt="Experimentos" data-en="Experiments">Experimentos</a>
+      <a href="/research.html" data-pt="Pesquisa" data-en="Research">Pesquisa</a>
+      <a href="/luz-e-louvor.html" data-pt="Luz e Louvor" data-en="Luz e Louvor">Luz e Louvor</a>
+      <a class="support" href="/apoie.html" data-pt="Apoie" data-en="Support">Apoie</a>
+      <button id="ptBtn" class="lang-btn" onclick="setLanguage('pt')">PT</button>
+      <button id="enBtn" class="lang-btn" onclick="setLanguage('en')">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="eyebrow" data-pt="Uma narrativa digital" data-en="A digital narrative">Uma narrativa digital</div>
+
+      <h1 data-pt="Horizon 4282 Portal" data-en="Vanilla Tech Portal">Horizon 4282 Portal</h1>
+
+      <p
+        data-pt="Explore ficção científica interativa, jogos de navegador, acervos digitais, museus culturais, música, inteligência artificial e experiências Human + AI em código leve, direto e acessível e gratuito."
+        data-en="Explore interactive science fiction, browser games, digital archives, cultural museums, music, artificial intelligence and Human + AI experiences in free, lightweight, direct and accessible code.">
+        Explore ficção científica interativa, jogos de navegador, acervos digitais, museus culturais, música, inteligência artificial e experiências Human + AI em código leve, direto, acessível e gratuito.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn-main" href="/open-library-guide.html" data-pt="Iniciar Jornada" data-en="Start Journey">Iniciar Jornada</a>
+        <a class="btn-ghost" href="/experiments.html" data-pt="Ver Experimentos" data-en="View Experiments">Ver Experimentos</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-label="Arte visual Horizon 4282">
+      <div class="visual-core">
+        <div class="symbol">⌬</div>
+        <strong>Human + AI</strong>
+        <span data-pt="Arquivo vivo de experiências" data-en="Living archive of experiences">Arquivo vivo de experiências</span>
+        <button class="btn-ghost btn-about" data-pt="Sobre o Projeto" data-en="About Us">About Us</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span></span>
+      <h2 data-pt="Dimensões do Portal" data-en="Portal Dimensions">Dimensões do Portal</h2>
+      <span></span>
+    </div>
+
+    <div class="grid-cards">
+
+      <a class="card" href="/open-library-guide.html">
+        <div>
+          <div class="card-tag" data-pt="Novel Interativa" data-en="Interactive Novel">Novel Interativa</div>
+          <h3 data-pt="A Última Saga" data-en="The Last Saga">A Última Saga</h3>
+          <p data-pt="Acompanhe narrativas de ficção científica, universos alternativos e histórias em expansão dentro do Horizon 4282."
+             data-en="Follow science fiction narratives, alternate universes and expanding stories inside Horizon 4282.">
+            Acompanhe narrativas de ficção científica, universos alternativos e histórias em expansão dentro do Horizon 4282.
+          </p>
+        </div>
+        <div class="card-footer" data-pt="Ler agora →" data-en="Read now →">Ler agora →</div>
+      </a>
+
+      <a class="card" href="/experiments.html">
+        <div>
+          <div class="card-tag" data-pt="Jogos" data-en="Games">Jogos</div>
+          <h3 data-pt="Experimentos Jogáveis" data-en="Playable Experiments">Experimentos Jogáveis</h3>
+          <p data-pt="Jogos em HTML, CSS e JavaScript puro, criados como laboratórios interativos do universo Horizon."
+             data-en="Games in pure HTML, CSS and JavaScript, created as interactive laboratories of the Horizon universe.">
+            Jogos em HTML, CSS e JavaScript puro, criados como laboratórios interativos do universo Horizon.
+          </p>
+        </div>
+        <div class="card-footer" data-pt="Jogar online →" data-en="Play online →">Jogar online →</div>
+      </a>
+
+      <a class="card" href="/digital-museum-horizon.html">
+        <div>
+          <div class="card-tag" data-pt="Museu Digital" data-en="Digital Museum">Museu Digital</div>
+          <h3 data-pt="Museu da Notícia" data-en="Museum of News">Museu da Notícia</h3>
+          <p data-pt="Acervos visuais e narrativos sobre acontecimentos, memórias digitais, mídia, tecnologia e cultura."
+             data-en="Visual and narrative archives about events, digital memories, media, technology and culture.">
+            Acervos visuais e narrativos sobre acontecimentos, memórias digitais, mídia, tecnologia e cultura.
+          </p>
+        </div>
+        <div class="card-footer" data-pt="Visitar acervo →" data-en="Visit archive →">Visitar acervo →</div>
+      </a>
+
+      <a class="card" href="/luz-e-louvor.html">
+        <div>
+          <div class="card-tag" data-pt="Música e Fé" data-en="Music and Faith">Música e Fé</div>
+          <h3>Luz e Louvor</h3>
+          <p data-pt="Músicas, álbuns, orações cantadas e experiências sonoras de fé, esperança e contemplação."
+             data-en="Songs, albums, sung prayers and sonic experiences of faith, hope and contemplation.">
+            Músicas, álbuns, orações cantadas e experiências sonoras de fé, esperança e contemplação.
+          </p>
+        </div>
+        <div class="card-footer" data-pt="Ouvir agora →" data-en="Listen now →">Ouvir agora →</div>
+      </a>
+
+      <a class="card" href="/research.html">
+        <div>
+          <div class="card-tag" data-pt="Human + AI" data-en="Human + AI">Human + AI</div>
+          <h3 data-pt="Pesquisa Criativa" data-en="Creative Research">Pesquisa Criativa</h3>
+          <p data-pt="Registro de workflows, hipóteses, interfaces, cognição, criatividade, inteligência artificial e colaboração humano + IA."
+             data-en="Archive of workflows, hypotheses, interfaces, cognition, creativity, artificial intelligence and Human + AI collaboration.">
+            Registro de workflows, hipóteses, interfaces, cognição, criatividade, inteligência artificial e colaboração humano + IA.
+          </p>
+        </div>
+        <div class="card-footer" data-pt="Explorar pesquisa →" data-en="Explore research →">Explorar pesquisa →</div>
+      </a>
+
+      <a class="card" href="/observer-node.html">
+        <div>
+          <div class="card-tag" data-pt="Observer.Node" data-en="Observer.Node">Observer.Node</div>
+          <h3 data-pt="Imagens e Dados" data-en="Images and Data">Imagens e Dados</h3>
+          <p data-pt="Um observador visual para filtrar, descobrir e organizar imagens, tags, coordenadas e coleções digitais."
+             data-en="A visual observer to filter, discover and organize images, tags, coordinates and digital collections.">
+            Um observador visual para filtrar, descobrir e organizar imagens, tags, coordenadas e coleções digitais.
+          </p>
+        </div>
+        <div class="card-footer" data-pt="Abrir node →" data-en="Open node →">Abrir node →</div>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span></span>
+      <h2 data-pt="Acesso Rápido" data-en="Quick Access">Acesso Rápido</h2>
+      <span></span>
+    </div>
+
+    <div class="tools-row">
+      <a class="tool-card" href="/feed-pt.xml">
+        <strong>RSS</strong>
+        <span data-pt="Assinar atualizações do portal." data-en="Subscribe to portal updates.">Assinar atualizações do portal.</span>
+      </a>
+
+      <a class="tool-card" href="/sitemap.xml">
+        <strong>Sitemap</strong>
+        <span data-pt="Mapa técnico das páginas publicadas." data-en="Technical map of published pages.">Mapa técnico das páginas publicadas.</span>
+      </a>
+
+      <a class="tool-card" href="/privacy.html">
+        <strong data-pt="Privacidade" data-en="Privacy">Privacidade</strong>
+        <span data-pt="Política de privacidade e uso do portal." data-en="Privacy policy and portal usage.">Política de privacidade e uso do portal.</span>
+      </a>
+
+      <a class="tool-card" href="/contact.html">
+        <strong data-pt="Contato" data-en="Contact">Contato</strong>
+        <span data-pt="Fale com o Studio 4282." data-en="Contact Studio 4282.">Fale com o Studio 4282.</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="page footer-grid">
+    <div>
+      <strong>Horizon 4282</strong><br>
+      <span data-pt="Portal cultural livre, sem cadastro obrigatório." data-en="Free cultural portal, no required registration.">Portal cultural livre, sem cadastro obrigatório.</span>
+    </div>
+
+    <div class="footer-links">
+      <a href="/sitemap.xml">Sitemap</a>
+      <a href="/terminal">Terminal</a>
+      <a href="/privacy.html" data-pt="Privacidade" data-en="Privacy">Privacidade</a>
+      <a href="/contact.html" data-pt="Contato" data-en="Contact">Contato</a>
+      <a href="/feed-pt.xml">RSS</a>
+    </div>
+
+    <div class="copyright">
+      © 2026 Studio 4282 · Horizon 4282 · Human + AI Creative Laboratory
+    </div>
+  </div>
+</footer>
+
+<script>
+let currentLang = localStorage.getItem("horizonLanguage") || "pt";
+
+function setLanguage(lang){
+  currentLang = lang;
+
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+
+  document.getElementById("ptBtn").classList.toggle("active", lang === "pt");
+  document.getElementById("enBtn").classList.toggle("active", lang === "en");
+
+  document.querySelectorAll("[data-pt][data-en]").forEach(el=>{
+    el.innerHTML = el.dataset[lang];
+  });
+
+  localStorage.setItem("horizonLanguage", lang);
+}
+
+setLanguage(currentLang);
+</script>
+
+</body>
+</html>
