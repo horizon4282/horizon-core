@@ -983,11 +983,11 @@ function renderSection(data){
     </div>
       
     <div class="card-body">
-        <div class="code">${item.code || "LUZ E LOUVOR"}</div>
+        <div class="code" style="display:none;">${item.code || "LUZ E LOUVOR"}</div>
         <h2>${localized.title || item.title || "Untitled"}</h2>
-        <p>${localized.description || item.description || ""}</p>
+        <p  style="display:none;">${localized.description || item.description || ""}</p>
 
-        <div class="status ${status}">
+        <div  style="display:none;" class="status ${status}">
           ${status === "coming-soon" ? "COMING SOON" : status === "online" ? "ONLINE" : status.toUpperCase()}
         </div>
       </div>
