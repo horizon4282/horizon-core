@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Horizon City Builder — Level 2 | Horizon 4282</title>
+
+<meta name="description" content="Horizon City Builder Level 2 adiciona escolas, hospitais, parques, turismo, pesquisa, universidade, aeroporto e porto ao simulador urbano Horizon 4282.">
+<meta name="author" content="Roque Fernando Marcos Sousa">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#030712">
+
+<link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+
+<style>
+:root{
+  --bg:#030712;
+  --panel:rgba(8,21,38,.76);
+  --line:rgba(125,211,252,.22);
+  --line-strong:rgba(125,211,252,.55);
+  --text:#eef6ff;
+  --muted:#8ca3bd;
+  --accent:#7dd3fc;
+  --gold:#f5b740;
+
+  --grass:#143f2b;
+  --road:#64748b;
+  --res:#2563eb;
+  --com:#f97316;
+  --ind:#9333ea;
+  --power:#facc15;
+  --water:#06b6d4;
+  --school:#22c55e;
+  --hospital:#ef4444;
+  --park:#16a34a;
+  --airport:#94a3b8;
+  --port:#0ea5e9;
+  --tourism:#f59e0b;
+  --research:#a855f7;
+  --university:#38bdf8;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  min-height:100vh;
+}
+
+body{
+  background:
+    radial-gradient(circle at top left,rgba(14,165,233,.15),transparent 32%),
+    radial-gradient(circle at bottom right,rgba(245,183,64,.08),transparent 34%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Courier New",monospace;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.20) 50%),
+    linear-gradient(90deg,rgba(255,0,0,.03),rgba(0,255,255,.015),rgba(0,0,255,.03));
+  background-size:100% 3px,3px 100%;
+  opacity:.5;
+  z-index:999;
+}
+
+.topbar{
+  position:relative;
+  z-index:2;
+  min-height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:18px 28px;
+  border-bottom:1px solid var(--line);
+  background:rgba(3,7,18,.82);
+  backdrop-filter:blur(18px);
+}
+
+.brand strong{
+  display:block;
+  color:var(--accent);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-size:14px;
+}
+
+.brand span{
+  display:block;
+  margin-top:5px;
+  color:var(--muted);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-size:11px;
+}
+
+.top-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.lang-btn,
+.home-link,
+.small-btn{
+  border:1px solid var(--line);
+  background:rgba(8,21,38,.55);
+  color:var(--accent);
+  padding:10px 14px;
+  text-decoration:none;
+  font-family:inherit;
+  letter-spacing:.16em;
+  cursor:pointer;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+.lang-btn.active,
+.lang-btn:hover,
+.home-link:hover,
+.small-btn:hover{
+  border-color:var(--line-strong);
+  color:#fff;
+  background:rgba(14,165,233,.12);
+}
+
+.page{
+  position:relative;
+  z-index:1;
+  width:min(1660px,calc(100% - 44px));
+  margin:30px auto 60px;
+}
+
+.hero{
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(8,21,38,.78),rgba(3,7,18,.78));
+  padding:30px;
+  margin-bottom:18px;
+}
+
+.eyebrow{
+  color:var(--gold);
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  font-size:12px;
+  margin-bottom:12px;
+}
+
+.hero h1{
+  margin:0 0 12px;
+  font-size:clamp(32px,4vw,58px);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.hero p{
+  max-width:1080px;
+  color:#b4c7df;
+  line-height:1.7;
+  font-size:16px;
+}
+
+.dashboard-bar{
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.dash-card{
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:13px 12px;
+  text-align:center;
+}
+
+.dash-card span{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.dash-card strong{
+  display:block;
+  margin-top:8px;
+  color:var(--gold);
+  font-size:22px;
+  line-height:1;
+}
+
+.game-shell{
+  display:grid;
+  grid-template-columns:250px 1fr 330px;
+  gap:20px;
+  align-items:start;
+}
+
+.panel{
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:18px;
+}
+
+.panel-title{
+  color:var(--accent);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-size:12px;
+  margin-bottom:14px;
+}
+
+.tools-panel{
+  position:sticky;
+  top:18px;
+  max-height:calc(100vh - 36px);
+  overflow:auto;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(125,211,252,.25) transparent;
+}
+
+.tools-panel::-webkit-scrollbar{width:4px}
+.tools-panel::-webkit-scrollbar-track{background:transparent}
+.tools-panel::-webkit-scrollbar-thumb{background:rgba(125,211,252,.22);border-radius:20px}
+
+.tools{
+  display:grid;
+  gap:9px;
+}
+
+.tool{
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid rgba(125,211,252,.16);
+  background:rgba(8,21,38,.52);
+  color:var(--text);
+  padding:0 12px;
+  font-family:inherit;
+  cursor:pointer;
+  text-align:left;
+}
+
+.tool:hover,
+.tool.active{
+  border-color:var(--line-strong);
+  background:rgba(14,165,233,.13);
+  color:#fff;
+}
+
+.tool i{
+  width:26px;
+  text-align:center;
+  font-style:normal;
+}
+
+.center{
+  min-width:0;
+}
+
+.city-toolbar{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  border:1px solid var(--line);
+  background:rgba(8,21,38,.55);
+  padding:12px 14px;
+  margin-bottom:14px;
+}
+
+#message{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.grid-wrap{
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(14,165,233,.08),rgba(0,0,0,.2));
+  padding:14px;
+  overflow:auto;
+}
+
+#grid{
+  display:grid;
+  grid-template-columns:repeat(18,38px);
+  grid-template-rows:repeat(18,38px);
+  gap:2px;
+  width:max-content;
+  margin:0 auto;
+  background:rgba(0,0,0,.35);
+  border:1px solid rgba(125,211,252,.12);
+}
+
+.cell{
+  width:38px;
+  height:38px;
+  background:var(--grass);
+  border:1px solid rgba(255,255,255,.04);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  user-select:none;
+  transition:.12s;
+  position:relative;
+  font-size:17px;
+}
+
+.cell:hover{
+  filter:brightness(1.25);
+  transform:scale(1.04);
+  z-index:2;
+}
+
+.cell.residential{background:linear-gradient(135deg,var(--res),#0f172a)}
+.cell.commercial{background:linear-gradient(135deg,var(--com),#0f172a)}
+.cell.industrial{background:linear-gradient(135deg,var(--ind),#0f172a)}
+.cell.road{background:linear-gradient(135deg,var(--road),#1e293b)}
+.cell.power{background:linear-gradient(135deg,var(--power),#78350f)}
+.cell.water{background:linear-gradient(135deg,var(--water),#083344)}
+.cell.school{background:linear-gradient(135deg,var(--school),#052e16)}
+.cell.hospital{background:linear-gradient(135deg,var(--hospital),#450a0a)}
+.cell.park{background:linear-gradient(135deg,var(--park),#052e16)}
+.cell.airport{background:linear-gradient(135deg,var(--airport),#1e293b)}
+.cell.port{background:linear-gradient(135deg,var(--port),#082f49)}
+.cell.tourism{background:linear-gradient(135deg,var(--tourism),#451a03)}
+.cell.research{background:linear-gradient(135deg,var(--research),#2e1065)}
+.cell.university{background:linear-gradient(135deg,var(--university),#083344)}
+
+.cell.disconnected::after,
+.cell.polluted::after{
+  position:absolute;
+  right:2px;
+  top:2px;
+  font-size:10px;
+}
+
+.cell.disconnected::after{content:"⚠️"}
+.cell.polluted::after{content:"☣"}
+
+.rules{
+  display:grid;
+  gap:10px;
+  color:#b4c7df;
+  line-height:1.55;
+  font-size:13px;
+}
+
+.rule{
+  border:1px solid rgba(125,211,252,.13);
+  padding:12px;
+  background:rgba(0,0,0,.18);
+}
+
+.rule strong{
+  color:var(--gold);
+}
+
+.legend{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:14px;
+}
+
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.swatch{
+  width:18px;
+  height:18px;
+  border:1px solid rgba(255,255,255,.14);
+}
+
+footer{
+  margin-top:30px;
+  border-top:1px solid rgba(125,211,252,.14);
+  padding-top:24px;
+  color:var(--muted);
+  text-align:center;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:5000;
+}
+
+.modal-overlay.active{
+  display:flex;
+}
+
+.modal-window{
+  width:min(920px,90vw);
+  max-height:80vh;
+  overflow:auto;
+  border:1px solid var(--line-strong);
+  background:linear-gradient(135deg,rgba(8,21,38,.96),rgba(3,7,18,.96));
+  padding:24px;
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.modal-header h2{
+  color:var(--accent);
+  letter-spacing:.2em;
+}
+
+.modal-close{
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
+  font-size:24px;
+}
+
+.tip-card{
+  border:1px solid rgba(125,211,252,.15);
+  padding:16px;
+  margin-bottom:12px;
+  background:rgba(255,255,255,.03);
+}
+
+.tip-card h3{
+  color:var(--gold);
+  margin-bottom:8px;
+}
+
+.tip-card p{
+  color:#c8d6e5;
+  line-height:1.6;
+}
+
+@media(max-width:1280px){
+  .dashboard-bar{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .game-shell{
+    grid-template-columns:250px 1fr;
+  }
+
+  .rules-panel{
+    grid-column:1 / -1;
+  }
+}
+
+@media(max-width:860px){
+  .dashboard-bar{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .game-shell{
+    grid-template-columns:1fr;
+  }
+
+  .tools-panel{
+    position:relative;
+    top:auto;
+    max-height:none;
+  }
+}
+
+@media(max-width:700px){
+  .page{
+    width:calc(100% - 24px);
+  }
+
+  .topbar{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  #grid{
+    grid-template-columns:repeat(18,32px);
+    grid-template-rows:repeat(18,32px);
+  }
+
+  .cell{
+    width:32px;
+    height:32px;
+    font-size:14px;
+  }
+
+  .city-toolbar{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <strong>Horizon 4282</strong>
+    <span data-pt="Simulador Urbano Experimental · Level 2" data-en="Experimental City Simulator · Level 2">Simulador Urbano Experimental · Level 2</span>
+  </div>
+
+  <div class="top-actions">
+    <button id="ptBtn" class="lang-btn" onclick="setLanguage('pt')">PT</button>
+    <button id="enBtn" class="lang-btn" onclick="setLanguage('en')">EN</button>
+    <a class="home-link" href="/" data-pt="Início" data-en="Home">Início</a>
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="hero">
+    <div class="eyebrow" data-pt="Experimento Interativo · Level 2" data-en="Interactive Experiment · Level 2">Experimento Interativo · Level 2</div>
+    <h1>Horizon City Builder</h1>
+    <p data-pt="Level 2 adiciona escolas, hospitais, parques, aeroporto, porto, turismo, pesquisa e universidade. Agora sua cidade pode seguir caminhos diferentes: industrial, sustentável, turística, tecnológica ou universitária."
+       data-en="Level 2 adds schools, hospitals, parks, airport, port, tourism, research and university. Now your city can follow different paths: industrial, sustainable, touristic, technological or academic.">
+      Level 2 adiciona escolas, hospitais, parques, aeroporto, porto, turismo, pesquisa e universidade. Agora sua cidade pode seguir caminhos diferentes: industrial, sustentável, turística, tecnológica ou universitária.
+    </p>
+  </section>
+
+  <section class="dashboard-bar">
+    <div class="dash-card"><span data-pt="CAIXA" data-en="MONEY">CAIXA</span><strong>$<b id="money">1200</b></strong></div>
+    <div class="dash-card"><span data-pt="POPULAÇÃO" data-en="POPULATION">POPULAÇÃO</span><strong><b id="population">0</b></strong></div>
+    <div class="dash-card"><span data-pt="RECEITA" data-en="REVENUE">RECEITA</span><strong>$<b id="revenue">0</b></strong></div>
+    <div class="dash-card"><span data-pt="FELICIDADE" data-en="HAPPINESS">FELICIDADE</span><strong><b id="happiness">100</b>%</strong></div>
+    <div class="dash-card"><span data-pt="POLUIÇÃO" data-en="POLLUTION">POLUIÇÃO</span><strong><b id="pollution">0</b>%</strong></div>
+    <div class="dash-card"><span data-pt="EDUCAÇÃO" data-en="EDUCATION">EDUCAÇÃO</span><strong><b id="education">0</b>%</strong></div>
+    <div class="dash-card"><span data-pt="SAÚDE" data-en="HEALTH">SAÚDE</span><strong><b id="health">0</b>%</strong></div>
+    <div class="dash-card"><span data-pt="CICLO" data-en="CYCLE">CICLO</span><strong><b id="cycle">0</b></strong></div>
+  </section>
+
+  <section class="game-shell">
+
+    <aside class="panel tools-panel">
+      <div class="panel-title" data-pt="Ferramentas" data-en="Tools">Ferramentas</div>
+
+      <div class="tools">
+        <button class="tool active" data-tool="grass"><i>🚜</i><span data-pt="Demolir / Grama — $10" data-en="Demolish / Grass — $10">Demolir / Grama — $10</span></button>
+        <button class="tool" data-tool="road"><i>🛣️</i><span data-pt="Estrada — $20" data-en="Road — $20">Estrada — $20</span></button>
+        <button class="tool" data-tool="residential"><i>🏠</i><span data-pt="Residencial — $100" data-en="Residential — $100">Residencial — $100</span></button>
+        <button class="tool" data-tool="commercial"><i>🏢</i><span data-pt="Comercial — $150" data-en="Commercial — $150">Comercial — $150</span></button>
+        <button class="tool" data-tool="industrial"><i>🏭</i><span data-pt="Industrial — $200" data-en="Industrial — $200">Industrial — $200</span></button>
+        <button class="tool" data-tool="power"><i>⚡</i><span data-pt="Energia — $300" data-en="Power — $300">Energia — $300</span></button>
+        <button class="tool" data-tool="water"><i>💧</i><span data-pt="Água — $250" data-en="Water — $250">Água — $250</span></button>
+        <button class="tool" data-tool="school"><i>🏫</i><span data-pt="Escola — $350" data-en="School — $350">Escola — $350</span></button>
+        <button class="tool" data-tool="hospital"><i>🏥</i><span data-pt="Hospital — $450" data-en="Hospital — $450">Hospital — $450</span></button>
+        <button class="tool" data-tool="park"><i>🌳</i><span data-pt="Parque — $180" data-en="Park — $180">Parque — $180</span></button>
+        <button class="tool" data-tool="airport"><i>✈️</i><span data-pt="Aeroporto — $900" data-en="Airport — $900">Aeroporto — $900</span></button>
+        <button class="tool" data-tool="port"><i>🚢</i><span data-pt="Porto — $750" data-en="Port — $750">Porto — $750</span></button>
+        <button class="tool" data-tool="tourism"><i>🏖️</i><span data-pt="Turismo — $400" data-en="Tourism — $400">Turismo — $400</span></button>
+        <button class="tool" data-tool="research"><i>🔬</i><span data-pt="Pesquisa — $650" data-en="Research — $650">Pesquisa — $650</span></button>
+        <button class="tool" data-tool="university"><i>🎓</i><span data-pt="Universidade — $800" data-en="University — $800">Universidade — $800</span></button>
+      </div>
+    </aside>
+
+    <section class="center">
+      <div class="city-toolbar">
+        <div id="message" data-pt="Selecione uma ferramenta e clique no mapa." data-en="Select a tool and click the map.">
+          Selecione uma ferramenta e clique no mapa.
+        </div>
+
+        <div class="top-actions">
+          <button class="small-btn" onclick="saveGame()" data-pt="Salvar" data-en="Save">Salvar</button>
+          <button class="small-btn" onclick="resetGame()" data-pt="Resetar" data-en="Reset">Resetar</button>
+          <button class="small-btn" onclick="openHelpModal()" data-pt="Ajuda" data-en="Help">Ajuda</button>
+        </div>
+      </div>
+
+      <div class="grid-wrap">
+        <div id="grid"></div>
+      </div>
+    </section>
+
+    <aside class="panel rules-panel">
+      <div class="panel-title" data-pt="Regras Level 2" data-en="Level 2 Rules">Regras Level 2</div>
+
+      <div class="rules">
+        <div class="rule" data-pt="<strong>Base:</strong> estradas, energia e água continuam essenciais para ativar zonas."
+             data-en="<strong>Base:</strong> roads, power and water are still essential to activate zones."><strong>Base:</strong> estradas, energia e água continuam essenciais para ativar zonas.</div>
+
+        <div class="rule" data-pt="<strong>Serviços:</strong> escolas aumentam educação, hospitais aumentam saúde e parques melhoram felicidade."
+             data-en="<strong>Services:</strong> schools increase education, hospitals increase health and parks improve happiness."><strong>Serviços:</strong> escolas aumentam educação, hospitais aumentam saúde e parques melhoram felicidade.</div>
+
+        <div class="rule" data-pt="<strong>Economia avançada:</strong> aeroporto, porto, turismo, pesquisa e universidade ampliam a receita quando a cidade tem população suficiente."
+             data-en="<strong>Advanced economy:</strong> airport, port, tourism, research and university increase revenue when the city has enough population."><strong>Economia avançada:</strong> aeroporto, porto, turismo, pesquisa e universidade ampliam a receita quando a cidade tem população suficiente.</div>
+
+        <div class="rule" data-pt="<strong>Estratégia:</strong> uma cidade sustentável usa parques e hospitais. Uma cidade tecnológica usa pesquisa e universidade. Uma cidade turística usa aeroporto, porto e turismo."
+             data-en="<strong>Strategy:</strong> a sustainable city uses parks and hospitals. A tech city uses research and university. A tourism city uses airport, port and tourism."><strong>Estratégia:</strong> uma cidade sustentável usa parques e hospitais. Uma cidade tecnológica usa pesquisa e universidade. Uma cidade turística usa aeroporto, porto e turismo.</div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><span class="swatch" style="background:var(--grass)"></span><span data-pt="Grama" data-en="Grass">Grama</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--road)"></span><span data-pt="Estrada" data-en="Road">Estrada</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--res)"></span><span data-pt="Residencial" data-en="Residential">Residencial</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--com)"></span><span data-pt="Comercial" data-en="Commercial">Comercial</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--ind)"></span><span data-pt="Industrial" data-en="Industrial">Industrial</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--power)"></span><span data-pt="Energia" data-en="Power">Energia</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--water)"></span><span data-pt="Água" data-en="Water">Água</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--school)"></span><span data-pt="Escola" data-en="School">Escola</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--hospital)"></span><span data-pt="Hospital" data-en="Hospital">Hospital</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--park)"></span><span data-pt="Parque" data-en="Park">Parque</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--research)"></span><span data-pt="Pesquisa" data-en="Research">Pesquisa</span></div>
+        <div class="legend-item"><span class="swatch" style="background:var(--university)"></span><span data-pt="Universidade" data-en="University">Universidade</span></div>
+      </div>
+    </aside>
+
+  </section>
+
+  <footer>Studio 4282 · Horizon City Builder Level 2 · Human + AI Creative Laboratory</footer>
+
+</main>
+
+<div id="helpModal" class="modal-overlay">
+  <div class="modal-window">
+    <div class="modal-header">
+      <h2 id="helpTitle">GUIA LEVEL 2</h2>
+      <button class="modal-close" onclick="closeHelpModal()">✕</button>
+    </div>
+
+    <div class="modal-content" id="helpContent"></div>
+  </div>
+</div>
+
+<script>
+const GRID_SIZE = 18;
+const TOTAL_CELLS = GRID_SIZE * GRID_SIZE;
+
+let currentLang = localStorage.getItem("horizonLanguage") || "pt";
+let currentTool = "grass";
+
+let money = 1200;
+let population = 0;
+let revenue = 0;
+let happiness = 100;
+let pollution = 0;
+let education = 0;
+let health = 0;
+let cycle = 0;
+let cityMap = Array(TOTAL_CELLS).fill("grass");
+
+const costs = {
+  grass:10,
+  road:20,
+  residential:100,
+  commercial:150,
+  industrial:200,
+  power:300,
+  water:250,
+  school:350,
+  hospital:450,
+  park:180,
+  airport:900,
+  port:750,
+  tourism:400,
+  research:650,
+  university:800
+};
+
+const emojis = {
+  grass:"",
+  road:"═",
+  residential:"🏠",
+  commercial:"🏢",
+  industrial:"🏭",
+  power:"⚡",
+  water:"💧",
+  school:"🏫",
+  hospital:"🏥",
+  park:"🌳",
+  airport:"✈️",
+  port:"🚢",
+  tourism:"🏖️",
+  research:"🔬",
+  university:"🎓"
+};
+
+const grid = document.getElementById("grid");
+
+function t(pt,en){
+  return currentLang === "pt" ? pt : en;
+}
+
+function setLanguage(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+
+  document.getElementById("ptBtn").classList.toggle("active", lang === "pt");
+  document.getElementById("enBtn").classList.toggle("active", lang === "en");
+
+  document.querySelectorAll("[data-pt][data-en]").forEach(el=>{
+    el.innerHTML = el.dataset[lang];
+  });
+
+  localStorage.setItem("horizonLanguage", lang);
+  updateDashboard();
+}
+
+function setMessage(pt,en){
+  document.getElementById("message").textContent = t(pt,en);
+}
+
+document.querySelectorAll(".tool").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".tool").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    currentTool = btn.dataset.tool;
+    setMessage("Ferramenta selecionada.", "Selected tool.");
+  });
+});
+
+function createGrid(){
+  grid.innerHTML = "";
+
+  cityMap.forEach((type,index)=>{
+    const cell = document.createElement("div");
+    cell.className = "cell";
+    cell.dataset.index = index;
+    cell.addEventListener("click",()=>handleCellClick(index));
+    grid.appendChild(cell);
+  });
+
+  renderGrid();
+}
+
+function renderGrid(){
+  document.querySelectorAll(".cell").forEach((cell,index)=>{
+    const type = cityMap[index];
+
+    cell.className = "cell";
+
+    if(type !== "grass"){
+      cell.classList.add(type);
+    }
+
+    if(isZone(type) && !isConnected(index)){
+      cell.classList.add("disconnected");
+    }
+
+    if(type === "industrial"){
+      cell.classList.add("polluted");
+    }
+
+    cell.textContent = emojis[type] || "";
+  });
+}
+
+function handleCellClick(index){
+  if(cityMap[index] === currentTool) return;
+
+  const cost = costs[currentTool];
+
+  if(money < cost){
+    setMessage("Dinheiro insuficiente.", "Not enough money.");
+    return;
+  }
+
+  money -= cost;
+  cityMap[index] = currentTool;
+
+  calculateCity();
+  renderGrid();
+  updateDashboard();
+  saveGame(false);
+}
+
+function isZone(type){
+  return ["residential","commercial","industrial"].includes(type);
+}
+
+function needsRoad(type){
+  return !["grass","road","power","water","park"].includes(type);
+}
+
+function neighbors(index){
+  const row = Math.floor(index / GRID_SIZE);
+  const col = index % GRID_SIZE;
+  const list = [];
+
+  if(row > 0) list.push(index - GRID_SIZE);
+  if(row < GRID_SIZE - 1) list.push(index + GRID_SIZE);
+  if(col > 0) list.push(index - 1);
+  if(col < GRID_SIZE - 1) list.push(index + 1);
+
+  return list;
+}
+
+function isConnected(index){
+  return neighbors(index).some(i=>cityMap[i] === "road");
+}
+
+function count(type){
+  return cityMap.filter(cell=>cell === type).length;
+}
+
+function activeCount(type){
+  return cityMap.reduce((total,cell,index)=>{
+    if(cell === type){
+      if(needsRoad(type)){
+        return isConnected(index) ? total + 1 : total;
+      }
+
+      return total + 1;
+    }
+
+    return total;
+  },0);
+}
+
+function calculateCity(){
+  const res = activeCount("residential");
+  const com = activeCount("commercial");
+  const ind = activeCount("industrial");
+  const roads = count("road");
+
+  const schools = activeCount("school");
+  const hospitals = activeCount("hospital");
+  const parks = count("park");
+  const airports = activeCount("airport");
+  const ports = activeCount("port");
+  const tourism = activeCount("tourism");
+  const research = activeCount("research");
+  const universities = activeCount("university");
+
+  const hasPower = count("power") > 0;
+  const hasWater = count("water") > 0;
+
+  education = Math.min(100, Math.round((schools * 18) + (universities * 24) + (research * 12)));
+  health = Math.min(100, Math.round((hospitals * 28) + (parks * 6)));
+
+  pollution = Math.min(100, Math.round((ind * 8) + (airports * 5) + (ports * 4) - (parks * 4)));
+  pollution = Math.max(0, pollution);
+
+  happiness = 100;
+
+  if(!hasPower) happiness -= 25;
+  if(!hasWater) happiness -= 25;
+
+  happiness -= pollution * .35;
+  happiness += parks * 4;
+  happiness += health * .18;
+  happiness += education * .12;
+  happiness -= Math.max(0, roads - 70) * .10;
+
+  happiness = Math.max(5, Math.min(140, Math.round(happiness)));
+
+  const serviceMultiplier = hasPower && hasWater ? 1 : .45;
+  const happinessMultiplier = happiness / 100;
+  const educationMultiplier = 1 + (education / 250);
+  const healthMultiplier = 1 + (health / 300);
+
+  population = Math.floor(
+    res * 14 *
+    serviceMultiplier *
+    happinessMultiplier *
+    healthMultiplier
+  );
+
+  const advancedEconomy =
+    (airports * 90) +
+    (ports * 80) +
+    (tourism * (45 + parks * 5)) +
+    (research * (70 + education * .6)) +
+    (universities * (65 + education * .5));
+
+  const baseRevenue =
+    (res * 6) +
+    (com * 32) +
+    (ind * 55) +
+    advancedEconomy -
+    (roads * 1) -
+    (count("power") * 12) -
+    (count("water") * 10) -
+    (schools * 18) -
+    (hospitals * 26) -
+    (parks * 6) -
+    (airports * 50) -
+    (ports * 42) -
+    (research * 35) -
+    (universities * 45);
+
+  const populationBonus = population > 250 ? 1.15 : 1;
+  const techBonus = research > 0 && universities > 0 ? 1.25 : 1;
+  const tourismBonus = tourism > 0 && (airports > 0 || ports > 0) ? 1.25 : 1;
+
+  revenue = Math.floor(
+    baseRevenue *
+    serviceMultiplier *
+    (0.50 + happinessMultiplier) *
+    educationMultiplier *
+    populationBonus *
+    techBonus *
+    tourismBonus
+  );
+}
+
+function updateDashboard(){
+  document.getElementById("money").textContent = money;
+  document.getElementById("population").textContent = population;
+  document.getElementById("revenue").textContent = revenue >= 0 ? "+" + revenue : revenue;
+  document.getElementById("happiness").textContent = happiness;
+  document.getElementById("pollution").textContent = pollution;
+  document.getElementById("education").textContent = education;
+  document.getElementById("health").textContent = health;
+  document.getElementById("cycle").textContent = cycle;
+}
+
+setInterval(()=>{
+  cycle++;
+  calculateCity();
+  money += revenue;
+  renderGrid();
+  updateDashboard();
+  saveGame(false);
+},4000);
+
+function saveGame(showAlert=true){
+  const data = {
+    money,
+    population,
+    revenue,
+    happiness,
+    pollution,
+    education,
+    health,
+    cycle,
+    cityMap
+  };
+
+  localStorage.setItem("horizon_city_builder_level_2", JSON.stringify(data));
+
+  if(showAlert){
+    setMessage("Cidade salva localmente.", "City saved locally.");
+  }
+}
+
+function loadGame(){
+  const saved = localStorage.getItem("horizon_city_builder_level_2");
+
+  if(saved){
+    try{
+      const data = JSON.parse(saved);
+
+      money = data.money ?? 1200;
+      population = data.population ?? 0;
+      revenue = data.revenue ?? 0;
+      happiness = data.happiness ?? 100;
+      pollution = data.pollution ?? 0;
+      education = data.education ?? 0;
+      health = data.health ?? 0;
+      cycle = data.cycle ?? 0;
+
+      cityMap = Array.isArray(data.cityMap) && data.cityMap.length === TOTAL_CELLS
+        ? data.cityMap
+        : Array(TOTAL_CELLS).fill("grass");
+    }catch(e){
+      cityMap = Array(TOTAL_CELLS).fill("grass");
+    }
+  }
+
+  calculateCity();
+  createGrid();
+  updateDashboard();
+}
+
+function resetGame(){
+  const ok = confirm(t("Resetar a cidade Level 2?", "Reset Level 2 city?"));
+
+  if(!ok) return;
+
+  money = 1200;
+  population = 0;
+  revenue = 0;
+  happiness = 100;
+  pollution = 0;
+  education = 0;
+  health = 0;
+  cycle = 0;
+  cityMap = Array(TOTAL_CELLS).fill("grass");
+
+  localStorage.removeItem("horizon_city_builder_level_2");
+
+  calculateCity();
+  createGrid();
+  updateDashboard();
+  setMessage("Cidade resetada.", "City reset.");
+}
+
+setLanguage(currentLang);
+loadGame();
+
+function openHelpModal(){
+  document.getElementById("helpModal").classList.add("active");
+  buildHelpContent();
+}
+
+function closeHelpModal(){
+  document.getElementById("helpModal").classList.remove("active");
+}
+
+function buildHelpContent(){
+  const tipsPT = [
+    {
+      title:"Dica 01 — Construa a base primeiro",
+      text:"Antes de investir em universidade, aeroporto ou pesquisa, garanta energia, água, estradas e bairros residenciais."
+    },
+    {
+      title:"Dica 02 — Escolas aumentam educação",
+      text:"A educação fortalece a economia avançada e prepara a cidade para pesquisa e universidade."
+    },
+    {
+      title:"Dica 03 — Hospitais aumentam saúde",
+      text:"Saúde alta melhora a população e ajuda a cidade a crescer com mais estabilidade."
+    },
+    {
+      title:"Dica 04 — Parques reduzem poluição",
+      text:"Parques aumentam felicidade e ajudam a compensar os efeitos negativos da indústria."
+    },
+    {
+      title:"Dica 05 — Pesquisa combina com universidade",
+      text:"Pesquisa e universidade juntas criam uma cidade tecnológica muito mais lucrativa."
+    },
+    {
+      title:"Dica 06 — Turismo precisa de acesso",
+      text:"Turismo fica mais forte quando combinado com aeroporto ou porto."
+    },
+    {
+      title:"Dica 07 — Aeroporto é caro",
+      text:"Só construa aeroporto quando a cidade já tiver receita positiva e população suficiente."
+    },
+    {
+      title:"Dica 08 — Porto ajuda a economia",
+      text:"O porto fortalece comércio, turismo e expansão econômica, mas também tem custo de manutenção."
+    },
+    {
+      title:"Dica 09 — Cidade sustentável",
+      text:"Use muitos parques, poucos setores industriais e bons serviços de saúde para manter felicidade alta."
+    },
+    {
+      title:"Dica 10 — Cidade tecnológica",
+      text:"Combine escolas, universidade e pesquisa para aumentar educação e receita avançada."
+    },
+    {
+      title:"Dica 11 — Cidade turística",
+      text:"Combine turismo, parques, aeroporto e porto para gerar uma economia baseada em visitantes."
+    },
+    {
+      title:"Dica 12 — Meta Level 2",
+      text:"Uma boa meta é ter energia, água, 20 residências, 8 comércios, 4 indústrias, 2 escolas, 1 hospital, 4 parques e 1 universidade."
+    }
+  ];
+
+  const tipsEN = [
+    {
+      title:"Tip 01 — Build the base first",
+      text:"Before investing in university, airport or research, secure power, water, roads and residential areas."
+    },
+    {
+      title:"Tip 02 — Schools increase education",
+      text:"Education strengthens the advanced economy and prepares the city for research and university."
+    },
+    {
+      title:"Tip 03 — Hospitals increase health",
+      text:"High health improves population and helps the city grow with more stability."
+    },
+    {
+      title:"Tip 04 — Parks reduce pollution",
+      text:"Parks increase happiness and help offset the negative effects of industry."
+    },
+    {
+      title:"Tip 05 — Research works with university",
+      text:"Research and university together create a much more profitable technology city."
+    },
+    {
+      title:"Tip 06 — Tourism needs access",
+      text:"Tourism becomes stronger when combined with an airport or port."
+    },
+    {
+      title:"Tip 07 — Airport is expensive",
+      text:"Only build an airport when the city already has positive revenue and enough population."
+    },
+    {
+      title:"Tip 08 — Port boosts the economy",
+      text:"The port strengthens commerce, tourism and economic expansion, but has maintenance cost."
+    },
+    {
+      title:"Tip 09 — Sustainable city",
+      text:"Use many parks, fewer industrial zones and good health services to keep happiness high."
+    },
+    {
+      title:"Tip 10 — Technology city",
+      text:"Combine schools, university and research to increase education and advanced revenue."
+    },
+    {
+      title:"Tip 11 — Tourism city",
+      text:"Combine tourism, parks, airport and port to build a visitor-based economy."
+    },
+    {
+      title:"Tip 12 — Level 2 target",
+      text:"A good target is power, water, 20 residential zones, 8 commercial zones, 4 industries, 2 schools, 1 hospital, 4 parks and 1 university."
+    }
+  ];
+
+  const tips = currentLang === "pt" ? tipsPT : tipsEN;
+
+  document.getElementById("helpTitle").textContent =
+    currentLang === "pt" ? "GUIA DO PREFEITO — LEVEL 2" : "MAYOR'S GUIDE — LEVEL 2";
+
+  document.getElementById("helpContent").innerHTML =
+    tips.map(t => `
+      <div class="tip-card">
+        <h3>${t.title}</h3>
+        <p>${t.text}</p>
+      </div>
+    `).join("");
+}
+</script>
+
+</body>
+</html>
