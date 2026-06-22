@@ -667,7 +667,7 @@ const sections = {
       {
         code: "2026 ALBUM",
         status: "online",
-        image: "JN1L7zVoWb0?si=1v-_e_CbixN4NyLv",
+        image: "5o3H4fdpB5rnZy5v2fdDVD?utm_source=generator&si=9b8fb76f9f0d40f1",
         url: "#",
         pt: {
           title: "Sei Que Cuidas de Mim",
@@ -962,9 +962,10 @@ function renderSection(data){
     card.innerHTML = `
            
       <div class="player-frame">
-      
-        <iframe id="youtubePlayer" src="https://www.youtube.com/embed/${item.image || ''}"
-        title="Luz e Louvor Player"    allow="autoplay; encrypted-media"  allowfullscreen>
+         
+        <iframe id="youtubePlayer" style="border-radius:12px" src="https://open.spotify.com/embed/track/${item.image || ''}"
+        title="Luz e Louvor Player"   frameBorder="0" allowfullscreen="" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
       </iframe>
     </div>
       
