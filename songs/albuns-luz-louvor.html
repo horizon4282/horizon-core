@@ -1032,15 +1032,14 @@ window.addEventListener("resize",()=>{
 });
 
 document.addEventListener("DOMContentLoaded",()=>{
+  currentSection = "worship";
   setLanguage(currentLang);
-  renderSection(sections.albums);
-  loadAlbum("3hFyAO235ZwVZUaPwOcCVJ?utm_source=generator&si=3c8720b5f8eb4038");
 });
 
-function loadAlbum(videoId){
+/*function loadAlbum(videoId){
   const player = document.getElementById("youtubePlayer");
   player.src = `https://open.spotify.com/embed/track/${videoId}?rel=0`;
-}
+}*/
 
 
   
