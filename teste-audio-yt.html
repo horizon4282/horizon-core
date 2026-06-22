@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Playlist Corrigida</title>
+    <title>Minha Playlist Musical</title>
     <style>
+        /* Estilização moderna e centralizada */
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #121212;
             color: #ffffff;
             display: flex;
@@ -19,26 +20,29 @@
 
         .player-container {
             width: 100%;
-            max-width: 560px;
+            max-width: 560px; /* Largura ideal para o player */
             background-color: #1e1e1e;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
         }
 
         .player-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 15px;
             text-align: center;
-            font-weight: bold;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
+        /* Container que mantém a proporção perfeita do player */
         .responsive-iframe {
             position: relative;
             overflow: hidden;
             width: 100%;
-            padding-top: 56.25%; /* Proporção de tela 16:9 */
-            border-radius: 8px;
+            padding-top: 56.25%; /* Proporção padrão 16:9 */
+            border-radius: 10px;
+            background-color: #000;
         }
 
         .responsive-iframe iframe {
@@ -56,13 +60,13 @@
 <body>
 
     <div class="player-container">
-        <div class="player-title">Minha Playlist Favorit</div>
+        <div class="player-title">Minha Playlist Favorita</div>
         
         <div class="responsive-iframe">
-            <!-- Corrigido: Usando domínio de privacidade e parâmetros limpos -->
+            <!-- URL corrigida com o seu ID oficial: OLAK5uy_lGrOpeRVw7kWQ5FgZGJUFDqe4tRMUh_KQ -->
             <iframe 
-                src="https://music.youtube.com/playlist?list=OLAK5uy_lGrOpeRVw7kWQ5FgZGJUFDqe4tRMUh_KQ&si=5eHtSdFPql4N3O9l" 
-                title="Player de Música incorporado" 
+                src="https://www.youtube.com/embed/OLAK5uy_lGrOpeRVw7kWQ5FgZGJUFDqe4tRMUh_KQ" 
+                title="Player de Música Incorporado" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
             </iframe>
