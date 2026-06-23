@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rádio Luz e Louvor | Horizon 4282</title>
+<meta name="description" content="Rádio Luz e Louvor: música, oração, Palavra e programação devocional no ecossistema Horizon 4282.">
+<meta name="author" content="Roque Fernando Marcos Sousa">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+<style>
+:root{
+  --bg:#030712;--panel:rgba(8,21,38,.74);--line:rgba(125,211,252,.22);--line-strong:rgba(125,211,252,.55);
+  --text:#eef6ff;--muted:#8ca3bd;--accent:#7dd3fc;--gold:#f5b740;--green:#22c55e;
+  --sidebar-open:315px;--sidebar-closed:82px;--font:"Courier New",Courier,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100vh}
+body{
+  background:radial-gradient(circle at top left,rgba(14,165,233,.14),transparent 34%),radial-gradient(circle at 80% 76%,rgba(245,183,64,.08),transparent 34%),var(--bg);
+  color:var(--text);font-family:var(--font);overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.55;
+  background:linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.20) 50%),linear-gradient(90deg,rgba(255,0,0,.035),rgba(0,255,255,.018),rgba(0,0,255,.035));
+  background-size:100% 3px,3px 100%;
+}
+body.sidebar-collapsed{--sidebar-width:var(--sidebar-closed)}
+body:not(.sidebar-collapsed){--sidebar-width:var(--sidebar-open)}
+a{color:inherit;text-decoration:none}
+.app{display:flex;min-height:100vh}
+.sidebar{
+  position:fixed;inset:0 auto 0 0;width:var(--sidebar-width);background:rgba(3,7,18,.94);
+  border-right:1px solid var(--line);backdrop-filter:blur(18px);z-index:50;transition:width .25s,transform .25s;overflow:hidden;
+}
+.sidebar-header{height:78px;display:flex;align-items:center;gap:14px;padding:0 18px;border-bottom:1px solid var(--line)}
+.toggle-btn{
+  min-width:44px;width:44px;height:44px;border:1px solid var(--line);background:rgba(8,21,38,.78);
+  color:var(--accent);cursor:pointer;font-size:18px;font-family:var(--font)
+}
+.brand{white-space:nowrap;overflow:hidden}
+.brand strong{display:block;color:var(--accent);font-size:13px;letter-spacing:.28em;text-transform:uppercase}
+.brand span{display:block;color:var(--muted);font-size:11px;margin-top:4px;letter-spacing:.16em;text-transform:uppercase}
+body.sidebar-collapsed .brand,body.sidebar-collapsed .nav span,body.sidebar-collapsed .sidebar-footer,body.sidebar-collapsed .sidebar-label{display:none}
+.nav{padding:18px 12px;overflow-y:auto;max-height:calc(100vh - 160px)}
+.nav button,.nav a{
+  width:100%;display:flex;align-items:center;gap:14px;min-height:48px;padding:0 14px;margin-bottom:8px;
+  border:1px solid rgba(125,211,252,.14);background:rgba(8,21,38,.45);color:var(--text);text-decoration:none;
+  white-space:nowrap;font-family:var(--font);cursor:pointer;text-align:left;letter-spacing:.13em;text-transform:uppercase;font-size:12px;
+}
+.nav button:hover,.nav button.active,.nav a:hover{background:rgba(8,80,102,.52);border-color:var(--line-strong);color:var(--gold)}
+.nav i{width:22px;text-align:center;font-style:normal;color:var(--accent)}
+.sidebar-label{color:var(--muted);font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin:12px 10px 10px}
+.sidebar-footer{position:absolute;left:18px;right:18px;bottom:22px;color:var(--muted);font-size:11px;line-height:1.6;letter-spacing:.1em;text-transform:uppercase}
+.main{width:100%;margin-left:var(--sidebar-width);transition:margin-left .25s}
+.mobile-topbar{display:none}
+.content{width:min(1500px,calc(100% - 64px));margin:0 auto;padding:44px 0 90px}
+.top-mini{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;gap:16px}
+.lang-switch{display:flex;gap:10px}
+.lang-switch button,.home-link,.small-btn{
+  border:1px solid var(--line);background:rgba(8,21,38,.55);color:var(--accent);padding:10px 16px;cursor:pointer;
+  font-family:var(--font);letter-spacing:.16em;text-transform:uppercase;font-size:12px;
+}
+.lang-switch button.active,.lang-switch button:hover,.home-link:hover,.small-btn:hover{border-color:var(--line-strong);background:rgba(14,165,233,.13);color:#fff}
+.hero{
+  border:1px solid var(--line);background:radial-gradient(circle at 80% 20%,rgba(0,242,255,.10),transparent 36%),linear-gradient(135deg,rgba(8,21,38,.78),rgba(3,7,18,.82));
+  min-height:250px;padding:42px;display:grid;grid-template-columns:1fr 360px;gap:30px;align-items:center;margin-bottom:24px;overflow:hidden;position:relative
+}
+.eyebrow{color:var(--gold);font-size:12px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(28px,3vw,54px);line-height:1.05;margin:0 0 16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.hero p{max-width:850px;color:#b4c7df;font-size:17px;line-height:1.7;margin:0}
+.onair{position:relative;z-index:2;border:1px solid rgba(34,197,94,.35);background:rgba(34,197,94,.08);padding:20px;text-align:center}
+.onair .dot{width:12px;height:12px;border-radius:50%;display:inline-block;background:var(--green);box-shadow:0 0 18px rgba(34,197,94,.9);margin-right:8px}
+.onair strong{color:var(--green);letter-spacing:.24em;text-transform:uppercase}.onair span{display:block;margin-top:12px;color:var(--muted);font-size:13px}
+.dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat{border:1px solid var(--line);background:var(--panel);padding:16px;text-align:center}
+.stat span{display:block;color:var(--muted);font-size:11px;letter-spacing:.16em;text-transform:uppercase}.stat strong{display:block;margin-top:8px;color:var(--gold);font-size:20px}
+.radio-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+.panel{border:1px solid var(--line);background:var(--panel);padding:24px}
+.panel-title{color:var(--accent);letter-spacing:.22em;text-transform:uppercase;font-size:13px;margin-bottom:18px}
+.player-card{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center}
+.cover{aspect-ratio:1/1;border:1px solid var(--line);background:radial-gradient(circle at 50% 45%,rgba(0,242,255,.16),transparent 42%),linear-gradient(135deg,rgba(14,165,233,.20),rgba(3,7,18,.9));background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:46px}
+.request-badge{display:inline-block;color:var(--gold);border:1px solid rgba(245,183,64,.28);background:rgba(245,183,64,.08);padding:7px 10px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.track-meta h2{margin:0 0 10px;font-size:clamp(26px,3vw,42px);line-height:1.12}.track-meta p{color:var(--muted);line-height:1.65;margin:0 0 18px}
+audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.schedule-list{display:grid;gap:10px}.schedule-item{border:1px solid rgba(125,211,252,.14);background:rgba(0,0,0,.18);padding:14px;display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:start;cursor:pointer}
+.schedule-item.active{border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.06)}
+.schedule-item time{color:var(--gold);font-weight:bold}.schedule-item strong{display:block;color:var(--text);margin-bottom:5px}.schedule-item span{color:var(--muted);font-size:13px;line-height:1.45}
+.platform-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+.platform{border:1px solid var(--line);background:rgba(8,21,38,.45);padding:18px;text-align:center;transition:.2s}.platform:hover{border-color:var(--line-strong);background:rgba(8,80,102,.35);transform:translateY(-3px)}
+.platform strong{display:block;color:var(--gold);margin-bottom:8px;letter-spacing:.12em}.platform span{color:var(--muted);font-size:13px}
+.message-box{margin-top:24px;border:1px solid rgba(245,183,64,.24);background:rgba(245,183,64,.06);padding:22px}.message-box strong{color:var(--gold);letter-spacing:.16em;text-transform:uppercase;font-size:12px}.message-box p{color:#dbeafe;line-height:1.7;margin:12px 0 0}
+.loading,.error{border:1px solid var(--line);background:rgba(8,21,38,.55);padding:20px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin-bottom:18px}.error{border-color:rgba(251,113,133,.35);color:#fecdd3}
+@media(max-width:1100px){.hero,.radio-grid,.player-card{grid-template-columns:1fr}.dashboard,.platform-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){body{--sidebar-width:var(--sidebar-open)}.sidebar{transform:translateX(-100%);width:315px}body.mobile-menu-open .sidebar{transform:translateX(0)}.main{margin-left:0}.mobile-topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);background:rgba(3,7,18,.9);backdrop-filter:blur(18px);position:sticky;top:0;z-index:40}}
+@media(max-width:700px){.content{width:calc(100% - 28px)}.dashboard,.platform-row{grid-template-columns:1fr}.hero,.panel{padding:22px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="sidebar-header"><button class="toggle-btn" onclick="toggleSidebar()">☰</button><div class="brand"><strong>Horizon 4282</strong><span data-pt="Rádio Luz e Louvor" data-en="Light & Praise Radio">Rádio Luz e Louvor</span></div></div>
+  <nav class="nav">
+    <a href="/"><i>⌂</i><span data-pt="Início" data-en="Home">Início</span></a>
+    <div class="sidebar-label" data-pt="Rádio" data-en="Radio">Rádio</div>
+    <button class="active" onclick="scrollToBlock('playerBlock')"><i>♫</i><span data-pt="Agora Tocando" data-en="Now Playing">Agora Tocando</span></button>
+    <button onclick="scrollToBlock('scheduleBlock')"><i>◎</i><span data-pt="Programação" data-en="Schedule">Programação</span></button>
+    <button onclick="scrollToBlock('messageBlock')"><i>✦</i><span data-pt="Mensagem do Dia" data-en="Daily Message">Mensagem do Dia</span></button>
+    <button onclick="scrollToBlock('platformsBlock')"><i>▣</i><span data-pt="Plataformas" data-en="Platforms">Plataformas</span></button>
+    <a href="/luz-e-louvor.html"><i>↗</i><span data-pt="Álbuns" data-en="Albums">Álbuns</span></a>
+  </nav>
+  <div class="sidebar-footer">Studio 4282<br>Music · Prayer · Worship</div>
+</aside>
+<main class="main">
+<header class="mobile-topbar"><button class="toggle-btn" onclick="toggleSidebar()">☰</button><div style="text-align:right"><strong style="display:block;font-size:14px;letter-spacing:.08em;text-transform:uppercase">Horizon 4282</strong><span style="color:var(--muted);font-size:12px">Rádio Luz e Louvor</span></div></header>
+<section class="content">
+  <div class="top-mini"><div class="lang-switch"><button id="ptBtn" onclick="setLanguage('pt')">PT</button><button id="enBtn" onclick="setLanguage('en')">EN</button></div><a class="home-link" href="/" data-pt="Início" data-en="Home">Início</a></div>
+  <div id="loadState" class="loading">Loading radio JSON...</div>
+
+
+      <section class="hero"><div><div class="eyebrow" id="heroEyebrow">Rádio Luz e Louvor</div><h1 id="heroTitle">Rádio Luz e Louvor</h1><p id="heroText">Music, prayer, worship and hope. A devotional station inside Horizon 4282.</p></div><div class="onair"><strong><span class="dot"></span>ON AIR</strong><span id="onAirText">HD Audio · 24h</span></div></section>
+
+  <section class="radio-grid">
+    <div class="panel" id="playerBlock"><div class="panel-title" data-pt="Agora Tocando" data-en="Now Playing">Agora Tocando</div><div class="player-card"><div class="cover" id="coverBox">♫</div><div class="track-meta"><div class="request-badge" id="playModeText">Schedule</div><h2 id="nowTitle">Loading...</h2><p id="nowDescription">Loading...</p><audio id="radioPlayer" controls preload="metadata"></audio><div class="player-actions"><button class="small-btn" onclick="playRadio()" data-pt="Tocar" data-en="Play">Tocar</button><button class="small-btn" onclick="pauseRadio()" data-pt="Pausar" data-en="Pause">Pausar</button><button class="small-btn" onclick="loadCurrentSchedule()" data-pt="Programação Atual" data-en="Current Schedule">Programação Atual</button></div></div></div></div>
+    <div class="panel" id="scheduleBlock"><div class="panel-title" data-pt="Programação" data-en="Schedule">Programação</div><div class="schedule-list" id="scheduleList"></div></div>
+  </section>
+
+
+  <section class="dashboard">
+    <div class="stat"><span data-pt="Status" data-en="Status">Status</span><strong id="statusText">ON AIR</strong></div>
+    <div class="stat"><span data-pt="Origem" data-en="Source">Origem</span><strong id="sourceText">Schedule</strong></div>
+    <div class="stat"><span data-pt="Idioma" data-en="Language">Idioma</span><strong id="languageText">PT-BR</strong></div>
+    <div class="stat"><span data-pt="Qualidade" data-en="Quality">Qualidade</span><strong id="qualityText">HD</strong></div>
+  </section>
+
+  <section class="panel message-box" id="messageBlock"><strong id="messageTitle">Mensagem do Dia</strong><p id="messageText">Permanecei em Mim, e Eu permanecerei em vós.</p></section>
+  <section class="platform-row" id="platformsBlock"></section>
+</section>
+</main>
+</div>
+<script>
+let currentPlaylist = [];
+let currentTrackIndex = 0;
+let currentLang=localStorage.getItem("horizonLanguage")||"pt";
+let radioData=null,activeTrack=null,activeSource="schedule";
+const JSON_URL="https://horizon4282.com.br/data/radio-luz-louvor.json";
+const fallbackData={
+ page:{pt:{eyebrow:"Rádio Luz e Louvor",title:"Rádio Luz e Louvor",text:"Música, oração, Palavra e esperança. Uma estação devocional dentro do Horizon 4282.",onAir:"Áudio HD · 24h"},en:{eyebrow:"Light & Praise Radio",title:"Light & Praise Radio",text:"Music, prayer, Word and hope. A devotional station inside Horizon 4282.",onAir:"HD Audio · 24h"}},
+ defaultCover:"https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png",
+ tracks:{"recebe-hoje-o-meu-sim":{pt:{title:"Recebe Hoje o Meu Sim",description:"Faixa solicitada do Ministério Luz e Louvor."},en:{title:"Recebe Hoje o Meu Sim",description:"Requested track by Ministério Luz e Louvor."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3",cover:""},"digno-de-louvor":{pt:{title:"Digno de Louvor",description:"Faixa solicitada do Ministério Luz e Louvor."},en:{title:"Digno de Louvor",description:"Requested track by Ministério Luz e Louvor."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/digno-de-louvor.mp3",cover:""}},
+ schedule:[{hour:0,pt:{title:"Madrugada de Adoração",description:"Louvores suaves e instrumentais para oração."},en:{title:"Dawn Worship",description:"Soft worship and instrumental prayer music."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-madrugada.mp3",cover:""},{hour:6,pt:{title:"Manhã de Louvor",description:"Canções para começar o dia com fé e esperança."},en:{title:"Morning Praise",description:"Songs to begin the day with faith and hope."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-manha.mp3",cover:""},{hour:12,pt:{title:"Hora da Palavra",description:"Música, Palavra e reflexão para o meio do dia."},en:{title:"Hour of the Word",description:"Music, Word and reflection for midday."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-palavra.mp3",cover:""},{hour:18,pt:{title:"Noite de Esperança",description:"Louvores para oração, descanso e confiança em Deus."},en:{title:"Night of Hope",description:"Worship for prayer, rest and trust in God."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-noite.mp3",cover:""}],
+ message:{pt:{title:"Mensagem do Dia",text:"Permanecei em Mim, e Eu permanecerei em vós. — João 15,4"},en:{title:"Daily Message",text:"Remain in Me, and I will remain in you. — John 15:4"}},
+ platforms:[{title:"Spotify",text:"Streaming",url:"#"},{title:"YouTube Music",text:"Canal oficial",url:"#"},{title:"Deezer",text:"Álbuns oficiais",url:"#"},{title:"Apple Music",text:"Ouça também",url:"#"}]
+};
+function toggleSidebar(){if(window.innerWidth<=900){document.body.classList.toggle("mobile-menu-open")}else{document.body.classList.toggle("sidebar-collapsed")}}
+function setLanguage(lang){currentLang=lang;document.documentElement.lang=lang==="pt"?"pt-BR":"en";document.getElementById("ptBtn").classList.toggle("active",lang==="pt");document.getElementById("enBtn").classList.toggle("active",lang==="en");document.querySelectorAll("[data-pt][data-en]").forEach(el=>{el.textContent=el.dataset[lang]});localStorage.setItem("horizonLanguage",lang);if(radioData){renderStaticContent();renderSchedule();renderPlatforms();if(activeTrack)renderNowPlaying(activeTrack,activeSource)}}
+async function loadRadioJson(){const state=document.getElementById("loadState");state.className="loading";state.textContent="Loading radio JSON...";try{const response=await fetch(JSON_URL);if(!response.ok)throw new Error("JSON not found");radioData=normalizeData(await response.json());state.style.display="none"}catch(error){radioData=normalizeData(fallbackData);state.className="error";state.innerHTML="JSON externo não carregado. Usando fallback interno.<br>Arquivo esperado: "+JSON_URL}renderStaticContent();renderSchedule();renderPlatforms();startRadioFlow()}
+function normalizeData(data){return{page:data.page||fallbackData.page,defaultCover:data.defaultCover||fallbackData.defaultCover,tracks:data.tracks||fallbackData.tracks,schedule:data.schedule||fallbackData.schedule,message:data.message||fallbackData.message,platforms:data.platforms||fallbackData.platforms}}
+function renderStaticContent(){const page=radioData.page[currentLang]||radioData.page.pt||radioData.page.en;document.getElementById("heroEyebrow").textContent=page.eyebrow;document.getElementById("heroTitle").textContent=page.title;document.getElementById("heroText").textContent=page.text;document.getElementById("onAirText").textContent=page.onAir||"HD Audio · 24h";document.getElementById("languageText").textContent=currentLang==="pt"?"PT-BR":"EN";const message=radioData.message[currentLang]||radioData.message.pt||radioData.message.en;document.getElementById("messageTitle").textContent=message.title;document.getElementById("messageText").textContent=message.text}
+function renderSchedule(){const list=document.getElementById("scheduleList");list.innerHTML="";const currentSchedule=getCurrentSchedule();radioData.schedule.slice().sort((a,b)=>a.hour-b.hour).forEach(item=>{const localized=item[currentLang]||item.pt||item.en;const article=document.createElement("article");article.className="schedule-item";if(currentSchedule&&currentSchedule.hour===item.hour)article.classList.add("active");article.innerHTML=`<time>${String(item.hour).padStart(2,"0")}:00</time><div><strong>${localized.title}</strong><span>${localized.description||""}</span></div>`;article.onclick=()=>{activeSource="schedule";activeTrack=item;renderNowPlaying(item,"schedule")};list.appendChild(article)})}
+function renderPlatforms(){const row=document.getElementById("platformsBlock");row.innerHTML="";radioData.platforms.forEach(platform=>{const a=document.createElement("a");a.className="platform";a.href=platform.url||"#";a.target="_blank";a.innerHTML=`<strong>${platform.title}</strong><span>${platform.text||""}</span>`;row.appendChild(a)})}
+function startRadioFlow(){const params=new URLSearchParams(window.location.search);const requestedTrackId=params.get("track");if(requestedTrackId&&radioData.tracks[requestedTrackId]){activeSource="request";activeTrack=radioData.tracks[requestedTrackId];renderNowPlaying(activeTrack,"request")}else{loadCurrentSchedule()}}
+function loadCurrentSchedule(){activeSource="schedule";activeTrack=getCurrentSchedule();renderNowPlaying(activeTrack,"schedule")}
+function getCurrentSchedule(){const hour=new Date().getHours();const sorted=radioData.schedule.slice().sort((a,b)=>a.hour-b.hour);let current=sorted[0];for(const item of sorted){if(hour>=item.hour)current=item}return current}
+
+function renderNowPlaying(item, source){
+  if(!item) return;
+
+  activeTrack = item;
+  activeSource = source;
+
+  const localized = item[currentLang] || item.pt || item.en || item;
+  const player = document.getElementById("radioPlayer");
+
+  document.getElementById("sourceText").textContent =
+    source === "request" ? "Request" : "Schedule";
+
+  document.getElementById("playModeText").textContent =
+    source === "request"
+    ? (currentLang === "pt" ? "Faixa solicitada" : "Requested track")
+    : (currentLang === "pt" ? "Programação atual" : "Current schedule");
+
+  if(item.playlist && item.playlist.length){
+    currentPlaylist = item.playlist;
+    currentTrackIndex = 0;
+    loadPlaylistTrack(currentTrackIndex);
+    return;
+  }
+
+  function loadPlaylistTrack(index){
+  const track = currentPlaylist[index];
+  const player = document.getElementById("radioPlayer");
+
+  if(!track) return;
+
+  document.getElementById("nowTitle").textContent =
+    track.title || "Rádio Luz e Louvor";
+
+  document.getElementById("nowDescription").textContent =
+    currentLang === "pt"
+    ? "Sequência da programação atual."
+    : "Current schedule sequence.";
+
+  player.src = track.audio;
+  player.load();
+}
+
+  currentPlaylist = [];
+  currentTrackIndex = 0;
+
+  document.getElementById("nowTitle").textContent =
+    localized.title || "Rádio Luz e Louvor";
+
+  document.getElementById("nowDescription").textContent =
+    localized.description || "";
+
+  player.src = item.audio || "";
+  player.load();
+}
+
+function playRadio(){document.getElementById("radioPlayer").play().catch(()=>{})}
+function pauseRadio(){document.getElementById("radioPlayer").pause()}
+
+document.getElementById("radioPlayer").addEventListener("ended",()=>{
+  if(currentPlaylist.length){
+    currentTrackIndex++;
+
+    if(currentTrackIndex >= currentPlaylist.length){
+      currentTrackIndex = 0;
+    }
+
+    loadPlaylistTrack(currentTrackIndex);
+    playRadio();
+    return;
+  }
+
+  if(activeSource === "request"){
+    loadCurrentSchedule();
+    setTimeout(()=>playRadio(),400);
+  }
+});
+
+function scrollToBlock(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});if(window.innerWidth<=900)document.body.classList.remove("mobile-menu-open")}
+window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.classList.add("sidebar-collapsed")})
+document.addEventListener("DOMContentLoaded",()=>{setLanguage(currentLang);loadRadioJson()})
+</script>
+</body>
+</html>
