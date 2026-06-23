@@ -74,20 +74,18 @@
 
 </body>
     <script>
-        // Criando um elemento de áudio em memória
-const audioTeste = new Audio("https://songs.horizon4282.com.br");
-
-// Força o navegador a buscar o arquivo via Fetch para validar o CORS
-fetch(audioTeste.src, { method: 'GET' })
+ // Testando com um arquivo real que existe no seu bucket para o Backblaze responder corretamente
+fetch("https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3", { method: 'GET' })
   .then(response => {
     if (response.ok) {
-      console.log("✅ SUCESSO: CORS e CNAME funcionando!");
-      // Tenta reproduzir o áudio
-      audioTeste.play().then(() => console.log("🔊 ÁUDIO TOCANDO: O navegador conseguiu reproduzir com sucesso."));
+      console.log("✅ SUCESSO: CORS e CNAME funcionando perfeitamente com um arquivo real!");
+    } else {
+      console.log("⚠️ O link respondeu, mas o arquivo não foi encontrado (Erro " + response.status + ")");
     }
   })
   .catch(error => {
-    console.error("❌ ERRO: Ocorreu um problema na requisição.", error);
+    console.error("❌ ERRO de conexão:", error);
   });
+
     </script>
 </html>
