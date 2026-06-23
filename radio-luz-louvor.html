@@ -161,8 +161,37 @@ function renderSchedule(){const list=document.getElementById("scheduleList");lis
 function renderPlatforms(){const row=document.getElementById("platformsBlock");row.innerHTML="";radioData.platforms.forEach(platform=>{const a=document.createElement("a");a.className="platform";a.href=platform.url||"#";a.target="_blank";a.innerHTML=`<strong>${platform.title}</strong><span>${platform.text||""}</span>`;row.appendChild(a)})}
 function startRadioFlow(){const params=new URLSearchParams(window.location.search);const requestedTrackId=params.get("track");if(requestedTrackId&&radioData.tracks[requestedTrackId]){activeSource="request";activeTrack=radioData.tracks[requestedTrackId];renderNowPlaying(activeTrack,"request")}else{loadCurrentSchedule()}}
 function loadCurrentSchedule(){activeSource="schedule";activeTrack=getCurrentSchedule();renderNowPlaying(activeTrack,"schedule")}
-function getCurrentSchedule(){const hour=new Date().getHours();const sorted=radioData.schedule.slice().sort((a,b)=>a.hour-b.hour);let current=sorted[0];for(const item of sorted){if(hour>=item.hour)current=item}return current}
 
+function getRadioHour() {
+  const now = new Date();
+
+  const hourBR = new Intl.DateTimeFormat("pt-BR", {
+    timeZone: "America/Sao_Paulo",
+    hour: "2-digit",
+    hour12: false
+  }).format(now);
+
+  return Number(hourBR);
+}
+
+function getCurrentSchedule() {
+  const hour = getRadioHour();
+
+  const sorted = radioData.schedule
+    .slice()
+    .sort((a, b) => a.hour - b.hour);
+
+  let current = sorted[0];
+
+  for (const item of sorted) {
+    if (hour >= item.hour) {
+      current = item;
+    }
+  }
+
+  return current;
+}
+  
 function renderNowPlaying(item, source){
   if(!item) return;
 
@@ -244,6 +273,19 @@ document.getElementById("radioPlayer").addEventListener("ended",()=>{
 function scrollToBlock(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});if(window.innerWidth<=900)document.body.classList.remove("mobile-menu-open")}
 window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.classList.add("sidebar-collapsed")})
 document.addEventListener("DOMContentLoaded",()=>{setLanguage(currentLang);loadRadioJson()})
+
+setInterval(() => {
+  if (!radioData || activeSource === "request") return;
+
+  const current = getCurrentSchedule();
+
+  if (activeTrack && current.hour !== activeTrack.hour) {
+    activeTrack = current;
+    renderSchedule();
+    renderNowPlaying(current, "schedule");
+    playRadio();
+  }
+}, 60000);
 </script>
 </body>
 </html>
