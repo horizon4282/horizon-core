@@ -73,4 +73,21 @@
     </div>
 
 </body>
+    <script>
+        // Criando um elemento de áudio em memória
+const audioTeste = new Audio("https://horizon4282.com.br");
+
+// Força o navegador a buscar o arquivo via Fetch para validar o CORS
+fetch(audioTeste.src, { method: 'GET' })
+  .then(response => {
+    if (response.ok) {
+      console.log("✅ SUCESSO: CORS e CNAME funcionando!");
+      // Tenta reproduzir o áudio
+      audioTeste.play().then(() => console.log("🔊 ÁUDIO TOCANDO: O navegador conseguiu reproduzir com sucesso."));
+    }
+  })
+  .catch(error => {
+    console.error("❌ ERRO: Ocorreu um problema na requisição.", error);
+  });
+    </script>
 </html>
