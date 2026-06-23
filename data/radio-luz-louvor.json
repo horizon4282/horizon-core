@@ -1,31 +1,60 @@
 {
   "schedule": [
     {
-      "hour": 22,
+      "hour": 15,
       "pt": {
-        "title": "Noite de Louvor",
-        "description": "Sequência de músicas para teste da rádio."
+        "title": "Tarde da Esperança",
+        "description": "Um momento para renovar sua fé."
       },
       "en": {
-        "title": "Night Praise",
-        "description": "Music sequence test for the radio."
+        "title": "Hope Afternoon",
+        "description": "A moment to renew your faith."
       },
       "playlist": [
         {
-          "title": "Música 01",
-          "audio": "https://f005.backblazeb2.com/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"
+          "title": "Recebe Hoje o meu Sim",
+          "audio": "https://songs.horizon4282.com.br/file/songs/2-Recebe-hoje-o-meu-SIM.mp3"
         },
         {
-          "title": "Música 02",
-          "audio": "https://f005.backblazeb2.com/file/horizon4282/songs/4-a-porta-aberta.mp3"
+          "title": "A Porta Aberta",
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"
         },
         {
-          "title": "Música 03",
-          "audio": "https://f005.backblazeb2.com/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3"
+          "title": "Saiba que Sou Teu Deus",
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3"
         },
         {
-          "title": "Música 04",
-          "audio": "https://f005.backblazeb2.com/file/horizon4282/songs/7-Mae-de-deus-bendita.mp3"
+          "title": "Mãe de Deus Bendita",
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Mae-de-deus-bendita.mp3"
+        }
+      ]
+    },
+    {
+      "hour": 18,
+      "pt": {
+        "title": "Entardecer do Senhor",
+        "description": "Um momento para renovar sua fé."
+      },
+      "en": {
+        "title": "Love Evening",
+        "description": "A moment to renew your faith."
+      },
+      "playlist": [
+        {
+          "title": "São Miguel Arcanjo",
+          "audio": "https://songs.horizon4282.com.br/file/songs/7-sao-Miguel-Arcanjo.mp3"
+        },
+        {
+          "title": "Cristo Ressuscitado",
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"
+        },
+        {
+          "title": "Triunfante Vem Jesus",
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-triunfante-vem-jesus.mp3"
+        },
+        {
+          "title": "Sei que Cuidas de Mim",
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"
         }
       ]
     }
