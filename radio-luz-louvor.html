@@ -187,6 +187,20 @@ function renderNowPlaying(item, source){
     return;
   }
 
+
+  currentPlaylist = [];
+  currentTrackIndex = 0;
+
+  document.getElementById("nowTitle").textContent =
+    localized.title || "Rádio Luz e Louvor";
+
+  document.getElementById("nowDescription").textContent =
+    localized.description || "";
+
+  player.src = item.audio || "";
+  player.load();
+}
+
   function loadPlaylistTrack(index){
   const track = currentPlaylist[index];
   const player = document.getElementById("radioPlayer");
@@ -202,19 +216,6 @@ function renderNowPlaying(item, source){
     : "Current schedule sequence.";
 
   player.src = track.audio;
-  player.load();
-}
-
-  currentPlaylist = [];
-  currentTrackIndex = 0;
-
-  document.getElementById("nowTitle").textContent =
-    localized.title || "Rádio Luz e Louvor";
-
-  document.getElementById("nowDescription").textContent =
-    localized.description || "";
-
-  player.src = item.audio || "";
   player.load();
 }
 
