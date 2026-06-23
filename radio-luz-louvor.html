@@ -277,7 +277,13 @@ document.addEventListener("DOMContentLoaded",()=>{setLanguage(currentLang);loadR
 setInterval(() => {
   if (!radioData || activeSource === "request") return;
 
-  renderSchedule();
+  const current = getCurrentSchedule();
+
+  if (current && current.hour !== activeScheduleHour) {
+    renderSchedule();
+    renderNowPlaying(current, "schedule");
+    playRadio();
+  }
 }, 60000);
   
 </script>
