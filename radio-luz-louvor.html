@@ -139,6 +139,8 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
 </main>
 </div>
 <script>
+
+let activeScheduleHour = null;
 let currentPlaylist = [];
 let currentTrackIndex = 0;
 let currentLang=localStorage.getItem("horizonLanguage")||"pt";
@@ -198,7 +200,12 @@ function renderNowPlaying(item, source){
   activeTrack = item;
   activeSource = source;
 
+  if (source === "schedule" && item.hour !== undefined) {
+  activeScheduleHour = item.hour;
+}
+
   const localized = item[currentLang] || item.pt || item.en || item;
+ 
   const player = document.getElementById("radioPlayer");
 
   document.getElementById("sourceText").textContent =
