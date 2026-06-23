@@ -216,12 +216,16 @@ function renderNowPlaying(item, source){
     ? (currentLang === "pt" ? "Faixa solicitada" : "Requested track")
     : (currentLang === "pt" ? "Programação atual" : "Current schedule");
 
-  if(item.playlist && item.playlist.length){
-    currentPlaylist = item.playlist;
-    currentTrackIndex = 0;
-    loadPlaylistTrack(currentTrackIndex);
-    return;
-  }
+if(item.playlist && item.playlist.length){
+  currentPlaylist = item.playlist;
+
+  const synced = getSyncedPlaylistPosition(item);
+
+  currentTrackIndex = synced.index;
+  loadPlaylistTrack(currentTrackIndex, synced.offset);
+
+  return;
+}
 
 
   currentPlaylist = [];
@@ -237,22 +241,83 @@ function renderNowPlaying(item, source){
   player.load();
 }
 
-  function loadPlaylistTrack(index){
+  function getRadioTimeParts() {
+  const parts = new Intl.DateTimeFormat("pt-BR", {
+    timeZone: "America/Sao_Paulo",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  }).formatToParts(new Date());
+
+  return {
+    hour: Number(parts.find(p => p.type === "hour").value),
+    minute: Number(parts.find(p => p.type === "minute").value),
+    second: Number(parts.find(p => p.type === "second").value)
+  };
+}
+
+  function getSyncedPlaylistPosition(scheduleItem) {
+  const now = getRadioTimeParts();
+
+  const secondsNow = (now.hour * 3600) + (now.minute * 60) + now.second;
+  const blockStart = scheduleItem.hour * 3600;
+
+  let elapsed = secondsNow - blockStart;
+
+  if (elapsed < 0) {
+    elapsed += 24 * 3600;
+  }
+
+  const playlist = scheduleItem.playlist || [];
+  const totalDuration = playlist.reduce((sum, track) => sum + (track.duration || 0), 0);
+
+  if (!playlist.length || totalDuration === 0) {
+    return { index: 0, offset: 0 };
+  }
+
+  elapsed = elapsed % totalDuration;
+
+  let accumulated = 0;
+
+  for (let i = 0; i < playlist.length; i++) {
+    const duration = playlist[i].duration || 0;
+
+    if (elapsed < accumulated + duration) {
+      return {
+        index: i,
+        offset: elapsed - accumulated
+      };
+    }
+
+    accumulated += duration;
+  }
+
+  return { index: 0, offset: 0 };
+}
+  
+function loadPlaylistTrack(index, offset = 0) {
   const track = currentPlaylist[index];
   const player = document.getElementById("radioPlayer");
 
-  if(!track) return;
+  if (!track) return;
 
   document.getElementById("nowTitle").textContent =
     track.title || "Rádio Luz e Louvor";
 
   document.getElementById("nowDescription").textContent =
     currentLang === "pt"
-    ? "Sequência da programação atual."
-    : "Current schedule sequence.";
+      ? "Transmissão sincronizada da programação atual."
+      : "Synced broadcast from the current schedule.";
 
   player.src = track.audio;
   player.load();
+
+  player.onloadedmetadata = () => {
+    if (offset > 0 && offset < player.duration) {
+      player.currentTime = offset;
+    }
+  };
 }
 
 function playRadio(){document.getElementById("radioPlayer").play().catch(()=>{})}
