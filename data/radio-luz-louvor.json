@@ -1,0 +1,33 @@
+{
+  "schedule": [
+    {
+      "hour": 21,
+      "pt": {
+        "title": "Noite de Louvor",
+        "description": "Sequência de músicas para teste da rádio."
+      },
+      "en": {
+        "title": "Night Praise",
+        "description": "Music sequence test for the radio."
+      },
+      "playlist": [
+        {
+          "title": "Música 01",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"
+        },
+        {
+          "title": "Música 02",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/songs/4-a-porta-aberta.mp3"
+        },
+        {
+          "title": "Música 03",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3"
+        },
+        {
+          "title": "Música 04",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/songs/7-Mae-de-deus-bendita.mp3"
+        }
+      ]
+    }
+  ]
+}
