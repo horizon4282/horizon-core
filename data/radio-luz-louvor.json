@@ -1,7 +1,7 @@
 {
   "schedule": [
     {
-      "hour": 20,
+      "hour": 10,
       "pt": {
         "title": "Tarde da Esperança",
         "description": "Um momento para renovar sua fé."
@@ -54,7 +54,7 @@
       ] 
     },
     {
-      "hour": 21,
+      "hour": 11,
       "pt": {
         "title": "Entardecer do Senhor",
         "description": "Um momento para renovar sua fé."
