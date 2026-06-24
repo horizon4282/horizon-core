@@ -88,7 +88,8 @@ h1{font-size:clamp(28px,3vw,54px);line-height:1.05;margin:0 0 16px;font-weight:7
 .request-badge{display:inline-block;color:var(--gold);border:1px solid rgba(245,183,64,.28);background:rgba(245,183,64,.08);padding:7px 10px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
 .track-meta h2{margin:0 0 10px;font-size:clamp(26px,3vw,42px);line-height:1.12}.track-meta p{color:var(--muted);line-height:1.65;margin:0 0 18px}
 audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.schedule-list{display:grid;gap:10px}.schedule-item{border:1px solid rgba(125,211,252,.14);background:rgba(0,0,0,.18);padding:14px;display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:start;cursor:pointer}
+.schedule-list{display:grid;gap:10px}.schedule-item{border:1px solid rgba(125,211,252,.14);background:rgba(0,0,0,.18);padding:14px;display:grid;
+            grid-template-columns:72px 1fr;gap:12px;align-items:start;cursor:default}
 .schedule-item.active{border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.06)}
 .schedule-item time{color:var(--gold);font-weight:bold}.schedule-item strong{display:block;color:var(--text);margin-bottom:5px}.schedule-item span{color:var(--muted);font-size:13px;line-height:1.45}
 
@@ -164,7 +165,25 @@ function setLanguage(lang){currentLang=lang;document.documentElement.lang=lang==
 async function loadRadioJson(){const state=document.getElementById("loadState");state.className="loading";state.textContent="Loading radio JSON...";try{const response=await fetch(JSON_URL);if(!response.ok)throw new Error("JSON not found");radioData=normalizeData(await response.json());state.style.display="none"}catch(error){radioData=normalizeData(fallbackData);state.className="error";state.innerHTML="JSON externo não carregado. Usando fallback interno.<br>Arquivo esperado: "+JSON_URL}renderStaticContent();renderSchedule();renderPlatforms();startRadioFlow()}
 function normalizeData(data){return{page:data.page||fallbackData.page,defaultCover:data.defaultCover||fallbackData.defaultCover,tracks:data.tracks||fallbackData.tracks,schedule:data.schedule||fallbackData.schedule,message:data.message||fallbackData.message,platforms:data.platforms||fallbackData.platforms}}
 function renderStaticContent(){const page=radioData.page[currentLang]||radioData.page.pt||radioData.page.en;document.getElementById("heroEyebrow").textContent=page.eyebrow;document.getElementById("heroTitle").textContent=page.title;document.getElementById("heroText").textContent=page.text;document.getElementById("onAirText").textContent=page.onAir||"HD Audio · 24h";document.getElementById("languageText").textContent=currentLang==="pt"?"PT-BR":"EN";const message=radioData.message[currentLang]||radioData.message.pt||radioData.message.en;document.getElementById("messageTitle").textContent=message.title;document.getElementById("messageText").textContent=message.text}
-function renderSchedule(){const list=document.getElementById("scheduleList");list.innerHTML="";const currentSchedule=getCurrentSchedule();radioData.schedule.slice().sort((a,b)=>a.hour-b.hour).forEach(item=>{const localized=item[currentLang]||item.pt||item.en;const article=document.createElement("article");article.className="schedule-item";if(currentSchedule&&currentSchedule.hour===item.hour)article.classList.add("active");article.innerHTML=`<time>${String(item.hour).padStart(2,"0")}:00</time><div><strong>${localized.title}</strong><span>${localized.description||""}</span></div>`;article.onclick=()=>{activeSource="schedule";activeTrack=item;renderNowPlaying(item,"schedule")};list.appendChild(article)})}
+
+function renderSchedule(){
+  const list=document.getElementById("scheduleList");list.innerHTML="";
+  const currentSchedule=getCurrentSchedule();
+  radioData.schedule.slice().sort((a,b)=>a.hour-b.hour).forEach(item=>{
+    const localized=item[currentLang]||item.pt||item.en;const article=document.createElement("article");
+            article.className="schedule-item";
+            if(currentSchedule&&currentSchedule.hour===item.hour)article.classList.add("active");
+            article.innerHTML=
+            `<time>${String(item.hour).padStart(2,"0")}:00</time>
+            <div><strong>${localized.title}</strong><span>${localized.description||""}</span></div>`;
+            
+           // article.onclick=()=>{
+               // activeSource="schedule";activeTrack=item;renderNowPlaying(item,"schedule")
+              //  };
+
+            list.appendChild(article)
+                })}
+
 function renderPlatforms(){const row=document.getElementById("platformsBlock");row.innerHTML="";radioData.platforms.forEach(platform=>{const a=document.createElement("a");a.className="platform";a.href=platform.url||"#";a.target="_blank";a.innerHTML=`<strong>${platform.title}</strong><span>${platform.text||""}</span>`;row.appendChild(a)})}
 function startRadioFlow(){const params=new URLSearchParams(window.location.search);const requestedTrackId=params.get("track");if(requestedTrackId&&radioData.tracks[requestedTrackId]){activeSource="request";activeTrack=radioData.tracks[requestedTrackId];renderNowPlaying(activeTrack,"request")}else{loadCurrentSchedule()}}
 function loadCurrentSchedule(){activeSource="schedule";activeTrack=getCurrentSchedule();renderNowPlaying(activeTrack,"schedule")}
@@ -227,7 +246,13 @@ if(item.playlist && item.playlist.length){
   const synced = getSyncedPlaylistPosition(item);
 
   currentTrackIndex = synced.index;
-  loadPlaylistTrack(currentTrackIndex, synced.offset);
+  const synced = getSyncedPlaylistPosition(item);
+
+currentTrackIndex = synced.index;
+loadPlaylistTrack(
+  currentTrackIndex,
+  synced.offset
+);
 
   return;
 }
@@ -328,11 +353,22 @@ function loadPlaylistTrack(index, offset = 0) {
 function playRadio(){document.getElementById("radioPlayer").play().catch(()=>{})}
 function pauseRadio(){document.getElementById("radioPlayer").pause()}
 
-document.getElementById("radioPlayer").addEventListener("ended",()=>{
-  if(currentPlaylist.length){
+document.getElementById("radioPlayer").addEventListener("ended", () => {
+  if (activeSource === "schedule") {
+    const currentSchedule = getCurrentSchedule();
+
+    if (currentSchedule && currentSchedule.hour !== activeScheduleHour) {
+      renderSchedule();
+      renderNowPlaying(currentSchedule, "schedule");
+      playRadio();
+      return;
+    }
+  }
+
+  if (currentPlaylist.length) {
     currentTrackIndex++;
 
-    if(currentTrackIndex >= currentPlaylist.length){
+    if (currentTrackIndex >= currentPlaylist.length) {
       currentTrackIndex = 0;
     }
 
@@ -341,9 +377,9 @@ document.getElementById("radioPlayer").addEventListener("ended",()=>{
     return;
   }
 
-  if(activeSource === "request"){
+  if (activeSource === "request") {
     loadCurrentSchedule();
-    setTimeout(()=>playRadio(),400);
+    setTimeout(() => playRadio(), 400);
   }
 });
 
@@ -354,13 +390,9 @@ document.addEventListener("DOMContentLoaded",()=>{setLanguage(currentLang);loadR
 setInterval(() => {
   if (!radioData || activeSource === "request") return;
 
-  const current = getCurrentSchedule();
-
-  if (current && current.hour !== activeScheduleHour) {
-    renderSchedule();
-    renderNowPlaying(current, "schedule");
-    playRadio();
-  }
+  // Apenas atualiza o destaque visual da programação.
+  // Não troca o áudio enquanto a música atual estiver tocando.
+  renderSchedule();
 }, 60000);
   
 </script>
