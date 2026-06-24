@@ -1,7 +1,7 @@
 {
   "schedule": [
     {
-      "hour": 15,
+      "hour": 0,
       "pt": {
         "title": "Meia-Noite com Deus",
         "description": "Um momento de paz, oração e confiança na presença de Deus."
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "hour": 16,
+      "hour": 1,
       "pt": {
         "title": "Vigília de Fé",
         "description": "Um tempo de oração e esperança durante a madrugada."
@@ -249,7 +249,7 @@
       ]
     },
     {
-      "hour": 0,
+      "hour": 15,
       "pt": {
         "title": "Hora da Misericórdia",
         "description": "Um momento de oração e confiança na misericórdia de Jesus."
@@ -263,11 +263,25 @@
           "title": "São Miguel Arcanjo",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
+        },
+           "title": "Maria Cheia de Luz",
+          "duration": 274,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-maria-cheia-de-luz.mp3"
+        },
+        {
+          "title": "Santa Faustina",
+          "duration": 240,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
+        },
+  {
+          "title": "Mãe de Deus Bendita",
+          "duration": 194,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Mae-de-deus-bendita.mp3"
         }
       ]
     },
     {
-      "hour": 1,
+      "hour": 16,
       "pt": {
         "title": "Tarde com Jesus",
         "description": "Um momento especial para renovar a fé e descansar o coração em Jesus."
@@ -295,6 +309,20 @@
         "description": "With Mary, we walk closer to Jesus."
       },
       "playlist": [
+           {
+          "title": "São Miguel Arcanjo",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
+        },
+           "title": "Maria Cheia de Luz",
+          "duration": 274,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-maria-cheia-de-luz.mp3"
+        },
+        {
+          "title": "Santa Faustina",
+          "duration": 240,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
+        },
         {
           "title": "Mãe de Deus Bendita",
           "duration": 194,
@@ -314,9 +342,24 @@
       },
       "playlist": [
         {
-          "title": "Saiba que Sou Teu Deus",
-          "duration": 211,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3"
+          "title": "Liberta o meu Coração",
+          "duration": 223,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-liberta-meu-coracao.mp3"
+        },
+       {
+          "title": "Senhor Deus do Universo",
+          "duration": 249,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-senhor-Deus-do-universo.mp3"
+        },
+         {
+          "title": "Por Deus foi Enviado",
+          "duration": 271,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-por-Deus-foi-enviado.mp3"
+        },
+         {
+          "title": "Vinde Luz do Amor",
+          "duration": 223,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-viinde-luz-do-amor.mp3"
         }
       ]
     },
@@ -332,9 +375,44 @@
       },
       "playlist": [
         {
-          "title": "Cristo Ressuscitado",
-          "duration": 234,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"
+          "title": "A Cruz Sagrada",
+          "duration": 139,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-cruz-sagrada.mp3"
+        },
+        {
+          "title": "Repousa em Mim",
+          "duration": 219,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-repousa-em-mim.mp3"
+        },
+        {
+          "title": "São Bento Glorioso",
+          "duration": 233,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-sao-bento-glorioso.mp3"
+        },
+        {
+          "title": "Santa Faustina",
+          "duration": 240,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
+        },
+        {
+          "title": "Renova em Mim Tua Promessa",
+          "duration": 224,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Renova-em-mim-tua-promessa.mp3"
+        },
+        {
+          "title": "Maria Cheia de Luz",
+          "duration": 274,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-maria-cheia-de-luz.mp3"
+        },
+        {
+          "title": "Tua Vontade em Mim",
+          "duration": 240,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Tua-vontade-em-mim.mp3"
+        },
+        {
+          "title": "Faz de Mim, Exemplo de Amor",
+          "duration": 194,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-faz-de-mim-exemplo-de-amor.mp3"
         }
       ]
     },
