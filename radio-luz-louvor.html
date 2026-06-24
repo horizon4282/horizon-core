@@ -243,13 +243,11 @@ function renderNowPlaying(item, source){
 if(item.playlist && item.playlist.length){
   currentPlaylist = item.playlist;
 
-  currentTrackIndex = synced.index;
   const synced = getSyncedPlaylistPosition(item);
 
-loadPlaylistTrack(
-  currentTrackIndex,
-  synced.offset
-);
+  currentTrackIndex = synced.index;
+
+  loadPlaylistTrack(currentTrackIndex, synced.offset);
 
   return;
 }
