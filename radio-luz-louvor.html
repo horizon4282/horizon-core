@@ -254,12 +254,19 @@ function getDailyMessage(){
   return selected[currentLang] || selected.pt || selected.en;
 }
   function normalizeData(data){return{page:data.page||fallbackData.page,defaultCover:data.defaultCover||fallbackData.defaultCover,tracks:data.tracks||fallbackData.tracks,schedule:data.schedule||fallbackData.schedule,message:data.message||fallbackData.message,platforms:data.platforms||fallbackData.platforms}}
-function renderStaticContent(){const page=radioData.page[currentLang]||radioData.page.pt||radioData.page.en;document.getElementById("heroEyebrow").textContent=page.eyebrow;document.getElementById("heroTitle").textContent=page.title;document.getElementById("heroText").textContent=page.text;document.getElementById("onAirText").textContent=page.onAir||"HD Audio · 24h";document.getElementById("languageText").textContent=currentLang==="pt"?"PT-BR":"EN";
+
+  function renderStaticContent(){
+  const page=radioData.page[currentLang]||radioData.page.pt||radioData.page.en;
+    document.getElementById("heroEyebrow").textContent=page.eyebrow;
+  document.getElementById("heroTitle").textContent=page.title;document.getElementById("heroText").textContent=page.text;
+  document.getElementById("onAirText").textContent=page.onAir||"HD Audio · 24h";
+  document.getElementById("languageText").textContent=currentLang==="pt"?"PT-BR":"EN";
                                
 const message = getDailyMessage();
 document.getElementById("messageTitle").textContent = message.title;
 document.getElementById("messageText").textContent = message.text;
-
+  }
+    
 function renderSchedule(){
   const list=document.getElementById("scheduleList");list.innerHTML="";
   const currentSchedule=getCurrentSchedule();
