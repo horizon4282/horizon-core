@@ -135,7 +135,12 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
 }
 
 @media(max-width:1100px){.hero,.radio-grid,.player-card{grid-template-columns:1fr}.dashboard,.platform-row{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:900px){body{--sidebar-width:var(--sidebar-open)}.sidebar{transform:translateX(-100%);width:315px}body.mobile-menu-open .sidebar{transform:translateX(0)}.main{margin-left:0}.mobile-topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);background:rgba(3,7,18,.9);backdrop-filter:blur(18px);position:sticky;top:0;z-index:40}}
+@media(max-width:900px){
+  .cover{display:none;}
+  body{--sidebar-width:var(--sidebar-open)}.sidebar{transform:translateX(-100%); 
+      width:315px}body.mobile-menu-open .sidebar{transform:translateX(0)}.main{margin-left:0}.mobile-topbar{height:68px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);background:rgba(3,7,18,.9);
+      backdrop-filter:blur(18px);position:sticky;top:0;z-index:40}}
 @media(max-width:700px){.content{width:calc(100% - 28px)}.dashboard,.platform-row{grid-template-columns:1fr}.hero,.panel{padding:22px}}
 </style>
 </head>
