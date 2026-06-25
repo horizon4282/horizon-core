@@ -159,8 +159,11 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
 
      
   <section class="radio-grid">
-    <div class="panel" id="playerBlock"><div class="panel-title" data-pt="Agora Tocando" data-en="Now Playing">Agora Tocando</div><div class="player-card"><div class="cover" id="coverBox">♫</div><div class="track-meta"><div class="request-badge" id="playModeText">Schedule</div><h2 id="nowTitle">Loading...</h2><p id="nowDescription">Loading...</p><audio id="radioPlayer" controls preload="metadata"></audio><div class="player-actions"><button class="small-btn" onclick="playRadio()" data-pt="Tocar" data-en="Play">Tocar</button><button class="small-btn" onclick="pauseRadio()" data-pt="Pausar" data-en="Pause">Pausar</button><button class="small-btn" onclick="loadCurrentSchedule()" data-pt="Programação Atual" data-en="Current Schedule">Programação Atual</button></div></div></div></div>
-    <div class="panel" id="scheduleBlock"><div class="panel-title" data-pt="Programação" data-en="Schedule">Programação</div><div class="schedule-list" id="scheduleList"></div></div>
+    <div class="panel" id="playerBlock"><div class="panel-title" data-pt="Agora Tocando" data-en="Now Playing">Agora Tocando</div><div class="player-card">
+      <div class="cover" id="coverBox">♫</div><div class="track-meta"><div class="request-badge" id="playModeText">Schedule</div><h2 id="nowTitle">Loading...</h2><p id="nowDescription">Loading...</p><audio id="radioPlayer" controls preload="metadata"></audio><div class="player-actions">
+</div></div></div></div>
+    <div class="panel" id="scheduleBlock"><div class="panel-title" data-pt="Programação" data-en="Schedule">Programação</div>
+      <div class="schedule-list" id="scheduleList"></div></div>
   </section>
 
  <section class="hero"><div><div class="eyebrow" id="heroEyebrow">Rádio Luz e Louvor</div><h1 id="heroTitle">Rádio Luz e Louvor</h1><p id="heroText">Music, prayer, worship and hope. A devotional station inside Horizon 4282.</p></div><div class="onair"><strong><span class="dot"></span>ON AIR</strong><span id="onAirText">HD Audio · 24h</span></div></section>
