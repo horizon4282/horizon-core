@@ -184,7 +184,11 @@ let currentPlaylist = [];
 let currentTrackIndex = 0;
 let currentLang=localStorage.getItem("horizonLanguage")||"pt";
 let radioData=null,activeTrack=null,activeSource="schedule";
+  
 const JSON_URL="https://horizon4282.com.br/data/radio-luz-louvor.json";
+const MESSAGES_URL = "https://horizon4282.com.br/data/radio-messages-pt-en.json";
+let messagesData = [];
+  
 const fallbackData={
  page:{pt:{eyebrow:"Rádio Luz e Louvor",title:"Rádio Luz e Louvor",text:"Música, oração, Palavra e esperança. Uma estação devocional dentro do Horizon 4282.",onAir:"Áudio HD · 24h"},en:{eyebrow:"Light & Praise Radio",title:"Light & Praise Radio",text:"Music, prayer, Word and hope. A devotional station inside Horizon 4282.",onAir:"HD Audio · 24h"}},
  defaultCover:"https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png",
@@ -195,9 +199,66 @@ const fallbackData={
 };
 function toggleSidebar(){if(window.innerWidth<=900){document.body.classList.toggle("mobile-menu-open")}else{document.body.classList.toggle("sidebar-collapsed")}}
 function setLanguage(lang){currentLang=lang;document.documentElement.lang=lang==="pt"?"pt-BR":"en";document.getElementById("ptBtn").classList.toggle("active",lang==="pt");document.getElementById("enBtn").classList.toggle("active",lang==="en");document.querySelectorAll("[data-pt][data-en]").forEach(el=>{el.textContent=el.dataset[lang]});localStorage.setItem("horizonLanguage",lang);if(radioData){renderStaticContent();renderSchedule();renderPlatforms();if(activeTrack)renderNowPlaying(activeTrack,activeSource)}}
-async function loadRadioJson(){const state=document.getElementById("loadState");state.className="loading";state.textContent="Loading radio JSON...";try{const response=await fetch(JSON_URL);if(!response.ok)throw new Error("JSON not found");radioData=normalizeData(await response.json());state.style.display="none"}catch(error){radioData=normalizeData(fallbackData);state.className="error";state.innerHTML="JSON externo não carregado. Usando fallback interno.<br>Arquivo esperado: "+JSON_URL}renderStaticContent();renderSchedule();renderPlatforms();startRadioFlow()}
-function normalizeData(data){return{page:data.page||fallbackData.page,defaultCover:data.defaultCover||fallbackData.defaultCover,tracks:data.tracks||fallbackData.tracks,schedule:data.schedule||fallbackData.schedule,message:data.message||fallbackData.message,platforms:data.platforms||fallbackData.platforms}}
-function renderStaticContent(){const page=radioData.page[currentLang]||radioData.page.pt||radioData.page.en;document.getElementById("heroEyebrow").textContent=page.eyebrow;document.getElementById("heroTitle").textContent=page.title;document.getElementById("heroText").textContent=page.text;document.getElementById("onAirText").textContent=page.onAir||"HD Audio · 24h";document.getElementById("languageText").textContent=currentLang==="pt"?"PT-BR":"EN";const message=radioData.message[currentLang]||radioData.message.pt||radioData.message.en;document.getElementById("messageTitle").textContent=message.title;document.getElementById("messageText").textContent=message.text}
+
+async function loadRadioJson(){
+  const state = document.getElementById("loadState");
+  state.className = "loading";
+  state.textContent = "Loading radio JSON...";
+
+  try{
+    const response = await fetch(JSON_URL);
+    if(!response.ok) throw new Error("JSON not found");
+
+    radioData = normalizeData(await response.json());
+
+    await loadMessagesJson();
+
+    state.style.display = "none";
+  }catch(error){
+    radioData = normalizeData(fallbackData);
+    state.className = "error";
+    state.innerHTML = "JSON externo não carregado. Usando fallback interno.<br>Arquivo esperado: " + JSON_URL;
+  }
+
+  renderStaticContent();
+  renderSchedule();
+  renderPlatforms();
+  startRadioFlow();
+}
+
+async function loadMessagesJson(){
+  try{
+    const response = await fetch(MESSAGES_URL);
+    if(!response.ok) throw new Error("Messages JSON not found");
+
+    messagesData = await response.json();
+  }catch(error){
+    messagesData = [];
+    console.warn("Arquivo de mensagens não carregado:", MESSAGES_URL);
+  }
+}
+
+function getDailyMessage(){
+  if(!messagesData || !messagesData.length){
+    return fallbackData.message[currentLang] || fallbackData.message.pt;
+  }
+
+  const startDate = new Date("2026-07-01T00:00:00");
+  const today = new Date();
+
+  const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+  const index = ((diffDays % messagesData.length) + messagesData.length) % messagesData.length;
+
+  const selected = messagesData[index];
+
+  return selected[currentLang] || selected.pt || selected.en;
+}
+  function normalizeData(data){return{page:data.page||fallbackData.page,defaultCover:data.defaultCover||fallbackData.defaultCover,tracks:data.tracks||fallbackData.tracks,schedule:data.schedule||fallbackData.schedule,message:data.message||fallbackData.message,platforms:data.platforms||fallbackData.platforms}}
+function renderStaticContent(){const page=radioData.page[currentLang]||radioData.page.pt||radioData.page.en;document.getElementById("heroEyebrow").textContent=page.eyebrow;document.getElementById("heroTitle").textContent=page.title;document.getElementById("heroText").textContent=page.text;document.getElementById("onAirText").textContent=page.onAir||"HD Audio · 24h";document.getElementById("languageText").textContent=currentLang==="pt"?"PT-BR":"EN";
+                               
+const message = getDailyMessage();
+document.getElementById("messageTitle").textContent = message.title;
+document.getElementById("messageText").textContent = message.text;
 
 function renderSchedule(){
   const list=document.getElementById("scheduleList");list.innerHTML="";
