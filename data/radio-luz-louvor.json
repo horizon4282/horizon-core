@@ -341,10 +341,50 @@
         "description": "An afternoon of trust in God's care."
       },
       "playlist": [
+                {
+          "title": "São Miguel Arcanjo",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
+        },
+        {
+          "title": "Cristo Ressuscitado",
+          "duration": 234,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"
+        },
+        {
+          "title": "Triunfante Vem Jesus",
+          "duration": 195,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-triunfante-vem-jesus.mp3"
+        },
+        {
+          "title": "Sei que Cuidas de Mim",
+          "duration": 224,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"
+        },
         {
           "title": "Recebe Hoje o meu Sim",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"
+        },
+        {
+          "title": "Faz Meu Coração Compaixão Caridade",
+          "duration": 322,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-faz-meu-coracao-compaixao-caridade.mp3"
+        },
+        {
+          "title": "Seja Cirsto Teu Caminho",
+          "duration": 262,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-seja-cristo-teu-caminho.mp3"
+        },
+        {
+          "title": "Escudo da Fé",
+          "duration": 189,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-escudo-da-fe.mp3"
+        },
+        {
+          "title": "Jesus Eternidade",
+          "duration": 234,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-jesus-eternidade.mp3"
         }
       ]
     },
