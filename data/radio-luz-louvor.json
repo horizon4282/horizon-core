@@ -570,9 +570,29 @@
       },
       "playlist": [
         {
+          "title": "Deus Inigualável",
+          "duration": 217,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Deus-inigualavel.mp3"
+        },
+        {
           "title": "Sei que Cuidas de Mim",
           "duration": 224,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"
+        },
+          {
+          "title": "Só Quero a Tua Amizade",
+          "duration": 280,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-so-quero-a-tua-amizade.mp3"
+        },
+        {
+          "title": "Leva-me ao Jardim",
+          "duration": 226,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-leva-me-ao-jardim.mp3"
+        }
+        {
+          "title": "Clamo Teu Nome Jesus",
+          "duration": 312,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-clamo-teu-nome-jesus.mp3"
         }
       ]
     },
