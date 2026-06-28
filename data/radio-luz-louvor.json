@@ -608,9 +608,48 @@
       },
       "playlist": [
         {
+          "title": "Teu Perdão, Teu Amor, Tua Luz",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-teu-perdao-teu-amor-tua-luz.mp3"
+        },
+        {
+          "title": "A Ti Sempre Pertencer",
+          "duration": 287,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-a-ti-sempre-pertencer.mp3"
+        },
+        {
+          "title": "Meu Motivo pra Seguir",
+          "duration": 239,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-meu-motivo-pra-seguir.mp3"
+        },
+        {
           "title": "A Porta Aberta",
           "duration": 186,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"
+        },
+        {
+          "title": "Digno de Louvor",
+          "duration": 218,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-digno-de-louvor.mp3"
+        },
+        {
+          "title": "A Nossa Alegria está em Jesus",
+          "duration": 224,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-a-nossa-alegria-esta-em-jesus.mp3"
+        },
+        {
+          "title": "Quero Passear em Teu Jardim",
+          "duration": 226,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-passear-em-teu-jardim.mp3"
+        },
+        {
+          "title": "Salvador de Almas",
+          "duration": 238,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-salvador-de-almas.mp3"
+        },
+          "title": "Nasci Pra Te Adorar",
+          "duration": 218,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-nasci-pra-te-adorar.mp3"
         }
       ]
     }
