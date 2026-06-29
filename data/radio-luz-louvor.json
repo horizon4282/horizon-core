@@ -466,9 +466,29 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
         },
         {
+          "title": "Nada Além do Seu Amor",
+          "duration": 236,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-nada-alem-do-seu-amor.mp3"
+        },
+        {
           "title": "Mãe de Deus Bendita",
           "duration": 194,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Mae-de-deus-bendita.mp3"
+        },
+        {
+          "title": "Serva Santa a Fiel",
+          "duration": 229,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-serva--santa-fiel.mp3"
+        },
+        {
+          "title": "Renuncio a Todas as Coisas",
+          "duration": 256,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Renuncio-a-todas-as-coisas.mp3"
+        },
+        {
+          "title": "Esvazia o Meu Ser",
+          "duration": 214,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-esvazia-o-meu-ser.mp3"
         }
       ]
     },
@@ -593,6 +613,26 @@
           "title": "Clamo Teu Nome Jesus",
           "duration": 312,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-clamo-teu-nome-jesus.mp3"
+        },
+        {
+          "title": "Gálatas",
+          "duration": 230,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-galatas.mp3"
+        },
+        {
+          "title": "Saulo Saulo",
+          "duration": 186,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-saulo-saulo.mp3"
+        },
+        {
+          "title": "Quero Semear no Teu Jardim",
+          "duration": 196,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-semear-no-teu-espirito.mp3"
+        },
+          {
+          "title": "Foi a Tua Paixão",
+          "duration": 267,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-foi-tua-paixao.mp3"
         }
       ]
     },
