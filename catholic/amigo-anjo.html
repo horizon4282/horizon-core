@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amigo Anjo Paroquial</title>
+<!-- SEO Básico -->
+
+<meta name="description" content="Amigo Anjo Paroquial: aplicativo gratuito para realizar o sorteio secreto do Amigo Anjo entre pastorais, 
+movimentos, grupos de oração, catequese e comunidades católicas.">
+<meta name="keywords" content="amigo anjo, amigo secreto católico, sorteio amigo anjo, confraternização paroquial, pastoral, movimentos da igreja, 
+catequese, grupo de oração, aplicativo amigo anjo, Catholic Box, Ministério Luz e Louvor">
+  
+<meta name="author" content="Ministério Luz e Louvor">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+<link rel="canonical" href="https://horizon4282.com.br/catholic/amigo-anjo.html">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Amigo Anjo | Catholic Box">
+<meta property="og:description" content="Acenda uma vela virtual e viva um momento de oração, silêncio e recolhimento.">
+<meta property="og:url" content="https://horizon4282.com.br/catholic/amigo-anjo">
+<meta property="og:image" content="https://songs.horizon4282.com.br/horizon4282/catholic-box/amigo-anjo.jpg">
+<meta property="og:site_name" content="Amigo Anjo">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Amigo Anjo | Catholic Box">
+<meta name="twitter:description" content="Um espaço online para oração, vela virtual e recolhimento espiritual.">
+<meta name="twitter:image" content="https://songs.horizon4282.com.br/horizon4282/catholic-box/amigo-anjo.jpg">
+<style>
+:root{
+  --primary:#2f2115;
+  --primary-2:#17100b;
+  --accent:#d4af37;
+  --accent-soft:#fff2c2;
+  --wine:#6d1f2f;
+  --bg:#f7f0df;
+  --paper:#fffdf7;
+  --text:#302820;
+  --muted:#7b6f60;
+  --line:#eadfca;
+  --success:#2e9f62;
+  --danger:#b83232;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top,rgba(212,175,55,.35),transparent 34%),
+    linear-gradient(135deg,#1a120d 0%,#3a1d1d 45%,#0d0907 100%);
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:34px 16px;
+}
+
+.menu-toggle{
+  position:fixed;
+  top:18px;
+  left:18px;
+  z-index:1001;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#17100b;
+  color:var(--accent);
+ /* border:1px solid rgba(212,175,55,.45);*/
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.side-menu{
+  position:fixed;
+  top:0;
+  left:0;
+  width:280px;
+  height:100vh;
+  background:#120d08;
+  border-right:1px solid rgba(212,175,55,.28);
+  padding:82px 18px 24px;
+  z-index:1000;
+  transform:translateX(-100%);
+  transition:.3s ease;
+  box-shadow:20px 0 50px rgba(0,0,0,.5);
+}
+
+.side-menu.open{transform:translateX(0)}
+
+.menu-title{
+  color:var(--accent);
+  font-family:Georgia, 'Times New Roman', serif;
+  font-size:1.25rem;
+  text-align:center;
+  margin-bottom:24px;
+}
+
+.side-menu button,
+.side-menu a{
+  width:100%;
+  display:block;
+  margin-bottom:12px;
+  text-align:left;
+  text-decoration:none;
+  background:#1d150f;
+  color:#e6d7b8;
+  border:1px solid rgba(212,175,55,.25);
+  padding:13px 16px;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.side-menu button:hover,
+.side-menu a:hover{background:#2a1d14;color:#fff2c2}
+
+.app-shell{
+  width:min(720px,100%);
+  margin-top:8px;
+}
+
+.card{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,253,247,.98),rgba(255,248,228,.98));
+  padding:34px;
+  border-radius:26px;
+  box-shadow:0 26px 80px rgba(0,0,0,.38);
+  border:1px solid rgba(212,175,55,.45);
+  text-align:center;
+}
+
+.card::before{
+  content:'✦';
+  position:absolute;
+  right:26px;
+  top:18px;
+  color:rgba(212,175,55,.28);
+  font-size:78px;
+  pointer-events:none;
+}
+
+.badge{
+  width:68px;
+  height:68px;
+  margin:0 auto 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--accent-soft);
+  color:#9a7415;
+  border:1px solid rgba(212,175,55,.45);
+  box-shadow:0 0 0 10px rgba(212,175,55,.12);
+  font-size:36px;
+}
+
+h1{
+  color:var(--primary);
+  margin:0;
+  font-size:clamp(1.65rem,4vw,2.25rem);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-family:Georgia, 'Times New Roman', serif;
+}
+
+.subtitle{
+  color:var(--muted);
+  font-style:italic;
+  margin:8px 0 22px;
+  font-size:15px;
+}
+
+.info-box{
+  background:#fff7df;
+  border:1px solid var(--line);
+  padding:14px;
+  border-radius:16px;
+  color:#5d4b36;
+  line-height:1.5;
+  margin-bottom:18px;
+}
+
+.input-group{
+  display:flex;
+  gap:10px;
+  margin-bottom:18px;
+}
+
+input, select{
+  width:100%;
+  padding:13px 14px;
+  border:2px solid #e3d5bd;
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
+  background:white;
+}
+
+input:focus, select:focus{border-color:var(--accent)}
+
+button{
+  padding:13px 18px;
+  font-size:15px;
+  font-weight:800;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.22s;
+}
+
+.btn-primary{background:var(--primary);color:white}
+.btn-primary:hover{background:#1d140d}
+.btn-accent{background:var(--accent);color:#201609}
+.btn-accent:hover{background:#c19a23}
+.btn-success{background:var(--success);color:white;width:100%;margin-top:15px;font-size:16px}
+.btn-success:hover{filter:brightness(.92)}
+.btn-ghost{background:#fff;color:var(--primary);border:1px solid var(--line)}
+.btn-danger{background:var(--danger);color:white}
+
+.names-list{
+  text-align:left;
+  background:#fff7e6;
+  border:1px solid var(--line);
+  padding:12px;
+  border-radius:16px;
+  max-height:170px;
+  overflow-y:auto;
+  margin-bottom:16px;
+  display:none;
+}
+
+.name-tag{
+  display:inline-flex;
+  align-items:center;
+  background:white;
+  padding:7px 11px;
+  border-radius:999px;
+  margin:5px;
+  font-size:14px;
+  border:1px solid #e8d9bd;
+  font-weight:700;
+}
+
+.name-tag span{
+  margin-left:9px;
+  color:var(--danger);
+  cursor:pointer;
+  font-weight:900;
+}
+
+.toolbar{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+
+.toolbar button{flex:1;min-width:180px}
+
+.reveal-section{
+  display:none;
+  margin-top:20px;
+  border-top:2px dashed var(--accent);
+  padding-top:25px;
+}
+
+.secret-box{
+  background:#fff7df;
+  border:2px solid var(--accent);
+  padding:22px;
+  border-radius:18px;
+  margin-top:15px;
+  display:none;
+  position:relative;
+  overflow:hidden;
+}
+
+.secret-name{
+  font-size:clamp(1.7rem,5vw,2.4rem);
+  font-weight:900;
+  color:#ad7d00;
+  margin:12px 0 18px;
+  font-family:Georgia, 'Times New Roman', serif;
+}
+
+.gift-ideas{
+  font-size:14px;
+  color:#625646;
+  background:white;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #f0dda7;
+  text-align:left;
+  line-height:1.55;
+}
+
+.reveal-warning{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px;
+  font-size:14px;
+  color:#675b4b;
+  margin-bottom:14px;
+}
+
+.footer-note{
+  color:#ccb98f;
+  text-align:center;
+  margin-top:18px;
+  font-size:.9rem;
+}
+
+.loading-reveal{
+  display:none;
+  margin:16px 0;
+  color:#8a6a16;
+  font-weight:800;
+}
+
+.spinner{
+  width:44px;
+  height:44px;
+  margin:0 auto 10px;
+  border:4px solid #f4df9d;
+  border-top-color:#a87d14;
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.sparkle{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--accent);
+  animation:rise 1.4s ease-out forwards;
+  opacity:.9;
+}
+
+@keyframes rise{
+  0%{transform:translateY(20px) scale(.8);opacity:1}
+  100%{transform:translateY(-90px) scale(0);opacity:0}
+}
+
+@media(max-width:650px){
+  body{padding:22px 12px}
+  .card{padding:24px 18px}
+  .input-group{flex-direction:column}
+  .toolbar button{min-width:100%}
+}
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<aside class="side-menu" id="sideMenu">
+  <div class="menu-title">Catholic Box</div>
+  <button onclick="toggleFullscreen()">Tela Cheia</button>
+  <button onclick="exportarParticipantes()">Exportar Participantes</button>
+  <button onclick="limparTudo()">Reiniciar Sorteio</button>
+  <a href="https://horizon4282.com.br/radio-luz-louvor">Rádio Luz e Louvor</a>
+    <a href="https://horizon4282.com.br/capela-virtual">Capela Virtual</a>
+      <a href="https://horizon4282.com.br/catholic/bingo-digital">Bingo Digital</a>
+</aside>
+
+<div class="app-shell" id="sorteador">
+  <div class="card">
+    <div class="badge">👼</div>
+    <h1>Amigo Anjo Paroquial</h1>
+    <p class="subtitle">Confraternização de Pastorais e Movimentos</p>
+
+    <div class="info-box" id="mensagemTopo">
+      Cadastre os participantes, realize o sorteio oculto e passe o aparelho para cada pessoa descobrir seu Amigo Anjo em segredo.
+    </div>
+
+    <div id="fase-cadastro">
+      <div class="input-group">
+        <input type="text" id="input-nome" placeholder="Digite o nome do participante..." onkeypress="verificarEnter(event)">
+        <button class="btn-primary" onclick="adicionarNome()">Adicionar</button>
+      </div>
+
+      <div class="names-list" id="lista-visual"></div>
+
+      <div style="color:#7f6f5a;font-size:14px;margin-bottom:12px;" id="contador-txt">Mínimo de 3 pessoas para começar.</div>
+      <button class="btn-accent" id="btn-realizar" onclick="realizarSorteio()" style="width:100%;display:none;">🎲 Realizar Sorteio Oculto</button>
+
+      <div class="toolbar">
+        <button class="btn-ghost" onclick="salvarEstado()">💾 Salvar</button>
+        <button class="btn-ghost" onclick="exportarParticipantes()">📄 Exportar lista</button>
+      </div>
+    </div>
+
+    <div class="reveal-section" id="fase-revelacao">
+      <h3 style="color:var(--primary);margin-bottom:5px;">🤫 Hora de descobrir seu Amigo Anjo!</h3>
+      <p style="font-size:14px;color:#7f6f5a;margin-top:0;">Selecione seu nome, confirme que somente você está olhando e revele com cuidado.</p>
+
+      <div class="reveal-warning">
+        Antes de revelar, proteja a tela para que ninguém veja seu sorteado.
+      </div>
+
+      <select id="select-participante" onchange="limparVisualizacao()">
+        <option value="">-- Quem é você? --</option>
+      </select>
+
+      <button class="btn-primary" id="btn-revelar-olho" onclick="confirmarRevelacao()" style="width:100%;margin-top:15px;">👁️ Revelar Meu Amigo</button>
+
+      <div class="loading-reveal" id="loadingReveal">
+        <div class="spinner"></div>
+        Preparando sua revelação...
+      </div>
+
+      <div class="secret-box" id="caixa-secreta">
+        <div style="font-size:14px;text-transform:uppercase;color:#7f8c8d;">Você tirou:</div>
+        <div class="secret-name" id="txt-amigo-sorteado">Nome do Sorteado</div>
+
+        <div class="gift-ideas">
+          <strong>🎁 Sugestões de Lembranças Católicas:</strong><br>
+          • Um terço de madeira ou pulseira de contas.<br>
+          • Livro de bolso com a história ou frases de um santo.<br>
+          • Uma vela artesanal para momentos de oração.<br>
+          • Uma caneca ou chaveiro com estampa religiosa.<br>
+          • Um cartão escrito à mão com uma oração.
+        </div>
+
+        <button class="btn-success" onclick="esconderSegredo()">🔒 Já vi! Esconder e Limpar Tela</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">Catholic Box · Luz e Louvor · Missão Proodos</div>
+</div>
+
+<script>
+const storageKey = "amigo-anjo-paroquial-v2";
+
+let participantes = [];
+let mapaSorteio = {};
+let fase = "cadastro";
+
+function verificarEnter(event){
+  if(event.key === "Enter") adicionarNome();
+}
+
+function normalizarNome(nome){
+  return nome.trim().replace(/\s+/g," ");
+}
+
+function adicionarNome(){
+  const input = document.getElementById("input-nome");
+  const nome = normalizarNome(input.value);
+
+  if(nome === "") return;
+
+  const jaExiste = participantes.some(n => n.toLowerCase() === nome.toLowerCase());
+  if(jaExiste){
+    alert("Este nome já foi adicionado!");
+    return;
+  }
+
+  participantes.push(nome);
+  input.value = "";
+  input.focus();
+  atualizarListaVisual();
+  salvarEstado(false);
+}
+
+function removerNome(index){
+  participantes.splice(index,1);
+  atualizarListaVisual();
+  salvarEstado(false);
+}
+
+function atualizarListaVisual(){
+  const lista = document.getElementById("lista-visual");
+  const btnRealizar = document.getElementById("btn-realizar");
+  const contadorTxt = document.getElementById("contador-txt");
+
+  if(participantes.length === 0){
+    lista.style.display = "none";
+    btnRealizar.style.display = "none";
+    contadorTxt.innerText = "Mínimo de 3 pessoas para começar.";
+    return;
+  }
+
+  lista.style.display = "block";
+  lista.innerHTML = "";
+
+  participantes.forEach((nome,idx) => {
+    const tag = document.createElement("div");
+    tag.className = "name-tag";
+    tag.innerHTML = `${escapeHtml(nome)} <span title="Remover" onclick="removerNome(${idx})">&times;</span>`;
+    lista.appendChild(tag);
+  });
+
+  contadorTxt.innerText = `Participantes adicionados: ${participantes.length}`;
+  btnRealizar.style.display = participantes.length >= 3 ? "block" : "none";
+}
+
+function realizarSorteio(){
+  if(participantes.length < 3){
+    alert("Adicione pelo menos 3 participantes.");
+    return;
+  }
+
+  const ok = confirm("Deseja realizar o sorteio oculto agora? Depois disso, a lista de nomes ficará bloqueada.");
+  if(!ok) return;
+
+  let copia;
+  let valido = false;
+
+  while(!valido){
+    copia = [...participantes];
+    for(let i = copia.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [copia[i], copia[j]] = [copia[j], copia[i]];
+    }
+
+    valido = participantes.every((nome,i) => nome !== copia[i]);
+  }
+
+  mapaSorteio = {};
+  participantes.forEach((nome,i) => {
+    mapaSorteio[nome] = copia[i];
+  });
+
+  fase = "revelacao";
+  montarFaseRevelacao();
+  salvarEstado(false);
+  alert("Sorteio realizado com sucesso! Passe o aparelho para o primeiro participante.");
+}
+
+function montarFaseRevelacao(){
+  document.getElementById("fase-cadastro").style.display = "none";
+  document.getElementById("fase-revelacao").style.display = "block";
+  document.getElementById("mensagemTopo").innerText = "Sorteio realizado. Agora cada participante pode descobrir seu Amigo Anjo individualmente.";
+
+  const select = document.getElementById("select-participante");
+  select.innerHTML = '<option value="">-- Quem é você? --</option>';
+
+  Object.keys(mapaSorteio).sort((a,b) => a.localeCompare(b,"pt-BR")).forEach(nome => {
+    const opt = document.createElement("option");
+    opt.value = nome;
+    opt.innerText = nome;
+    select.appendChild(opt);
+  });
+}
+
+function confirmarRevelacao(){
+  const select = document.getElementById("select-participante");
+  const quemSouEu = select.value;
+
+  if(quemSouEu === ""){
+    alert("Por favor, selecione o seu nome primeiro.");
+    return;
+  }
+
+  const ok = confirm("Confirme: somente você está olhando para a tela?");
+  if(!ok) return;
+
+  revelarAmigo();
+}
+
+function revelarAmigo(){
+  const select = document.getElementById("select-participante");
+  const quemSouEu = select.value;
+  const amigoTirado = mapaSorteio[quemSouEu];
+  const loading = document.getElementById("loadingReveal");
+  const btn = document.getElementById("btn-revelar-olho");
+
+  btn.style.display = "none";
+  loading.style.display = "block";
+
+  setTimeout(() => {
+    loading.style.display = "none";
+    document.getElementById("txt-amigo-sorteado").innerText = amigoTirado;
+    document.getElementById("caixa-secreta").style.display = "block";
+    criarBrilhos();
+  }, 900);
+}
+
+function esconderSegredo(){
+  const select = document.getElementById("select-participante");
+  const nome = select.value;
+
+  if(nome && mapaSorteio[nome]){
+    delete mapaSorteio[nome];
+  }
+
+  esconderVisual();
+  montarFaseRevelacao();
+  salvarEstado(false);
+
+  if(Object.keys(mapaSorteio).length === 0){
+    alert("Fim do sorteio! Todos os amigos anjos já foram retirados. Boa confraternização!");
+    limparTudo(true);
+  }
+}
+
+function limparVisualizacao(){
+  esconderVisual();
+}
+
+function esconderVisual(){
+  document.getElementById("caixa-secreta").style.display = "none";
+  document.getElementById("loadingReveal").style.display = "none";
+  document.getElementById("btn-revelar-olho").style.display = "block";
+}
+
+function salvarEstado(comAviso = true){
+  const estado = {participantes, mapaSorteio, fase};
+  localStorage.setItem(storageKey, JSON.stringify(estado));
+  if(comAviso) alert("Sorteio salvo neste aparelho.");
+}
+
+function carregarEstado(){
+  try{
+    const raw = localStorage.getItem(storageKey);
+    if(!raw) return;
+
+    const estado = JSON.parse(raw);
+    participantes = Array.isArray(estado.participantes) ? estado.participantes : [];
+    mapaSorteio = estado.mapaSorteio || {};
+    fase = estado.fase || "cadastro";
+
+    atualizarListaVisual();
+
+    if(fase === "revelacao" && Object.keys(mapaSorteio).length > 0){
+      montarFaseRevelacao();
+    }
+  }catch(e){
+    console.warn("Não foi possível restaurar o sorteio.", e);
+  }
+}
+
+function exportarParticipantes(){
+  if(participantes.length === 0){
+    alert("Não há participantes para exportar.");
+    return;
+  }
+
+  const conteudo = [
+    "AMIGO ANJO PAROQUIAL",
+    "Lista de participantes",
+    "",
+    ...participantes.map((nome,i) => `${i+1}. ${nome}`)
+  ].join("\n");
+
+  const blob = new Blob([conteudo], {type:"text/plain;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "participantes-amigo-anjo.txt";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function limparTudo(silencioso = false){
+  if(!silencioso){
+    const ok = confirm("Tem certeza que deseja reiniciar todo o sorteio?");
+    if(!ok) return;
+  }
+
+  participantes = [];
+  mapaSorteio = {};
+  fase = "cadastro";
+  localStorage.removeItem(storageKey);
+  document.getElementById("fase-cadastro").style.display = "block";
+  document.getElementById("fase-revelacao").style.display = "none";
+  document.getElementById("mensagemTopo").innerText = "Cadastre os participantes, realize o sorteio oculto e passe o aparelho para cada pessoa descobrir seu Amigo Anjo em segredo.";
+  atualizarListaVisual();
+}
+
+function criarBrilhos(){
+  const box = document.getElementById("caixa-secreta");
+
+  for(let i=0;i<18;i++){
+    const sp = document.createElement("span");
+    sp.className = "sparkle";
+    sp.style.left = Math.random() * 100 + "%";
+    sp.style.bottom = Math.random() * 45 + "px";
+    sp.style.animationDelay = (Math.random() * .25) + "s";
+    box.appendChild(sp);
+    setTimeout(() => sp.remove(), 1600);
+  }
+}
+
+function toggleMenu(){
+  document.getElementById("sideMenu").classList.toggle("open");
+}
+
+function scrollToSection(id){
+  const el = document.getElementById(id);
+  if(el){
+    el.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+  document.getElementById("sideMenu").classList.remove("open");
+}
+
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen();
+  }else{
+    document.exitFullscreen();
+  }
+  document.getElementById("sideMenu").classList.remove("open");
+}
+
+function escapeHtml(text){
+  return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+document.addEventListener("DOMContentLoaded", carregarEstado);
+</script>
+</body>
+</html>
