@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capela Virtual | Catholic Box</title>
+
+<!-- SEO Básico -->
+<meta name="description" content="Capela Virtual: um espaço online de oração, silêncio e recolhimento com vela virtual, orações católicas e ambiente devocional.">
+<meta name="keywords" content="capela virtual, oração online, vela virtual, 
+Catholic Box, Ministério Luz e Louvor, Pai Nosso, Ave Maria, oração católica, capela online">
+<meta name="author" content="Ministério Luz e Louvor">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+<link rel="canonical" href="https://horizon4282.com.br/capela-virtual">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Capela Virtual | Catholic Box">
+<meta property="og:description" content="Acenda uma vela virtual e viva um momento de oração, silêncio e recolhimento.">
+<meta property="og:url" content="https://horizon4282.com.br/capela-virtual">
+<meta property="og:image" content="https://songs.horizon4282.com.br/horizon4282/catholic-box/capela-virtual.jpg">
+<meta property="og:site_name" content="Capela Virtual">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Capela Virtual | Catholic Box">
+<meta name="twitter:description" content="Um espaço online para oração, vela virtual e recolhimento espiritual.">
+<meta name="twitter:image" content="https://songs.horizon4282.com.br/horizon4282/catholic-box/capela-virtual.jpg">
+
+<!-- Aparência no navegador -->
+<meta name="theme-color" content="#17120d">
+<link rel="icon" href="/favicon.ico">
+
+
+<style>
+:root{
+  --bg:#f7f3ea;
+  --box:#ffffff;
+  --text:#2f2a24;
+  --muted:#7a6f63;
+  --gold:#c9a227;
+  --gold-soft:#f3e5b3;
+  --line:#e5dcc8;
+  --brown:#5a3825;
+  --candle:#fff7df;
+  --flame:#ff9d00;
+  --flame-core:#fff1b8;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at center top,rgba(120,82,28,.22),transparent 34%),
+    linear-gradient(180deg,#130f0b,#050403);
+   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:var(--text);
+  display:flex;
+  justify-content:center;
+  padding:28px 14px;
+  transition:background .8s ease;
+}
+.catholic-box{
+  width:min(760px,100%);
+  background:#17120d;
+  border:1px solid rgba(201,162,39,.22);
+  border-radius:28px;
+  box-shadow:0 24px 70px rgba(0,0,0,.55);
+  overflow:hidden;
+}
+
+
+.cross{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  margin:0 auto 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--gold-soft);
+  color:var(--gold);
+  font-size:36px;
+  box-shadow:0 0 0 8px rgba(201,162,39,.10);
+}
+
+h1{
+  margin:0;
+  color:#cbc6c3;
+  font-size:clamp(2rem,5vw,3.2rem);
+  letter-spacing:.04em;
+}
+
+h3{
+  margin:15px 0 0 0;
+  color:#f5de15;
+  font-size:clamp(1.2rem,1.5vw,1.2rem);
+  letter-spacing:.04em;
+  text-transform: uppercase;
+}
+
+.subtitle{
+  margin:8px auto 0;
+  color:var(--muted);
+  max-width:520px;
+  line-height:1.6;
+  font-size:1rem;
+}
+
+
+.cross-bg{
+  position:absolute;
+  top:24px;
+  font-size:96px;
+  color:rgba(201,162,39,.12);
+  animation:breathe 4s infinite ease-in-out;
+  user-select:none;
+}
+
+@keyframes breathe{
+  0%,100%{opacity:.35;transform:scale(1)}
+  50%{opacity:.75;transform:scale(1.04)}
+}
+
+.candle-container{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  cursor:pointer;
+  z-index:3;
+}
+
+.flame{
+  position:absolute;
+  top:-42px;
+  width:18px;
+  height:44px;
+  background:linear-gradient(white 12%,var(--flame-core) 42%,var(--flame) 84%);
+  border-radius:50% 50% 22% 22% / 60% 60% 40% 40%;
+  box-shadow:0 0 22px var(--flame),0 0 50px rgba(255,157,0,.55);
+  opacity:0;
+  transform:scale(0);
+  transition:.45s;
+  animation:flicker 1.35s infinite alternate ease-in-out;
+}
+
+.flame::after{
+  content:"";
+  position:absolute;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  left:-36px;
+  top:-22px;
+  background:rgba(255,184,51,.18);
+  filter:blur(24px);
+  z-index:-1;
+}
+
+.candle-container.lit .flame{
+  opacity:1;
+  transform:scale(1);
+}
+
+@keyframes flicker{
+  0%{transform:scale(1) rotate(-1deg)}
+  50%{transform:scale(1.07) rotate(1deg)}
+  100%{transform:scale(.95) rotate(-.5deg)}
+}
+
+.wick{
+  width:4px;
+  height:14px;
+  background:#2a211b;
+  border-radius:4px 4px 0 0;
+}
+
+.candle-body{
+  width:42px;
+  height:128px;
+  background:linear-gradient(to right,#e9dfc2,var(--candle) 40%,#d5c8a8);
+  border-radius:8px 8px 3px 3px;
+  box-shadow:0 12px 28px rgba(75,52,24,.30);
+}
+
+.altar{
+  width:78%;
+  height:20px;
+  margin-top:-2px;
+  background:linear-gradient(#7a4b2f,#3d2417);
+  border-bottom:5px solid var(--gold);
+  border-radius:8px 8px 4px 4px;
+  box-shadow:0 10px 28px rgba(70,45,22,.35);
+}
+
+
+
+.status{
+  text-align:center;
+  color:var(--brown);
+  background:#fff8e7;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:6px;
+  line-height:1.6;
+  margin-bottom:22px;
+}
+
+.actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:24px;
+}
+
+button{
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--brown);
+  padding:11px 18px;
+  border-radius:999px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor:pointer;
+  transition:.25s;
+  font-weight:bold;
+}
+
+button:hover,
+button.active{
+  border-color:var(--gold);
+  background:var(--gold-soft);
+  color:#4a3318;
+}
+
+.prayer-tabs{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+
+.prayer-box{
+  background:#fffdf7;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:24px;
+  min-height:170px;
+  line-height:1.8;
+  color:#4d4337;
+  font-size:1.08rem;
+  text-align:center;
+}
+
+.prayer-box::before{
+  content:"“";
+  display:block;
+  font-size:48px;
+  color:var(--gold);
+  line-height:20px;
+}
+
+.header{
+  text-align:center;
+  padding:34px 24px 22px;
+  background:linear-gradient(180deg,#21170f,#17120d);
+  border-bottom:1px solid rgba(201,162,39,.20);
+}
+
+.sanctuary{
+  position:relative;
+  height:300px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  background:
+    radial-gradient(circle at 50% 40%,rgba(255,174,54,.05),transparent 38%),
+    linear-gradient(180deg,#120d08,#090705);
+  transition:background .8s ease;
+}
+
+.panel{
+  padding:28px;
+  background:#17120d;
+}
+
+.footer{
+  text-align:center;
+  color:#9c8d76;
+  font-size:.9rem;
+  padding:22px;
+  border-top:1px solid rgba(201,162,39,.20);
+  background:#120d08;
+}
+
+.sanctuary::after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  bottom:60px;
+  background:radial-gradient(circle,rgba(255,190,82,.42),rgba(255,190,82,.12) 38%,transparent 70%);
+  filter:blur(28px);
+  opacity:0;
+  transition:opacity .8s ease;
+  pointer-events:none;
+}
+
+.catholic-box.candle-lit .sanctuary::after{
+  opacity:1;
+}
+
+.catholic-box.candle-lit{
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.58),
+    0 0 80px rgba(255,181,65,.18);
+}
+
+.catholic-box.candle-lit .sanctuary{
+  background:
+    radial-gradient(circle at 50% 48%,rgba(255,181,65,.22),transparent 42%),
+    linear-gradient(180deg,#171008,#090705);
+}
+
+.menu-toggle{
+  position:fixed;
+  top:18px;
+  left:18px;
+  z-index:1000;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:#17120d;
+  color:var(--gold);
+  border:1px solid rgba(201,162,39,.35);
+}
+
+.side-menu{
+  position:fixed;
+  top:0;
+  left:0;
+  width:260px;
+  height:100vh;
+  background:#120d08;
+  border-right:1px solid rgba(201,162,39,.25);
+  padding:80px 18px 24px;
+  z-index:999;
+  transform:translateX(-100%);
+  transition:.3s ease;
+  box-shadow:20px 0 50px rgba(0,0,0,.45);
+}
+
+.side-menu.open{
+  transform:translateX(0);
+}
+
+.menu-title{
+  color:var(--gold);
+  font-size:1.2rem;
+  margin-bottom:22px;
+  text-align:center;
+}
+
+.side-menu button,
+.side-menu a{
+  width:100%;
+  font-size:1rem;
+  display:block;
+  margin-bottom:12px;
+  text-align:left;
+  text-decoration:none;
+  background:#1b140e;
+  color:#d8c9aa;
+  border:1px solid rgba(201,162,39,.22);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding:12px 16px;
+  border-radius:14px;
+}
+.chapel-layout{
+  width:min(1400px, 70vw);
+  margin:5px auto;
+  display:grid;
+  grid-template-columns:minmax(420px, 1fr) 360px;
+  gap:28px;
+  align-items:stretch;
+}
+
+.divino-panel{
+  border:1px solid rgba(201,162,39,.35);
+  border-radius:26px;
+  overflow:hidden;
+  background:#120c08;
+  box-shadow:0 0 40px rgba(201,162,39,.15);
+  min-height:620px;
+}
+
+.divino-panel img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+@media(max-width:900px){
+  .panel{padding:20px}
+  .sanctuary{height:270px}
+  .prayer-box{text-align:left}
+
+  .chapel-layout{
+    display:block;
+    width:94vw;
+  }
+
+  .divino-panel{
+    margin-top:22px;
+    min-height:420px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<aside class="side-menu" id="sideMenu">
+  <div class="menu-title">Catholic Box</div>
+
+  <button onclick="toggleFullscreen()">Tela Cheia</button>
+  <a href="https://horizon4282.com.br/radio-luz-louvor"><b>Rádio Luz e Louvor</b></a>
+  <a href="https://horizon4282.com.br/radio-luz-louvor"><b>Amigo Anjo</b></a>
+  <a href="https://horizon4282.com.br/radio-luz-louvor"><b>Bingo Digital</b></a>
+</aside>
+<div class="chapel-layout">
+
+<main class="catholic-box" id="capela">
+
+  <header class="header">
+    <div class="cross">†</div>
+    <h1>Capela Virtual</h1>
+    <h3>Divino Pai Eterno</h3>
+    <p class="subtitle">
+      Um pequeno espaço de silêncio, oração e recolhimento.
+    </p>
+  </header>
+
+  <section class="sanctuary">
+    <div class="cross-bg">†</div>
+
+    <div class="candle-container" id="velaVirtual" onclick="alternarVela()">
+      <div class="flame"></div>
+      <div class="wick"></div>
+      <div class="candle-body"></div>
+    </div>
+
+    <div class="altar"></div>
+  </section>
+
+<section class="panel" id="oracoes">
+
+    <div class="status" id="statusTxt">
+      ✨ Clique na vela para acendê-la e iniciar sua oração.
+    </div>
+
+    <div class="actions">
+      <button onclick="alternarSom()" id="audioBtn">🎵 Som Ambiente</button>
+      <button onclick="apagarVela()">Apagar Vela</button>
+    </div>
+
+    <audio id="somAmbiente" loop>
+      <source src="https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-suave-01.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="prayer-tabs" style="display: none;">
+      <button class="tab-btn active" onclick="mudarOracao('paiNosso', this)">Pai Nosso</button>
+      <button class="tab-btn" onclick="mudarOracao('aveMaria', this)">Ave Maria</button>
+      <button class="tab-btn" onclick="mudarOracao('anjoGuarda', this)">Anjo da Guarda</button>
+    </div>
+
+    <div class="prayer-box" id="textoOracao" style="display: none;">
+      Pai nosso, que estais nos céus, santificado seja o vosso nome; venha a nós o vosso reino, seja feita a vossa vontade, assim na terra como no céu. O pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas, assim como nós perdoamos a quem nos tem ofendido; e não nos deixeis cair em tentação, mas livrai-nos do mal. Amém.
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    Catholic Box · Luz e Louvor · Missão Proodos
+  </footer>
+
+</main>
+
+<aside class="divino-panel">
+    <img src="https://songs.horizon4282.com.br/file/horizon4282/divino_pai_eterno-capela.png"
+         alt="Divino Pai Eterno">
+</aside>
+
+</div>
+
+<script>
+const oracoes = {
+  paiNosso:
+    "Pai nosso, que estais nos céus, santificado seja o vosso nome; venha a nós o vosso reino, seja feita a vossa vontade, assim na terra como no céu. O pão nosso de cada dia nos dai hoje; perdoai-nos as nossas ofensas, assim como nós perdoamos a quem nos tem ofendido; e não nos deixeis cair em tentação, mas livrai-nos do mal. Amém.",
+
+  aveMaria:
+    "Ave Maria, cheia de graça, o Senhor é convosco. Bendita sois vós entre as mulheres e bendito é o fruto do vosso ventre, Jesus. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte. Amém.",
+
+  anjoGuarda:
+    "Santo Anjo do Senhor, meu zeloso guardador, se a ti me confiou a piedade divina, sempre me rege, me guarde, me governe e me ilumine. Amém."
+};
+
+function alternarVela(){
+  const vela = document.getElementById("velaVirtual");
+  const status = document.getElementById("statusTxt");
+  const box = document.querySelector(".catholic-box");
+
+  vela.classList.toggle("lit");
+
+  if(vela.classList.contains("lit")){
+    box.classList.add("candle-lit");
+    status.textContent = "🙏 Vela acesa. Eleve seus pensamentos e intenções a Deus.";
+    localStorage.setItem("capela-vela", "acesa");
+  }else{
+    box.classList.remove("candle-lit");
+    status.textContent = "✨ Clique na vela para acendê-la e iniciar sua oração.";
+    localStorage.setItem("capela-vela", "apagada");
+  }
+}
+
+function apagarVela(){
+  const vela = document.getElementById("velaVirtual");
+  const status = document.getElementById("statusTxt");
+  document.querySelector(".catholic-box").classList.remove("candle-lit");
+
+  vela.classList.remove("lit");
+  status.textContent = "✨ Clique na vela para acendê-la e iniciar sua oração.";
+  localStorage.setItem("capela-vela", "apagada");
+}
+
+function alternarSom(){
+  const audio = document.getElementById("somAmbiente");
+  const btn = document.getElementById("audioBtn");
+
+  if(audio.paused){
+    audio.play().then(()=>{
+      btn.textContent = "🔇 Pausar Som";
+      btn.classList.add("active");
+    }).catch(()=>{
+      alert("Não foi possível iniciar o som ambiente. Verifique o arquivo de áudio.");
+    });
+  }else{
+    audio.pause();
+    btn.textContent = "🎵 Som Ambiente";
+    btn.classList.remove("active");
+  }
+}
+
+function mudarOracao(chave, botao){
+  document.getElementById("textoOracao").textContent = oracoes[chave];
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  botao.classList.add("active");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const vela = document.getElementById("velaVirtual");
+  const status = document.getElementById("statusTxt");
+
+  if(localStorage.getItem("capela-vela") === "acesa"){
+    document.querySelector(".catholic-box").classList.add("candle-lit");
+    vela.classList.add("lit");
+    status.textContent = "🙏 Vela acesa. Eleve seus pensamentos e intenções a Deus.";
+  }
+});
+
+function toggleMenu(){
+  document.getElementById("sideMenu").classList.toggle("open");
+}
+
+function scrollToSection(id){
+  const el = document.getElementById(id);
+
+  if(el){
+    el.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  }
+
+  document.getElementById("sideMenu").classList.remove("open");
+}
+
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen();
+  }else{
+    document.exitFullscreen();
+  }
+
+  document.getElementById("sideMenu").classList.remove("open");
+}
+</script>
+
+</body>
+</html>
