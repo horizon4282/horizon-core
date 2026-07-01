@@ -1,0 +1,810 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pandora Box — Globo de Bingo Digital</title>
+
+<!-- SEO Básico -->
+<meta name="description" content="Bingo Digital: sistema online gratuito para sorteio de bingo com cartela digital, locução dos números, painel eletrônico e controle completo para igrejas, 
+escolas, eventos, festas e confraternizações.">
+<meta name="keywords" content="bingo digital, sorteador de bingo, bingo online, 
+cartela de bingo, painel de bingo, bingo eletrônico, bingo para igreja, bingo paroquial, festa junina, quermesse, Catholic Box, Horizon 4282, 
+Ministério Luz e Louvor">
+
+<meta name="author" content="Ministério Luz e Louvor">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+<link rel="canonical" href="https://horizon4282.com.br/catholic/bingo-digital">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Capela Virtual | Catholic Box">
+<meta property="og:description" content="Acenda uma vela virtual e viva um momento de oração, silêncio e recolhimento.">
+<meta property="og:url" content="https://horizon4282.com.br/catholic/bingo-digital">
+<meta property="og:image" content="https://songs.horizon4282.com.br/horizon4282/catholic-box/bingo-digital.jpg">
+<meta property="og:site_name" content="Capela Virtual">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Capela Virtual | Catholic Box">
+<meta name="twitter:description" content="Um espaço online para oração, vela virtual e recolhimento espiritual.">
+<meta name="twitter:image" content="https://songs.horizon4282.com.br/horizon4282/catholic-box/bingo-digital.jpg">
+<style>
+:root{
+  --bg:#080604;
+  --panel:#15110d;
+  --panel2:#1c1712;
+  --card:#19140f;
+
+  --text:#e6dece;
+  --muted:#a79b88;
+
+  --gold:#d4af37;
+  --gold-light:#f0d46b;
+
+  --line:rgba(212,175,55,.15);
+  --line-strong:rgba(212,175,55,.38);
+
+  --shadow:
+    0 25px 70px rgba(0,0,0,.55);
+
+  --sidebar-open:290px;
+  --sidebar-closed:76px;
+}
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  min-height:100vh;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    color:var(--text);
+
+    background:
+    radial-gradient(circle at top,
+    rgba(212,175,55,.12),
+    transparent 30%),
+
+    radial-gradient(circle at bottom,
+    rgba(255,160,0,.05),
+    transparent 45%),
+
+    linear-gradient(
+    180deg,
+    #0d0906 0%,
+    #080604 45%,
+    #040302 100%);
+
+    overflow-x:hidden;
+}
+
+body::before{
+  display:none;
+}
+
+body.sidebar-collapsed{--sidebar-width:var(--sidebar-closed)}
+body:not(.sidebar-collapsed){--sidebar-width:var(--sidebar-open)}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.app{
+  display:flex;
+  min-height:100vh;
+}
+
+.sidebar{
+  position:fixed;
+  inset:0 auto 0 0;
+  width:var(--sidebar-width);
+background:rgba(15,11,8,.97);
+  border-right:1px solid var(--line);
+  box-shadow:10px 0 30px rgba(74,55,24,.06);
+  z-index:50;
+  transition:width .25s ease,transform .25s ease;
+  overflow:hidden;
+}
+
+.sidebar-header{
+  height:82px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:0 16px;
+  border-bottom:1px solid var(--line);
+}
+
+.toggle-btn{
+  min-width:46px;
+  width:46px;
+  height:46px;
+  border:1px solid var(--line);
+  background:#000;
+  color:var(--blue);
+  cursor:pointer;
+  font-size:18px;
+  border-radius:16px;
+  box-shadow:0 8px 22px rgba(74,55,24,.06);
+}
+
+.toggle-btn:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+.logo-mini,
+.top-logo-mark{
+  min-width:46px;
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #ead9b9;
+  color:var(--gold);
+  border-radius:16px;
+  background:linear-gradient(180deg,#fffdf8,#fff6de);
+  font-size:22px;
+}
+
+.brand{
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+.brand strong,
+.top-logo strong{
+  display:block;
+  color:var(--gold);
+  font-size:14px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+
+.brand span,
+.top-logo span{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
+  letter-spacing:.08em;
+}
+
+body.sidebar-collapsed .brand,
+body.sidebar-collapsed .nav span,
+body.sidebar-collapsed .sidebar-footer,
+body.sidebar-collapsed .sidebar-label{
+  display:none;
+}
+
+.nav{
+  padding:18px 12px;
+}
+
+.sidebar-label{
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+  margin:12px 10px 10px;
+}
+
+.nav a,
+.nav button{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-height:50px;
+  padding:0 14px;
+  margin-bottom:9px;
+  border:1px solid var(--line);
+  background:#ffffff;
+  color:#000;
+  transition:.2s;
+  white-space:nowrap;
+  cursor:pointer;
+  text-align:left;
+  font-weight: 700;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  font-size:12px;
+  border-radius:18px;
+}
+
+.nav a:hover,
+.nav button:hover,
+.nav .active{
+ background:#20170f;
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+.nav i{
+  width:22px;
+  text-align:center;
+  font-style:normal;
+  color:var(--blue);
+}
+
+.sidebar-footer{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:22px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.main{
+  width:100%;
+  margin-left:var(--sidebar-width);
+  transition:margin-left .25s ease;
+}
+
+.topbar{
+    min-height:82px;
+    border-bottom:1px solid var(--line);
+    background:rgba(18,14,10,.92);
+    backdrop-filter:blur(18px);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 32px;
+    position:sticky;
+    top:0;
+    z-index:20;
+    box-shadow:0 10px 35px rgba(0,0,0,.45);
+}
+
+.top-logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.top-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+button,
+.top-actions a{
+  border:1px solid var(--line);
+  background:#ffffff;
+  color:#000;
+  padding:11px 16px;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:12px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+button:hover,
+.top-actions a:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+  background:var(--gold-soft);
+}
+
+button:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.content{
+  width:min(1420px,calc(100% - 56px));
+  margin:0 auto 60px;
+  padding-top:38px;
+}
+
+.hero{
+  border:1px solid var(--line);
+background: linear-gradient(180deg,#20170f,#17120d);
+  border-radius:28px;
+  padding:34px 40px;
+  margin-bottom:24px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:24px;
+  align-items:center;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:6px;
+  background:linear-gradient(90deg,var(--gold),#e8c76e,var(--gold));
+}
+
+.kicker{
+  color:var(--blue);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-size:12px;
+  margin-bottom:12px;
+}
+
+.hero-title{
+  margin:0 0 8px;
+color:#f1d06b;
+  font-size:clamp(2.2rem,4vw,4.4rem);
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  line-height:1.05;
+}
+
+.hero-subtitle{
+  color:var(--muted);
+  margin:0;
+  line-height:1.65;
+  font-style:italic;
+  font-size:1.05rem;
+}
+
+.counter-pill{
+  border:1px solid #e6d4b1;
+  background:linear-gradient(180deg,#fffdf8,#fff4d6);
+  border-radius:24px;
+  min-width:210px;
+  min-height:130px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.counter-pill strong{
+  font-size:2.8rem;
+  color:var(--gold);
+}
+
+.counter-pill span{
+  color:var(--muted);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+.container{
+  display:grid;
+  grid-template-columns:390px 1fr;
+  gap:24px;
+  width:100%;
+}
+
+.control-panel,
+.board-panel,
+.settings-panel{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+}
+
+.control-panel{
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:24px;
+}
+
+.current-ball-shell{
+  position:relative;
+  width:240px;
+  height:240px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.globe-ring{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:1px solid rgba(47,95,143,.18);
+  box-shadow:0 0 55px rgba(47,95,143,.06);
+}
+
+.globe-ring::before,
+.globe-ring::after{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border-radius:50%;
+  border:1px dashed rgba(184,137,36,.28);
+}
+
+.globe-ring::after{
+  inset:36px;
+  transform:rotate(68deg);
+  border-color:rgba(47,95,143,.22);
+}
+
+.current-ball{
+  width:190px;
+  height:190px;
+  background:
+    radial-gradient(circle at 30% 25%,#fff9d8,#f4c95d 34%,#d4af37 64%,#8b6518 100%);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:78px;
+  font-weight:bold;
+  color:#1f2937;
+  box-shadow:
+    0 20px 35px rgba(74,55,24,.22),
+    inset -16px -22px 28px rgba(0,0,0,.18),
+    inset 12px 12px 28px rgba(255,255,255,.45);
+  border:5px solid rgba(255,255,255,.72);
+  transition:transform .2s ease;
+  z-index:2;
+}
+
+.current-ball.animate{
+  animation:ballPulse .4s ease infinite alternate;
+}
+
+.current-ball-shell.spinning .globe-ring{
+  animation:spinGlobe .45s linear infinite;
+}
+
+.current-ball-shell.spinning .globe-ring::before{
+  animation:spinGlobe 1s linear infinite reverse;
+}
+
+.current-ball-shell.spinning .globe-ring::after{
+  animation:spinGlobe .75s linear infinite;
+}
+
+@keyframes spinGlobe{
+  to{transform:rotate(360deg)}
+}
+
+@keyframes ballPulse{
+  from{transform:scale(1) rotate(0deg)}
+  to{transform:scale(1.08) rotate(15deg)}
+}
+
+.last-number-meta{
+  text-align:center;
+  color:var(--muted);
+}
+
+.last-number-meta strong{
+  display:block;
+  color:var(--gold);
+  font-size:20px;
+  margin-bottom:6px;
+}
+
+.buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  width:100%;
+}
+
+.btn-draw{
+  background:#edf8ef;
+  color:#000;
+  border-color:#b9ddc2;
+}
+
+.btn-reset{
+  background:#fff0ef;
+  color:#000;
+  border-color:#efc0bc;
+}
+
+.btn-undo{
+  background:#fff8e6;
+  color:#000;
+  border-color:#e7cf99;
+}
+
+.btn-secondary{
+  background:#edf5fb;
+  color:#000;
+  border-color:#c4d9ec;
+}
+
+.history{
+  width:100%;
+}
+
+.history h3,
+.panel-title{
+  margin:0 0 12px;
+  color:var(--gold);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:13px;
+}
+
+.history-balls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  min-height:54px;
+}
+
+.mini-ball{
+  width:46px;
+  height:46px;
+  background:
+    radial-gradient(circle at 30% 25%,#ffffff,#eef4fb 50%,#cbd9e6);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:#1f2937;
+  border:2px solid rgba(255,255,255,.88);
+  font-size:16px;
+  box-shadow:0 8px 16px rgba(74,55,24,.10);
+}
+
+.board-panel{
+  padding:28px;
+}
+
+.board-row{
+  display:grid;
+  grid-template-columns:64px 1fr;
+  gap:14px;
+  align-items:center;
+  margin-bottom:14px;
+}
+
+.letter-header{
+  height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  font-weight:bold;
+  color:var(--gold);
+  border:1px solid #ecd8a9;
+  background:#fff8e6;
+  border-radius:18px;
+}
+
+.numbers-grid{
+  display:grid;
+  grid-template-columns:repeat(15,1fr);
+  gap:7px;
+  width:100%;
+}
+
+.cell{
+  background:#2d2c2b;
+  color:#b4a897;
+  text-align:center;
+  padding:10px 0;
+  font-weight:bold;
+  font-size:15px;
+  border-radius:11px;
+  border:1px solid #e3d7c3;
+  transition:all .25s;
+}
+
+.cell.called{
+  background:#ceae5c;
+  color:#171615;
+  border-color:var(--gold);
+  box-shadow:
+    inset 0 0 12px rgba(184,137,36,.10),
+    0 0 12px rgba(184,137,36,.08);
+  transform:scale(1.05);
+}
+
+.cell.last-called{
+  background:#eaf6ef;
+  color:#000;
+  border-color:#8fbd9d;
+}
+
+.settings-panel{
+  margin-top:24px;
+  padding:26px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+label{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+
+input{
+  width:100%;
+  border:1px solid var(--line);
+  background:#fffdf8;
+  color:#000;
+  padding:13px 14px;
+  border-radius:14px;
+  outline:none;
+  font-size:15px;
+}
+
+input:focus{
+  border-color:var(--gold);
+}
+
+.settings-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+
+.footer{
+  text-align:center;
+  color:var(--muted);
+  padding:30px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+@media(max-width:1120px){
+  .container{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:900px){
+  body{--sidebar-width:var(--sidebar-open)}
+
+  .sidebar{
+    transform:translateX(-100%);
+    width:var(--sidebar-open);
+  }
+
+  body.mobile-menu-open .sidebar{
+    transform:translateX(0);
+  }
+
+  .main{
+    margin-left:0;
+  }
+
+  .topbar{
+    padding:0 18px;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(min-width:901px){
+  .topbar .toggle-btn{
+    display:none;
+  }
+}
+
+@media(max-width:720px){
+  .content{
+    width:calc(100% - 28px);
+  }
+
+  .numbers-grid{
+    grid-template-columns:repeat(5,1fr);
+  }
+
+  .board-row{
+    grid-template-columns:1fr;
+  }
+
+  .buttons,
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .top-logo strong{
+    font-size:13px;
+  }
+
+  .top-logo span{
+    font-size:11px;
+  }
+}
+</style>
+</head>
+<body class="sidebar-collapsed">
+<div class="app">
+<aside class="sidebar">
+<div class="sidebar-header"><button class="toggle-btn" onclick="toggleSidebar()">☰</button><div class="logo-mini">▧</div><div class="brand">
+<strong>Pandora Box</strong><span>Work Tools</span></div></div>
+<nav class="nav">
+<a href="/"><i>⌂</i><span>Home</span></a><div class="sidebar-label">Ferramentas</div>
+<a href="https://horizon4282.com.br/radio-luz-louvor"><b>Rádio Luz e Louvor</b></a>
+<a href="https://horizon4282.com.br/catholic/amigo-anjo"><b>Amigo Anjo</b></a>
+<a href="https://horizon4282.com.br/capela-virtual"><b>Capela Virtual</b></a>
+<a href="https://horizon4282.com.br/proodos-home"><i>◇</i><span>Proodos</span></a>
+</nav>
+
+<div class="sidebar-footer">Catholic Box<br>Bingo Digital</div>
+</aside>
+<main class="main">
+<header class="topbar"><div class="top-logo">
+<button class="toggle-btn" onclick="toggleSidebar()">☰</button><div class="top-logo-mark">▧</div><div><strong>Horizon</strong><span>Globo de Bingo Digital</span></div></div><div class="top-actions"><a href="/">Home</a><button onclick="toggleFullscreen()">Tela cheia</button></div></header>
+<section class="content">
+<section class="hero"><div> <h1 class="hero-title" id="pageTitle">Globo de Bingo Digital</h1><p class="hero-subtitle" id="pageSubtitle">Festa da Padroeira & Eventos Beneficentes</p></div><div class="counter-pill"><strong id="restantesNumero">75</strong><span>Pedras restantes</span></div></section>
+<section class="container">
+<div class="control-panel">
+<div class="last-number-meta"><strong id="lastLetter">Aguardando sorteio</strong><span id="pedras-restantes">Pedras restantes: 75</span></div>
+<div class="current-ball-shell" id="globo"><div class="globe-ring"></div><div class="current-ball" id="bola-principal">--</div></div>
+<div class="history"><h3>Últimas 10 pedras</h3><div class="history-balls" id="historico-container"></div></div>
+<div class="buttons"><button class="btn-draw" id="btn-sortear" onclick="sortearNumero()">Sortear Pedra</button><button class="btn-undo" id="btn-desfazer" onclick="desfazerUltimo()" disabled>Desfazer</button><button class="btn-secondary" onclick="toggleFullscreen()">Tela Cheia</button><button class="btn-reset" onclick="reiniciarBingo()">Reiniciar</button></div>
+</div>
+<div class="board-panel" id="tabuleiro"></div>
+</section>
+<section class="settings-panel"><h2 class="panel-title">Editar título e subtítulo</h2><div class="form-grid"><div class="field"><label for="titleInput">Título</label><input id="titleInput" type="text" value="Globo de Bingo Digital"></div><div class="field"><label for="subtitleInput">Subtítulo</label><input id="subtitleInput" type="text" value="Festa da Padroeira & Eventos Beneficentes"></div></div><div class="settings-actions"><button onclick="savePageText()">Salvar título</button><button onclick="resetPageText()">Restaurar padrão</button></div></section>
+</section>
+<footer class="footer">Pandora Box — Globo de Bingo Digital — Horizon 4282</footer>
+</main></div>
+<script>
+const storageKey="pandora-bingo-state-v1";const textStorageKey="pandora-bingo-text-v1";
+const regrasBingo=[{letra:"B",inicio:1,fim:15},{letra:"I",inicio:16,fim:30},{letra:"N",inicio:31,fim:45},{letra:"G",inicio:46,fim:60},{letra:"O",inicio:61,fim:75}];
+let numerosDisponiveis=[];let numerosSorteados=[];let speakingVoice=null;
+window.addEventListener("load",()=>{montarTabuleiro();carregarTexto();carregarEstado();carregarVoz();});
+function toggleSidebar(){if(window.innerWidth<=900){document.body.classList.toggle("mobile-menu-open")}else{document.body.classList.toggle("sidebar-collapsed")}}
+function toggleFullscreen(){if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{})}else{document.exitFullscreen().catch(()=>{})}}
+function montarTabuleiro(){const tabuleiro=document.getElementById("tabuleiro");tabuleiro.innerHTML="";regrasBingo.forEach(linha=>{const rowDiv=document.createElement("div");rowDiv.className="board-row";const letterDiv=document.createElement("div");letterDiv.className="letter-header";letterDiv.innerText=linha.letra;const gridDiv=document.createElement("div");gridDiv.className="numbers-grid";for(let i=linha.inicio;i<=linha.fim;i++){const cell=document.createElement("div");cell.className="cell";cell.id=`num-${i}`;cell.innerText=i;gridDiv.appendChild(cell)}rowDiv.appendChild(letterDiv);rowDiv.appendChild(gridDiv);tabuleiro.appendChild(rowDiv)})}
+function carregarVoz(){if(!("speechSynthesis" in window))return;const selecionar=()=>{const voices=window.speechSynthesis.getVoices();speakingVoice=voices.find(v=>v.lang==="pt-BR"&&v.name.toLowerCase().includes("google"))||voices.find(v=>v.lang==="pt-BR")||voices.find(v=>v.lang.startsWith("pt"))||null};selecionar();window.speechSynthesis.onvoiceschanged=selecionar}
+function reiniciarBingo(){if(numerosSorteados.length>0&&!confirm("Tem certeza que deseja zerar o bingo atual?"))return;numerosDisponiveis=Array.from({length:75},(_,i)=>i+1);numerosSorteados=[];document.getElementById("bola-principal").innerText="--";document.getElementById("lastLetter").innerText="Aguardando sorteio";document.getElementById("btn-sortear").disabled=false;document.getElementById("btn-sortear").innerText="Sortear Pedra";document.getElementById("btn-desfazer").disabled=true;document.querySelectorAll(".cell").forEach(c=>c.classList.remove("called","last-called"));atualizarInterface();salvarEstado()}
+function carregarEstado(){const salvo=localStorage.getItem(storageKey);if(!salvo){reiniciarBingo();return}try{const estado=JSON.parse(salvo);numerosDisponiveis=Array.isArray(estado.numerosDisponiveis)?estado.numerosDisponiveis:Array.from({length:75},(_,i)=>i+1);numerosSorteados=Array.isArray(estado.numerosSorteados)?estado.numerosSorteados:[]}catch(e){numerosDisponiveis=Array.from({length:75},(_,i)=>i+1);numerosSorteados=[]}atualizarInterface()}
+function salvarEstado(){localStorage.setItem(storageKey,JSON.stringify({numerosDisponiveis,numerosSorteados}))}
+function getLetra(numero){const regra=regrasBingo.find(r=>numero>=r.inicio&&numero<=r.fim);return regra?regra.letra:""}
+function sortearNumero(){if(numerosDisponiveis.length===0){alert("Todas as 75 pedras já foram sorteadas!");document.getElementById("btn-sortear").disabled=true;return}const btn=document.getElementById("btn-sortear");const bola=document.getElementById("bola-principal");const globo=document.getElementById("globo");btn.disabled=true;btn.innerText="Girando...";bola.classList.add("animate");globo.classList.add("spinning");let spinCount=0;const fakeSpin=setInterval(()=>{const fake=numerosDisponiveis[Math.floor(Math.random()*numerosDisponiveis.length)];bola.innerText=fake;spinCount++;if(spinCount>=12)clearInterval(fakeSpin)},90);setTimeout(()=>{clearInterval(fakeSpin);const indiceAleatorio=Math.floor(Math.random()*numerosDisponiveis.length);const numeroSorteado=numerosDisponiveis.splice(indiceAleatorio,1)[0];numerosSorteados.unshift(numeroSorteado);bola.classList.remove("animate");globo.classList.remove("spinning");atualizarInterface();falarNumero(numeroSorteado);salvarEstado();btn.disabled=false;btn.innerText="Sortear Pedra"},1400)}
+function desfazerUltimo(){if(!numerosSorteados.length)return;const ultimo=numerosSorteados.shift();if(!numerosDisponiveis.includes(ultimo)){numerosDisponiveis.push(ultimo);numerosDisponiveis.sort((a,b)=>a-b)}atualizarInterface();salvarEstado()}
+function atualizarInterface(){const bola=document.getElementById("bola-principal");const btnDesfazer=document.getElementById("btn-desfazer");document.querySelectorAll(".cell").forEach(c=>c.classList.remove("called","last-called"));numerosSorteados.forEach((num,index)=>{const cell=document.getElementById(`num-${num}`);if(cell){cell.classList.add("called");if(index===0)cell.classList.add("last-called")}});if(numerosSorteados.length){const atual=numerosSorteados[0];const letra=getLetra(atual);bola.innerText=atual;document.getElementById("lastLetter").innerText=`${letra} ${atual}`}else{bola.innerText="--";document.getElementById("lastLetter").innerText="Aguardando sorteio"}const restantes=numerosDisponiveis.length;document.getElementById("pedras-restantes").innerText=`Pedras restantes: ${restantes}`;document.getElementById("restantesNumero").innerText=restantes;btnDesfazer.disabled=numerosSorteados.length===0;document.getElementById("btn-sortear").disabled=restantes===0;atualizarHistorico()}
+function atualizarHistorico(){const container=document.getElementById("historico-container");container.innerHTML="";numerosSorteados.slice(0,10).forEach(num=>{const miniBola=document.createElement("div");miniBola.className="mini-ball";miniBola.innerText=`${num}`;container.appendChild(miniBola)})}
+function falarNumero(numero){if(!("speechSynthesis" in window))return;window.speechSynthesis.cancel();const letra=getLetra(numero);const mensagem=new SpeechSynthesisUtterance(`${letra}. ${numero}`);mensagem.lang="pt-BR";mensagem.rate=.92;mensagem.pitch=1;mensagem.volume=1;if(speakingVoice)mensagem.voice=speakingVoice;window.speechSynthesis.speak(mensagem)}
+function savePageText(){const title=document.getElementById("titleInput").value.trim()||"Globo de Bingo Digital";const subtitle=document.getElementById("subtitleInput").value.trim()||"Festa da Padroeira & Eventos Beneficentes";const data={title,subtitle};localStorage.setItem(textStorageKey,JSON.stringify(data));aplicarTexto(data)}
+function carregarTexto(){const salvo=localStorage.getItem(textStorageKey);if(!salvo)return;try{aplicarTexto(JSON.parse(salvo))}catch(e){}}
+function aplicarTexto(data){document.getElementById("pageTitle").innerText=data.title;document.getElementById("pageSubtitle").innerText=data.subtitle;document.getElementById("titleInput").value=data.title;document.getElementById("subtitleInput").value=data.subtitle;document.title=`Pandora Box — ${data.title}`}
+function resetPageText(){const data={title:"Globo de Bingo Digital",subtitle:"Festa da Padroeira & Eventos Beneficentes"};localStorage.removeItem(textStorageKey);aplicarTexto(data)}
+window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.classList.add("sidebar-collapsed")});
+</script>
+</body>
+</html>
