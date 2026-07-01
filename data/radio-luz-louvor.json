@@ -228,11 +228,6 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-vestida-de-Sol.mp3"
         },
         {
-          "title": "Bodas de Cana",
-          "duration": 184,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-bodas-de-cana.mp3"
-        },
-        {
           "title": "Julgado Pelo Mundo",
           "duration": 249,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-julgado-pelo-mundo.mp3"
@@ -256,7 +251,27 @@
           "title": "Bodas de Cana",
           "duration": 184,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-bodas-de-cana.mp3"
-        }    
+        },
+        {
+          "title": "Quem Como Deus",
+          "duration": 223,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-quem-como-Deus.mp3"
+        },
+        {
+          "title": "Os Muros de Jericó",
+          "duration": 194,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-os-muros-de-jerico.mp3"
+        },
+        {
+          "title": "Chegada a Hora da Vitória",
+          "duration": 208,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-chegada-a-hora-da-vitoria.mp3"
+        },
+        {
+          "title": "Ilumina Minha Jornada",
+          "duration": 208,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Ilumina-minha-jornada.mp3"
+        }
       ]
     },
     {
