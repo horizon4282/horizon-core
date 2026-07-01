@@ -188,9 +188,49 @@
       },
       "playlist": [
         {
+          "title": "Deus Conosco",
+          "duration": 187,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Deus-conosco.mp3"
+        },
+        {
+          "title": "Em Tudo Seu Amor se Revela",
+          "duration": 188,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-em-tudo-seu-amor-se-revela.mp3"
+        },
+        {
+          "title": "Espírito Santo me Conduz",
+          "duration": 404,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-espirito-santo-me-conduz.mp3"
+        },
+        {
+          "title": "O Tempo de Deus",
+          "duration": 187,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-o-tempo-de-deus.mp3"
+        },
+        {
           "title": "A caminho de Emaús",
           "duration": 221,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-caminho-de-emaus.mp3"
+        },
+        {
+          "title": "Mãe da Humanidade",
+          "duration": 188,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-mae-da-humanidade.mp3"
+        },
+        {
+          "title": "Senhora Mãe da Paz",
+          "duration": 229,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-senhora-mae-da-paz.mp3"
+        },
+        {
+          "title": "Vestida de Sol",
+          "duration": 245,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-vestida-de-Sol.mp3"
+        },
+        {
+          "title": "Bodas de Cana",
+          "duration": 184,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-bodas-de-cana.mp3"
         }
       ]
     },
