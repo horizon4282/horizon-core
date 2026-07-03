@@ -556,7 +556,37 @@
         "description": "An afternoon of trust in God's care."
       },
       "playlist": [
-                {
+         {
+          "title": "Vem Nos Dar a Tua Luz",
+          "duration": 234,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-vem-nos-dar-a-tua-luz.mp3"
+        },
+         {
+          "title": "O Nome Que Veio do Céu",
+          "duration": 227,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-o-nome-que-veio-do-ceu.mp3"
+        },
+         {
+          "title": "Brilhou a Esperança",
+          "duration": 211,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-brilhou-a-esperanca.mp3"
+        },
+         {
+          "title": "Minha Alma Busca o Céu",
+          "duration": 309,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-minha-alma-busca-o-ceu.mp3"
+        },
+         {
+          "title": "Sem Jesus Não Somos Nada",
+          "duration": 296,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sem-jesus-nao-somos-nada.mp3"
+        },
+         {
+          "title": "Ungido do Senhor",
+          "duration": 234,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ungido-do-senhor.mp3"
+        },
+        {
           "title": "São Miguel Arcanjo",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
@@ -668,36 +698,6 @@
           "title": "Trono Eterno",
           "duration": 391,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-trono-eterno.mp3"
-        },
-         {
-          "title": "Vem Nos Dar a Tua Luz",
-          "duration": 234,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-vem-nos-dar-a-tua-luz.mp3"
-        },
-         {
-          "title": "O Nome Que Veio do Céu",
-          "duration": 227,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-o-nome-que-veio-do-ceu.mp3"
-        },
-         {
-          "title": "Brilhou a Esperança",
-          "duration": 211,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-brilhou-a-esperanca.mp3"
-        },
-         {
-          "title": "Minha Alma Busca o Céu",
-          "duration": 309,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-minha-alma-busca-o-ceu.mp3"
-        },
-         {
-          "title": "Sem Jesus Não Somos Nada",
-          "duration": 296,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sem-jesus-nao-somos-nada.mp3"
-        },
-         {
-          "title": "Ungido do Senhor",
-          "duration": 234,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ungido-do-senhor.mp3"
         }
       ]
     },
