@@ -933,6 +933,11 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-meu-motivo-pra-seguir.mp3"
         },
         {
+          "title": "Aulas de Inglês Gratuito",
+          "duration": 82,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/aulas-de-ingles-01.mp3"
+        },
+        {
           "title": "A Porta Aberta",
           "duration": 186,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"
@@ -953,6 +958,11 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-passear-em-teu-jardim.mp3"
         },
         {
+          "title": "Oração da Noite",
+          "duration": 100,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/oracao-noite-01.mp3"
+        },
+        {
           "title": "Salvador de Almas",
           "duration": 238,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-salvador-de-almas.mp3"
@@ -961,6 +971,11 @@
           "title": "Nasci Pra Te Adorar",
           "duration": 218,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-nasci-pra-te-adorar.mp3"
+        },
+        {
+          "title": "Aviso Paroquial",
+          "duration": 143,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-01.mp3"
         }
       ]
     }
