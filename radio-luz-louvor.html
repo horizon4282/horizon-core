@@ -363,7 +363,13 @@ function renderNowPlaying(item, source){
 
   const localized = item[currentLang] || item.pt || item.en || item;
  
-  const player = document.getElementById("radioPlayer");
+const player = document.getElementById("radioPlayer");
+
+  // volume inicial
+if (!localStorage.getItem("radioVolumeInitialized")) {
+    player.volume = 0.20;
+    localStorage.setItem("radioVolumeInitialized", "true");
+}
 
   document.getElementById("sourceText").textContent =
     source === "request" ? "Request" : "Schedule";
@@ -513,7 +519,18 @@ document.getElementById("radioPlayer").addEventListener("ended", () => {
 
 function scrollToBlock(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});if(window.innerWidth<=900)document.body.classList.remove("mobile-menu-open")}
 window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.classList.add("sidebar-collapsed")})
-document.addEventListener("DOMContentLoaded",()=>{setLanguage(currentLang);loadRadioJson()})
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const player = document.getElementById("radioPlayer");
+
+    // Volume inicial: 20%
+    player.volume = 0.20;
+
+    setLanguage(currentLang);
+    loadRadioJson();
+
+});
 
 setInterval(() => {
   if (!radioData || activeSource === "request") return;
