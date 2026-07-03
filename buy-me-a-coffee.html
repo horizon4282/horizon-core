@@ -3,25 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
-  <title>Apoie | Buy me a coffee - Proodos</title>
 
-<meta name="description" content="Luz e Louvor é a dimensão musical do Horizon 4282: músicas, álbuns, oração, fé e contemplação.">
-<meta name="keywords" content="Luz e Louvor, música católica, oração cantada, ministério luz e louvor, Horizon 4282, louvor, fé, álbuns católicos">
-<meta name="author" content="Roque Fernando Marcos Sousa">
-<meta name="robots" content="index,follow">
+  <title>Apoie este Projeto | Support this Project</title>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Luz e Louvor | Horizon 4282">
-<meta property="og:description" content="Music, prayer and contemplation inside the Horizon 4282 universe.">
-<meta property="og:url" content="https://horizon4282.com.br/radio-luz-louvor.html">
-<meta property="og:site_name" content="Horizon 4282">
-<meta property="og:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
+  <meta name="description" content="Apoie os projetos Proodos, Horizon 4282 e Luz e Louvor: formação, cultura, evangelização, educação e desenvolvimento humano.">
+  <meta name="keywords" content="Proodos, Horizon 4282, Luz e Louvor, apoio, doação, PIX, Buy Me a Coffee, evangelização, educação, cultura, projetos digitais">
+  <meta name="author" content="Roque Fernando Marcos Sousa">
+  <meta name="robots" content="index,follow">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Luz e Louvor | Horizon 4282">
-<meta name="twitter:description" content="Music, prayer and contemplation.">
-<meta name="twitter:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Apoie este Projeto | Support this Project">
+  <meta property="og:description" content="Ajude-nos a manter e expandir projetos de formação, cultura, evangelização e desenvolvimento humano.">
+  <meta property="og:url" content="https://horizon4282.com.br/apoie.html">
+  <meta property="og:site_name" content="Horizon 4282">
+  <meta property="og:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Apoie este Projeto | Support this Project">
+  <meta name="twitter:description" content="Support our educational, cultural and evangelization projects.">
+  <meta name="twitter:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
 
   <style>
     :root {
@@ -46,6 +48,62 @@
       background: linear-gradient(135deg, #0f172a, #1e293b);
       color: var(--text);
       line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      padding: 22px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .logo-link {
+      color: var(--gold);
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .menu {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .menu a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .menu a:hover {
+      color: var(--gold);
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-switch button {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .lang-switch button.active {
+      background: var(--gold);
+      color: #111827;
     }
 
     header {
@@ -54,7 +112,7 @@
     }
 
     header h1 {
-      font-size: clamp(2.2rem, 3vw, 4rem);
+      font-size: clamp(2.2rem, 4vw, 4rem);
       color: #fff;
       margin-bottom: 15px;
     }
@@ -144,6 +202,8 @@
       padding: 14px 24px;
       transition: .25s ease;
       margin-top: 8px;
+      border: none;
+      cursor: pointer;
     }
 
     .btn-pix {
@@ -161,17 +221,6 @@
       opacity: .9;
     }
 
-    .english {
-      margin-top: 28px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
-    }
-
-    .english h3 {
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-
     footer {
       text-align: center;
       color: var(--muted);
@@ -180,154 +229,234 @@
       margin-top: 50px;
       font-size: .95rem;
     }
-    .topbar {
-  width: min(1100px, 92%);
-  margin: 0 auto;
-  padding: 22px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.logo-link {
-  color: var(--gold);
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.2rem;
-}
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
 
-.menu {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-}
+    [data-lang="en"] {
+      display: none;
+    }
 
-.menu a {
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 600;
-}
+    body.en [data-lang="pt"] {
+      display: none;
+    }
 
-.menu a:hover {
-  color: var(--gold);
-}
+    body.en [data-lang="en"] {
+      display: initial;
+    }
+
+    body.en section[data-lang="en"],
+    body.en article[data-lang="en"],
+    body.en div[data-lang="en"],
+    body.en p[data-lang="en"],
+    body.en h1[data-lang="en"],
+    body.en h2[data-lang="en"] {
+      display: block;
+    }
+
+    @media (max-width: 700px) {
+      .topbar {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .menu {
+        justify-content: center;
+      }
+
+      .card {
+        padding: 24px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <nav class="topbar">
+    <a class="logo-link" href="index.html">Horizon 4282</a>
 
+    <div class="menu">
+      <a href="index.html" data-lang="pt">Início</a>
+      <a href="sobre.html" data-lang="pt">Sobre</a>
+      <a href="manifesto.html" data-lang="pt">Manifesto</a>
+      <a href="estatuto.html" data-lang="pt">Estatuto</a>
 
-  <div class="menu">
-    <a href="index.html">Início</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="manifesto.html">Manifesto</a>
-    <a href="estatuto.html">Estatuto</a>
-  </div>
-</nav>
+      <a href="index.html" data-lang="en">Home</a>
+      <a href="sobre.html" data-lang="en">About</a>
+      <a href="manifesto.html" data-lang="en">Manifesto</a>
+      <a href="estatuto.html" data-lang="en">Statute</a>
+    </div>
+
+    <div class="lang-switch">
+      <button id="btnPt" class="active" onclick="setLang('pt')">PT</button>
+      <button id="btnEn" onclick="setLang('en')">EN</button>
+    </div>
+  </nav>
 
   <header>
-    <h1>Apoie este Projeto / Help our Project</h1>
-    <p>
+    <h1 data-lang="pt">Apoie este Projeto</h1>
+    <h1 data-lang="en">Support this Project</h1>
+
+    <p data-lang="pt">
       Sua contribuição ajuda a manter e expandir nossas iniciativas de formação,
       evangelização, cultura, educação e desenvolvimento humano.
+    </p>
+
+    <p data-lang="en">
+      Your support helps us maintain and expand our initiatives in education,
+      evangelization, culture, human development and digital projects.
     </p>
   </header>
 
   <main>
 
-   
+    <section class="intro" data-lang="pt">
+      <h2>Ajude-nos a continuar</h2>
+      <p>
+        Todo apoio, pequeno ou grande, fortalece nossa missão e nos ajuda
+        a criar novos conteúdos, projetos sociais, formações, páginas, cursos,
+        rádios online e ações digitais.
+      </p>
+    </section>
+
+    <section class="intro" data-lang="en">
+      <h2>Help us continue</h2>
+      <p>
+        Every contribution, small or large, strengthens our mission and helps us
+        create new content, social projects, educational resources, online radios,
+        pages, courses and digital initiatives.
+      </p>
+    </section>
+
     <section class="support-grid">
 
       <article class="card pix">
-        <h2>Brasil — Apoie via PIX</h2>
-        <p>
+        <h2 data-lang="pt">Brasil — Apoie via PIX</h2>
+        <h2 data-lang="en">Brazil — Support via PIX</h2>
+
+        <p data-lang="pt">
           Para apoiadores no Brasil, você pode contribuir de forma simples e direta usando PIX.
         </p>
 
+        <p data-lang="en">
+          If you are in Brazil, you can support this project directly through PIX.
+        </p>
+
         <div class="info-box">
-          <span class="label">Chave PIX:</span>
-          <strong>usabiliweb@yahoo.com.br</strong>
+          <span class="label" data-lang="pt">Chave PIX:</span>
+          <span class="label" data-lang="en">PIX key:</span>
+          <strong>gratidaodoamor@gmail.com</strong>
         </div>
 
         <div class="info-box">
-          <span class="label">Nome do recebedor:</span>
+          <span class="label" data-lang="pt">Nome do recebedor:</span>
+          <span class="label" data-lang="en">Recipient name:</span>
           <strong>ROQUE FERNANDO M SOUSA</strong>
         </div>
 
-        <a class="btn btn-pix" href="#">
-          Copiar chave PIX
-        </a>
-
-        <div class="english">
-          <h3>Brazil — Support via PIX</h3>
-          <p>
-            If you are in Brazil, you can support this project directly through PIX.
-          </p>
-        </div>
-        <div class="intro">
-      <h2>Ajude-nos a continuar</h2>
-      <p>
-        Todo apoio, pequeno ou grande, fortalece a missão da Proodos e nos ajuda
-        a criar novos conteúdos, projetos sociais, formações, páginas, cursos e ações digitais.
-      </p>
-      </div>
+        <button class="btn btn-pix" id="pixButton" type="button" onclick="copyPix()">
+          <span data-lang="pt">Copiar chave PIX</span>
+          <span data-lang="en">Copy PIX key</span>
+        </button>
       </article>
 
-    
       <article class="card coffee">
-        <h2>International — Buy Me a Coffee</h2>
-       
+        <h2 data-lang="pt">Internacional — Buy Me a Coffee</h2>
+        <h2 data-lang="en">International — Buy Me a Coffee</h2>
+
+        <p data-lang="pt">
+          Para apoiadores fora do Brasil, você pode contribuir pelo Buy Me a Coffee.
+        </p>
+
+        <p data-lang="en">
+          If you are outside Brazil, you can support us through Buy Me a Coffee.
+        </p>
 
         <div class="info-box">
-          <span class="label">Support link:</span>
+          <span class="label" data-lang="pt">Link de apoio:</span>
+          <span class="label" data-lang="en">Support link:</span>
           <strong>https://www.buymeacoffee.com/roque</strong>
         </div>
 
         <a class="btn btn-coffee" href="https://www.buymeacoffee.com/roque" target="_blank" rel="noopener">
-          Support on Buy Me a Coffee
+          <span data-lang="pt">Apoiar no Buy Me a Coffee</span>
+          <span data-lang="en">Support on Buy Me a Coffee</span>
         </a>
-            
-        <div class="english" style="margin:40px 0 30px 0">
-          <h3>Support from the US and other countries</h3>
-          <p>
-            If you are outside Brazil, you can support us through Buy Me a Coffee.
-            Every contribution helps this mission grow.
-          </p>
-        </div>
-         <div class="intro">
-        <h2>Support this Mission</h2>
-        <p>
-          Your support helps us continue creating educational, cultural, spiritual
-          and social development projects for people in Brazil and around the world.
-        </p>
-      </div>
       </article>
 
     </section>
 
+    <section class="intro" style="margin-top:35px;" data-lang="pt">
+      <h2>Por que apoiar?</h2>
+      <p>
+        Seu apoio ajuda na criação de músicas, devocionais, materiais de formação, rádios online, sites, aplicativos e projetos culturais
+        que levam fé, educação e esperança a mais pessoas.
+      </p>
+    </section>
 
+    <section class="intro" style="margin-top:35px;" data-lang="en">
+      <h2>Why support us?</h2>
+      <p>
+        Your support helps us create songs, devotional content, educational resources,
+        children's catechesis materials, online radio projects, websites, apps and cultural
+        initiatives that bring faith, education and hope to more people.
+      </p>
+    </section>
 
   </main>
 
- <footer>
-  <p>Proodos © 2026 — Formação, cultura, evangelização e desenvolvimento humano.</p>
-  <p><a href="index.html" style="color: var(--gold);">Voltar para a página inicial</a></p>
-</footer>
-  <script>
-    const pixButton = document.querySelector(".btn-pix");
-    const pixKey = "usabiliweb@yahoo.com.br";
+  <footer>
+    <p data-lang="pt">Proodos © 2026 — Formação, cultura, evangelização e desenvolvimento humano.</p>
+    <p data-lang="en">Proodos © 2026 — Education, culture, evangelization and human development.</p>
 
-    pixButton.addEventListener("click", function(event) {
-      event.preventDefault();
+    <p>
+      <a href="index.html" data-lang="pt">Voltar para a página inicial</a>
+      <a href="index.html" data-lang="en">Back to home page</a>
+    </p>
+  </footer>
+
+  <script>
+    const pixKey = "gratidaodoamor@gmail.com";
+    const btnPt = document.getElementById("btnPt");
+    const btnEn = document.getElementById("btnEn");
+
+    function setLang(lang) {
+      if (lang === "en") {
+        document.body.classList.add("en");
+        document.documentElement.lang = "en";
+        btnEn.classList.add("active");
+        btnPt.classList.remove("active");
+        localStorage.setItem("support-page-lang", "en");
+      } else {
+        document.body.classList.remove("en");
+        document.documentElement.lang = "pt-BR";
+        btnPt.classList.add("active");
+        btnEn.classList.remove("active");
+        localStorage.setItem("support-page-lang", "pt");
+      }
+    }
+
+    function copyPix() {
+      const pixButton = document.getElementById("pixButton");
+      const currentLang = document.body.classList.contains("en") ? "en" : "pt";
 
       navigator.clipboard.writeText(pixKey).then(() => {
-        pixButton.textContent = "Chave PIX copiada!";
+        pixButton.textContent = currentLang === "en" ? "PIX key copied!" : "Chave PIX copiada!";
+
         setTimeout(() => {
-          pixButton.textContent = "Copiar chave PIX";
+          pixButton.innerHTML = currentLang === "en"
+            ? '<span data-lang="en">Copy PIX key</span><span data-lang="pt">Copiar chave PIX</span>'
+            : '<span data-lang="pt">Copiar chave PIX</span><span data-lang="en">Copy PIX key</span>';
         }, 2500);
       });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("support-page-lang") || "pt";
+      setLang(savedLang);
     });
   </script>
 
