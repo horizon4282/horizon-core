@@ -406,7 +406,7 @@ const player = document.getElementById("radioPlayer");
 
   // volume inicial
 if (!localStorage.getItem("radioVolumeInitialized")) {
-    player.volume = 0.20;
+    player.volume = 1;
     localStorage.setItem("radioVolumeInitialized", "true");
 }
 
@@ -600,7 +600,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const player = document.getElementById("radioPlayer");
 
     // Volume inicial: 20%
-    player.volume = 0.20;
+   player.volume = 1;
 
     setLanguage(currentLang);
     loadRadioJson();
