@@ -528,13 +528,13 @@ function pauseRadio(){document.getElementById("radioPlayer").pause()}
 
 document.getElementById("radioPlayer").addEventListener("ended", () => {
   if (activeSource === "schedule") {
-    const currentSchedule = getCurrentSchedule();
+    //const currentSchedule = getCurrentSchedule();
 
-    if (currentSchedule && currentSchedule.hour !== activeScheduleHour) {
-      renderSchedule();
-      renderNowPlaying(currentSchedule, "schedule");
-      playRadio();
-      return;
+   //if (currentSchedule && currentSchedule.hour !== activeScheduleHour) {
+   //renderSchedule();
+   //renderNowPlaying(currentSchedule, "schedule");
+   //playRadio();
+   //return;
     }
   }
 
@@ -608,12 +608,33 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 setInterval(() => {
+
   if (!radioData || activeSource === "request") return;
 
-  // Apenas atualiza o destaque visual da programação.
-  // Não troca o áudio enquanto a música atual estiver tocando.
+  const currentSchedule = getCurrentSchedule();
+
+  // Mudou o programa?
+  if (currentSchedule && currentSchedule.hour !== activeScheduleHour) {
+
+    renderSchedule();
+
+    // interrompe imediatamente a música atual
+    const player = document.getElementById("radioPlayer");
+    player.pause();
+
+    // sincroniza com o novo programa
+    renderNowPlaying(currentSchedule, "schedule");
+
+    // inicia imediatamente
+    playRadio();
+
+    return;
+  }
+
+  // Apenas atualiza o destaque visual da grade
   renderSchedule();
-}, 60000);
+
+}, 1000);
   
 </script>
 </body>
