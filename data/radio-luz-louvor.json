@@ -713,11 +713,16 @@
       },
       "playlist": [
           {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
+        },
+          {
           "title": "A Cruz era pra Mim",
           "duration": 233,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-cruz-era-pra-mim.mp3"
         },
-                {
+         {
           "title": "Rei da Glória",
           "duration": 215,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-rei-da-gloria.mp3"
@@ -727,7 +732,12 @@
           "duration": 184,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-exaltado-seja.mp3"
         },
-                {
+                  {
+          "title": "Informativo Paroquial",
+          "duration": 102,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/curso-ingles-dpe.mp3"
+        },
+        {
           "title": "Deus é Piedade",
           "duration": 195,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-deus-e-piedade.mp3"
@@ -741,6 +751,11 @@
           "title": "Torre de Marfim",
           "duration": 191,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-torre-de-marfim.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
         },
         {
           "title": "Cenáculo Sagrado",
