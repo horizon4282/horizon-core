@@ -835,6 +835,11 @@
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
         },
+         {
+          "title": "Aviso Paroquial",
+          "duration": 168,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-final.mp3"
+        },
         {
            "title": "Maria Cheia de Luz",
           "duration": 274,
@@ -850,6 +855,11 @@
           "duration": 236,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-nada-alem-do-seu-amor.mp3"
         },
+         {
+          "title": "Aviso Paroquial",
+          "duration": 96,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/catequese-adultos-final.mp3"
+        }
         {
           "title": "Mãe de Deus Bendita",
           "duration": 194,
@@ -1169,8 +1179,8 @@
         },
         {
           "title": "Aviso Paroquial",
-          "duration": 143,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-01.mp3"
+          "duration": 168,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-final.mp3"
         }
       ]
     }
