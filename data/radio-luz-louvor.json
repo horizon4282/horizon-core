@@ -772,6 +772,11 @@
           "duration": 189,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-santo-e-o-meu-Deus.mp3"
         },
+          {
+          "title": "Informativo Paroquial",
+          "duration": 168,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-final.mp3"
+        },
         {
           "title": "Tudo se Esclarecerá",
           "duration": 165,
@@ -786,6 +791,11 @@
           "title": "Somos filhos do Céu",
           "duration": 211,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Somos-filhos-do-ceu.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
         },
         {
           "title": "Deus Meu Deus",
