@@ -1117,6 +1117,11 @@
         "description": "End the day resting in God's loving presence."
       },
       "playlist": [
+      {
+          "title": "Rádio Luz e Louvor",
+          "duration": 17,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jingle-Radio-Luz-e-Louvor.mp3"
+        },
         {
           "title": "Teu Perdão, Teu Amor, Tua Luz",
           "duration": 209,
@@ -1133,9 +1138,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-meu-motivo-pra-seguir.mp3"
         },
         {
-          "title": "Aulas de Inglês Gratuito",
-          "duration": 82,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/aulas-de-ingles-01.mp3"
+          "title": "Informativo Paroquial",
+          "duration": 102,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/curso-ingles-dpe.mp3"
         },
         {
           "title": "A Porta Aberta",
@@ -1152,15 +1157,20 @@
           "duration": 224,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-a-nossa-alegria-esta-em-jesus.mp3"
         },
+                {
+          "title": "Aviso Paroquial",
+          "duration": 96,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/catequese-adultos-final.mp3"
+        },
         {
           "title": "Quero Passear em Teu Jardim",
           "duration": 226,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-passear-em-teu-jardim.mp3"
         },
-        {
-          "title": "Inglês Gratuito!",
-          "duration": 82,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/ingles-plus.mp3"
+       {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
         },
         {
           "title": "Oração da Noite",
@@ -1181,7 +1191,27 @@
           "title": "Aviso Paroquial",
           "duration": 168,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-final.mp3"
-        }
+        },
+         {
+          "title": "Jesus Terá Vitória Sobre Mim",
+          "duration": 203,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-jesus-tera-vitoria-sobre-mim.mp3"
+        },
+         {
+          "title": "Quero Ser Iluminado",
+          "duration": 194,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-ser-iluminado.mp3"
+        },
+         {
+          "title": "Habita em Mim",
+          "duration": 135,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-habita-em-mim.mp3"
+        },
+         {
+          "title": "Sabedoria Entendimento",
+          "duration": 254,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-sabedoria-entendimento.mp3"
+        },
       ]
     }
   ]
