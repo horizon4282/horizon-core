@@ -1202,6 +1202,11 @@
           "duration": 194,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-ser-iluminado.mp3"
         },
+        {
+          "title": "Informativo Paroquial",
+          "duration": 102,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/curso-ingles-dpe.mp3"
+        },
          {
           "title": "Habita em Mim",
           "duration": 135,
@@ -1211,7 +1216,7 @@
           "title": "Sabedoria Entendimento",
           "duration": 254,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-sabedoria-entendimento.mp3"
-        }
+        }       
       ]
     }
   ]
