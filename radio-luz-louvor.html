@@ -513,12 +513,11 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
       ? "Transmissão sincronizada da programação atual."
       : "Synced broadcast from the current schedule.";
 
-  player.pause();
-
   player.oncanplay = null;
   player.onerror = null;
 
   player.src = track.audio;
+  player.load();
 
   player.oncanplay = () => {
     player.oncanplay = null;
@@ -527,8 +526,8 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
       player.currentTime = offset;
     }
 
-    if (autoPlay) {
-      player.play().catch(() => {});
+    if (autoPlay || !player.paused) {
+      playRadio();
     }
   };
 
@@ -547,7 +546,17 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   };
 }
 
-function playRadio(){document.getElementById("radioPlayer").play().catch(()=>{})}
+async function playRadio(){
+  const player = document.getElementById("radioPlayer");
+
+  try{
+    await player.play();
+  }catch(error){
+    console.warn("Play bloqueado pelo navegador:", error);
+  }
+}
+
+  
 function pauseRadio(){document.getElementById("radioPlayer").pause()}
 
 document.getElementById("radioPlayer").addEventListener("ended", () => {
