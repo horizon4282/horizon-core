@@ -231,38 +231,109 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
 </div>
 <script>
 let radioShouldPlay = false;
+let internalAudioChange = false;
+
 let activeScheduleHour = null;
 let currentPlaylist = [];
 let currentTrackIndex = 0;
-let currentLang=localStorage.getItem("horizonLanguage")||"pt";
-let radioData=null,activeTrack=null,activeSource="schedule";
-  
-const JSON_URL="https://horizon4282.com.br/data/radio-luz-louvor.json";
+let currentLang = localStorage.getItem("horizonLanguage") || "pt";
+let radioData = null;
+let activeTrack = null;
+let activeSource = "schedule";
+
+const JSON_URL = "https://horizon4282.com.br/data/radio-luz-louvor.json";
 const MESSAGES_URL = "https://horizon4282.com.br/data/radio-messages-pt-en.json";
 let messagesData = [];
-  
-const fallbackData={
- page:{pt:{eyebrow:"Rádio Luz e Louvor",title:"Rádio Luz e Louvor",text:"Música, oração, Palavra e esperança. Uma estação devocional dentro do Horizon 4282.",onAir:"Áudio HD · 24h"},en:{eyebrow:"Light & Praise Radio",title:"Light & Praise Radio",text:"Music, prayer, Word and hope. A devotional station inside Horizon 4282.",onAir:"HD Audio · 24h"}},
- defaultCover:"https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png",
- tracks:{"recebe-hoje-o-meu-sim":{pt:{title:"Recebe Hoje o Meu Sim",description:"Faixa solicitada do Ministério Luz e Louvor."},en:{title:"Recebe Hoje o Meu Sim",description:"Requested track by Ministério Luz e Louvor."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3",cover:""},"digno-de-louvor":{pt:{title:"Digno de Louvor",description:"Faixa solicitada do Ministério Luz e Louvor."},en:{title:"Digno de Louvor",description:"Requested track by Ministério Luz e Louvor."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/digno-de-louvor.mp3",cover:""}},
- schedule:[{hour:0,pt:{title:"Madrugada de Adoração",description:"Louvores suaves e instrumentais para oração."},en:{title:"Dawn Worship",description:"Soft worship and instrumental prayer music."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-madrugada.mp3",cover:""},{hour:6,pt:{title:"Manhã de Louvor",description:"Canções para começar o dia com fé e esperança."},en:{title:"Morning Praise",description:"Songs to begin the day with faith and hope."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-manha.mp3",cover:""},{hour:12,pt:{title:"Hora da Palavra",description:"Música, Palavra e reflexão para o meio do dia."},en:{title:"Hour of the Word",description:"Music, Word and reflection for midday."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-palavra.mp3",cover:""},{hour:18,pt:{title:"Noite de Esperança",description:"Louvores para oração, descanso e confiança em Deus."},en:{title:"Night of Hope",description:"Worship for prayer, rest and trust in God."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-noite.mp3",cover:""}],
- message:{pt:{title:"Mensagem do Dia",text:"Permanecei em Mim, e Eu permanecerei em vós. — João 15,4"},en:{title:"Daily Message",text:"Remain in Me, and I will remain in you. — John 15:4"}},
- platforms:[{title:"Spotify",text:"Streaming",url:"#"},{title:"YouTube Music",text:"Canal oficial",url:"#"},{title:"Deezer",text:"Álbuns oficiais",url:"#"},{title:"Apple Music",text:"Ouça também",url:"#"}]
+
+async function playRadio(){
+  const player = document.getElementById("radioPlayer");
+
+  try{
+    await player.play();
+    radioShouldPlay = true;
+  }catch(error){
+    console.warn("Play bloqueado:", error);
+  }
+}
+
+function pauseRadio(){
+  radioShouldPlay = false;
+  document.getElementById("radioPlayer").pause();
+}
+
+function toggleSidebar(){
+  if(window.innerWidth <= 900){
+    document.body.classList.toggle("mobile-menu-open");
+  }else{
+    document.body.classList.toggle("sidebar-collapsed");
+  }
+}
+
+function setLanguage(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+
+  document.getElementById("ptBtn").classList.toggle("active", lang === "pt");
+  document.getElementById("enBtn").classList.toggle("active", lang === "en");
+
+  document.querySelectorAll("[data-pt][data-en]").forEach(el=>{
+    el.textContent = el.dataset[lang];
+  });
+
+  localStorage.setItem("horizonLanguage", lang);
+
+  if(radioData){
+    renderStaticContent();
+    renderSchedule();
+    renderPlatforms();
+    if(activeTrack) renderNowPlaying(activeTrack, activeSource);
+  }
+}
+
+const fallbackData = {
+  page:{
+    pt:{
+      eyebrow:"Rádio Luz e Louvor",
+      title:"Rádio Luz e Louvor",
+      text:"Música, oração, Palavra e esperança. Uma estação devocional dentro do Horizon 4282.",
+      onAir:"Áudio HD · 24h"
+    },
+    en:{
+      eyebrow:"Light & Praise Radio",
+      title:"Light & Praise Radio",
+      text:"Music, prayer, Word and hope. A devotional station inside Horizon 4282.",
+      onAir:"HD Audio · 24h"
+    }
+  },
+  defaultCover:"https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png",
+  tracks:{},
+  schedule:[],
+  message:{
+    pt:{title:"Mensagem do Dia",text:"Permanecei em Mim, e Eu permanecerei em vós. — João 15,4"},
+    en:{title:"Daily Message",text:"Remain in Me, and I will remain in you. — John 15:4"}
+  },
+  platforms:[]
 };
-function toggleSidebar(){if(window.innerWidth<=900){document.body.classList.toggle("mobile-menu-open")}else{document.body.classList.toggle("sidebar-collapsed")}}
-function setLanguage(lang){currentLang=lang;document.documentElement.lang=lang==="pt"?"pt-BR":"en";document.getElementById("ptBtn").classList.toggle("active",lang==="pt");document.getElementById("enBtn").classList.toggle("active",lang==="en");document.querySelectorAll("[data-pt][data-en]").forEach(el=>{el.textContent=el.dataset[lang]});localStorage.setItem("horizonLanguage",lang);if(radioData){renderStaticContent();renderSchedule();renderPlatforms();if(activeTrack)renderNowPlaying(activeTrack,activeSource)}}
+
+function normalizeData(data){
+  return {
+    page:data.page || fallbackData.page,
+    defaultCover:data.defaultCover || fallbackData.defaultCover,
+    tracks:data.tracks || fallbackData.tracks,
+    schedule:data.schedule || fallbackData.schedule,
+    message:data.message || fallbackData.message,
+    platforms:data.platforms || fallbackData.platforms
+  };
+}
 
 async function loadRadioJson(){
   const state = document.getElementById("loadState");
-  state.className = "loading";
-  state.textContent = "Loading radio JSON...";
 
   try{
     const response = await fetch(JSON_URL);
     if(!response.ok) throw new Error("JSON not found");
 
     radioData = normalizeData(await response.json());
-
     await loadMessagesJson();
 
     state.style.display = "none";
@@ -282,11 +353,9 @@ async function loadMessagesJson(){
   try{
     const response = await fetch(MESSAGES_URL);
     if(!response.ok) throw new Error("Messages JSON not found");
-
     messagesData = await response.json();
   }catch(error){
     messagesData = [];
-    console.warn("Arquivo de mensagens não carregado:", MESSAGES_URL);
   }
 }
 
@@ -297,51 +366,52 @@ function getDailyMessage(){
 
   const startDate = new Date("2026-07-01T00:00:00");
   const today = new Date();
-
   const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
   const index = ((diffDays % messagesData.length) + messagesData.length) % messagesData.length;
-
   const selected = messagesData[index];
 
   return selected[currentLang] || selected.pt || selected.en;
 }
-  function normalizeData(data){return{page:data.page||fallbackData.page,defaultCover:data.defaultCover||fallbackData.defaultCover,tracks:data.tracks||fallbackData.tracks,schedule:data.schedule||fallbackData.schedule,message:data.message||fallbackData.message,platforms:data.platforms||fallbackData.platforms}}
 
-  function renderStaticContent(){
-  const page=radioData.page[currentLang]||radioData.page.pt||radioData.page.en;
-    document.getElementById("heroEyebrow").textContent=page.eyebrow;
-  document.getElementById("heroTitle").textContent=page.title;document.getElementById("heroText").textContent=page.text;
-  document.getElementById("onAirText").textContent=page.onAir||"HD Audio · 24h";
-  document.getElementById("languageText").textContent=currentLang==="pt"?"PT-BR":"EN";
-                               
-const message = getDailyMessage();
-document.getElementById("messageTitle").textContent = message.title;
-document.getElementById("messageText").textContent = message.text;
-  }
-    
-function renderSchedule(){
-  const list=document.getElementById("scheduleList");list.innerHTML="";
-  const currentSchedule=getCurrentSchedule();
-  radioData.schedule.slice().sort((a,b)=>a.hour-b.hour).forEach(item=>{
-    const localized=item[currentLang]||item.pt||item.en;const article=document.createElement("article");
-            article.className="schedule-item";
-    
-            if(currentSchedule && currentSchedule.hour === item.hour){
-  article.classList.add("active");
-  article.id = "currentScheduleItem";
+function renderStaticContent(){
+  const page = radioData.page[currentLang] || radioData.page.pt || radioData.page.en;
+
+  document.getElementById("heroEyebrow").textContent = page.eyebrow;
+  document.getElementById("heroTitle").textContent = page.title;
+  document.getElementById("heroText").textContent = page.text;
+  document.getElementById("onAirText").textContent = page.onAir || "HD Audio · 24h";
+  document.getElementById("languageText").textContent = currentLang === "pt" ? "PT-BR" : "EN";
+
+  const message = getDailyMessage();
+  document.getElementById("messageTitle").textContent = message.title;
+  document.getElementById("messageText").textContent = message.text;
 }
-    
-            article.innerHTML=
-            `<time>${String(item.hour).padStart(2,"0")}:00</time>
-            <div><strong>${localized.title}</strong><span>${localized.description||""}</span></div>`;
-            
-           // article.onclick=()=>{
-               // activeSource="schedule";activeTrack=item;renderNowPlaying(item,"schedule")
-              //  };
 
-            list.appendChild(article)
-                })
-setTimeout(scrollScheduleToCurrent, 50);
+function renderSchedule(){
+  const list = document.getElementById("scheduleList");
+  list.innerHTML = "";
+
+  const currentSchedule = getCurrentSchedule();
+
+  radioData.schedule.slice().sort((a,b)=>a.hour-b.hour).forEach(item=>{
+    const localized = item[currentLang] || item.pt || item.en;
+    const article = document.createElement("article");
+
+    article.className = "schedule-item";
+
+    if(currentSchedule && currentSchedule.hour === item.hour){
+      article.classList.add("active");
+      article.id = "currentScheduleItem";
+    }
+
+    article.innerHTML =
+      `<time>${String(item.hour).padStart(2,"0")}:00</time>
+       <div><strong>${localized.title}</strong><span>${localized.description || ""}</span></div>`;
+
+    list.appendChild(article);
+  });
+
+  setTimeout(scrollScheduleToCurrent, 50);
 }
 
 function scrollScheduleToCurrent(){
@@ -355,81 +425,101 @@ function scrollScheduleToCurrent(){
 
   list.scrollTop += currentTop - listTop - 12;
 }
-  
-function renderPlatforms(){const row=document.getElementById("platformsBlock");row.innerHTML="";radioData.platforms.forEach(platform=>{const a=document.createElement("a");a.className="platform";a.href=platform.url||"#";a.target="_blank";a.innerHTML=`<strong>${platform.title}</strong><span>${platform.text||""}</span>`;row.appendChild(a)})}
-function startRadioFlow(){const params=new URLSearchParams(window.location.search);const requestedTrackId=params.get("track");if(requestedTrackId&&radioData.tracks[requestedTrackId]){activeSource="request";activeTrack=radioData.tracks[requestedTrackId];renderNowPlaying(activeTrack,"request")}else{loadCurrentSchedule()}}
-function loadCurrentSchedule(){activeSource="schedule";activeTrack=getCurrentSchedule();renderNowPlaying(activeTrack,"schedule")}
 
-function getRadioHour() {
-  const now = new Date();
+function renderPlatforms(){
+  const row = document.getElementById("platformsBlock");
+  row.innerHTML = "";
 
+  radioData.platforms.forEach(platform=>{
+    const a = document.createElement("a");
+    a.className = "platform";
+    a.href = platform.url || "#";
+    a.target = "_blank";
+    a.innerHTML = `<strong>${platform.title}</strong><span>${platform.text || ""}</span>`;
+    row.appendChild(a);
+  });
+}
+
+function startRadioFlow(){
+  const params = new URLSearchParams(window.location.search);
+  const requestedTrackId = params.get("track");
+
+  if(requestedTrackId && radioData.tracks[requestedTrackId]){
+    activeSource = "request";
+    activeTrack = radioData.tracks[requestedTrackId];
+    renderNowPlaying(activeTrack, "request");
+  }else{
+    loadCurrentSchedule();
+  }
+}
+
+function loadCurrentSchedule(){
+  activeSource = "schedule";
+  activeTrack = getCurrentSchedule();
+  renderNowPlaying(activeTrack, "schedule");
+}
+
+function getRadioHour(){
   const hourBR = new Intl.DateTimeFormat("pt-BR", {
-    timeZone: "America/Sao_Paulo",
-    hour: "2-digit",
-    hour12: false
-  }).format(now);
+    timeZone:"America/Sao_Paulo",
+    hour:"2-digit",
+    hour12:false
+  }).format(new Date());
 
   return Number(hourBR);
 }
 
-function getCurrentSchedule() {
+function getCurrentSchedule(){
   const hour = getRadioHour();
-
-  const sorted = radioData.schedule
-    .slice()
-    .sort((a, b) => a.hour - b.hour);
+  const sorted = radioData.schedule.slice().sort((a,b)=>a.hour-b.hour);
 
   let current = sorted[0];
 
-  for (const item of sorted) {
-    if (hour >= item.hour) {
+  for(const item of sorted){
+    if(hour >= item.hour){
       current = item;
     }
   }
 
   return current;
 }
-  
+
 function renderNowPlaying(item, source){
   if(!item) return;
 
   activeTrack = item;
   activeSource = source;
 
-  if (source === "schedule" && item.hour !== undefined) {
-  activeScheduleHour = item.hour;
-}
+  if(source === "schedule" && item.hour !== undefined){
+    activeScheduleHour = item.hour;
+  }
 
-  const localized = item[currentLang] || item.pt || item.en || item;
- 
-const player = document.getElementById("radioPlayer");
+  const player = document.getElementById("radioPlayer");
 
-  // volume inicial
-if (!localStorage.getItem("radioVolumeInitialized")) {
+  if(!localStorage.getItem("radioVolumeInitialized")){
     player.volume = 1;
     localStorage.setItem("radioVolumeInitialized", "true");
-}
+  }
 
   document.getElementById("sourceText").textContent =
     source === "request" ? "Request" : "Schedule";
 
   document.getElementById("playModeText").textContent =
     source === "request"
-    ? (currentLang === "pt" ? "Faixa solicitada" : "Requested track")
-    : (currentLang === "pt" ? "Programação atual" : "Current schedule");
+      ? (currentLang === "pt" ? "Faixa solicitada" : "Requested track")
+      : (currentLang === "pt" ? "Programação atual" : "Current schedule");
 
-if(item.playlist && item.playlist.length){
-  currentPlaylist = item.playlist;
+  if(item.playlist && item.playlist.length){
+    currentPlaylist = item.playlist;
 
-  const synced = getSyncedPlaylistPosition(item);
+    const synced = getSyncedPlaylistPosition(item);
+    currentTrackIndex = synced.index;
 
-  currentTrackIndex = synced.index;
+    loadPlaylistTrack(currentTrackIndex, synced.offset, false);
+    return;
+  }
 
-  loadPlaylistTrack(currentTrackIndex, synced.offset, false);
-
-  return;
-}
-
+  const localized = item[currentLang] || item.pt || item.en || item;
 
   currentPlaylist = [];
   currentTrackIndex = 0;
@@ -440,70 +530,73 @@ if(item.playlist && item.playlist.length){
   document.getElementById("nowDescription").textContent =
     localized.description || "";
 
+  internalAudioChange = true;
   player.src = item.audio || "";
   player.load();
+
+  setTimeout(()=> internalAudioChange = false, 500);
 }
 
-  function getRadioTimeParts() {
+function getRadioTimeParts(){
   const parts = new Intl.DateTimeFormat("pt-BR", {
-    timeZone: "America/Sao_Paulo",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false
+    timeZone:"America/Sao_Paulo",
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit",
+    hour12:false
   }).formatToParts(new Date());
 
   return {
-    hour: Number(parts.find(p => p.type === "hour").value),
-    minute: Number(parts.find(p => p.type === "minute").value),
-    second: Number(parts.find(p => p.type === "second").value)
+    hour:Number(parts.find(p=>p.type==="hour").value),
+    minute:Number(parts.find(p=>p.type==="minute").value),
+    second:Number(parts.find(p=>p.type==="second").value)
   };
 }
 
-  function getSyncedPlaylistPosition(scheduleItem) {
+function getSyncedPlaylistPosition(scheduleItem){
   const now = getRadioTimeParts();
 
-  const secondsNow = (now.hour * 3600) + (now.minute * 60) + now.second;
+  const secondsNow = now.hour * 3600 + now.minute * 60 + now.second;
   const blockStart = scheduleItem.hour * 3600;
 
   let elapsed = secondsNow - blockStart;
 
-  if (elapsed < 0) {
+  if(elapsed < 0){
     elapsed += 24 * 3600;
   }
 
   const playlist = scheduleItem.playlist || [];
-  const totalDuration = playlist.reduce((sum, track) => sum + (track.duration || 0), 0);
+  const totalDuration = playlist.reduce((sum, track)=>sum + (track.duration || 0), 0);
 
-  if (!playlist.length || totalDuration === 0) {
-    return { index: 0, offset: 0 };
+  if(!playlist.length || totalDuration === 0){
+    return {index:0, offset:0};
   }
 
   elapsed = elapsed % totalDuration;
 
   let accumulated = 0;
 
-  for (let i = 0; i < playlist.length; i++) {
+  for(let i = 0; i < playlist.length; i++){
     const duration = playlist[i].duration || 0;
 
-    if (elapsed < accumulated + duration) {
+    if(elapsed < accumulated + duration){
       return {
-        index: i,
-        offset: elapsed - accumulated
+        index:i,
+        offset:elapsed - accumulated
       };
     }
 
     accumulated += duration;
   }
 
-  return { index: 0, offset: 0 };
+  return {index:0, offset:0};
 }
-  
-function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
+
+function loadPlaylistTrack(index, offset = 0, autoPlay = false){
   const track = currentPlaylist[index];
   const player = document.getElementById("radioPlayer");
 
-  if (!track || !track.audio) return;
+  if(!track || !track.audio) return;
 
   document.getElementById("nowTitle").textContent =
     track.title || "Rádio Luz e Louvor";
@@ -513,64 +606,67 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
       ? "Transmissão sincronizada da programação atual."
       : "Synced broadcast from the current schedule.";
 
+  internalAudioChange = true;
+
   player.oncanplay = null;
   player.onerror = null;
 
   player.oncanplay = () => {
     player.oncanplay = null;
 
-    if (offset > 0 && offset < player.duration) {
-      player.currentTime = offset;
+    if(offset > 0 && Number.isFinite(player.duration) && offset < player.duration){
+      try{
+        player.currentTime = offset;
+      }catch(e){}
     }
 
-    if (autoPlay || radioShouldPlay) {
+    internalAudioChange = false;
+
+    if(autoPlay || radioShouldPlay){
       playRadio();
     }
   };
 
   player.onerror = () => {
+    internalAudioChange = false;
     console.warn("Erro ao carregar áudio:", track.audio);
 
-    setTimeout(() => {
+    setTimeout(()=>{
+      if(!currentPlaylist.length) return;
+
       currentTrackIndex = (currentTrackIndex + 1) % currentPlaylist.length;
       loadPlaylistTrack(currentTrackIndex, 0, autoPlay || radioShouldPlay);
-    }, 1500);
+    },1500);
   };
 
   player.src = track.audio;
   player.load();
+
+  setTimeout(()=>{
+    internalAudioChange = false;
+  },2000);
 }
-
-async function playRadio(){
-  const player = document.getElementById("radioPlayer");
-
-  try{
-    await player.play();
-  }catch(error){
-    console.warn("Play bloqueado pelo navegador:", error);
-  }
-}
-
-  
-function pauseRadio(){document.getElementById("radioPlayer").pause()}
 
 document.getElementById("radioPlayer").addEventListener("ended", () => {
-  userPausedRadio = false;
-  if (activeSource === "schedule") {
+  if(activeSource === "schedule"){
     const currentSchedule = getCurrentSchedule();
 
-   if (currentSchedule && currentSchedule.hour !== activeScheduleHour) {
-   renderSchedule();
-   renderNowPlaying(currentSchedule, "schedule");
-   playRadio();
-   return;
+    if(currentSchedule && currentSchedule.hour !== activeScheduleHour){
+      renderSchedule();
+      renderNowPlaying(currentSchedule, "schedule");
+
+      if(radioShouldPlay){
+        playRadio();
+      }
+
+      return;
     }
   }
 
-  if (currentPlaylist.length) {
+  if(currentPlaylist.length){
     currentTrackIndex++;
 
-    if (currentTrackIndex >= currentPlaylist.length) {
+    if(currentTrackIndex >= currentPlaylist.length){
       currentTrackIndex = 0;
     }
 
@@ -578,16 +674,51 @@ document.getElementById("radioPlayer").addEventListener("ended", () => {
     return;
   }
 
-  if (activeSource === "request") {
+  if(activeSource === "request"){
     loadCurrentSchedule();
-    setTimeout(() => playRadio(), 400);
+    setTimeout(()=>playRadio(), 400);
   }
 });
 
-function scrollToBlock(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});if(window.innerWidth<=900)document.body.classList.remove("mobile-menu-open")}
+function syncRadioByClock(){
+  if(!radioData || activeSource !== "schedule" || !radioShouldPlay) return;
+
+  const currentSchedule = getCurrentSchedule();
+  if(!currentSchedule || !currentSchedule.playlist) return;
+
+  const synced = getSyncedPlaylistPosition(currentSchedule);
+  const player = document.getElementById("radioPlayer");
+
+  const changedProgram = currentSchedule.hour !== activeScheduleHour;
+  const changedTrack = synced.index !== currentTrackIndex;
+  const stoppedUnexpectedly =
+    player.paused &&
+    currentPlaylist.length &&
+    !internalAudioChange;
+
+  if(changedProgram || changedTrack || stoppedUnexpectedly){
+    activeScheduleHour = currentSchedule.hour;
+    currentPlaylist = currentSchedule.playlist;
+    currentTrackIndex = synced.index;
+
+    renderSchedule();
+    loadPlaylistTrack(currentTrackIndex, synced.offset, true);
+  }
+}
+
+function scrollToBlock(id){
+  const el = document.getElementById(id);
+
+  if(el){
+    el.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+
+  if(window.innerWidth <= 900){
+    document.body.classList.remove("mobile-menu-open");
+  }
+}
 
 async function sharePage(){
-
   const url = "https://horizon4282.com.br/radio-luz-louvor.html";
 
   const message = currentLang === "pt"
@@ -595,85 +726,57 @@ async function sharePage(){
     : `🎵 Light & Praise Radio\n\nMusic, prayer and contemplation 24 hours a day.\n\n${url}`;
 
   const shareData = {
-    title: "Rádio Luz e Louvor",
-    text: message,
-    url: url
+    title:"Rádio Luz e Louvor",
+    text:message,
+    url:url
   };
 
   if(navigator.share){
     try{
       await navigator.share(shareData);
     }catch(error){}
-  }else{
-    if(navigator.clipboard){
-      await navigator.clipboard.writeText(message);
-      const btn = document.querySelector(".share-btn");
-      const oldText = btn.textContent;
-      btn.textContent = currentLang === "pt" ? "✔ Link copiado" : "✔ Link copied";
+  }else if(navigator.clipboard){
+    await navigator.clipboard.writeText(message);
 
-      setTimeout(()=>{
-        btn.textContent = oldText;
-      },2000);
-    }else{
-      prompt("Copie o link:", url);
-    }
+    const btn = document.querySelector(".share-btn");
+    const oldText = btn.textContent;
+
+    btn.textContent = currentLang === "pt" ? "✔ Link copiado" : "✔ Link copied";
+
+    setTimeout(()=>{
+      btn.textContent = oldText;
+    },2000);
+  }else{
+    prompt("Copie o link:", url);
   }
 }
 
-function syncRadioByClock(autoPlay = false) {
-  if (!radioData || activeSource !== "schedule") return;
+window.addEventListener("resize",()=>{
+  if(window.innerWidth <= 900){
+    document.body.classList.add("sidebar-collapsed");
+  }
+});
 
-  const currentSchedule = getCurrentSchedule();
-  if (!currentSchedule || !currentSchedule.playlist) return;
-
-  const synced = getSyncedPlaylistPosition(currentSchedule);
+document.addEventListener("DOMContentLoaded", () => {
   const player = document.getElementById("radioPlayer");
 
-  const changedProgram = currentSchedule.hour !== activeScheduleHour;
-  const changedTrack = synced.index !== currentTrackIndex;
-  const stoppedUnexpectedly = player.paused && currentPlaylist.length;
+  player.volume = 1;
 
-  if (changedProgram || changedTrack || stoppedUnexpectedly) {
-    activeScheduleHour = currentSchedule.hour;
-    currentPlaylist = currentSchedule.playlist;
-    currentTrackIndex = synced.index;
+  player.addEventListener("play", () => {
+    radioShouldPlay = true;
+  });
 
-    renderSchedule();
-    loadPlaylistTrack(currentTrackIndex, synced.offset, autoPlay);
-  }
-}
+  player.addEventListener("pause", () => {
+    if(!internalAudioChange && !player.ended){
+      radioShouldPlay = false;
+    }
+  });
 
-
-window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.classList.add("sidebar-collapsed")})
-
-  
-document.addEventListener("DOMContentLoaded", () => {
-
-    const player = document.getElementById("radioPlayer");
-
-    // Volume inicial: 20%
-   player.volume = 1;
-
-player.addEventListener("play", () => {
-  radioShouldPlay = true;
+  setLanguage(currentLang);
+  loadRadioJson();
 });
 
-player.addEventListener("pause", () => {
-  radioShouldPlay = false;
-});
-
-    setLanguage(currentLang);
-    loadRadioJson();
-
-  
-
-});
-
-setInterval(() => {
-  if (!radioShouldPlay) return;
-  syncRadioByClock(true);
-}, 5000);
-  
+setInterval(syncRadioByClock, 5000);
 </script>
 </body>
 </html>
