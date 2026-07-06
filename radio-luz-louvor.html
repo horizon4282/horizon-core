@@ -230,7 +230,7 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
 </main>
 </div>
 <script>
-
+let userStartedRadio = false;
 let activeScheduleHour = null;
 let currentPlaylist = [];
 let currentTrackIndex = 0;
@@ -505,6 +505,8 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
 
   if (!track || !track.audio) return;
 
+  const shouldPlay = autoPlay || userStartedRadio;
+
   document.getElementById("nowTitle").textContent =
     track.title || "Rádio Luz e Louvor";
 
@@ -516,9 +518,6 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   player.oncanplay = null;
   player.onerror = null;
 
-  player.src = track.audio;
-  player.load();
-
   player.oncanplay = () => {
     player.oncanplay = null;
 
@@ -526,7 +525,7 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
       player.currentTime = offset;
     }
 
-    if (autoPlay || !player.paused) {
+    if (shouldPlay) {
       playRadio();
     }
   };
@@ -541,9 +540,12 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
         currentTrackIndex = 0;
       }
 
-      loadPlaylistTrack(currentTrackIndex, 0, autoPlay);
+      loadPlaylistTrack(currentTrackIndex, 0, shouldPlay);
     }, 1500);
   };
+
+  player.src = track.audio;
+  player.load();
 }
 
 async function playRadio(){
@@ -658,13 +660,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // Volume inicial: 20%
    player.volume = 1;
 
+  player.addEventListener("play", () => {
+  userStartedRadio = true;
+});
+
     setLanguage(currentLang);
     loadRadioJson();
+
+  
 
 });
 
 setInterval(() => {
-  syncRadioByClock(!document.getElementById("radioPlayer").paused);
+  syncRadioByClock(userStartedRadio);
 }, 5000);
   
 </script>
