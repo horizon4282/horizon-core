@@ -611,7 +611,7 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false){
   player.oncanplay = null;
   player.onerror = null;
 
-  player.oncanplay = () => {
+  player.oncanplay = async () => {
     player.oncanplay = null;
 
     if(offset > 0 && Number.isFinite(player.duration) && offset < player.duration){
@@ -620,11 +620,13 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false){
       }catch(e){}
     }
 
-    internalAudioChange = false;
-
     if(autoPlay || radioShouldPlay){
-      playRadio();
+      await playRadio();
     }
+
+    setTimeout(() => {
+      internalAudioChange = false;
+    }, 800);
   };
 
   player.onerror = () => {
@@ -633,7 +635,6 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false){
 
     setTimeout(()=>{
       if(!currentPlaylist.length) return;
-
       currentTrackIndex = (currentTrackIndex + 1) % currentPlaylist.length;
       loadPlaylistTrack(currentTrackIndex, 0, autoPlay || radioShouldPlay);
     },1500);
@@ -641,44 +642,7 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false){
 
   player.src = track.audio;
   player.load();
-
-  setTimeout(()=>{
-    internalAudioChange = false;
-  },2000);
 }
-
-document.getElementById("radioPlayer").addEventListener("ended", () => {
-  if(activeSource === "schedule"){
-    const currentSchedule = getCurrentSchedule();
-
-    if(currentSchedule && currentSchedule.hour !== activeScheduleHour){
-      renderSchedule();
-      renderNowPlaying(currentSchedule, "schedule");
-
-      if(radioShouldPlay){
-        playRadio();
-      }
-
-      return;
-    }
-  }
-
-  if(currentPlaylist.length){
-    currentTrackIndex++;
-
-    if(currentTrackIndex >= currentPlaylist.length){
-      currentTrackIndex = 0;
-    }
-
-    loadPlaylistTrack(currentTrackIndex, 0, true);
-    return;
-  }
-
-  if(activeSource === "request"){
-    loadCurrentSchedule();
-    setTimeout(()=>playRadio(), 400);
-  }
-});
 
 function syncRadioByClock(){
   if(!radioData || activeSource !== "schedule" || !radioShouldPlay) return;
@@ -762,15 +726,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   player.volume = 1;
 
-  player.addEventListener("play", () => {
-    radioShouldPlay = true;
-  });
+player.addEventListener("play", () => {
+  radioShouldPlay = true;
+});
 
-  player.addEventListener("pause", () => {
-    if(!internalAudioChange && !player.ended){
-      radioShouldPlay = false;
-    }
-  });
+player.addEventListener("pause", () => {
+  if(internalAudioChange) return;
+  if(player.ended) return;
+
+  radioShouldPlay = false;
+});
 
   setLanguage(currentLang);
   loadRadioJson();
