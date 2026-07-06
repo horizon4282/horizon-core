@@ -615,6 +615,30 @@ async function sharePage(){
   }
 }
 
+function syncRadioByClock(autoPlay = false) {
+  if (!radioData || activeSource !== "schedule") return;
+
+  const currentSchedule = getCurrentSchedule();
+  if (!currentSchedule || !currentSchedule.playlist) return;
+
+  const synced = getSyncedPlaylistPosition(currentSchedule);
+  const player = document.getElementById("radioPlayer");
+
+  const changedProgram = currentSchedule.hour !== activeScheduleHour;
+  const changedTrack = synced.index !== currentTrackIndex;
+  const stoppedUnexpectedly = player.paused && currentPlaylist.length;
+
+  if (changedProgram || changedTrack || stoppedUnexpectedly) {
+    activeScheduleHour = currentSchedule.hour;
+    currentPlaylist = currentSchedule.playlist;
+    currentTrackIndex = synced.index;
+
+    renderSchedule();
+    loadPlaylistTrack(currentTrackIndex, synced.offset, autoPlay);
+  }
+}
+
+
 window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.classList.add("sidebar-collapsed")})
 
   
@@ -631,37 +655,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 setInterval(() => {
-
-  if (!radioData || activeSource === "request") return;
-
-  const currentSchedule = getCurrentSchedule();
-
-  // Mudou o programa?
-  if (currentSchedule && currentSchedule.hour !== activeScheduleHour) {
-
-    renderSchedule();
-
-    // interrompe imediatamente a música atual
-    const player = document.getElementById("radioPlayer");
-    player.pause();
-
-    // sincroniza com o novo programa
-    renderNowPlaying(currentSchedule, "schedule");
-
-    // inicia imediatamente
-    renderNowPlaying(currentSchedule, "schedule");
-
-setTimeout(() => {
-  playRadio();
-}, 500);
-
-    return;
-  }
-
-  // Apenas atualiza o destaque visual da grade
-  renderSchedule();
-
-}, 1000);
+  syncRadioByClock(!document.getElementById("radioPlayer").paused);
+}, 5000);
   
 </script>
 </body>
