@@ -231,6 +231,7 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
 </div>
 <script>
 let userStartedRadio = false;
+let userPausedRadio = false;
 let activeScheduleHour = null;
 let currentPlaylist = [];
 let currentTrackIndex = 0;
@@ -562,6 +563,7 @@ async function playRadio(){
 function pauseRadio(){document.getElementById("radioPlayer").pause()}
 
 document.getElementById("radioPlayer").addEventListener("ended", () => {
+  userPausedRadio = false;
   if (activeSource === "schedule") {
     const currentSchedule = getCurrentSchedule();
 
@@ -660,8 +662,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Volume inicial: 20%
    player.volume = 1;
 
-  player.addEventListener("play", () => {
+player.addEventListener("play", () => {
   userStartedRadio = true;
+  userPausedRadio = false;
+});
+
+player.addEventListener("pause", () => {
+  if (!player.ended) {
+    userPausedRadio = true;
+  }
 });
 
     setLanguage(currentLang);
@@ -672,6 +681,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 setInterval(() => {
+  if (userPausedRadio) return;
   syncRadioByClock(userStartedRadio);
 }, 5000);
   
