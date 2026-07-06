@@ -1195,16 +1195,6 @@
           "title": "Permanece em Mim",
           "duration": 266,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-permanece-em-mim.mp3"
-        },
-        {
-          "title": "Quero Ser a Tua Casa",
-          "duration": 288,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-ser-a-tua-casa.mp3"
-        },
-        {
-          "title": "Revestido do Senhor",
-          "duration": 216,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-revestido-do-Senhor.mp3"
         }
       ]
     },
@@ -1263,6 +1253,26 @@
           "title": "Foi a Tua Paixão",
           "duration": 267,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-foi-tua-paixao.mp3"
+        },
+         {
+          "title": "Habita em Mim",
+          "duration": 135,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-habita-em-mim.mp3"
+        },
+         {
+          "title": "Sabedoria Entendimento",
+          "duration": 254,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-sabedoria-entendimento.mp3"
+        },
+        {
+          "title": "Quero Ser a Tua Casa",
+          "duration": 288,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-ser-a-tua-casa.mp3"
+        },
+        {
+          "title": "Revestido do Senhor",
+          "duration": 216,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-revestido-do-Senhor.mp3"
         }
       ]
     },
@@ -1366,17 +1376,7 @@
           "title": "Informativo Paroquial",
           "duration": 102,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/curso-ingles-dpe-final.mp3"
-        },
-         {
-          "title": "Habita em Mim",
-          "duration": 135,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-habita-em-mim.mp3"
-        },
-         {
-          "title": "Sabedoria Entendimento",
-          "duration": 254,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-sabedoria-entendimento.mp3"
-        }       
+        }      
       ]
     }
   ]
