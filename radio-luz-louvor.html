@@ -425,7 +425,7 @@ if(item.playlist && item.playlist.length){
 
   currentTrackIndex = synced.index;
 
-  loadPlaylistTrack(currentTrackIndex, synced.offset);
+  loadPlaylistTrack(currentTrackIndex, synced.offset, false);
 
   return;
 }
@@ -499,11 +499,11 @@ if(item.playlist && item.playlist.length){
   return { index: 0, offset: 0 };
 }
   
-function loadPlaylistTrack(index, offset = 0) {
+function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   const track = currentPlaylist[index];
   const player = document.getElementById("radioPlayer");
 
-  if (!track) return;
+  if (!track || !track.audio) return;
 
   document.getElementById("nowTitle").textContent =
     track.title || "Rádio Luz e Louvor";
@@ -513,13 +513,37 @@ function loadPlaylistTrack(index, offset = 0) {
       ? "Transmissão sincronizada da programação atual."
       : "Synced broadcast from the current schedule.";
 
-  player.src = track.audio;
-  player.load();
+  player.pause();
 
-  player.onloadedmetadata = () => {
+  player.oncanplay = null;
+  player.onerror = null;
+
+  player.src = track.audio;
+
+  player.oncanplay = () => {
+    player.oncanplay = null;
+
     if (offset > 0 && offset < player.duration) {
       player.currentTime = offset;
     }
+
+    if (autoPlay) {
+      player.play().catch(() => {});
+    }
+  };
+
+  player.onerror = () => {
+    console.warn("Erro ao carregar áudio:", track.audio);
+
+    setTimeout(() => {
+      currentTrackIndex++;
+
+      if (currentTrackIndex >= currentPlaylist.length) {
+        currentTrackIndex = 0;
+      }
+
+      loadPlaylistTrack(currentTrackIndex, 0, autoPlay);
+    }, 1500);
   };
 }
 
@@ -545,8 +569,7 @@ document.getElementById("radioPlayer").addEventListener("ended", () => {
       currentTrackIndex = 0;
     }
 
-    loadPlaylistTrack(currentTrackIndex);
-    playRadio();
+    loadPlaylistTrack(currentTrackIndex, 0, true);
     return;
   }
 
@@ -626,7 +649,11 @@ setInterval(() => {
     renderNowPlaying(currentSchedule, "schedule");
 
     // inicia imediatamente
-    playRadio();
+    renderNowPlaying(currentSchedule, "schedule");
+
+setTimeout(() => {
+  playRadio();
+}, 500);
 
     return;
   }
