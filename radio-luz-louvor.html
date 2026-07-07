@@ -233,7 +233,6 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
 </main>
 </div>
 <script>
-let initialVolumeApplied = false;
 let activeScheduleHour = null;
 let currentPlaylist = [];
 let currentTrackIndex = 0;
@@ -550,17 +549,7 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   };
 }
 
-function playRadio(){
-
-  const player = document.getElementById("radioPlayer");
-
-  if(!initialVolumeApplied){
-    player.volume = 0.5;
-    initialVolumeApplied = true;
-  }
-
-  player.play().catch(()=>{});
-}
+function playRadio(){document.getElementById("radioPlayer").play().catch(()=>{})}
 
   
 
@@ -660,7 +649,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const player = document.getElementById("radioPlayer");
 
    // Volume inicial:?
-   //player.volume = 0.1;
+   player.volume = 0.5;
 
     setLanguage(currentLang);
     loadRadioJson();
