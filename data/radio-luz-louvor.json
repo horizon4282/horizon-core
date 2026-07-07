@@ -209,10 +209,55 @@
         "description": "Praise songs to begin the day with joy and faith."
       },
       "playlist": [
+                {
+          "title": "Alegria Perene",
+          "duration": 279,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Alegria-Perene.mp3"
+        },
+        {
+          "title": "Brilho do amor de Deus",
+          "duration": 177,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-brilho-do-amor-de-deus.mp3"
+        },
+        {
+          "title": "Águas Infinitas",
+          "duration": 316,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-aguas-Infinitas.mp3"
+        },
+        {
+          "title": "Tua Luz, Tua Luz",
+          "duration": 254,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Tua-luz,-Tua-luz.mp3"
+        }
+        {
+          "title": "Quero Que Me Transforme",
+          "duration": 278,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-quero-que-me-transforme.mp3"
+        },
         {
           "title": "Jesus Essência do Amor",
           "duration": 229,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-jesus-essenccia-do-amor.mp3"
+        },
+        {
+          "title": "Ele É o Meu Senhor",
+          "duration": 158,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ele-e-meu-senhor.mp3"
+        },
+        {
+          "title": "Derrama Senhor Teu Espírito",
+          "duration": 187,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-derrama-senhor-teu-espirito.mp3"
+        },
+        {
+          "title": "Eu Quero o Céu",
+          "duration": 180,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-eu-quero-o-ceu.mp3"
+        },
+        {
+          "title": "O Novo Tempo",
+          "duration": 152,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-novo-tempo.mp3"
         }
       ]
     },
@@ -277,7 +322,7 @@
           "duration": 249,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-julgado-pelo-mundo.mp3"
         },
-  {
+        {
           "title": "Deus Está em Tudo",
           "duration": 253,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7--deus-esta-em-tudo.mp3"
@@ -696,6 +741,21 @@
         "description": "An afternoon of trust in God's care."
       },
       "playlist": [
+         {
+          "title": "Até a Última Alma",
+          "duration": 264,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-ate-a-ultima-alma.mp3"
+        },
+         {
+          "title": "Vem Jesus Me Libertar",
+          "duration": 278,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-vem-jesus-me-libertar.mp3"
+        },
+         {
+          "title": "Eis Que Tua Palavra se Cumpre",
+          "duration": 281,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Eis-que-tua-palavra-se-cumpre.mp3"
+        },
          {
           "title": "Esperança e Sabedoria",
           "duration": 186,
