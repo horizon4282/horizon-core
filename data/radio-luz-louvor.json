@@ -381,9 +381,59 @@
       },
       "playlist": [
         {
+          "title": "Não Sou Mais Escravo",
+          "duration": 182,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-nao-sou-mais-escravo.mp3"
+        },
+        {
+          "title": "Recebe a Graça de Deus",
+          "duration": 201,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-recebe-a-graca-de-deus.mp3"
+        },
+        {
+          "title": "A Palvra de Deus Está Perto de Mim",
+          "duration": 196,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-a-palavra-de-Deus-esta-perto-de-mim.mp3"
+        },
+        {
+          "title": "Deus Quer o Seu Louvor",
+          "duration": 234,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Deus-quer-o-oseu-louvor.mp3"
+        },
+        {
+          "title": "Quero Ser o Sal da Terra",
+          "duration": 183,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-quero-ser-o-sal-da-terra.mp3"
+        },
+        {
           "title": "O Novo Adão",
           "duration": 174,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-o-novo-adao.mp3"
+        },
+        {
+          "title": "No Fogo e no Espírito",
+          "duration": 200,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-no-fogo-e-no-espirito.mp3"
+        },
+        {
+          "title": "Estrela da Manhã",
+          "duration": 242,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Estrela-da-manha-V1.mp3"
+        },
+        {
+          "title": "Deus de Graça Eterna",
+          "duration": 195,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Deus de graça eterna.mp3"
+        },
+        {
+          "title": "Jesus Pedra Angular",
+          "duration": 148,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-jesus-pedra-angular.mp3"
+        },
+        {
+          "title": "Águas do Amor",
+          "duration": 251,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-aguas-do-amor.mp3"
         },
         {
           "title": "A Videira do Amor",
