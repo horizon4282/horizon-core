@@ -198,9 +198,6 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
     <button class="share-btn" onclick="sharePage()" data-pt="📤 Compartilhar" data-en="📤 Share">
       📤 Compartilhar
     </button>
-    <button class="share-btn" id="favoriteBtn" onclick="toggleFavorite()">
-  ☆ Favoritar
-     </button>
     <a class="home-link" href="/" data-pt="Início" data-en="Home">Início</a>
   </div>
 </div>
@@ -618,26 +615,9 @@ async function sharePage(){
   }
 }
 
-  function toggleFavorite(){
-  const btn = document.getElementById("favoriteBtn");
-  const isFavorite = localStorage.getItem("radioFavorite") === "true";
 
-  if(isFavorite){
-    localStorage.setItem("radioFavorite", "false");
-    btn.textContent = "☆ Favoritar";
-  }else{
-    localStorage.setItem("radioFavorite", "true");
-    btn.textContent = "★ Favoritada";
-  }
-}
 
-function updateFavoriteButton(){
-  const btn = document.getElementById("favoriteBtn");
-  if(!btn) return;
 
-  const isFavorite = localStorage.getItem("radioFavorite") === "true";
-  btn.textContent = isFavorite ? "★ Favoritada" : "☆ Favoritar";
-}
 
 window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.classList.add("sidebar-collapsed")})
 
@@ -651,7 +631,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setLanguage(currentLang);
     loadRadioJson();
-    updateFavoriteButton();
+   
 
 });
 
