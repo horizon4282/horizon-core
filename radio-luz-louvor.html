@@ -233,6 +233,7 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
 </main>
 </div>
 <script>
+
 let activeScheduleHour = null;
 let currentPlaylist = [];
 let currentTrackIndex = 0;
@@ -550,10 +551,7 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
 }
 
 function playRadio(){document.getElementById("radioPlayer").play().catch(()=>{})}
-
-  
-
-  function pauseRadio(){document.getElementById("radioPlayer").pause()}
+function pauseRadio(){document.getElementById("radioPlayer").pause()}
 
 document.getElementById("radioPlayer").addEventListener("ended", () => {
   if (activeSource === "schedule") {
@@ -648,8 +646,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const player = document.getElementById("radioPlayer");
 
-   // Volume inicial:?
-   player.volume = 0.5;
+    // Volume inicial: 20%
+   player.volume = 1;
 
     setLanguage(currentLang);
     loadRadioJson();
