@@ -12,9 +12,44 @@
       },
       "playlist": [
         {
+          "title": "Somo do Altíssimo",
+          "duration": 199,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-som-do-satissimo.mp3"
+        },
+        {
+          "title": "Verdade da Graça",
+          "duration": 195,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-veredas-da-graca-SIM.mp3"
+        },
+        {
+          "title": "Rios de Cura",
+          "duration": 199,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-rios-de-cura.mp3"
+        },
+        {
           "title": "Recebe Hoje o meu Sim",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"
+        },
+        {
+          "title": "Luz do Alto",
+          "duration": 212,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-luz-do-alto.mp3"
+        },
+        {
+          "title": "Caminho de Nazaré",
+          "duration": 192,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-caminho-de-nazare.mp3"
+        },
+        {
+          "title": "Cenáculo com Jesus",
+          "duration": 241,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-com-Jesus.mp3"
+        },
+        {
+          "title": "Caminho do Silêncio",
+          "duration": 217,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-caminho-do-silencio.mp3"
         },
         {
           "title": "A Porta Aberta",
