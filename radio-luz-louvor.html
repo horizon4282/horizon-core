@@ -3,18 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor</title>
+<title>Rádio Web Católica Luz e Louvor</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+<link rel="apple-touch-icon" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+<link rel="canonical" href="https://horizon4282.com.br/radio-luz-louvor.html">
 <meta name="description" content="Luz e Louvor é a dimensão musical do Horizon 4282: músicas, álbuns, oração, fé e conteúdo">
-<meta name="keywords" content="Rádio Luz e Louvor, Radio Católica, música católica, 
+<meta name="keywords" content="Rádio Web Católica Luz e Louvor, Radio Católica, música católica, 
   oração cantada, ministério luz e louvor, Divino Pai Eterno, louvor, fé, álbuns católicos">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Radio Luz e Louvor">
-<meta property="og:description" content="Rádio Luz e Louvor, músicas, álbuns, oração, fé e contemplação.">
-<meta property="og:url" content="https://horizon4282.com.br/radio-luz-louvor">
+<meta property="og:title" content="Radio Web Católica Luz e Louvor">
+<meta property="og:description" content="Rádio Web Católica Luz e Louvor, músicas, álbuns, oração, fé e contemplação.">
+<meta property="og:url" content="https://horizon4282.com.br/radio-luz-louvor.html">
 <meta property="og:site_name" content="Radio Luz e Louvor">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:type" content="image/png">
@@ -158,6 +160,10 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
   background:var(--gold);
   color:#030712;
 }
+.seo-hidden{
+position:absolute;
+left:-9999px;
+}
   
 @media(max-width:1100px){.hero,.radio-grid,.player-card{grid-template-columns:1fr}.dashboard,.platform-row{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){
@@ -168,11 +174,29 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
       backdrop-filter:blur(18px);position:sticky;top:0;z-index:40}}
 @media(max-width:700px){.content{width:calc(100% - 28px)}.dashboard,.platform-row{grid-template-columns:1fr}.hero,.panel{padding:22px}}
 </style>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"RadioStation",
+ "name":"Rádio Web Católica Luz e Louvor",
+ "url":"https://horizon4282.com.br/radio-luz-louvor.html",
+ "description":"Rádio Web Católica com música, oração e evangelização 24 horas.",
+ "inLanguage":"pt-BR",
+ "publisher":{
+   "@type":"Organization",
+   "name":"Horizon 4282"
+ }
+}
+</script>
+
 </head>
 <body>
 <div class="app">
 <aside class="sidebar">
-  <div class="sidebar-header"><button class="toggle-btn" onclick="toggleSidebar()">☰</button><div class="brand"><strong>Horizon 4282</strong><span data-pt="Rádio Luz e Louvor" data-en="Light & Praise Radio">Rádio Luz e Louvor</span></div></div>
+  <div class="sidebar-header"><button class="toggle-btn" onclick="toggleSidebar()">☰</button><div class="brand"><strong>Horizon 4282</strong>
+    <span data-pt="Rádio Luz e Louvor" data-en="Light & Praise Radio">Rádio Luz e Louvor</span></div></div>
+
   <nav class="nav">
     <div class="sidebar-label" data-pt="Rádio" data-en="Radio">Rádio</div>
     <button onclick="scrollToBlock('messageBlock')"><i>✦</i><span data-pt="Mensagem do Dia" data-en="Daily Message">Mensagem do Dia</span></button>
@@ -215,8 +239,18 @@ audio{width:100%;margin-top:10px}.player-actions{display:flex;gap:10px;flex-wrap
       <div class="schedule-list" id="scheduleList"></div></div>
   </section>
 
- <section class="hero"><div><div class="eyebrow" id="heroEyebrow">Rádio Luz e Louvor</div><h1 id="heroTitle">Rádio Luz e Louvor</h1><p id="heroText">Music, prayer, worship and hope. A devotional station inside Horizon 4282.</p></div><div class="onair"><strong><span class="dot"></span>ON AIR</strong><span id="onAirText">HD Audio · 24h</span></div></section>
+ <section class="hero"><div><div class="eyebrow" id="heroEyebrow">Rádio Luz e Louvor</div>
+   <h1 id="heroTitle">Rádio Luz e Louvor</h1><p id="heroText">Music, prayer, worship and hope. A devotional station inside Horizon 4282.</p></div>
+   <div class="onair"><strong><span class="dot"></span>ON AIR</strong><span id="onAirText">HD Audio · 24h</span></div></section>
 
+  <section class="hero"><h2>Sobre a Rádio Luz e Louvor</h2>
+    <p>A Rádio Luz e Louvor é uma emissora digital católica do projeto Horizon 4282 dedicada à evangelização através da música, 
+    oração e Palavra de Deus. Nossa programação funciona 24 horas por dia com louvores autorais, mensagens inspiradoras e momentos 
+  de contemplação para acompanhar você em qualquer lugar.</p>
+    <p>Ouça gratuitamente pelo computador, celular ou tablet.</p>
+   </section>
+
+  <h2 class=seo-hidden">Ouça agora a programação da Rádio Luz e Louvor</h2>
   <section class="dashboard">
     <div class="stat"><span data-pt="Status" data-en="Status">Status</span><strong id="statusText">ON AIR</strong></div>
     <div class="stat"><span data-pt="Origem" data-en="Source">Origem</span><strong id="sourceText">Schedule</strong></div>
