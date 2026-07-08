@@ -27,6 +27,11 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-rios-de-cura.mp3"
         },
         {
+          "title": "Sei que Cuidas de Mim",
+          "duration": 224,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"
+        },
+        {
           "title": "Recebe Hoje o meu Sim",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"
@@ -85,6 +90,11 @@
           "title": "O Novo Adão",
           "duration": 174,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-o-novo-adao.mp3"
+        },
+        {
+          "title": "Vem Queimar",
+          "duration": 261,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-vem-queimar.mp3"
         }
       ]
     },
@@ -100,9 +110,54 @@
       },
       "playlist": [
         {
+          "title": "Monte da Presença",
+          "duration": 164,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-monte-da-presenca.mp3"
+        },
+        {
+          "title": "Lugar Perfeito",
+          "duration": 187,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-lugar-perfeito.mp3"
+        },
+        {
+          "title": "Quando o Céu Respira",
+          "duration": 163,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-quando-o-ceu-respira.mp3"
+        },
+        {
+          "title": "A Paz do Senhor",
+          "duration": 157,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-paz-do-senhor.mp3"
+        },
+        {
+          "title": "Orvalho do Espírito",
+          "duration": 178,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-orvalho-do-espirito.mp3"
+        },
+        {
+          "title": "Sopro do Altíssimo",
+          "duration": 226,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-sopro-do-altissimo.mp3"
+        },
+        {
+          "title": "Jardim da Eternidade",
+          "duration": 142,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-jardim-da-eternidade.mp3"
+        },
+        {
+          "title": "Quietude da Alma",
+          "duration": 221,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-quietude-da-alma.mp3"
+        },
+        {
           "title": "São Miguel Arcanjo",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
+        },
+        {
+          "title": "Sombra do Unipotente",
+          "duration": 189,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-sombra-do-onipotente.mp3"
         },
         {
           "title": "Cristo Ressuscitado",
