@@ -467,6 +467,26 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"
         },
         {
+          "title": "Ave Maria",
+          "duration": 87,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ave-maria.mp3"
+        },
+        {
+          "title": "Alegria Perene",
+          "duration": 279,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Alegria-Perene.mp3"
+        },
+        {
+          "title": "Pai Nosso",
+          "duration": 113,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-pai-nosso.mp3"
+        },
+        {
+          "title": "Brilho do amor de Deus",
+          "duration": 177,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-brilho-do-amor-de-deus.mp3"
+        },
+        {
           "title": "A Esperança não Decepciona",
           "duration": 149,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-suave--02.mp3"
@@ -485,6 +505,26 @@
           "title": "Aurora dos Tempos",
           "duration": 162,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-03.mp3"
+        },
+        {
+          "title": "Salmos 50 51 12A",
+          "duration": 152,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Salmo-50-51-12A.mp3"
+        },
+        {
+          "title": "Salmos 85 86",
+          "duration": 184,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Salmo-85-86-v1.mp3"
+        },
+        {
+          "title": "Salmos 88 89",
+          "duration": 172,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-Salmo-88-89.mp3"
+        },
+        {
+          "title": "Salmos 131 132",
+          "duration": 275,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-Salmo-131-132.mp3"
         }
       ]
     },
@@ -499,10 +539,20 @@
         "description": "Praise songs to begin the day with joy and faith."
       },
       "playlist": [
-                {
+        {
+          "title": "Ave Maria",
+          "duration": 87,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ave-maria.mp3"
+        },
+        {
           "title": "Alegria Perene",
           "duration": 279,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Alegria-Perene.mp3"
+        },
+        {
+          "title": "Pai Nosso",
+          "duration": 113,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-pai-nosso.mp3"
         },
         {
           "title": "Brilho do amor de Deus",
