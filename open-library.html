@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -59,7 +60,6 @@ body{
 }
 
 .hero{
-    min-height:100vh;
     background:
     linear-gradient(rgba(0,0,0,.75),rgba(5,7,13,.95)),
     url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2000') center center;
@@ -100,8 +100,8 @@ nav{
     flex:1;
     display:flex;
     flex-direction:column;
-    justify-content:center;
-    padding:0 8%;
+    justify-content:start;
+    padding:50px 8%;
     max-width:900px;
 }
 
@@ -113,7 +113,7 @@ nav{
 }
 
 .hero-content h1{
-    font-size:clamp(3rem,7vw,6rem);
+    font-size:clamp(1.8rem,4.4vw,3.5rem);
     line-height:1;
     margin-bottom:25px;
 }
@@ -129,7 +129,7 @@ nav{
 }
 
 .section-title{
-    text-align:center;
+    text-align:left;
     margin-bottom:50px;
 }
 
@@ -201,6 +201,34 @@ footer{
     color:#7d8ba0;
 }
 
+.staging{
+    color:#aeb2b6 !important;
+    font-style: italic;
+    border:1px dotted #fff;
+    border-radius:5px;
+    padding:2px 18px;
+}
+
+.day-counter{
+    text-align:center;
+    padding:30px;
+}
+
+.day-counter .number{
+    font-size:clamp(2rem,4vw,3rem);
+    font-weight:bold;
+    color:#f5d687;
+    line-height:1;
+}
+
+.day-counter .label{
+    margin-top:10px;
+    font-size:1.1rem;
+    color:#ddd;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
 </style>
 </head>
 
@@ -257,35 +285,21 @@ Explore nossos universos narrativos.
 
 <div class="library">
 
-<div class="card">
 
-<div class="category">SANTEE</div>
-
-<h3>O Diário de Santee</h3>
-
-<p
-data-pt="Mistério, ficção científica, portais, experimentos e segredos escondidos além da realidade."
-data-en="Mystery, science fiction, portals, experiments and secrets hidden beyond reality.">
-Mistério, ficção científica, portais, experimentos e segredos escondidos além da realidade.
-</p>
-
-<a href="#">Ler História →</a>
-
-</div>
 
 <div class="card">
 
 <div class="category">HORIZON</div>
 
-<h3>Crônicas Horizon</h3>
+<h3>O Cofre <br> (The Vault)</h3>
 
 <p
-data-pt="Registros de futuros possíveis, inteligências desconhecidas e arquivos esquecidos."
-data-en="Records of possible futures, unknown intelligences and forgotten archives.">
-Registros de futuros possíveis, inteligências desconhecidas e arquivos esquecidos.
+data-pt="Em um universo onde a realidade biológica é uma farsa, a humanidade atual nada mais é do que uma imensa massa de NPCs."
+data-en="In a universe where biological reality is a farce, humanity today is nothing more than a massive mass of NPCs.">
+Em um universo onde a realidade biológica é uma farsa, a humanidade atual nada mais é do que uma imensa massa de NPCs.
 </p>
 
-<a href="#">Ler História →</a>
+<a href="https://horizon4282.com.br/library/fantastic/reader">Ler História →</a>
 
 </div>
 
@@ -301,7 +315,7 @@ data-en="Heroic adventures that combine imagination, courage and positive values
 Aventuras heroicas que unem imaginação, coragem e valores positivos.
 </p>
 
-<a href="#">Ler História →</a>
+<a class="staging" data-pt="Em Produção" data-en="Coming Soon">Em Produção</a>
 
 </div>
 
@@ -317,7 +331,23 @@ data-en="Journeys inspired by faith, friendship and discoveries through biblical
 Viagens inspiradas pela fé, amizade e descobertas através das histórias bíblicas.
 </p>
 
-<a href="#">Ler História →</a>
+<a class="staging" data-pt="Em Produção" data-en="Coming Soon">Em Produção</a>
+
+</div>
+
+<div class="card">
+
+<div class="category">SANTEE</div>
+
+<h3>O Diário de Santee</h3>
+
+<p
+data-pt="Mistério, ficção científica, portais, experimentos e segredos escondidos além da realidade."
+data-en="Mystery, science fiction, portals, experiments and secrets hidden beyond reality.">
+Mistério, ficção científica, portais, experimentos e segredos escondidos além da realidade.
+</p>
+
+<a class="staging" data-pt="Em Produção" data-en="Coming Soon">Em Produção</a>
 
 </div>
 
@@ -329,7 +359,7 @@ Viagens inspiradas pela fé, amizade e descobertas através das histórias bíbl
 
 <div class="section-title">
 
-<h2
+<h2 style="text-align: center;"
 data-pt="O Arquivo Continua Crescendo"
 data-en="The Archive Keeps Growing">
 O Arquivo Continua Crescendo
@@ -343,6 +373,13 @@ data-en="The 4282 Horizon Open Library was conceived as a living archive. New st
 A Open Library da 4282 Horizon foi concebida como um arquivo vivo. Novas histórias, universos, documentos narrativos e experimentos criativos serão adicionados continuamente ao longo dos próximos anos.
 </p>
 
+</section>
+
+<section class="future">
+    <div class="day-counter">
+    <div class="number" id="daysCounter">0</div>
+    <div class="label" data-pt="dias de desenvolvimento" data-en="development days">dias de desenvolvimento</div>
+</div>
 </section>
 
 <footer>
@@ -373,6 +410,23 @@ document.documentElement.lang =
 currentLang === "pt" ? "pt-BR" : "en";
 
 });
+
+function updateDaysCounter(){
+
+    // Data inicial: 1º de Junho de 2026
+    const startDate = new Date(2026, 5, 1); // mês começa em 0
+
+    const today = new Date();
+
+    const diff = today - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("daysCounter").textContent =
+        Math.max(days,0).toLocaleString("pt-BR");
+}
+
+updateDaysCounter();
 
 </script>
 
