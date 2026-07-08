@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
+
 <meta charset="UTF-8">
   <meta name="keywords"
   content="Horizon 4282, Artificial Intelligence, Human AI Collaboration, Creative Laboratory, Research, Experiments, Interfaces, Digital Art, Storytelling, Innovation">
@@ -19,414 +19,440 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 
-<title>Open Library | Horizon 4282</title>
+<title>About | Horizon 4282</title>
 
 <meta name="description"
-content="The Open Library is the public archive of Horizon 4282 featuring fantastic literature, graphic novels, music, research, educational content, digital collections and Human + AI creative projects.">
+content="Learn about Horizon 4282, a long-term Human + AI creative laboratory dedicated to stories, research, digital worlds, open knowledge, education and artistic exploration over a 5,000-day journey.">
 
 <link rel="canonical"
-href="https://horizon4282.com.br/open-library.html">
+href="https://horizon4282.com.br/about.html">
 
 <meta property="og:title"
-content="Open Library | Horizon 4282">
+content="About | Horizon 4282">
 
 <meta property="og:description"
-content="Explore stories, collections, music, research and digital experiences.">
+content="The vision, philosophy and mission behind the Horizon 4282 project.">
 
 <meta property="og:url"
-content="https://horizon4282.com.br/open-library.html">
+content="https://horizon4282.com.br/about.html">
 
 <meta name="twitter:title"
-content="Open Library | Horizon 4282">
+content="About | Horizon 4282">
 
 <meta name="twitter:description"
-content="A public archive of stories, music, research and digital worlds.">
+content="Discover the Human + AI philosophy behind Horizon 4282.">
 
 
   <link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
 
+
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body{
-    font-family:Segoe UI, Arial, sans-serif;
-    background:#05070d;
-    color:#ffffff;
+ font-family:"Courier New", Courier, monospace;
+  background:
+  radial-gradient(
+    circle at center,
+    #132445 0%,
+    #09101f 55%,
+    #000 100%
+  );
+
+  color:#d5ecff;
+  min-height:100vh;
 }
 
-.hero{
-    background:
-    linear-gradient(rgba(0,0,0,.75),rgba(5,7,13,.95)),
-    url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2000') center center;
-    background-size:cover;
+.language-switch{
 
-    display:flex;
-    flex-direction:column;
+  position:fixed;
+
+  top:25px;
+  left:25px;
+
+  z-index:999;
 }
 
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:25px 40px;
+.language-switch button{
+
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(127,211,255,.25);
+
+  color:#7fd3ff;
+
+  padding:8px 12px;
+
+  cursor:pointer;
+
+  margin-right:5px;
+
 }
 
-.logo{
-    font-size:1.4rem;
-    font-weight:bold;
-    letter-spacing:3px;
+.home-link{
+
+  position:fixed;
+
+  top:25px;
+  right:25px;
+
+  color:#7fd3ff;
+
+  text-decoration:none;
+
+  letter-spacing:2px;
 }
 
-#langBtn{
-    background:none;
-    color:white;
-    border:1px solid white;
-    padding:10px 18px;
-    cursor:pointer;
-    transition:.3s;
+.container{
+
+  max-width:1000px;
+
+  margin:auto;
+
+  padding:120px 40px 80px;
+
 }
 
-#langBtn:hover{
-    background:white;
-    color:black;
+h1{
+
+  font-size:50px;
+
+  text-align:center;
+
+  margin-bottom:15px;
+
+  letter-spacing:6px;
+
 }
 
-.hero-content{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    justify-content:start;
-    padding:50px 8%;
-    max-width:900px;
-}
+.subtitle{
 
-.tagline{
-    color:#6ec8ff;
-    letter-spacing:4px;
-    margin-bottom:20px;
-    text-transform:uppercase;
-}
+  text-align:center;
 
-.hero-content h1{
-    font-size:clamp(1.8rem,4.4vw,3.5rem);
-    line-height:1;
-    margin-bottom:25px;
-}
+  color:#7fd3ff;
 
-.hero-content p{
-    font-size:1.3rem;
-    line-height:1.7;
-    color:#d0d0d0;
+  letter-spacing:4px;
+
+  margin-bottom:60px;
+
 }
 
 .section{
-    padding:80px 8%;
+
+  margin-bottom:50px;
+
 }
 
-.section-title{
-    text-align:left;
-    margin-bottom:50px;
+.section h2{
+
+  color:#7fd3ff;
+
+  margin-bottom:20px;
+
+  letter-spacing:3px;
+
+  font-size:15px;
+
 }
 
-.section-title h2{
-    font-size:3rem;
-    margin-bottom:15px;
+.section p{
+
+  line-height:1.4;
+
+  font-size:18px;
+
+  color:#d5ecff;
+  
+  margin: 10px 0 0 0;
+
 }
 
-.section-title p{
-    color:#c2c2c2;
+.quote{
+
+  margin:60px 0;
+
+  padding:30px;
+
+  border-left:
+  3px solid #7fd3ff;
+
+  background:
+  rgba(255,255,255,.03);
+
+  font-style:italic;
+
+  font-size:22px;
+
 }
 
-.library{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-}
-
-.card{
-    background:#0f1420;
-    border:1px solid #1f304a;
-    border-radius:18px;
-    padding:30px;
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-}
-
-.category{
-    color:#6ec8ff;
-    font-size:.8rem;
-    letter-spacing:3px;
-}
-
-.card h3{
-    margin:18px 0;
-    font-size:1.7rem;
-}
-
-.card p{
-    color:#c7c7c7;
-    line-height:1.7;
-    margin-bottom:25px;
-}
-
-.card a{
-    color:#6ec8ff;
-    text-decoration:none;
-}
-
-.future{
-    background:#0b1018;
-    text-align:center;
-}
-
-.future p{
-    max-width:900px;
-    margin:auto;
-    line-height:1.8;
-    color:#d0d0d0;
-}
-
-footer{
-    text-align:center;
-    padding:40px;
-    border-top:1px solid #182436;
-    color:#7d8ba0;
-}
-
-.staging{
-    color:#aeb2b6 !important;
-    font-style: italic;
-    border:1px dotted #fff;
-    border-radius:5px;
-    padding:2px 18px;
-}
-
-.day-counter{
-    text-align:center;
-    padding:30px;
-}
-
-.day-counter .number{
-    font-size:clamp(2rem,4vw,3rem);
-    font-weight:bold;
-    color:#f5d687;
-    line-height:1;
-}
-
-.day-counter .label{
-    margin-top:10px;
-    font-size:1.1rem;
-    color:#ddd;
-    letter-spacing:2px;
-    text-transform:uppercase;
+[data-lang]{
+  display:none;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header class="hero">
-
-<nav>
-<div class="logo">4282 HORIZON</div>
-<button id="langBtn">EN</button>
-</nav>
-
-<div class="hero-content">
-
-<div class="tagline"
-data-pt="Biblioteca Aberta"
-data-en="Open Library">
-Biblioteca Aberta
+<div class="language-switch">
+  <button onclick="setLanguage('pt')">PT</button>
+  <button onclick="setLanguage('en')">EN</button>
 </div>
 
-<h1
-data-pt="Narrativas Gratuitas Para Explorar Novos Mundos"
-data-en="Free Narratives To Explore New Worlds">
-Narrativas Gratuitas Para Explorar Novos Mundos
-</h1>
+<a href="index.html" class="home-link">
+HOME
+</a>
 
-<p
-data-pt="Bem-vindo à Open Library da 4282 Horizon. Um arquivo vivo de histórias, experimentos narrativos, ficção científica, aventuras, mistérios e universos criados para serem compartilhados livremente."
-data-en="Welcome to the 4282 Horizon Open Library. A living archive of stories, narrative experiments, science fiction, adventures, mysteries and worlds created to be freely shared.">
-Bem-vindo à Open Library da 4282 Horizon. Um arquivo vivo de histórias, experimentos narrativos, ficção científica, aventuras, mistérios e universos criados para serem compartilhados livremente.
+<!-- PORTUGUÊS -->
+
+<div class="container" data-lang="pt">
+
+<h1>HORIZON 4282</h1>
+
+<div class="subtitle">
+LABORATÓRIO CRIATIVO HUMANO + IA
+</div>
+
+<div class="section">
+
+<h2>O QUE É O HORIZON?</h2>
+
+<p>
+
+Horizon 4282 é um laboratório vivo de criatividade,
+interfaces digitais, inteligência artificial,
+experimentos visuais, narrativas,
+jogos, sistemas e exploração tecnológica.
+
+Não é uma empresa.
+
+Não é uma startup.
+
+Não é uma plataforma tradicional.
+
+É um projeto de longo prazo dedicado à experimentação.
+
 </p>
 
 </div>
 
-</header>
+<div class="section">
 
-<section class="section">
+<h2>COLABORAÇÃO HUMANO + IA</h2>
 
-<div class="section-title">
+<p>
 
-<h2
-data-pt="Coleções"
-data-en="Collections">
-Coleções
-</h2>
+Todo o conteúdo deste projeto nasce da colaboração
+entre um criador humano e sistemas de inteligência artificial.
 
-<p
-data-pt="Explore nossos universos narrativos."
-data-en="Explore our narrative universes.">
-Explore nossos universos narrativos.
+O humano fornece visão,
+curadoria,
+imaginação e propósito.
+
+A IA atua como ferramenta,
+parceira criativa e aceleradora de ideias.
+
 </p>
 
 </div>
 
-<div class="library">
+<div class="section">
+
+<h2>HORIZON 4282 — PRINCÍPIOS</h2>
+
+<p>O Horizon 4282 foi projetado para ser rápido, leve e acessível.</p>
+  
+<p>Não exigimos cadastro, login ou criação de conta para explorar o conteúdo disponível. 
+Também não coletamos informações pessoais para navegação básica e não comercializamos dados de visitantes.
+Nosso objetivo é simples: compartilhar ideias, experimentos, narrativas, pesquisas, interfaces, imagens e projetos criados ao longo 
+desta jornada de colaboração entre um ser humano e sistemas de inteligência artificial.</p>
+  
+<p>Sempre que possível, os conteúdos serão disponibilizados gratuitamente para consulta, estudo, inspiração e aprendizado.
+O Horizon 4282 é um projeto independente e de longo prazo. Se você acreditar no valor deste trabalho e desejar contribuir para sua continuidade, 
+poderá apoiar o projeto por meio de doações voluntárias. Toda contribuição ajuda a manter a infraestrutura, 
+o desenvolvimento de novos conteúdos e a expansão deste laboratório criativo.De graça recebemos conhecimento. De graça procuramos compartilhá-lo.</p>
+Obrigado por fazer parte desta jornada.
+
+</div>
 
 
+<div class="section">
 
-<div class="card">
+<h2>O PROJETO DOS 5000 DIAS</h2>
 
-<div class="category">HORIZON</div>
+<p>
 
-<h3>O Cofre <br> (The Vault)</h3>
+O Horizon 4282 foi concebido para evoluir ao longo de aproximadamente
+5000 dias.
 
-<p
-data-pt="Em um universo onde a realidade biológica é uma farsa, a humanidade atual nada mais é do que uma imensa massa de NPCs."
-data-en="In a universe where biological reality is a farce, humanity today is nothing more than a massive mass of NPCs.">
-Em um universo onde a realidade biológica é uma farsa, a humanidade atual nada mais é do que uma imensa massa de NPCs.
+Cada experimento,
+cada descoberta,
+cada erro,
+cada narrativa e cada sistema construído
+serão registrados no Development Log.
+
 </p>
 
-<a href="https://horizon4282.com.br/library/fantastic/reader">Ler História →</a>
+</div>
+
+<div class="quote">
+
+"De graça recebi,
+de graça vos entrego."
 
 </div>
 
-<div class="card">
+</div>
 
-<div class="category">4282</div>
+<!-- ENGLISH -->
 
-<h3>Corredor 4282</h3>
+<div class="container" data-lang="en">
 
-<p
-data-pt="Aventuras heroicas que unem imaginação, coragem e valores positivos."
-data-en="Heroic adventures that combine imagination, courage and positive values.">
-Aventuras heroicas que unem imaginação, coragem e valores positivos.
+<h1>HORIZON 4282</h1>
+
+<div class="subtitle">
+HUMAN + AI CREATIVE LABORATORY
+</div>
+
+<div class="section">
+
+<h2>WHAT IS HORIZON?</h2>
+
+<p>
+
+Horizon 4282 is a living laboratory of creativity,
+digital interfaces,
+artificial intelligence,
+visual experiments,
+narratives,
+games,
+systems,
+and technological exploration.
+
+It is not a company.
+
+It is not a startup.
+
+It is not a traditional platform.
+
+It is a long-term experimental project.
+
 </p>
 
-<a class="staging" data-pt="Em Produção" data-en="Coming Soon">Em Produção</a>
-
 </div>
 
-<div class="card">
+<div class="section">
 
-<div class="category">LIAH</div>
+<h2>HUMAN + AI COLLABORATION</h2>
 
-<h3>Liah</h3>
+<p>
 
-<p
-data-pt="Viagens inspiradas pela fé, amizade e descobertas através das histórias bíblicas."
-data-en="Journeys inspired by faith, friendship and discoveries through biblical stories.">
-Viagens inspiradas pela fé, amizade e descobertas através das histórias bíblicas.
+Every creation within this project emerges from the collaboration
+between a human creator and artificial intelligence systems.
+
+The human provides vision,
+curation,
+imagination,
+and purpose.
+
+The AI acts as a tool,
+creative partner,
+and accelerator of ideas.
+
 </p>
 
-<a class="staging" data-pt="Em Produção" data-en="Coming Soon">Em Produção</a>
-
 </div>
 
-<div class="card">
+<div class="section">
 
-<div class="category">SANTEE</div>
+<h2>HORIZON 4282 — PRINCIPLES</h2>
 
-<h3>O Diário de Santee</h3>
+<p>Horizon 4282 was designed to be fast, lightweight, and accessible.</p>
 
-<p
-data-pt="Mistério, ficção científica, portais, experimentos e segredos escondidos além da realidade."
-data-en="Mystery, science fiction, portals, experiments and secrets hidden beyond reality.">
-Mistério, ficção científica, portais, experimentos e segredos escondidos além da realidade.
+<p>We do not require registration, login, or account creation to explore the available content. 
+  We also do not collect personal information for basic browsing and we do not sell visitor data.
+Our goal is simple: to share ideas, experiments, stories, research, interfaces, 
+images, and projects created throughout this ongoing collaboration between a human creator and artificial intelligence systems.</p>
+  
+<p>Whenever possible, content will be made available free of charge for exploration, learning, inspiration, and study. Horizon 4282 is an independent
+long-term project. If you find value in this work and would like to support its continuation, you may contribute through voluntary donations. 
+Every contribution helps maintain the infrastructure, fund new developments, and expand this creative laboratory. Knowledge was freely received. 
+Knowledge should be freely shared.</p>
+
+Thank you for being part of this journey.
+
 </p>
 
-<a class="staging" data-pt="Em Produção" data-en="Coming Soon">Em Produção</a>
-
 </div>
 
-</div>
 
-</section>
+<div class="section">
 
-<section class="section future">
+<h2>THE 5000-DAY PROJECT</h2>
 
-<div class="section-title">
+<p>
 
-<h2 style="text-align: center;"
-data-pt="O Arquivo Continua Crescendo"
-data-en="The Archive Keeps Growing">
-O Arquivo Continua Crescendo
-</h2>
+Horizon 4282 was designed to evolve over approximately
+5000 days.
 
-</div>
+Every experiment,
+every discovery,
+every mistake,
+every narrative,
+and every system built
+will be documented through the Development Log.
 
-<p
-data-pt="A Open Library da 4282 Horizon foi concebida como um arquivo vivo. Novas histórias, universos, documentos narrativos e experimentos criativos serão adicionados continuamente ao longo dos próximos anos."
-data-en="The 4282 Horizon Open Library was conceived as a living archive. New stories, universes, narrative documents and creative experiments will be continuously added over the coming years.">
-A Open Library da 4282 Horizon foi concebida como um arquivo vivo. Novas histórias, universos, documentos narrativos e experimentos criativos serão adicionados continuamente ao longo dos próximos anos.
 </p>
 
-</section>
-
-<section class="future">
-    <div class="day-counter">
-    <div class="number" id="daysCounter">0</div>
-    <div class="label" data-pt="dias de desenvolvimento" data-en="development days">dias de desenvolvimento</div>
 </div>
-</section>
 
-<footer>
+<div class="quote">
 
-© 2026 Studio 4282 • 4282 Horizon Open Library
+"Freely you have received;
+freely give."
 
-</footer>
+</div>
+
+</div>
 
 <script>
 
-let currentLang = "pt";
+function setLanguage(lang){
 
-const button = document.getElementById("langBtn");
+  document.querySelectorAll("[data-lang]")
+    .forEach(item => {
 
-button.addEventListener("click",()=>{
+      item.style.display = "none";
 
-currentLang = currentLang === "pt" ? "en" : "pt";
+    });
 
-document.querySelectorAll("[data-pt][data-en]").forEach(el=>{
+  document.querySelectorAll(
+    `[data-lang="${lang}"]`
+  ).forEach(item => {
 
-el.innerHTML = el.dataset[currentLang];
+    item.style.display = "block";
 
-});
+  });
 
-button.innerText = currentLang === "pt" ? "EN" : "PT";
+  localStorage.setItem(
+    "horizonLanguage",
+    lang
+  );
 
-document.documentElement.lang =
-currentLang === "pt" ? "pt-BR" : "en";
-
-});
-
-function updateDaysCounter(){
-
-    // Data inicial: 1º de Junho de 2026
-    const startDate = new Date(2026, 5, 1); // mês começa em 0
-
-    const today = new Date();
-
-    const diff = today - startDate;
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-    document.getElementById("daysCounter").textContent =
-        Math.max(days,0).toLocaleString("pt-BR");
 }
 
-updateDaysCounter();
+const savedLanguage =
+localStorage.getItem(
+  "horizonLanguage"
+) || "pt";
+
+setLanguage(savedLanguage);
 
 </script>
 
