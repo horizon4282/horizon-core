@@ -404,9 +404,69 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-02.mp3"
         },
         {
+          "title": "Salmos 1",
+          "duration": 241,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Salmo1.mp3"
+        },
+        {
+          "title": "Salmos 2",
+          "duration": 178,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Salmo-2.mp3"
+        },
+        {
+          "title": "Salmos 23 24",
+          "duration": 188,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Salmo-23-24.mp3"
+        },
+        {
+          "title": "Salmos 50 51",
+          "duration": 171,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Salmo-50-51.mp3"
+        },
+        {
           "title": "Deus Eterno",
           "duration": 142,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental---01.mp3"
+        },
+        {
+          "title": "Oração da Manhã",
+          "duration": 168,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-oracao-da-manha.mp3"
+        },
+        {
+          "title": "Pai Nosso",
+          "duration": 113,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-pai-nosso.mp3"
+        },
+        {
+          "title": "Aleluia Aleluia",
+          "duration": 92,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-aleluia-01.mp3"
+        },
+        {
+          "title": "Glória a Deus nas Alturas",
+          "duration": 201,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-gloria-a-Deus-nas-alturas-v1.mp3"
+        },
+        {
+          "title": "Ave Maria",
+          "duration": 87,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ave-maria.mp3"
+        },
+        {
+          "title": "Santo Santo Santo",
+          "duration": 122,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-santo-santo-santo-v2.mp3"
+        },
+        {
+          "title": "Grandioso És Tu",
+          "duration": 308,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-grandioso-es-tu-v-luz-louvor.mp3"
+        },
+        {
+          "title": "Toma Minha Vida Seja Tua",
+          "duration": 163,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-toma-minha-vida-e-seja-tua.mp3"
         }
       ]
     },
