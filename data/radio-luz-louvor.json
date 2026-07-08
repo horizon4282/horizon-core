@@ -27,11 +27,6 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-rios-de-cura.mp3"
         },
         {
-          "title": "Sei que Cuidas de Mim",
-          "duration": 224,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"
-        },
-        {
           "title": "Recebe Hoje o meu Sim",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"
@@ -125,9 +120,29 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-quando-o-ceu-respira.mp3"
         },
         {
+          "title": "Eu Quero o Céu",
+          "duration": 180,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-eu-quero-o-ceu.mp3"
+        },
+        {
+          "title": "O Novo Tempo",
+          "duration": 152,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-novo-tempo.mp3"
+        },
+        {
           "title": "A Paz do Senhor",
           "duration": 157,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-paz-do-senhor.mp3"
+        },
+        {
+          "title": "Graça da Salvação",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-da-salvacao.mp3"
+        },
+        {
+          "title": "Torrentes de Sabedoria",
+          "duration": 219,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-torrentes-de-sabedoria.mp3"
         },
         {
           "title": "Orvalho do Espírito",
@@ -188,6 +203,56 @@
       },
       "playlist": [
         {
+          "title": "Som da Eternidade",
+          "duration": 202,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-som-da-eternidade.mp3"
+        },
+        {
+          "title": "Breve Toque de Deus",
+          "duration": 222,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-breve-toque-de-deus.mp3"
+        },
+        {
+          "title": "Vento Suave de Deus",
+          "duration": 202,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-vento-suave-de-deus.mp3"
+        },
+        {
+          "title": "Águas da Renovação",
+          "duration": 206,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-aguas-da-renovacao.mp3"
+        },
+        {
+          "title": "Descanso da Alma",
+          "duration": 206,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-descanso-da-alma.mp3"
+        },
+        {
+          "title": "Caminho de Nazaré",
+          "duration": 192,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-caminho-de-nazare.mp3"
+        },
+        {
+          "title": "Cenáculo com Jesus",
+          "duration": 241,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-com-Jesus.mp3"
+        },
+        {
+          "title": "Caminho do Silêncio",
+          "duration": 217,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-caminho-do-silencio.mp3"
+        },
+        {
+          "title": "A Porta Aberta",
+          "duration": 186,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"
+        },
+        {
+          "title": "Caminho da Esperança",
+          "duration": 206,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/12-caminho-da-esperanca.mp3"
+        },
+      {
           "title": "Saiba que Sou Teu Deus",
           "duration": 211,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3"
