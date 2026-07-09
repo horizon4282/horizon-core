@@ -60,7 +60,7 @@ a{color:inherit;text-decoration:none}
 
 .btn-banner {
     position: absolute;
-    top: 3px;
+    top: 9px;
     left: 31%;
 }
 
@@ -235,7 +235,7 @@ left:-9999px;
     <button id="ptBtn" onclick="setLanguage('pt')">PT</button>
     <button id="enBtn" onclick="setLanguage('en')">EN</button>
   </div>
-       <div><img src="https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp" style="width:100%" /></div>
+       <div id="heroBanner"><img src="https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp" style="width:100%" /></div>
   
 
   <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
@@ -694,6 +694,43 @@ document.getElementById("radioPlayer").addEventListener("ended", () => {
 
 function scrollToBlock(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});if(window.innerWidth<=900)document.body.classList.remove("mobile-menu-open")}
 
+const banners = [
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor-2.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor-3.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp"
+      ];
+
+
+function loadRandomBanner(){
+
+    const storageKey = "radio-last-banner";
+
+    let lastIndex = Number(localStorage.getItem(storageKey));
+
+    let newIndex;
+
+    do{
+        newIndex = Math.floor(Math.random() * banners.length);
+    }
+    while(banners.length > 1 && newIndex === lastIndex);
+
+    localStorage.setItem(storageKey, newIndex);
+
+    const hero = document.getElementById("heroBanner");
+
+    hero.style.backgroundImage = `
+        radial-gradient(circle at 80% 20%, rgba(0,242,255,.10), transparent 36%),
+        linear-gradient(135deg, rgba(8,21,38,.78), rgba(3,7,18,.82)),
+        url('${banners[newIndex]}')
+    `;
+
+    hero.style.backgroundSize = "cover";
+    hero.style.backgroundPosition = "center";
+    hero.style.backgroundRepeat = "no-repeat";
+}
+
+  
 async function sharePage(){
 
   const url = "https://horizon4282.com.br/radio-luz-louvor.html";
@@ -736,6 +773,8 @@ window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.cl
 
   
 document.addEventListener("DOMContentLoaded", () => {
+
+    loadRandomBanner();
 
     const player = document.getElementById("radioPlayer");
 
