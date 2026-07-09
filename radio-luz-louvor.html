@@ -219,10 +219,7 @@ left:-9999px;
   </div>
 
   <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
-    <button class="share-btn" onclick="sharePage()" data-pt="📤 Compartilhar" data-en="📤 Share">
-      📤 Compartilhar
-    </button>
-    <a class="home-link" href="/" data-pt="Início" data-en="Home">Início</a>
+    <a style="display:none;" class="home-link" href="/" data-pt="Início" data-en="Home">Início</a>
   </div>
 </div>
 
@@ -232,9 +229,20 @@ left:-9999px;
 
      
   <section class="radio-grid">
-    <div class="panel" id="playerBlock"><div class="panel-title" data-pt="Agora Tocando" data-en="Now Playing">Agora Tocando</div><div class="player-card">
-      <div class="cover" id="coverBox">♫</div><div class="track-meta"><div class="request-badge" id="playModeText">Schedule</div><h2 id="nowTitle">Loading...</h2><p id="nowDescription">Loading...</p><audio id="radioPlayer" controls preload="metadata"></audio><div class="player-actions">
-</div></div></div></div>
+    <div class="panel" id="playerBlock">
+      <div class="panel-title" data-pt="Agora Tocando" data-en="Now Playing">Agora Tocando</div>
+      <div class="player-card">
+      <div class="cover" id="coverBox">♫</div>
+        <div class="track-meta"><div class="request-badge" id="playModeText">Schedule</div>
+        <h2 id="nowTitle">Loading...</h2><p id="nowDescription">Loading...</p>
+        <audio id="radioPlayer" controls preload="metadata"></audio>
+        <div class="player-actions"></div>
+        </div>
+          <button class="share-btn" onclick="sharePage()" data-pt="📤 Compartilhar" data-en="📤 Share">
+      📤 Compartilhar
+    </button>
+      </div>
+    </div>
     <div class="panel" id="scheduleBlock"><div class="panel-title" data-pt="Programação" data-en="Schedule">Programação</div>
       <div class="schedule-list" id="scheduleList"></div></div>
   </section>
