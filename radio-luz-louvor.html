@@ -395,7 +395,23 @@ function scrollScheduleToCurrent(){
   
 function renderPlatforms(){const row=document.getElementById("platformsBlock");row.innerHTML="";radioData.platforms.forEach(platform=>{const a=document.createElement("a");a.className="platform";a.href=platform.url||"#";a.target="_blank";a.innerHTML=`<strong>${platform.title}</strong><span>${platform.text||""}</span>`;row.appendChild(a)})}
 function startRadioFlow(){const params=new URLSearchParams(window.location.search);const requestedTrackId=params.get("track");if(requestedTrackId&&radioData.tracks[requestedTrackId]){activeSource="request";activeTrack=radioData.tracks[requestedTrackId];renderNowPlaying(activeTrack,"request")}else{loadCurrentSchedule()}}
-function loadCurrentSchedule(){activeSource="schedule";activeTrack=getCurrentSchedule();renderNowPlaying(activeTrack,"schedule")}
+
+function loadCurrentSchedule(){
+  const player = document.getElementById("radioPlayer");
+
+  player.pause();
+  player.removeAttribute("src");
+  player.load();
+
+  currentPlaylist = [];
+  currentTrackIndex = 0;
+  activeScheduleHour = null;
+
+  activeSource = "schedule";
+  activeTrack = getCurrentSchedule();
+
+  renderNowPlaying(activeTrack, "schedule");
+}
 
 function getRadioHour() {
   const now = new Date();
@@ -663,6 +679,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const player = document.getElementById("radioPlayer");
 
+  player.oncanplay = null;
+player.onerror = null;
+player.ontimeupdate = null;
+
     // Volume inicial: 40%
    player.volume = 0.4;
 
@@ -701,7 +721,7 @@ setTimeout(() => {
   // Apenas atualiza o destaque visual da grade
   renderSchedule();
 
-}, 3000);
+}, 6000);
   
 </script>
 </body>
