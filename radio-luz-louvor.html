@@ -235,7 +235,7 @@ left:-9999px;
     <button id="ptBtn" onclick="setLanguage('pt')">PT</button>
     <button id="enBtn" onclick="setLanguage('en')">EN</button>
   </div>
-       <div id="heroBanner"><img src="https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp" style="width:100%" /></div>
+       <div><img id="heroBanner" src="https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp" style="width:100%" /></div>
   
 
   <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
@@ -719,15 +719,7 @@ function loadRandomBanner(){
 
     const hero = document.getElementById("heroBanner");
 
-    hero.style.backgroundImage = `
-        radial-gradient(circle at 80% 20%, rgba(0,242,255,.10), transparent 36%),
-        linear-gradient(135deg, rgba(8,21,38,.78), rgba(3,7,18,.82)),
-        url('${banners[newIndex]}')
-    `;
-
-    hero.style.backgroundSize = "cover";
-    hero.style.backgroundPosition = "center";
-    hero.style.backgroundRepeat = "no-repeat";
+    hero.src = '${banners[newIndex]}';
 }
 
   
