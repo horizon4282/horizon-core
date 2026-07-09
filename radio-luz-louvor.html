@@ -443,7 +443,7 @@ const player = document.getElementById("radioPlayer");
 
   // volume inicial
 if (!localStorage.getItem("radioVolumeInitialized")) {
-    player.volume = 1;
+    player.volume = 0.4;
     localStorage.setItem("radioVolumeInitialized", "true");
 }
 
@@ -687,8 +687,6 @@ setInterval(() => {
     const player = document.getElementById("radioPlayer");
     player.pause();
 
-    // sincroniza com o novo programa
-    renderNowPlaying(currentSchedule, "schedule");
 
     // inicia imediatamente
     renderNowPlaying(currentSchedule, "schedule");
@@ -703,7 +701,7 @@ setTimeout(() => {
   // Apenas atualiza o destaque visual da grade
   renderSchedule();
 
-}, 1000);
+}, 3000);
   
 </script>
 </body>
