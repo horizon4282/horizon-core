@@ -183,32 +183,42 @@ left:-9999px;
 }
 
 .bottom-player{
-  position:fixed;
-  left:var(--sidebar-width);
-  right:0;
-  bottom:0;
-  z-index:1000;
 
-  min-height:88px;
-  display:grid;
-  grid-template-columns:minmax(230px,1fr) minmax(320px,1.4fr) minmax(180px,.7fr);
-  align-items:center;
-  gap:22px;
+    position:fixed;
+    left:var(--sidebar-width);
+    right:0;
+    bottom:0;
 
-  padding:12px 24px;
+    display:grid;
 
-  background:rgba(3,7,18,.96);
-  border-top:1px solid var(--line-strong);
-  backdrop-filter:blur(20px);
+    grid-template-columns:
+        60px
+        320px
+        1fr
+        170px;
 
-  transition:left .25s;
+    align-items:center;
+
+    gap:20px;
+
+    min-height:78px;
+
+    padding:10px 20px;
+
+    background:rgba(3,7,18,.96);
+
+    border-top:1px solid var(--line-strong);
+
+    backdrop-filter:blur(20px);
+
+    z-index:1000;
 }
 
 .bottom-track{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  min-width:0;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    overflow:hidden;
 }
 
 .bottom-cover{
@@ -262,8 +272,9 @@ left:-9999px;
 }
 
 .bottom-controls{
-  display:flex;
-  justify-content:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .bottom-control-btn{
@@ -278,7 +289,6 @@ left:-9999px;
   border:1px solid var(--line-strong);
   background:var(--text);
   color:#030712;
-
   font-size:18px;
   cursor:pointer;
   transition:.2s;
@@ -290,14 +300,11 @@ left:-9999px;
 }
 
 .bottom-progress-area{
-  width:100%;
-  display:grid;
-  grid-template-columns:42px 1fr 42px;
-  align-items:center;
-  gap:10px;
 
-  color:var(--muted);
-  font-size:10px;
+    display:grid;
+    grid-template-columns:45px 1fr 45px;
+    align-items:center;
+    gap:10px;
 }
 
 .bottom-progress-area span:last-child{
@@ -327,51 +334,8 @@ left:-9999px;
   padding-bottom:140px;
 }
 
-@media(max-width:900px){
-  .bottom-player{
-    left:0;
-    grid-template-columns:1fr auto;
-    min-height:76px;
-    padding:10px 14px;
-  }
 
-  .bottom-center{
-    flex-direction:row-reverse;
-  }
 
-  .bottom-progress-area{
-    display:none;
-  }
-
-  .bottom-volume{
-    display:none;
-  }
-
-  .bottom-cover{
-    width:48px;
-    height:48px;
-    min-width:48px;
-  }
-
-  .bottom-control-btn{
-    width:44px;
-    height:44px;
-  }
-
-  .content{
-    padding-bottom:110px;
-  }
-}
-
-@media(max-width:520px){
-  .bottom-track-info strong{
-    max-width:190px;
-  }
-
-  .bottom-track-info span{
-    max-width:190px;
-  }
-}
   
 @media(max-width:1100px){.hero,.radio-grid,.player-card{grid-template-columns:1fr}.dashboard,.platform-row{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){
@@ -413,7 +377,6 @@ left:-9999px;
     </div>
   </div>
 
-  <div class="bottom-center">
 
     <div class="bottom-controls">
       <button
@@ -442,7 +405,7 @@ left:-9999px;
       <span id="bottomDuration">0:00</span>
     </div>
 
-  </div>
+
 
   <div class="bottom-volume">
     <span id="bottomVolumeIcon">🔊</span>
