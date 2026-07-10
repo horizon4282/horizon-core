@@ -550,6 +550,8 @@ left:-9999px;
 let activeScheduleHour = null;
 let currentPlaylist = [];
 let currentTrackIndex = 0;
+let audioRetryTimer = null;
+let audioLoadId = 0;
 let currentLang=localStorage.getItem("horizonLanguage")||"pt";
 let radioData=null,activeTrack=null,activeSource="schedule";
   
@@ -837,6 +839,17 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
 
   if (!track || !track.audio) return;
 
+  // Identifica esta tentativa específica de carregamento
+  const loadId = ++audioLoadId;
+
+  // Cancela qualquer avanço agendado por uma faixa anterior
+  if (audioRetryTimer) {
+    clearTimeout(audioRetryTimer);
+    audioRetryTimer = null;
+  }
+
+  currentTrackIndex = index;
+
   document.getElementById("nowTitle").textContent =
     track.title || "Rádio Luz e Louvor";
 
@@ -846,37 +859,74 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
       : "Synced broadcast from the current schedule.";
 
   updateBottomPlayerMetadata();
+
   player.pause();
 
+  // Limpa eventos da faixa anterior
   player.oncanplay = null;
+  player.onloadedmetadata = null;
   player.onerror = null;
 
   player.src = track.audio;
+  player.load();
 
-  player.oncanplay = () => {
-    player.oncanplay = null;
+  player.onloadedmetadata = () => {
+    // Ignora eventos atrasados de uma faixa anterior
+    if (loadId !== audioLoadId) return;
 
-    if (offset > 0 && offset < player.duration) {
+    if (
+      offset > 0 &&
+      Number.isFinite(player.duration) &&
+      offset < player.duration
+    ) {
       player.currentTime = offset;
     }
+  };
+
+  player.oncanplay = async () => {
+    if (loadId !== audioLoadId) return;
+
+    player.oncanplay = null;
 
     if (autoPlay) {
-      player.play().catch(() => {});
+      try {
+        await player.play();
+      } catch (error) {
+        console.warn("Reprodução não iniciada:", track.title, error);
+      }
     }
   };
 
   player.onerror = () => {
-    console.warn("Erro ao carregar áudio:", track.audio);
+    // Impede que um erro antigo pule a faixa atual
+    if (loadId !== audioLoadId) return;
 
-    setTimeout(() => {
-      currentTrackIndex++;
+    const mediaError = player.error;
 
-      if (currentTrackIndex >= currentPlaylist.length) {
-        currentTrackIndex = 0;
+    console.warn(
+      "Erro ao carregar áudio:",
+      track.title,
+      track.audio,
+      mediaError?.code
+    );
+
+    if (audioRetryTimer) {
+      clearTimeout(audioRetryTimer);
+    }
+
+    audioRetryTimer = setTimeout(() => {
+      if (loadId !== audioLoadId) return;
+
+      audioRetryTimer = null;
+
+      let nextIndex = currentTrackIndex + 1;
+
+      if (nextIndex >= currentPlaylist.length) {
+        nextIndex = 0;
       }
 
-      loadPlaylistTrack(currentTrackIndex, 0, autoPlay);
-    }, 1500);
+      loadPlaylistTrack(nextIndex, 0, autoPlay);
+    }, 4000);
   };
 }
 
@@ -1026,10 +1076,10 @@ function initializeBottomPlayer() {
 
 //function playRadio(){document.getElementById("radioPlayer").play().catch(()=>{})}
 
-function startRadioFromTop(){
+function startRadioFromTop() {
   const playerBlock = document.getElementById("playerBlock");
 
-  if(playerBlock){
+  if (playerBlock) {
     playerBlock.scrollIntoView({
       behavior: "smooth",
       block: "start"
@@ -1038,22 +1088,25 @@ function startRadioFromTop(){
 
   loadCurrentSchedule();
 
-  setTimeout(() => {
-    playRadio();
-  }, 300);
+  const player = document.getElementById("radioPlayer");
+
+  const startWhenReady = () => {
+    player.removeEventListener("canplay", startWhenReady);
+
+    player.play().catch(error => {
+      console.warn("Não foi possível iniciar a rádio:", error);
+    });
+  };
+
+  player.addEventListener("canplay", startWhenReady);
 }
   
-function playRadio(){
+function playRadio() {
+  const player = document.getElementById("radioPlayer");
 
-    const player = document.getElementById("radioPlayer");
-
-    // garante que está sincronizado
-    if(activeSource === "schedule" && activeTrack){
-        renderNowPlaying(activeTrack, "schedule");
-    }
-
-    player.play().catch(console.error);
-
+  player.play().catch(error => {
+    console.warn("Não foi possível iniciar a rádio:", error);
+  });
 }
   
 function pauseRadio(){document.getElementById("radioPlayer").pause()}
