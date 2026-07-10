@@ -1096,8 +1096,12 @@ const banners = [
       "https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp"
       ];
 
+
+
+//Install APP/////////////////////
 let deferredInstallPrompt = null;
 
+const INSTALL_STORAGE_KEY = "radioLuzLouvorInstalled";
 const installBtn = document.getElementById("installBtn");
 
 function isRunningAsInstalledApp() {
@@ -1107,41 +1111,50 @@ function isRunningAsInstalledApp() {
   );
 }
 
+function wasInstalledByUser() {
+  return localStorage.getItem(INSTALL_STORAGE_KEY) === "true";
+}
+
 function updateInstallButton() {
   if (!installBtn) return;
 
-  installBtn.hidden =
-    isRunningAsInstalledApp() ||
-    !deferredInstallPrompt;
+  const shouldShow =
+    deferredInstallPrompt &&
+    !isRunningAsInstalledApp() &&
+    !wasInstalledByUser();
+
+  installBtn.hidden = !shouldShow;
+  installBtn.style.display = shouldShow ? "inline-flex" : "none";
 }
 
 window.addEventListener("beforeinstallprompt", event => {
   event.preventDefault();
-
   deferredInstallPrompt = event;
   updateInstallButton();
 });
 
-installBtn.addEventListener("click", async () => {
+installBtn?.addEventListener("click", async () => {
   if (!deferredInstallPrompt) return;
 
   deferredInstallPrompt.prompt();
 
   const result = await deferredInstallPrompt.userChoice;
 
-  console.log("Resultado da instalação:", result.outcome);
+  if (result.outcome === "accepted") {
+    localStorage.setItem(INSTALL_STORAGE_KEY, "true");
+  }
 
   deferredInstallPrompt = null;
   updateInstallButton();
 });
 
 window.addEventListener("appinstalled", () => {
+  localStorage.setItem(INSTALL_STORAGE_KEY, "true");
   deferredInstallPrompt = null;
   updateInstallButton();
 });
-
-
   
+//randomBanner///////////////////////////  
 function loadRandomBanner(){
 
     const storageKey = "radio-last-banner";
@@ -1203,10 +1216,14 @@ async function sharePage(){
 
 window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.classList.add("sidebar-collapsed")})
 
-  
+let installBtn;
 document.addEventListener("DOMContentLoaded", () => {
-
+    installBtn = document.getElementById("installBtn");
     loadRandomBanner();
+
+    if (isRunningAsInstalledApp()) {
+  localStorage.setItem(INSTALL_STORAGE_KEY, "true");
+}
     updateInstallButton();
 
     const player = document.getElementById("radioPlayer");
