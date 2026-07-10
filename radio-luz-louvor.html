@@ -715,7 +715,52 @@ const banners = [
       "https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp"
       ];
 
+let deferredInstallPrompt = null;
 
+const installBtn = document.getElementById("installBtn");
+
+function isRunningAsInstalledApp() {
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true
+  );
+}
+
+function updateInstallButton() {
+  if (!installBtn) return;
+
+  installBtn.hidden =
+    isRunningAsInstalledApp() ||
+    !deferredInstallPrompt;
+}
+
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+
+  deferredInstallPrompt = event;
+  updateInstallButton();
+});
+
+installBtn.addEventListener("click", async () => {
+  if (!deferredInstallPrompt) return;
+
+  deferredInstallPrompt.prompt();
+
+  const result = await deferredInstallPrompt.userChoice;
+
+  console.log("Resultado da instalação:", result.outcome);
+
+  deferredInstallPrompt = null;
+  updateInstallButton();
+});
+
+window.addEventListener("appinstalled", () => {
+  deferredInstallPrompt = null;
+  updateInstallButton();
+});
+
+
+  
 function loadRandomBanner(){
 
     const storageKey = "radio-last-banner";
@@ -781,6 +826,7 @@ window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.cl
 document.addEventListener("DOMContentLoaded", () => {
 
     loadRandomBanner();
+    updateInstallButton();
 
     const player = document.getElementById("radioPlayer");
 
