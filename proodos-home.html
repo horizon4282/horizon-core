@@ -1,16 +1,18 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Proodos | Horizon 4282</title>
-<meta name="description" content="Proodos é o portal institucional e educacional do ecossistema Horizon 4282: fé, educação, formação, comunidade, música, rádio, cursos e desenvolvimento humano.">
-<meta name="keywords" content="Proodos, Horizon 4282, Ministério Luz e Louvor, Rádio Luz e Louvor, curso bíblico, aulas de inglês, formação cristã, educação, manifesto, estatuto">
+<meta name="description" content="A missão Proodos é o núcleo católico educacional e social do ecossistema Horizon 4282: fé, educação, formação, comunidade, música, rádio, cursos e desenvolvimento humano gratuito">
+<meta name="keywords" content="Proodos, Horizon4282, Ministério Luz e Louvor, Rádio Luz e Louvor, curso bíblico, aulas de inglês, formação cristã, educação, manifesto, estatuto">
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#030712">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Proodos | Horizon 4282">
+<meta property="og:title" content="Missão Proodos | Educação e Espiritualidade">
 <meta property="og:description" content="Faith, education, formation and community inside the Horizon 4282 ecosystem.">
 <meta property="og:url" content="https://horizon4282.com.br/proodos.html">
 <meta property="og:site_name" content="Horizon 4282">
@@ -20,6 +22,8 @@
 <meta name="twitter:description" content="Faith, education, formation and community.">
 <meta name="twitter:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
 <link rel="icon" type="image/png" href="https://f005.backblazeb2.com/file/horizon4282/fav-ico-100x100.png">
+
+
 <style>
 :root{--bg:#030712;--panel:rgba(8,21,38,.74);--panel-strong:rgba(15,31,54,.92);--line:rgba(125,211,252,.22);--line-strong:rgba(125,211,252,.55);--text:#eef6ff;--muted:#8ca3bd;--accent:#7dd3fc;--cyan:#00f2ff;--gold:#f5b740;--green:#22c55e;--sidebar-open:315px;--sidebar-closed:82px;--font-main:"Courier New",Courier,monospace}
 *{box-sizing:border-box}
@@ -65,17 +69,16 @@ body.sidebar-collapsed .brand,body.sidebar-collapsed .nav span,body.sidebar-coll
 
 .hero{border:1px solid var(--line);
     border-left:solid  #fff 5px;
-background:radial-gradient(circle at 80% 20%,rgba(162, 235, 238, 0.1),transparent 66%),linear-gradient(135deg,rgba(8,21,38,.78),rgba(132, 135, 146, 0.82));min-height:320px;padding:46px;display:grid;grid-template-columns:1fr 380px;gap:34px;align-items:center;margin-bottom:24px;overflow:hidden;position:relative}
+background: var(--panel);;min-height:320px;padding:46px;display:grid;grid-template-columns:1fr 380px;gap:34px;align-items:center;margin-bottom:24px;overflow:hidden;position:relative}
 .eyebrow{color:var(--gold);font-size:12px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:14px}
-h1{font-size:clamp(42px,5vw,78px);line-height:1.02;margin:0 0 18px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:clamp(52px,5vw,68px);line-height:1.02;margin:0 0 18px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
 
 .hero p{max-width:900px;color:#b4c7df;font-size:17px;line-height:1.75;margin:0}
 
 .hero-symbol{
-position:relative;z-index:2;border:1px solid rgba(125,211,252,.24);
-background:rgba(198, 201, 207, 0.85);min-height:230px;display:flex;align-items:center;
+position:relative;z-index:2;
+min-height:230px;display:flex;align-items:center;
 justify-content:center;flex-direction:column;text-align:center;
-border-radius:10%;
 }
 
 .hero-symbol img{
@@ -84,7 +87,7 @@ border-radius:10%;
 
 .hero-symbol .mark{color:var(--cyan);font-size:72px;text-shadow:0 0 30px rgba(0,242,255,.45)}
 .hero-symbol strong{margin-top:18px;color:#fff;letter-spacing:.26em;text-transform:uppercase}
-.hero-symbol span{margin-top:12px;color:#030712;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+.hero-symbol span{margin-top:12px;color:#ffffff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
 padding:0 0 20px 0;}
 
 .dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
@@ -112,6 +115,11 @@ padding:0 0 20px 0;}
 @media(max-width:1160px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.dashboard{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){body{--sidebar-width:var(--sidebar-open)}.sidebar{transform:translateX(-100%);width:315px}body.mobile-menu-open .sidebar{transform:translateX(0)}.main{margin-left:0}.mobile-topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);background:rgba(3,7,18,.9);backdrop-filter:blur(18px);position:sticky;top:0;z-index:40}}
 @media(max-width:700px){.content{width:calc(100% - 28px)}.hero,.text-panel{padding:24px}.grid,.dashboard{grid-template-columns:1fr}.card h2{font-size:22px}}
+
+.page-section{scroll-margin-top:24px;margin-top:24px;border:1px solid var(--line);background:var(--panel);padding:34px;position:relative;overflow:hidden}
+.page-section::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at top right,rgba(125,211,252,.075),transparent 38%)}
+.page-section>*{position:relative;z-index:1}.page-section-header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:24px}.page-section-code{color:var(--gold);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}.page-section h2{margin:0;font-size:clamp(28px,4vw,42px);letter-spacing:.06em;text-transform:uppercase}.page-section p{color:#b4c7df;line-height:1.8;font-size:15px}.section-content-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.info-box{border:1px solid rgba(125,211,252,.16);background:rgba(3,7,18,.34);padding:22px}.info-box strong{display:block;margin-bottom:10px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-size:12px}.section-link{display:inline-flex;align-items:center;min-height:42px;margin-top:18px;padding:0 14px;border:1px solid var(--line);color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-size:11px}.section-link:hover{color:#fff;border-color:var(--line-strong);background:rgba(14,165,233,.12)}
+@media(max-width:700px){.page-section{padding:24px}.page-section-header,.section-content-grid{grid-template-columns:1fr;display:grid}}
 </style>
 </head>
 <body>
@@ -119,25 +127,25 @@ padding:0 0 20px 0;}
 <aside class="sidebar">
 <div class="sidebar-header"><button class="toggle-btn" onclick="toggleSidebar()">☰</button><div class="brand"><strong>Horizon 4282</strong><span>Proodos</span></div></div>
 <nav class="nav">
-<a href="/"><i>⌂</i><span data-pt="Início" data-en="Home">Início</span></a>
+<button type="button" onclick="scrollToBlock('inicioBlock')"><i>⌂</i><span data-pt="Início" data-en="Home">Início</span></button>
 <div class="sidebar-label">Proodos</div>
-<button class="active" onclick="scrollToBlock('programsBlock')"><i>▣</i><span data-pt="Programas" data-en="Programs">Programas</span></button>
-<a href="/luz-e-louvor.html"><i>✦</i><span data-pt="Ministério Luz e Louvor" data-en="Light & Praise Ministry">Ministério Luz e Louvor</span></a>
-<a href="/radio-luz-e-louvor.html"><i>♫</i><span data-pt="Rádio Luz e Louvor" data-en="Light & Praise Radio">Rádio Luz e Louvor</span></a>
-<a href="/curso-biblico.html"><i>◉</i><span data-pt="Curso Bíblico" data-en="Bible Course">Curso Bíblico</span></a>
-<a href="/ingles-proodos.html"><i>◎</i><span data-pt="Inglês Proodos" data-en="Proodos English">Inglês Proodos</span></a>
-<button onclick="scrollToBlock('identityBlock')"><i>◇</i><span data-pt="Apoie o Projeto" data-en="Buy Me a Coffee">By Me a Cofee</span></button>
-
+<button type="button" onclick="scrollToBlock('radioBlock')"><i>♫</i><span data-pt="Rádio Luz e Louvor" data-en="Light & Praise Radio">Rádio Luz e Louvor</span></button>
+<button type="button" onclick="scrollToBlock('englishBlock')"><i>◎</i><span data-pt="Inglês Proodos" data-en="Proodos English">Inglês Proodos</span></button>
+<button type="button" onclick="scrollToBlock('ministryBlock')"><i>✦</i><span data-pt="Ministério Luz e Louvor" data-en="Light & Praise Ministry">Ministério Luz e Louvor</span></button>
+<button type="button" onclick="scrollToBlock('bibleBlock')"><i>◉</i><span data-pt="Curso Bíblico" data-en="Bible Course">Curso Bíblico</span></button>
+<button type="button" onclick="scrollToBlock('aboutBlock')"><i>☼</i><span data-pt="Sobre a Proodos" data-en="About Proodos">Sobre a Proodos</span></button>
+<button type="button" onclick="scrollToBlock('manifestoBlock')"><i>◈</i><span data-pt="Manifesto" data-en="Manifesto">Manifesto</span></button>
+<button type="button" onclick="scrollToBlock('supportBlock')"><i>◇</i><span data-pt="Apoie o Projeto" data-en="Support the Project">Apoie o Projeto</span></button>
 </nav>
 <div class="sidebar-footer">Faith · Education<br>Formation · Community</div>
 </aside>
 <main class="main">
 <header class="mobile-topbar"><button class="toggle-btn" onclick="toggleSidebar()">☰</button><div style="text-align:right"><strong style="display:block;font-size:14px;letter-spacing:.08em;text-transform:uppercase">Proodos</strong><span style="color:var(--muted);font-size:12px">Horizon 4282</span></div></header>
-<section class="content">
+<section class="content" id="inicioBlock">
 <div class="top-mini"><div class="lang-switch"><button id="ptBtn" onclick="setLanguage('pt')">PT</button><button id="enBtn" onclick="setLanguage('en')">EN</button></div><a class="home-link" href="/" data-pt="Início" data-en="Home">Início</a></div>
 <div id="loadState" class="loading">Loading Proodos JSON...</div>
 <section class="hero">
-<div><div class="eyebrow" id="heroEyebrow">Proodos</div><h1 id="heroTitle">Proodos</h1><p id="heroText">Fé, educação, formação e comunidade em uma jornada contínua de crescimento humano e espiritual.</p></div>
+<div><div class="eyebrow" id="heroEyebrow">Proodos</div><h1 id="heroTitle">Missão Proodos</h1><p id="heroText">Fé, educação, formação e comunidade em uma jornada contínua de crescimento humano e espiritual.</p></div>
 <div class="hero-symbol"><div class="mark" style="display: none;">◇</div><img src="logo_proodos.png" width="50%">
 <strong style="font-size:35px;margin:-5px 0 0  0">PROODOS</strong><span id="heroTagline">Faith • Education • Formation</span></div>
 </section>
@@ -149,57 +157,696 @@ padding:0 0 20px 0;}
 </section>
 <div class="section-bar" id="programsBlock"><div class="section-title" id="sectionTitle">Programas Proodos</div><div class="counter" id="counter">0 items</div></div>
 <section class="grid" id="cardsGrid"></section>
-<section class="text-panel" id="identityBlock"><strong id="identityTitle">Manifesto Proodos</strong><p id="identityText">Proodos nasce como uma plataforma de formação, serviço, fé e educação, conectando projetos de música, rádio, cursos e desenvolvimento humano.</p></section>
+
+<section class="page-section" id="radioBlock"><div class="page-section-header"><div><div class="page-section-code">PROODOS / RADIO</div><h2 data-pt="Rádio Luz e Louvor" data-en="Light & Praise Radio">Rádio Luz e Louvor</h2></div><div class="card-status">ONLINE</div></div><p data-pt="Uma rádio web católica com músicas autorais, oração, Palavra, esperança e divulgação das atividades da comunidade." data-en="A Catholic web radio with original music, prayer, the Word, hope and community announcements.">Uma rádio web católica com músicas autorais, oração, Palavra, esperança e divulgação das atividades da comunidade.</p><div class="section-content-grid"><div class="info-box"><strong data-pt="Propósito" data-en="Purpose">Propósito</strong><p data-pt="Evangelizar todos os dias e acolher quem busca paz, oração e companhia." data-en="To evangelize every day and welcome those seeking peace, prayer and companionship.">Evangelizar todos os dias e acolher quem busca paz, oração e companhia.</p></div><div class="info-box"><strong data-pt="Conteúdo" data-en="Content">Conteúdo</strong><p data-pt="Música, programas devocionais, avisos, reflexões e campanhas comunitárias." data-en="Music, devotional programs, announcements, reflections and community campaigns.">Música, programas devocionais, avisos, reflexões e campanhas comunitárias.</p></div></div><a class="section-link" href="/radio-luz-e-louvor.html" data-pt="Abrir a rádio" data-en="Open the radio">Abrir a rádio</a></section>
+<section class="page-section" id="englishBlock"><div class="page-section-header"><div><div class="page-section-code">PROODOS / ENGLISH</div><h2 data-pt="Inglês Proodos" data-en="Proodos English">Inglês Proodos</h2></div><div class="card-status">ATIVO</div></div><p data-pt="Curso gratuito de inglês com formação comunicativa, atividades práticas e desenvolvimento humano." data-en="A free English course focused on communication, practical activities and human development.">Curso gratuito de inglês com formação comunicativa, atividades práticas e desenvolvimento humano.</p><div class="section-content-grid"><div class="info-box"><strong data-pt="Metodologia" data-en="Methodology">Metodologia</strong><p data-pt="Leitura, escrita, escuta e conversação integradas a situações reais." data-en="Reading, writing, listening and speaking integrated into real situations.">Leitura, escrita, escuta e conversação integradas a situações reais.</p></div><div class="info-box"><strong data-pt="Missão social" data-en="Social mission">Missão social</strong><p data-pt="Oferecer oportunidades de aprendizado sem cobrança de mensalidade." data-en="To provide learning opportunities without charging tuition.">Oferecer oportunidades de aprendizado sem cobrança de mensalidade.</p></div></div><a class="section-link" href="/ingles-proodos.html" data-pt="Conhecer o curso" data-en="Explore the course">Conhecer o curso</a></section>
+<section class="page-section" id="ministryBlock"><div class="page-section-header"><div><div class="page-section-code">PROODOS / MUSIC</div><h2 data-pt="Ministério Luz e Louvor" data-en="Light & Praise Ministry">Ministério Luz e Louvor</h2></div><div class="card-status">ONLINE</div></div><p data-pt="Música, oração e evangelização por meio de um catálogo autoral criado para louvar, acolher e anunciar a fé." data-en="Music, prayer and evangelization through an original catalog created to praise, welcome and proclaim faith.">Música, oração e evangelização por meio de um catálogo autoral criado para louvar, acolher e anunciar a fé.</p><a class="section-link" href="/luz-e-louvor.html" data-pt="Conhecer o ministério" data-en="Explore the ministry">Conhecer o ministério</a></section>
+<section class="page-section" id="bibleBlock"><div class="page-section-header"><div><div class="page-section-code">PROODOS / BIBLE</div><h2 data-pt="Curso Bíblico" data-en="Bible Course">Curso Bíblico</h2></div><div class="counter" data-pt="Em desenvolvimento" data-en="In development">Em desenvolvimento</div></div><p data-pt="Formação bíblica e cristã para estudo, reflexão, oração e aplicação da Palavra na vida cotidiana." data-en="Biblical and Christian formation for study, reflection, prayer and applying the Word to everyday life.">Formação bíblica e cristã para estudo, reflexão, oração e aplicação da Palavra na vida cotidiana.</p></section>
+<section class="page-section" id="aboutBlock"><div class="page-section-header"><div><div class="page-section-code">PROODOS / ABOUT</div><h2 data-pt="Sobre a Proodos" data-en="About Proodos">Sobre a Proodos</h2></div></div><p data-pt="Proodos significa avanço. O instituto integra educação, fé, tecnologia, arte e serviço para promover desenvolvimento humano, espiritual, intelectual, social e cultural." data-en="Proodos means progress. The institute integrates education, faith, technology, art and service to promote human, spiritual, intellectual, social and cultural development.">Proodos significa avanço. O instituto integra educação, fé, tecnologia, arte e serviço para promover desenvolvimento humano, espiritual, intelectual, social e cultural.</p></section>
+<section class="page-section" id="manifestoBlock"><div class="page-section-header"><div><div class="page-section-code">PROODOS / MANIFESTO</div><h2 data-pt="Manifesto Proodos" data-en="Proodos Manifesto">Manifesto Proodos</h2></div></div><p id="identityText">Proodos nasce como uma plataforma de formação, serviço, fé e educação, conectando projetos de música, rádio, cursos e desenvolvimento humano.</p><div class="text-panel"><strong data-pt="Nossa declaração" data-en="Our declaration">Nossa declaração</strong><p data-pt="Não existimos apenas para produzir conteúdo. Existimos para construir um legado de conhecimento, fé e serviço que continue transformando vidas através das gerações." data-en="We do not exist merely to produce content. We exist to build a legacy of knowledge, faith and service that continues transforming lives across generations.">Não existimos apenas para produzir conteúdo. Existimos para construir um legado de conhecimento, fé e serviço que continue transformando vidas através das gerações.</p></div><a class="section-link" href="/proodos-manifesto.html" data-pt="Ler manifesto completo" data-en="Read the full manifesto">Ler manifesto completo</a></section>
+<section class="page-section" id="supportBlock"><div class="page-section-header"><div><div class="page-section-code">PROODOS / SUPPORT</div><h2 data-pt="Apoie esta missão" data-en="Support this mission">Apoie esta missão</h2></div></div><p data-pt="Seu apoio ajuda a manter a Rádio Luz e Louvor, o curso gratuito de inglês e os demais projetos sociais e formativos da Proodos." data-en="Your support helps maintain Light & Praise Radio, the free English course and the other social and educational Proodos projects.">Seu apoio ajuda a manter a Rádio Luz e Louvor, o curso gratuito de inglês e os demais projetos sociais e formativos da Proodos.</p><a class="section-link" href="/apoie.html" data-pt="Formas de apoiar" data-en="Ways to support">Formas de apoiar</a></section>
+
 </section>
 </main>
 </div>
 <script>
-let currentLang=localStorage.getItem("horizonLanguage")||"pt";
-let proodosData=null;
-const JSON_URL="https://f005.backblazeb2.com/file/horizon4282/data/proodos.json";
-const fallbackData={
-    
-page:{
-    pt:{eyebrow:"Proodos",title:"Proodos",text:"Fé, educação, formação e comunidade em uma jornada contínua de crescimento humano e espiritual.",tagline:"Faith • Education • Formation",section:"Programas Proodos"},
-    en:{eyebrow:"Proodos",title:"Proodos",text:"Faith, education, formation and community in a continuous journey of human and spiritual growth.",tagline:"Faith • Education • Formation",section:"Proodos Programs"}},stats:{programs:7,courses:2,projects:2},
-    cards:[
-        {icon:"✦",code:"PROODOS / MUSIC",status:"online",url:"/luz-e-louvor.html",pt:{title:"Ministério Luz e Louvor",description:"Música, oração e evangelização por meio do louvor."},en:{title:"Light & Praise Ministry",description:"Music, prayer and evangelization through worship."}},
+let currentLang = localStorage.getItem("horizonLanguage") || "pt";
+let proodosData = null;
 
-        {icon:"♫",code:"PROODOS / RADIO",status:"online",url:"/radio-luz-e-louvor.html",pt:{title:"Rádio Luz e Louvor",description:"Programação devocional com música, oração, Palavra e esperança."},en:{title:"Light & Praise Radio",description:"Devotional programming with music, prayer, Word and hope."}},
-        
-        {icon:"◉",code:"PROODOS / BIBLE",status:"online",url:"/curso-biblico.html",pt:{title:"Curso Bíblico",description:"Formação bíblica e cristã para estudo, reflexão e vida comunitária."},en:{title:"Bible Course",description:"Biblical and Christian formation for study, reflection and community life."}},
-        
-        {icon:"◎",code:"PROODOS / ENGLISH",status:"online",url:"/ingles-proodos.html",pt:{title:"Inglês Proodos",description:"Aulas de inglês, Hope Class e formação comunicativa."},en:{title:"Proodos English",description:"English classes, Hope Class and communication formation."}},
-        
-        {icon:"◈",code:"PROODOS / MANIFESTO",status:"online",url:"/proodos-manifesto.html",pt:{title:"Manifesto",description:"A visão, o espírito e a missão que orientam a Proodos."},en:{title:"Manifesto",description:"The vision, spirit and mission that guide Proodos."}},
-        
-        {icon:"◇",code:"PROODOS / STATUTE",status:"online",url:"/proodos-estatuto.html",pt:{title:"Estatuto",description:"Organização institucional, princípios e estrutura da Proodos."},en:{title:"Statute",description:"Institutional organization, principles and structure of Proodos."}},
-        
-        {icon:"☼",code:"PROODOS / ABOUT",status:"online",url:"/sobre-proodos.html",pt:{title:"Sobre",description:"História, identidade e propósito da Proodos no ecossistema Horizon."},en:{title:"About",description:"History, identity and purpose of Proodos inside the Horizon ecosystem."}},
+const JSON_URL =
+    "https://f005.backblazeb2.com/file/horizon4282/data/proodos.json";
 
-        {icon:"◈",code:"APOIE / BY ME A COFFEE",status:"online",url:"/sobre-proodos.html",pt:{title:"Apoie",description:"Saiba como apoiar nosso projeto social."},en:{title:"Buy Me a Coffee",description:"Learn how to support our social project."}}
-          ],
-        identity:{pt:{title:"Manifesto Proodos",text:"Proodos nasce como uma plataforma de formação, serviço, fé e educação, conectando projetos de música, rádio, cursos e desenvolvimento humano."}, en:{title:"Proodos Manifesto",text:"Proodos is born as a platform for formation, service, faith and education, connecting music, radio, courses and human development projects."}
-}};
+const fallbackData = {
+    page: {
+        pt: {
+            eyebrow: "Evangelizar todos os dias",
+            title: "Missão Proodos",
+            text: "Fé, educação, formação e comunidade em uma jornada contínua de crescimento humano e espiritual.",
+            tagline: "Faith • Education • Formation",
+            section: "Programas Proodos"
+        },
 
-function toggleSidebar(){if(window.innerWidth<=900){document.body.classList.toggle("mobile-menu-open")}else{document.body.classList.toggle("sidebar-collapsed")}}
-function setLanguage(lang){currentLang=lang;document.documentElement.lang=lang==="pt"?"pt-BR":"en";document.getElementById("ptBtn").classList.toggle("active",lang==="pt");document.getElementById("enBtn").classList.toggle("active",lang==="en");document.querySelectorAll("[data-pt][data-en]").forEach(el=>{el.textContent=el.dataset[lang]});localStorage.setItem("horizonLanguage",lang);if(proodosData)renderPage()}
+        en: {
+            eyebrow: "Evangelize every day",
+            title: "Proodos Mission",
+            text: "Faith, education, formation and community in a continuous journey of human and spiritual growth.",
+            tagline: "Faith • Education • Formation",
+            section: "Proodos Programs"
+        }
+    },
 
-async function loadProodosJson(){
-    const state=document.getElementById("loadState");
-    try{const response=await fetch(JSON_URL);
-        if(!response.ok)throw new Error("JSON not found");
-        proodosData=normalizeData(await response.json());state.style.display="none"}
-        
-        catch(error){
-            proodosData=normalizeData(fallbackData);state.className="error";
-            state.innerHTML="JSON externo não carregado. Usando fallback interno.<br>Arquivo esperado: "+JSON_URL}renderPage()}
+    stats: {
+        programs: 7,
+        courses: 2,
+        projects: 2
+    },
 
-function normalizeData(data){return{page:data.page||fallbackData.page,stats:data.stats||fallbackData.stats,cards:data.cards||data.sections||fallbackData.cards,identity:data.identity||fallbackData.identity}}
-function renderPage(){const page=proodosData.page[currentLang]||proodosData.page.pt||proodosData.page.en;const identity=proodosData.identity[currentLang]||proodosData.identity.pt||proodosData.identity.en;const cards=proodosData.cards||[];document.getElementById("heroEyebrow").textContent=page.eyebrow;document.getElementById("heroTitle").textContent=page.title;document.getElementById("heroText").textContent=page.text;document.getElementById("heroTagline").textContent=page.tagline||"Faith • Education • Formation";document.getElementById("sectionTitle").textContent=page.section||"Programas Proodos";document.getElementById("programsCount").textContent=proodosData.stats.programs??cards.length;document.getElementById("coursesCount").textContent=proodosData.stats.courses??"2";document.getElementById("projectsCount").textContent=proodosData.stats.projects??"2";document.getElementById("languageText").textContent=currentLang==="pt"?"PT-BR":"EN";document.getElementById("counter").textContent=cards.length+" items";document.getElementById("identityTitle").textContent=identity.title;document.getElementById("identityText").textContent=identity.text;const grid=document.getElementById("cardsGrid");grid.innerHTML="";cards.forEach(card=>{const localized=card[currentLang]||card.pt||card.en||card;const status=card.status||"online";const a=document.createElement("a");a.className="card";a.href=card.url||"#";a.innerHTML=`<div><div class="card-icon">${card.icon||"◇"}</div><div class="card-code">${card.code||"PROODOS"}</div><h2>${localized.title||"Untitled"}</h2><p>${localized.description||""}</p></div><div class="card-footer"><span class="card-status">${status.toUpperCase()}</span><span class="card-action">${currentLang==="pt"?"Abrir":"Open"}</span></div>`;grid.appendChild(a)})}
-function scrollToBlock(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});if(window.innerWidth<=900)document.body.classList.remove("mobile-menu-open")}
-window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.classList.add("sidebar-collapsed")});
-document.addEventListener("DOMContentLoaded",()=>{setLanguage(currentLang);loadProodosJson()});
+    cards: [
+        {
+            icon: "♫",
+            code: "PROODOS / RADIO",
+            status: "online",
+            url: "/radio-luz-e-louvor.html",
+
+            pt: {
+                title: "Rádio Luz e Louvor",
+                description:
+                    "Programação devocional com música, oração, Palavra e esperança."
+            },
+
+            en: {
+                title: "Light & Praise Radio",
+                description:
+                    "Devotional programming with music, prayer, Word and hope."
+            }
+        },
+
+        {
+            icon: "◎",
+            code: "PROODOS / ENGLISH",
+            status: "online",
+            url: "/ingles-proodos.html",
+
+            pt: {
+                title: "Inglês Proodos",
+                description:
+                    "Aulas de inglês, Hope Class e formação comunicativa."
+            },
+
+            en: {
+                title: "Proodos English",
+                description:
+                    "English classes, Hope Class and communication formation."
+            }
+        },
+
+        {
+            icon: "✦",
+            code: "PROODOS / MUSIC",
+            status: "online",
+            url: "/luz-e-louvor.html",
+
+            pt: {
+                title: "Ministério Luz e Louvor",
+                description:
+                    "Música, oração e evangelização por meio do louvor."
+            },
+
+            en: {
+                title: "Light & Praise Ministry",
+                description:
+                    "Music, prayer and evangelization through worship."
+            }
+        },
+
+        {
+            icon: "◉",
+            code: "PROODOS / BIBLE",
+            status: "coming soon",
+            url: "#bibleBlock",
+
+            pt: {
+                title: "Curso Bíblico",
+                description:
+                    "Formação bíblica e cristã para estudo, reflexão e vida comunitária."
+            },
+
+            en: {
+                title: "Bible Course",
+                description:
+                    "Biblical and Christian formation for study, reflection and community life."
+            }
+        },
+
+        {
+            icon: "☼",
+            code: "PROODOS / ABOUT",
+            status: "online",
+            url: "#aboutBlock",
+
+            pt: {
+                title: "Sobre",
+                description:
+                    "História, identidade e propósito da Proodos no ecossistema Horizon."
+            },
+
+            en: {
+                title: "About",
+                description:
+                    "History, identity and purpose of Proodos inside the Horizon ecosystem."
+            }
+        },
+
+        {
+            icon: "◈",
+            code: "PROODOS / MANIFESTO",
+            status: "online",
+            url: "#manifestoBlock",
+
+            pt: {
+                title: "Manifesto",
+                description:
+                    "A visão, o espírito e a missão que orientam a Proodos."
+            },
+
+            en: {
+                title: "Manifesto",
+                description:
+                    "The vision, spirit and mission that guide Proodos."
+            }
+        },
+
+        {
+            icon: "◇",
+            code: "APOIE / BUY ME A COFFEE",
+            status: "online",
+            url: "#supportBlock",
+
+            pt: {
+                title: "Apoie",
+                description:
+                    "Saiba como apoiar nosso projeto social."
+            },
+
+            en: {
+                title: "Buy Me a Coffee",
+                description:
+                    "Learn how to support our social project."
+            }
+        }
+    ],
+
+    identity: {
+        pt: {
+            title: "Manifesto Proodos",
+            text:
+                "Proodos nasce como uma plataforma de formação, serviço, fé e educação, conectando projetos de música, rádio, cursos e desenvolvimento humano."
+        },
+
+        en: {
+            title: "Proodos Manifesto",
+            text:
+                "Proodos is born as a platform for formation, service, faith and education, connecting music, radio, courses and human development projects."
+        }
+    }
+};
+
+
+/* =====================================================
+   MENU LATERAL
+===================================================== */
+
+function toggleSidebar() {
+    if (window.innerWidth <= 900) {
+        document.body.classList.toggle("mobile-menu-open");
+    } else {
+        document.body.classList.toggle("sidebar-collapsed");
+    }
+}
+
+
+/* =====================================================
+   IDIOMA
+===================================================== */
+
+function setLanguage(lang) {
+    currentLang = lang;
+
+    document.documentElement.lang =
+        lang === "pt" ? "pt-BR" : "en";
+
+    const ptBtn = document.getElementById("ptBtn");
+    const enBtn = document.getElementById("enBtn");
+
+    if (ptBtn) {
+        ptBtn.classList.toggle("active", lang === "pt");
+    }
+
+    if (enBtn) {
+        enBtn.classList.toggle("active", lang === "en");
+    }
+
+    document
+        .querySelectorAll("[data-pt][data-en]")
+        .forEach(element => {
+            element.textContent = element.dataset[lang];
+        });
+
+    localStorage.setItem("horizonLanguage", lang);
+
+    if (proodosData) {
+        renderPage();
+    }
+}
+
+
+/* =====================================================
+   CARREGAMENTO DO JSON
+===================================================== */
+
+async function loadProodosJson() {
+    const state = document.getElementById("loadState");
+
+    try {
+        const response = await fetch(JSON_URL, {
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error(
+                `Erro HTTP: ${response.status}`
+            );
+        }
+
+        const json = await response.json();
+
+        proodosData = normalizeData(json);
+
+        if (state) {
+            state.style.display = "none";
+        }
+
+    } catch (error) {
+        console.warn(
+            "Não foi possível carregar o JSON externo:",
+            error
+        );
+
+        proodosData = normalizeData(fallbackData);
+
+        if (state) {
+            state.className = "error";
+            state.style.display = "block";
+
+            state.innerHTML =
+                "JSON externo não carregado. " +
+                "Usando fallback interno.<br>" +
+                "Arquivo esperado: " +
+                JSON_URL;
+        }
+    }
+
+    renderPage();
+}
+
+
+/* =====================================================
+   NORMALIZAÇÃO DOS DADOS
+===================================================== */
+
+function normalizeData(data = {}) {
+    return {
+        page:
+            data.page ||
+            fallbackData.page,
+
+        stats:
+            data.stats ||
+            fallbackData.stats,
+
+        cards:
+            data.cards ||
+            data.sections ||
+            fallbackData.cards,
+
+        identity:
+            data.identity ||
+            fallbackData.identity
+    };
+}
+
+
+/* =====================================================
+   RENDERIZAÇÃO DA PÁGINA
+===================================================== */
+
+function renderPage() {
+    if (!proodosData) {
+        return;
+    }
+
+    const page =
+        proodosData.page[currentLang] ||
+        proodosData.page.pt ||
+        proodosData.page.en;
+
+    const identity =
+        proodosData.identity[currentLang] ||
+        proodosData.identity.pt ||
+        proodosData.identity.en;
+
+    const cards = proodosData.cards || [];
+
+    setText("heroEyebrow", page.eyebrow);
+    setText("heroTitle", page.title);
+    setText("heroText", page.text);
+
+    setText(
+        "heroTagline",
+        page.tagline ||
+        "Faith • Education • Formation"
+    );
+
+    setText(
+        "sectionTitle",
+        page.section ||
+        "Programas Proodos"
+    );
+
+    setText(
+        "programsCount",
+        proodosData.stats.programs ??
+        cards.length
+    );
+
+    setText(
+        "coursesCount",
+        proodosData.stats.courses ??
+        2
+    );
+
+    setText(
+        "projectsCount",
+        proodosData.stats.projects ??
+        2
+    );
+
+    setText(
+        "languageText",
+        currentLang === "pt"
+            ? "PT-BR"
+            : "EN"
+    );
+
+    setText(
+        "counter",
+        `${cards.length} ${
+            currentLang === "pt"
+                ? "itens"
+                : "items"
+        }`
+    );
+
+    setText(
+        "identityTitle",
+        identity?.title || ""
+    );
+
+    setText(
+        "identityText",
+        identity?.text || ""
+    );
+
+    renderCards(cards);
+}
+
+
+/* =====================================================
+   FUNÇÃO SEGURA PARA ALTERAR TEXTOS
+===================================================== */
+
+function setText(id, value) {
+    const element = document.getElementById(id);
+
+    if (element) {
+        element.textContent = value;
+    }
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+function renderCards(cards) {
+    const grid = document.getElementById("cardsGrid");
+
+    if (!grid) {
+        return;
+    }
+
+    grid.innerHTML = "";
+
+    const sectionMap = {
+        "PROODOS / RADIO": "radioBlock",
+        "PROODOS / ENGLISH": "englishBlock",
+        "PROODOS / MUSIC": "ministryBlock",
+        "PROODOS / BIBLE": "bibleBlock",
+        "PROODOS / ABOUT": "aboutBlock",
+        "PROODOS / MANIFESTO": "manifestoBlock",
+        "APOIE / BUY ME A COFFEE": "supportBlock",
+
+        /* Compatibilidade com o código antigo */
+        "APOIE / BY ME A COFFEE": "supportBlock"
+    };
+
+    cards.forEach(card => {
+        const localized =
+            card[currentLang] ||
+            card.pt ||
+            card.en ||
+            card;
+
+        const status =
+            card.status ||
+            "online";
+
+        const targetId =
+            sectionMap[card.code];
+
+        const cardElement =
+            document.createElement("a");
+
+        cardElement.className = "card";
+
+        if (targetId) {
+            cardElement.href = `#${targetId}`;
+
+            cardElement.addEventListener(
+                "click",
+                event => {
+                    event.preventDefault();
+                    scrollToBlock(targetId);
+                }
+            );
+        } else {
+            cardElement.href =
+                card.url ||
+                "#";
+        }
+
+        const actionText =
+            currentLang === "pt"
+                ? "Ver seção"
+                : "View section";
+
+        cardElement.innerHTML = `
+            <div>
+                <div class="card-icon">
+                    ${card.icon || "◇"}
+                </div>
+
+                <div class="card-code">
+                    ${card.code || "PROODOS"}
+                </div>
+
+                <h2>
+                    ${localized.title || "Untitled"}
+                </h2>
+
+                <p>
+                    ${localized.description || ""}
+                </p>
+            </div>
+
+            <div class="card-footer">
+                <span class="card-status">
+                    ${translateStatus(status)}
+                </span>
+
+                <span class="card-action">
+                    ${actionText}
+                </span>
+            </div>
+        `;
+
+        grid.appendChild(cardElement);
+    });
+}
+
+
+/* =====================================================
+   TRADUÇÃO DO STATUS DOS CARDS
+===================================================== */
+
+function translateStatus(status) {
+    const normalizedStatus =
+        String(status).toLowerCase();
+
+    if (currentLang === "pt") {
+        const statuses = {
+            online: "ONLINE",
+            active: "ATIVO",
+            "coming soon": "EM BREVE",
+            development: "EM DESENVOLVIMENTO"
+        };
+
+        return (
+            statuses[normalizedStatus] ||
+            normalizedStatus.toUpperCase()
+        );
+    }
+
+    const statuses = {
+        online: "ONLINE",
+        active: "ACTIVE",
+        "coming soon": "COMING SOON",
+        development: "IN DEVELOPMENT"
+    };
+
+    return (
+        statuses[normalizedStatus] ||
+        normalizedStatus.toUpperCase()
+    );
+}
+
+
+/* =====================================================
+   ROLAGEM PARA AS SEÇÕES
+===================================================== */
+
+function scrollToBlock(id) {
+    const element =
+        document.getElementById(id);
+
+    if (!element) {
+        console.warn(
+            `Seção não encontrada: ${id}`
+        );
+
+        return;
+    }
+
+    element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    history.replaceState(
+        null,
+        "",
+        `#${id}`
+    );
+
+    if (window.innerWidth <= 900) {
+        document.body.classList.remove(
+            "mobile-menu-open"
+        );
+    }
+}
+
+
+/* =====================================================
+   ITEM ATIVO NO MENU LATERAL
+===================================================== */
+
+function updateActiveMenu() {
+    const sectionIds = [
+        "inicioBlock",
+        "programsBlock",
+        "radioBlock",
+        "englishBlock",
+        "ministryBlock",
+        "bibleBlock",
+        "aboutBlock",
+        "manifestoBlock",
+        "supportBlock"
+    ];
+
+    let currentSection =
+        "inicioBlock";
+
+    sectionIds.forEach(id => {
+        const section =
+            document.getElementById(id);
+
+        if (!section) {
+            return;
+        }
+
+        const position =
+            section.getBoundingClientRect();
+
+        if (position.top <= 180) {
+            currentSection = id;
+        }
+    });
+
+    document
+        .querySelectorAll(".nav button")
+        .forEach(button => {
+            const onclick =
+                button.getAttribute("onclick") ||
+                "";
+
+            button.classList.toggle(
+                "active",
+                onclick.includes(
+                    `'${currentSection}'`
+                ) ||
+                onclick.includes(
+                    `"${currentSection}"`
+                )
+            );
+        });
+}
+
+
+/* =====================================================
+   EVENTOS
+===================================================== */
+
+window.addEventListener(
+    "scroll",
+    updateActiveMenu,
+    {
+        passive: true
+    }
+);
+
+window.addEventListener(
+    "resize",
+    () => {
+        if (window.innerWidth > 900) {
+            document.body.classList.remove(
+                "mobile-menu-open"
+            );
+        }
+
+        updateActiveMenu();
+    }
+);
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+        setLanguage(currentLang);
+
+       // loadProodosJson();
+
+        updateActiveMenu();
+
+        if (location.hash) {
+            const targetId =
+                location.hash.slice(1);
+
+            setTimeout(() => {
+                scrollToBlock(targetId);
+            }, 350);
+        }
+    }
+);
 </script>
+
 </body>
 </html>
