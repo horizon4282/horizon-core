@@ -11,50 +11,10 @@
         "description": "A moment of peace, prayer and trust in God's presence."
       },
       "playlist": [
-       {
-          "title": "Rádio Luz e Louvor",
-          "duration": 10,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-01.mp3"
-        },
         {
           "title": "Meia Noite Com Deus",
           "duration": 26,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/0-Programa-Meia-Noite-com-Deus-0h.mp3"
-        },
-        {
-          "title": "Som do Altíssimo",
-          "duration": 199,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-som-do-satissimo.mp3"
-        },
-        {
-          "title": "Verdade da Graça",
-          "duration": 195,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-veredas-da-graca-SIM.mp3"
-        },
-        {
-          "title": "Rádio Luz e Louvor",
-          "duration": 17,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
-        },
-        {
-          "title": "Rios de Cura",
-          "duration": 199,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-rios-de-cura.mp3"
-        },
-        {
-          "title": "Recebe Hoje o meu Sim",
-          "duration": 209,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"
-        },
-       {
-          "title": "Rádio Luz e Louvor",
-          "duration": 10,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-01.mp3"
-        },
-        {
-          "title": "Luz do Alto",
-          "duration": 212,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-luz-do-alto.mp3"
         },
         {
           "title": "Caminho de Nazaré",
@@ -62,39 +22,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-caminho-de-nazare.mp3"
         },
         {
-          "title": "Rádio Luz e Louvor",
-          "duration": 17,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
+          "title": "Canção de Pentecostes",
+          "duration": 164,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-sequencia-de-pentecostes.mp3"
         },
         {
-          "title": "Cenáculo com Jesus",
-          "duration": 241,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-com-Jesus.mp3"
-        },
-        {
-          "title": "Caminho do Silêncio",
-          "duration": 217,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-caminho-do-silencio.mp3"
-        },
-       {
-          "title": "Rádio Luz e Louvor",
-          "duration": 10,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-01.mp3"
-        },
-        {
-          "title": "A Porta Aberta",
-          "duration": 186,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"
-        },
-        {
-          "title": "Saiba que Sou Teu Deus",
-          "duration": 211,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3"
-        },
-        {
-          "title": "Rádio Luz e Louvor",
-          "duration": 17,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
         },
         {
           "title": "Mãe de Deus Bendita",
@@ -102,14 +37,44 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Mae-de-deus-bendita.mp3"
         },
         {
-          "title": "Canção de Pentecostes",
-          "duration": 164,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-sequencia-de-pentecostes.mp3"
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
-       {
-          "title": "Rádio Luz e Louvor",
-          "duration": 10,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-01.mp3"
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
+        },
+        {
+          "title": "Vem Queimar",
+          "duration": 261,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-vem-queimar.mp3"
+        },
+        {
+          "title": "Verdade da Graça",
+          "duration": 195,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-veredas-da-graca-SIM.mp3"
+        },
+        {
+          "title": "Apoie a Rádio Luz e Louvor",
+          "duration": 88,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
+        },
+        {
+          "title": "Cenáculo com Jesus",
+          "duration": 241,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-com-Jesus.mp3"
+        },
+        {
+          "title": "Som do Altíssimo",
+          "duration": 199,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-som-do-satissimo.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
         },
         {
           "title": "A caminho de Emaús",
@@ -117,14 +82,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-caminho-de-emaus.mp3"
         },
         {
-          "title": "Jesus Essência do Amor",
-          "duration": 229,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-jesus-essenccia-do-amor.mp3"
+          "title": "Luz do Alto",
+          "duration": 212,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-luz-do-alto.mp3"
         },
         {
-          "title": "Rádio Luz e Louvor",
-          "duration": 17,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
+          "title": "Horário Capela Santo Expedito",
+          "duration": 59,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-st-expedito.mp3"
         },
         {
           "title": "O Novo Adão",
@@ -132,9 +97,44 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-o-novo-adao.mp3"
         },
         {
-          "title": "Vem Queimar",
-          "duration": 261,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-vem-queimar.mp3"
+          "title": "Saiba que Sou Teu Deus",
+          "duration": 211,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3"
+        },
+        {
+          "title": "Horário Capela São Cristóvão",
+          "duration": 60,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-s-crist.mp3"
+        },
+        {
+          "title": "A Porta Aberta",
+          "duration": 186,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"
+        },
+        {
+          "title": "Rios de Cura",
+          "duration": 199,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-rios-de-cura.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 10,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-01.mp3"
+        },
+        {
+          "title": "Jesus Essência do Amor",
+          "duration": 229,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-jesus-essenccia-do-amor.mp3"
+        },
+        {
+          "title": "Recebe Hoje o meu Sim",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 17,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
         }
       ]
     },
@@ -149,80 +149,10 @@
         "description": "A time of prayer and hope during the night."
       },
       "playlist": [
-     {
-          "title": "Rádio Luz e Louvor",
-          "duration": 9,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
-        },
         {
           "title": "Vigília da Fé",
           "duration": 18,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Programa-Vigilia-de-Fe-1h.mp3"
-        },
-        {
-          "title": "Monte da Presença",
-          "duration": 164,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-monte-da-presenca.mp3"
-        },
-        {
-          "title": "Lugar Perfeito",
-          "duration": 187,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-lugar-perfeito.mp3"
-        },
-        {
-          "title": "Quando o Céu Respira",
-          "duration": 163,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-quando-o-ceu-respira.mp3"
-        },
-        {
-          "title": "Eu Quero o Céu",
-          "duration": 180,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-eu-quero-o-ceu.mp3"
-        },
-        {
-          "title": "O Novo Tempo",
-          "duration": 152,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-novo-tempo.mp3"
-        },
-        {
-          "title": "A Paz do Senhor",
-          "duration": 157,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-paz-do-senhor.mp3"
-        },
-        {
-          "title": "Graça da Salvação",
-          "duration": 209,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-da-salvacao.mp3"
-        },
-        {
-          "title": "Torrentes de Sabedoria",
-          "duration": 219,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-torrentes-de-sabedoria.mp3"
-        },
-        {
-          "title": "Orvalho do Espírito",
-          "duration": 178,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-orvalho-do-espirito.mp3"
-        },
-        {
-          "title": "Sopro do Altíssimo",
-          "duration": 226,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-sopro-do-altissimo.mp3"
-        },
-        {
-          "title": "Jardim da Eternidade",
-          "duration": 142,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-jardim-da-eternidade.mp3"
-        },
-        {
-          "title": "Quietude da Alma",
-          "duration": 221,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-quietude-da-alma.mp3"
-        },
-        {
-          "title": "São Miguel Arcanjo",
-          "duration": 209,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
         },
         {
           "title": "Sombra do Onipotente",
@@ -230,9 +160,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-sombra-do-onipotente.mp3"
         },
         {
-          "title": "Cristo Ressuscitado",
-          "duration": 234,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"
+          "title": "O Novo Tempo",
+          "duration": 152,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-novo-tempo.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
         },
         {
           "title": "Triunfante Vem Jesus",
@@ -243,6 +178,116 @@
           "title": "Sei que Cuidas de Mim",
           "duration": 224,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
+        },
+        {
+          "title": "Quietude da Alma",
+          "duration": 221,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-quietude-da-alma.mp3"
+        },
+        {
+          "title": "Torrentes de Sabedoria",
+          "duration": 219,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-torrentes-de-sabedoria.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
+        },
+        {
+          "title": "Cristo Ressuscitado",
+          "duration": 234,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"
+        },
+        {
+          "title": "Evangelho - Mateus 11,28-30",
+          "duration": 284,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/matheus-11-28-30.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
+        },
+        {
+          "title": "Oração da Manhã",
+          "duration": 168,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-oracao-da-manha.mp3"
+        },
+        {
+          "title": "Eu Quero o Céu",
+          "duration": 180,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-eu-quero-o-ceu.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
+        },
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+        },
+        {
+          "title": "Quando o Céu Respira",
+          "duration": 163,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-quando-o-ceu-respira.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
+        },
+        {
+          "title": "Graça da Salvação",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-da-salvacao.mp3"
+        },
+        {
+          "title": "São Miguel Arcanjo",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
+        },
+        {
+          "title": "Jardim da Eternidade",
+          "duration": 142,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-jardim-da-eternidade.mp3"
+        },
+        {
+          "title": "Sopro do Altíssimo",
+          "duration": 226,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-sopro-do-altissimo.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
+        },
+        {
+          "title": "Lugar Perfeito",
+          "duration": 187,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-lugar-perfeito.mp3"
+        },
+        {
+          "title": "Monte da Presença",
+          "duration": 164,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-monte-da-presenca.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
         }
       ]
     },
@@ -257,65 +302,10 @@
         "description": "Psalms, prayer and praise through the night with God."
       },
       "playlist": [
-       {
-          "title": "Rádio Luz e Louvor",
-          "duration": 9,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
-        },
         {
           "title": "Salmos da Madrugada",
           "duration": 10,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Programa-salmos-da-madrugada-2h.mp3"
-        },
-        {
-          "title": "Som da Eternidade",
-          "duration": 202,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-som-da-eternidade.mp3"
-        },
-        {
-          "title": "Breve Toque de Deus",
-          "duration": 222,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-breve-toque-de-deus.mp3"
-        },
-        {
-          "title": "Vento Suave de Deus",
-          "duration": 202,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-vento-suave-de-deus.mp3"
-        },
-        {
-          "title": "Águas da Renovação",
-          "duration": 206,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-aguas-da-renovacao.mp3"
-        },
-        {
-          "title": "Descanso da Alma",
-          "duration": 206,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-descanso-da-alma.mp3"
-        },
-        {
-          "title": "Caminho de Nazaré",
-          "duration": 192,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-caminho-de-nazare.mp3"
-        },
-        {
-          "title": "Cenáculo com Jesus",
-          "duration": 241,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-com-Jesus.mp3"
-        },
-        {
-          "title": "Faz Meu Coração Compaixão Caridade",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-faz-meu-coracao-compaixao-caridade.mp3"
-        },
-        {
-          "title": "Seja Cristo Teu Caminho",
-          "duration": 262,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-seja-cristo-teu-caminho.mp3"
-        },
-        {
-          "title": "Escudo da Fé",
-          "duration": 189,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-escudo-da-fe.mp3"
         },
         {
           "title": "Jesus Eternidade",
@@ -323,9 +313,89 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-jesus-eternidade.mp3"
         },
         {
+          "title": "Saiba que Sou Teu Deus",
+          "duration": 211,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
+        },
+        {
+          "title": "Escudo da Fé",
+          "duration": 189,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-escudo-da-fe.mp3"
+        },
+        {
+          "title": "Seja Cristo Teu Caminho",
+          "duration": 262,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-seja-cristo-teu-caminho.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
+        },
+        {
+          "title": "Breve Toque de Deus",
+          "duration": 222,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-breve-toque-de-deus.mp3"
+        },
+        {
+          "title": "Cenáculo com Jesus",
+          "duration": 241,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-com-Jesus.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
+        },
+        {
+          "title": "Oração da Manhã",
+          "duration": 124,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-da-manha.mp3"
+        },
+        {
+          "title": "Águas da Renovação",
+          "duration": 206,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-aguas-da-renovacao.mp3"
+        },
+        {
+          "title": "Apoie a Rádio Luz e Louvor",
+          "duration": 88,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
+        },
+        {
           "title": "Caminho do Silêncio",
           "duration": 217,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-caminho-do-silencio.mp3"
+        },
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+        },
+        {
+          "title": "Curso de Inglês Gratuito",
+          "duration": 77,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/aulas-de-ingles.mp3"
+        },
+        {
+          "title": "Descanso da Alma",
+          "duration": 206,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-descanso-da-alma.mp3"
+        },
+        {
+          "title": "Caminho da Esperança",
+          "duration": 206,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/12-caminho-da-esperanca.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
         },
         {
           "title": "A Porta Aberta",
@@ -333,14 +403,19 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"
         },
         {
-          "title": "Caminho da Esperança",
-          "duration": 206,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/12-caminho-da-esperanca.mp3"
+          "title": "Faz Meu Coração Compaixão Caridade",
+          "duration": 322,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-faz-meu-coracao-compaixao-caridade.mp3"
         },
-      {
-          "title": "Saiba que Sou Teu Deus",
-          "duration": 211,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3"
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
+        },
+        {
+          "title": "Som da Eternidade",
+          "duration": 202,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-som-da-eternidade.mp3"
         }
       ]
     },
@@ -355,7 +430,7 @@
         "description": "A cry of faith for God's mercy."
       },
       "playlist": [
-       {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 9,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
@@ -438,7 +513,7 @@
         "description": "Gentle praise and messages of peace through the night."
       },
       "playlist": [
-       {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 9,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
@@ -546,7 +621,7 @@
         "description": "Start the day by placing everything in God's hands."
       },
       "playlist": [
-       {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 9,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
@@ -634,7 +709,7 @@
         "description": "Praise songs to begin the day with joy and faith."
       },
       "playlist": [
-       {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 9,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
@@ -688,7 +763,8 @@
           "title": "Glória a Deus nas Alturas",
           "duration": 194,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-gloria-a-Deus-nas-alturas.mp3"
-        },        {
+        },
+        {
           "title": "Salmos 50 51",
           "duration": 207,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Salmo-50-51-v1.mp3"
@@ -736,7 +812,7 @@
         "description": "Reflection, God's Word and music to strengthen the journey."
       },
       "playlist": [
-       {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 9,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
@@ -831,57 +907,57 @@
           "duration": 208,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-chegada-a-hora-da-vitoria.mp3"
         },
-         {
+        {
           "title": "Ilumina Minha Jornada",
           "duration": 208,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Ilumina-minha-jornada.mp3"
         },
-         {
+        {
           "title": "Chama da Glória",
           "duration": 233,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-chama-da-gloria.mp3"
         },
-         {
+        {
           "title": "Encontro do Amor",
           "duration": 229,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-encontro-de-amor.mp3"
         },
-         {
+        {
           "title": "Me Torna Mais Sensível",
           "duration": 168,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-me-torna-mais-sensivel.mp3"
         },
-         {
+        {
           "title": "Minha Fé Renovar",
           "duration": 173,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-minha-fe-renovar.mp3"
         },
-         {
+        {
           "title": "Liberta-me do Mal",
           "duration": 190,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-liberta-me-do-mal.mp3"
         },
-         {
+        {
           "title": "Minha Alma Te Procura",
           "duration": 169,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-minha-alma-te-procura.mp3"
         },
-         {
+        {
           "title": "O Verdadeiro Deus",
           "duration": 155,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-verdadeiro-deus.mp3"
         },
-         {
+        {
           "title": "No Templo Entre os Mestres",
           "duration": 169,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-no-templo-entre-os-mestres.mp3"
         },
-         {
+        {
           "title": "Bem Aventurados",
           "duration": 232,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Bem-aventurados.mp3"
         },
-         {
+        {
           "title": "Verbo se Faz Carne",
           "duration": 183,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-verbo-se-faz-carne.mp3"
@@ -899,130 +975,10 @@
         "description": "Songs and messages to renew hope."
       },
       "playlist": [
-               {
-          "title": "Rádio Luz e Louvor",
-          "duration": 9,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
-        },
         {
           "title": "Manhã da Esperança",
           "duration": 22,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-Programa-Manha-da-Esperanca-9h.mp3"
-        },
-        {
-          "title": "Não Sou Mais Escravo",
-          "duration": 182,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-nao-sou-mais-escravo.mp3"
-        },
-        {
-          "title": "Recebe a Graça de Deus",
-          "duration": 201,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-recebe-a-graca-de-deus.mp3"
-        },
-        {
-          "title": "A Palavra de Deus Está Perto de Mim",
-          "duration": 196,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-a-palavra-de-Deus-esta-perto-de-mim.mp3"
-        },
-        {
-          "title": "Deus Quer o Seu Louvor",
-          "duration": 234,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Deus-quer-o-oseu-louvor.mp3"
-        },
-        {
-          "title": "Quero Ser o Sal da Terra",
-          "duration": 183,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-quero-ser-o-sal-da-terra.mp3"
-        },
-        {
-          "title": "O Novo Adão",
-          "duration": 174,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-o-novo-adao.mp3"
-        },
-        {
-          "title": "No Fogo e no Espírito",
-          "duration": 200,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-no-fogo-e-no-espirito.mp3"
-        },
-        {
-          "title": "Estrela da Manhã",
-          "duration": 242,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Estrela-da-manha-V1.mp3"
-        },
-        {
-          "title": "Deus de Graça Eterna",
-          "duration": 195,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Deus-de-graca-eterna.mp3"
-        },
-        {
-          "title": "Jesus Pedra Angular",
-          "duration": 148,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-jesus-pedra-angular.mp3"
-        },
-        {
-          "title": "Águas do Amor",
-          "duration": 251,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-aguas-do-amor.mp3"
-        },
-        {
-          "title": "A Videira do Amor",
-          "duration": 212,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-videira-do-amor.mp3"
-        },
-        {
-          "title": "Em Minha Vida Faz Renovo",
-          "duration": 211,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-em-minha-vida-faz-renovo.mp3"
-        },
-        {
-          "title": "Onde Está a Sua Fé",
-          "duration": 279,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-onde-esta-a-sua-fe.mp3"
-        },
-        {
-          "title": "Quero ser Árvore Oca",
-          "duration": 259,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-quero-ser-arvore-oca.mp3"
-        },
-        {
-          "title": "Me Faz Obediência",
-          "duration": 217,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-me-faz-obediencia.mp3"
-        },
-        {
-          "title": "Acalenta Minha Alma",
-          "duration": 222,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-acalenta-minha-alma.mp3"
-        },
-        {
-          "title": "Liberta-me",
-          "duration": 257,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-liberta-me.mp3"
-        },
-        {
-          "title": "Infância Interrompida",
-          "duration": 244,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-infancia-interrompida.mp3"
-        },
-        {
-          "title": "Sua Fé tem Poder",
-          "duration": 194,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-sua-fe-tem-poder.mp3"
-        },
-          {
-          "title": "Quero Ser Sua Casa",
-          "duration": 180,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-quero-ser-sua-casa.mp3"
-        },
-        {
-          "title": "Só Tua Luz me Satisfaz",
-          "duration": 189,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-so-tua-luz-me-satisfaz.mp3"
-        },
-        {
-          "title": "Sou Teu Fruto e Criação",
-          "duration": 229,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sou-teu-fruto-e-criacao.mp3"
         },
         {
           "title": "Espírito de Santidade",
@@ -1030,14 +986,124 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"
         },
         {
-          "title": "Vem Queimar",
-          "duration": 261,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-vem-queimar.mp3"
+          "title": "Oração ao Divino Pai Eterno",
+          "duration": 163,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-divino-pai-eterno.mp3"
         },
         {
-          "title": "Jesus Vai te Tocar",
-          "duration": 244,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Jesus-vai-te-tocar.mp3"
+          "title": "Horários da Matriz",
+          "duration": 85,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-matriz.mp3"
+        },
+        {
+          "title": "Recebe a Graça de Deus",
+          "duration": 201,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-recebe-a-graca-de-deus.mp3"
+        },
+        {
+          "title": "Quero Ser o Sal da Terra",
+          "duration": 183,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-quero-ser-o-sal-da-terra.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
+        },
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+        },
+        {
+          "title": "Onde Está a Sua Fé",
+          "duration": 279,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-onde-esta-a-sua-fe.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
+        },
+        {
+          "title": "O Novo Adão",
+          "duration": 174,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-o-novo-adao.mp3"
+        },
+        {
+          "title": "Oração da Manhã",
+          "duration": 124,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-da-manha.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
+        },
+        {
+          "title": "Oração da Manhã",
+          "duration": 124,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-da-manha.mp3"
+        },
+        {
+          "title": "Não Sou Mais Escravo",
+          "duration": 182,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-nao-sou-mais-escravo.mp3"
+        },
+        {
+          "title": "Apoie a Rádio Luz e Louvor",
+          "duration": 88,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
+        },
+        {
+          "title": "Sua Fé tem Poder",
+          "duration": 194,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-sua-fe-tem-poder.mp3"
+        },
+        {
+          "title": "Águas do Amor",
+          "duration": 251,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-aguas-do-amor.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
+        },
+        {
+          "title": "Evangelho - Mateus 11,28-30",
+          "duration": 284,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/matheus-11-28-30.mp3"
+        },
+        {
+          "title": "Quero ser Árvore Oca",
+          "duration": 259,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-quero-ser-arvore-oca.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
+        },
+        {
+          "title": "Deus de Graça Eterna",
+          "duration": 195,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Deus-de-graca-eterna.mp3"
+        },
+        {
+          "title": "Liberta-me",
+          "duration": 257,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-liberta-me.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
+        },
+        {
+          "title": "Quero Ser Sua Casa",
+          "duration": 180,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-quero-ser-sua-casa.mp3"
         },
         {
           "title": "Teu Extraordinário",
@@ -1045,9 +1111,104 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-teu-extraordinario.mp3"
         },
         {
+          "title": "Horários da Matriz",
+          "duration": 85,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-matriz.mp3"
+        },
+        {
+          "title": "Acalenta Minha Alma",
+          "duration": 222,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-acalenta-minha-alma.mp3"
+        },
+        {
+          "title": "Em Minha Vida Faz Renovo",
+          "duration": 211,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-em-minha-vida-faz-renovo.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
+        },
+        {
+          "title": "Jesus Pedra Angular",
+          "duration": 148,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-jesus-pedra-angular.mp3"
+        },
+        {
+          "title": "Deus Quer o Seu Louvor",
+          "duration": 234,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Deus-quer-o-oseu-louvor.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
+        },
+        {
+          "title": "Estrela da Manhã",
+          "duration": 242,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Estrela-da-manha-V1.mp3"
+        },
+        {
+          "title": "A Palavra de Deus Está Perto de Mim",
+          "duration": 196,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-a-palavra-de-Deus-esta-perto-de-mim.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
+        },
+        {
+          "title": "Jesus Vai te Tocar",
+          "duration": 244,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Jesus-vai-te-tocar.mp3"
+        },
+        {
+          "title": "Só Tua Luz me Satisfaz",
+          "duration": 189,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-so-tua-luz-me-satisfaz.mp3"
+        },
+        {
+          "title": "Apoie a Rádio Luz e Louvor",
+          "duration": 88,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
+        },
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+        },
+        {
           "title": "Meu Consolador",
           "duration": 249,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-meu-consolador.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
+        },
+        {
+          "title": "No Fogo e no Espírito",
+          "duration": 200,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-no-fogo-e-no-espirito.mp3"
+        },
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+        },
+        {
+          "title": "Horários da Matriz",
+          "duration": 85,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-matriz.mp3"
+        },
+        {
+          "title": "Me Faz Obediência",
+          "duration": 217,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-me-faz-obediencia.mp3"
         }
       ]
     },
@@ -1062,35 +1223,15 @@
         "description": "A meeting with faith, hope and Christian life."
       },
       "playlist": [
-               {
-          "title": "Rádio Luz e Louvor",
-          "duration": 9,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
-        },
         {
           "title": "Caminhos do Céu",
           "duration": 13,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-Programa-Caminhos-do-ceu-11h.mp3"
         },
         {
-          "title": "Quero Mergulhar no Teu Mistério",
-          "duration": 293,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-quero-mergulhar-no-teu-misterio.mp3"
-        },
-        {
-          "title": "Te Devolvo a Vida em Vitória",
-          "duration": 229,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-te-devolvo-a-vida-em-vitoria.mp3"
-        },
-        {
-          "title": "Em Teu Mover Sagrado",
-          "duration": 141,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-em-teu-mover-sagrado.mp3"
-        },
-        {
-          "title": "Jesus Reino Celeste",
-          "duration": 122,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-jesus-reino-celeste.mp3"
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
           "title": "Canção de Pentecostes",
@@ -1098,24 +1239,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-sequencia-de-pentecostes.mp3"
         },
         {
-          "title": "De Repente Deus Age",
-          "duration": 195,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-de-repente-Deus-age.mp3"
-        },
-        {
-          "title": "Nova Razão Para Viver",
-          "duration": 197,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-nova-razao-para-viver.mp3"
-        },
-        {
-          "title": "Fonte de Vida Sem Fim",
-          "duration": 279,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-fonte-de-vida-sem-fim.mp3"
-        },
-        {
-          "title": "No Fim Nada Levamos",
-          "duration": 119,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-no-fim-nada-levamos.mp3"
+          "title": "Curso de Inglês Gratuito",
+          "duration": 77,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/aulas-de-ingles.mp3"
         },
         {
           "title": "Herança Celeste",
@@ -1123,24 +1249,34 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-heranca-celeste.mp3"
         },
         {
-          "title": "Resgate Divino de Libertação",
-          "duration": 257,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-resgate-divino-de-libertacao.mp3"
+          "title": "Verbo Santo Sagrado",
+          "duration": 168,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-verbo-santo-sagrado.mp3"
         },
         {
-          "title": "Graça da Salvação",
-          "duration": 209,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-da-salvacao.mp3"
+          "title": "Horários da Matriz",
+          "duration": 85,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-matriz.mp3"
         },
         {
-          "title": "Torrentes de Sabedoria",
-          "duration": 219,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-torrentes-de-sabedoria.mp3"
+          "title": "Te Devolvo a Vida em Vitória",
+          "duration": 229,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-te-devolvo-a-vida-em-vitoria.mp3"
         },
         {
-          "title": "Tudo se Revela",
-          "duration": 261,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-tudo-se-revela.mp3"
+          "title": "Nova Razão Para Viver",
+          "duration": 197,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-nova-razao-para-viver.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
+        },
+        {
+          "title": "Oração ao Divino Pai Eterno",
+          "duration": 163,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-divino-pai-eterno.mp3"
         },
         {
           "title": "Ester Iluminada",
@@ -1148,19 +1284,24 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-ester-iluminada.mp3"
         },
         {
-          "title": "Quero Tua Verdade",
-          "duration": 219,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-tua-verdade.mp3"
+          "title": "Horário Capela Santo Expedito",
+          "duration": 59,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-st-expedito.mp3"
         },
         {
-          "title": "Verbo Santo Sagrado",
-          "duration": 168,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-verbo-santo-sagrado.mp3"
+          "title": "Resgate Divino de Libertação",
+          "duration": 257,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-resgate-divino-de-libertacao.mp3"
         },
         {
-          "title": "Vem Louvar Se Entregar",
-          "duration": 216,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-vem-louvar-se-entregar.mp3"
+          "title": "Jesus Reino Celeste",
+          "duration": 122,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-jesus-reino-celeste.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
         },
         {
           "title": "Olhos do Coração",
@@ -1168,19 +1309,44 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-olhos-do-coracao.mp3"
         },
         {
-          "title": "Espera no Senhor",
-          "duration": 222,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-espera no senhor.mp3"
+          "title": "Rio de Água Viva",
+          "duration": 224,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-rio-de-agua-viva.mp3"
         },
         {
-          "title": "Sua Fé Tem Poder",
-          "duration": 194,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-sua-fe-tem-poder.mp3"
+          "title": "Apoie a Rádio Luz e Louvor",
+          "duration": 88,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
         },
         {
-          "title": "Já Não Sigo Mais Sozinho",
-          "duration": 200,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ja-nao-sigo-mais-sozinho.mp3"
+          "title": "Quero Mergulhar no Teu Mistério",
+          "duration": 293,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-quero-mergulhar-no-teu-misterio.mp3"
+        },
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
+        },
+        {
+          "title": "Torrentes de Sabedoria",
+          "duration": 219,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-torrentes-de-sabedoria.mp3"
+        },
+        {
+          "title": "Repousa Sobre Mim",
+          "duration": 205,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-repousa-sobre-mim.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
         },
         {
           "title": "Jesus em Tudo me Define",
@@ -1188,14 +1354,49 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Jesus-em-tudo-me-define.mp3"
         },
         {
-          "title": "Não me Deixe Sozinho",
-          "duration": 169,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-nao-me-deixe-sozinho.mp3"
+          "title": "Graça da Salvação",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-da-salvacao.mp3"
         },
         {
-          "title": "Onde Está Minha Esperança",
-          "duration": 274,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-onde-esta-minha-esperanca.mp3"
+          "title": "Curso de Inglês Gratuito",
+          "duration": 77,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/aulas-de-ingles.mp3"
+        },
+        {
+          "title": "Já Não Sigo Mais Sozinho",
+          "duration": 200,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ja-nao-sigo-mais-sozinho.mp3"
+        },
+        {
+          "title": "Em Teu Mover Sagrado",
+          "duration": 141,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-em-teu-mover-sagrado.mp3"
+        },
+        {
+          "title": "Horários da Matriz",
+          "duration": 85,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-matriz.mp3"
+        },
+        {
+          "title": "Espera no Senhor",
+          "duration": 222,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-espera no senhor.mp3"
+        },
+        {
+          "title": "Sua Fé tem Poder",
+          "duration": 194,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-sua-fe-tem-poder.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
+        },
+        {
+          "title": "Fonte de Vida Sem Fim",
+          "duration": 279,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-fonte-de-vida-sem-fim.mp3"
         },
         {
           "title": "Morada do Amor",
@@ -1203,24 +1404,89 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-morada-do-amor.mp3"
         },
         {
+          "title": "Horário Capela Santo Expedito",
+          "duration": 59,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-st-expedito.mp3"
+        },
+        {
+          "title": "Não me Deixe Sozinho",
+          "duration": 169,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-nao-me-deixe-sozinho.mp3"
+        },
+        {
+          "title": "No Fim Nada Levamos",
+          "duration": 119,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-no-fim-nada-levamos.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
+        },
+        {
+          "title": "Quero Tua Verdade",
+          "duration": 219,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-tua-verdade.mp3"
+        },
+        {
+          "title": "De Repente Deus Age",
+          "duration": 195,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-de-repente-Deus-age.mp3"
+        },
+        {
+          "title": "Apoie a Rádio Luz e Louvor",
+          "duration": 88,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
+        },
+        {
+          "title": "Tudo se Revela",
+          "duration": 261,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-tudo-se-revela.mp3"
+        },
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
+        },
+        {
+          "title": "Onde Está Minha Esperança",
+          "duration": 274,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-onde-esta-minha-esperanca.mp3"
+        },
+        {
           "title": "Guia-me Senhor",
           "duration": 172,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-guia-me-senhor.mp3"
         },
         {
-          "title": "Rio de Água Viva",
-          "duration": 224,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-rio-de-agua-viva.mp3"
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
+        },
+        {
+          "title": "Vem Louvar Se Entregar",
+          "duration": 216,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-vem-louvar-se-entregar.mp3"
+        },
+        {
+          "title": "Oração da Manhã",
+          "duration": 124,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-da-manha.mp3"
+        },
+        {
+          "title": "Curso de Inglês Gratuito",
+          "duration": 77,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/aulas-de-ingles.mp3"
         },
         {
           "title": "Santidade Santidade",
           "duration": 188,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-santidade-santidade.mp3"
-        },
-        {
-          "title": "Repousa Sobre Mim",
-          "duration": 205,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-repousa-sobre-mim.mp3"
         }
       ]
     },
@@ -1235,135 +1501,100 @@
         "description": "An afternoon of trust in God's care."
       },
       "playlist": [
-               {
-          "title": "Rádio Luz e Louvor",
-          "duration": 9,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
-        },
         {
           "title": "Tarde da Providência",
           "duration": 14,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/13-Programa-Tarde-da-Providencia-13h.mp3"
         },
-         {
+        {
           "title": "Até a Última Alma",
           "duration": 264,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-ate-a-ultima-alma.mp3"
         },
-         {
-          "title": "Vem Jesus Me Libertar",
-          "duration": 278,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-vem-jesus-me-libertar.mp3"
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
-         {
-          "title": "Eis Que Tua Palavra se Cumpre",
-          "duration": 281,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Eis-que-tua-palavra-se-cumpre.mp3"
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
         },
-         {
-          "title": "Esperança e Sabedoria",
-          "duration": 186,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-esperanca-e-sabedoria.mp3"
-        },
-         {
-          "title": "Me Concede a Tua Benção",
-          "duration": 190,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-me-concede-a-tua-bencao.mp3"
-        },
-         {
-          "title": "Estou Aqui Senhor",
-          "duration": 192,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-estou-aqui-senhor.mp3"
-        },
-         {
-          "title": "Deus Te Dá os Sentidos",
-          "duration": 164,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Deus-te-da-os-sentidos.mp3"
-        },
-         {
-          "title": "Vem Nos Dar a Tua Luz",
-          "duration": 234,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-vem-nos-dar-a-tua-luz.mp3"
-        },
-         {
-          "title": "Ele Vem Purificar",
-          "duration": 187,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Ele-vem-purificar-v3.mp3"
-        },
-         {
+        {
           "title": "Eu Busco o Silêncio",
           "duration": 224,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Eu-busco-o-silencio.mp3"
         },
-         {
+        {
+          "title": "Jesus Eternidade",
+          "duration": 234,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-jesus-eternidade.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
+        },
+        {
           "title": "Deus Sabe, Ele Sabe",
           "duration": 208,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Deus-sabe,-ele-sabe.mp3"
         },
-         {
-          "title": "Coração Sacrário",
-          "duration": 257,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-coracao-sacrario.mp3"
-        },
-         {
-          "title": "És Meu Rei, Minha Morada",
-          "duration": 215,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-es-meu-rei-minha-morada.mp3"
-        },
-         {
+        {
           "title": "Herdeiros do Reino dos Céus",
           "duration": 195,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-herdeiros-do-reino-dos-ceus.mp3"
         },
-         {
-          "title": "O Nome Que Veio do Céu",
-          "duration": 227,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-o-nome-que-veio-do-ceu.mp3"
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
         },
-         {
-          "title": "Brilhou a Esperança",
-          "duration": 211,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-brilhou-a-esperanca.mp3"
+        {
+          "title": "Estou Aqui Senhor",
+          "duration": 192,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-estou-aqui-senhor.mp3"
         },
-         {
-          "title": "Minha Alma Busca o Céu",
-          "duration": 309,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-minha-alma-busca-o-ceu.mp3"
-        },
-         {
+        {
           "title": "Sem Jesus Não Somos Nada",
           "duration": 296,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sem-jesus-nao-somos-nada.mp3"
         },
-         {
-          "title": "Ungido do Senhor",
-          "duration": 234,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ungido-do-senhor.mp3"
+        {
+          "title": "Conheça nossa Igreja",
+          "duration": 48,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/convite-igreja.mp3"
         },
         {
-          "title": "São Miguel Arcanjo",
-          "duration": 209,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
+          "title": "Oração ao Divino Pai Eterno",
+          "duration": 163,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-divino-pai-eterno.mp3"
         },
         {
-          "title": "Cristo Ressuscitado",
-          "duration": 234,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"
+          "title": "Vem Jesus Me Libertar",
+          "duration": 278,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-vem-jesus-me-libertar.mp3"
         },
         {
-          "title": "Triunfante Vem Jesus",
-          "duration": 195,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-triunfante-vem-jesus.mp3"
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
         },
         {
-          "title": "Sei que Cuidas de Mim",
-          "duration": 224,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"
+          "title": "Coração Sacrário",
+          "duration": 257,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-coracao-sacrario.mp3"
         },
         {
-          "title": "Recebe Hoje o meu Sim",
-          "duration": 209,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"
+          "title": "Deus Te Dá os Sentidos",
+          "duration": 164,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Deus-te-da-os-sentidos.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
         },
         {
           "title": "Faz Meu Coração Compaixão Caridade",
@@ -1371,9 +1602,79 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-faz-meu-coracao-compaixao-caridade.mp3"
         },
         {
-          "title": "Seja Cristo Teu Caminho",
-          "duration": 262,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-seja-cristo-teu-caminho.mp3"
+          "title": "Triunfante Vem Jesus",
+          "duration": 195,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-triunfante-vem-jesus.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
+        },
+        {
+          "title": "Minha Alma Busca o Céu",
+          "duration": 309,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-minha-alma-busca-o-ceu.mp3"
+        },
+        {
+          "title": "Mensagem de Esperança",
+          "duration": 54,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg-esperanca-01.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
+        },
+        {
+          "title": "Eis Que Tua Palavra se Cumpre",
+          "duration": 281,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Eis-que-tua-palavra-se-cumpre.mp3"
+        },
+        {
+          "title": "Brilhou a Esperança",
+          "duration": 211,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-brilhou-a-esperanca.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
+        },
+        {
+          "title": "Esperança e Sabedoria",
+          "duration": 186,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-esperanca-e-sabedoria.mp3"
+        },
+        {
+          "title": "Vem Nos Dar a Tua Luz",
+          "duration": 234,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-vem-nos-dar-a-tua-luz.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
+        },
+        {
+          "title": "Ele Vem Purificar",
+          "duration": 187,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Ele-vem-purificar-v3.mp3"
+        },
+        {
+          "title": "Me Concede a Tua Benção",
+          "duration": 190,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-me-concede-a-tua-bencao.mp3"
+        },
+        {
+          "title": "Conheça nossa Igreja",
+          "duration": 48,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/convite-igreja.mp3"
+        },
+        {
+          "title": "São Miguel Arcanjo",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
         },
         {
           "title": "Escudo da Fé",
@@ -1381,9 +1682,54 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-escudo-da-fe.mp3"
         },
         {
-          "title": "Jesus Eternidade",
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
+        },
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+        },
+        {
+          "title": "Sei que Cuidas de Mim",
+          "duration": 224,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
+        },
+        {
+          "title": "Cristo Ressuscitado",
           "duration": 234,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-jesus-eternidade.mp3"
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"
+        },
+        {
+          "title": "O Nome Que Veio do Céu",
+          "duration": 227,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-o-nome-que-veio-do-ceu.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
+        },
+        {
+          "title": "Seja Cristo Teu Caminho",
+          "duration": 262,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-seja-cristo-teu-caminho.mp3"
+        },
+        {
+          "title": "És Meu Rei, Minha Morada",
+          "duration": 215,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-es-meu-rei-minha-morada.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
         }
       ]
     },
@@ -1398,15 +1744,100 @@
         "description": "A moment of prayer and trust in Jesus' mercy."
       },
       "playlist": [
-               {
-          "title": "Rádio Luz e Louvor",
-          "duration": 9,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
-        },
         {
           "title": "Hora da Misericórdia",
           "duration": 16,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/15-Programa-Hora-da-Misericordia-15h-v2.mp3"
+        },
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+        },
+        {
+          "title": "Mensagem de Esperança",
+          "duration": 54,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg-esperanca-01.mp3"
+        },
+        {
+          "title": "Apoie a Rádio Luz e Louvor",
+          "duration": 88,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
+        },
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+        },
+        {
+          "title": "Teu Jugo é Suave",
+          "duration": 293,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-teu-jugo-e-suave.mp3"
+        },
+        {
+          "title": "Apoio ao Dízimo",
+          "duration": 47,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3"
+        },
+        {
+          "title": "Maria Cheia de Luz",
+          "duration": 274,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-maria-cheia-de-luz.mp3"
+        },
+        {
+          "title": "Evangelho - Mateus 11,28-30",
+          "duration": 284,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/matheus-11-28-30.mp3"
+        },
+        {
+          "title": "Horário Capela São Cristóvão",
+          "duration": 60,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-s-crist.mp3"
+        },
+        {
+          "title": "Santa Faustina",
+          "duration": 257,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
+        },
+        {
+          "title": "Graça e Vitória",
+          "duration": 256,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-e-vitoria.mp3"
+        },
+        {
+          "title": "Curso de Inglês Gratuito",
+          "duration": 77,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/aulas-de-ingles.mp3"
+        },
+        {
+          "title": "Jesus Fiel",
+          "duration": 229,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-jesus-fiel.mp3"
+        },
+        {
+          "title": "Trono Eterno",
+          "duration": 391,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-trono-eterno.mp3"
+        },
+        {
+          "title": "Catequese para Adultos",
+          "duration": 74,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3"
+        },
+        {
+          "title": "Mestre da Multidão",
+          "duration": 267,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-mestre-da-multidao.mp3"
+        },
+        {
+          "title": "Vida Nova Encontrei",
+          "duration": 289,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-vida-nova-encontrei.mp3"
+        },
+        {
+          "title": "Festa de São Cristóvão",
+          "duration": 86,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3"
         },
         {
           "title": "São Miguel Arcanjo",
@@ -1414,54 +1845,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
         },
         {
-           "title": "Maria Cheia de Luz",
-          "duration": 274,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-maria-cheia-de-luz.mp3"
-        },
-        {
-          "title": "Santa Faustina",
-          "duration": 257,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
-        },
-         {
           "title": "Mãe de Deus Bendita",
           "duration": 194,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Mae-de-deus-bendita.mp3"
         },
-         {
-          "title": "Se Entregue a Jesus",
-          "duration": 242,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-se-entregue-a-Jesus.mp3"
-        },
-         {
-          "title": "Graça e Vitória",
-          "duration": 256,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-e-vitoria.mp3"
-        },
-         {
-          "title": "Teu Jugo é Suave",
-          "duration": 293,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-teu-jugo-e-suave.mp3"
-        },
-         {
-          "title": "Vida Nova Encontrei",
-          "duration": 289,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-vida-nova-encontrei.mp3"
-        },
-         {
-          "title": "Mestre da Multidão",
-          "duration": 267,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-mestre-da-multidao.mp3"
-        },
-         {
-          "title": "Jesus Fiel",
-          "duration": 229,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-jesus-fiel.mp3"
-        },
-         {
-          "title": "Trono Eterno",
-          "duration": 391,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-trono-eterno.mp3"
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
         }
       ]
     },
@@ -1486,22 +1877,22 @@
           "duration": 21,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/16-Programa-Tarde-com-Jesus-16h.mp3"
         },
-          {
+        {
           "title": "A Cruz era pra Mim",
           "duration": 233,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-cruz-era-pra-mim.mp3"
         },
-         {
+        {
           "title": "Rei da Glória",
           "duration": 215,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-rei-da-gloria.mp3"
         },
-                {
+        {
           "title": "Exaltado Seja",
           "duration": 184,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-exaltado-seja.mp3"
         },
-                  {
+        {
           "title": "Informativo Paroquial",
           "duration": 102,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/curso-ingles-dpe-final.mp3"
@@ -1541,7 +1932,7 @@
           "duration": 189,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-santo-e-o-meu-Deus.mp3"
         },
-          {
+        {
           "title": "Informativo Paroquial",
           "duration": 168,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-final.mp3"
@@ -1669,18 +2060,18 @@
           "duration": 15,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/18-Programa-Momento-Mariano-18h-v2.mp3"
         },
-           {
+        {
           "title": "São Miguel Arcanjo",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
         },
-         {
+        {
           "title": "Aviso Paroquial",
           "duration": 168,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-final.mp3"
         },
         {
-           "title": "Maria Cheia de Luz",
+          "title": "Maria Cheia de Luz",
           "duration": 274,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-maria-cheia-de-luz.mp3"
         },
@@ -1694,7 +2085,7 @@
           "duration": 236,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-nada-alem-do-seu-amor.mp3"
         },
-         {
+        {
           "title": "Aviso Paroquial",
           "duration": 96,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/catequese-adultos-final.mp3"
@@ -1772,22 +2163,22 @@
           "duration": 223,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-liberta-meu-coracao.mp3"
         },
-       {
+        {
           "title": "Senhor Deus do Universo",
           "duration": 249,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-senhor-Deus-do-universo.mp3"
         },
-         {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 17,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
         },
-         {
+        {
           "title": "Por Deus foi Enviado",
           "duration": 271,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-por-Deus-foi-enviado.mp3"
         },
-         {
+        {
           "title": "Vinde Luz do Amor",
           "duration": 223,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-viinde-luz-do-amor.mp3"
@@ -1797,27 +2188,27 @@
           "duration": 5,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"
         },
-         {
+        {
           "title": "Meu Jesus Misericórdia",
           "duration": 310,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-meu-jesus-misericordia.mp3"
         },
-         {
+        {
           "title": "Sigo Firme em Jesus",
           "duration": 223,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sigo-firme-em-jesus.mp3"
         },
-         {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 17,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
         },
-         {
+        {
           "title": "Quero Ser Salvo no Amor",
           "duration": 230,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-quero-ser-salvo-no-amor.mp3"
         },
-         {
+        {
           "title": "Sei Que Sabes o Meu Nome",
           "duration": 230,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-sei-que-sabes-o-meu-nome.mp3"
@@ -1827,27 +2218,27 @@
           "duration": 5,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"
         },
-         {
+        {
           "title": "Jesus Terá Vitória Sobre Mim",
           "duration": 203,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-jesus-tera-vitoria-sobre-mim.mp3"
         },
-         {
+        {
           "title": "Quero Ser Iluminado",
           "duration": 194,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-ser-iluminado.mp3"
         },
-         {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 17,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
         },
-         {
+        {
           "title": "Habita em Mim",
           "duration": 135,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-habita-em-mim.mp3"
         },
-         {
+        {
           "title": "Sabedoria Entendimento",
           "duration": 254,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-sabedoria-entendimento.mp3"
@@ -1857,12 +2248,12 @@
           "duration": 5,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"
         },
-         {
+        {
           "title": "Brasa Viva",
           "duration": 255,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-brasa-viva.mp3"
         },
-         {
+        {
           "title": "Te Darei a Minha Herança",
           "duration": 245,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-te-darei-a-minha-heranca.mp3"
@@ -1872,12 +2263,12 @@
           "duration": 17,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
         },
-         {
+        {
           "title": "Luz do Amor Eterno",
           "duration": 239,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-luz-do-amor-eterno.mp3"
         },
-         {
+        {
           "title": "Tende Piedade de Mim",
           "duration": 190,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-tende-piedade-de-mim.mp3"
@@ -1887,12 +2278,12 @@
           "duration": 5,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"
         },
-         {
+        {
           "title": "Me Guio Pelo Espírito",
           "duration": 189,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-me-guio-pelo-espirito.mp3"
         },
-         {
+        {
           "title": "Judas Judas",
           "duration": 134,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-judas-judas.mp3"
@@ -1902,12 +2293,12 @@
           "duration": 17,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
         },
-         {
+        {
           "title": "Atende a Nossa Oração",
           "duration": 171,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-atende-a-nossa-oracao.mp3"
         },
-         {
+        {
           "title": "Jornada Santa",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-jornada-santa.mp3"
@@ -1917,12 +2308,12 @@
           "duration": 5,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"
         },
-         {
+        {
           "title": "Predestinados Pela Redenção",
           "duration": 178,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-predestinados-pela-redencao.mp3"
         },
-         {
+        {
           "title": "Faz-me Dócil à Tua Vontade",
           "duration": 121,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-fazme-docil-a-tua-vontade.mp3"
@@ -1932,12 +2323,12 @@
           "duration": 17,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
         },
-         {
+        {
           "title": "Nos Protege Com a Tua Luz",
           "duration": 185,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-nos-protege-com-tua-luz.mp3"
         },
-         {
+        {
           "title": "Minha Paz, Meu Encanto",
           "duration": 312,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-minha-paz-meu-encanto.mp3"
@@ -1947,12 +2338,12 @@
           "duration": 5,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"
         },
-         {
+        {
           "title": "O Amor Florescerá",
           "duration": 208,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-o-amor-florescera.mp3"
         },
-         {
+        {
           "title": "Eu Conheço a Tua História",
           "duration": 215,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-eu-conheço-a-tua-historia.mp3"
@@ -1962,7 +2353,7 @@
           "duration": 17,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
         },
-         {
+        {
           "title": "Tudo É Graça",
           "duration": 303,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-tudo-e-graca.mp3"
@@ -2050,7 +2441,7 @@
           "duration": 137,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Firmes-no-Senhor.mp3"
         },
-       {
+        {
           "title": "Semente de Deus",
           "duration": 164,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-semente-de-Deus.mp3"
@@ -2093,12 +2484,12 @@
           "duration": 224,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"
         },
-          {
+        {
           "title": "Só Quero a Tua Amizade",
           "duration": 280,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-so-quero-a-tua-amizade.mp3"
         },
-         {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 32,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor.mp3"
@@ -2118,7 +2509,7 @@
           "duration": 230,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-galatas.mp3"
         },
-       {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 9,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
@@ -2133,22 +2524,22 @@
           "duration": 196,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-semear-no-teu-espirito.mp3"
         },
-          {
+        {
           "title": "Foi a Tua Paixão",
           "duration": 267,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-foi-tua-paixao.mp3"
         },
-         {
+        {
           "title": "Habita em Mim",
           "duration": 135,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-habita-em-mim.mp3"
         },
-      {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 17,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jingle-Radio-Luz-e-Louvor.mp3"
         },
-         {
+        {
           "title": "Sabedoria Entendimento",
           "duration": 254,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-sabedoria-entendimento.mp3"
@@ -2221,7 +2612,7 @@
           "duration": 224,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-a-nossa-alegria-esta-em-jesus.mp3"
         },
-                {
+        {
           "title": "Aviso Paroquial",
           "duration": 96,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/catequese-adultos-final.mp3"
@@ -2231,7 +2622,7 @@
           "duration": 226,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-passear-em-teu-jardim.mp3"
         },
-       {
+        {
           "title": "Rádio Luz e Louvor",
           "duration": 9,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
@@ -2256,12 +2647,12 @@
           "duration": 168,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-final.mp3"
         },
-         {
+        {
           "title": "Jesus Terá Vitória Sobre Mim",
           "duration": 203,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-jesus-tera-vitoria-sobre-mim.mp3"
         },
-         {
+        {
           "title": "Quero Ser Iluminado",
           "duration": 194,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-ser-iluminado.mp3"
@@ -2270,7 +2661,7 @@
           "title": "Informativo Paroquial",
           "duration": 102,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/curso-ingles-dpe-final.mp3"
-        }      
+        }
       ]
     }
   ]
