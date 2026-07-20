@@ -357,7 +357,28 @@ left:-9999px;
   padding-bottom:140px;
 }
 
+.next-attraction{
+  margin:14px 0 8px;
+  padding:12px 14px;
+  border-left:3px solid var(--gold);
+  background:rgba(245,183,64,.06);
+}
 
+.next-attraction span{
+  display:block;
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.next-attraction strong{
+  display:block;
+  color:var(--text);
+  font-size:13px;
+  line-height:1.4;
+}
 
   
 @media(max-width:1100px){.hero,.radio-grid,.player-card{grid-template-columns:1fr}.dashboard,.platform-row{grid-template-columns:repeat(2,1fr)}}
@@ -497,6 +518,11 @@ left:-9999px;
         <audio id="radioPlayer" controls preload="metadata"></audio>
         <div class="player-actions"></div>
         </div>
+        
+        <div class="next-attraction">
+  <span data-pt="A seguir" data-en="Up next">A seguir</span>
+  <strong id="nextTrackTitle">Carregando...</strong>
+</div>
           <button class="share-btn" onclick="sharePage()" data-pt="📤 Compartilhar" data-en="📤 Share">
       📤 Compartilhar
     </button>
@@ -850,6 +876,7 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   }
 
   currentTrackIndex = index;
+  updateNextAttraction();
 
   document.getElementById("nowTitle").textContent =
     track.title || "Rádio Luz e Louvor";
@@ -1207,7 +1234,28 @@ window.addEventListener("appinstalled", () => {
   deferredInstallPrompt = null;
   updateInstallButton();
 });
-  
+
+//next attraction//////////////////////
+function updateNextAttraction() {
+  const element = document.getElementById("nextTrackTitle");
+
+  if (!element || !currentPlaylist.length) return;
+
+  let nextIndex = currentTrackIndex + 1;
+
+  if (nextIndex >= currentPlaylist.length) {
+    nextIndex = 0;
+  }
+
+  const nextTrack = currentPlaylist[nextIndex];
+
+  element.textContent =
+    nextTrack?.title ||
+    (currentLang === "pt"
+      ? "Próxima atração"
+      : "Next attraction");
+}
+
 //randomBanner///////////////////////////  
 function loadRandomBanner(){
 
