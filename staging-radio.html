@@ -547,6 +547,7 @@ left:-9999px;
 </div>
 <script>
 
+let radioWasPlaying = false;  
 let activeScheduleHour = null;
 let currentPlaylist = [];
 let currentTrackIndex = 0;
@@ -1303,22 +1304,30 @@ setInterval(() => {
   // Mudou o programa?
   if (currentSchedule && currentSchedule.hour !== activeScheduleHour) {
 
+  const player = document.getElementById("radioPlayer");
+
+    // Guarda se a rádio estava tocando antes da mudança.
+    radioWasPlaying = !player.paused && !player.ended;
+
     renderSchedule();
 
-    // interrompe imediatamente a música atual
-    const player = document.getElementById("radioPlayer");
-    player.pause();
+    activeTrack = currentSchedule;
+    activeScheduleHour = currentSchedule.hour;
+    currentPlaylist = currentSchedule.playlist || [];
 
+    const synced = getSyncedPlaylistPosition(currentSchedule);
+    currentTrackIndex = synced.index;
 
-    // inicia imediatamente
-    renderNowPlaying(currentSchedule, "schedule");
-
-setTimeout(() => {
-  playRadio();
-}, 500);
+    // A própria função aguardará o canplay.
+    loadPlaylistTrack(
+      currentTrackIndex,
+      synced.offset,
+      radioWasPlaying
+    );
 
     return;
   }
+
 
   // Apenas atualiza o destaque visual da grade
   renderSchedule();
