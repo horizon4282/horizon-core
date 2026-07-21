@@ -622,6 +622,9 @@ left:-9999px;
 </div>
 <script>
 
+let lastCoverTrackKey = "";
+let currentCoverUrl = "";
+let lastCoverIndex = -1;
 let radioWasPlaying = false;  
 let activeScheduleHour = null;
 let currentPlaylist = [];
@@ -634,6 +637,24 @@ let radioData=null,activeTrack=null,activeSource="schedule";
 const JSON_URL="https://horizon4282.com.br/data/staging-radio.json";
 const MESSAGES_URL = "https://horizon4282.com.br/data/radio-messages-pt-en.json";
 let messagesData = [];
+
+
+const radioCovers = [
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-00.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-01.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-02.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-03.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-04.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-05.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-06.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-07.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-08.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-10.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-11.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-12.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-33.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio-14.webp"
+];
   
 const fallbackData={
  page:{pt:{eyebrow:"Rádio Luz e Louvor",title:"Rádio Luz e Louvor",text:"Música, oração, Palavra e esperança. Uma estação devocional dentro do Horizon 4282.",onAir:"Áudio HD · 24h"},en:{eyebrow:"Light & Praise Radio",title:"Light & Praise Radio",text:"Music, prayer, Word and hope. A devotional station inside Horizon 4282.",onAir:"HD Audio · 24h"}},
@@ -915,39 +936,38 @@ if(item.playlist && item.playlist.length){
 
 
   
-  function updateTrackCover(track) {
+function updateTrackCover(track) {
   const coverBox = document.getElementById("coverBox");
   const bottomCover = document.querySelector(".bottom-cover");
 
-  const fallbackCover =
-    radioData?.defaultCover ||
-    "https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png";
+  const trackKey =
+    track?.audio ||
+    `${track?.title || "radio"}-${currentTrackIndex}`;
 
-  const coverUrl =
-    track?.cover && track.cover.trim()
-      ? track.cover
-      : fallbackCover;
+  if (trackKey !== lastCoverTrackKey || !currentCoverUrl) {
+    currentCoverUrl =
+      getRandomCover() ||
+      radioData?.defaultCover ||
+      "https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png";
+
+    lastCoverTrackKey = trackKey;
+  }
 
   if (coverBox) {
-    coverBox.style.backgroundImage = `url("${coverUrl}")`;
-    coverBox.style.backgroundSize = "cover";
-    coverBox.style.backgroundPosition = "center";
-    coverBox.style.backgroundRepeat = "no-repeat";
+    coverBox.style.backgroundImage = `url("${currentCoverUrl}")`;
     coverBox.textContent = "";
   }
 
   if (bottomCover) {
-    bottomCover.style.backgroundImage = `url("${coverUrl}")`;
-    bottomCover.style.backgroundSize = "cover";
-    bottomCover.style.backgroundPosition = "center";
-    bottomCover.style.backgroundRepeat = "no-repeat";
+    bottomCover.style.backgroundImage = `url("${currentCoverUrl}")`;
     bottomCover.textContent = "";
   }
 
-  updateMediaSession(track, coverUrl);
+  updateMediaSession(track, currentCoverUrl);
 }
 
-  
+
+
 function updateMediaSession(track, coverUrl) {
   if (!("mediaSession" in navigator)) return;
 
@@ -986,16 +1006,15 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
 
   if (!track || !track.audio) return;
 
-  // Identifica esta tentativa específica de carregamento
   const loadId = ++audioLoadId;
 
-  // Cancela qualquer avanço agendado por uma faixa anterior
   if (audioRetryTimer) {
     clearTimeout(audioRetryTimer);
     audioRetryTimer = null;
   }
 
   currentTrackIndex = index;
+
   updateTrackCover(track);
   updateNextAttraction();
 
@@ -1011,7 +1030,6 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
 
   player.pause();
 
-  // Limpa eventos da faixa anterior
   player.oncanplay = null;
   player.onloadedmetadata = null;
   player.onerror = null;
@@ -1020,7 +1038,6 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   player.load();
 
   player.onloadedmetadata = () => {
-    // Ignora eventos atrasados de uma faixa anterior
     if (loadId !== audioLoadId) return;
 
     if (
@@ -1047,16 +1064,13 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   };
 
   player.onerror = () => {
-    // Impede que um erro antigo pule a faixa atual
     if (loadId !== audioLoadId) return;
-
-    const mediaError = player.error;
 
     console.warn(
       "Erro ao carregar áudio:",
       track.title,
       track.audio,
-      mediaError?.code
+      player.error?.code
     );
 
     if (audioRetryTimer) {
@@ -1356,6 +1370,30 @@ window.addEventListener("appinstalled", () => {
   updateInstallButton();
 });
 
+
+//sorteio sem repetir a última capa///////////
+
+function getRandomCover() {
+  if (!radioCovers.length) {
+    return radioData?.defaultCover || "";
+  }
+
+  if (radioCovers.length === 1) {
+    lastCoverIndex = 0;
+    return radioCovers[0];
+  }
+
+  let newIndex;
+
+  do {
+    newIndex = Math.floor(Math.random() * radioCovers.length);
+  } while (newIndex === lastCoverIndex);
+
+  lastCoverIndex = newIndex;
+
+  return radioCovers[newIndex];
+}
+  
 //next attraction//////////////////////
 function updateNextAttraction() {
   const element = document.getElementById("nextTrackTitle");
