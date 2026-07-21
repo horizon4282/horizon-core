@@ -1551,15 +1551,14 @@ setInterval(() => {
     activeScheduleHour = currentSchedule.hour;
     currentPlaylist = currentSchedule.playlist || [];
 
-    const synced = getSyncedPlaylistPosition(currentSchedule);
-    currentTrackIndex = synced.index;
+// Na mudança real de programa, começa pela introdução.
+currentTrackIndex = 0;
 
-    // A própria função aguardará o canplay.
-    loadPlaylistTrack(
-      currentTrackIndex,
-      synced.offset,
-      radioWasPlaying
-    );
+loadPlaylistTrack(
+  0,
+  0,
+  radioWasPlaying
+);
 
     return;
   }
