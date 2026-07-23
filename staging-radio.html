@@ -58,15 +58,24 @@ a{color:inherit;text-decoration:none}
   color:var(--accent);cursor:pointer;font-size:18px;font-family:var(--font)
 }
 
-
-.btn-banner {
-    position: absolute;
-    bottom: 14vh;
-    left: 27%;
+.banner-wrapper{
+    position:relative;
+    width:100%;
 }
 
-.btn-banner img {
-    width: 29%;
+.btn-banner{
+    position:absolute;
+
+   /*  left:420px;      distância fixa da esquerda da imagem */
+    /* bottom:85px;     distância fixa da base da imagem */
+    left:18%;
+    bottom:9%
+    z-index:20;
+}
+
+.btn-banner img{
+    width:180px;
+    display:block;
 }
 
 .btn-banner a {
@@ -531,16 +540,19 @@ left:-9999px;
     <button id="ptBtn" onclick="setLanguage('pt')">PT</button>
     <button id="enBtn" onclick="setLanguage('en')">EN</button>
   </div>
-       <div><img id="heroBanner" src="https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp" style="width:100%" /></div>
-  
-
+   
+       <div class="banner-wrapper">
+              <img id="heroBanner" src="https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp" style="width:100%" />
+      <div class="btn-banner">
+             <a onclick="startRadioFromTop()"><img src="https://songs.horizon4282.com.br/file/horizon4282/images/btn-play-banner.png"/></a></div>
+       </div>
   <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
     <a style="display:none;" class="home-link" href="/" data-pt="Início" data-en="Home">Início</a>
   </div> 
+ </div>
    
-   <div class="btn-banner">
-   <a onclick="startRadioFromTop()"><img src="https://songs.horizon4282.com.br/file/horizon4282/images/btn-play-banner.png"/></a></div>
-</div>
+ 
+
 
   
   <div id="loadState" class="loading">Loading radio JSON...</div>
