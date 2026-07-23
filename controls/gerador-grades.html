@@ -1,0 +1,1219 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor de Grade V5 — Rádio Luz e Louvor</title>
+<style>
+:root{
+  --bg:#030712;--panel:rgba(8,21,38,.9);--panel2:rgba(13,31,52,.94);
+  --line:rgba(125,211,252,.22);--line2:rgba(125,211,252,.55);
+  --text:#eef6ff;--muted:#8ca3bd;--accent:#7dd3fc;--gold:#f5b740;
+  --green:#22c55e;--danger:#fb7185;--font:"Courier New",Courier,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:var(--font)}
+body{
+  background:
+    radial-gradient(circle at 10% 8%,rgba(14,165,233,.14),transparent 34%),
+    radial-gradient(circle at 88% 82%,rgba(245,183,64,.08),transparent 34%),
+    var(--bg);
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.28;
+  background:linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.18) 50%),
+             linear-gradient(90deg,rgba(255,0,0,.025),rgba(0,255,255,.012),rgba(0,0,255,.025));
+  background-size:100% 3px,3px 100%;
+}
+.app{width:min(1600px,calc(100% - 30px));margin:auto;padding:24px 0 60px}
+header{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}
+h1{margin:0 0 8px;font-size:clamp(26px,4vw,46px);letter-spacing:.08em;text-transform:uppercase}
+header p{margin:0;color:var(--muted);line-height:1.6;max-width:980px}
+.badge{border:1px solid rgba(34,197,94,.36);color:var(--green);padding:10px 14px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.panel,.toolbar{border:1px solid var(--line);background:var(--panel);padding:18px;backdrop-filter:blur(18px)}
+.toolbar{margin-bottom:16px}
+.toolbar-grid{display:grid;grid-template-columns:1fr .8fr auto auto;gap:10px;align-items:end}
+.layout{display:grid;grid-template-columns:minmax(360px,.9fr) minmax(440px,1.1fr) minmax(360px,.9fr);gap:16px;align-items:start}
+.panel h2{margin:0 0 14px;color:var(--accent);font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+label{display:block;margin:0 0 7px;color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+input,select,button,textarea{font:inherit}
+input[type=file],input[type=text],input[type=number],select,textarea{
+  width:100%;border:1px solid var(--line);background:rgba(0,0,0,.27);color:var(--text);padding:10px;outline:none
+}
+textarea{min-height:110px;resize:vertical}
+button{
+  border:1px solid var(--line2);background:rgba(14,165,233,.12);color:var(--accent);
+  padding:10px 13px;cursor:pointer;letter-spacing:.07em;text-transform:uppercase;font-size:11px
+}
+button:hover{background:rgba(14,165,233,.24);color:#fff}
+button.primary{border-color:rgba(245,183,64,.55);background:rgba(245,183,64,.1);color:var(--gold)}
+button.primary:hover{background:var(--gold);color:#030712}
+button.danger{border-color:rgba(251,113,133,.45);color:#fecdd3;background:rgba(251,113,133,.08)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.stat{border:1px solid rgba(125,211,252,.13);background:rgba(0,0,0,.18);padding:10px;text-align:center}
+.stat span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.1em}
+.stat strong{display:block;color:var(--gold);font-size:17px;margin-top:5px}
+.list{display:grid;gap:7px;max-height:620px;overflow:auto;padding-right:3px}
+.item{
+  display:grid;grid-template-columns:30px 1fr auto;gap:8px;align-items:center;
+  border:1px solid rgba(125,211,252,.14);background:rgba(0,0,0,.18);padding:9px
+}
+.item.insert{border-color:rgba(245,183,64,.28);background:rgba(245,183,64,.05)}
+.item.dragging{opacity:.45;border-color:var(--gold)}
+.item.drop-target{border-color:var(--gold);background:rgba(245,183,64,.08)}
+.handle{cursor:grab;color:var(--accent);text-align:center;font-size:17px}
+.item.insert .handle{color:var(--gold);cursor:default}
+.item-main{min-width:0}
+.item-main strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item-main span{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.item-actions{display:flex;gap:5px}
+.item-actions button{padding:5px 7px;font-size:9px}
+.search-row{display:grid;grid-template-columns:1fr 145px;gap:8px;margin-bottom:10px}
+.form-grid{display:grid;grid-template-columns:1fr 120px;gap:10px}
+.notice{margin-top:12px;padding:11px;border:1px solid rgba(245,183,64,.22);background:rgba(245,183,64,.06);color:#dbeafe;font-size:11px;line-height:1.55}
+.error{display:none;margin-top:10px;padding:11px;border:1px solid rgba(251,113,133,.42);background:rgba(251,113,133,.08);color:#fecdd3;white-space:pre-wrap}
+.library-item{
+  display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;
+  border:1px solid rgba(125,211,252,.13);background:rgba(0,0,0,.16);padding:9px
+}
+.library-item strong{display:block}
+.library-item span{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.library-item button{padding:6px 8px}
+
+.dashboard{margin-top:16px;display:grid;gap:16px}
+.dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.wide-panel{border:1px solid var(--line);background:var(--panel);padding:18px;backdrop-filter:blur(18px)}
+.wide-panel h2{margin:0 0 14px;color:var(--accent);font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.analysis-wrap{overflow:auto;max-height:520px;border:1px solid rgba(125,211,252,.13)}
+.analysis-table{width:100%;border-collapse:collapse;min-width:760px}
+.analysis-table th,.analysis-table td{padding:10px;border-bottom:1px solid rgba(125,211,252,.12);text-align:left;font-size:11px}
+.analysis-table th{position:sticky;top:0;background:#081526;color:var(--accent);z-index:2;text-transform:uppercase;letter-spacing:.08em}
+.analysis-table tr:hover td{background:rgba(125,211,252,.04)}
+.status-ok{color:var(--green)}
+.status-warn{color:var(--gold)}
+.status-over{color:var(--danger);font-weight:bold}
+.unused-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;max-height:390px;overflow:auto}
+.unused-card{border:1px solid rgba(125,211,252,.14);background:rgba(0,0,0,.18);padding:10px}
+.unused-card strong{display:block}
+.unused-card span{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.inline-controls{display:grid;grid-template-columns:1fr 120px auto auto;gap:8px;align-items:end}
+.session-indicator{margin-top:10px;color:var(--green);font-size:11px;letter-spacing:.07em}
+.mini-help{color:var(--muted);font-size:11px;line-height:1.55;margin:8px 0 0}
+@media(max-width:980px){
+  .dashboard-grid,.inline-controls{grid-template-columns:1fr}
+}
+
+@media(max-width:1180px){
+  .layout{grid-template-columns:1fr 1fr}
+  .layout .panel:last-child{grid-column:1/-1}
+}
+@media(max-width:820px){
+  .toolbar-grid,.layout,.search-row,.form-grid{grid-template-columns:1fr}
+  .summary{grid-template-columns:repeat(2,1fr)}
+  header{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div>
+    <h1>Editor de Grade V5</h1>
+    <p>Reorganize músicas, mantenha uma identificação após cada duas músicas, cadastre novos conteúdos e reutilize músicas, vinhetas, chamadas, orações e aberturas em qualquer programa.</p>
+  </div>
+  <div class="badge">V5 · Duração dinâmica</div>
+</header>
+
+<section class="toolbar">
+  <div class="toolbar-grid">
+    <div>
+      <label for="gradeFile">Abrir grade JSON</label>
+      <input type="file" id="gradeFile" accept=".json,application/json">
+    </div>
+    <div>
+      <label for="catalogFile">Abrir catálogo JSON</label>
+      <input type="file" id="catalogFile" accept=".json,application/json">
+    </div>
+    <div>
+      <label for="programSelect">Programa</label>
+      <select id="programSelect"></select>
+    </div>
+    <button type="button" id="embeddedBtn">Usar grade incorporada</button>
+  </div>
+  <div class="actions">
+    <button type="button" id="shuffleAllBtn">Embaralhar grade completa</button>
+    <button type="button" class="primary" id="randomGradeBtn">Criar grade aleatória balanceada</button>
+    <div class="notice" style="margin:0;max-width:420px">
+      O limite de cada programa é calculado automaticamente pelo intervalo até o próximo horário da grade.
+    </div>
+  </div>
+  <div class="session-indicator" id="sessionIndicator">Alterações desta sessão serão preservadas ao trocar de programa.</div>
+  <div class="error" id="errorBox"></div>
+</section>
+
+<main class="layout">
+  <section class="panel">
+    <h2>Biblioteca de conteúdo</h2>
+    <div class="search-row">
+      <input type="text" id="searchInput" placeholder="Pesquisar título ou URL">
+      <select id="typeFilter">
+        <option value="">Todos os tipos</option>
+        <option value="music">Músicas</option>
+        <option value="vinheta">Vinhetas</option>
+        <option value="jingle">Jingles</option>
+        <option value="announcement">Chamadas / informativos</option>
+        <option value="prayer">Orações</option>
+        <option value="opening">Aberturas</option>
+      </select>
+    </div>
+    <div class="summary">
+      <div class="stat"><span>Catálogo</span><strong id="catalogCount">0</strong></div>
+      <div class="stat"><span>Músicas</span><strong id="catalogSongs">0</strong></div>
+      <div class="stat"><span>Chamadas</span><strong id="catalogCalls">0</strong></div>
+      <div class="stat"><span>Programas</span><strong id="programCount">0</strong></div>
+    </div>
+    <div class="list" id="libraryList"></div>
+
+    <h2 style="margin-top:20px">Novo conteúdo</h2>
+    <div class="form-grid">
+      <div>
+        <label for="newTitle">Título</label>
+        <input type="text" id="newTitle">
+      </div>
+      <div>
+        <label for="newDuration">Duração em segundos</label>
+        <input type="number" id="newDuration" min="1">
+      </div>
+    </div>
+    <label for="newAudio" style="margin-top:10px">URL do áudio</label>
+    <input type="text" id="newAudio" placeholder="https://...mp3">
+    <label for="newType" style="margin-top:10px">Tipo</label>
+    <select id="newType">
+      <option value="music">Música</option>
+      <option value="announcement">Chamada / informativo</option>
+      <option value="vinheta">Vinheta</option>
+      <option value="jingle">Jingle</option>
+      <option value="prayer">Oração</option>
+      <option value="opening">Abertura de programa</option>
+    </select>
+    <div class="actions">
+      <button type="button" class="primary" id="addCatalogBtn">Adicionar ao catálogo</button>
+      <button type="button" id="downloadCatalogBtn">Baixar catálogo</button>
+    </div>
+    <div class="notice">O novo conteúdo fica na memória da ferramenta. Para guardá-lo permanentemente, use “Baixar catálogo”.</div>
+  </section>
+
+  <section class="panel">
+    <h2>Conteúdo do programa</h2>
+    <div class="summary">
+      <div class="stat"><span>Músicas</span><strong id="songCount">0</strong></div>
+      <div class="stat"><span>Identificações</span><strong id="insertCount">0</strong></div>
+      <div class="stat"><span>Tempo atual</span><strong id="currentTime">0:00</strong></div>
+      <div class="stat"><span>Tempo novo</span><strong id="newTime">0:00</strong></div>
+    </div>
+    <div class="list" id="songList"></div>
+    <div class="actions">
+      <button type="button" id="shuffleBtn">Embaralhar músicas</button>
+      <button type="button" id="restoreBtn">Restaurar programa</button>
+    </div>
+    <div class="notice">Arraste as músicas ou use as setas. A ferramenta insere uma vinheta, chamada ou oração após cada duas músicas. Use o botão × na prévia para remover um conteúdo apenas do programa atual.</div>
+  </section>
+
+  <section class="panel">
+    <h2>Prévia e exportação</h2>
+    <div class="list" id="previewList"></div>
+    <label for="output" style="margin-top:12px">Playlist JSON</label>
+    <textarea id="output" readonly spellcheck="false"></textarea>
+    <div class="actions">
+      <button type="button" class="primary" id="copyPlaylistBtn">Copiar playlist</button>
+      <button type="button" id="copyFullBtn">Copiar grade completa</button>
+      <button type="button" id="downloadGradeBtn">Baixar grade completa</button>
+    </div>
+  </section>
+</main>
+
+<section class="dashboard">
+  <div class="dashboard-grid">
+    <section class="wide-panel">
+      <h2>Distribuição global de anúncio</h2>
+      <div class="inline-controls">
+        <div>
+          <label for="bulkInsertSelect">Chamada, anúncio, oração ou vinheta</label>
+          <select id="bulkInsertSelect"></select>
+        </div>
+        <div>
+          <label for="bulkCopies">Repetições</label>
+          <select id="bulkCopies">
+            <option value="1">1x por programa</option>
+            <option value="2">2x por programa</option>
+          </select>
+        </div>
+        <button type="button" class="primary" id="bulkAddBtn">Aplicar em todos</button>
+        <button type="button" id="bulkRemoveBtn">Remover de todos</button>
+      </div>
+      <p class="mini-help">A distribuição é feita em toda a grade, inclusive no programa que estiver aberto. Reaplicar substitui a quantidade anterior desse mesmo áudio.</p>
+    </section>
+
+    <section class="wide-panel">
+      <h2>Músicas fora da grade geral</h2>
+      <div class="summary">
+        <div class="stat"><span>Não utilizadas</span><strong id="unusedCount">0</strong></div>
+        <div class="stat"><span>Utilizadas</span><strong id="usedSongCount">0</strong></div>
+        <div class="stat"><span>Total catálogo</span><strong id="totalSongCount">0</strong></div>
+        <div class="stat"><span>Cobertura</span><strong id="coveragePercent">0%</strong></div>
+      </div>
+      <div class="unused-list" id="unusedSongsList"></div>
+    </section>
+  </div>
+
+  <section class="wide-panel">
+    <h2>Análise da grade em tempo real</h2>
+    <div class="analysis-wrap">
+      <table class="analysis-table">
+        <thead>
+          <tr>
+            <th>Hora</th>
+            <th>Programa</th>
+            <th>Músicas</th>
+            <th>Orações</th>
+            <th>Anúncios / vinhetas</th>
+            <th>Itens</th>
+            <th>Duração</th>
+            <th>Limite</th>
+            <th>Situação</th>
+          </tr>
+        </thead>
+        <tbody id="analysisBody"></tbody>
+      </table>
+    </div>
+  </section>
+</section>
+
+</div>
+
+<script>
+const EMBEDDED_GRADE = {"schedule": [{"hour": 0, "pt": {"title": "Meia-Noite com Deus", "description": "Um momento de paz, oração e confiança na presença de Deus."}, "en": {"title": "Midnight with God", "description": "A moment of peace, prayer and trust in God's presence."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 10, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-01.mp3"}, {"title": "Meia Noite Com Deus", "duration": 26, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/0-Programa-Meia-Noite-com-Deus-0h.mp3"}, {"title": "Som do Altíssimo", "duration": 199, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-som-do-satissimo.mp3"}, {"title": "Verdade da Graça", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-veredas-da-graca-SIM.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"}, {"title": "Rios de Cura", "duration": 199, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-rios-de-cura.mp3"}, {"title": "Recebe Hoje o meu Sim", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 10, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-01.mp3"}, {"title": "Luz do Alto", "duration": 212, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-luz-do-alto.mp3"}, {"title": "Caminho de Nazaré", "duration": 192, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-caminho-de-nazare.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"}, {"title": "Cenáculo com Jesus", "duration": 241, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-com-Jesus.mp3"}, {"title": "Caminho do Silêncio", "duration": 217, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-caminho-do-silencio.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 10, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-01.mp3"}, {"title": "A Porta Aberta", "duration": 186, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"}, {"title": "Saiba que Sou Teu Deus", "duration": 211, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"}, {"title": "Mãe de Deus Bendita", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Mae-de-deus-bendita.mp3"}, {"title": "Canção de Pentecostes", "duration": 164, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-sequencia-de-pentecostes.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 10, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-01.mp3"}, {"title": "A caminho de Emaús", "duration": 221, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-caminho-de-emaus.mp3"}, {"title": "Jesus Essência do Amor", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-jesus-essenccia-do-amor.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"}, {"title": "O Novo Adão", "duration": 174, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-o-novo-adao.mp3"}, {"title": "Vem Queimar", "duration": 261, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-vem-queimar.mp3"}]}, {"hour": 1, "pt": {"title": "Vigília de Fé", "description": "Um tempo de oração e esperança durante a madrugada."}, "en": {"title": "Vigil of Faith", "description": "A time of prayer and hope during the night."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Vigília da Fé", "duration": 18, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Programa-Vigilia-de-Fe-1h.mp3"}, {"title": "Monte da Presença", "duration": 164, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-monte-da-presenca.mp3"}, {"title": "Lugar Perfeito", "duration": 187, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-lugar-perfeito.mp3"}, {"title": "Quando o Céu Respira", "duration": 163, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-quando-o-ceu-respira.mp3"}, {"title": "Eu Quero o Céu", "duration": 180, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-eu-quero-o-ceu.mp3"}, {"title": "O Novo Tempo", "duration": 152, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-novo-tempo.mp3"}, {"title": "A Paz do Senhor", "duration": 157, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-paz-do-senhor.mp3"}, {"title": "Graça da Salvação", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-da-salvacao.mp3"}, {"title": "Torrentes de Sabedoria", "duration": 219, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-torrentes-de-sabedoria.mp3"}, {"title": "Orvalho do Espírito", "duration": 178, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-orvalho-do-espirito.mp3"}, {"title": "Sopro do Altíssimo", "duration": 226, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-sopro-do-altissimo.mp3"}, {"title": "Jardim da Eternidade", "duration": 142, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-jardim-da-eternidade.mp3"}, {"title": "Quietude da Alma", "duration": 221, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-quietude-da-alma.mp3"}, {"title": "São Miguel Arcanjo", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"}, {"title": "Sombra do Onipotente", "duration": 189, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-sombra-do-onipotente.mp3"}, {"title": "Cristo Ressuscitado", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"}, {"title": "Triunfante Vem Jesus", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-triunfante-vem-jesus.mp3"}, {"title": "Sei que Cuidas de Mim", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"}]}, {"hour": 2, "pt": {"title": "Salmos da Madrugada", "description": "Salmos, oração e louvor para atravessar a noite com Deus."}, "en": {"title": "Psalms of the Night", "description": "Psalms, prayer and praise through the night with God."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Salmos da Madrugada", "duration": 10, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Programa-salmos-da-madrugada-2h.mp3"}, {"title": "Som da Eternidade", "duration": 202, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-som-da-eternidade.mp3"}, {"title": "Breve Toque de Deus", "duration": 222, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-breve-toque-de-deus.mp3"}, {"title": "Vento Suave de Deus", "duration": 202, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-vento-suave-de-deus.mp3"}, {"title": "Águas da Renovação", "duration": 206, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-aguas-da-renovacao.mp3"}, {"title": "Descanso da Alma", "duration": 206, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-descanso-da-alma.mp3"}, {"title": "Caminho de Nazaré", "duration": 192, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-caminho-de-nazare.mp3"}, {"title": "Cenáculo com Jesus", "duration": 241, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-com-Jesus.mp3"}, {"title": "Faz Meu Coração Compaixão Caridade", "duration": 322, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-faz-meu-coracao-compaixao-caridade.mp3"}, {"title": "Seja Cristo Teu Caminho", "duration": 262, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-seja-cristo-teu-caminho.mp3"}, {"title": "Escudo da Fé", "duration": 189, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-escudo-da-fe.mp3"}, {"title": "Jesus Eternidade", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-jesus-eternidade.mp3"}, {"title": "Caminho do Silêncio", "duration": 217, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-caminho-do-silencio.mp3"}, {"title": "A Porta Aberta", "duration": 186, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"}, {"title": "Caminho da Esperança", "duration": 206, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/12-caminho-da-esperanca.mp3"}, {"title": "Saiba que Sou Teu Deus", "duration": 211, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3"}]}, {"hour": 3, "pt": {"title": "Clamor da Misericórdia", "description": "Um clamor de fé pela misericórdia de Deus."}, "en": {"title": "Cry of Mercy", "description": "A cry of faith for God's mercy."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Clamor da Misericórdia", "duration": 19, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Programa-clamor-da-misericordia-3h.mp3"}, {"title": "Cristo Ressuscitado", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"}, {"title": "Esvazia o Meu Ser", "duration": 214, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-esvazia-o-meu-ser.mp3"}, {"title": "Eu Tomo a Minha Cruz", "duration": 242, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-eu-tomo-a-minha-cruz.mp3"}, {"title": "Acredito em Teu Amor", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-acredito-em-teu-amor.mp3"}, {"title": "Brilho do amor de Deus", "duration": 177, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-brilho-do-amor-de-deus.mp3"}, {"title": "Águas Infinitas", "duration": 316, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-aguas-Infinitas.mp3"}, {"title": "Tua Luz, Tua Luz", "duration": 254, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Tua-luz,-Tua-luz.mp3"}, {"title": "Quero Que Me Transforme", "duration": 278, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-quero-que-me-transforme.mp3"}, {"title": "Jesus Essência do Amor", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-jesus-essenccia-do-amor.mp3"}, {"title": "Minhas Mãos se Erguem em Louvor", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-minhas-maos-se-erguem-em-louvor.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Santidade e Avivamento", "duration": 197, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-santidade-e-avivamento.mp3"}]}, {"hour": 4, "pt": {"title": "Madrugada com Deus", "description": "Louvores suaves e mensagens de paz para a madrugada."}, "en": {"title": "Night with God", "description": "Gentle praise and messages of peace through the night."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Madrugada com Deus", "duration": 19, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Programa-Madrugada-com-Deus-4h.mp3"}, {"title": "Sei que Cuidas de Mim", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"}, {"title": "Para Orar e Meditar", "duration": 177, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-suave--04.mp3"}, {"title": "Deus é Esperança", "duration": 174, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-suave--03.mp3"}, {"title": "Sagrado e Santo Jesus", "duration": 246, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-02.mp3"}, {"title": "Salmos 1", "duration": 241, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Salmo1.mp3"}, {"title": "Salmos 2", "duration": 178, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Salmo-2.mp3"}, {"title": "Salmos 23 24", "duration": 188, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Salmo-23-24.mp3"}, {"title": "Salmos 50 51", "duration": 171, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Salmo-50-51.mp3"}, {"title": "Deus Eterno", "duration": 142, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental---01.mp3"}, {"title": "Oração da Manhã", "duration": 168, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-oracao-da-manha.mp3"}, {"title": "Pai Nosso", "duration": 113, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-pai-nosso.mp3"}, {"title": "Aleluia Aleluia", "duration": 92, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-aleluia-01.mp3"}, {"title": "Glória a Deus nas Alturas", "duration": 201, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-gloria-a-Deus-nas-alturas-v1.mp3"}, {"title": "Ave Maria", "duration": 87, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ave-maria.mp3"}, {"title": "Santo Santo Santo", "duration": 122, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-santo-santo-santo-v2.mp3"}, {"title": "Grandioso És Tu", "duration": 308, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-grandioso-es-tu-v-luz-louvor.mp3"}, {"title": "Toma Minha Vida Seja Tua", "duration": 163, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-toma-minha-vida-e-seja-tua.mp3"}]}, {"hour": 5, "pt": {"title": "Despertar da Fé", "description": "Comece o dia entregando tudo nas mãos de Deus."}, "en": {"title": "Awakening of Faith", "description": "Start the day by placing everything in God's hands."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Despertar da Fé", "duration": 12, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Programa-Despertar-da-Fe-5h.mp3"}, {"title": "A Porta Aberta", "duration": 186, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"}, {"title": "Ave Maria", "duration": 87, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ave-maria.mp3"}, {"title": "Alegria Perene", "duration": 279, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Alegria-Perene.mp3"}, {"title": "Pai Nosso", "duration": 113, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-pai-nosso.mp3"}, {"title": "Brilho do amor de Deus", "duration": 177, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-brilho-do-amor-de-deus.mp3"}, {"title": "A Esperança não Decepciona", "duration": 149, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-suave--02.mp3"}, {"title": "Sem a Tua Luz, Tudo Perde o Sentido", "duration": 231, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-suave--01.mp3"}, {"title": "Mansidão de Jesus", "duration": 154, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-04.mp3"}, {"title": "Aurora dos Tempos", "duration": 162, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-03.mp3"}, {"title": "Salmos 50 51 12A", "duration": 152, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Salmo-50-51-12A.mp3"}, {"title": "Salmos 85 86", "duration": 184, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Salmo-85-86-v1.mp3"}, {"title": "Salmos 88 89", "duration": 172, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-Salmo-88-89.mp3"}, {"title": "Salmos 131 132", "duration": 275, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-Salmo-131-132.mp3"}]}, {"hour": 6, "pt": {"title": "Manhã de Louvor", "description": "Louvores para começar o dia com alegria e fé."}, "en": {"title": "Morning Praise", "description": "Praise songs to begin the day with joy and faith."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Manhã de Louvor", "duration": 29, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Programa-Manha-de-louvor-6h.mp3"}, {"title": "Ave Maria", "duration": 87, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ave-maria.mp3"}, {"title": "Alegria Perene", "duration": 279, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Alegria-Perene.mp3"}, {"title": "Pai Nosso", "duration": 113, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-pai-nosso.mp3"}, {"title": "Brilho do amor de Deus", "duration": 177, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-brilho-do-amor-de-deus.mp3"}, {"title": "Águas Infinitas", "duration": 316, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-aguas-Infinitas.mp3"}, {"title": "Tua Luz, Tua Luz", "duration": 254, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Tua-luz,-Tua-luz.mp3"}, {"title": "Quero Que Me Transforme", "duration": 278, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-quero-que-me-transforme.mp3"}, {"title": "Jesus Essência do Amor", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-jesus-essenccia-do-amor.mp3"}, {"title": "Glória a Deus nas Alturas", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-gloria-a-Deus-nas-alturas.mp3"}, {"title": "Salmos 50 51", "duration": 207, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Salmo-50-51-v1.mp3"}, {"title": "Salmos 85 86", "duration": 191, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Salmo-85-86.mp3"}, {"title": "Salmos 96", "duration": 175, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-Salmo-96-.mp3"}, {"title": "Ele É o Meu Senhor", "duration": 158, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ele-e-meu-senhor.mp3"}, {"title": "Derrama Senhor Teu Espírito", "duration": 187, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-derrama-senhor-teu-espirito.mp3"}, {"title": "Eu Quero o Céu", "duration": 180, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-eu-quero-o-ceu.mp3"}, {"title": "O Novo Tempo", "duration": 152, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-novo-tempo.mp3"}]}, {"hour": 7, "pt": {"title": "Palavra e Vida", "description": "Reflexão, Palavra de Deus e música para fortalecer a caminhada."}, "en": {"title": "Word and Life", "description": "Reflection, God's Word and music to strengthen the journey."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Palavra e Vida", "duration": 19, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Programa-Palavra-e-Vida-7h.mp3"}, {"title": "Deus Conosco", "duration": 187, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Deus-conosco.mp3"}, {"title": "Em Tudo Seu Amor se Revela", "duration": 188, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-em-tudo-seu-amor-se-revela.mp3"}, {"title": "Espírito Santo me Conduz", "duration": 404, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-espirito-santo-me-conduz.mp3"}, {"title": "O Tempo de Deus", "duration": 187, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-o-tempo-de-deus.mp3"}, {"title": "A caminho de Emaús", "duration": 221, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-caminho-de-emaus.mp3"}, {"title": "Mãe da Humanidade", "duration": 188, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-mae-da-humanidade.mp3"}, {"title": "Oração ao Divino Pai Eterno", "duration": 180, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/oracao-divino-pai-eterno-2.mp3"}, {"title": "Senhora Mãe da Paz", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-senhora-mae-da-paz.mp3"}, {"title": "Vestida de Sol", "duration": 245, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-vestida-de-Sol.mp3"}, {"title": "Julgado Pelo Mundo", "duration": 249, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-julgado-pelo-mundo.mp3"}, {"title": "Deus Está em Tudo", "duration": 253, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7--deus-esta-em-tudo.mp3"}, {"title": "Eu Sou o Jardineiro", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6--eu-sou-o-jardineiro.mp3"}, {"title": "Túmulo Vazio", "duration": 174, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5--tumulo-vazio.mp3"}, {"title": "Bodas de Cana", "duration": 184, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8--bodas-de-cana.mp3"}, {"title": "Quem Como Deus", "duration": 223, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-quem-como-Deus.mp3"}, {"title": "Os Muros de Jericó", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-os-muros-de-jerico.mp3"}, {"title": "Chegada a Hora da Vitória", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-chegada-a-hora-da-vitoria.mp3"}, {"title": "Ilumina Minha Jornada", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Ilumina-minha-jornada.mp3"}, {"title": "Chama da Glória", "duration": 233, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-chama-da-gloria.mp3"}, {"title": "Encontro do Amor", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-encontro-de-amor.mp3"}, {"title": "Me Torna Mais Sensível", "duration": 168, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-me-torna-mais-sensivel.mp3"}, {"title": "Minha Fé Renovar", "duration": 173, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-minha-fe-renovar.mp3"}, {"title": "Liberta-me do Mal", "duration": 190, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-liberta-me-do-mal.mp3"}, {"title": "Minha Alma Te Procura", "duration": 169, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-minha-alma-te-procura.mp3"}, {"title": "O Verdadeiro Deus", "duration": 155, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-verdadeiro-deus.mp3"}, {"title": "No Templo Entre os Mestres", "duration": 169, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-no-templo-entre-os-mestres.mp3"}, {"title": "Bem Aventurados", "duration": 232, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Bem-aventurados.mp3"}, {"title": "Verbo se Faz Carne", "duration": 183, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-verbo-se-faz-carne.mp3"}]}, {"hour": 9, "pt": {"title": "Manhã de Esperança", "description": "Canções e mensagens para renovar a esperança."}, "en": {"title": "Morning of Hope", "description": "Songs and messages to renew hope."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Manhã da Esperança", "duration": 22, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-Programa-Manha-da-Esperanca-9h.mp3"}, {"title": "Não Sou Mais Escravo", "duration": 182, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-nao-sou-mais-escravo.mp3"}, {"title": "Recebe a Graça de Deus", "duration": 201, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-recebe-a-graca-de-deus.mp3"}, {"title": "A Palavra de Deus Está Perto de Mim", "duration": 196, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-a-palavra-de-Deus-esta-perto-de-mim.mp3"}, {"title": "Deus Quer o Seu Louvor", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Deus-quer-o-oseu-louvor.mp3"}, {"title": "Quero Ser o Sal da Terra", "duration": 183, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-quero-ser-o-sal-da-terra.mp3"}, {"title": "O Novo Adão", "duration": 174, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-o-novo-adao.mp3"}, {"title": "No Fogo e no Espírito", "duration": 200, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-no-fogo-e-no-espirito.mp3"}, {"title": "Estrela da Manhã", "duration": 242, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Estrela-da-manha-V1.mp3"}, {"title": "Deus de Graça Eterna", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Deus-de-graca-eterna.mp3"}, {"title": "Jesus Pedra Angular", "duration": 148, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-jesus-pedra-angular.mp3"}, {"title": "Águas do Amor", "duration": 251, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-aguas-do-amor.mp3"}, {"title": "A Videira do Amor", "duration": 212, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-videira-do-amor.mp3"}, {"title": "Em Minha Vida Faz Renovo", "duration": 211, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-em-minha-vida-faz-renovo.mp3"}, {"title": "Onde Está a Sua Fé", "duration": 279, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-onde-esta-a-sua-fe.mp3"}, {"title": "Quero ser Árvore Oca", "duration": 259, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-quero-ser-arvore-oca.mp3"}, {"title": "Me Faz Obediência", "duration": 217, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-me-faz-obediencia.mp3"}, {"title": "Acalenta Minha Alma", "duration": 222, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-acalenta-minha-alma.mp3"}, {"title": "Liberta-me", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-liberta-me.mp3"}, {"title": "Infância Interrompida", "duration": 244, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-infancia-interrompida.mp3"}, {"title": "Sua Fé tem Poder", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-sua-fe-tem-poder.mp3"}, {"title": "Quero Ser Sua Casa", "duration": 180, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-quero-ser-sua-casa.mp3"}, {"title": "Só Tua Luz me Satisfaz", "duration": 189, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-so-tua-luz-me-satisfaz.mp3"}, {"title": "Sou Teu Fruto e Criação", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sou-teu-fruto-e-criacao.mp3"}, {"title": "Espírito de Santidade", "duration": 308, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"}, {"title": "Vem Queimar", "duration": 261, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-vem-queimar.mp3"}, {"title": "Jesus Vai te Tocar", "duration": 244, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Jesus-vai-te-tocar.mp3"}, {"title": "Teu Extraordinário", "duration": 216, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-teu-extraordinario.mp3"}, {"title": "Meu Consolador", "duration": 249, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-meu-consolador.mp3"}]}, {"hour": 11, "pt": {"title": "Caminhos do Céu", "description": "Um encontro com a fé, a esperança e a vida cristã."}, "en": {"title": "Paths of Heaven", "description": "A meeting with faith, hope and Christian life."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Caminhos do Céu", "duration": 13, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-Programa-Caminhos-do-ceu-11h.mp3"}, {"title": "Quero Mergulhar no Teu Mistério", "duration": 293, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-quero-mergulhar-no-teu-misterio.mp3"}, {"title": "Te Devolvo a Vida em Vitória", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-te-devolvo-a-vida-em-vitoria.mp3"}, {"title": "Em Teu Mover Sagrado", "duration": 141, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-em-teu-mover-sagrado.mp3"}, {"title": "Jesus Reino Celeste", "duration": 122, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-jesus-reino-celeste.mp3"}, {"title": "Canção de Pentecostes", "duration": 164, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-sequencia-de-pentecostes.mp3"}, {"title": "De Repente Deus Age", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-de-repente-Deus-age.mp3"}, {"title": "Nova Razão Para Viver", "duration": 197, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-nova-razao-para-viver.mp3"}, {"title": "Fonte de Vida Sem Fim", "duration": 279, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-fonte-de-vida-sem-fim.mp3"}, {"title": "No Fim Nada Levamos", "duration": 119, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-no-fim-nada-levamos.mp3"}, {"title": "Herança Celeste", "duration": 240, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-heranca-celeste.mp3"}, {"title": "Resgate Divino de Libertação", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-resgate-divino-de-libertacao.mp3"}, {"title": "Graça da Salvação", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-da-salvacao.mp3"}, {"title": "Torrentes de Sabedoria", "duration": 219, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-torrentes-de-sabedoria.mp3"}, {"title": "Tudo se Revela", "duration": 261, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-tudo-se-revela.mp3"}, {"title": "Ester Iluminada", "duration": 145, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-ester-iluminada.mp3"}, {"title": "Quero Tua Verdade", "duration": 219, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-tua-verdade.mp3"}, {"title": "Verbo Santo Sagrado", "duration": 168, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-verbo-santo-sagrado.mp3"}, {"title": "Vem Louvar Se Entregar", "duration": 216, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-vem-louvar-se-entregar.mp3"}, {"title": "Olhos do Coração", "duration": 265, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-olhos-do-coracao.mp3"}, {"title": "Espera no Senhor", "duration": 222, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-espera no senhor.mp3"}, {"title": "Sua Fé Tem Poder", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-sua-fe-tem-poder.mp3"}, {"title": "Já Não Sigo Mais Sozinho", "duration": 200, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ja-nao-sigo-mais-sozinho.mp3"}, {"title": "Jesus em Tudo me Define", "duration": 199, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Jesus-em-tudo-me-define.mp3"}, {"title": "Não me Deixe Sozinho", "duration": 169, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-nao-me-deixe-sozinho.mp3"}, {"title": "Onde Está Minha Esperança", "duration": 274, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-onde-esta-minha-esperanca.mp3"}, {"title": "Morada do Amor", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-morada-do-amor.mp3"}, {"title": "Guia-me Senhor", "duration": 172, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-guia-me-senhor.mp3"}, {"title": "Rio de Água Viva", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-rio-de-agua-viva.mp3"}, {"title": "Santidade Santidade", "duration": 188, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-santidade-santidade.mp3"}, {"title": "Repousa Sobre Mim", "duration": 205, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-repousa-sobre-mim.mp3"}]}, {"hour": 13, "pt": {"title": "Tarde da Providência", "description": "Uma tarde de confiança no cuidado de Deus."}, "en": {"title": "Afternoon of Providence", "description": "An afternoon of trust in God's care."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Tarde da Providência", "duration": 14, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/13-Programa-Tarde-da-Providencia-13h.mp3"}, {"title": "Até a Última Alma", "duration": 264, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-ate-a-ultima-alma.mp3"}, {"title": "Vem Jesus Me Libertar", "duration": 278, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-vem-jesus-me-libertar.mp3"}, {"title": "Eis Que Tua Palavra se Cumpre", "duration": 281, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Eis-que-tua-palavra-se-cumpre.mp3"}, {"title": "Esperança e Sabedoria", "duration": 186, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-esperanca-e-sabedoria.mp3"}, {"title": "Me Concede a Tua Benção", "duration": 190, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-me-concede-a-tua-bencao.mp3"}, {"title": "Estou Aqui Senhor", "duration": 192, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-estou-aqui-senhor.mp3"}, {"title": "Deus Te Dá os Sentidos", "duration": 164, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Deus-te-da-os-sentidos.mp3"}, {"title": "Vem Nos Dar a Tua Luz", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-vem-nos-dar-a-tua-luz.mp3"}, {"title": "Ele Vem Purificar", "duration": 187, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Ele-vem-purificar-v3.mp3"}, {"title": "Eu Busco o Silêncio", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Eu-busco-o-silencio.mp3"}, {"title": "Deus Sabe, Ele Sabe", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Deus-sabe,-ele-sabe.mp3"}, {"title": "Coração Sacrário", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-coracao-sacrario.mp3"}, {"title": "És Meu Rei, Minha Morada", "duration": 215, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-es-meu-rei-minha-morada.mp3"}, {"title": "Herdeiros do Reino dos Céus", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-herdeiros-do-reino-dos-ceus.mp3"}, {"title": "O Nome Que Veio do Céu", "duration": 227, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-o-nome-que-veio-do-ceu.mp3"}, {"title": "Brilhou a Esperança", "duration": 211, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-brilhou-a-esperanca.mp3"}, {"title": "Minha Alma Busca o Céu", "duration": 309, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-minha-alma-busca-o-ceu.mp3"}, {"title": "Sem Jesus Não Somos Nada", "duration": 296, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sem-jesus-nao-somos-nada.mp3"}, {"title": "Ungido do Senhor", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ungido-do-senhor.mp3"}, {"title": "São Miguel Arcanjo", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"}, {"title": "Cristo Ressuscitado", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"}, {"title": "Triunfante Vem Jesus", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-triunfante-vem-jesus.mp3"}, {"title": "Sei que Cuidas de Mim", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"}, {"title": "Recebe Hoje o meu Sim", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"}, {"title": "Faz Meu Coração Compaixão Caridade", "duration": 322, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-faz-meu-coracao-compaixao-caridade.mp3"}, {"title": "Seja Cristo Teu Caminho", "duration": 262, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-seja-cristo-teu-caminho.mp3"}, {"title": "Escudo da Fé", "duration": 189, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-escudo-da-fe.mp3"}, {"title": "Jesus Eternidade", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-jesus-eternidade.mp3"}]}, {"hour": 15, "pt": {"title": "Hora da Misericórdia", "description": "Um momento de oração e confiança na misericórdia de Jesus."}, "en": {"title": "Hour of Mercy", "description": "A moment of prayer and trust in Jesus' mercy."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Hora da Misericórdia", "duration": 16, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/15-Programa-Hora-da-Misericordia-15h-v2.mp3"}, {"title": "São Miguel Arcanjo", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"}, {"title": "Maria Cheia de Luz", "duration": 274, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-maria-cheia-de-luz.mp3"}, {"title": "Santa Faustina", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"}, {"title": "Mãe de Deus Bendita", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Mae-de-deus-bendita.mp3"}, {"title": "Se Entregue a Jesus", "duration": 242, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-se-entregue-a-Jesus.mp3"}, {"title": "Graça e Vitória", "duration": 256, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-e-vitoria.mp3"}, {"title": "Teu Jugo é Suave", "duration": 293, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-teu-jugo-e-suave.mp3"}, {"title": "Vida Nova Encontrei", "duration": 289, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-vida-nova-encontrei.mp3"}, {"title": "Mestre da Multidão", "duration": 267, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-mestre-da-multidao.mp3"}, {"title": "Jesus Fiel", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-jesus-fiel.mp3"}, {"title": "Trono Eterno", "duration": 391, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-trono-eterno.mp3"}]}, {"hour": 16, "pt": {"title": "Tarde com Jesus", "description": "Um momento especial para renovar a fé e descansar o coração em Jesus."}, "en": {"title": "Afternoon with Jesus", "description": "A special moment to renew faith and rest the heart in Jesus."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Tarde com Jesus", "duration": 21, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/16-Programa-Tarde-com-Jesus-16h.mp3"}, {"title": "A Cruz era pra Mim", "duration": 233, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-cruz-era-pra-mim.mp3"}, {"title": "Rei da Glória", "duration": 215, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-rei-da-gloria.mp3"}, {"title": "Exaltado Seja", "duration": 184, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-exaltado-seja.mp3"}, {"title": "Informativo Paroquial", "duration": 102, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/curso-ingles-dpe-final.mp3"}, {"title": "Deus é Piedade", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-deus-e-piedade.mp3"}, {"title": "Maria Canto e Clamor", "duration": 225, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-maria-maria-canto-e-clamor.mp3"}, {"title": "Torre de Marfim", "duration": 191, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-torre-de-marfim.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Cenáculo Sagrado", "duration": 230, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-sagrado.mp3"}, {"title": "Rosa Perfeita", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-rosa-perfeita.mp3"}, {"title": "Santo é o Meu Deus", "duration": 189, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-santo-e-o-meu-Deus.mp3"}, {"title": "Informativo Paroquial", "duration": 168, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-final.mp3"}, {"title": "Tudo se Esclarecerá", "duration": 165, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Tudo-se-esclarecera.mp3"}, {"title": "Em Teus Braços me Sinto Seguro", "duration": 144, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Em-teus-braços-me-sinto-seguro.mp3"}, {"title": "Somos filhos do Céu", "duration": 211, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Somos-filhos-do-ceu.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Deus Meu Deus", "duration": 278, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Deus-meu-Deus.mp3"}, {"title": "O Rei Está Chegando", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-o-rei-esta-chegando.mp3"}, {"title": "Sei Que Tenho Seu Amparo", "duration": 248, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-sei-que-tenho-seu-amparo.mp3"}, {"title": "Inclinai Seus Ouvidos", "duration": 252, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-inclinai-seus-ouvidos.mp3"}, {"title": "O Incrível Vai Acontecer", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-o-incrivel-vai-acontecer.mp3"}, {"title": "Lembra Lembra", "duration": 228, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-lembra-lembra.mp3"}, {"title": "Em Deus Você Será Capaz", "duration": 243, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-em-Deus-voce-sera-capaz.mp3"}, {"title": "Tua Mão Que Eu Procuro", "duration": 246, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Tua-mao-que-eu-procuro.mp3"}, {"title": "Águas da Vida Eterna", "duration": 255, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-aguas-da-vida-eterna.mp3"}, {"title": "Eu Acredito No Teu Poder", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-eu-acredito-no-teu-poder.mp3"}, {"title": "Somente Jesus Pode Te Curar", "duration": 223, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-somente-Jesus-pode-te-curar.mp3"}, {"title": "Quero Voltar a Sonhar", "duration": 219, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-quero-voltar-a-sonhar.mp3"}, {"title": "Acredita", "duration": 196, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Acredita.mp3"}, {"title": "A Jesus Meu Coração", "duration": 184, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-A-Jesus-meu-coracao.mp3"}, {"title": "Meu Clarão, Meu Farol", "duration": 154, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-meu-clarao-meu-farol.mp3"}, {"title": "Guardarei Meu Coração no Senhor", "duration": 222, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-guardarei-meu-coracaoo-no-Senhor.mp3"}]}, {"hour": 18, "pt": {"title": "Momento Mariano", "description": "Com Maria, seguimos mais perto de Jesus."}, "en": {"title": "Marian Moment", "description": "With Mary, we walk closer to Jesus."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Momento Mariano", "duration": 15, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/18-Programa-Momento-Mariano-18h-v2.mp3"}, {"title": "São Miguel Arcanjo", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"}, {"title": "Aviso Paroquial", "duration": 168, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-final.mp3"}, {"title": "Maria Cheia de Luz", "duration": 274, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-maria-cheia-de-luz.mp3"}, {"title": "Santa Faustina", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"}, {"title": "Nada Além do Seu Amor", "duration": 236, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-nada-alem-do-seu-amor.mp3"}, {"title": "Aviso Paroquial", "duration": 96, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/catequese-adultos-final.mp3"}, {"title": "Mãe de Deus Bendita", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Mae-de-deus-bendita.mp3"}, {"title": "Serva Santa a Fiel", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-serva--santa-fiel.mp3"}, {"title": "Renuncio a Todas as Coisas", "duration": 256, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Renuncio-a-todas-as-coisas.mp3"}, {"title": "Esvazia o Meu Ser", "duration": 214, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-esvazia-o-meu-ser.mp3"}, {"title": "Eu Tomo a Minha Cruz", "duration": 242, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-eu-tomo-a-minha-cruz.mp3"}, {"title": "Acredito em Teu Amor", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-acredito-em-teu-amor.mp3"}, {"title": "Minhas Mãos se Erguem em Louvor", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-minhas-maos-se-erguem-em-louvor.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Santidade e Avivamento", "duration": 197, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-santidade-e-avivamento.mp3"}]}, {"hour": 19, "pt": {"title": "Luz para as Famílias", "description": "Orações e canções para fortalecer as famílias na fé."}, "en": {"title": "Light for Families", "description": "Prayers and songs to strengthen families in faith."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 5, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"}, {"title": "Luz para as Famílias", "duration": 16, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/19-Programa-Luz-para-as-Familias-19h-v2.mp3"}, {"title": "Liberta o meu Coração", "duration": 223, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-liberta-meu-coracao.mp3"}, {"title": "Senhor Deus do Universo", "duration": 249, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-senhor-Deus-do-universo.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"}, {"title": "Por Deus foi Enviado", "duration": 271, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-por-Deus-foi-enviado.mp3"}, {"title": "Vinde Luz do Amor", "duration": 223, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-viinde-luz-do-amor.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 5, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"}, {"title": "Meu Jesus Misericórdia", "duration": 310, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-meu-jesus-misericordia.mp3"}, {"title": "Sigo Firme em Jesus", "duration": 223, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sigo-firme-em-jesus.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"}, {"title": "Quero Ser Salvo no Amor", "duration": 230, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-quero-ser-salvo-no-amor.mp3"}, {"title": "Sei Que Sabes o Meu Nome", "duration": 230, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-sei-que-sabes-o-meu-nome.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 5, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"}, {"title": "Jesus Terá Vitória Sobre Mim", "duration": 203, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-jesus-tera-vitoria-sobre-mim.mp3"}, {"title": "Quero Ser Iluminado", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-ser-iluminado.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"}, {"title": "Habita em Mim", "duration": 135, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-habita-em-mim.mp3"}, {"title": "Sabedoria Entendimento", "duration": 254, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-sabedoria-entendimento.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 5, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"}, {"title": "Brasa Viva", "duration": 255, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-brasa-viva.mp3"}, {"title": "Te Darei a Minha Herança", "duration": 245, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-te-darei-a-minha-heranca.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"}, {"title": "Luz do Amor Eterno", "duration": 239, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-luz-do-amor-eterno.mp3"}, {"title": "Tende Piedade de Mim", "duration": 190, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-tende-piedade-de-mim.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 5, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"}, {"title": "Me Guio Pelo Espírito", "duration": 189, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-me-guio-pelo-espirito.mp3"}, {"title": "Judas Judas", "duration": 134, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-judas-judas.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"}, {"title": "Atende a Nossa Oração", "duration": 171, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-atende-a-nossa-oracao.mp3"}, {"title": "Jornada Santa", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-jornada-santa.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 5, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"}, {"title": "Predestinados Pela Redenção", "duration": 178, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-predestinados-pela-redencao.mp3"}, {"title": "Faz-me Dócil à Tua Vontade", "duration": 121, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-fazme-docil-a-tua-vontade.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"}, {"title": "Nos Protege Com a Tua Luz", "duration": 185, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-nos-protege-com-tua-luz.mp3"}, {"title": "Minha Paz, Meu Encanto", "duration": 312, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-minha-paz-meu-encanto.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 5, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3"}, {"title": "O Amor Florescerá", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-o-amor-florescera.mp3"}, {"title": "Eu Conheço a Tua História", "duration": 215, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-eu-conheço-a-tua-historia.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"}, {"title": "Tudo É Graça", "duration": 303, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-tudo-e-graca.mp3"}]}, {"hour": 21, "pt": {"title": "Noite de Adoração", "description": "Canções de adoração para elevar o coração a Deus."}, "en": {"title": "Night of Worship", "description": "Worship songs to lift the heart to God."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Noite de Adoração", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/21-Programa-Noite-de-Adoracao-21h-v2.mp3"}, {"title": "A Cruz Sagrada", "duration": 139, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-cruz-sagrada.mp3"}, {"title": "Repousa em Mim", "duration": 219, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-repousa-em-mim.mp3"}, {"title": "São Bento Glorioso", "duration": 233, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-sao-bento-glorioso.mp3"}, {"title": "Santa Faustina", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"}, {"title": "Renova em Mim Tua Promessa", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Renova-em-mim-tua-promessa.mp3"}, {"title": "Maria Cheia de Luz", "duration": 274, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-maria-cheia-de-luz.mp3"}, {"title": "Tua Vontade em Mim", "duration": 240, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Tua-vontade-em-mim.mp3"}, {"title": "Faz de Mim, Exemplo de Amor", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-faz-de-mim-exemplo-de-amor.mp3"}, {"title": "Sustenta o Combate", "duration": 207, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Sustenta-o-Combate.mp3"}, {"title": "Tua Recompensa", "duration": 198, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-tua-recompensa.mp3"}, {"title": "Minha Inquietude", "duration": 197, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Minha-Inquietude.mp3"}, {"title": "Firmes no Senhor", "duration": 137, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Firmes-no-Senhor.mp3"}, {"title": "Semente de Deus", "duration": 164, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-semente-de-Deus.mp3"}, {"title": "Permanece em Mim", "duration": 266, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-permanece-em-mim.mp3"}]}, {"hour": 22, "pt": {"title": "Silêncio e Oração", "description": "Um tempo de recolhimento, paz e oração."}, "en": {"title": "Silence and Prayer", "description": "A time of recollection, peace and prayer."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Silêncio e Oração", "duration": 21, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/22-Programa-Silencio-e-oracao-22h-v2.mp3"}, {"title": "Deus Inigualável", "duration": 217, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Deus-inigualavel.mp3"}, {"title": "Sei que Cuidas de Mim", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"}, {"title": "Só Quero a Tua Amizade", "duration": 280, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-so-quero-a-tua-amizade.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 32, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor.mp3"}, {"title": "Leva-me ao Jardim", "duration": 226, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-leva-me-ao-jardim.mp3"}, {"title": "Clamo Teu Nome Jesus", "duration": 312, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-clamo-teu-nome-jesus.mp3"}, {"title": "Gálatas", "duration": 230, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-galatas.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Saulo Saulo", "duration": 186, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-saulo-saulo.mp3"}, {"title": "Quero Semear no Teu Jardim", "duration": 196, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-semear-no-teu-espirito.mp3"}, {"title": "Foi a Tua Paixão", "duration": 267, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-foi-tua-paixao.mp3"}, {"title": "Habita em Mim", "duration": 135, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-habita-em-mim.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jingle-Radio-Luz-e-Louvor.mp3"}, {"title": "Sabedoria Entendimento", "duration": 254, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-sabedoria-entendimento.mp3"}, {"title": "Quero Ser a Tua Casa", "duration": 288, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-ser-a-tua-casa.mp3"}, {"title": "Revestido do Senhor", "duration": 216, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-revestido-do-Senhor.mp3"}]}, {"hour": 23, "pt": {"title": "Descanso no Senhor", "description": "Termine o dia repousando na presença amorosa de Deus."}, "en": {"title": "Rest in the Lord", "description": "End the day resting in God's loving presence."}, "playlist": [{"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Descanso no Senhor", "duration": 19, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/23-Programa-Descanso-no-Senhor-23h.mp3"}, {"title": "Teu Perdão, Teu Amor, Tua Luz", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-teu-perdao-teu-amor-tua-luz.mp3"}, {"title": "A Ti Sempre Pertencer", "duration": 287, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-a-ti-sempre-pertencer.mp3"}, {"title": "Meu Motivo pra Seguir", "duration": 239, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-meu-motivo-pra-seguir.mp3"}, {"title": "Informativo Paroquial", "duration": 102, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/curso-ingles-dpe-final.mp3"}, {"title": "A Porta Aberta", "duration": 186, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"}, {"title": "Digno de Louvor", "duration": 218, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-digno-de-louvor.mp3"}, {"title": "A Nossa Alegria está em Jesus", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-a-nossa-alegria-esta-em-jesus.mp3"}, {"title": "Aviso Paroquial", "duration": 96, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/catequese-adultos-final.mp3"}, {"title": "Quero Passear em Teu Jardim", "duration": 226, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-passear-em-teu-jardim.mp3"}, {"title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"}, {"title": "Oração da Noite", "duration": 100, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/oracao-noite-01.mp3"}, {"title": "Salvador de Almas", "duration": 238, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-salvador-de-almas.mp3"}, {"title": "Nasci Pra Te Adorar", "duration": 218, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-nasci-pra-te-adorar.mp3"}, {"title": "Aviso Paroquial", "duration": 168, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missas-final.mp3"}, {"title": "Jesus Terá Vitória Sobre Mim", "duration": 203, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-jesus-tera-vitoria-sobre-mim.mp3"}, {"title": "Quero Ser Iluminado", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-ser-iluminado.mp3"}, {"title": "Informativo Paroquial", "duration": 102, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/curso-ingles-dpe-final.mp3"}]}]};
+
+const EMBEDDED_CATALOG = [{"id": "radio-luz-e-louvor-53ecc4", "type": "jingle", "title": "Rádio Luz e Louvor", "duration": 10, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-01.mp3", "active": true}, {"id": "meia-noite-com-deus-39b68d", "type": "opening", "title": "Meia Noite Com Deus", "duration": 26, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/0-Programa-Meia-Noite-com-Deus-0h.mp3", "active": true}, {"id": "som-do-altissimo-325b86", "type": "music", "title": "Som do Altíssimo", "duration": 199, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-som-do-satissimo.mp3", "active": true}, {"id": "verdade-da-graca-79bf4a", "type": "music", "title": "Verdade da Graça", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-veredas-da-graca-SIM.mp3", "active": true}, {"id": "radio-luz-e-louvor-4bb9e7", "type": "vinheta", "title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3", "active": true}, {"id": "rios-de-cura-01161c", "type": "music", "title": "Rios de Cura", "duration": 199, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-rios-de-cura.mp3", "active": true}, {"id": "recebe-hoje-o-meu-sim-5a13c9", "type": "music", "title": "Recebe Hoje o meu Sim", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3", "active": true}, {"id": "luz-do-alto-35d967", "type": "music", "title": "Luz do Alto", "duration": 212, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-luz-do-alto.mp3", "active": true}, {"id": "caminho-de-nazare-ce1106", "type": "music", "title": "Caminho de Nazaré", "duration": 192, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-caminho-de-nazare.mp3", "active": true}, {"id": "cenaculo-com-jesus-0d3bca", "type": "music", "title": "Cenáculo com Jesus", "duration": 241, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-com-Jesus.mp3", "active": true}, {"id": "caminho-do-silencio-016a7c", "type": "music", "title": "Caminho do Silêncio", "duration": 217, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-caminho-do-silencio.mp3", "active": true}, {"id": "a-porta-aberta-93c0dd", "type": "music", "title": "A Porta Aberta", "duration": 186, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3", "active": true}, {"id": "saiba-que-sou-teu-deus-fcb09e", "type": "music", "title": "Saiba que Sou Teu Deus", "duration": 211, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Saiba-que-sou-teu-Deus.mp3", "active": true}, {"id": "mae-de-deus-bendita-7fa85c", "type": "music", "title": "Mãe de Deus Bendita", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Mae-de-deus-bendita.mp3", "active": true}, {"id": "cancao-de-pentecostes-d1cce7", "type": "music", "title": "Canção de Pentecostes", "duration": 164, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-sequencia-de-pentecostes.mp3", "active": true}, {"id": "a-caminho-de-emaus-a50d49", "type": "music", "title": "A caminho de Emaús", "duration": 221, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-caminho-de-emaus.mp3", "active": true}, {"id": "jesus-essencia-do-amor-f145d1", "type": "music", "title": "Jesus Essência do Amor", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-jesus-essenccia-do-amor.mp3", "active": true}, {"id": "o-novo-adao-a8ef53", "type": "music", "title": "O Novo Adão", "duration": 174, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-o-novo-adao.mp3", "active": true}, {"id": "vem-queimar-5cce43", "type": "music", "title": "Vem Queimar", "duration": 261, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-vem-queimar.mp3", "active": true}, {"id": "radio-luz-e-louvor-f1030a", "type": "jingle", "title": "Rádio Luz e Louvor", "duration": 9, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3", "active": true}, {"id": "vigilia-da-fe-c84edf", "type": "opening", "title": "Vigília da Fé", "duration": 18, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Programa-Vigilia-de-Fe-1h.mp3", "active": true}, {"id": "monte-da-presenca-46cbd7", "type": "music", "title": "Monte da Presença", "duration": 164, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-monte-da-presenca.mp3", "active": true}, {"id": "lugar-perfeito-d97e6c", "type": "music", "title": "Lugar Perfeito", "duration": 187, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-lugar-perfeito.mp3", "active": true}, {"id": "quando-o-ceu-respira-58eece", "type": "music", "title": "Quando o Céu Respira", "duration": 163, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-quando-o-ceu-respira.mp3", "active": true}, {"id": "eu-quero-o-ceu-f916eb", "type": "music", "title": "Eu Quero o Céu", "duration": 180, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-eu-quero-o-ceu.mp3", "active": true}, {"id": "o-novo-tempo-dae653", "type": "music", "title": "O Novo Tempo", "duration": 152, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-novo-tempo.mp3", "active": true}, {"id": "a-paz-do-senhor-77432d", "type": "music", "title": "A Paz do Senhor", "duration": 157, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-paz-do-senhor.mp3", "active": true}, {"id": "graca-da-salvacao-53b001", "type": "music", "title": "Graça da Salvação", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-da-salvacao.mp3", "active": true}, {"id": "torrentes-de-sabedoria-b6ec48", "type": "music", "title": "Torrentes de Sabedoria", "duration": 219, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-torrentes-de-sabedoria.mp3", "active": true}, {"id": "orvalho-do-espirito-a853bf", "type": "music", "title": "Orvalho do Espírito", "duration": 178, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-orvalho-do-espirito.mp3", "active": true}, {"id": "sopro-do-altissimo-2106eb", "type": "music", "title": "Sopro do Altíssimo", "duration": 226, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-sopro-do-altissimo.mp3", "active": true}, {"id": "jardim-da-eternidade-f7c076", "type": "music", "title": "Jardim da Eternidade", "duration": 142, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-jardim-da-eternidade.mp3", "active": true}, {"id": "quietude-da-alma-dc2fed", "type": "music", "title": "Quietude da Alma", "duration": 221, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-quietude-da-alma.mp3", "active": true}, {"id": "sao-miguel-arcanjo-a8665d", "type": "music", "title": "São Miguel Arcanjo", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3", "active": true}, {"id": "sombra-do-onipotente-b867ad", "type": "music", "title": "Sombra do Onipotente", "duration": 189, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-sombra-do-onipotente.mp3", "active": true}, {"id": "cristo-ressuscitado-837565", "type": "music", "title": "Cristo Ressuscitado", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3", "active": true}, {"id": "triunfante-vem-jesus-46597d", "type": "music", "title": "Triunfante Vem Jesus", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-triunfante-vem-jesus.mp3", "active": true}, {"id": "sei-que-cuidas-de-mim-d4b326", "type": "music", "title": "Sei que Cuidas de Mim", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3", "active": true}, {"id": "salmos-da-madrugada-314a29", "type": "opening", "title": "Salmos da Madrugada", "duration": 10, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Programa-salmos-da-madrugada-2h.mp3", "active": true}, {"id": "som-da-eternidade-46313f", "type": "music", "title": "Som da Eternidade", "duration": 202, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-som-da-eternidade.mp3", "active": true}, {"id": "breve-toque-de-deus-1dac07", "type": "music", "title": "Breve Toque de Deus", "duration": 222, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-breve-toque-de-deus.mp3", "active": true}, {"id": "vento-suave-de-deus-1f0f3f", "type": "music", "title": "Vento Suave de Deus", "duration": 202, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-vento-suave-de-deus.mp3", "active": true}, {"id": "aguas-da-renovacao-0515ce", "type": "music", "title": "Águas da Renovação", "duration": 206, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-aguas-da-renovacao.mp3", "active": true}, {"id": "descanso-da-alma-ecb5cc", "type": "music", "title": "Descanso da Alma", "duration": 206, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-descanso-da-alma.mp3", "active": true}, {"id": "faz-meu-coracao-compaixao-caridade-6e3dab", "type": "prayer", "title": "Faz Meu Coração Compaixão Caridade", "duration": 322, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-faz-meu-coracao-compaixao-caridade.mp3", "active": true}, {"id": "seja-cristo-teu-caminho-e5703b", "type": "music", "title": "Seja Cristo Teu Caminho", "duration": 262, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-seja-cristo-teu-caminho.mp3", "active": true}, {"id": "escudo-da-fe-e6b98f", "type": "music", "title": "Escudo da Fé", "duration": 189, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-escudo-da-fe.mp3", "active": true}, {"id": "jesus-eternidade-4039a2", "type": "music", "title": "Jesus Eternidade", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-jesus-eternidade.mp3", "active": true}, {"id": "caminho-da-esperanca-94ec01", "type": "music", "title": "Caminho da Esperança", "duration": 206, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/12-caminho-da-esperanca.mp3", "active": true}, {"id": "clamor-da-misericordia-0d7ac4", "type": "opening", "title": "Clamor da Misericórdia", "duration": 19, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Programa-clamor-da-misericordia-3h.mp3", "active": true}, {"id": "esvazia-o-meu-ser-7ad903", "type": "music", "title": "Esvazia o Meu Ser", "duration": 214, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-esvazia-o-meu-ser.mp3", "active": true}, {"id": "eu-tomo-a-minha-cruz-66f3e0", "type": "music", "title": "Eu Tomo a Minha Cruz", "duration": 242, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-eu-tomo-a-minha-cruz.mp3", "active": true}, {"id": "acredito-em-teu-amor-490a13", "type": "music", "title": "Acredito em Teu Amor", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-acredito-em-teu-amor.mp3", "active": true}, {"id": "brilho-do-amor-de-deus-0f2bc4", "type": "music", "title": "Brilho do amor de Deus", "duration": 177, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-brilho-do-amor-de-deus.mp3", "active": true}, {"id": "aguas-infinitas-c3ad70", "type": "music", "title": "Águas Infinitas", "duration": 316, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-aguas-Infinitas.mp3", "active": true}, {"id": "tua-luz-tua-luz-046795", "type": "music", "title": "Tua Luz, Tua Luz", "duration": 254, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Tua-luz,-Tua-luz.mp3", "active": true}, {"id": "quero-que-me-transforme-aa0048", "type": "music", "title": "Quero Que Me Transforme", "duration": 278, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-quero-que-me-transforme.mp3", "active": true}, {"id": "minhas-maos-se-erguem-em-louvor-b6260b", "type": "music", "title": "Minhas Mãos se Erguem em Louvor", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-minhas-maos-se-erguem-em-louvor.mp3", "active": true}, {"id": "santidade-e-avivamento-6e0b18", "type": "music", "title": "Santidade e Avivamento", "duration": 197, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-santidade-e-avivamento.mp3", "active": true}, {"id": "madrugada-com-deus-c32019", "type": "opening", "title": "Madrugada com Deus", "duration": 19, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Programa-Madrugada-com-Deus-4h.mp3", "active": true}, {"id": "para-orar-e-meditar-ead683", "type": "music", "title": "Para Orar e Meditar", "duration": 177, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-suave--04.mp3", "active": true}, {"id": "deus-e-esperanca-dee904", "type": "music", "title": "Deus é Esperança", "duration": 174, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-suave--03.mp3", "active": true}, {"id": "sagrado-e-santo-jesus-1fd703", "type": "music", "title": "Sagrado e Santo Jesus", "duration": 246, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-02.mp3", "active": true}, {"id": "salmos-1-1111d2", "type": "music", "title": "Salmos 1", "duration": 241, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Salmo1.mp3", "active": true}, {"id": "salmos-2-829044", "type": "music", "title": "Salmos 2", "duration": 178, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Salmo-2.mp3", "active": true}, {"id": "salmos-23-24-a574e8", "type": "music", "title": "Salmos 23 24", "duration": 188, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Salmo-23-24.mp3", "active": true}, {"id": "salmos-50-51-913125", "type": "music", "title": "Salmos 50 51", "duration": 171, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Salmo-50-51.mp3", "active": true}, {"id": "deus-eterno-b72c42", "type": "music", "title": "Deus Eterno", "duration": 142, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental---01.mp3", "active": true}, {"id": "pai-nosso-2b462d", "type": "prayer", "title": "Pai Nosso", "duration": 113, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-pai-nosso.mp3", "active": true}, {"id": "aleluia-aleluia-7e9327", "type": "music", "title": "Aleluia Aleluia", "duration": 92, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-aleluia-01.mp3", "active": true}, {"id": "gloria-a-deus-nas-alturas-c5d65c", "type": "music", "title": "Glória a Deus nas Alturas", "duration": 201, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-gloria-a-Deus-nas-alturas-v1.mp3", "active": true}, {"id": "ave-maria-4679a9", "type": "prayer", "title": "Ave Maria", "duration": 87, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ave-maria.mp3", "active": true}, {"id": "santo-santo-santo-9854ff", "type": "music", "title": "Santo Santo Santo", "duration": 122, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-santo-santo-santo-v2.mp3", "active": true}, {"id": "grandioso-es-tu-623956", "type": "music", "title": "Grandioso És Tu", "duration": 308, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-grandioso-es-tu-v-luz-louvor.mp3", "active": true}, {"id": "toma-minha-vida-seja-tua-a36e2a", "type": "music", "title": "Toma Minha Vida Seja Tua", "duration": 163, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-toma-minha-vida-e-seja-tua.mp3", "active": true}, {"id": "despertar-da-fe-0f2171", "type": "opening", "title": "Despertar da Fé", "duration": 12, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Programa-Despertar-da-Fe-5h.mp3", "active": true}, {"id": "alegria-perene-1d6744", "type": "music", "title": "Alegria Perene", "duration": 279, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Alegria-Perene.mp3", "active": true}, {"id": "a-esperanca-nao-decepciona-47d885", "type": "music", "title": "A Esperança não Decepciona", "duration": 149, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-suave--02.mp3", "active": true}, {"id": "sem-a-tua-luz-tudo-perde-o-sentido-00baa5", "type": "music", "title": "Sem a Tua Luz, Tudo Perde o Sentido", "duration": 231, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-suave--01.mp3", "active": true}, {"id": "mansidao-de-jesus-5a59d5", "type": "music", "title": "Mansidão de Jesus", "duration": 154, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-04.mp3", "active": true}, {"id": "aurora-dos-tempos-e7e7f8", "type": "music", "title": "Aurora dos Tempos", "duration": 162, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-03.mp3", "active": true}, {"id": "salmos-50-51-12a-dd08f9", "type": "music", "title": "Salmos 50 51 12A", "duration": 152, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Salmo-50-51-12A.mp3", "active": true}, {"id": "salmos-85-86-c9b29d", "type": "music", "title": "Salmos 85 86", "duration": 184, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Salmo-85-86-v1.mp3", "active": true}, {"id": "salmos-88-89-26979f", "type": "music", "title": "Salmos 88 89", "duration": 172, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-Salmo-88-89.mp3", "active": true}, {"id": "salmos-131-132-c2143a", "type": "music", "title": "Salmos 131 132", "duration": 275, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-Salmo-131-132.mp3", "active": true}, {"id": "manha-de-louvor-90e208", "type": "opening", "title": "Manhã de Louvor", "duration": 29, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Programa-Manha-de-louvor-6h.mp3", "active": true}, {"id": "gloria-a-deus-nas-alturas-beec01", "type": "music", "title": "Glória a Deus nas Alturas", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-gloria-a-Deus-nas-alturas.mp3", "active": true}, {"id": "salmos-50-51-3bf1db", "type": "music", "title": "Salmos 50 51", "duration": 207, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Salmo-50-51-v1.mp3", "active": true}, {"id": "salmos-85-86-4500aa", "type": "music", "title": "Salmos 85 86", "duration": 191, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Salmo-85-86.mp3", "active": true}, {"id": "salmos-96-67dd21", "type": "music", "title": "Salmos 96", "duration": 175, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-Salmo-96-.mp3", "active": true}, {"id": "ele-e-o-meu-senhor-208f43", "type": "music", "title": "Ele É o Meu Senhor", "duration": 158, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ele-e-meu-senhor.mp3", "active": true}, {"id": "derrama-senhor-teu-espirito-8bcad1", "type": "music", "title": "Derrama Senhor Teu Espírito", "duration": 187, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-derrama-senhor-teu-espirito.mp3", "active": true}, {"id": "palavra-e-vida-d7dfa0", "type": "opening", "title": "Palavra e Vida", "duration": 19, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Programa-Palavra-e-Vida-7h.mp3", "active": true}, {"id": "deus-conosco-a254a9", "type": "music", "title": "Deus Conosco", "duration": 187, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Deus-conosco.mp3", "active": true}, {"id": "em-tudo-seu-amor-se-revela-667ce5", "type": "music", "title": "Em Tudo Seu Amor se Revela", "duration": 188, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-em-tudo-seu-amor-se-revela.mp3", "active": true}, {"id": "espirito-santo-me-conduz-759196", "type": "music", "title": "Espírito Santo me Conduz", "duration": 404, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-espirito-santo-me-conduz.mp3", "active": true}, {"id": "o-tempo-de-deus-85ad0d", "type": "music", "title": "O Tempo de Deus", "duration": 187, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-o-tempo-de-deus.mp3", "active": true}, {"id": "mae-da-humanidade-d2067c", "type": "music", "title": "Mãe da Humanidade", "duration": 188, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-mae-da-humanidade.mp3", "active": true}, {"id": "senhora-mae-da-paz-6f568d", "type": "music", "title": "Senhora Mãe da Paz", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-senhora-mae-da-paz.mp3", "active": true}, {"id": "vestida-de-sol-ac80c6", "type": "music", "title": "Vestida de Sol", "duration": 245, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-vestida-de-Sol.mp3", "active": true}, {"id": "julgado-pelo-mundo-a8d634", "type": "music", "title": "Julgado Pelo Mundo", "duration": 249, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-julgado-pelo-mundo.mp3", "active": true}, {"id": "deus-esta-em-tudo-8603db", "type": "music", "title": "Deus Está em Tudo", "duration": 253, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7--deus-esta-em-tudo.mp3", "active": true}, {"id": "eu-sou-o-jardineiro-468ca3", "type": "music", "title": "Eu Sou o Jardineiro", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6--eu-sou-o-jardineiro.mp3", "active": true}, {"id": "tumulo-vazio-3a0c75", "type": "music", "title": "Túmulo Vazio", "duration": 174, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5--tumulo-vazio.mp3", "active": true}, {"id": "bodas-de-cana-8de6e1", "type": "music", "title": "Bodas de Cana", "duration": 184, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8--bodas-de-cana.mp3", "active": true}, {"id": "quem-como-deus-e8db8e", "type": "music", "title": "Quem Como Deus", "duration": 223, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-quem-como-Deus.mp3", "active": true}, {"id": "os-muros-de-jerico-1d7334", "type": "music", "title": "Os Muros de Jericó", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-os-muros-de-jerico.mp3", "active": true}, {"id": "chegada-a-hora-da-vitoria-e3bfb8", "type": "music", "title": "Chegada a Hora da Vitória", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-chegada-a-hora-da-vitoria.mp3", "active": true}, {"id": "ilumina-minha-jornada-3223c7", "type": "music", "title": "Ilumina Minha Jornada", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Ilumina-minha-jornada.mp3", "active": true}, {"id": "chama-da-gloria-902e81", "type": "music", "title": "Chama da Glória", "duration": 233, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-chama-da-gloria.mp3", "active": true}, {"id": "encontro-do-amor-583e47", "type": "music", "title": "Encontro do Amor", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-encontro-de-amor.mp3", "active": true}, {"id": "me-torna-mais-sensivel-69f894", "type": "music", "title": "Me Torna Mais Sensível", "duration": 168, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-me-torna-mais-sensivel.mp3", "active": true}, {"id": "minha-fe-renovar-367bcd", "type": "music", "title": "Minha Fé Renovar", "duration": 173, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-minha-fe-renovar.mp3", "active": true}, {"id": "liberta-me-do-mal-f29edc", "type": "music", "title": "Liberta-me do Mal", "duration": 190, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-liberta-me-do-mal.mp3", "active": true}, {"id": "minha-alma-te-procura-2f87ed", "type": "music", "title": "Minha Alma Te Procura", "duration": 169, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-minha-alma-te-procura.mp3", "active": true}, {"id": "o-verdadeiro-deus-08d504", "type": "music", "title": "O Verdadeiro Deus", "duration": 155, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-verdadeiro-deus.mp3", "active": true}, {"id": "no-templo-entre-os-mestres-abfe86", "type": "music", "title": "No Templo Entre os Mestres", "duration": 169, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-no-templo-entre-os-mestres.mp3", "active": true}, {"id": "bem-aventurados-abc34f", "type": "music", "title": "Bem Aventurados", "duration": 232, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Bem-aventurados.mp3", "active": true}, {"id": "verbo-se-faz-carne-189785", "type": "music", "title": "Verbo se Faz Carne", "duration": 183, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-verbo-se-faz-carne.mp3", "active": true}, {"id": "manha-da-esperanca-02e5bd", "type": "opening", "title": "Manhã da Esperança", "duration": 22, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-Programa-Manha-da-Esperanca-9h.mp3", "active": true}, {"id": "nao-sou-mais-escravo-770406", "type": "music", "title": "Não Sou Mais Escravo", "duration": 182, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-nao-sou-mais-escravo.mp3", "active": true}, {"id": "recebe-a-graca-de-deus-3117b3", "type": "music", "title": "Recebe a Graça de Deus", "duration": 201, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-recebe-a-graca-de-deus.mp3", "active": true}, {"id": "a-palavra-de-deus-esta-perto-de-mim-165c93", "type": "music", "title": "A Palavra de Deus Está Perto de Mim", "duration": 196, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-a-palavra-de-Deus-esta-perto-de-mim.mp3", "active": true}, {"id": "deus-quer-o-seu-louvor-6d8ca2", "type": "music", "title": "Deus Quer o Seu Louvor", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Deus-quer-o-oseu-louvor.mp3", "active": true}, {"id": "quero-ser-o-sal-da-terra-f5933e", "type": "music", "title": "Quero Ser o Sal da Terra", "duration": 183, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-quero-ser-o-sal-da-terra.mp3", "active": true}, {"id": "no-fogo-e-no-espirito-972c27", "type": "music", "title": "No Fogo e no Espírito", "duration": 200, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-no-fogo-e-no-espirito.mp3", "active": true}, {"id": "estrela-da-manha-a9f288", "type": "music", "title": "Estrela da Manhã", "duration": 242, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Estrela-da-manha-V1.mp3", "active": true}, {"id": "deus-de-graca-eterna-61436a", "type": "music", "title": "Deus de Graça Eterna", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Deus-de-graca-eterna.mp3", "active": true}, {"id": "jesus-pedra-angular-a55ff8", "type": "music", "title": "Jesus Pedra Angular", "duration": 148, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-jesus-pedra-angular.mp3", "active": true}, {"id": "aguas-do-amor-3dd960", "type": "music", "title": "Águas do Amor", "duration": 251, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-aguas-do-amor.mp3", "active": true}, {"id": "a-videira-do-amor-b11936", "type": "music", "title": "A Videira do Amor", "duration": 212, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-videira-do-amor.mp3", "active": true}, {"id": "em-minha-vida-faz-renovo-c1d73b", "type": "music", "title": "Em Minha Vida Faz Renovo", "duration": 211, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-em-minha-vida-faz-renovo.mp3", "active": true}, {"id": "onde-esta-a-sua-fe-24d245", "type": "music", "title": "Onde Está a Sua Fé", "duration": 279, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-onde-esta-a-sua-fe.mp3", "active": true}, {"id": "quero-ser-arvore-oca-ca4d48", "type": "music", "title": "Quero ser Árvore Oca", "duration": 259, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-quero-ser-arvore-oca.mp3", "active": true}, {"id": "me-faz-obediencia-c792dd", "type": "music", "title": "Me Faz Obediência", "duration": 217, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-me-faz-obediencia.mp3", "active": true}, {"id": "acalenta-minha-alma-305dbf", "type": "music", "title": "Acalenta Minha Alma", "duration": 222, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-acalenta-minha-alma.mp3", "active": true}, {"id": "liberta-me-623f9f", "type": "music", "title": "Liberta-me", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-liberta-me.mp3", "active": true}, {"id": "infancia-interrompida-4defa0", "type": "music", "title": "Infância Interrompida", "duration": 244, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-infancia-interrompida.mp3", "active": true}, {"id": "sua-fe-tem-poder-0a4261", "type": "music", "title": "Sua Fé tem Poder", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-sua-fe-tem-poder.mp3", "active": true}, {"id": "quero-ser-sua-casa-d9d375", "type": "music", "title": "Quero Ser Sua Casa", "duration": 180, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-quero-ser-sua-casa.mp3", "active": true}, {"id": "so-tua-luz-me-satisfaz-40138b", "type": "music", "title": "Só Tua Luz me Satisfaz", "duration": 189, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-so-tua-luz-me-satisfaz.mp3", "active": true}, {"id": "sou-teu-fruto-e-criacao-e65448", "type": "music", "title": "Sou Teu Fruto e Criação", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sou-teu-fruto-e-criacao.mp3", "active": true}, {"id": "espirito-de-santidade-42396d", "type": "music", "title": "Espírito de Santidade", "duration": 308, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3", "active": true}, {"id": "jesus-vai-te-tocar-df492c", "type": "music", "title": "Jesus Vai te Tocar", "duration": 244, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Jesus-vai-te-tocar.mp3", "active": true}, {"id": "teu-extraordinario-319ff6", "type": "music", "title": "Teu Extraordinário", "duration": 216, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-teu-extraordinario.mp3", "active": true}, {"id": "meu-consolador-3ecba2", "type": "music", "title": "Meu Consolador", "duration": 249, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-meu-consolador.mp3", "active": true}, {"id": "caminhos-do-ceu-84c83b", "type": "opening", "title": "Caminhos do Céu", "duration": 13, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-Programa-Caminhos-do-ceu-11h.mp3", "active": true}, {"id": "quero-mergulhar-no-teu-misterio-7b8008", "type": "music", "title": "Quero Mergulhar no Teu Mistério", "duration": 293, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-quero-mergulhar-no-teu-misterio.mp3", "active": true}, {"id": "te-devolvo-a-vida-em-vitoria-2dfa4d", "type": "music", "title": "Te Devolvo a Vida em Vitória", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-te-devolvo-a-vida-em-vitoria.mp3", "active": true}, {"id": "em-teu-mover-sagrado-349ccd", "type": "music", "title": "Em Teu Mover Sagrado", "duration": 141, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-em-teu-mover-sagrado.mp3", "active": true}, {"id": "jesus-reino-celeste-446876", "type": "music", "title": "Jesus Reino Celeste", "duration": 122, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-jesus-reino-celeste.mp3", "active": true}, {"id": "de-repente-deus-age-60d5b7", "type": "music", "title": "De Repente Deus Age", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-de-repente-Deus-age.mp3", "active": true}, {"id": "nova-razao-para-viver-55e437", "type": "music", "title": "Nova Razão Para Viver", "duration": 197, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-nova-razao-para-viver.mp3", "active": true}, {"id": "fonte-de-vida-sem-fim-095882", "type": "music", "title": "Fonte de Vida Sem Fim", "duration": 279, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-fonte-de-vida-sem-fim.mp3", "active": true}, {"id": "no-fim-nada-levamos-cc4bd9", "type": "music", "title": "No Fim Nada Levamos", "duration": 119, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-no-fim-nada-levamos.mp3", "active": true}, {"id": "heranca-celeste-4218bf", "type": "music", "title": "Herança Celeste", "duration": 240, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-heranca-celeste.mp3", "active": true}, {"id": "resgate-divino-de-libertacao-97e24d", "type": "music", "title": "Resgate Divino de Libertação", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-resgate-divino-de-libertacao.mp3", "active": true}, {"id": "tudo-se-revela-eaaaed", "type": "music", "title": "Tudo se Revela", "duration": 261, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-tudo-se-revela.mp3", "active": true}, {"id": "ester-iluminada-67ad97", "type": "music", "title": "Ester Iluminada", "duration": 145, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-ester-iluminada.mp3", "active": true}, {"id": "quero-tua-verdade-ae9d8b", "type": "music", "title": "Quero Tua Verdade", "duration": 219, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-tua-verdade.mp3", "active": true}, {"id": "verbo-santo-sagrado-dba500", "type": "music", "title": "Verbo Santo Sagrado", "duration": 168, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-verbo-santo-sagrado.mp3", "active": true}, {"id": "vem-louvar-se-entregar-5c2721", "type": "music", "title": "Vem Louvar Se Entregar", "duration": 216, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-vem-louvar-se-entregar.mp3", "active": true}, {"id": "olhos-do-coracao-6a7bac", "type": "prayer", "title": "Olhos do Coração", "duration": 265, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-olhos-do-coracao.mp3", "active": true}, {"id": "espera-no-senhor-b828f7", "type": "music", "title": "Espera no Senhor", "duration": 222, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-espera no senhor.mp3", "active": true}, {"id": "ja-nao-sigo-mais-sozinho-d5805d", "type": "music", "title": "Já Não Sigo Mais Sozinho", "duration": 200, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ja-nao-sigo-mais-sozinho.mp3", "active": true}, {"id": "jesus-em-tudo-me-define-9c56b4", "type": "music", "title": "Jesus em Tudo me Define", "duration": 199, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Jesus-em-tudo-me-define.mp3", "active": true}, {"id": "nao-me-deixe-sozinho-c04ead", "type": "music", "title": "Não me Deixe Sozinho", "duration": 169, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-nao-me-deixe-sozinho.mp3", "active": true}, {"id": "onde-esta-minha-esperanca-96c107", "type": "music", "title": "Onde Está Minha Esperança", "duration": 274, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-onde-esta-minha-esperanca.mp3", "active": true}, {"id": "morada-do-amor-dcbf64", "type": "music", "title": "Morada do Amor", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-morada-do-amor.mp3", "active": true}, {"id": "guia-me-senhor-bd7583", "type": "music", "title": "Guia-me Senhor", "duration": 172, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-guia-me-senhor.mp3", "active": true}, {"id": "rio-de-agua-viva-aa8813", "type": "music", "title": "Rio de Água Viva", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-rio-de-agua-viva.mp3", "active": true}, {"id": "santidade-santidade-e7b7fd", "type": "music", "title": "Santidade Santidade", "duration": 188, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-santidade-santidade.mp3", "active": true}, {"id": "repousa-sobre-mim-7c562a", "type": "music", "title": "Repousa Sobre Mim", "duration": 205, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-repousa-sobre-mim.mp3", "active": true}, {"id": "tarde-da-providencia-e9746d", "type": "opening", "title": "Tarde da Providência", "duration": 14, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/13-Programa-Tarde-da-Providencia-13h.mp3", "active": true}, {"id": "ate-a-ultima-alma-4d11ef", "type": "music", "title": "Até a Última Alma", "duration": 264, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-ate-a-ultima-alma.mp3", "active": true}, {"id": "vem-jesus-me-libertar-0d1b2c", "type": "music", "title": "Vem Jesus Me Libertar", "duration": 278, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-vem-jesus-me-libertar.mp3", "active": true}, {"id": "eis-que-tua-palavra-se-cumpre-41d801", "type": "music", "title": "Eis Que Tua Palavra se Cumpre", "duration": 281, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Eis-que-tua-palavra-se-cumpre.mp3", "active": true}, {"id": "esperanca-e-sabedoria-a319d3", "type": "music", "title": "Esperança e Sabedoria", "duration": 186, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-esperanca-e-sabedoria.mp3", "active": true}, {"id": "me-concede-a-tua-bencao-1dd464", "type": "music", "title": "Me Concede a Tua Benção", "duration": 190, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-me-concede-a-tua-bencao.mp3", "active": true}, {"id": "estou-aqui-senhor-ea3853", "type": "music", "title": "Estou Aqui Senhor", "duration": 192, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-estou-aqui-senhor.mp3", "active": true}, {"id": "deus-te-da-os-sentidos-40bf09", "type": "music", "title": "Deus Te Dá os Sentidos", "duration": 164, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Deus-te-da-os-sentidos.mp3", "active": true}, {"id": "vem-nos-dar-a-tua-luz-7520fb", "type": "music", "title": "Vem Nos Dar a Tua Luz", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-vem-nos-dar-a-tua-luz.mp3", "active": true}, {"id": "ele-vem-purificar-6917df", "type": "music", "title": "Ele Vem Purificar", "duration": 187, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Ele-vem-purificar-v3.mp3", "active": true}, {"id": "eu-busco-o-silencio-8f768b", "type": "music", "title": "Eu Busco o Silêncio", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Eu-busco-o-silencio.mp3", "active": true}, {"id": "deus-sabe-ele-sabe-f0b136", "type": "music", "title": "Deus Sabe, Ele Sabe", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Deus-sabe,-ele-sabe.mp3", "active": true}, {"id": "coracao-sacrario-9251ca", "type": "prayer", "title": "Coração Sacrário", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-coracao-sacrario.mp3", "active": true}, {"id": "es-meu-rei-minha-morada-c88018", "type": "music", "title": "És Meu Rei, Minha Morada", "duration": 215, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-es-meu-rei-minha-morada.mp3", "active": true}, {"id": "herdeiros-do-reino-dos-ceus-577253", "type": "music", "title": "Herdeiros do Reino dos Céus", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/9-herdeiros-do-reino-dos-ceus.mp3", "active": true}, {"id": "o-nome-que-veio-do-ceu-fa5014", "type": "music", "title": "O Nome Que Veio do Céu", "duration": 227, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-o-nome-que-veio-do-ceu.mp3", "active": true}, {"id": "brilhou-a-esperanca-8352df", "type": "music", "title": "Brilhou a Esperança", "duration": 211, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-brilhou-a-esperanca.mp3", "active": true}, {"id": "minha-alma-busca-o-ceu-ddfc57", "type": "music", "title": "Minha Alma Busca o Céu", "duration": 309, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-minha-alma-busca-o-ceu.mp3", "active": true}, {"id": "sem-jesus-nao-somos-nada-782cdc", "type": "music", "title": "Sem Jesus Não Somos Nada", "duration": 296, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sem-jesus-nao-somos-nada.mp3", "active": true}, {"id": "ungido-do-senhor-601af7", "type": "music", "title": "Ungido do Senhor", "duration": 234, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ungido-do-senhor.mp3", "active": true}, {"id": "hora-da-misericordia-a925dc", "type": "opening", "title": "Hora da Misericórdia", "duration": 16, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/15-Programa-Hora-da-Misericordia-15h-v2.mp3", "active": true}, {"id": "maria-cheia-de-luz-8bd80b", "type": "music", "title": "Maria Cheia de Luz", "duration": 274, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-maria-cheia-de-luz.mp3", "active": true}, {"id": "santa-faustina-e4c5de", "type": "music", "title": "Santa Faustina", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3", "active": true}, {"id": "se-entregue-a-jesus-5e3618", "type": "music", "title": "Se Entregue a Jesus", "duration": 242, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-se-entregue-a-Jesus.mp3", "active": true}, {"id": "graca-e-vitoria-00dcf2", "type": "music", "title": "Graça e Vitória", "duration": 256, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-e-vitoria.mp3", "active": true}, {"id": "teu-jugo-e-suave-f6cb35", "type": "music", "title": "Teu Jugo é Suave", "duration": 293, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-teu-jugo-e-suave.mp3", "active": true}, {"id": "vida-nova-encontrei-80a863", "type": "music", "title": "Vida Nova Encontrei", "duration": 289, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-vida-nova-encontrei.mp3", "active": true}, {"id": "mestre-da-multidao-d20e6f", "type": "music", "title": "Mestre da Multidão", "duration": 267, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-mestre-da-multidao.mp3", "active": true}, {"id": "jesus-fiel-1908c7", "type": "music", "title": "Jesus Fiel", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-jesus-fiel.mp3", "active": true}, {"id": "trono-eterno-5f060a", "type": "music", "title": "Trono Eterno", "duration": 391, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-trono-eterno.mp3", "active": true}, {"id": "tarde-com-jesus-b7be2f", "type": "opening", "title": "Tarde com Jesus", "duration": 21, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/16-Programa-Tarde-com-Jesus-16h.mp3", "active": true}, {"id": "a-cruz-era-pra-mim-c38337", "type": "music", "title": "A Cruz era pra Mim", "duration": 233, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-cruz-era-pra-mim.mp3", "active": true}, {"id": "rei-da-gloria-5685a9", "type": "music", "title": "Rei da Glória", "duration": 215, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-rei-da-gloria.mp3", "active": true}, {"id": "exaltado-seja-22a751", "type": "music", "title": "Exaltado Seja", "duration": 184, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-exaltado-seja.mp3", "active": true}, {"id": "deus-e-piedade-ea3d73", "type": "music", "title": "Deus é Piedade", "duration": 195, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-deus-e-piedade.mp3", "active": true}, {"id": "maria-canto-e-clamor-9f2dd9", "type": "music", "title": "Maria Canto e Clamor", "duration": 225, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-maria-maria-canto-e-clamor.mp3", "active": true}, {"id": "torre-de-marfim-896ba2", "type": "music", "title": "Torre de Marfim", "duration": 191, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-torre-de-marfim.mp3", "active": true}, {"id": "cenaculo-sagrado-be5fef", "type": "music", "title": "Cenáculo Sagrado", "duration": 230, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-sagrado.mp3", "active": true}, {"id": "rosa-perfeita-74808f", "type": "music", "title": "Rosa Perfeita", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-rosa-perfeita.mp3", "active": true}, {"id": "santo-e-o-meu-deus-f2651f", "type": "music", "title": "Santo é o Meu Deus", "duration": 189, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-santo-e-o-meu-Deus.mp3", "active": true}, {"id": "tudo-se-esclarecera-60f071", "type": "music", "title": "Tudo se Esclarecerá", "duration": 165, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Tudo-se-esclarecera.mp3", "active": true}, {"id": "em-teus-bracos-me-sinto-seguro-350123", "type": "music", "title": "Em Teus Braços me Sinto Seguro", "duration": 144, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Em-teus-braços-me-sinto-seguro.mp3", "active": true}, {"id": "somos-filhos-do-ceu-475749", "type": "music", "title": "Somos filhos do Céu", "duration": 211, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Somos-filhos-do-ceu.mp3", "active": true}, {"id": "deus-meu-deus-c613f7", "type": "music", "title": "Deus Meu Deus", "duration": 278, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Deus-meu-Deus.mp3", "active": true}, {"id": "o-rei-esta-chegando-f3e29c", "type": "music", "title": "O Rei Está Chegando", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-o-rei-esta-chegando.mp3", "active": true}, {"id": "sei-que-tenho-seu-amparo-3104fc", "type": "music", "title": "Sei Que Tenho Seu Amparo", "duration": 248, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-sei-que-tenho-seu-amparo.mp3", "active": true}, {"id": "inclinai-seus-ouvidos-5bf881", "type": "music", "title": "Inclinai Seus Ouvidos", "duration": 252, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-inclinai-seus-ouvidos.mp3", "active": true}, {"id": "o-incrivel-vai-acontecer-5688fc", "type": "music", "title": "O Incrível Vai Acontecer", "duration": 257, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-o-incrivel-vai-acontecer.mp3", "active": true}, {"id": "lembra-lembra-7a6330", "type": "music", "title": "Lembra Lembra", "duration": 228, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-lembra-lembra.mp3", "active": true}, {"id": "em-deus-voce-sera-capaz-a21470", "type": "music", "title": "Em Deus Você Será Capaz", "duration": 243, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-em-Deus-voce-sera-capaz.mp3", "active": true}, {"id": "tua-mao-que-eu-procuro-b0c57c", "type": "music", "title": "Tua Mão Que Eu Procuro", "duration": 246, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Tua-mao-que-eu-procuro.mp3", "active": true}, {"id": "aguas-da-vida-eterna-aa34ee", "type": "music", "title": "Águas da Vida Eterna", "duration": 255, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-aguas-da-vida-eterna.mp3", "active": true}, {"id": "eu-acredito-no-teu-poder-e39151", "type": "music", "title": "Eu Acredito No Teu Poder", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-eu-acredito-no-teu-poder.mp3", "active": true}, {"id": "somente-jesus-pode-te-curar-f96907", "type": "music", "title": "Somente Jesus Pode Te Curar", "duration": 223, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-somente-Jesus-pode-te-curar.mp3", "active": true}, {"id": "quero-voltar-a-sonhar-938faa", "type": "music", "title": "Quero Voltar a Sonhar", "duration": 219, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-quero-voltar-a-sonhar.mp3", "active": true}, {"id": "acredita-1939f3", "type": "music", "title": "Acredita", "duration": 196, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Acredita.mp3", "active": true}, {"id": "a-jesus-meu-coracao-97939c", "type": "prayer", "title": "A Jesus Meu Coração", "duration": 184, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-A-Jesus-meu-coracao.mp3", "active": true}, {"id": "meu-clarao-meu-farol-3e008d", "type": "music", "title": "Meu Clarão, Meu Farol", "duration": 154, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-meu-clarao-meu-farol.mp3", "active": true}, {"id": "guardarei-meu-coracao-no-senhor-eadddd", "type": "prayer", "title": "Guardarei Meu Coração no Senhor", "duration": 222, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-guardarei-meu-coracaoo-no-Senhor.mp3", "active": true}, {"id": "momento-mariano-a5ed71", "type": "opening", "title": "Momento Mariano", "duration": 15, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/18-Programa-Momento-Mariano-18h-v2.mp3", "active": true}, {"id": "nada-alem-do-seu-amor-b60a88", "type": "music", "title": "Nada Além do Seu Amor", "duration": 236, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-nada-alem-do-seu-amor.mp3", "active": true}, {"id": "serva-santa-a-fiel-7e9b42", "type": "music", "title": "Serva Santa a Fiel", "duration": 229, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-serva--santa-fiel.mp3", "active": true}, {"id": "renuncio-a-todas-as-coisas-43456e", "type": "music", "title": "Renuncio a Todas as Coisas", "duration": 256, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Renuncio-a-todas-as-coisas.mp3", "active": true}, {"id": "radio-luz-e-louvor-10722a", "type": "jingle", "title": "Rádio Luz e Louvor", "duration": 5, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short-02.mp3", "active": true}, {"id": "luz-para-as-familias-9c4b60", "type": "opening", "title": "Luz para as Famílias", "duration": 16, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/19-Programa-Luz-para-as-Familias-19h-v2.mp3", "active": true}, {"id": "liberta-o-meu-coracao-3ccd3c", "type": "prayer", "title": "Liberta o meu Coração", "duration": 223, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-liberta-meu-coracao.mp3", "active": true}, {"id": "senhor-deus-do-universo-1880e7", "type": "music", "title": "Senhor Deus do Universo", "duration": 249, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-senhor-Deus-do-universo.mp3", "active": true}, {"id": "por-deus-foi-enviado-849da1", "type": "music", "title": "Por Deus foi Enviado", "duration": 271, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-por-Deus-foi-enviado.mp3", "active": true}, {"id": "vinde-luz-do-amor-f227ef", "type": "music", "title": "Vinde Luz do Amor", "duration": 223, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-viinde-luz-do-amor.mp3", "active": true}, {"id": "meu-jesus-misericordia-1e4892", "type": "music", "title": "Meu Jesus Misericórdia", "duration": 310, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-meu-jesus-misericordia.mp3", "active": true}, {"id": "sigo-firme-em-jesus-ef6c09", "type": "music", "title": "Sigo Firme em Jesus", "duration": 223, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sigo-firme-em-jesus.mp3", "active": true}, {"id": "quero-ser-salvo-no-amor-27afb4", "type": "music", "title": "Quero Ser Salvo no Amor", "duration": 230, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-quero-ser-salvo-no-amor.mp3", "active": true}, {"id": "sei-que-sabes-o-meu-nome-85bd44", "type": "music", "title": "Sei Que Sabes o Meu Nome", "duration": 230, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-sei-que-sabes-o-meu-nome.mp3", "active": true}, {"id": "jesus-tera-vitoria-sobre-mim-9f1d9b", "type": "music", "title": "Jesus Terá Vitória Sobre Mim", "duration": 203, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-jesus-tera-vitoria-sobre-mim.mp3", "active": true}, {"id": "quero-ser-iluminado-e6b585", "type": "music", "title": "Quero Ser Iluminado", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-ser-iluminado.mp3", "active": true}, {"id": "habita-em-mim-f8709f", "type": "music", "title": "Habita em Mim", "duration": 135, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-habita-em-mim.mp3", "active": true}, {"id": "sabedoria-entendimento-9a34d1", "type": "music", "title": "Sabedoria Entendimento", "duration": 254, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-sabedoria-entendimento.mp3", "active": true}, {"id": "brasa-viva-a2e445", "type": "music", "title": "Brasa Viva", "duration": 255, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-brasa-viva.mp3", "active": true}, {"id": "te-darei-a-minha-heranca-1c5d36", "type": "music", "title": "Te Darei a Minha Herança", "duration": 245, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-te-darei-a-minha-heranca.mp3", "active": true}, {"id": "luz-do-amor-eterno-4ff23d", "type": "music", "title": "Luz do Amor Eterno", "duration": 239, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-luz-do-amor-eterno.mp3", "active": true}, {"id": "tende-piedade-de-mim-1ddd56", "type": "music", "title": "Tende Piedade de Mim", "duration": 190, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-tende-piedade-de-mim.mp3", "active": true}, {"id": "me-guio-pelo-espirito-7660ec", "type": "music", "title": "Me Guio Pelo Espírito", "duration": 189, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-me-guio-pelo-espirito.mp3", "active": true}, {"id": "judas-judas-0220d8", "type": "music", "title": "Judas Judas", "duration": 134, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-judas-judas.mp3", "active": true}, {"id": "atende-a-nossa-oracao-ffbb91", "type": "prayer", "title": "Atende a Nossa Oração", "duration": 171, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-atende-a-nossa-oracao.mp3", "active": true}, {"id": "jornada-santa-d92999", "type": "music", "title": "Jornada Santa", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-jornada-santa.mp3", "active": true}, {"id": "predestinados-pela-redencao-3e3438", "type": "music", "title": "Predestinados Pela Redenção", "duration": 178, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-predestinados-pela-redencao.mp3", "active": true}, {"id": "faz-me-docil-a-tua-vontade-818457", "type": "music", "title": "Faz-me Dócil à Tua Vontade", "duration": 121, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-fazme-docil-a-tua-vontade.mp3", "active": true}, {"id": "nos-protege-com-a-tua-luz-a303ff", "type": "music", "title": "Nos Protege Com a Tua Luz", "duration": 185, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-nos-protege-com-tua-luz.mp3", "active": true}, {"id": "minha-paz-meu-encanto-16fa31", "type": "music", "title": "Minha Paz, Meu Encanto", "duration": 312, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-minha-paz-meu-encanto.mp3", "active": true}, {"id": "o-amor-florescera-95a67f", "type": "music", "title": "O Amor Florescerá", "duration": 208, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-o-amor-florescera.mp3", "active": true}, {"id": "eu-conheco-a-tua-historia-a425fe", "type": "music", "title": "Eu Conheço a Tua História", "duration": 215, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-eu-conheço-a-tua-historia.mp3", "active": true}, {"id": "tudo-e-graca-01f5d7", "type": "music", "title": "Tudo É Graça", "duration": 303, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-tudo-e-graca.mp3", "active": true}, {"id": "noite-de-adoracao-5bd80d", "type": "opening", "title": "Noite de Adoração", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/21-Programa-Noite-de-Adoracao-21h-v2.mp3", "active": true}, {"id": "a-cruz-sagrada-054315", "type": "music", "title": "A Cruz Sagrada", "duration": 139, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-cruz-sagrada.mp3", "active": true}, {"id": "repousa-em-mim-a3bc9a", "type": "music", "title": "Repousa em Mim", "duration": 219, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-repousa-em-mim.mp3", "active": true}, {"id": "sao-bento-glorioso-e197a5", "type": "music", "title": "São Bento Glorioso", "duration": 233, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-sao-bento-glorioso.mp3", "active": true}, {"id": "renova-em-mim-tua-promessa-34fb5e", "type": "music", "title": "Renova em Mim Tua Promessa", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Renova-em-mim-tua-promessa.mp3", "active": true}, {"id": "tua-vontade-em-mim-999fc2", "type": "music", "title": "Tua Vontade em Mim", "duration": 240, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Tua-vontade-em-mim.mp3", "active": true}, {"id": "faz-de-mim-exemplo-de-amor-938aa8", "type": "music", "title": "Faz de Mim, Exemplo de Amor", "duration": 194, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-faz-de-mim-exemplo-de-amor.mp3", "active": true}, {"id": "sustenta-o-combate-0b2362", "type": "music", "title": "Sustenta o Combate", "duration": 207, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Sustenta-o-Combate.mp3", "active": true}, {"id": "tua-recompensa-664375", "type": "music", "title": "Tua Recompensa", "duration": 198, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-tua-recompensa.mp3", "active": true}, {"id": "minha-inquietude-99d1d1", "type": "music", "title": "Minha Inquietude", "duration": 197, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Minha-Inquietude.mp3", "active": true}, {"id": "firmes-no-senhor-c13d32", "type": "music", "title": "Firmes no Senhor", "duration": 137, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Firmes-no-Senhor.mp3", "active": true}, {"id": "semente-de-deus-22aca1", "type": "music", "title": "Semente de Deus", "duration": 164, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-semente-de-Deus.mp3", "active": true}, {"id": "permanece-em-mim-ae9695", "type": "music", "title": "Permanece em Mim", "duration": 266, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-permanece-em-mim.mp3", "active": true}, {"id": "silencio-e-oracao-fba5ed", "type": "opening", "title": "Silêncio e Oração", "duration": 21, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/22-Programa-Silencio-e-oracao-22h-v2.mp3", "active": true}, {"id": "deus-inigualavel-34e52f", "type": "music", "title": "Deus Inigualável", "duration": 217, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Deus-inigualavel.mp3", "active": true}, {"id": "so-quero-a-tua-amizade-bde4f3", "type": "music", "title": "Só Quero a Tua Amizade", "duration": 280, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-so-quero-a-tua-amizade.mp3", "active": true}, {"id": "radio-luz-e-louvor-f035db", "type": "vinheta", "title": "Rádio Luz e Louvor", "duration": 32, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor.mp3", "active": true}, {"id": "leva-me-ao-jardim-b853cf", "type": "music", "title": "Leva-me ao Jardim", "duration": 226, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-leva-me-ao-jardim.mp3", "active": true}, {"id": "clamo-teu-nome-jesus-b6e68d", "type": "music", "title": "Clamo Teu Nome Jesus", "duration": 312, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-clamo-teu-nome-jesus.mp3", "active": true}, {"id": "galatas-4db12d", "type": "music", "title": "Gálatas", "duration": 230, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-galatas.mp3", "active": true}, {"id": "saulo-saulo-ee1410", "type": "music", "title": "Saulo Saulo", "duration": 186, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-saulo-saulo.mp3", "active": true}, {"id": "quero-semear-no-teu-jardim-7543dc", "type": "music", "title": "Quero Semear no Teu Jardim", "duration": 196, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-semear-no-teu-espirito.mp3", "active": true}, {"id": "foi-a-tua-paixao-20ad79", "type": "music", "title": "Foi a Tua Paixão", "duration": 267, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-foi-tua-paixao.mp3", "active": true}, {"id": "radio-luz-e-louvor-6db2c9", "type": "jingle", "title": "Rádio Luz e Louvor", "duration": 17, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jingle-Radio-Luz-e-Louvor.mp3", "active": true}, {"id": "quero-ser-a-tua-casa-805ab8", "type": "music", "title": "Quero Ser a Tua Casa", "duration": 288, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-quero-ser-a-tua-casa.mp3", "active": true}, {"id": "revestido-do-senhor-294a81", "type": "music", "title": "Revestido do Senhor", "duration": 216, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-revestido-do-Senhor.mp3", "active": true}, {"id": "descanso-no-senhor-51b201", "type": "opening", "title": "Descanso no Senhor", "duration": 19, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/23-Programa-Descanso-no-Senhor-23h.mp3", "active": true}, {"id": "teu-perdao-teu-amor-tua-luz-8186d4", "type": "music", "title": "Teu Perdão, Teu Amor, Tua Luz", "duration": 209, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-teu-perdao-teu-amor-tua-luz.mp3", "active": true}, {"id": "a-ti-sempre-pertencer-7b9f2d", "type": "music", "title": "A Ti Sempre Pertencer", "duration": 287, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-a-ti-sempre-pertencer.mp3", "active": true}, {"id": "meu-motivo-pra-seguir-2a0d67", "type": "music", "title": "Meu Motivo pra Seguir", "duration": 239, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-meu-motivo-pra-seguir.mp3", "active": true}, {"id": "digno-de-louvor-ca0f6c", "type": "music", "title": "Digno de Louvor", "duration": 218, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-digno-de-louvor.mp3", "active": true}, {"id": "a-nossa-alegria-esta-em-jesus-929db8", "type": "music", "title": "A Nossa Alegria está em Jesus", "duration": 224, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-a-nossa-alegria-esta-em-jesus.mp3", "active": true}, {"id": "quero-passear-em-teu-jardim-491ee7", "type": "music", "title": "Quero Passear em Teu Jardim", "duration": 226, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-passear-em-teu-jardim.mp3", "active": true}, {"id": "salvador-de-almas-d0c106", "type": "music", "title": "Salvador de Almas", "duration": 238, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-salvador-de-almas.mp3", "active": true}, {"id": "nasci-pra-te-adorar-6dd420", "type": "music", "title": "Nasci Pra Te Adorar", "duration": 218, "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-nasci-pra-te-adorar.mp3", "active": true},{
+  "id": "mateus-11-28-30-8f42a1",
+  "type": "prayer",
+  "title": "Evangelho - Mateus 11,28-30",
+  "duration": 284,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/matheus-11-28-30.mp3",
+  "active": true
+},
+{
+  "id": "oracao-divino-pai-eterno-6d71c3",
+  "type": "prayer",
+  "title": "Oração ao Divino Pai Eterno",
+  "duration": 163,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-divino-pai-eterno.mp3",
+  "active": true
+},
+{
+  "id": "oracao-da-noite-2f84b5",
+  "type": "prayer",
+  "title": "Oração da Noite",
+  "duration": 136,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-da-noite.mp3",
+  "active": true
+},
+{
+  "id": "oracao-da-manha-a7e91d",
+  "type": "prayer",
+  "title": "Oração da Manhã",
+  "duration": 124,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-da-manha.mp3",
+  "active": true
+},
+{
+  "id": "apoio-radio-luz-e-louvor-4bd9e7",
+  "type": "announcement",
+  "title": "Apoie a Rádio Luz e Louvor",
+  "duration": 88,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3",
+  "active": true
+},
+{
+  "id": "catequese-para-adultos-c91ef2",
+  "type": "announcement",
+  "title": "Catequese para Adultos",
+  "duration": 74,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-adultos.mp3",
+  "active": true
+},
+{
+  "id": "horario-capela-sao-cristovao-7f15ab",
+  "type": "announcement",
+  "title": "Horário Capela São Cristóvão",
+  "duration": 60,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-s-crist.mp3",
+  "active": true
+},
+{
+  "id": "horario-capela-santo-expedito-e81c42",
+  "type": "announcement",
+  "title": "Horário Capela Santo Expedito",
+  "duration": 59,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-st-expedito.mp3",
+  "active": true
+},
+{
+  "id": "mensagem-de-esperanca-01-d35ab8",
+  "type": "prayer",
+  "title": "Mensagem de Esperança",
+  "duration": 54,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg-esperanca-01.mp3",
+  "active": true
+},
+{
+  "id": "conheca-nossa-igreja-b0a2c7",
+  "type": "announcement",
+  "title": "Conheça nossa Igreja",
+  "duration": 48,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/convite-igreja.mp3",
+  "active": true
+},
+{
+  "id": "apoio-ao-dizimo-82ed6f",
+  "type": "announcement",
+  "title": "Apoio ao Dízimo",
+  "duration": 47,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-dizimo.mp3",
+  "active": true
+},
+{
+  "id": "bencao-do-padre-joao-vitor-61cf4a",
+  "type": "prayer",
+  "title": "Bênção do Padre João Vitor",
+  "duration": 30,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3",
+  "active": true
+},
+{
+  "id": "festa-de-sao-cristovao-fb4921",
+  "type": "announcement",
+  "title": "Festa de São Cristóvão",
+  "duration": 86,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/festa-de-sao-cristovao.mp3",
+  "active": true
+},
+{
+  "id": "horarios-da-matriz-4b7f21",
+  "type": "announcement",
+  "title": "Horários da Matriz",
+  "duration": 85,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-matriz.mp3",
+  "active": true
+},
+{
+  "id": "curso-de-ingles-gratuito-a98e31",
+  "type": "announcement",
+  "title": "Curso de Inglês Gratuito",
+  "duration": 77,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/aulas-de-ingles.mp3",
+  "active": true
+},
+{
+  "id": "pronto-para-me-curar-1f83de",
+  "type": "music",
+  "title": "Pronto para me Curar",
+  "duration": 253,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-pronto-para-me-curar.mp3",
+  "active": true
+},
+{
+  "id": "cura-eterna-fonte-de-luz-a13cb7",
+  "type": "music",
+  "title": "Cura Eterna, Fonte de Luz",
+  "duration": 243,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-cura-eterna-fonte-de-luz.mp3",
+  "active": true
+},
+{
+  "id": "abraca-o-deus-que-te-ama-52fdc1",
+  "type": "music",
+  "title": "Abraça, ó Deus, que te Ama",
+  "duration": 220,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-abraca-o-deus-que-te-ama.mp3",
+  "active": true
+},
+{
+  "id": "quero-estar-repleto-de-deus-5e9b24",
+  "type": "music",
+  "title": "Quero Estar Repleto de Deus",
+  "duration": 215,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-quero-estar-repleto-de-deus.mp3",
+  "active": true
+},
+{
+  "id": "livre-para-buscar-a-eternidade-d92ac4",
+  "type": "music",
+  "title": "Livre para Buscar a Eternidade",
+  "duration": 224,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-livre-para-buscar-a-eternidade.mp3",
+  "active": true
+},
+{
+  "id": "vem-me-transformar-74cb61",
+  "type": "music",
+  "title": "Vem me Transformar",
+  "duration": 203,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-vem-me-transformar.mp3",
+  "active": true
+},
+{
+  "id": "deus-e-misterio-3be71d",
+  "type": "music",
+  "title": "Deus é Mistério",
+  "duration": 192,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-deus-e-misterio.mp3",
+  "active": true
+},
+{
+  "id": "sei-que-tens-piedade-c64d2f",
+  "type": "music",
+  "title": "Sei que Tens Piedade",
+  "duration": 282,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei-que-tens-piedade.mp3",
+  "active": true
+},
+{
+  "id": "so-quero-te-seguir-97e5ab",
+  "type": "music",
+  "title": "Só Quero te Seguir",
+  "duration": 245,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-so-quero-te-seguir.mp3",
+  "active": true
+},
+{
+  "id": "coracao-batendo-forte-a18fd4",
+  "type": "music",
+  "title": "Coração Batendo Forte",
+  "duration": 184,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-coracao-batendo-forte.mp3",
+  "active": true
+},
+{
+  "id": "vem-me-libertar-fc6b20",
+  "type": "music",
+  "title": "Vem me Libertar",
+  "duration": 210,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-vem-me-libertar.mp3",
+  "active": true
+},
+{
+  "id": "faz-da-vida-um-vaso-farto-32ec41",
+  "type": "music",
+  "title": "Faz da Vida um Vaso Farto",
+  "duration": 209,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-faz-da-vida-um-vaso-farto.mp3",
+  "active": true
+},
+{
+  "id": "nao-ha-gloria-sem-cruz-a73fd2",
+  "type": "music",
+  "title": "Não Há Glória sem Cruz",
+  "duration": 257,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-nao-ha-gloria-sem-cruz.mp3",
+  "active": true
+},
+{
+  "id": "sabedoria-imensa-9b51d8",
+  "type": "music",
+  "title": "Sabedoria Imensa",
+  "duration": 184,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-sabedoria-imensa.mp3",
+  "active": true
+},
+{
+  "id": "em-tua-luz-descansar-41ce7a",
+  "type": "music",
+  "title": "Em Tua Luz Descansar",
+  "duration": 218,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-em-tua-luz-descansar.mp3",
+  "active": true
+},
+{
+  "id": "luz-da-salvacao-8d7bf1",
+  "type": "music",
+  "title": "Luz da Salvação",
+  "duration": 180,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-luz-da-salvacao.mp3",
+  "active": true
+},
+{
+  "id": "grandioso-es-tu-25ca6f",
+  "type": "music",
+  "title": "Grandioso És Tu",
+  "duration": 349,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-grandioso-es-tu.mp3",
+  "active": true
+},
+{
+  "id": "cristo-ressuscitou-71fd3b",
+  "type": "music",
+  "title": "Cristo Ressuscitou",
+  "duration": 223,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-cristo-ressuscitou.mp3",
+  "active": true
+},
+{
+  "id": "castelo-forte-e-nosso-deus-c82ea5",
+  "type": "music",
+  "title": "Castelo Forte é Nosso Deus",
+  "duration": 219,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-castelo-forte-e-nosso-deus.mp3",
+  "active": true
+},
+{
+  "id": "o-bom-semeador",
+  "type": "music",
+  "title": "O Bom Semeador",
+  "duration": 249,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-o-bom-semeador.mp3",
+  "active": true
+},
+{
+  "id": "graca-verdadeira",
+  "type": "music",
+  "title": "Graça Verdadeira",
+  "duration": 380,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-graca-verdadeira.mp3",
+  "active": true
+},
+{
+  "id": "vem-me-acolher",
+  "type": "music",
+  "title": "Vem Me Acolher",
+  "duration": 377,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-vem-me-acolher.mp3",
+  "active": true
+},
+{
+  "id": "vivo-esta-o-rei",
+  "type": "music",
+  "title": "Vivo Está o Rei",
+  "duration": 254,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-vivo-esta-o-rei.mp3",
+  "active": true
+},
+{
+  "id": "a-palavra-se-faz-carne",
+  "type": "music",
+  "title": "A Palavra Se Faz Carne",
+  "duration": 255,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-palavra-se-faz-carne.mp3",
+  "active": true
+},
+{
+  "id": "jesus-galileu",
+  "type": "music",
+  "title": "Jesus Galileu",
+  "duration": 239,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-jesus-galileu.mp3",
+  "active": true
+},
+{
+  "id": "ele-vence-a-morte",
+  "type": "music",
+  "title": "Ele Vence a Morte",
+  "duration": 352,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-ele-vence-a-morte.mp3",
+  "active": true
+},
+{
+  "id": "eis-que-vem-o-rei",
+  "type": "music",
+  "title": "Eis Que Vem o Rei",
+  "duration": 243,
+  "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-eis-que-vem-rei.mp3",
+  "active": true
+}
+];
+
+let fullData = structuredClone(EMBEDDED_GRADE);
+let baselineData = structuredClone(EMBEDDED_GRADE);
+let catalog = structuredClone(EMBEDDED_CATALOG);
+let currentHour = null;
+let originalProgram = null;
+let songs = [];
+let inserts = [];
+let fixedOpeners = [];
+let draggedIndex = null;
+let isLoadingProgram = false;
+
+const programSelect = document.getElementById("programSelect");
+const songList = document.getElementById("songList");
+const previewList = document.getElementById("previewList");
+const libraryList = document.getElementById("libraryList");
+const output = document.getElementById("output");
+const errorBox = document.getElementById("errorBox");
+
+function showError(message){
+  errorBox.textContent = message || "";
+  errorBox.style.display = message ? "block" : "none";
+}
+
+function escapeHtml(value){
+  return String(value).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
+}
+
+function slugify(value){
+  return String(value).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase()
+    .replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"") || "item";
+}
+
+function formatTime(total){
+  total = Math.max(0, Math.round(Number(total || 0)));
+  const h = Math.floor(total/3600);
+  const m = Math.floor((total%3600)/60);
+  const s = total%60;
+  return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+}
+
+function detectKind(item){
+  const explicit = String(item.kind || item.type || "").toLowerCase().trim();
+  if(["music","vinheta","jingle","announcement","prayer","opening"].includes(explicit)) return explicit;
+
+  const title = String(item.title || "").toLowerCase();
+  const audio = String(item.audio || "").toLowerCase();
+  const source = `${title} ${audio}`;
+
+  if(source.includes("programa-") || source.includes("abertura") || source.includes("opening")) return "opening";
+  if(source.includes("vinheta") || source.includes("prefixo") || source.includes("identificação") || source.includes("identificacao")) return "vinheta";
+  if(source.includes("jingle") || title === "rádio luz e louvor" || title === "radio luz e louvor") return "jingle";
+  if(source.includes("informativo") || source.includes("anúncio") || source.includes("anuncio") ||
+     source.includes("aviso") || source.includes("chamada") || source.includes("campanha") ||
+     source.includes("convite") || source.includes("dízimo") || source.includes("dizimo") ||
+     source.includes("padre joão") || source.includes("padre joao")) return "announcement";
+  if(source.includes("oração") || source.includes("oracao") || source.includes("pai nosso") || source.includes("ave maria")) return "prayer";
+  return "music";
+}
+
+function isOpening(item){ return detectKind(item)==="opening"; }
+function isInsert(item){ return ["vinheta","jingle","announcement"].includes(detectKind(item)); }
+function isProgramInsert(item){
+  return ["vinheta","jingle","announcement","prayer"].includes(detectKind(item));
+}
+
+function normalizeGradeItem(item){
+  const match = catalog.find(c => c.audio === item.audio);
+  const base = match ? structuredClone(match) : {
+    id: slugify(item.title) + "-" + Math.random().toString(36).slice(2,7),
+    title:item.title || "",
+    duration:Number(item.duration || 0),
+    audio:item.audio || "",
+    active:true
+  };
+  base.kind = detectKind({...base,...item});
+  base.type = base.type || base.kind;
+  return base;
+}
+
+function playlistItem(item){
+  return {title:item.title,duration:Number(item.duration),audio:item.audio};
+}
+
+function getProgram(hour){
+  return fullData.schedule.find(p=>Number(p.hour)===Number(hour));
+}
+
+function getSortedPrograms(){
+  return fullData.schedule.slice().sort((a,b)=>Number(a.hour)-Number(b.hour));
+}
+
+function getProgramLimitSeconds(program){
+  const sorted=getSortedPrograms();
+  const index=sorted.findIndex(p=>Number(p.hour)===Number(program.hour));
+  if(index<0)return 3600;
+  const current=Number(sorted[index].hour);
+  const next=Number(sorted[(index+1)%sorted.length].hour);
+  let hours=next-current;
+  if(hours<=0)hours+=24;
+  return Math.max(3600,hours*3600);
+}
+
+function splitProgram(program){
+  const normalized=(program.playlist||[]).map(normalizeGradeItem);
+  return {
+    openers:normalized.filter(isOpening),
+    inserts:normalized.filter(i=>!isOpening(i)&&isProgramInsert(i)),
+    songs:normalized.filter(i=>!isOpening(i)&&!isProgramInsert(i))
+  };
+}
+
+function buildFromParts(openers, programSongs, programInserts, includeFinalInsert=true){
+  const result=[...openers];
+  let insertIndex=0;
+  programSongs.forEach((song,index)=>{
+    result.push(song);
+    const pairDone=(index+1)%2===0;
+    const hasMore=index<programSongs.length-1;
+    if(pairDone && programInserts.length && (includeFinalInsert || hasMore)){
+      result.push(programInserts[insertIndex%programInserts.length]);
+      insertIndex++;
+    }
+  });
+  if(!programSongs.length && programInserts.length) result.push(...programInserts);
+  return result;
+}
+
+function buildPlaylistObjects(){
+  return buildFromParts(fixedOpeners,songs,inserts,true);
+}
+
+function syncCurrentProgram(){
+  if(isLoadingProgram || currentHour===null) return;
+  const p=getProgram(currentHour);
+  if(!p) return;
+  p.playlist=buildPlaylistObjects().map(playlistItem);
+}
+
+function setData(data){
+  if(!data || !Array.isArray(data.schedule)) throw new Error("O JSON precisa possuir schedule.");
+  fullData=structuredClone(data);
+  baselineData=structuredClone(data);
+  currentHour=null;
+  renderPrograms();
+  renderAllDashboards();
+}
+
+function mergeCatalog(newCatalog){
+  if(!Array.isArray(newCatalog)) throw new Error("O catálogo precisa ser uma lista JSON.");
+  const byAudio=new Map(catalog.map(i=>[i.audio,i]));
+  newCatalog.forEach(raw=>{
+    if(!raw || !raw.audio) return;
+    const normalized=normalizeGradeItem(raw);
+    byAudio.set(normalized.audio,{...byAudio.get(normalized.audio),...normalized});
+  });
+  catalog=[...byAudio.values()];
+  renderAll();
+}
+
+function renderPrograms(){
+  const selected=currentHour;
+  programSelect.innerHTML="";
+  fullData.schedule.slice().sort((a,b)=>a.hour-b.hour).forEach(program=>{
+    const option=document.createElement("option");
+    option.value=program.hour;
+    option.textContent=`${String(program.hour).padStart(2,"0")}:00 — ${program.pt?.title||program.en?.title||"Programa"}`;
+    programSelect.appendChild(option);
+  });
+  document.getElementById("programCount").textContent=fullData.schedule.length;
+  const next=selected!==null && getProgram(selected) ? selected : Number(programSelect.options[0]?.value);
+  if(Number.isFinite(next)){
+    programSelect.value=String(next);
+    loadProgram(next);
+  }
+}
+
+function loadProgram(hour,skipSync=false){
+  if(!skipSync)syncCurrentProgram();
+  const program=getProgram(hour);
+  if(!program) return;
+  isLoadingProgram=true;
+  currentHour=Number(hour);
+  originalProgram=structuredClone(baselineData.schedule.find(p=>Number(p.hour)===currentHour) || program);
+  const parts=splitProgram(program);
+  fixedOpeners=parts.openers;
+  inserts=parts.inserts;
+  songs=parts.songs;
+  isLoadingProgram=false;
+  renderAll();
+}
+
+function renderSongs(){
+  songList.innerHTML="";
+  songs.forEach((song,index)=>{
+    const row=document.createElement("div");
+    row.className="item";
+    row.draggable=true;
+    row.dataset.index=index;
+    row.innerHTML=`
+      <div class="handle">☰</div>
+      <div class="item-main">
+        <strong>${escapeHtml(song.title)}</strong>
+        <span>${formatTime(song.duration)} · ${escapeHtml(detectKind(song))}</span>
+      </div>
+      <div class="item-actions">
+        <button data-action="up" data-index="${index}">↑</button>
+        <button data-action="down" data-index="${index}">↓</button>
+        <button class="danger" data-action="remove" data-index="${index}">×</button>
+      </div>`;
+    row.addEventListener("dragstart",()=>{draggedIndex=index;row.classList.add("dragging")});
+    row.addEventListener("dragend",()=>{draggedIndex=null;row.classList.remove("dragging")});
+    row.addEventListener("dragover",e=>{e.preventDefault();row.classList.add("drop-target")});
+    row.addEventListener("dragleave",()=>row.classList.remove("drop-target"));
+    row.addEventListener("drop",e=>{
+      e.preventDefault();row.classList.remove("drop-target");
+      const target=Number(row.dataset.index);
+      if(draggedIndex===null||draggedIndex===target)return;
+      const [moved]=songs.splice(draggedIndex,1);
+      songs.splice(target,0,moved);
+      renderAll();
+    });
+    songList.appendChild(row);
+  });
+}
+
+function renderPreview(){
+  const list=buildPlaylistObjects();
+  previewList.innerHTML="";
+  list.forEach((item,index)=>{
+    const row=document.createElement("div");
+    row.className="item"+(isInsert(item)||isOpening(item)?" insert":"");
+    const removable=isProgramInsert(item)&&!isOpening(item);
+    row.innerHTML=`
+      <div class="handle">${index+1}</div>
+      <div class="item-main">
+        <strong>${escapeHtml(item.title)}</strong>
+        <span>${escapeHtml(detectKind(item))} · ${formatTime(item.duration)}</span>
+      </div>
+      <div class="item-actions">
+        ${removable?`<button class="danger" data-remove-preview="${index}" title="Remover este conteúdo do programa atual">×</button>`:""}
+      </div>`;
+    previewList.appendChild(row);
+  });
+  output.value=JSON.stringify(list.map(playlistItem),null,2);
+  const oldTime=(originalProgram?.playlist||[]).reduce((s,i)=>s+Number(i.duration||0),0);
+  const newTime=list.reduce((s,i)=>s+Number(i.duration||0),0);
+  document.getElementById("songCount").textContent=songs.filter(i=>detectKind(i)==="music").length;
+  document.getElementById("insertCount").textContent=inserts.length+fixedOpeners.length;
+  document.getElementById("currentTime").textContent=formatTime(oldTime);
+  document.getElementById("newTime").textContent=formatTime(newTime);
+}
+
+function renderLibrary(){
+  const q=document.getElementById("searchInput").value.toLowerCase().trim();
+  const type=document.getElementById("typeFilter").value;
+  const filtered=catalog.filter(item=>{
+    if(type&&detectKind(item)!==type)return false;
+    if(q&&!(`${item.title} ${item.audio}`.toLowerCase().includes(q)))return false;
+    return item.active!==false;
+  });
+  libraryList.innerHTML="";
+  filtered.slice(0,400).forEach(item=>{
+    const row=document.createElement("div");
+    row.className="library-item";
+    const extra=isInsert(item)?`<button type="button" data-bulk-id="${escapeHtml(item.id)}" title="Selecionar para distribuição global">Global</button>`:"";
+    row.innerHTML=`
+      <div><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(detectKind(item))} · ${formatTime(item.duration)}</span></div>
+      <div class="item-actions"><button type="button" data-id="${escapeHtml(item.id)}">Adicionar</button>${extra}</div>`;
+    libraryList.appendChild(row);
+  });
+  document.getElementById("catalogCount").textContent=catalog.length;
+  document.getElementById("catalogSongs").textContent=catalog.filter(i=>detectKind(i)==="music").length;
+  document.getElementById("catalogCalls").textContent=catalog.filter(i=>isInsert(i)||detectKind(i)==="prayer").length;
+  renderBulkSelect();
+}
+
+function renderBulkSelect(){
+  const select=document.getElementById("bulkInsertSelect");
+  const selected=select.value;
+  select.innerHTML="";
+  catalog.filter(i=>isInsert(i)||detectKind(i)==="prayer").forEach(item=>{
+    const o=document.createElement("option");
+    o.value=item.id;o.textContent=`${item.title} — ${detectKind(item)}`;
+    select.appendChild(o);
+  });
+  if([...select.options].some(o=>o.value===selected)) select.value=selected;
+}
+
+function renderUnusedSongs(){
+  syncCurrentProgram();
+  const usedUrls=new Set();
+  fullData.schedule.forEach(p=>(p.playlist||[]).forEach(i=>{
+    if(detectKind(normalizeGradeItem(i))==="music") usedUrls.add(i.audio);
+  }));
+  const musicCatalog=catalog.filter(i=>detectKind(i)==="music"&&i.active!==false);
+  const unused=musicCatalog.filter(i=>!usedUrls.has(i.audio));
+  const list=document.getElementById("unusedSongsList");
+  list.innerHTML="";
+  unused.forEach(item=>{
+    const card=document.createElement("div");
+    card.className="unused-card";
+    card.innerHTML=`<strong>${escapeHtml(item.title)}</strong><span>${formatTime(item.duration)}</span>
+      <div class="actions"><button data-unused-id="${escapeHtml(item.id)}">Adicionar ao programa atual</button></div>`;
+    list.appendChild(card);
+  });
+  if(!unused.length) list.innerHTML='<div class="notice">Todas as músicas do catálogo estão presentes em pelo menos um programa.</div>';
+  document.getElementById("unusedCount").textContent=unused.length;
+  document.getElementById("usedSongCount").textContent=musicCatalog.length-unused.length;
+  document.getElementById("totalSongCount").textContent=musicCatalog.length;
+  document.getElementById("coveragePercent").textContent=musicCatalog.length?`${Math.round((musicCatalog.length-unused.length)*100/musicCatalog.length)}%`:"0%";
+}
+
+function renderAnalysis(){
+  syncCurrentProgram();
+  const body=document.getElementById("analysisBody");
+  body.innerHTML="";
+  fullData.schedule.slice().sort((a,b)=>a.hour-b.hour).forEach(p=>{
+    const normalized=(p.playlist||[]).map(normalizeGradeItem);
+    const limit=getProgramLimitSeconds(p);
+    const duration=normalized.reduce((s,i)=>s+Number(i.duration||0),0);
+    const music=normalized.filter(i=>detectKind(i)==="music").length;
+    const prayers=normalized.filter(i=>detectKind(i)==="prayer").length;
+    const ads=normalized.filter(i=>isInsert(i)).length;
+    const diff=limit-duration;
+    const status=diff<0?`Excede ${formatTime(-diff)}`:diff===0?"Exato":`Livre ${formatTime(diff)}`;
+    const cls=diff<0?"status-over":diff<120?"status-warn":"status-ok";
+    const tr=document.createElement("tr");
+    tr.innerHTML=`
+      <td>${String(p.hour).padStart(2,"0")}:00</td>
+      <td>${escapeHtml(p.pt?.title||p.en?.title||"Programa")}</td>
+      <td>${music}</td><td>${prayers}</td><td>${ads}</td><td>${normalized.length}</td>
+      <td>${formatTime(duration)}</td><td>${formatTime(limit)}</td><td class="${cls}">${status}</td>`;
+    body.appendChild(tr);
+  });
+}
+
+function renderAllDashboards(){
+  renderUnusedSongs();
+  renderAnalysis();
+}
+
+function renderAll(){
+  renderSongs();
+  renderPreview();
+  renderLibrary();
+  syncCurrentProgram();
+  renderAllDashboards();
+}
+
+function removePreviewInsert(previewIndex){
+  const preview=buildPlaylistObjects();
+  const target=preview[previewIndex];
+  if(!target || !isProgramInsert(target) || isOpening(target))return;
+  const insertIndex=inserts.findIndex(i=>
+    i.audio===target.audio && i.title===target.title && detectKind(i)===detectKind(target)
+  );
+  if(insertIndex>=0){
+    inserts.splice(insertIndex,1);
+    renderAll();
+  }
+}
+
+function addCatalogItemToProgram(id){
+  const item=catalog.find(i=>i.id===id);
+  if(!item)return;
+  const copy=normalizeGradeItem(item);
+  if(isOpening(copy))fixedOpeners.push(copy);
+  else if(isInsert(copy))inserts.unshift(copy);
+  else songs.push(copy);
+  renderAll();
+}
+
+function addNewCatalogItem(){
+  const title=document.getElementById("newTitle").value.trim();
+  const duration=Number(document.getElementById("newDuration").value);
+  const audio=document.getElementById("newAudio").value.trim();
+  const type=document.getElementById("newType").value;
+  if(!title||!audio||!Number.isFinite(duration)||duration<=0){
+    showError("Preencha título, duração válida e URL do áudio.");return;
+  }
+  if(catalog.some(i=>i.audio===audio)){
+    showError("Já existe um item com essa URL no catálogo.");return;
+  }
+  catalog.push({id:`${slugify(title)}-${Date.now().toString(36)}`,type,kind:type,title,duration,audio,active:true});
+  document.getElementById("newTitle").value="";
+  document.getElementById("newDuration").value="";
+  document.getElementById("newAudio").value="";
+  showError("");
+  renderAll();
+}
+
+function restoreCurrentProgram(){
+  const baseline=baselineData.schedule.find(p=>Number(p.hour)===currentHour);
+  if(!baseline)return;
+  const p=getProgram(currentHour);
+  p.playlist=structuredClone(baseline.playlist||[]);
+  loadProgram(currentHour);
+}
+
+function moveSong(index,dir){
+  const target=index+dir;
+  if(target<0||target>=songs.length)return;
+  [songs[index],songs[target]]=[songs[target],songs[index]];
+  renderAll();
+}
+
+function distributeGlobally(copies){
+  syncCurrentProgram();
+  const id=document.getElementById("bulkInsertSelect").value;
+  const item=catalog.find(i=>i.id===id);
+  if(!item)return showError("Selecione um conteúdo para distribuir.");
+  fullData.schedule.forEach(program=>{
+    const parts=splitProgram(program);
+    parts.inserts=parts.inserts.filter(i=>i.audio!==item.audio);
+    for(let n=0;n<copies;n++) parts.inserts.unshift(normalizeGradeItem(item));
+    program.playlist=buildFromParts(parts.openers,parts.songs,parts.inserts,true).map(playlistItem);
+  });
+  loadProgram(currentHour,true);
+}
+
+function removeGlobally(){
+  syncCurrentProgram();
+  const id=document.getElementById("bulkInsertSelect").value;
+  const item=catalog.find(i=>i.id===id);
+  if(!item)return;
+  fullData.schedule.forEach(program=>{
+    program.playlist=(program.playlist||[]).filter(i=>i.audio!==item.audio);
+  });
+  loadProgram(currentHour,true);
+}
+
+function shuffleArray(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function shuffleEntireGrade(){
+  syncCurrentProgram();
+  const programParts=fullData.schedule.map(p=>({program:p,...splitProgram(p)}));
+  const allSongs=shuffleArray(programParts.flatMap(x=>x.songs));
+  let cursor=0;
+  programParts.forEach(part=>{
+    const count=part.songs.length;
+    part.songs=allSongs.slice(cursor,cursor+count);
+    cursor+=count;
+    part.program.playlist=buildFromParts(part.openers,part.songs,part.inserts,true).map(playlistItem);
+  });
+  loadProgram(currentHour,true);
+}
+
+function createBalancedRandomGrade(){
+  syncCurrentProgram();
+  const musicPool=catalog.filter(i=>detectKind(i)==="music"&&i.active!==false&&Number(i.duration)>0);
+  const prayerPool=catalog.filter(i=>detectKind(i)==="prayer"&&i.active!==false);
+  const announcementPool=catalog.filter(i=>(isInsert(i))&&i.active!==false);
+  if(!musicPool.length)return showError("O catálogo não possui músicas disponíveis.");
+
+  const usage=new Map(musicPool.map(i=>[i.audio,0]));
+  let prayerCursor=0, announcementCursor=0;
+
+  fullData.schedule.slice().sort((a,b)=>a.hour-b.hour).forEach(program=>{
+    const limit=getProgramLimitSeconds(program);
+    const oldParts=splitProgram(program);
+    const openers=oldParts.openers;
+    const result=[...openers];
+    let total=result.reduce((s,i)=>s+Number(i.duration||0),0);
+    let songsSinceInsert=0;
+    let safety=0;
+
+    while(safety++<1000){
+      const candidates=musicPool
+        .filter(i=>total+Number(i.duration)<=limit)
+        .sort((a,b)=>(usage.get(a.audio)||0)-(usage.get(b.audio)||0) || Math.random()-.5);
+      if(!candidates.length)break;
+
+      const minUse=usage.get(candidates[0].audio)||0;
+      const balanced=candidates.filter(i=>(usage.get(i.audio)||0)<=minUse);
+      const song=balanced[Math.floor(Math.random()*balanced.length)];
+      result.push(song);
+      total+=Number(song.duration);
+      usage.set(song.audio,(usage.get(song.audio)||0)+1);
+      songsSinceInsert++;
+
+      if(songsSinceInsert===2){
+        const preferPrayer=(Math.floor(result.length/3)%3===0)&&prayerPool.length;
+        const pool=preferPrayer?prayerPool:announcementPool;
+        if(pool.length){
+          const cursor=preferPrayer?prayerCursor++:announcementCursor++;
+          const insert=pool[cursor%pool.length];
+          if(total+Number(insert.duration)<=limit){
+            result.push(insert);
+            total+=Number(insert.duration);
+          }
+        }
+        songsSinceInsert=0;
+      }
+    }
+    program.playlist=result.map(playlistItem);
+  });
+  showError("");
+  loadProgram(currentHour,true);
+}
+
+function downloadJson(filename,obj){
+  syncCurrentProgram();
+  const blob=new Blob([JSON.stringify(obj,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download=filename;a.click();
+  URL.revokeObjectURL(url);
+}
+
+async function copyText(text,button){
+  try{await navigator.clipboard.writeText(text)}
+  catch{
+    const t=document.createElement("textarea");t.value=text;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();
+  }
+  const old=button.textContent;button.textContent="Copiado";setTimeout(()=>button.textContent=old,1400);
+}
+
+document.getElementById("gradeFile").addEventListener("change",async e=>{
+  const f=e.target.files?.[0];if(!f)return;
+  try{showError("");setData(JSON.parse(await f.text()))}
+  catch(err){showError("Erro ao abrir grade: "+err.message)}
+});
+document.getElementById("catalogFile").addEventListener("change",async e=>{
+  const f=e.target.files?.[0];if(!f)return;
+  try{showError("");mergeCatalog(JSON.parse(await f.text()))}
+  catch(err){showError("Erro ao abrir catálogo: "+err.message)}
+});
+document.getElementById("embeddedBtn").addEventListener("click",()=>setData(EMBEDDED_GRADE));
+programSelect.addEventListener("change",()=>loadProgram(Number(programSelect.value)));
+document.getElementById("searchInput").addEventListener("input",renderLibrary);
+document.getElementById("typeFilter").addEventListener("change",renderLibrary);
+document.getElementById("addCatalogBtn").addEventListener("click",addNewCatalogItem);
+document.getElementById("downloadCatalogBtn").addEventListener("click",()=>downloadJson("catalogo-radio-luz-louvor.json",catalog));
+
+libraryList.addEventListener("click",e=>{
+  const add=e.target.closest("button[data-id]");
+  const global=e.target.closest("button[data-bulk-id]");
+  if(add)addCatalogItemToProgram(add.dataset.id);
+  if(global){
+    document.getElementById("bulkInsertSelect").value=global.dataset.bulkId;
+    document.getElementById("bulkInsertSelect").scrollIntoView({behavior:"smooth",block:"center"});
+  }
+});
+document.getElementById("unusedSongsList").addEventListener("click",e=>{
+  const b=e.target.closest("button[data-unused-id]");
+  if(b)addCatalogItemToProgram(b.dataset.unusedId);
+});
+previewList.addEventListener("click",e=>{
+  const b=e.target.closest("button[data-remove-preview]");
+  if(!b)return;
+  removePreviewInsert(Number(b.dataset.removePreview));
+});
+
+songList.addEventListener("click",e=>{
+  const b=e.target.closest("button[data-action]");if(!b)return;
+  const index=Number(b.dataset.index);
+  if(b.dataset.action==="up")moveSong(index,-1);
+  if(b.dataset.action==="down")moveSong(index,1);
+  if(b.dataset.action==="remove"){songs.splice(index,1);renderAll()}
+});
+document.getElementById("shuffleBtn").addEventListener("click",()=>{shuffleArray(songs);renderAll()});
+document.getElementById("restoreBtn").addEventListener("click",restoreCurrentProgram);
+document.getElementById("bulkAddBtn").addEventListener("click",()=>distributeGlobally(Number(document.getElementById("bulkCopies").value)));
+document.getElementById("bulkRemoveBtn").addEventListener("click",removeGlobally);
+document.getElementById("shuffleAllBtn").addEventListener("click",shuffleEntireGrade);
+document.getElementById("randomGradeBtn").addEventListener("click",createBalancedRandomGrade);
+document.getElementById("copyPlaylistBtn").addEventListener("click",e=>copyText(output.value,e.currentTarget));
+document.getElementById("copyFullBtn").addEventListener("click",e=>{syncCurrentProgram();copyText(JSON.stringify(fullData,null,2),e.currentTarget)});
+document.getElementById("downloadGradeBtn").addEventListener("click",()=>downloadJson("radio-luz-louvor-atualizado.json",fullData));
+
+renderPrograms();
+renderLibrary();
+renderAllDashboards();
+
+</script>
+</body>
+</html>
