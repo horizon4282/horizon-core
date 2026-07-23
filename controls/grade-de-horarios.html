@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Horários — Rádio Luz e Louvor</title>
+  <style>
+    :root{
+      --bg:#07111f;
+      --panel:#0d1b2d;
+      --panel-2:#12243a;
+      --line:#26415f;
+      --text:#eef6ff;
+      --muted:#9db2c8;
+      --accent:#f4c95d;
+      --accent-2:#59d4c7;
+      --danger:#ff7b7b;
+      --ok:#7ee2a8;
+      --shadow:0 18px 45px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Inter,Segoe UI,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left,rgba(89,212,199,.12),transparent 28%),
+        radial-gradient(circle at top right,rgba(244,201,93,.1),transparent 24%),
+        var(--bg);
+    }
+    .wrap{width:min(1180px,calc(100% - 28px));margin:0 auto;padding:34px 0 56px}
+    header{margin-bottom:24px}
+    .eyebrow{color:var(--accent);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.76rem}
+    h1{margin:.45rem 0 .6rem;font-size:clamp(2rem,5vw,3.6rem);line-height:1.02}
+    .subtitle{max-width:800px;color:var(--muted);font-size:1.02rem;line-height:1.6}
+    .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}
+    .card{background:linear-gradient(180deg,rgba(18,36,58,.94),rgba(13,27,45,.96));border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow)}
+    .card h2{margin:0 0 14px;font-size:1.1rem}
+    .dropzone{border:1.5px dashed #4d6f91;border-radius:16px;padding:24px;text-align:center;background:rgba(255,255,255,.025);transition:.2s ease;cursor:pointer}
+    .dropzone.drag{border-color:var(--accent-2);background:rgba(89,212,199,.08)}
+    .dropzone strong{display:block;font-size:1rem;margin-bottom:6px}
+    .dropzone span{color:var(--muted);font-size:.9rem}
+    input[type=file]{display:none}
+    textarea,input,select,button{font:inherit}
+    textarea,input[type=text],select{width:100%;border:1px solid var(--line);background:#091626;color:var(--text);border-radius:12px;padding:12px 13px;outline:none}
+    textarea{min-height:180px;resize:vertical;margin-top:12px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.82rem;line-height:1.5}
+    textarea:focus,input:focus,select:focus{border-color:var(--accent-2);box-shadow:0 0 0 3px rgba(89,212,199,.12)}
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    button{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;transition:.18s ease}
+    button:hover{transform:translateY(-1px)}
+    .primary{background:var(--accent);color:#17130a}
+    .secondary{background:#1b3552;color:var(--text);border:1px solid #315274}
+    .ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+    .status{margin-top:12px;min-height:22px;color:var(--muted);font-size:.9rem}
+    .status.ok{color:var(--ok)}
+    .status.error{color:var(--danger)}
+    .controls{display:grid;grid-template-columns:1fr 190px;gap:10px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+    .stat{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:16px;padding:14px}
+    .stat b{display:block;font-size:1.5rem;color:var(--accent)}
+    .stat span{color:var(--muted);font-size:.78rem}
+    .results-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+    .badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:rgba(89,212,199,.12);color:var(--accent-2);border:1px solid rgba(89,212,199,.25);padding:7px 10px;font-size:.8rem;font-weight:800}
+    .times{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-bottom:18px}
+    .time{background:#091626;border:1px solid var(--line);border-radius:14px;padding:13px;text-align:center}
+    .time strong{display:block;font-size:1.22rem;color:var(--accent)}
+    .time small{color:var(--muted)}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}
+    table{width:100%;border-collapse:collapse;min-width:760px;background:#091626}
+    th,td{padding:11px 12px;border-bottom:1px solid #1e334a;text-align:left;font-size:.86rem}
+    th{position:sticky;top:0;background:#10243a;color:#cfe0f1;z-index:1}
+    tr:last-child td{border-bottom:0}
+    .warn{color:#ffd18a}
+    .empty{color:var(--muted);padding:28px;text-align:center;border:1px dashed var(--line);border-radius:14px}
+    .full{grid-column:1/-1}
+    .title-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px;max-height:410px;overflow:auto;padding-right:4px}
+    .title-item{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#091626;border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer}
+    .title-item:hover{border-color:var(--accent-2)}
+    .title-item span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .title-item b{color:var(--accent);font-size:.85rem}
+    footer{margin-top:20px;color:var(--muted);font-size:.8rem;text-align:center}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.controls{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="eyebrow">Rádio Luz e Louvor</div>
+      <h1>Calculadora de horários da grade</h1>
+      <p class="subtitle">Carregue um JSON no padrão <code>schedule → hour → playlist</code>. A página soma as durações anteriores e mostra quantas vezes cada conteúdo aparece e o horário exato de início.</p>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <h2>1. Carregar o JSON</h2>
+        <label class="dropzone" id="dropzone" for="fileInput">
+          <strong>Clique ou arraste o arquivo JSON/TXT</strong>
+          <span>O arquivo é processado apenas no seu navegador.</span>
+        </label>
+        <input id="fileInput" type="file" accept=".json,.txt,application/json,text/plain" />
+        <textarea id="jsonText" placeholder='Ou cole aqui o JSON completo...'></textarea>
+        <div class="row">
+          <button class="primary" id="processBtn">Processar grade</button>
+          <button class="ghost" id="clearBtn">Limpar</button>
+        </div>
+        <div class="status" id="status">Nenhuma grade carregada.</div>
+      </article>
+
+      <article class="card">
+        <h2>2. Procurar conteúdo</h2>
+        <div class="controls">
+          <input id="searchInput" type="text" placeholder="Ex.: Catequese para Adultos" disabled />
+          <select id="matchMode" disabled>
+            <option value="exact">Título exato</option>
+            <option value="contains">Título contém</option>
+          </select>
+        </div>
+        <div class="row">
+          <button class="primary" id="calculateBtn" disabled>Calcular horários</button>
+          <button class="secondary" id="exportBtn" disabled>Exportar CSV</button>
+        </div>
+        <div class="stats">
+          <div class="stat"><b id="programCount">0</b><span>programas/blocos</span></div>
+          <div class="stat"><b id="itemCount">0</b><span>itens na grade</span></div>
+          <div class="stat"><b id="uniqueCount">0</b><span>títulos diferentes</span></div>
+          <div class="stat"><b id="resultCount">0</b><span>exibições encontradas</span></div>
+        </div>
+        <div id="quickInfo" class="empty">Carregue a grade para começar.</div>
+      </article>
+
+      <article class="card full">
+        <div class="results-head">
+          <h2 style="margin:0">Horários encontrados</h2>
+          <span class="badge" id="resultBadge">0 exibições</span>
+        </div>
+        <div id="times" class="times"></div>
+        <div id="details" class="empty">Os resultados detalhados aparecerão aqui.</div>
+      </article>
+
+      <article class="card full">
+        <div class="results-head">
+          <h2 style="margin:0">Todos os títulos da grade</h2>
+          <input id="titleFilter" type="text" placeholder="Filtrar lista de títulos..." disabled style="max-width:330px" />
+        </div>
+        <div id="titleList" class="empty">Nenhum título carregado.</div>
+      </article>
+    </section>
+
+    <footer>Calculadora local — nenhum dado é enviado para servidores.</footer>
+  </main>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    const state = { data:null, entries:[], results:[], titles:new Map() };
+
+    function normalize(text){
+      return String(text ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+    }
+
+    function formatClock(totalSeconds){
+      const dayOffset = Math.floor(totalSeconds / 86400);
+      let sec = ((totalSeconds % 86400) + 86400) % 86400;
+      const h = Math.floor(sec / 3600);
+      sec %= 3600;
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}${dayOffset > 0 ? ` (+${dayOffset} dia)` : ''}`;
+    }
+
+    function durationLabel(seconds){
+      const h = Math.floor(seconds/3600);
+      const m = Math.floor((seconds%3600)/60);
+      const s = seconds%60;
+      return [h ? `${h}h` : '', m ? `${m}min` : '', `${s}s`].filter(Boolean).join(' ');
+    }
+
+    function setStatus(message,type=''){
+      const el=$('status'); el.textContent=message; el.className=`status ${type}`;
+    }
+
+    function parseSchedule(raw){
+      const data = typeof raw === 'string' ? JSON.parse(raw) : raw;
+      if(!data || !Array.isArray(data.schedule)) throw new Error('O JSON precisa possuir uma propriedade "schedule" em formato de lista.');
+
+      const entries=[];
+      const titles=new Map();
+
+      data.schedule.forEach((block,blockIndex)=>{
+        const hour=Number(block.hour);
+        if(!Number.isFinite(hour)) throw new Error(`Bloco ${blockIndex+1}: campo "hour" inválido.`);
+        if(!Array.isArray(block.playlist)) throw new Error(`Bloco ${blockIndex+1}: "playlist" precisa ser uma lista.`);
+
+        let elapsed=0;
+        block.playlist.forEach((item,itemIndex)=>{
+          const duration=Math.max(0,Math.round(Number(item.duration)||0));
+          const title=String(item.title ?? '').trim() || '(Sem título)';
+          const absoluteStart=(hour*3600)+elapsed;
+          const entry={
+            title,
+            duration,
+            start:absoluteStart,
+            clock:formatClock(absoluteStart),
+            blockHour:hour,
+            blockTitle:block.pt?.title || block.en?.title || `Bloco ${hour}h`,
+            blockIndex,
+            itemIndex,
+            elapsed,
+            audio:item.audio || ''
+          };
+          entries.push(entry);
+          titles.set(title,(titles.get(title)||0)+1);
+          elapsed+=duration;
+        });
+      });
+
+      return {data,entries,titles};
+    }
+
+    function processText(){
+      const text=$('jsonText').value.trim();
+      if(!text){ setStatus('Cole ou carregue um JSON antes de processar.','error'); return; }
+      try{
+        const parsed=parseSchedule(text);
+        state.data=parsed.data; state.entries=parsed.entries; state.titles=parsed.titles; state.results=[];
+        $('programCount').textContent=state.data.schedule.length;
+        $('itemCount').textContent=state.entries.length;
+        $('uniqueCount').textContent=state.titles.size;
+        $('resultCount').textContent='0';
+        ['searchInput','matchMode','calculateBtn','titleFilter'].forEach(id=>$(id).disabled=false);
+        $('exportBtn').disabled=true;
+        setStatus(`Grade carregada com sucesso: ${state.data.schedule.length} blocos e ${state.entries.length} itens.`, 'ok');
+        $('quickInfo').className='empty';
+        $('quickInfo').textContent='Digite um título ou clique em um item da lista abaixo.';
+        renderTitleList();
+        clearResults();
+      }catch(err){
+        setStatus(`Erro: ${err.message}`,'error');
+      }
+    }
+
+    function calculate(){
+      if(!state.entries.length) return;
+      const query=$('searchInput').value.trim();
+      if(!query){ setStatus('Digite o título que deseja localizar.','error'); return; }
+      const mode=$('matchMode').value;
+      const q=normalize(query);
+      state.results=state.entries.filter(e=> mode==='exact' ? normalize(e.title)===q : normalize(e.title).includes(q));
+      state.results.sort((a,b)=>a.start-b.start);
+      renderResults(query);
+    }
+
+    function renderResults(query){
+      const count=state.results.length;
+      $('resultCount').textContent=count;
+      $('resultBadge').textContent=`${count} ${count===1?'exibição':'exibições'}`;
+      $('exportBtn').disabled=count===0;
+      const times=$('times');
+      times.innerHTML='';
+
+      if(!count){
+        $('details').className='empty';
+        $('details').textContent=`Nenhuma ocorrência encontrada para “${query}”.`;
+        return;
+      }
+
+      state.results.forEach((r,i)=>{
+        const card=document.createElement('div');
+        card.className='time';
+        card.innerHTML=`<strong>${r.clock}</strong><small>${i+1}ª exibição</small>`;
+        times.appendChild(card);
+      });
+
+      const rows=state.results.map((r,i)=>{
+        const overflow=r.start >= 86400 ? ' class="warn"' : '';
+        return `<tr>
+          <td>${i+1}</td>
+          <td${overflow}><strong>${r.clock}</strong></td>
+          <td>${escapeHtml(r.title)}</td>
+          <td>${escapeHtml(r.blockTitle)}</td>
+          <td>${String(r.blockHour).padStart(2,'0')}:00:00</td>
+          <td>${durationLabel(r.elapsed)}</td>
+          <td>${durationLabel(r.duration)}</td>
+        </tr>`;
+      }).join('');
+
+      $('details').className='table-wrap';
+      $('details').innerHTML=`<table>
+        <thead><tr><th>#</th><th>Horário</th><th>Título</th><th>Programa</th><th>Início do bloco</th><th>Posição no bloco</th><th>Duração</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+    }
+
+    function clearResults(){
+      state.results=[];
+      $('times').innerHTML='';
+      $('details').className='empty';
+      $('details').textContent='Os resultados detalhados aparecerão aqui.';
+      $('resultBadge').textContent='0 exibições';
+      $('resultCount').textContent='0';
+      $('exportBtn').disabled=true;
+    }
+
+    function renderTitleList(){
+      const filter=normalize($('titleFilter').value);
+      const sorted=[...state.titles.entries()]
+        .filter(([title])=>normalize(title).includes(filter))
+        .sort((a,b)=>a[0].localeCompare(b[0],'pt-BR'));
+      const host=$('titleList');
+      if(!sorted.length){ host.className='empty'; host.textContent='Nenhum título encontrado.'; return; }
+      host.className='title-list';
+      host.innerHTML=sorted.map(([title,count])=>`<div class="title-item" data-title="${escapeAttr(title)}"><span title="${escapeAttr(title)}">${escapeHtml(title)}</span><b>${count}×</b></div>`).join('');
+      host.querySelectorAll('.title-item').forEach(el=>el.addEventListener('click',()=>{
+        $('searchInput').value=el.dataset.title;
+        $('matchMode').value='exact';
+        calculate();
+        window.scrollTo({top:$('times').getBoundingClientRect().top+window.scrollY-30,behavior:'smooth'});
+      }));
+    }
+
+    function exportCSV(){
+      if(!state.results.length) return;
+      const rows=[['ordem','horario','titulo','programa','hora_bloco','posicao_segundos','duracao_segundos','audio']];
+      state.results.forEach((r,i)=>rows.push([i+1,r.clock,r.title,r.blockTitle,r.blockHour,r.elapsed,r.duration,r.audio]));
+      const csv='\uFEFF'+rows.map(row=>row.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(';')).join('\n');
+      const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      a.href=url; a.download=`horarios-${slug($('searchInput').value||'resultado')}.csv`; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function slug(v){return normalize(v).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
+    function escapeHtml(v){return String(v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+    function escapeAttr(v){return escapeHtml(v).replace(/'/g,'&#39;')}
+
+    $('fileInput').addEventListener('change',async e=>{
+      const file=e.target.files[0]; if(!file) return;
+      $('jsonText').value=await file.text();
+      setStatus(`Arquivo carregado: ${file.name}. Agora clique em “Processar grade”.`);
+    });
+
+    const dz=$('dropzone');
+    ['dragenter','dragover'].forEach(evt=>dz.addEventListener(evt,e=>{e.preventDefault();dz.classList.add('drag')}));
+    ['dragleave','drop'].forEach(evt=>dz.addEventListener(evt,e=>{e.preventDefault();dz.classList.remove('drag')}));
+    dz.addEventListener('drop',async e=>{
+      const file=e.dataTransfer.files[0]; if(!file) return;
+      $('jsonText').value=await file.text();
+      setStatus(`Arquivo carregado: ${file.name}. Agora clique em “Processar grade”.`);
+    });
+
+    $('processBtn').addEventListener('click',processText);
+    $('calculateBtn').addEventListener('click',calculate);
+    $('exportBtn').addEventListener('click',exportCSV);
+    $('titleFilter').addEventListener('input',renderTitleList);
+    $('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter') calculate()});
+    $('clearBtn').addEventListener('click',()=>{
+      state.data=null;state.entries=[];state.results=[];state.titles=new Map();
+      $('jsonText').value='';$('fileInput').value='';$('searchInput').value='';$('titleFilter').value='';
+      ['searchInput','matchMode','calculateBtn','titleFilter','exportBtn'].forEach(id=>$(id).disabled=true);
+      ['programCount','itemCount','uniqueCount','resultCount'].forEach(id=>$(id).textContent='0');
+      $('titleList').className='empty';$('titleList').textContent='Nenhum título carregado.';
+      $('quickInfo').className='empty';$('quickInfo').textContent='Carregue a grade para começar.';
+      clearResults();setStatus('Nenhuma grade carregada.');
+    });
+  </script>
+</body>
+</html>
