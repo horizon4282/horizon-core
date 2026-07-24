@@ -453,7 +453,7 @@ left:-9999px;
 </head>
 <body>
   
- <div class="btn-banner">
+ <div class="btn-banner" id="bannerPlayButton">
 <a onclick="startRadioFromTop()"><img src="https://songs.horizon4282.com.br/file/horizon4282/images/bt-play-radio.png"/></a></div>
   
 <div class="bottom-player" id="bottomPlayer">
@@ -1176,11 +1176,13 @@ function initializeBottomPlayer() {
   player.addEventListener("play", () => {
     playButton.textContent = "❚❚";
     playButton.setAttribute("aria-label", "Pausar");
+    updateBannerPlayButton();
   });
 
   player.addEventListener("pause", () => {
     playButton.textContent = "▶";
     playButton.setAttribute("aria-label", "Reproduzir");
+    updateBannerPlayButton();
   });
 
   player.addEventListener("loadedmetadata", () => {
@@ -1392,6 +1394,19 @@ window.addEventListener("appinstalled", () => {
   updateInstallButton();
 });
 
+//
+function updateBannerPlayButton() {
+    const banner = document.getElementById("bannerPlayButton");
+    const player = document.getElementById("radioPlayer");
+
+    if (!banner || !player) return;
+
+    // Em celular já fica escondido pelo CSS
+    if (window.innerWidth <= 900) return;
+
+    banner.style.display = player.paused ? "block" : "none";
+}
+
 
 //sorteio sem repetir a última capa///////////
 
@@ -1587,7 +1602,7 @@ player.ontimeupdate = null;
     setLanguage(currentLang);
     initializeBottomPlayer();
     loadRadioJson();
-   
+    updateBannerPlayButton();
 
 });
 
