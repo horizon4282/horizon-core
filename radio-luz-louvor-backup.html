@@ -3,30 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Web Católica Luz e Louvor</title>
+<title>Rádio Católica Luz e Louvor</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <meta name="robots" content="index,follow">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <link rel="apple-touch-icon" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
-<link rel="canonical" href="https://horizon4282.com.br/radio-luz-louvor.html">
-<meta name="description" content="Luz e Louvor é a dimensão musical do Horizon 4282: músicas, álbuns, oração, fé e conteúdo">
-<meta name="keywords" content="Rádio Web Católica Luz e Louvor, Radio Católica, música católica, 
-  oração cantada, ministério luz e louvor, Divino Pai Eterno, louvor, fé, álbuns católicos">
+<link rel="canonical" href="https://horizon4282.com.br/radio-luz-louvor">
+<meta name="description" content="A Rádio Luz e Louvor é um projeto de evangelização, louvores católicos, músicas católicas, álbuns católicos, oração do Divino Pai Eterno, 
+fé e conteúdo católico">
+<meta name="keywords" content="Rádio Católica Luz e Louvor, Radio Católica de Botucatu, música católica, 
+  oração católica cantada, ministério luz e louvor, Divino Pai Eterno, louvor católico, jesus me esposo, álbuns católicos">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Radio Web Católica Luz e Louvor">
-<meta property="og:description" content="Rádio Web Católica Luz e Louvor, músicas, álbuns, oração, fé e contemplação.">
-<meta property="og:url" content="https://horizon4282.com.br/radio-luz-louvor.html">
+<meta property="og:description" content="A Rádio Luz e Louvor é um projeto de evangelização, louvores católicos, músicas católicas, álbuns católicos, oração do Divino Pai Eterno, 
+fé e conteúdo católico">
+<meta property="og:url" content="https://horizon4282.com.br/radio-luz-louvor">
 <meta property="og:site_name" content="Radio Luz e Louvor">
 <meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/png">
-<meta property="og:image" content="https://songs.horizon4282.com.br/file/horizon4282/songs/og-image-radio-luz-louvor.png">
+<meta property="og:image:secure_url" content="https://horizon4282.com.br/assets/og-image-radio-luz-louvor.png">
+<meta property="og:image" content="https://horizon4282.com.br/assets/og-image-radio-luz-louvor.png">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Radio Luz e Louvor">
 <meta name="twitter:description" content="Music, prayer and contemplation.">
-<meta name="twitter:image" content="https://songs.horizon4282.com.br/file/horizon4282/songs/og-image-radio-luz-louvor.png">
+<meta name="twitter:image" content="https://horizon4282.com.br/assets/og-image-radio-luz-louvor.png">
 <style>
 :root{
   --bg:#030712;--panel:rgba(8,21,38,.74);--line:rgba(125,211,252,.22);--line-strong:rgba(125,211,252,.55);
@@ -61,7 +65,7 @@ a{color:inherit;text-decoration:none}
 
 .btn-banner {
     position: absolute;
-    top: 27px;
+    bottom: 14vh;
     left: 27%;
 }
 
@@ -119,7 +123,11 @@ h1{font-size:clamp(28px,3vw,54px);line-height:1.05;margin:0 0 16px;font-weight:7
 .panel{border:1px solid var(--line);background:var(--panel);padding:24px}
 .panel-title{color:var(--accent);letter-spacing:.22em;text-transform:uppercase;font-size:13px;margin-bottom:18px}
 .player-card{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center}
-.cover{aspect-ratio:1/1;border:1px solid var(--line);background:radial-gradient(circle at 50% 45%,rgba(0,242,255,.16),transparent 42%),linear-gradient(135deg,rgba(14,165,233,.20),rgba(3,7,18,.9));background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:46px}
+.cover{aspect-ratio:1/1;border:1px solid var(--line);
+       background:radial-gradient(circle at 50% 45%,rgba(0,242,255,.16),transparent 42%),linear-gradient(135deg,rgba(14,165,233,.20),rgba(3,7,18,.9));
+       background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background-repeat:no-repeat;color:var(--accent);font-size:46px}
+  
 .request-badge{display:inline-block;color:var(--gold);border:1px solid rgba(245,183,64,.28);background:rgba(245,183,64,.08);padding:7px 10px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
 .track-meta h2{margin:0 0 10px;font-size:clamp(26px,3vw,42px);line-height:1.12}.track-meta p{color:var(--muted);line-height:1.65;margin:0 0 18px}
   
@@ -217,7 +225,10 @@ left:-9999px;
     rgba(14,165,233,.25),
     rgba(3,7,18,.95)
   );
-
+  overflow:hidden;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
   color:var(--accent);
   font-size:24px;
 }
@@ -357,7 +368,58 @@ left:-9999px;
   padding-bottom:140px;
 }
 
+.next-attraction{
+  margin:14px 0 8px;
+  padding:12px 14px;
+  border-left:3px solid var(--gold);
+  background:rgba(245,183,64,.06);
+}
 
+.next-attraction span{
+  display:block;
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.next-attraction strong{
+  display:block;
+  color:var(--text);
+  font-size:13px;
+  line-height:1.4;
+}
+
+.next-program{
+  margin-top:10px;
+  padding:12px 14px;
+  border-left:3px solid var(--accent);
+  background:rgba(125,211,252,.06);
+}
+
+.next-program span{
+  display:block;
+  color:var(--accent);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.next-program strong{
+  display:block;
+  color:var(--text);
+  font-size:14px;
+  line-height:1.4;
+}
+
+.next-program small{
+  display:block;
+  margin-top:5px;
+  color:var(--muted);
+  font-size:12px;
+}
 
   
 @media(max-width:1100px){.hero,.radio-grid,.player-card{grid-template-columns:1fr}.dashboard,.platform-row{grid-template-columns:repeat(2,1fr)}}
@@ -380,7 +442,7 @@ left:-9999px;
  "@context":"https://schema.org",
  "@type":"RadioStation",
  "name":"Rádio Web Católica Luz e Louvor",
- "url":"https://horizon4282.com.br/radio-luz-louvor.html",
+ "url":"https://horizon4282.com.br/radio-luz-louvor",
  "description":"Rádio Web Católica com música, oração e evangelização 24 horas.",
  "inLanguage":"pt-BR",
  "publisher":{
@@ -473,7 +535,7 @@ left:-9999px;
     <button id="ptBtn" onclick="setLanguage('pt')">PT</button>
     <button id="enBtn" onclick="setLanguage('en')">EN</button>
   </div>
-       <div><img id="heroBanner" src="https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp" style="width:100%" /></div>
+       <div><img id="heroBanner" src="https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor.webp" style="width:100%" /></div>
   
 
   <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
@@ -493,10 +555,27 @@ left:-9999px;
       <div class="player-card">
       <div class="cover" id="coverBox">♫</div>
         <div class="track-meta"><div class="request-badge" id="playModeText">Schedule</div>
-        <h2 id="nowTitle">Loading...</h2><p id="nowDescription">Loading...</p>
+        <h2 id="nowTitle">Loading...</h2><p id="nowDescription" style="display:none;">Loading...</p>
         <audio id="radioPlayer" controls preload="metadata"></audio>
         <div class="player-actions"></div>
-        </div>
+       
+        
+<div class="next-attraction">
+  <span data-pt="A seguir" data-en="Up next">A seguir</span>
+  <strong id="nextTrackTitle">Carregando...</strong>
+</div> 
+
+<div class="next-program">
+  <span data-pt="Próximo programa" data-en="Next program">
+    Próximo programa
+  </span>
+
+  <strong id="nextProgramTitle">
+    Carregando...
+  </strong>
+
+  <small id="nextProgramTime"></small>
+</div> </div>
           <button class="share-btn" onclick="sharePage()" data-pt="📤 Compartilhar" data-en="📤 Share">
       📤 Compartilhar
     </button>
@@ -547,6 +626,10 @@ left:-9999px;
 </div>
 <script>
 
+let lastCoverTrackKey = "";
+let currentCoverUrl = "";
+let lastCoverIndex = -1;
+let radioWasPlaying = false;  
 let activeScheduleHour = null;
 let currentPlaylist = [];
 let currentTrackIndex = 0;
@@ -558,10 +641,28 @@ let radioData=null,activeTrack=null,activeSource="schedule";
 const JSON_URL="https://horizon4282.com.br/data/radio-luz-louvor.json";
 const MESSAGES_URL = "https://horizon4282.com.br/data/radio-messages-pt-en.json";
 let messagesData = [];
+
+
+const radioCovers = [
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--00.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--01.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--02.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--03.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--04.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--05.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--06.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--07.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--08.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--10.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--11.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--12.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--13.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--14.webp"
+];
   
 const fallbackData={
  page:{pt:{eyebrow:"Rádio Luz e Louvor",title:"Rádio Luz e Louvor",text:"Música, oração, Palavra e esperança. Uma estação devocional dentro do Horizon 4282.",onAir:"Áudio HD · 24h"},en:{eyebrow:"Light & Praise Radio",title:"Light & Praise Radio",text:"Music, prayer, Word and hope. A devotional station inside Horizon 4282.",onAir:"HD Audio · 24h"}},
- defaultCover:"https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png",
+ defaultCover:"https://songs.horizon4282.com.br/file/horizon4282/images/default-cover.webp",
  tracks:{"recebe-hoje-o-meu-sim":{pt:{title:"Recebe Hoje o Meu Sim",description:"Faixa solicitada do Ministério Luz e Louvor."},en:{title:"Recebe Hoje o Meu Sim",description:"Requested track by Ministério Luz e Louvor."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3",cover:""},"digno-de-louvor":{pt:{title:"Digno de Louvor",description:"Faixa solicitada do Ministério Luz e Louvor."},en:{title:"Digno de Louvor",description:"Requested track by Ministério Luz e Louvor."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/digno-de-louvor.mp3",cover:""}},
  schedule:[{hour:0,pt:{title:"Madrugada de Adoração",description:"Louvores suaves e instrumentais para oração."},en:{title:"Dawn Worship",description:"Soft worship and instrumental prayer music."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-madrugada.mp3",cover:""},{hour:6,pt:{title:"Manhã de Louvor",description:"Canções para começar o dia com fé e esperança."},en:{title:"Morning Praise",description:"Songs to begin the day with faith and hope."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-manha.mp3",cover:""},{hour:12,pt:{title:"Hora da Palavra",description:"Música, Palavra e reflexão para o meio do dia."},en:{title:"Hour of the Word",description:"Music, Word and reflection for midday."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-palavra.mp3",cover:""},{hour:18,pt:{title:"Noite de Esperança",description:"Louvores para oração, descanso e confiança em Deus."},en:{title:"Night of Hope",description:"Worship for prayer, rest and trust in God."},audio:"https://f005.backblazeb2.com/file/horizon4282/audio/radio-noite.mp3",cover:""}],
  message:{pt:{title:"Mensagem do Dia",text:"Permanecei em Mim, e Eu permanecerei em vós. — João 15,4"},en:{title:"Daily Message",text:"Remain in Me, and I will remain in you. — John 15:4"}},
@@ -730,6 +831,10 @@ function renderNowPlaying(item, source){
   activeTrack = item;
   activeSource = source;
 
+  if (source === "schedule") {
+  updateNextProgram();
+}
+
   if (source === "schedule" && item.hour !== undefined) {
   activeScheduleHour = item.hour;
 }
@@ -832,6 +937,72 @@ if(item.playlist && item.playlist.length){
 
   return { index: 0, offset: 0 };
 }
+
+
+  
+function updateTrackCover(track) {
+  const coverBox = document.getElementById("coverBox");
+  const bottomCover = document.querySelector(".bottom-cover");
+
+  const trackKey =
+    track?.audio ||
+    `${track?.title || "radio"}-${currentTrackIndex}`;
+
+  if (trackKey !== lastCoverTrackKey || !currentCoverUrl) {
+    currentCoverUrl =
+      getRandomCover() ||
+      radioData?.defaultCover ||
+      "https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png";
+
+    lastCoverTrackKey = trackKey;
+  }
+
+  if (coverBox) {
+    coverBox.style.backgroundImage = `url("${currentCoverUrl}")`;
+    coverBox.textContent = "";
+  }
+
+  if (bottomCover) {
+    bottomCover.style.backgroundImage = `url("${currentCoverUrl}")`;
+    bottomCover.textContent = "";
+  }
+
+  updateMediaSession(track, currentCoverUrl);
+}
+
+
+
+function updateMediaSession(track, coverUrl) {
+  if (!("mediaSession" in navigator)) return;
+
+  try {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: track?.title || "Rádio Luz e Louvor",
+      artist: track?.artist || "Ministério Luz e Louvor",
+      album: track?.album || "Rádio Luz e Louvor",
+      artwork: [
+        {
+          src: coverUrl,
+          sizes: "512x512",
+          type: getImageMimeType(coverUrl)
+        }
+      ]
+    });
+  } catch (error) {
+    console.warn("Não foi possível atualizar os metadados:", error);
+  }
+}
+
+function getImageMimeType(url) {
+  const cleanUrl = String(url).toLowerCase().split("?")[0];
+
+  if (cleanUrl.endsWith(".webp")) return "image/webp";
+  if (cleanUrl.endsWith(".jpg") || cleanUrl.endsWith(".jpeg")) {
+    return "image/jpeg";
+  }
+
+  return "image/png";
+}
   
 function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   const track = currentPlaylist[index];
@@ -839,16 +1010,17 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
 
   if (!track || !track.audio) return;
 
-  // Identifica esta tentativa específica de carregamento
   const loadId = ++audioLoadId;
 
-  // Cancela qualquer avanço agendado por uma faixa anterior
   if (audioRetryTimer) {
     clearTimeout(audioRetryTimer);
     audioRetryTimer = null;
   }
 
   currentTrackIndex = index;
+
+  updateTrackCover(track);
+  updateNextAttraction();
 
   document.getElementById("nowTitle").textContent =
     track.title || "Rádio Luz e Louvor";
@@ -862,7 +1034,6 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
 
   player.pause();
 
-  // Limpa eventos da faixa anterior
   player.oncanplay = null;
   player.onloadedmetadata = null;
   player.onerror = null;
@@ -871,7 +1042,6 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   player.load();
 
   player.onloadedmetadata = () => {
-    // Ignora eventos atrasados de uma faixa anterior
     if (loadId !== audioLoadId) return;
 
     if (
@@ -898,16 +1068,13 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   };
 
   player.onerror = () => {
-    // Impede que um erro antigo pule a faixa atual
     if (loadId !== audioLoadId) return;
-
-    const mediaError = player.error;
 
     console.warn(
       "Erro ao carregar áudio:",
       track.title,
       track.audio,
-      mediaError?.code
+      player.error?.code
     );
 
     if (audioRetryTimer) {
@@ -1143,10 +1310,33 @@ document.getElementById("radioPlayer").addEventListener("ended", () => {
 function scrollToBlock(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});if(window.innerWidth<=900)document.body.classList.remove("mobile-menu-open")}
 
 const banners = [
-      "https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp",
-      "https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor-2.webp",
-      "https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor-3.webp",
-      "https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp"
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-01.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-02.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-03.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-04.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-05.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-06.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-07.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-08.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-09.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-10.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-11.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-11.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-12.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-13.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-14.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-15.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-16.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-17.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-18.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-19.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-20.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-21.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-22.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-23.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-24.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-25.webp",
+      "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-26.webp"
       ];
 
 
@@ -1206,7 +1396,119 @@ window.addEventListener("appinstalled", () => {
   deferredInstallPrompt = null;
   updateInstallButton();
 });
+
+
+//sorteio sem repetir a última capa///////////
+
+function getRandomCover() {
+  if (!radioCovers.length) {
+    return radioData?.defaultCover || "";
+  }
+
+  if (radioCovers.length === 1) {
+    lastCoverIndex = 0;
+    return radioCovers[0];
+  }
+
+  let newIndex;
+
+  do {
+    newIndex = Math.floor(Math.random() * radioCovers.length);
+  } while (newIndex === lastCoverIndex);
+
+  lastCoverIndex = newIndex;
+
+  return radioCovers[newIndex];
+}
   
+//next attraction//////////////////////
+function updateNextAttraction() {
+  const element = document.getElementById("nextTrackTitle");
+
+  if (!element || !currentPlaylist.length) return;
+
+  let nextIndex = currentTrackIndex + 1;
+
+  if (nextIndex >= currentPlaylist.length) {
+    nextIndex = 0;
+  }
+
+  const nextTrack = currentPlaylist[nextIndex];
+
+  element.textContent =
+    nextTrack?.title ||
+    (currentLang === "pt"
+      ? "Próxima atração"
+      : "Next attraction");
+}
+//nextProgram//////////////////////////
+function getNextScheduleItem() {
+  if (!radioData?.schedule?.length) {
+    return null;
+  }
+
+  const sorted = radioData.schedule
+    .slice()
+    .sort((a, b) => a.hour - b.hour);
+
+  const currentHour =
+    activeScheduleHour !== null
+      ? activeScheduleHour
+      : getCurrentSchedule()?.hour;
+
+  const currentIndex = sorted.findIndex(
+    item => item.hour === currentHour
+  );
+
+  if (currentIndex === -1) {
+    return sorted[0];
+  }
+
+  return sorted[
+    (currentIndex + 1) % sorted.length
+  ];
+}
+
+function updateNextProgram() {
+  const titleElement =
+    document.getElementById("nextProgramTitle");
+
+  const timeElement =
+    document.getElementById("nextProgramTime");
+
+  if (!titleElement || !timeElement) {
+    return;
+  }
+
+  const nextProgram = getNextScheduleItem();
+
+  if (!nextProgram) {
+    titleElement.textContent =
+      currentLang === "pt"
+        ? "Programação não disponível"
+        : "Schedule unavailable";
+
+    timeElement.textContent = "";
+    return;
+  }
+
+  const localized =
+    nextProgram[currentLang] ||
+    nextProgram.pt ||
+    nextProgram.en ||
+    nextProgram;
+
+  titleElement.textContent =
+    localized.title || "Rádio Luz e Louvor";
+
+  const formattedHour =
+    `${String(nextProgram.hour).padStart(2, "0")}:00`;
+
+  timeElement.textContent =
+    currentLang === "pt"
+      ? `Começa às ${formattedHour}`
+      : `Starts at ${formattedHour}`;
+}
 //randomBanner///////////////////////////  
 function loadRandomBanner(){
 
@@ -1231,7 +1533,7 @@ function loadRandomBanner(){
   
 async function sharePage(){
 
-  const url = "https://horizon4282.com.br/radio-luz-louvor.html";
+  const url = "https://horizon4282.com.br/radio-luz-louvor";
 
   const message = currentLang === "pt"
     ? `🎵 Rádio Luz e Louvor\n\nMúsica, oração e contemplação 24 horas.\n\n${url}`
@@ -1303,22 +1605,29 @@ setInterval(() => {
   // Mudou o programa?
   if (currentSchedule && currentSchedule.hour !== activeScheduleHour) {
 
+  const player = document.getElementById("radioPlayer");
+
+    // Guarda se a rádio estava tocando antes da mudança.
+    radioWasPlaying = !player.paused && !player.ended;
+
     renderSchedule();
 
-    // interrompe imediatamente a música atual
-    const player = document.getElementById("radioPlayer");
-    player.pause();
+    activeTrack = currentSchedule;
+    activeScheduleHour = currentSchedule.hour;
+    currentPlaylist = currentSchedule.playlist || [];
 
+// Na mudança real de programa, começa pela introdução.
+currentTrackIndex = 0;
 
-    // inicia imediatamente
-    renderNowPlaying(currentSchedule, "schedule");
-
-setTimeout(() => {
-  playRadio();
-}, 500);
+loadPlaylistTrack(
+  0,
+  0,
+  radioWasPlaying
+);
 
     return;
   }
+
 
   // Apenas atualiza o destaque visual da grade
   renderSchedule();
