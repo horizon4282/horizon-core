@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prisma — Podcast sobre Tecnologia, Futuro e Espiritualidade</title>
+<meta name="author" content="Roque Fernando Marcos Sousa">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Prisma é um podcast sobre tecnologia, futuro, educação, inteligência artificial e espiritualidade.">
+<meta name="theme-color" content="#050816">
+<link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
+<style>
+:root{
+  --bg:#050816;
+  --panel:rgba(10,20,39,.82);
+  --panel-2:rgba(15,31,55,.72);
+  --line:rgba(125,211,252,.20);
+  --line-strong:rgba(125,211,252,.52);
+  --text:#edf7ff;
+  --muted:#91a9c2;
+  --accent:#7dd3fc;
+  --gold:#f5b740;
+  --green:#22c55e;
+  --danger:#fb7185;
+  --sidebar-open:300px;
+  --sidebar-closed:82px;
+  --font:"Courier New",Courier,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;min-height:100%;background:var(--bg)}
+body{
+  color:var(--text);
+  font-family:var(--font);
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 10% 8%,rgba(14,165,233,.16),transparent 30%),
+    radial-gradient(circle at 85% 70%,rgba(245,183,64,.08),transparent 34%),
+    var(--bg);
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  pointer-events:none;
+  opacity:.35;
+  background:linear-gradient(rgba(0,0,0,0) 50%,rgba(0,0,0,.16) 50%);
+  background-size:100% 3px;
+}
+button,input{font:inherit}
+button{color:inherit}
+a{color:inherit;text-decoration:none}
+body.sidebar-collapsed{--sidebar-width:var(--sidebar-closed)}
+body:not(.sidebar-collapsed){--sidebar-width:var(--sidebar-open)}
+.app{display:flex;min-height:100vh}
+.sidebar{
+  position:fixed;
+  inset:0 auto 0 0;
+  width:var(--sidebar-width);
+  z-index:50;
+  overflow:hidden;
+  background:rgba(3,7,18,.96);
+  border-right:1px solid var(--line);
+  backdrop-filter:blur(18px);
+  transition:width .25s,transform .25s;
+}
+.sidebar-header{
+  height:78px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:0 18px;
+  border-bottom:1px solid var(--line);
+}
+.toggle-btn{
+  min-width:44px;
+  width:44px;
+  height:44px;
+  border:1px solid var(--line);
+  background:rgba(8,21,38,.78);
+  color:var(--accent);
+  cursor:pointer;
+  font-size:18px;
+}
+.brand{white-space:nowrap;overflow:hidden}
+.brand strong{display:block;color:var(--accent);font-size:13px;letter-spacing:.28em;text-transform:uppercase}
+.brand span{display:block;color:var(--muted);font-size:11px;margin-top:4px;letter-spacing:.14em;text-transform:uppercase}
+body.sidebar-collapsed .brand,
+body.sidebar-collapsed .nav span,
+body.sidebar-collapsed .sidebar-label,
+body.sidebar-collapsed .sidebar-footer{display:none}
+.nav{padding:18px 12px}
+.sidebar-label{color:var(--muted);font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin:12px 10px 10px}
+.nav button{
+  width:100%;
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:8px;
+  padding:0 14px;
+  border:1px solid rgba(125,211,252,.14);
+  background:rgba(8,21,38,.45);
+  color:var(--text);
+  cursor:pointer;
+  text-align:left;
+  white-space:nowrap;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:12px;
+}
+.nav button:hover,.nav button.active{background:rgba(8,80,102,.52);border-color:var(--line-strong);color:var(--gold)}
+.nav i{width:22px;text-align:center;font-style:normal;color:var(--accent)}
+.sidebar-footer{position:absolute;left:18px;right:18px;bottom:22px;color:var(--muted);font-size:11px;line-height:1.6;letter-spacing:.1em;text-transform:uppercase}
+.main{width:100%;margin-left:var(--sidebar-width);transition:margin-left .25s}
+.mobile-topbar{display:none}
+.content{width:min(1480px,calc(100% - 64px));margin:0 auto;padding:34px 0 140px}
+.hero-banner{
+  min-height:330px;
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:28px;
+  align-items:center;
+  padding:44px;
+  margin-bottom:24px;
+  border:1px solid var(--line);
+  overflow:hidden;
+  position:relative;
+  background:
+    linear-gradient(90deg,rgba(3,7,18,.95),rgba(3,7,18,.58)),
+    radial-gradient(circle at 85% 20%,rgba(125,211,252,.22),transparent 34%),
+    linear-gradient(135deg,#071020,#102947);
+}
+.hero-banner::after{
+  content:"PRISMA";
+  position:absolute;
+  right:-24px;
+  bottom:-34px;
+  color:rgba(125,211,252,.055);
+  font-size:clamp(90px,16vw,240px);
+  font-weight:bold;
+  letter-spacing:.05em;
+  pointer-events:none;
+}
+.eyebrow{color:var(--gold);font-size:12px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(38px,6vw,82px);line-height:.96;margin:0 0 20px;letter-spacing:0.8em;text-transform:uppercase}
+.hero-banner p{max-width:850px;color:#c2d3e5;font-size:17px;line-height:1.75;margin:0}
+.onair{
+  position:relative;
+  z-index:2;
+  border:1px solid rgba(34,197,94,.35);
+  background:rgba(34,197,94,.08);
+  padding:26px;
+  text-align:center;
+}
+.onair strong{color:var(--green);letter-spacing:.22em;text-transform:uppercase}
+.onair .dot{width:12px;height:12px;border-radius:50%;display:inline-block;background:var(--green);box-shadow:0 0 18px rgba(34,197,94,.9);margin-right:8px}
+.onair span:last-child{display:block;margin-top:12px;color:var(--muted);font-size:13px;line-height:1.5}
+.status-message{padding:16px 18px;margin-bottom:18px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.status-message.error{border-color:rgba(251,113,133,.4);color:#fecdd3}
+.live-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:start;margin-bottom:28px}
+.panel{border:1px solid var(--line);background:var(--panel);padding:24px}
+.panel-title{color:var(--accent);letter-spacing:.21em;text-transform:uppercase;font-size:13px;margin-bottom:18px}
+.player-card{display:grid;grid-template-columns:210px 1fr;gap:24px;align-items:center}
+.cover{
+  aspect-ratio:1/1;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 45%,rgba(0,242,255,.16),transparent 42%),linear-gradient(135deg,rgba(14,165,233,.20),rgba(3,7,18,.9));
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  color:var(--accent);
+  font-size:48px;
+}
+.mode-badge{display:inline-block;color:var(--gold);border:1px solid rgba(245,183,64,.28);background:rgba(245,183,64,.08);padding:7px 10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.track-meta h2{margin:0 0 10px;font-size:clamp(25px,3vw,40px);line-height:1.13}
+.track-meta p{color:var(--muted);line-height:1.65;margin:0 0 16px}
+audio{width:100%;margin-top:10px}
+.player-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.action-btn{
+  border:1px solid var(--line-strong);
+  background:rgba(14,165,233,.10);
+  color:var(--accent);
+  padding:11px 15px;
+  cursor:pointer;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-size:11px;
+}
+.action-btn:hover{background:var(--accent);color:#030712}
+.action-btn.gold{border-color:rgba(245,183,64,.42);background:rgba(245,183,64,.08);color:var(--gold)}
+.action-btn.gold:hover{background:var(--gold);color:#030712}
+.next-box{margin-top:14px;padding:12px 14px;border-left:3px solid var(--gold);background:rgba(245,183,64,.06)}
+.next-box span{display:block;color:var(--gold);font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:5px}
+.next-box strong{font-size:13px;line-height:1.4}
+.schedule-list{display:grid;gap:10px;max-height:480px;overflow-y:auto;scrollbar-width:none}
+.schedule-list::-webkit-scrollbar{width:0}
+.schedule-item{border:1px solid rgba(125,211,252,.14);background:rgba(0,0,0,.18);padding:14px;display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:start}
+.schedule-item.active{border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.06)}
+.schedule-item time{color:var(--gold);font-weight:bold}
+.schedule-item strong{display:block;margin-bottom:5px}
+.schedule-item span{color:var(--muted);font-size:13px;line-height:1.45}
+.catalog-section{margin-top:28px}
+.catalog-header{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:end;margin-bottom:18px}
+.catalog-header h2{font-size:clamp(28px,4vw,48px);margin:0 0 8px}
+.catalog-header p{color:var(--muted);line-height:1.6;margin:0}
+.search-wrap{min-width:min(100%,420px)}
+.search-wrap label{display:block;color:var(--accent);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+.search-input{
+  width:100%;
+  min-height:48px;
+  padding:0 15px;
+  border:1px solid var(--line-strong);
+  outline:none;
+  background:rgba(3,7,18,.72);
+  color:var(--text);
+}
+.search-input:focus{box-shadow:0 0 0 3px rgba(125,211,252,.09)}
+.category-row{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
+.category-btn{border:1px solid var(--line);background:var(--panel-2);color:var(--muted);padding:9px 13px;cursor:pointer;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.category-btn:hover,.category-btn.active{border-color:var(--line-strong)}
+.category-btn:hover{background-color:#000;color: #fff;}
+.catalog-meta{color:var(--muted);font-size:12px;margin-bottom:14px}
+.episode-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.episode-card{border:1px solid var(--line);background:var(--panel);padding:18px;display:flex;flex-direction:column;min-height:290px;transition:.2s}
+.episode-card:hover{transform:translateY(-3px);border-color:var(--line-strong);background:rgba(11,29,51,.92)}
+.episode-category{color:var(--gold);font-size:10px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+.episode-card h3{font-size:20px;line-height:1.25;margin:0 0 10px}
+.episode-card p{color:yellow;font-size:13px;line-height:1.6;margin:0 0 16px;flex:1}
+.episode-info{display:flex;gap:12px;flex-wrap:wrap;color:#bdd0e4;font-size:11px;margin-bottom:16px}
+.tag-list{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tag{border:1px solid rgba(125,211,252,.14);padding:5px 7px;color:#fff;font-size:10px}
+.empty-state{grid-column:1/-1;border:1px dashed var(--line-strong);padding:36px;text-align:center;color:var(--muted)}
+.bottom-player{
+  position:fixed;
+  left:var(--sidebar-width);
+  right:0;
+  bottom:0;
+  z-index:1000;
+  min-height:80px;
+  display:grid;
+  grid-template-columns:minmax(240px,1fr) 70px minmax(240px,1.3fr) 180px;
+  align-items:center;
+  gap:16px;
+  padding:10px 20px;
+  background:rgba(3,7,18,.97);
+  border-top:1px solid var(--line-strong);
+  backdrop-filter:blur(20px);
+  transition:left .25s;
+}
+.bottom-track{display:flex;align-items:center;gap:12px;min-width:0}
+.bottom-cover{width:56px;height:56px;min-width:56px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;color:var(--accent);font-size:23px}
+.bottom-track-info{min-width:0}
+.bottom-track-info strong,.bottom-track-info span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bottom-track-info strong{font-size:14px;margin-bottom:5px}
+.bottom-track-info span{font-size:11px;color:var(--muted)}
+.bottom-control-btn{width:46px;height:46px;border-radius:50%;border:1px solid var(--line-strong);background:var(--text);color:#030712;font-size:18px;cursor:pointer}
+.bottom-control-btn:hover{background:var(--gold);transform:scale(1.05)}
+.bottom-progress-area{display:grid;grid-template-columns:46px 1fr 46px;gap:10px;align-items:center;font-size:11px;color:var(--muted)}
+.bottom-progress-area span:last-child{text-align:right}
+.bottom-progress-area input,.bottom-volume input{width:100%;accent-color:var(--accent);cursor:pointer}
+.bottom-volume{display:flex;align-items:center;gap:10px}
+@media(max-width:1180px){.episode-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-banner,.live-grid,.player-card{grid-template-columns:1fr}.cover{max-width:260px}.bottom-player{grid-template-columns:minmax(200px,1fr) 60px minmax(200px,1fr);}.bottom-volume{display:none}}
+@media(max-width:900px){
+  body{--sidebar-width:var(--sidebar-open)}
+  .sidebar{transform:translateX(-100%);width:300px}
+  body.mobile-menu-open .sidebar{transform:translateX(0)}
+  .main{margin-left:0}
+  .mobile-topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);background:rgba(3,7,18,.94);position:sticky;top:0;z-index:40}
+  .bottom-player{display:none}
+  .content{padding-bottom:70px}
+}
+@media(max-width:700px){
+  .content{width:calc(100% - 28px);padding-top:18px}
+  .hero-banner,.panel{padding:22px}
+  .hero-banner{min-height:280px}
+  .catalog-header{grid-template-columns:1fr}
+  .search-wrap{min-width:0}
+  .episode-grid{grid-template-columns:1fr}
+  .cover{display:none}
+}
+
+/* ===== IDENTIDADE VISUAL PRISMA V2 ===== */
+:root{
+  --bg:#f3f0e8;
+  --panel:rgba(255,255,255,.82);
+  --panel-2:#ebe6da;
+  --line:rgba(20,24,34,.14);
+  --line-strong:rgba(20,24,34,.36);
+  --text:#151823;
+  --muted:#626775;
+  --accent:#5b3df5;
+  --gold:#ef6c3e;
+  --green:#177f68;
+  --sidebar-open:100%;
+  --sidebar-closed:100%;
+  --font:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+body,html{background:var(--bg)}
+body{
+  background:
+    radial-gradient(circle at 85% 8%,rgba(91,61,245,.12),transparent 28%),
+    radial-gradient(circle at 8% 46%,rgba(239,108,62,.10),transparent 25%),
+    var(--bg);
+}
+body::before{display:none}
+.app{display:block}
+.sidebar{
+  position:sticky;inset:auto;top:0;width:100%;height:74px;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(243,240,232,.90);border:0;border-bottom:1px solid var(--line);
+  backdrop-filter:blur(18px);overflow:visible;padding:0 max(24px,calc((100vw - 1480px)/2));
+}
+.sidebar-header{height:auto;padding:0;border:0;min-width:max-content}
+.toggle-btn{display:none}
+.brand strong{color:var(--text);font-size:11px;letter-spacing:.2em}
+.brand span{color:var(--accent);font-size:18px;font-weight:800;letter-spacing:-.02em;text-transform:none;margin-top:1px}
+body.sidebar-collapsed .brand,body.sidebar-collapsed .nav span,body.sidebar-collapsed .sidebar-label{display:block}
+.nav{padding:0;display:flex;align-items:center;gap:8px}
+.sidebar-label,.sidebar-footer{display:none!important}
+.nav button{
+  width:auto;min-height:40px;margin:0;padding:0 15px;border:0;border-radius:999px;
+  background:transparent;color:var(--muted);letter-spacing:.02em;text-transform:none;font-size:14px;font-weight:650;
+}
+.nav button i{display:none}
+.nav button:hover,.nav button.active{background:#fff;color:var(--accent);box-shadow:0 8px 30px rgba(28,31,42,.08)}
+.main{margin-left:0!important}
+.mobile-topbar{display:none!important}
+.content{width:min(1480px,calc(100% - 48px));padding:34px 0 150px}
+.hero-banner{
+  min-height:470px;grid-template-columns:minmax(0,1.15fr) minmax(310px,.85fr);padding:64px;
+  border:0;border-radius:32px;margin-bottom:34px;
+  background:#171925;color:#fff;box-shadow:0 35px 90px rgba(23,25,37,.18);
+}
+.hero-banner::before{
+  content:"";position:absolute;width:460px;height:460px;right:-30px;top:5px;
+  background:conic-gradient(from 35deg,#ff6b35,#ffc857,#5b3df5,#19a7ce,#ff6b35);
+  clip-path:polygon(50% 0,92% 24%,78% 82%,22% 82%,8% 24%);
+  filter:saturate(1.08);opacity:.92;transform:rotate(7deg);
+}
+.hero-banner::after{content:"IDEIAS EM MOVIMENTO";right:46px;bottom:34px;font-size:12px;letter-spacing:.35em;color:rgba(255,255,255,.72);z-index:3}
+.hero-banner>div:first-child{position:relative;z-index:3;max-width:850px}
+.hero-banner .eyebrow{color:#ffc857}
+h1{font-size:clamp(60px,9vw,132px);letter-spacing:-.01em;text-transform:none;line-height:.8;margin-bottom:32px}
+.hero-banner p{font-family:Georgia,"Times New Roman",serif;font-size:clamp(18px,2vw,27px);line-height:1.5;color:#e9e6f0;max-width:760px}
+.onair{
+  align-self:end;justify-self:end;width:250px;z-index:4;border:1px solid rgba(255,255,255,.24);
+  background:rgba(23,25,37,.72);border-radius:24px;text-align:left;padding:22px;backdrop-filter:blur(12px)
+}
+.onair strong{color:#fff;letter-spacing:.14em}.onair .dot{background:#ff6b35;box-shadow:0 0 18px rgba(255,107,53,.85)}
+.onair span:last-child{color:#d6d2de}
+.status-message{border:0;border-radius:16px;background:#fff;color:var(--muted);text-transform:none;letter-spacing:0;box-shadow:0 12px 40px rgba(23,25,37,.06)}
+.live-grid{grid-template-columns:minmax(0,1.22fr) minmax(320px,.78fr);gap:20px}
+.panel{border:0;border-radius:26px;background:rgba(255,255,255,.88);box-shadow:0 18px 55px rgba(23,25,37,.07)}
+.panel-title{color:var(--muted);letter-spacing:.08em;font-size:11px;font-weight:800}
+.player-card{grid-template-columns:250px 1fr}
+.cover{border:0;border-radius:22px;box-shadow:0 22px 45px rgba(23,25,37,.15);background-color:#dcd5c8}
+.mode-badge{color:var(--accent);border:0;background:#ece9ff;border-radius:999px;letter-spacing:.04em;text-transform:none;font-weight:750}
+.track-meta h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(30px,4vw,52px);font-weight:500;letter-spacing:-.035em}
+.track-meta p{font-size:15px;background-color: #102947;color: #fff;padding:0 0 0 10px}
+.action-btn{border:0;border-radius:999px;background:#171925;color:#fff;text-transform:none;letter-spacing:0;font-weight:750;padding:12px 18px}
+.action-btn:hover{background:#000;color:#fff}
+.action-btn.gold{background:#ffdfd2;color:#aa3b18;width:300px;color:#000}.action-btn.gold:hover{background:var(--gold);color:#fff;}
+.next-box{border:0;border-radius:16px;background:#f3f0e8}.next-box span{color:var(--accent)}
+.schedule-list{gap:8px}
+.schedule-item{border:0;border-radius:16px;background:#f5f2eb;padding:15px}
+.schedule-item.active{background:#171925;color:#fff}.schedule-item.active span{color:#c8c5cf}
+.schedule-item time{color:var(--accent)}.schedule-item.active time{color:#ffc857}
+.catalog-section{margin-top:70px}
+.catalog-header{align-items:center;margin-bottom:26px}
+.catalog-header .eyebrow{color:var(--accent);font-weight:800}
+.catalog-header h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(42px,6vw,76px);letter-spacing:-.05em}
+.catalog-header p{font-size:16px;max-width:780px}
+.search-wrap{min-width:min(100%,470px)}
+.search-wrap label{color:var(--muted);letter-spacing:.04em;text-transform:none;font-weight:750}
+.search-input{min-height:58px;border:0;border-radius:18px;background:#fff;color:var(--text);padding:0 20px;box-shadow:0 14px 45px rgba(23,25,37,.08);font-size:16px}
+.category-row{gap:10px;margin-bottom:26px}
+.category-btn{border:0;border-radius:999px;background:#dfd9cc;color:var(--text);text-transform:none;letter-spacing:0;font-weight:750;padding:11px 16px}
+.category-btn:hover,.category-btn.active{background:#000;color:#fff}
+.episode-grid{grid-template-columns:repeat(12,1fr);gap:18px}
+.episode-card{grid-column:span 4;border:0;border-radius:24px;background:#171925;color:#fff;min-height:340px;padding:24px;box-shadow:0 16px 50px rgba(23,25,37,.065)}
+.episode-card:nth-child(5n+1){grid-column:span 7;background:#171925;color:#fff}
+.episode-card:nth-child(5n+2){grid-column:span 5;background:#1b1031;color: #fff;}
+.episode-card:nth-child(5n+1) p,.episode-card:nth-child(5n+1) .tag,.episode-card:nth-child(5n+1) .episode-info{color:#c9c6d1}
+.episode-card:hover{transform:translateY(-6px);border:0;color:#fff;box-shadow:0 25px 65px rgba(23,25,37,.14)}
+.episode-category{color:var(--gold);font-weight:800}
+.episode-card h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(24px,2.6vw,38px);color:fff;letter-spacing:-.035em}
+.tag{border:0;border-radius:999px;background:rgba(91,61,245,.09);padding:6px 9px}
+.bottom-player{left:24px;right:24px;bottom:18px;border:0;border-radius:22px;background:rgba(23,25,37,.94);color:#fff;box-shadow:0 25px 70px rgba(23,25,37,.30)}
+.bottom-track-info span,.bottom-progress-area{color:#bdb9c7}.bottom-cover{border:0;border-radius:14px}.bottom-control-btn{border:0;background:#fff}
+@media(max-width:1100px){.episode-card,.episode-card:nth-child(5n+1),.episode-card:nth-child(5n+2){grid-column:span 6}.hero-banner{grid-template-columns:1fr;min-height:520px}.onair{justify-self:start}.hero-banner::before{right:-120px;top:80px}}
+@media(max-width:900px){.sidebar{position:sticky;transform:none!important;width:100%;height:auto;min-height:68px;padding:12px 18px}.nav{display:none}.content{padding-top:18px}.bottom-player{display:none}.hero-banner{padding:38px;min-height:500px}.hero-banner::before{width:330px;height:330px;right:-100px;top:150px}}
+@media(max-width:700px){.content{width:calc(100% - 28px)}.hero-banner{padding:30px;border-radius:24px}.hero-banner::before{opacity:.45}.onair{width:100%}.player-card{grid-template-columns:1fr}.cover{display:block;max-width:210px}.episode-card,.episode-card:nth-child(5n+1),.episode-card:nth-child(5n+2){grid-column:1/-1}.catalog-section{margin-top:48px}}
+
+</style>
+</head>
+<body class="sidebar-collapsed">
+<div class="bottom-player" id="bottomPlayer">
+  <div class="bottom-track">
+    <div class="bottom-cover" id="bottomCover">◉</div>
+    <div class="bottom-track-info">
+      <strong id="bottomTrackTitle">Prisma Podcast</strong>
+      <span id="bottomTrackDescription">Transmissão sincronizada</span>
+    </div>
+  </div>
+  <button type="button" class="bottom-control-btn" id="bottomPlayBtn" aria-label="Reproduzir">▶</button>
+  <div class="bottom-progress-area">
+    <span id="bottomCurrentTime">0:00</span>
+    <input type="range" id="bottomProgress" min="0" max="100" value="0" step="0.1" aria-label="Progresso">
+    <span id="bottomDuration">0:00</span>
+  </div>
+  <div class="bottom-volume">
+    <span id="bottomVolumeIcon">🔊</span>
+    <input type="range" id="bottomVolume" min="0" max="1" value="0.4" step="0.01" aria-label="Volume">
+  </div>
+</div>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <button class="toggle-btn" onclick="toggleSidebar()" aria-label="Abrir ou fechar menu">☰</button>
+      <div class="brand"><strong>Horizon 4282</strong><span>Prisma Podcast</span></div>
+    </div>
+    <nav class="nav">
+      <div class="sidebar-label">Navegação</div>
+      <button onclick="scrollToBlock('liveBlock')"><i>◉</i><span>Ao vivo</span></button>
+      <button onclick="scrollToBlock('catalogBlock')"><i>⌕</i><span>Pesquisar episódios</span></button>
+      <button onclick="returnToLive(true)"><i>↻</i><span>Retornar ao vivo</span></button>
+    </nav>
+    <div class="sidebar-footer">Tecnologia · Futuro<br>Educação · Espiritualidade</div>
+  </aside>
+
+  <main class="main">
+    <header class="mobile-topbar">
+      <button class="toggle-btn" onclick="toggleSidebar()" aria-label="Abrir menu">☰</button>
+      <div style="text-align:right"><strong style="display:block;font-size:14px;letter-spacing:.08em;text-transform:uppercase">Prisma Podcast</strong><span style="color:var(--muted);font-size:12px">Podcast Horizon 4282</span></div>
+    </header>
+
+    <section class="content">
+      <section class="hero-banner">
+        <div>
+          <div class="eyebrow">Podcast de ideias · Horizon 4282</div>
+          <h1>Prisma Podcast</h1>
+          <p>Um lugar para observar a transformação humana por vários ângulos — tecnologia, educação, futuro e espiritualidade.</p>
+        </div>
+        <div class="onair"><strong><span class="dot"></span>FLUXO CONTÍNUO</strong><span>Uma curadoria viva de ideias, com episódios sob demanda.</span></div>
+      </section>
+
+      <div id="loadState" class="status-message">Carregando dados do podcast...</div>
+
+      <section class="live-grid" id="liveBlock">
+        <div class="panel">
+          <div class="panel-title">Em destaque agora</div>
+          <div class="player-card">
+            <div class="cover" id="coverBox">◉</div>
+            <div class="track-meta">
+              <div class="mode-badge" id="playModeText">Transmissão sincronizada</div>
+              <h2 id="nowTitle">Carregando...</h2>
+              <p id="nowDescription">Preparando a programação.</p>
+              <audio id="podcastPlayer" controls preload="metadata"></audio>
+              <div class="next-box" id="nextBox">
+                <span>A seguir</span>
+                <strong id="nextTrackTitle">Carregando...</strong>
+              </div>
+              <div class="player-actions">
+                <button class="action-btn" type="button" onclick="playCurrentAudio()">▶ Ouvir</button>
+                <button class="action-btn gold" type="button" id="returnLiveBtn" onclick="returnToLive(true)" hidden>↻ Retornar ao vivo</button>
+                <button class="action-btn" type="button" onclick="sharePage()">Compartilhar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">Linha editorial do dia</div>
+          <div class="schedule-list" id="scheduleList"></div>
+        </div>
+      </section>
+
+      <section class="catalog-section" id="catalogBlock">
+        <div class="catalog-header">
+          <div>
+            <div class="eyebrow">Arquivo de ideias</div>
+            <h2>Encontre um novo ângulo</h2>
+            <p>Pesquise pelo título, assunto, descrição ou palavra-chave. Nesta V1, as músicas simulam os futuros episódios.</p>
+          </div>
+          <div class="search-wrap">
+            <label for="catalogSearch">Pesquisar no catálogo</label>
+            <input class="search-input" id="catalogSearch" type="search" placeholder="Ex.: inteligência artificial, educação..." autocomplete="off">
+          </div>
+        </div>
+        <div class="category-row" id="categoryRow"></div>
+        <div class="catalog-meta" id="catalogMeta"></div>
+        <div class="episode-grid" id="episodeGrid"></div>
+      </section>
+    </section>
+  </main>
+</div>
+
+<script>
+const PODCAST_JSON_URL = "https://horizon4282.com.br/data/podcast-prisma.json";
+
+const fallbackData = {
+  page: {
+    title: "Prisma",
+    description: "Tecnologia, futuro, educação e espiritualidade."
+  },
+  defaultCover: "https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png",
+  schedule: [
+    {
+      hour: 0,
+      title: "Prisma Noturno",
+      description: "Reflexões para compreender o presente e imaginar o futuro.",
+      playlist: [
+        { id:"sim-01", title:"O futuro já começou", description:"Áudio musical usado como simulação de episódio.", category:"Tecnologia e Futuro", tags:["futuro","tecnologia","mudança"], duration:223, audio:"https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3" },
+        { id:"sim-02", title:"O humano diante da inteligência artificial", description:"Áudio musical usado como simulação de episódio.", category:"Inteligência Artificial", tags:["IA","humanidade","ética"], duration:218, audio:"https://f005.backblazeb2.com/file/horizon4282/audio/digno-de-louvor.mp3" }
+      ]
+    },
+    {
+      hour: 6,
+      title: "Manhã em Perspectiva",
+      description: "Ideias para começar o dia com lucidez, propósito e esperança.",
+      playlist: [
+        { id:"sim-03", title:"Educação para um mundo disruptivo", description:"Como ensinar e aprender durante grandes transformações.", category:"Educação", tags:["educação","aprendizagem","futuro"], duration:223, audio:"https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3" },
+        { id:"sim-04", title:"Espiritualidade em tempos acelerados", description:"Uma reflexão sobre silêncio, sentido e presença.", category:"Espiritualidade", tags:["espiritualidade","sentido","silêncio"], duration:218, audio:"https://f005.backblazeb2.com/file/horizon4282/audio/digno-de-louvor.mp3" }
+      ]
+    },
+    {
+      hour: 12,
+      title: "Prisma Central",
+      description: "Os grandes temas da transformação humana vistos por diferentes ângulos.",
+      playlist: [
+        { id:"sim-05", title:"Uma única língua no mundo da IA?", description:"Tecnologia, tradução instantânea e o futuro dos idiomas.", category:"Cultura e Sociedade", tags:["idiomas","cultura","inteligência artificial"], duration:223, audio:"https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3" },
+        { id:"sim-06", title:"Decidir quando tudo muda", description:"Como tomar decisões falíveis em ambientes de incerteza.", category:"Filosofia e Decisão", tags:["decisão","incerteza","liderança"], duration:218, audio:"https://f005.backblazeb2.com/file/horizon4282/audio/digno-de-louvor.mp3" }
+      ]
+    },
+    {
+      hour: 18,
+      title: "Horizonte Humano",
+      description: "Tecnologia e espiritualidade reunidas numa conversa sobre o amanhã.",
+      playlist: [
+        { id:"sim-07", title:"A maior transição da história", description:"Uma leitura do momento evolutivo vivido pela humanidade.", category:"Tecnologia e Futuro", tags:["transição","humanidade","evolução"], duration:223, audio:"https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3" },
+        { id:"sim-08", title:"Como preservar o sentido", description:"Fé, propósito e humanidade diante da automação.", category:"Espiritualidade", tags:["fé","propósito","automação"], duration:218, audio:"https://f005.backblazeb2.com/file/horizon4282/audio/digno-de-louvor.mp3" }
+      ]
+    }
+  ],
+  catalog: []
+};
+
+let podcastData = null;
+let activeSource = "schedule";
+let activeScheduleHour = null;
+let currentPlaylist = [];
+let currentTrackIndex = 0;
+let selectedCategory = "Todas";
+let searchTerm = "";
+let shouldResumeAfterCatalog = false;
+let audioLoadId = 0;
+
+const player = document.getElementById("podcastPlayer");
+
+function normalizeData(data){
+  const schedule = Array.isArray(data?.schedule) && data.schedule.length ? data.schedule : fallbackData.schedule;
+  let catalog = Array.isArray(data?.catalog) ? data.catalog : [];
+
+  if(!catalog.length){
+    catalog = schedule.flatMap(program =>
+      (program.playlist || []).map((item,index) => ({
+        ...item,
+        id: item.id || `${program.hour}-${index}-${slugify(item.title || "episodio")}`,
+        program: program.title,
+        publishedAt: item.publishedAt || "2026-07-31"
+      }))
+    );
+  }
+
+  return {
+    page: data?.page || fallbackData.page,
+    defaultCover: data?.defaultCover || fallbackData.defaultCover,
+    schedule,
+    catalog
+  };
+}
+
+async function loadPodcastData(){
+  const state = document.getElementById("loadState");
+  try{
+    const response = await fetch(PODCAST_JSON_URL, { cache:"no-store" });
+    if(!response.ok) throw new Error("JSON não encontrado");
+    podcastData = normalizeData(await response.json());
+    state.style.display = "none";
+  }catch(error){
+    podcastData = normalizeData(fallbackData);
+    state.className = "status-message error";
+    state.innerHTML = `O JSON externo ainda não foi encontrado. A V1 está funcionando com episódios simulados internos.<br>Arquivo futuro: ${PODCAST_JSON_URL}`;
+  }
+
+  renderSchedule();
+  renderCategories();
+  renderCatalog();
+  returnToLive(false);
+}
+
+function getSaoPauloTimeParts(){
+  const parts = new Intl.DateTimeFormat("pt-BR",{
+    timeZone:"America/Sao_Paulo",
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit",
+    hour12:false
+  }).formatToParts(new Date());
+
+  return {
+    hour:Number(parts.find(part => part.type === "hour").value),
+    minute:Number(parts.find(part => part.type === "minute").value),
+    second:Number(parts.find(part => part.type === "second").value)
+  };
+}
+
+function getCurrentSchedule(){
+  const hour = getSaoPauloTimeParts().hour;
+  const sorted = podcastData.schedule.slice().sort((a,b) => a.hour - b.hour);
+  let current = sorted[0];
+  for(const item of sorted){
+    if(hour >= item.hour) current = item;
+  }
+  return current;
+}
+
+function getSyncedPlaylistPosition(program){
+  const now = getSaoPauloTimeParts();
+  const secondsNow = now.hour * 3600 + now.minute * 60 + now.second;
+  let elapsed = secondsNow - program.hour * 3600;
+  if(elapsed < 0) elapsed += 24 * 3600;
+
+  const playlist = program.playlist || [];
+  const totalDuration = playlist.reduce((sum,item) => sum + Number(item.duration || 0),0);
+  if(!playlist.length || totalDuration <= 0) return {index:0,offset:0};
+
+  elapsed %= totalDuration;
+  let accumulated = 0;
+  for(let index=0; index<playlist.length; index++){
+    const duration = Number(playlist[index].duration || 0);
+    if(elapsed < accumulated + duration){
+      return {index,offset:elapsed - accumulated};
+    }
+    accumulated += duration;
+  }
+  return {index:0,offset:0};
+}
+
+function returnToLive(autoPlay){
+  if(!podcastData) return;
+
+  const wasPlaying = !player.paused;
+  const program = getCurrentSchedule();
+  const synced = getSyncedPlaylistPosition(program);
+
+  activeSource = "schedule";
+  activeScheduleHour = program.hour;
+  currentPlaylist = program.playlist || [];
+  currentTrackIndex = synced.index;
+
+  document.getElementById("returnLiveBtn").hidden = true;
+  document.getElementById("playModeText").textContent = "Transmissão sincronizada";
+
+  loadTrack(currentPlaylist[currentTrackIndex], synced.offset, autoPlay || wasPlaying);
+  renderSchedule();
+}
+
+function playCatalogEpisode(episodeId){
+  const episode = podcastData.catalog.find(item => String(item.id) === String(episodeId));
+  if(!episode) return;
+
+  shouldResumeAfterCatalog = !player.paused;
+  activeSource = "catalog";
+  currentPlaylist = [];
+  currentTrackIndex = 0;
+
+  document.getElementById("returnLiveBtn").hidden = false;
+  document.getElementById("playModeText").textContent = "Episódio sob demanda";
+
+  loadTrack(episode,0,true);
+  scrollToBlock("liveBlock");
+}
+
+function loadTrack(track,offset=0,autoPlay=false){
+  if(!track?.audio) return;
+  const loadId = ++audioLoadId;
+
+  player.pause();
+  player.src = track.audio;
+  player.load();
+
+  document.getElementById("nowTitle").textContent = track.title || "Prisma Podcast";
+  document.getElementById("nowDescription").textContent = track.description || "Episódio do Prisma Podcast.";
+  document.getElementById("bottomTrackTitle").textContent = track.title || "Prisma Podcast";
+  document.getElementById("bottomTrackDescription").textContent = activeSource === "catalog" ? "Episódio sob demanda" : "Transmissão sincronizada";
+
+  updateCover(track);
+  updateNextAttraction();
+  updateMediaSession(track);
+
+  player.onloadedmetadata = () => {
+    if(loadId !== audioLoadId) return;
+    if(offset > 0 && Number.isFinite(player.duration) && offset < player.duration){
+      player.currentTime = offset;
+    }
+  };
+
+  player.oncanplay = async () => {
+    if(loadId !== audioLoadId) return;
+    player.oncanplay = null;
+    if(autoPlay){
+      try{ await player.play(); }catch(error){ console.warn("Reprodução bloqueada pelo navegador:",error); }
+    }
+  };
+}
+
+function updateCover(track){
+  const cover = track.cover || podcastData.defaultCover;
+  for(const element of [document.getElementById("coverBox"),document.getElementById("bottomCover")]){
+    if(!element) continue;
+    element.style.backgroundImage = cover ? `url("${cover}")` : "none";
+    element.textContent = cover ? "" : "◉";
+  }
+}
+
+function updateNextAttraction(){
+  const box = document.getElementById("nextBox");
+  const title = document.getElementById("nextTrackTitle");
+
+  if(activeSource !== "schedule" || !currentPlaylist.length){
+    box.style.display = "none";
+    return;
+  }
+
+  box.style.display = "block";
+  const nextIndex = (currentTrackIndex + 1) % currentPlaylist.length;
+  title.textContent = currentPlaylist[nextIndex]?.title || "Próxima atração";
+}
+
+function renderSchedule(){
+  const list = document.getElementById("scheduleList");
+  const current = getCurrentSchedule();
+  list.innerHTML = "";
+
+  podcastData.schedule.slice().sort((a,b) => a.hour-b.hour).forEach(program => {
+    const article = document.createElement("article");
+    article.className = "schedule-item" + (current?.hour === program.hour ? " active" : "");
+    article.innerHTML = `<time>${String(program.hour).padStart(2,"0")}:00</time><div><strong>${escapeHtml(program.title || "Programa")}</strong><span>${escapeHtml(program.description || "")}</span></div>`;
+    list.appendChild(article);
+  });
+}
+
+function renderCategories(){
+  const row = document.getElementById("categoryRow");
+  const categories = ["Todas",...new Set(podcastData.catalog.map(item => item.category || "Outros"))];
+  row.innerHTML = "";
+
+  categories.forEach(category => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "category-btn" + (selectedCategory === category ? " active" : "");
+    button.textContent = category;
+    button.addEventListener("click",() => {
+      selectedCategory = category;
+      renderCategories();
+      renderCatalog();
+    });
+    row.appendChild(button);
+  });
+}
+
+function renderCatalog(){
+  const grid = document.getElementById("episodeGrid");
+  const meta = document.getElementById("catalogMeta");
+  const normalizedTerm = normalizeText(searchTerm);
+
+  const filtered = podcastData.catalog.filter(item => {
+    const categoryMatch = selectedCategory === "Todas" || (item.category || "Outros") === selectedCategory;
+    const searchable = normalizeText([
+      item.title,
+      item.description,
+      item.category,
+      ...(item.tags || [])
+    ].filter(Boolean).join(" "));
+    return categoryMatch && (!normalizedTerm || searchable.includes(normalizedTerm));
+  });
+
+  meta.textContent = `${filtered.length} ${filtered.length === 1 ? "episódio encontrado" : "episódios encontrados"}`;
+  grid.innerHTML = "";
+
+  if(!filtered.length){
+    grid.innerHTML = `<div class="empty-state">Nenhum episódio corresponde à pesquisa atual.</div>`;
+    return;
+  }
+
+  filtered.forEach(episode => {
+    const card = document.createElement("article");
+    card.className = "episode-card";
+    const tags = (episode.tags || []).slice(0,4).map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
+    card.innerHTML = `
+      <div class="episode-category">${escapeHtml(episode.category || "Podcast")}</div>
+      <h3>${escapeHtml(episode.title || "Episódio")}</h3>
+      <p>${escapeHtml(episode.description || "")}</p>
+      <div class="episode-info">
+        <span>${formatDuration(episode.duration)}</span>
+        ${episode.publishedAt ? `<span>${formatDate(episode.publishedAt)}</span>` : ""}
+      </div>
+      <div class="tag-list">${tags}</div>
+      <button type="button" class="action-btn gold">▶ Ouvir episódio</button>`;
+    card.querySelector("button").addEventListener("click",() => playCatalogEpisode(episode.id));
+    grid.appendChild(card);
+  });
+}
+
+function initializePlayerControls(){
+  const playButton = document.getElementById("bottomPlayBtn");
+  const progress = document.getElementById("bottomProgress");
+  const currentTimeText = document.getElementById("bottomCurrentTime");
+  const durationText = document.getElementById("bottomDuration");
+  const volume = document.getElementById("bottomVolume");
+  const volumeIcon = document.getElementById("bottomVolumeIcon");
+
+  player.volume = Number(volume.value);
+
+  playButton.addEventListener("click",playCurrentAudio);
+  player.addEventListener("play",() => { playButton.textContent = "❚❚"; playButton.setAttribute("aria-label","Pausar"); });
+  player.addEventListener("pause",() => { playButton.textContent = "▶"; playButton.setAttribute("aria-label","Reproduzir"); });
+  player.addEventListener("loadedmetadata",() => {
+    progress.max = Number.isFinite(player.duration) ? player.duration : 0;
+    durationText.textContent = formatAudioTime(player.duration);
+  });
+  player.addEventListener("timeupdate",() => {
+    if(!progress.matches(":active")) progress.value = player.currentTime || 0;
+    currentTimeText.textContent = formatAudioTime(player.currentTime);
+    durationText.textContent = formatAudioTime(player.duration);
+  });
+  progress.addEventListener("change",() => {
+    const value = Number(progress.value);
+    if(Number.isFinite(value) && Number.isFinite(player.duration)) player.currentTime = value;
+  });
+  volume.addEventListener("input",() => {
+    player.volume = Number(volume.value);
+    player.muted = false;
+    volumeIcon.textContent = player.volume === 0 ? "🔇" : player.volume < .5 ? "🔉" : "🔊";
+  });
+  volumeIcon.addEventListener("click",() => {
+    player.muted = !player.muted;
+    volumeIcon.textContent = player.muted ? "🔇" : "🔊";
+  });
+
+  player.addEventListener("ended",() => {
+    if(activeSource === "catalog"){
+      returnToLive(shouldResumeAfterCatalog || true);
+      return;
+    }
+
+    if(currentPlaylist.length){
+      currentTrackIndex = (currentTrackIndex + 1) % currentPlaylist.length;
+      loadTrack(currentPlaylist[currentTrackIndex],0,true);
+    }
+  });
+}
+
+async function playCurrentAudio(){
+  try{
+    if(player.paused) await player.play();
+    else player.pause();
+  }catch(error){ console.warn("Não foi possível controlar o áudio:",error); }
+}
+
+function updateMediaSession(track){
+  if(!("mediaSession" in navigator) || !("MediaMetadata" in window)) return;
+  try{
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title:track.title || "Prisma Podcast",
+      artist:"Prisma — Horizon 4282",
+      album:track.category || "Podcast",
+      artwork:track.cover ? [{src:track.cover,sizes:"512x512",type:getImageMimeType(track.cover)}] : []
+    });
+  }catch(error){ console.warn("Media Session indisponível:",error); }
+}
+
+function toggleSidebar(){
+  if(window.innerWidth <= 900) document.body.classList.toggle("mobile-menu-open");
+  else document.body.classList.toggle("sidebar-collapsed");
+}
+
+function scrollToBlock(id){
+  document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"});
+  if(window.innerWidth <= 900) document.body.classList.remove("mobile-menu-open");
+}
+
+async function sharePage(){
+  const data = {
+    title:"Prisma Podcast",
+    text:"Prisma — tecnologia, futuro, educação e espiritualidade.",
+    url:window.location.href
+  };
+  try{
+    if(navigator.share) await navigator.share(data);
+    else if(navigator.clipboard) await navigator.clipboard.writeText(window.location.href);
+  }catch(error){}
+}
+
+function normalizeText(value){
+  return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+}
+function slugify(value){ return normalizeText(value).replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); }
+function formatAudioTime(seconds){
+  if(!Number.isFinite(seconds) || seconds < 0) return "0:00";
+  const minutes = Math.floor(seconds/60);
+  const remaining = Math.floor(seconds%60);
+  return `${minutes}:${String(remaining).padStart(2,"0")}`;
+}
+function formatDuration(seconds){
+  const value = Number(seconds || 0);
+  if(!value) return "Duração não informada";
+  return value >= 3600 ? `${Math.floor(value/3600)}h ${Math.floor((value%3600)/60)}min` : `${Math.max(1,Math.round(value/60))} min`;
+}
+function formatDate(date){
+  const parsed = new Date(`${date}T12:00:00`);
+  return Number.isNaN(parsed.getTime()) ? date : new Intl.DateTimeFormat("pt-BR").format(parsed);
+}
+function getImageMimeType(url){
+  const clean = String(url).toLowerCase().split("?")[0];
+  if(clean.endsWith(".webp")) return "image/webp";
+  if(clean.endsWith(".jpg") || clean.endsWith(".jpeg")) return "image/jpeg";
+  return "image/png";
+}
+function escapeHtml(value){
+  return String(value ?? "").replace(/[&<>'"]/g,char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
+}
+
+document.getElementById("catalogSearch").addEventListener("input",event => {
+  searchTerm = event.target.value;
+  renderCatalog();
+});
+
+window.addEventListener("resize",() => {
+  if(window.innerWidth <= 900) document.body.classList.add("sidebar-collapsed");
+});
+
+setInterval(() => {
+  if(!podcastData || activeSource !== "schedule") return;
+  const current = getCurrentSchedule();
+  if(current && current.hour !== activeScheduleHour){
+    returnToLive(!player.paused);
+  }
+  renderSchedule();
+},6000);
+
+document.addEventListener("DOMContentLoaded",() => {
+  initializePlayerControls();
+  loadPodcastData();
+});
+</script>
+</body>
+</html>
