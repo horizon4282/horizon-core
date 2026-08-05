@@ -755,6 +755,11 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-ave-maria.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
           "title": "Digno de Louvor",
           "duration": 218,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-digno-de-louvor.mp3"
@@ -788,6 +793,11 @@
           "title": "Salmos 96",
           "duration": 175,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/10-Salmo-96-.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
         }
       ]
     },
@@ -901,6 +911,11 @@
           "title": "Vem Nos Dar a Tua Luz",
           "duration": 234,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-vem-nos-dar-a-tua-luz.mp3"
+        },
+                {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
         },
         {
           "title": "Faz da Vida um Vaso Farto",
@@ -1016,6 +1031,11 @@
           "title": "Catequese para Adultos",
           "duration": 97,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cateque-se-prof-gamito.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
         }
       ]
     },
@@ -1062,8 +1082,13 @@
         },
         {
           "title": "Mensagem de Esperança",
-          "duration": 72,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg--esperanca-05.mp3"
+          "duration": 207,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg-esperanca-6.mp3"
+        },
+         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
         },
         {
           "title": "Lembra Lembra",
@@ -1146,9 +1171,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-o-amor-florescera.mp3"
         },
         {
-          "title": "Nasci Pra Te Adorar",
-          "duration": 218,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-nasci-pra-te-adorar.mp3"
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
         },
         {
           "title": "Apoie a Rádio Luz e Louvor",
@@ -1212,8 +1237,8 @@
         },
         {
           "title": "Mensagem de Esperança",
-          "duration": 72,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg--esperanca-05.mp3"
+          "duration": 207,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg-esperanca-6.mp3"
         },
         {
           "title": "Em Tua Luz Descansar",
@@ -1224,6 +1249,11 @@
           "title": "Bem Aventurados",
           "duration": 232,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Bem-aventurados.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
         },
         {
           "title": "Horários da Matriz",
@@ -1274,6 +1304,11 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-grandioso-es-tu.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
           "title": "Bênção do Padre João Vitor",
           "duration": 30,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
@@ -1302,6 +1337,11 @@
           "title": "Abraça, ó Deus, que te Ama",
           "duration": 220,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-abraca-o-deus-que-te-ama.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
         },
         {
           "title": "Horários da Matriz",
@@ -1335,8 +1375,8 @@
         },
         {
           "title": "Mensagem de Esperança",
-          "duration": 72,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg--esperanca-05.mp3"
+          "duration": 207,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg-esperanca-6.mp3"
         },
         {
           "title": "Mãe de Deus Bendita",
@@ -1366,7 +1406,7 @@
         {
           "title": "Apostolado da Oração",
           "duration": 43,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missa-de-adoracao-apostolado.mp3"
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-de-adoracao-apostolado.mp3"
         },
         {
           "title": "Sopro do Altíssimo",
@@ -1382,6 +1422,11 @@
           "title": "Diácono Nelsinho",
           "duration": 67,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/chamada-diacono-nelsinho.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
         },
         {
           "title": "Jesus Essência do Amor",
@@ -1470,6 +1515,16 @@
           "title": "Rosa Perfeita",
           "duration": 257,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-rosa-perfeita.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Santa Faustina",
+          "duration": 257,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
         },
         {
           "title": "Leva-me ao Jardim",
@@ -1572,6 +1627,16 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cateque-se-prof-gamito.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Santa Faustina",
+          "duration": 257,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
+        },
+        {
           "title": "Cristo Ressuscitou",
           "duration": 223,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-cristo-ressuscitou.mp3"
@@ -1579,7 +1644,7 @@
         {
           "title": "Revela Jesus",
           "duration": 302,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/apresenta--revela-jesus.mp3"
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apresenta--revela-jesus.mp3"
         },
         {
           "title": "Coração Sacrário",
@@ -1599,7 +1664,7 @@
         {
           "title": " Missa de Adoração ao Santíssimo",
           "duration": 67,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missa-quinta-adoracao.mp3"
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-quinta-adoracao.mp3"
         },
         {
           "title": "Vem Jesus Me Libertar",
@@ -1614,7 +1679,7 @@
         {
           "title": "Apostolado da oração",
           "duration": 43,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missa-de-adoracao-apostolado.mp3"
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-de-adoracao-apostolado.mp3"
         },
         {
           "title": "São Miguel Arcanjo",
@@ -1685,14 +1750,24 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-ser-iluminado.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Santa Faustina",
+          "duration": 257,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
+        },
+        {
           "title": "Teu Extraordinário",
           "duration": 216,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-teu-extraordinario.mp3"
         },
         {
           "title": "Mensagem de Esperança",
-          "duration": 72,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg--esperanca-05.mp3"
+          "duration": 207,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg-esperanca-6.mp3"
         },
         {
           "title": "Quero Semear no Teu Jardim",
@@ -1763,6 +1838,16 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-veredas-da-graca-SIM.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Santa Faustina",
+          "duration": 257,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
+        },
+        {
           "title": "Recebe Hoje o meu Sim",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"
@@ -1796,6 +1881,16 @@
           "title": "Acredito em Teu Amor",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-acredito-em-teu-amor.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Santa Faustina",
+          "duration": 257,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
         },
         {
           "title": "Diácono Nelsinho",
@@ -1856,6 +1951,16 @@
           "title": "Luz da Salvação",
           "duration": 180,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-luz-da-salvacao.mp3"
+        },
+         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "São Miguel Arcanjo",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
         },
         {
           "title": "Bênção do Padre João Vitor",
@@ -1938,6 +2043,16 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "São Miguel Arcanjo",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
+        },
+        {
           "title": "Jesus Fiel",
           "duration": 229,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-jesus-fiel.mp3"
@@ -1986,9 +2101,19 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-repousa-em-mim.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "São Miguel Arcanjo",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
+        },
+        {
           "title": "Mensagem de Esperança",
-          "duration": 72,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg--esperanca-05.mp3"
+          "duration": 207,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg-esperanca-6.mp3"
         },
         {
           "title": "Sei Que Tenho Seu Amparo",
@@ -2018,12 +2143,22 @@
         {
           "title": "Missa de Adoração ao Santíssimo",
           "duration": 67,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missa-quinta-adoracao.mp3"
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-quinta-adoracao.mp3"
         },
         {
           "title": "Sigo Firme em Jesus",
           "duration": 223,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sigo-firme-em-jesus.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "São Miguel Arcanjo",
+          "duration": 209,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
         },
         {
           "title": "Me Torna Mais Sensível",
@@ -2074,6 +2209,11 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
           "title": "Jesus em Tudo me Define",
           "duration": 199,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-Jesus-em-tudo-me-define.mp3"
@@ -2107,6 +2247,11 @@
           "title": "Descanso da Alma",
           "duration": 206,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/11-descanso-da-alma.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
         },
         {
           "title": "Torrentes de Sabedoria",
@@ -2161,12 +2306,17 @@
         {
           "title": "Apostolado da Oração",
           "duration": 43,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/missa-de-adoracao-apostolado.mp3"
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-de-adoracao-apostolado.mp3"
         },
         {
           "title": "Sei que Tens Piedade",
           "duration": 282,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei-que-tens-piedade.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
         },
         {
           "title": "Só Quero a Tua Amizade",
@@ -2269,6 +2419,16 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-olhos-do-coracao.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Espírito de Santidade",
+          "duration": 308,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"
+        },
+        {
           "title": "Quero Ser Iluminado",
           "duration": 194,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-ser-iluminado.mp3"
@@ -2312,6 +2472,16 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-a-porta-aberta.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Espírito de Santidade",
+          "duration": 308,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"
+        },
+        {
           "title": "Eu Acredito No Teu Poder",
           "duration": 224,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-eu-acredito-no-teu-poder.mp3"
@@ -2340,6 +2510,16 @@
           "title": "Eu Sou o Jardineiro",
           "duration": 234,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6--eu-sou-o-jardineiro.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Espírito de Santidade",
+          "duration": 308,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"
         },
         {
           "title": "Morada do Amor",
@@ -2400,6 +2580,16 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-heranca-celeste.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Espírito de Santidade",
+          "duration": 308,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"
+        },
+        {
           "title": "Cantinho Caseiro",
           "duration": 70,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
@@ -2438,6 +2628,16 @@
           "title": "Deus Inigualável",
           "duration": 217,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Deus-inigualavel.mp3"
+        },
+        {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Espírito de Santidade",
+          "duration": 308,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"
         },
         {
           "title": "Santidade e Avivamento",
@@ -2503,6 +2703,16 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Espírito de Santidade",
+          "duration": 308,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"
+        },
+        {
           "title": "Liberta-me",
           "duration": 257,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-liberta-me.mp3"
@@ -2548,6 +2758,16 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle-short.mp3"
         },
         {
+          "title": "Semana da Família",
+          "duration": 137,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/semana-da-familia.mp3"
+        },
+        {
+          "title": "Espírito de Santidade",
+          "duration": 308,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"
+        },
+        {
           "title": "O Bom Semeador",
           "duration": 249,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-o-bom-semeador.mp3"
@@ -2564,8 +2784,8 @@
         },
         {
           "title": "Mensagem de Esperança",
-          "duration": 72,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/msg--esperanca-05.mp3"
+          "duration": 207,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg-esperanca-6.mp3"
         },
         {
           "title": "Grandioso És Tu",
