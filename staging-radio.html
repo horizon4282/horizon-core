@@ -647,8 +647,103 @@ let audioRetryTimer = null;
 let audioLoadId = 0;
 let currentLang=localStorage.getItem("horizonLanguage")||"pt";
 let radioData=null,activeTrack=null,activeSource="schedule";
+
+const isCapacitorApp =
+  window.location.protocol === "https:" &&
+  window.location.hostname === "localhost";
+
+
+const NativeAudio =
+  window.Capacitor?.Plugins?.NativeAudio || null;
+
+function hasNativeAudio() {
+  return (
+    isCapacitorApp &&
+    NativeAudio &&
+    typeof NativeAudio.play === "function"
+  );
+}
+
+async function testNativeAudio() {
+  if (!hasNativeAudio()) {
+    console.warn("NativeAudio não disponível.");
+    return;
+  }
+
+  if (!radioData) {
+    console.warn("radioData ainda não carregado.");
+    return;
+  }
+
+  const currentSchedule = getCurrentSchedule();
+
+  if (!currentSchedule?.playlist?.length) {
+    console.warn("Playlist atual não encontrada.");
+    return;
+  }
+
+  const synced = getSyncedPlaylistPosition(currentSchedule);
+  const track = currentSchedule.playlist[synced.index];
+
+  if (!track?.audio) {
+    console.warn("Faixa atual sem URL de áudio.");
+    return;
+  }
+
+  console.log(
+    "Teste NativeAudio:",
+    track.title,
+    track.audio,
+    synced.offset
+  );
+
+  await NativeAudio.play({
+    url: track.audio,
+    position: Math.floor(synced.offset * 1000)
+  });
+}
+
+const NativeAudio =
+  window.Capacitor?.Plugins?.NativeAudio || null;
+
+function hasNativeAudio() {
+  return (
+    isCapacitorApp &&
+    NativeAudio &&
+    typeof NativeAudio.play === "function"
+  );
+}
+
+async function testNativeAudio() {
+  if (!hasNativeAudio()) {
+    console.warn("NativeAudio não disponível.");
+    return;
+  }
+
+  const currentSchedule = getCurrentSchedule();
+
+  if (!currentSchedule?.playlist?.length) {
+    console.warn("Playlist atual não encontrada.");
+    return;
+  }
+
+  const synced = getSyncedPlaylistPosition(currentSchedule);
+  const track = currentSchedule.playlist[synced.index];
+
+  console.log(
+    "Teste NativeAudio:",
+    track.title,
+    track.audio,
+    synced.offset
+  );
+
+  await NativeAudio.play({
+    url: track.audio,
+    position: Math.floor(synced.offset * 1000)
+  });
+}
   
-const JSON_URL="https://horizon4282.com.br/data/staging-radio.json";
+const JSON_URL="https://horizon4282.com.br/data/radio-grade-01.json";
 const MESSAGES_URL = "https://horizon4282.com.br/data/radio-messages-pt-en.json";
 let messagesData = [];
 
@@ -1359,6 +1454,8 @@ let deferredInstallPrompt = null;
 const INSTALL_STORAGE_KEY = "radioLuzLouvorInstalled";
 const installBtn = document.getElementById("installBtn");
 
+
+
 function isRunningAsInstalledApp() {
   return (
     window.matchMedia("(display-mode: standalone)").matches ||
@@ -1373,6 +1470,12 @@ function wasInstalledByUser() {
 function updateInstallButton() {
   if (!installBtn) return;
 
+  if (isCapacitorApp) {
+    installBtn.hidden = true;
+    installBtn.style.display = "none";
+    return;
+  }
+
   const shouldShow =
     deferredInstallPrompt &&
     !isRunningAsInstalledApp() &&
@@ -1381,6 +1484,7 @@ function updateInstallButton() {
   installBtn.hidden = !shouldShow;
   installBtn.style.display = shouldShow ? "inline-flex" : "none";
 }
+
 
 window.addEventListener("beforeinstallprompt", event => {
   event.preventDefault();
@@ -1556,37 +1660,57 @@ function loadRandomBanner(){
 }
 
   
-async function sharePage(){
-
+async function sharePage() {
   const url = "https://horizon4282.com.br/radio-luz-louvor";
 
-  const message = currentLang === "pt"
-    ? `🎵 Rádio Luz e Louvor\n\nMúsica, oração e contemplação 24 horas.\n\n${url}`
-    : `🎵 Light & Praise Radio\n\nMusic, prayer and contemplation 24 hours a day.\n\n${url}`;
+const message =
+  currentLang === "pt"
+    ? `🎵 Rádio Luz e Louvor\n\nMúsica, oração e contemplação 24 horas.`
+    : `🎵 Light & Praise Radio\n\nMusic, prayer and contemplation 24 hours a day.`;
 
-  const shareData = {
-    title: "Rádio Luz e Louvor",
-    text: message,
-    url: url
-  };
+  // Dentro do app Capacitor
+  if (window.Capacitor && window.Capacitor.isNativePlatform()) {
+    try {
+      const { Share } = window.Capacitor.Plugins;
 
-  if(navigator.share){
-    try{
-      await navigator.share(shareData);
-    }catch(error){}
-  }else{
-    if(navigator.clipboard){
-      await navigator.clipboard.writeText(message);
-      const btn = document.querySelector(".share-btn");
-      const oldText = btn.textContent;
-      btn.textContent = currentLang === "pt" ? "✔ Link copiado" : "✔ Link copied";
+      await Share.share({
+        title: "Rádio Luz e Louvor",
+        text: message,
+        url: url,
+        dialogTitle: "Compartilhar Rádio Luz e Louvor"
+      });
 
-      setTimeout(()=>{
-        btn.textContent = oldText;
-      },2000);
-    }else{
-      prompt("Copie o link:", url);
+      return;
+    } catch (error) {
+      console.warn("Compartilhamento nativo indisponível:", error);
     }
+  }
+
+  // Navegador / PWA
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "Rádio Luz e Louvor",
+        text: message,
+        url: url
+      });
+      return;
+    } catch (error) {}
+  }
+
+  // Último fallback
+  if (navigator.clipboard) {
+    await navigator.clipboard.writeText(message);
+
+    const btn = document.querySelector(".share-btn");
+    const oldText = btn.textContent;
+
+    btn.textContent =
+      currentLang === "pt" ? "✔ Link copiado" : "✔ Link copied";
+
+    setTimeout(() => {
+      btn.textContent = oldText;
+    }, 2000);
   }
 }
 
@@ -1618,6 +1742,12 @@ player.ontimeupdate = null;
     initializeBottomPlayer();
     loadRadioJson();
     updateBannerPlayButton();
+
+  if (isCapacitorApp) {
+  setTimeout(() => {
+    testNativeAudio();
+  }, 3000);
+}
 
 });
 
