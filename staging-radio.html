@@ -703,45 +703,6 @@ async function testNativeAudio() {
   });
 }
 
-const NativeAudio =
-  window.Capacitor?.Plugins?.NativeAudio || null;
-
-function hasNativeAudio() {
-  return (
-    isCapacitorApp &&
-    NativeAudio &&
-    typeof NativeAudio.play === "function"
-  );
-}
-
-async function testNativeAudio() {
-  if (!hasNativeAudio()) {
-    console.warn("NativeAudio não disponível.");
-    return;
-  }
-
-  const currentSchedule = getCurrentSchedule();
-
-  if (!currentSchedule?.playlist?.length) {
-    console.warn("Playlist atual não encontrada.");
-    return;
-  }
-
-  const synced = getSyncedPlaylistPosition(currentSchedule);
-  const track = currentSchedule.playlist[synced.index];
-
-  console.log(
-    "Teste NativeAudio:",
-    track.title,
-    track.audio,
-    synced.offset
-  );
-
-  await NativeAudio.play({
-    url: track.audio,
-    position: Math.floor(synced.offset * 1000)
-  });
-}
   
 const JSON_URL="https://horizon4282.com.br/data/radio-grade-01.json";
 const MESSAGES_URL = "https://horizon4282.com.br/data/radio-messages-pt-en.json";
