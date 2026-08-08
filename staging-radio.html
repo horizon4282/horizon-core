@@ -567,6 +567,21 @@ left:-9999px;
         <div class="track-meta"><div class="request-badge" id="playModeText">Schedule</div>
         <h2 id="nowTitle">Loading...</h2><p id="nowDescription" style="display:none;">Loading...</p>
         <audio id="radioPlayer" controls preload="metadata"></audio>
+
+        <div id="nativeTestControls" style="display:none;gap:10px;margin-top:10px;">
+  <button type="button" class="share-btn" onclick="testNativeAudio()">
+    ▶ Tocar
+  </button>
+
+  <button type="button" class="share-btn" onclick="pauseNativeAudio()">
+    ❚❚ Pausar
+  </button>
+
+  <button type="button" class="share-btn" onclick="resumeNativeAudio()">
+    ▶ Continuar
+  </button>
+</div>
+          
         <div class="player-actions"></div>
        
         
@@ -703,6 +718,18 @@ async function testNativeAudio() {
   });
 }
 
+
+async function pauseNativeAudio() {
+  if (!hasNativeAudio()) return;
+
+  await NativeAudio.pause();
+}
+
+async function resumeNativeAudio() {
+  if (!hasNativeAudio()) return;
+
+  await NativeAudio.resume();
+}
   
 const JSON_URL="https://horizon4282.com.br/data/radio-grade-01.json";
 const MESSAGES_URL = "https://horizon4282.com.br/data/radio-messages-pt-en.json";
@@ -1697,6 +1724,14 @@ player.ontimeupdate = null;
     initializeBottomPlayer();
    await loadRadioJson();
     updateBannerPlayButton();
+
+  if (isCapacitorApp) {
+  const nativeControls = document.getElementById("nativeTestControls");
+
+  if (nativeControls) {
+    nativeControls.style.display = "flex";
+  }
+}
 
   if (isCapacitorApp) {
   setTimeout(() => {
