@@ -738,15 +738,21 @@ async function testNativeAudio() {
     synced.offset
   );
 
-const playlistUrls = currentSchedule.playlist
-  .map(item => item.audio)
-  .filter(Boolean);
+const nativePlaylist = currentSchedule.playlist
+  .filter(item => item.audio)
+  .map(item => ({
+    url: item.audio,
+    title: item.title || "Rádio Luz e Louvor",
+    artist: item.artist || "Ministério Luz e Louvor",
+    cover: item.cover || currentCoverUrl || ""
+  }));
 
 await NativeAudio.play({
-  playlist: playlistUrls,
+  playlist: nativePlaylist,
   index: synced.index,
   position: Math.floor(synced.offset * 1000)
 });
+  
 }
 
 async function pauseNativeAudio() {
@@ -1423,16 +1429,21 @@ async function playRadio() {
     const synced =
       getSyncedPlaylistPosition(currentSchedule);
 
-    const playlistUrls =
-      currentSchedule.playlist
-        .map(item => item.audio)
-        .filter(Boolean);
+const nativePlaylist =
+  currentSchedule.playlist
+    .filter(item => item.audio)
+    .map(item => ({
+      url: item.audio,
+      title: item.title || "Rádio Luz e Louvor",
+      artist: item.artist || "Ministério Luz e Louvor",
+      cover: item.cover || currentCoverUrl || ""
+    }));
 
-    await NativeAudio.play({
-      playlist: playlistUrls,
-      index: synced.index,
-      position: Math.floor(synced.offset * 1000)
-    });
+await NativeAudio.play({
+  playlist: nativePlaylist,
+  index: synced.index,
+  position: Math.floor(synced.offset * 1000)
+});
 
     return;
   }
