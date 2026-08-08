@@ -566,7 +566,17 @@ left:-9999px;
       <div class="cover" id="coverBox">♫</div>
         <div class="track-meta"><div class="request-badge" id="playModeText">Schedule</div>
         <h2 id="nowTitle">Loading...</h2><p id="nowDescription" style="display:none;">Loading...</p>
-        <audio id="radioPlayer" controls preload="metadata"></audio>
+
+      <audio id="radioPlayer" preload="metadata"></audio>
+
+<button
+  id="mobilePlayBtn"
+  class="share-btn"
+  type="button"
+  style="margin-top:10px;"
+>
+  ▶ Ouvir rádio
+</button>
 
 
           
@@ -1772,6 +1782,56 @@ player.ontimeupdate = null;
 
     setLanguage(currentLang);
     initializeBottomPlayer();
+
+  const mobilePlayBtn = document.getElementById("mobilePlayBtn");
+
+if (mobilePlayBtn) {
+  mobilePlayBtn.addEventListener("click", async () => {
+    try {
+
+      if (hasNativeAudio()) {
+
+        if (!nativeIsPlaying) {
+
+          if (nativeHasStarted) {
+            await NativeAudio.resume();
+          } else {
+            await playRadio();
+            nativeHasStarted = true;
+          }
+
+          nativeIsPlaying = true;
+          mobilePlayBtn.textContent = "❚❚ Pausar rádio";
+
+        } else {
+
+          await pauseRadio();
+
+          nativeIsPlaying = false;
+          mobilePlayBtn.textContent = "▶ Continuar rádio";
+        }
+
+        return;
+      }
+
+      // navegador / PWA
+      const player = document.getElementById("radioPlayer");
+
+      if (player.paused) {
+        await player.play();
+        mobilePlayBtn.textContent = "❚❚ Pausar rádio";
+      } else {
+        player.pause();
+        mobilePlayBtn.textContent = "▶ Continuar rádio";
+      }
+
+    } catch (error) {
+      console.warn("Erro ao controlar a rádio:", error);
+    }
+  });
+}
+
+  
    await loadRadioJson();
     updateBannerPlayButton();
 
