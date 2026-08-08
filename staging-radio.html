@@ -1442,6 +1442,100 @@ async function pauseRadio() {
   }
 
   document.getElementById("radioPlayer").pause();
+
+  async function syncNativePlayerUI() {
+  if (!hasNativeAudio() || !nativeHasStarted) return;
+
+  try {
+    const state = await NativeAudio.getState();
+
+    if (!state?.available) return;
+
+    nativeIsPlaying = !!state.playing;
+
+    const playButton = document.getElementById("bottomPlayBtn");
+    const mobilePlayBtn = document.getElementById("mobilePlayBtn");
+
+    if (playButton) {
+      playButton.textContent = nativeIsPlaying ? "❚❚" : "▶";
+      playButton.setAttribute(
+        "aria-label",
+        nativeIsPlaying ? "Pausar" : "Reproduzir"
+      );
+    }
+
+    if (mobilePlayBtn) {
+      mobilePlayBtn.textContent =
+        nativeIsPlaying
+          ? "❚❚ Pausar rádio"
+          : "▶ Continuar rádio";
+    }
+
+    const currentSchedule = getCurrentSchedule();
+
+    if (
+      currentSchedule?.playlist?.length &&
+      Number.isInteger(state.index)
+    ) {
+      const track =
+        currentSchedule.playlist[state.index];
+
+      if (track && state.index !== currentTrackIndex) {
+        currentTrackIndex = state.index;
+
+        updateTrackCover(track);
+        updateNextAttraction();
+
+        document.getElementById("nowTitle").textContent =
+          track.title || "Rádio Luz e Louvor";
+
+        document.getElementById("nowDescription").textContent =
+          currentLang === "pt"
+            ? "Transmissão sincronizada da programação atual."
+            : "Synced broadcast from the current schedule.";
+
+        updateBottomPlayerMetadata();
+      }
+    }
+
+    const progress =
+      document.getElementById("bottomProgress");
+
+    const currentTimeText =
+      document.getElementById("bottomCurrentTime");
+
+    const durationText =
+      document.getElementById("bottomDuration");
+
+    const positionSeconds =
+      Number(state.position || 0) / 1000;
+
+    const durationSeconds =
+      Number(state.duration || 0) / 1000;
+
+    if (progress && durationSeconds > 0) {
+      progress.max = durationSeconds;
+      progress.value = positionSeconds;
+    }
+
+    if (currentTimeText) {
+      currentTimeText.textContent =
+        formatAudioTime(positionSeconds);
+    }
+
+    if (durationText) {
+      durationText.textContent =
+        formatAudioTime(durationSeconds);
+    }
+
+  } catch (error) {
+    console.warn(
+      "Não foi possível sincronizar a interface nativa:",
+      error
+    );
+  }
+}
+  
 } 
 
   
@@ -1849,6 +1943,13 @@ if (mobilePlayBtn) {
     updateBannerPlayButton();
 
 });
+
+
+setInterval(() => {
+  if (hasNativeAudio() && nativeHasStarted) {
+    syncNativePlayerUI();
+  }
+}, 1000);
 
 setInterval(() => {
 
