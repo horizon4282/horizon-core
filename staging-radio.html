@@ -1681,7 +1681,7 @@ const message =
 
 window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.classList.add("sidebar-collapsed")})
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
  
     loadRandomBanner();
 
@@ -1701,7 +1701,7 @@ player.ontimeupdate = null;
 
     setLanguage(currentLang);
     initializeBottomPlayer();
-    loadRadioJson();
+   await loadRadioJson();
     updateBannerPlayButton();
 
   if (isCapacitorApp) {
