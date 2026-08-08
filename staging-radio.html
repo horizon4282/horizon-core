@@ -712,12 +712,15 @@ async function testNativeAudio() {
     synced.offset
   );
 
-  await NativeAudio.play({
-    url: track.audio,
-    position: Math.floor(synced.offset * 1000)
-  });
-}
+const playlistUrls = currentSchedule.playlist
+  .map(item => item.audio)
+  .filter(Boolean);
 
+await NativeAudio.play({
+  playlist: playlistUrls,
+  index: synced.index,
+  position: Math.floor(synced.offset * 1000)
+});
 
 async function pauseNativeAudio() {
   if (!hasNativeAudio()) return;
@@ -1406,11 +1409,17 @@ async function playRadio() {
 
     if (!currentSchedule?.playlist?.length) return;
 
-    const synced = getSyncedPlaylistPosition(currentSchedule);
-    const track = currentSchedule.playlist[synced.index];
+    const synced =
+      getSyncedPlaylistPosition(currentSchedule);
+
+    const playlistUrls =
+      currentSchedule.playlist
+        .map(item => item.audio)
+        .filter(Boolean);
 
     await NativeAudio.play({
-      url: track.audio,
+      playlist: playlistUrls,
+      index: synced.index,
       position: Math.floor(synced.offset * 1000)
     });
 
@@ -1418,7 +1427,10 @@ async function playRadio() {
   }
 
   player.play().catch(error => {
-    console.warn("Não foi possível iniciar a rádio:", error);
+    console.warn(
+      "Não foi possível iniciar a rádio:",
+      error
+    );
   });
 }
 
