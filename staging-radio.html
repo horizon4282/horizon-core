@@ -487,14 +487,17 @@ left:-9999px;
     <div class="bottom-progress-area">
       <span id="bottomCurrentTime">0:00</span>
 
-      <input
-        type="range"
-        id="bottomProgress"
-        min="0"
-        max="100"
-        value="0"
-        step="0.1"
-        aria-label="Progresso da música">
+<input
+  type="range"
+  id="bottomProgress"
+  min="0"
+  max="100"
+  value="0"
+  step="0.1"
+  tabindex="-1"
+  aria-label="Progresso da música"
+  style="pointer-events:none;">
+      
     </div>
 
 
@@ -1330,22 +1333,6 @@ playButton.addEventListener("click", async () => {
     durationText.textContent = formatAudioTime(player.duration);
   });
 
-  progress.addEventListener("input", () => {
-    currentTimeText.textContent = formatAudioTime(
-      Number(progress.value)
-    );
-  });
-
-  progress.addEventListener("change", () => {
-    const selectedTime = Number(progress.value);
-
-    if (
-      Number.isFinite(selectedTime) &&
-      Number.isFinite(player.duration)
-    ) {
-      player.currentTime = selectedTime;
-    }
-  });
 
   volume.addEventListener("input", () => {
     player.volume = Number(volume.value);
