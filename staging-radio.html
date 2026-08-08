@@ -581,7 +581,30 @@ left:-9999px;
   ▶ Ouvir rádio
 </button>
 
+<div id="mobileProgressWrap" style="margin-top:14px;">
+  <input
+    type="range"
+    id="mobileProgress"
+    min="0"
+    max="100"
+    value="0"
+    step="0.1"
+    tabindex="-1"
+    aria-label="Progresso da música"
+    style="width:100%;pointer-events:none;"
+  >
 
+  <div style="
+    display:flex;
+    justify-content:space-between;
+    margin-top:4px;
+    font-size:11px;
+    color:var(--muted);
+  ">
+    <span id="mobileCurrentTime">0:00</span>
+    <span id="mobileDuration">0:00</span>
+  </div>
+</div>
           
         <div class="player-actions"></div>
        
@@ -1501,6 +1524,30 @@ async function pauseRadio() {
 
     const durationSeconds =
       Number(state.duration || 0) / 1000;
+
+    const mobileProgress =
+  document.getElementById("mobileProgress");
+
+const mobileCurrentTime =
+  document.getElementById("mobileCurrentTime");
+
+const mobileDuration =
+  document.getElementById("mobileDuration");
+
+if (mobileProgress && durationSeconds > 0) {
+  mobileProgress.max = durationSeconds;
+  mobileProgress.value = positionSeconds;
+}
+
+if (mobileCurrentTime) {
+  mobileCurrentTime.textContent =
+    formatAudioTime(positionSeconds);
+}
+
+if (mobileDuration) {
+  mobileDuration.textContent =
+    formatAudioTime(durationSeconds);
+}
 
     if (progress && durationSeconds > 0) {
       progress.max = durationSeconds;
