@@ -1431,12 +1431,6 @@ function wasInstalledByUser() {
 function updateInstallButton() {
   if (!installBtn) return;
 
-  if (isCapacitorApp) {
-    installBtn.hidden = true;
-    installBtn.style.display = "none";
-    return;
-  }
-
   const shouldShow =
     deferredInstallPrompt &&
     !isRunningAsInstalledApp() &&
