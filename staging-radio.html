@@ -650,6 +650,8 @@ let audioRetryTimer = null;
 let audioLoadId = 0;
 let currentLang=localStorage.getItem("horizonLanguage")||"pt";
 let radioData=null,activeTrack=null,activeSource="schedule";
+let nativeIsPlaying = false;
+let nativeHasStarted = false;
 
 const isCapacitorApp =
   window.location.protocol === "https:" &&
@@ -1236,18 +1238,52 @@ function initializeBottomPlayer() {
 
   volume.value = player.volume;
 
-  playButton.addEventListener("click", async () => {
-    try {
-      if (player.paused) {
-        await player.play();
-      } else {
-        player.pause();
-      }
-    } catch (error) {
-      console.warn("Não foi possível iniciar o áudio:", error);
-    }
-  });
+playButton.addEventListener("click", async () => {
+  try {
 
+    if (hasNativeAudio()) {
+
+      if (!nativeIsPlaying) {
+
+        if (nativeHasStarted) {
+          await NativeAudio.resume();
+        } else {
+          await playRadio();
+          nativeHasStarted = true;
+        }
+
+        nativeIsPlaying = true;
+
+        playButton.textContent = "❚❚";
+        playButton.setAttribute("aria-label", "Pausar");
+
+      } else {
+
+        await pauseRadio();
+
+        nativeIsPlaying = false;
+
+        playButton.textContent = "▶";
+        playButton.setAttribute("aria-label", "Reproduzir");
+      }
+
+      return;
+    }
+
+    // Navegador / PWA continua exatamente como antes
+    if (player.paused) {
+      await player.play();
+    } else {
+      player.pause();
+    }
+
+  } catch (error) {
+    console.warn("Não foi possível controlar o áudio:", error);
+  }
+});
+
+ 
+  
   player.addEventListener("play", () => {
     playButton.textContent = "❚❚";
     playButton.setAttribute("aria-label", "Pausar");
