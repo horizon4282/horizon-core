@@ -721,6 +721,7 @@ await NativeAudio.play({
   index: synced.index,
   position: Math.floor(synced.offset * 1000)
 });
+}
 
 async function pauseNativeAudio() {
   if (!hasNativeAudio()) return;
