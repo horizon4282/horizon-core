@@ -568,19 +568,7 @@ left:-9999px;
         <h2 id="nowTitle">Loading...</h2><p id="nowDescription" style="display:none;">Loading...</p>
         <audio id="radioPlayer" controls preload="metadata"></audio>
 
-        <div id="nativeTestControls" style="display:none;gap:10px;margin-top:10px;">
-  <button type="button" class="share-btn" onclick="testNativeAudio()">
-    ▶ Tocar
-  </button>
 
-  <button type="button" class="share-btn" onclick="pauseNativeAudio()">
-    ❚❚ Pausar
-  </button>
-
-  <button type="button" class="share-btn" onclick="resumeNativeAudio()">
-    ▶ Continuar
-  </button>
-</div>
           
         <div class="player-actions"></div>
        
@@ -1363,15 +1351,41 @@ function startRadioFromTop() {
   player.addEventListener("canplay", startWhenReady);
 }
   
-function playRadio() {
+
+async function playRadio() {
   const player = document.getElementById("radioPlayer");
+
+  if (hasNativeAudio()) {
+    const currentSchedule = getCurrentSchedule();
+
+    if (!currentSchedule?.playlist?.length) return;
+
+    const synced = getSyncedPlaylistPosition(currentSchedule);
+    const track = currentSchedule.playlist[synced.index];
+
+    await NativeAudio.play({
+      url: track.audio,
+      position: Math.floor(synced.offset * 1000)
+    });
+
+    return;
+  }
 
   player.play().catch(error => {
     console.warn("Não foi possível iniciar a rádio:", error);
   });
 }
+
+async function pauseRadio() {
+  if (hasNativeAudio()) {
+    await NativeAudio.pause();
+    return;
+  }
+
+  document.getElementById("radioPlayer").pause();
+} 
+
   
-function pauseRadio(){document.getElementById("radioPlayer").pause()}
 
 document.getElementById("radioPlayer").addEventListener("ended", () => {
   if (activeSource === "schedule") {
@@ -1725,13 +1739,7 @@ player.ontimeupdate = null;
    await loadRadioJson();
     updateBannerPlayButton();
 
-  if (isCapacitorApp) {
-  const nativeControls = document.getElementById("nativeTestControls");
 
-  if (nativeControls) {
-    nativeControls.style.display = "flex";
-  }
-}
 
   if (isCapacitorApp) {
   setTimeout(() => {
