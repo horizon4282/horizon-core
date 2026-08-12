@@ -1370,14 +1370,13 @@ playButton.addEventListener("click", async () => {
         }
 
         nativeIsPlaying = true;
-        mobilePlayBtn.textContent = "❚❚ Pausar rádio";
-
+  
     } else {
 
         await pauseRadio();
 
         nativeIsPlaying = false;
-        mobilePlayBtn.textContent = "▶ Continuar rádio";
+
     }
 
     return;
@@ -2040,7 +2039,7 @@ if (!nativeIsPlaying) {
     }
 
     nativeIsPlaying = true;
-    mobilePlayBtn.textContent = "❚❚ Pausar rádio";
+  
 
 } else {
 
@@ -2048,8 +2047,7 @@ if (!nativeIsPlaying) {
 
     nativeIsPlaying = false;
     mobilePlayBtn.textContent = "▶ Continuar rádio";
-}
-      
+  
       
       }
 
