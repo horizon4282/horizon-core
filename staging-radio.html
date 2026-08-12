@@ -1341,63 +1341,47 @@ function initializeBottomPlayer() {
 playButton.addEventListener("click", async () => {
   try {
 
-    if (hasNativeAudio()) {
+ if (hasNativeAudio()) {
 
+    if (!nativeIsPlaying) {
 
-if (!nativeIsPlaying) {
+        let state = null;
 
-    let state = null;
+        try {
+            state = await NativeAudio.getState();
+        } catch (error) {
+            console.warn(
+                "Não foi possível consultar o player nativo:",
+                error
+            );
+        }
 
-    try {
-        state = await NativeAudio.getState();
-    } catch (error) {
-        console.warn(
-            "Não foi possível consultar o player nativo:",
-            error
-        );
-    }
+        if (
+            !nativeHasStarted ||
+            state?.failed
+        ) {
 
-    /*
-     * Se o player já havia sido iniciado,
-     * mas entrou em estado de erro,
-     * não usamos simplesmente resume().
-     *
-     * Reconstruímos a reprodução a partir
-     * da programação correta do momento.
-     */
-    if (
-        !nativeHasStarted ||
-        state?.failed
-    ) {
+            await playRadio();
+            nativeHasStarted = true;
 
-        await playRadio();
-        nativeHasStarted = true;
+        } else {
+
+            await NativeAudio.resume();
+        }
+
+        nativeIsPlaying = true;
+        mobilePlayBtn.textContent = "❚❚ Pausar rádio";
 
     } else {
-
-        await NativeAudio.resume();
-    }
-
-    nativeIsPlaying = true;
-    mobilePlayBtn.textContent = "❚❚ Pausar rádio";
-
-      
-        playButton.textContent = "❚❚";
-        playButton.setAttribute("aria-label", "Pausar");
-
-      } else {
 
         await pauseRadio();
 
         nativeIsPlaying = false;
-
-        playButton.textContent = "▶";
-        playButton.setAttribute("aria-label", "Reproduzir");
-      }
-
-      return;
+        mobilePlayBtn.textContent = "▶ Continuar rádio";
     }
 
+    return;
+}
     // Navegador / PWA continua exatamente como antes
     if (player.paused) {
       await player.play();
