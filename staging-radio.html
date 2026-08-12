@@ -738,9 +738,46 @@ async function testNativeAudio() {
     synced.offset
   );
 
-const nativePlaylist = currentSchedule.playlist
-  .filter(item => item.audio)
-  .map(item => ({
+const playableItems =
+  currentSchedule.playlist
+    .map((item, originalIndex) => ({
+      ...item,
+      originalIndex
+    }))
+    .filter(item => item.audio);
+
+if (!playableItems.length) {
+  return;
+}
+
+let nativeIndex =
+  playableItems.findIndex(
+    item => item.originalIndex === synced.index
+  );
+
+let nativePosition =
+  Math.floor(synced.offset * 1000);
+
+/*
+ * Se justamente a faixa sincronizada estiver sem áudio,
+ * começa na próxima faixa válida.
+ */
+if (nativeIndex === -1) {
+
+  nativeIndex =
+    playableItems.findIndex(
+      item => item.originalIndex > synced.index
+    );
+
+  if (nativeIndex === -1) {
+    nativeIndex = 0;
+  }
+
+  nativePosition = 0;
+}
+
+const nativePlaylist =
+  playableItems.map(item => ({
     url: item.audio,
     title: item.title || "Rádio Luz e Louvor",
     artist: item.artist || "Ministério Luz e Louvor",
@@ -749,8 +786,8 @@ const nativePlaylist = currentSchedule.playlist
 
 await NativeAudio.play({
   playlist: nativePlaylist,
-  index: synced.index,
-  position: Math.floor(synced.offset * 1000)
+  index: nativeIndex,
+  position: nativePosition
 });
   
 }
@@ -2040,7 +2077,6 @@ if (!nativeIsPlaying) {
 
       if (player.paused) {
         await player.play();
-        mobilePlayBtn.textContent = "❚❚ Pausar rádio";
       } else {
         player.pause();
         mobilePlayBtn.textContent = "▶ Continuar rádio";
