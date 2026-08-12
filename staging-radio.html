@@ -1306,17 +1306,45 @@ playButton.addEventListener("click", async () => {
 
     if (hasNativeAudio()) {
 
-      if (!nativeIsPlaying) {
 
-        if (nativeHasStarted) {
-          await NativeAudio.resume();
-        } else {
-          await playRadio();
-          nativeHasStarted = true;
-        }
+if (!nativeIsPlaying) {
 
-        nativeIsPlaying = true;
+    let state = null;
 
+    try {
+        state = await NativeAudio.getState();
+    } catch (error) {
+        console.warn(
+            "Não foi possível consultar o player nativo:",
+            error
+        );
+    }
+
+    /*
+     * Se o player já havia sido iniciado,
+     * mas entrou em estado de erro,
+     * não usamos simplesmente resume().
+     *
+     * Reconstruímos a reprodução a partir
+     * da programação correta do momento.
+     */
+    if (
+        !nativeHasStarted ||
+        state?.failed
+    ) {
+
+        await playRadio();
+        nativeHasStarted = true;
+
+    } else {
+
+        await NativeAudio.resume();
+    }
+
+    nativeIsPlaying = true;
+    mobilePlayBtn.textContent = "❚❚ Pausar rádio";
+
+      
         playButton.textContent = "❚❚";
         playButton.setAttribute("aria-label", "Pausar");
 
@@ -1961,25 +1989,48 @@ if (mobilePlayBtn) {
 
       if (hasNativeAudio()) {
 
-        if (!nativeIsPlaying) {
+if (!nativeIsPlaying) {
 
-          if (nativeHasStarted) {
-            await NativeAudio.resume();
-          } else {
-            await playRadio();
-            nativeHasStarted = true;
-          }
+    let state = null;
 
-          nativeIsPlaying = true;
-          mobilePlayBtn.textContent = "❚❚ Pausar rádio";
+    try {
+        state = await NativeAudio.getState();
+    } catch (error) {
+        console.warn(
+            "Não foi possível consultar o player nativo:",
+            error
+        );
+    }
 
-        } else {
+    if (
+        !nativeHasStarted ||
+        state?.failed
+    ) {
 
-          await pauseRadio();
+        // Player não existe mais ou entrou em erro:
+        // reconstruímos pela grade atual.
+        await playRadio();
+        nativeHasStarted = true;
 
-          nativeIsPlaying = false;
-          mobilePlayBtn.textContent = "▶ Continuar rádio";
-        }
+    } else {
+
+        // Foi apenas uma pausa normal.
+        await NativeAudio.resume();
+    }
+
+    nativeIsPlaying = true;
+    mobilePlayBtn.textContent = "❚❚ Pausar rádio";
+
+} else {
+
+    await pauseRadio();
+
+    nativeIsPlaying = false;
+    mobilePlayBtn.textContent = "▶ Continuar rádio";
+}
+      
+      
+      }
 
         return;
       }
