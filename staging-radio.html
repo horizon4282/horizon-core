@@ -2214,15 +2214,22 @@ setInterval(async () => {
   renderSchedule();
 
 }, 6000);
-if ("serviceWorker" in navigator) {
+
+if (!isCapacitorApp && "serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("/service-worker.js")
       .then(registration => {
-        console.log("Service Worker registrado:", registration.scope);
+        console.log(
+          "Service Worker registrado:",
+          registration.scope
+        );
       })
       .catch(error => {
-        console.error("Erro ao registrar Service Worker:", error);
+        console.error(
+          "Erro ao registrar Service Worker:",
+          error
+        );
       });
   });
 }
