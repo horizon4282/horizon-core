@@ -2014,44 +2014,137 @@ setInterval(() => {
   }
 }, 1000);
 
-setInterval(() => {
+setInterval(async () => {
 
-  if (!radioData || activeSource === "request") return;
+  if (!radioData || activeSource === "request") {
+    return;
+  }
 
   const currentSchedule = getCurrentSchedule();
 
   // Mudou o programa?
-  if (currentSchedule && currentSchedule.hour !== activeScheduleHour) {
+  if (
+    currentSchedule &&
+    currentSchedule.hour !== activeScheduleHour
+  ) {
 
-  const player = document.getElementById("radioPlayer");
+    console.log(
+      "Mudança de grade:",
+      activeScheduleHour,
+      "→",
+      currentSchedule.hour
+    );
 
-    // Guarda se a rádio estava tocando antes da mudança.
-    radioWasPlaying = !player.paused && !player.ended;
+    /*
+     * APP ANDROID / PLAYER NATIVO
+     */
+    if (hasNativeAudio() && nativeHasStarted) {
+
+      let wasPlaying = nativeIsPlaying;
+
+      try {
+
+        const state =
+          await NativeAudio.getState();
+
+        wasPlaying = !!state?.playing;
+
+      } catch (error) {
+
+        console.warn(
+          "Não foi possível consultar o player nativo:",
+          error
+        );
+      }
+
+      renderSchedule();
+
+      activeTrack = currentSchedule;
+      activeScheduleHour = currentSchedule.hour;
+      currentPlaylist =
+        currentSchedule.playlist || [];
+
+      const synced =
+        getSyncedPlaylistPosition(currentSchedule);
+
+      currentTrackIndex = synced.index;
+
+      /*
+       * Atualiza também toda a interface
+       * para a nova programação.
+       */
+      renderNowPlaying(
+        currentSchedule,
+        "schedule"
+      );
+
+      if (wasPlaying) {
+
+        /*
+         * playRadio() enviará a NOVA playlist
+         * para o PlaybackService.
+         */
+        await playRadio();
+
+        nativeIsPlaying = true;
+
+      } else {
+
+        /*
+         * Se estava pausado, não iniciamos
+         * áudio inesperadamente.
+         *
+         * Na próxima vez que o usuário apertar
+         * Play, playRadio() carregará a grade atual.
+         */
+        try {
+          await NativeAudio.stop();
+        } catch (error) {
+          console.warn(
+            "Não foi possível parar a grade anterior:",
+            error
+          );
+        }
+
+        nativeHasStarted = false;
+        nativeIsPlaying = false;
+      }
+
+      return;
+    }
+
+    /*
+     * NAVEGADOR / PWA
+     * Mantemos o comportamento existente.
+     */
+    const player =
+      document.getElementById("radioPlayer");
+
+    radioWasPlaying =
+      !player.paused && !player.ended;
 
     renderSchedule();
 
     activeTrack = currentSchedule;
     activeScheduleHour = currentSchedule.hour;
-    currentPlaylist = currentSchedule.playlist || [];
+    currentPlaylist =
+      currentSchedule.playlist || [];
 
-// Na mudança real de programa, começa pela introdução.
-currentTrackIndex = 0;
+    currentTrackIndex = 0;
 
-loadPlaylistTrack(
-  0,
-  0,
-  radioWasPlaying
-);
+    loadPlaylistTrack(
+      0,
+      0,
+      radioWasPlaying
+    );
 
     return;
   }
-
 
   // Apenas atualiza o destaque visual da grade
   renderSchedule();
 
 }, 6000);
-
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
