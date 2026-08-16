@@ -848,19 +848,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Programa-Palavra-e-Vida-7h.mp3"
         },
         {
-          "title": "Águas da Vida Eterna",
-          "duration": 255,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-aguas-da-vida-eterna.mp3"
-        },
-        {
           "title": "Jesus Videira Santa",
           "duration": 322,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
-        },
-        {
-          "title": "Cantinho Caseiro",
-          "duration": 70,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
           "title": "Rios de Cura",
@@ -868,14 +858,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-rios-de-cura.mp3"
         },
         {
+          "title": "Cantinho Caseiro",
+          "duration": 70,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
+        },
+        {
           "title": "Águas do Amor",
           "duration": 251,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-aguas-do-amor.mp3"
-        },
-        {
-          "title": "Catequese Perseverança",
-          "duration": 55,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-perseveranca.mp3"
         },
         {
           "title": "Salmos 2",
@@ -883,19 +873,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Salmo-2.mp3"
         },
         {
-          "title": "Ele Vence a Morte",
-          "duration": 352,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-ele-vence-a-morte.mp3"
-        },
-        {
           "title": "Catequese Perseverança",
           "duration": 55,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-perseveranca.mp3"
         },
         {
-          "title": "Só Quero te Seguir",
-          "duration": 245,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-so-quero-te-seguir.mp3"
+          "title": "Ele Vence a Morte",
+          "duration": 352,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-ele-vence-a-morte.mp3"
         },
         {
           "title": "Brilhou a Esperança",
@@ -903,14 +888,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-brilhou-a-esperanca.mp3"
         },
         {
-          "title": "Rádio Luz e Louvor",
-          "duration": 9,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle--short.mp3"
-        },
-        {
-          "title": "Jesus Videira Santa",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
+          "title": "Catequese Perseverança",
+          "duration": 55,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-perseveranca.mp3"
         },
         {
           "title": "Cristo Ressuscitado",
@@ -918,49 +898,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"
         },
         {
-          "title": "Bênção do Padre João Vitor",
-          "duration": 30,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
-        },
-        {
           "title": "Espírito de Santidade",
           "duration": 308,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"
-        },
-        {
-          "title": "Alegria Perene",
-          "duration": 279,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Alegria-Perene.mp3"
-        },
-        {
-          "title": "Catequese Perseverança",
-          "duration": 55,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-perseveranca.mp3"
-        },
-        {
-          "title": "Quero Passear em Teu Jardim",
-          "duration": 226,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-passear-em-teu-jardim.mp3"
-        },
-        {
-          "title": "Em Deus Você Será Capaz",
-          "duration": 243,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-em-Deus-voce-sera-capaz.mp3"
-        },
-        {
-          "title": "Revela Jesus",
-          "duration": 302,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apresenta--revela-jesus.mp3"
-        },
-        {
-          "title": "A caminho de Emaús",
-          "duration": 221,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-caminho-de-emaus.mp3"
-        },
-        {
-          "title": "Brasa Viva",
-          "duration": 255,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-brasa-viva.mp3"
         },
         {
           "title": "Rádio Luz e Louvor",
@@ -968,9 +908,49 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle--short.mp3"
         },
         {
+          "title": "Alegria Perene",
+          "duration": 279,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Alegria-Perene.mp3"
+        },
+        {
+          "title": "Quero Passear em Teu Jardim",
+          "duration": 226,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-quero-passear-em-teu-jardim.mp3"
+        },
+        {
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+        },
+        {
+          "title": "Em Deus Você Será Capaz",
+          "duration": 243,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-em-Deus-voce-sera-capaz.mp3"
+        },
+        {
+          "title": "A caminho de Emaús",
+          "duration": 221,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-caminho-de-emaus.mp3"
+        },
+        {
+          "title": "Catequese Perseverança",
+          "duration": 55,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-perseveranca.mp3"
+        },
+        {
+          "title": "Brasa Viva",
+          "duration": 255,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-brasa-viva.mp3"
+        },
+        {
           "title": "Seja Cristo Teu Caminho",
           "duration": 262,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-seja-cristo-teu-caminho.mp3"
+        },
+        {
+          "title": "Revela Jesus",
+          "duration": 302,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apresenta--revela-jesus.mp3"
         },
         {
           "title": "Verbo Santo Sagrado",
@@ -978,14 +958,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-verbo-santo-sagrado.mp3"
         },
         {
-          "title": "Catequese Perseverança",
-          "duration": 55,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-perseveranca.mp3"
-        },
-        {
           "title": "Permanece em Mim",
           "duration": 266,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-permanece-em-mim.mp3"
+        },
+        {
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle--short.mp3"
         },
         {
           "title": "Caminho do Silêncio",
@@ -993,29 +973,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-caminho-do-silencio.mp3"
         },
         {
-          "title": "Benção do Padre João Vitor",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
-        },
-        {
-          "title": "Cenáculo com Jesus",
-          "duration": 241,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-cenaculo-com-Jesus.mp3"
-        },
-        {
-          "title": "Sabedoria Entendimento",
-          "duration": 254,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-sabedoria-entendimento.mp3"
-        },
-        {
-          "title": "Cantinho Caseiro",
-          "duration": 70,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
-        },
-        {
           "title": "Liberta-me",
           "duration": 257,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-liberta-me.mp3"
+        },
+        {
+          "title": "Catequese Perseverança",
+          "duration": 55,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-perseveranca.mp3"
         },
         {
           "title": "Tudo se Revela",
@@ -1023,24 +988,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-tudo-se-revela.mp3"
         },
         {
-          "title": "Cantinho Caseiro",
-          "duration": 70,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
-        },
-        {
-          "title": "Tua Vontade em Mim",
-          "duration": 240,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Tua-vontade-em-mim.mp3"
-        },
-        {
           "title": "Senhor Deus do Universo",
           "duration": 249,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-senhor-Deus-do-universo.mp3"
         },
         {
-          "title": "Catequese Perseverança",
-          "duration": 55,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-perseveranca.mp3"
+          "title": "Benção do Padre João Vitor",
+          "duration": 322,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
         },
         {
           "title": "Por Deus foi Enviado",
@@ -1053,9 +1008,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-revela-Jesus.mp3"
         },
         {
-          "title": "Catequese Perseverança",
-          "duration": 55,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-perseveranca.mp3"
+          "title": "Cantinho Caseiro",
+          "duration": 70,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
           "title": "Torre de Marfim",
@@ -1063,19 +1018,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-torre-de-marfim.mp3"
         },
         {
-          "title": "Bem Aventurados",
-          "duration": 232,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Bem-aventurados.mp3"
-        },
-        {
-          "title": "Rádio Luz e Louvor",
-          "duration": 9,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle--short.mp3"
-        },
-        {
           "title": "Sabedoria Imensa",
           "duration": 184,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-sabedoria-imensa.mp3"
+        },
+        {
+          "title": "Cantinho Caseiro",
+          "duration": 70,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         }
       ]
     },
@@ -1141,19 +1091,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
-          "title": "Jesus Videira Santa",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
-        },
-        {
           "title": "Sua Fé tem Poder",
           "duration": 194,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-sua-fe-tem-poder.mp3"
-        },
-        {
-          "title": "Horários da Matriz",
-          "duration": 85,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-matriz.mp3"
         },
         {
           "title": "Águas da Vida Eterna",
@@ -1161,14 +1101,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-aguas-da-vida-eterna.mp3"
         },
         {
+          "title": "Horários da Matriz",
+          "duration": 85,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-matriz.mp3"
+        },
+        {
           "title": "Rei da Glória",
           "duration": 215,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-rei-da-gloria.mp3"
-        },
-        {
-          "title": "Benção do Padre João Vitor",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
         },
         {
           "title": "Quero Ser Salvo no Amor",
@@ -1176,14 +1116,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-quero-ser-salvo-no-amor.mp3"
         },
         {
-          "title": "Quero Ser o Sal da Terra",
-          "duration": 183,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-quero-ser-o-sal-da-terra.mp3"
-        },
-        {
-          "title": "Bênção do Padre João Vitor",
-          "duration": 30,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+          "title": "Benção do Padre João Vitor",
+          "duration": 322,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
         },
         {
           "title": "Te Darei a Minha Herança",
@@ -1196,9 +1131,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
         },
         {
-          "title": "Apoie a Rádio Luz e Louvor",
-          "duration": 88,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
           "title": "Em Tudo Seu Amor se Revela",
@@ -1211,9 +1146,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-santidade-e-avivamento.mp3"
         },
         {
-          "title": "Benção do Padre João Vitor",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
+          "title": "Apoie a Rádio Luz e Louvor",
+          "duration": 88,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
         },
         {
           "title": "Maria Cheia de Luz",
@@ -1226,24 +1161,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-quero-ser-sua-casa.mp3"
         },
         {
-          "title": "Inscrições Catequese",
-          "duration": 64,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/inscricoes-catquese.mp3"
-        },
-        {
-          "title": "Verdade da Graça",
-          "duration": 195,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-veredas-da-graca-SIM.mp3"
-        },
-        {
-          "title": "Salmos 23 24",
-          "duration": 188,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Salmo-23-24.mp3"
-        },
-        {
-          "title": "Cantinho Caseiro",
-          "duration": 70,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
+          "title": "Benção do Padre João Vitor",
+          "duration": 322,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
         },
         {
           "title": "Vestida de Sol",
@@ -1256,9 +1176,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-jesus-essenccia-do-amor.mp3"
         },
         {
-          "title": "Mensagem de Esperança",
-          "duration": 207,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg-esperanca-6.mp3"
+          "title": "Inscrições Catequese",
+          "duration": 64,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/inscricoes-catquese.mp3"
         },
         {
           "title": "Se Entregue a Jesus",
@@ -1271,14 +1191,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-Firmes-no-Senhor.mp3"
         },
         {
-          "title": "Bênção do Padre João Vitor",
-          "duration": 30,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
-        },
-        {
-          "title": "A Palavra de Deus Está Perto de Mim",
-          "duration": 196,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-a-palavra-de-Deus-esta-perto-de-mim.mp3"
+          "title": "Cantinho Caseiro",
+          "duration": 70,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
           "title": "Onde Está a Sua Fé",
@@ -1286,24 +1201,19 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-onde-esta-a-sua-fe.mp3"
         },
         {
-          "title": "Horários da Matriz",
-          "duration": 85,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-matriz.mp3"
-        },
-        {
           "title": "A Ti Sempre Pertencer",
           "duration": 287,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-a-ti-sempre-pertencer.mp3"
         },
         {
+          "title": "Mensagem de Esperança",
+          "duration": 207,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/msg-esperanca-6.mp3"
+        },
+        {
           "title": "Espírito de Santidade",
           "duration": 308,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"
-        },
-        {
-          "title": "Benção do Padre João Vitor",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
         }
       ]
     },
@@ -1647,19 +1557,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
-          "title": "Mestre da Multidão",
-          "duration": 267,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-mestre-da-multidao.mp3"
-        },
-        {
           "title": "Cristo Ressuscitado",
           "duration": 234,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"
-        },
-        {
-          "title": "Revela Jesus",
-          "duration": 302,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apresenta--revela-jesus.mp3"
         },
         {
           "title": "Coração Sacrário",
@@ -1667,14 +1567,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-coracao-sacrario.mp3"
         },
         {
+          "title": "Revela Jesus",
+          "duration": 302,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apresenta--revela-jesus.mp3"
+        },
+        {
           "title": "Cristo Ressuscitado",
           "duration": 234,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-Cristo-ressucitado.mp3"
-        },
-        {
-          "title": "Cantinho Caseiro",
-          "duration": 70,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
           "title": "Eu Quero o Céu",
@@ -1682,14 +1582,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-eu-quero-o-ceu.mp3"
         },
         {
-          "title": "Semente de Deus",
-          "duration": 164,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-semente-de-Deus.mp3"
-        },
-        {
-          "title": "Bênção do Padre João Vitor",
-          "duration": 30,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+          "title": "Cantinho Caseiro",
+          "duration": 70,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
           "title": "O Novo Tempo",
@@ -1702,9 +1597,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-ate-a-ultima-alma.mp3"
         },
         {
-          "title": "Cantinho Caseiro",
-          "duration": 70,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
           "title": "A Esperança não Decepciona",
@@ -1712,19 +1607,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/instrumental-suave--02.mp3"
         },
         {
-          "title": "Jesus Videira Santa",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
-        },
-        {
-          "title": "Bênção do Padre João Vitor",
-          "duration": 30,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
-        },
-        {
           "title": "Em Teu Mover Sagrado",
           "duration": 141,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-em-teu-mover-sagrado.mp3"
+        },
+        {
+          "title": "Cantinho Caseiro",
+          "duration": 70,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
           "title": "A Nossa Alegria está em Jesus",
@@ -1732,39 +1622,19 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-a-nossa-alegria-esta-em-jesus.mp3"
         },
         {
-          "title": "Oremos ao Senhor",
-          "duration": 88,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-minuto-01.mp3"
-        },
-        {
           "title": "Os Muros de Jericó",
           "duration": 194,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-os-muros-de-jerico.mp3"
         },
         {
-          "title": "Nova Razão Para Viver",
-          "duration": 197,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-nova-razao-para-viver.mp3"
-        },
-        {
-          "title": "Benção do Padre João Vitor",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
           "title": "Trono Eterno",
           "duration": 391,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-trono-eterno.mp3"
-        },
-        {
-          "title": "Minhas Mãos se Erguem em Louvor",
-          "duration": 194,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-minhas-maos-se-erguem-em-louvor.mp3"
-        },
-        {
-          "title": "Benção do Padre João Vitor",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
         }
       ]
     },
@@ -1923,19 +1793,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
-          "title": "O Nome Que Veio do Céu",
-          "duration": 227,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-o-nome-que-veio-do-ceu.mp3"
-        },
-        {
           "title": "Espera no Senhor",
           "duration": 222,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-espera no senhor.mp3"
-        },
-        {
-          "title": "Oremos ao Senhor",
-          "duration": 88,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-minuto-01.mp3"
         },
         {
           "title": "Serva Santa a Fiel",
@@ -1943,14 +1803,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-serva--santa-fiel.mp3"
         },
         {
+          "title": "Oremos ao Senhor",
+          "duration": 88,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-minuto-01.mp3"
+        },
+        {
           "title": "Sei que Cuidas de Mim",
           "duration": 224,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"
-        },
-        {
-          "title": "Bênção do Padre João Vitor",
-          "duration": 30,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
           "title": "Sigo Firme em Jesus",
@@ -1958,14 +1818,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sigo-firme-em-jesus.mp3"
         },
         {
-          "title": "Triunfante Vem Jesus",
-          "duration": 195,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-triunfante-vem-jesus.mp3"
-        },
-        {
-          "title": "Benção do Padre João Vitor",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
           "title": "O Bom Semeador",
@@ -1978,9 +1833,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-maria-cheia-de-luz.mp3"
         },
         {
-          "title": "Apoie a Rádio Luz e Louvor",
-          "duration": 88,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
+          "title": "Benção do Padre João Vitor",
+          "duration": 322,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
         },
         {
           "title": "Meu Jesus Misericórdia",
@@ -1993,14 +1848,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-santa-faustina.mp3"
         },
         {
-          "title": "Bênção do Padre João Vitor",
-          "duration": 30,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
-        },
-        {
-          "title": "Sombra do Onipotente",
-          "duration": 189,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-sombra-do-onipotente.mp3"
+          "title": "Apoie a Rádio Luz e Louvor",
+          "duration": 88,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
         },
         {
           "title": "Maria Canto e Clamor",
@@ -2008,24 +1858,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-maria-maria-canto-e-clamor.mp3"
         },
         {
-          "title": "Rádio Luz e Louvor",
-          "duration": 9,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle--short.mp3"
-        },
-        {
           "title": "O Verdadeiro Deus",
           "duration": 155,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-verdadeiro-deus.mp3"
         },
         {
-          "title": "Morada do Amor",
-          "duration": 208,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/6-morada-do-amor.mp3"
-        },
-        {
-          "title": "Rádio Luz e Louvor",
-          "duration": 9,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle--short.mp3"
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
           "title": "Quero ser Árvore Oca",
@@ -2048,29 +1888,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
         },
         {
-          "title": "Jesus Videira Santa",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
-        },
-        {
-          "title": "Cantinho Caseiro",
-          "duration": 70,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
-        },
-        {
           "title": "Acredito em Teu Amor",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-acredito-em-teu-amor.mp3"
         },
         {
-          "title": "A Videira do Amor",
-          "duration": 212,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-videira-do-amor.mp3"
-        },
-        {
-          "title": "Bênção do Padre João Vitor",
-          "duration": 30,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle--short.mp3"
         },
         {
           "title": "Santa Faustina",
@@ -2083,9 +1908,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-seja-cristo-teu-caminho.mp3"
         },
         {
-          "title": "Cantinho Caseiro",
-          "duration": 70,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
+          "title": "Rádio Luz e Louvor",
+          "duration": 9,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle--short.mp3"
         },
         {
           "title": "Deus Meu Deus",
@@ -2093,29 +1918,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-Deus-meu-Deus.mp3"
         },
         {
-          "title": "Digno de Louvor",
-          "duration": 218,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-digno-de-louvor.mp3"
-        },
-        {
-          "title": "Bênção do Padre João Vitor",
-          "duration": 30,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
-        },
-        {
           "title": "Ele Vem Purificar",
           "duration": 187,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-Ele-vem-purificar-v3.mp3"
         },
         {
-          "title": "Jesus Videira Santa",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
-        },
-        {
-          "title": "Oremos ao Senhor",
-          "duration": 88,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/oracao-minuto-01.mp3"
+          "title": "Cantinho Caseiro",
+          "duration": 70,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
           "title": "O Incrível Vai Acontecer",
@@ -2138,34 +1948,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-a-cruz-era-pra-mim.mp3"
         },
         {
-          "title": "Sei que Cuidas de Mim",
-          "duration": 224,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-sei que tu cuidas de mim.mp3"
-        },
-        {
-          "title": "Benção do Padre João Vitor",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
-        },
-        {
-          "title": "Não Sou Mais Escravo",
-          "duration": 182,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-nao-sou-mais-escravo.mp3"
-        },
-        {
           "title": "Herança Celeste",
           "duration": 240,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-heranca-celeste.mp3"
         },
         {
-          "title": "Apoie a Rádio Luz e Louvor",
-          "duration": 88,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
-        },
-        {
-          "title": "Olhos do Coração",
-          "duration": 265,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-olhos-do-coracao.mp3"
+          "title": "Cantinho Caseiro",
+          "duration": 70,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         }
       ]
     },
@@ -2349,9 +2139,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-meu-motivo-pra-seguir.mp3"
         },
         {
-          "title": "Deus Conosco",
-          "duration": 187,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-Deus-conosco.mp3"
+          "title": "Habita em Mim",
+          "duration": 135,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-habita-em-mim.mp3"
         },
         {
           "title": "Bênção do Padre João Vitor",
@@ -2359,19 +2149,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
-          "title": "Habita em Mim",
-          "duration": 135,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-habita-em-mim.mp3"
-        },
-        {
           "title": "Espírito de Santidade",
           "duration": 308,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-espirito-de-santidade.mp3"
-        },
-        {
-          "title": "Inscrições Catequese",
-          "duration": 64,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/inscricoes-catquese.mp3"
         },
         {
           "title": "Deus Está em Tudo",
@@ -2379,19 +2159,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7--deus-esta-em-tudo.mp3"
         },
         {
+          "title": "Inscrições Catequese",
+          "duration": 64,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/inscricoes-catquese.mp3"
+        },
+        {
           "title": "Teu Perdão, Teu Amor, Tua Luz",
           "duration": 209,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/4-teu-perdao-teu-amor-tua-luz.mp3"
-        },
-        {
-          "title": "Apoie a Rádio Luz e Louvor",
-          "duration": 88,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
-        },
-        {
-          "title": "Jesus Videira Santa",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
         },
         {
           "title": "Jesus Pedra Angular",
@@ -2399,9 +2174,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-jesus-pedra-angular.mp3"
         },
         {
-          "title": "Apostolado da Oração",
-          "duration": 43,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-de-adoracao-apostolado.mp3"
+          "title": "Apoie a Rádio Luz e Louvor",
+          "duration": 88,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/apoio-radio.mp3"
         },
         {
           "title": "Luz do Alto",
@@ -2414,9 +2189,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5--tumulo-vazio.mp3"
         },
         {
-          "title": "Bênção do Padre João Vitor",
-          "duration": 30,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
+          "title": "Apostolado da Oração",
+          "duration": 43,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-de-adoracao-apostolado.mp3"
         },
         {
           "title": "São Bento Glorioso",
@@ -2429,9 +2204,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/2-Recebe-hoje-o-meu-SIM.mp3"
         },
         {
-          "title": "Rádio Luz e Louvor",
-          "duration": 5,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle--short-02.mp3"
+          "title": "Bênção do Padre João Vitor",
+          "duration": 30,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
         },
         {
           "title": "Verbo se Faz Carne",
@@ -2444,9 +2219,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/8-jornada-santa.mp3"
         },
         {
-          "title": "Apostolado da Oração",
-          "duration": 43,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-de-adoracao-apostolado.mp3"
+          "title": "Rádio Luz e Louvor",
+          "duration": 5,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/jingle--short-02.mp3"
         },
         {
           "title": "Minha Alma Te Procura",
@@ -2459,9 +2234,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/3-graca-da-salvacao.mp3"
         },
         {
-          "title": "Rádio Luz e Louvor",
-          "duration": 17,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
+          "title": "Apostolado da Oração",
+          "duration": 43,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/missa-de-adoracao-apostolado.mp3"
         },
         {
           "title": "Mestre da Multidão",
@@ -2474,9 +2249,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-o-amor-florescera.mp3"
         },
         {
-          "title": "Cantinho Caseiro",
-          "duration": 70,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
+          "title": "Rádio Luz e Louvor",
+          "duration": 17,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/vinheta-luz-louvor-01.mp3"
         },
         {
           "title": "Aurora dos Tempos",
@@ -2494,19 +2269,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
-          "title": "São Miguel Arcanjo",
-          "duration": 209,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-sao-Miguel-Arcanjo.mp3"
-        },
-        {
           "title": "Rosa Perfeita",
           "duration": 257,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/1-rosa-perfeita.mp3"
-        },
-        {
-          "title": "Cantinho Caseiro",
-          "duration": 70,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
           "title": "Deus Te Dá os Sentidos",
@@ -2514,19 +2279,14 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-Deus-te-da-os-sentidos.mp3"
         },
         {
+          "title": "Cantinho Caseiro",
+          "duration": 70,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
+        },
+        {
           "title": "Som da Eternidade",
           "duration": 202,
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/7-som-da-eternidade.mp3"
-        },
-        {
-          "title": "Bênção do Padre João Vitor",
-          "duration": 30,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/bencao-do-padre.mp3"
-        },
-        {
-          "title": "Jesus Videira Santa",
-          "duration": 322,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/Jesus-videira-santa.mp3"
         },
         {
           "title": "Foi a Tua Paixão",
@@ -2534,9 +2294,9 @@
           "audio": "https://songs.horizon4282.com.br/file/horizon4282/songs/5-foi-tua-paixao.mp3"
         },
         {
-          "title": "Catequese Perseverança",
-          "duration": 55,
-          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/catequese-perseveranca.mp3"
+          "title": "Cantinho Caseiro",
+          "duration": 70,
+          "audio": "https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/cantinho-caseiro.mp3"
         },
         {
           "title": "Eu Tomo a Minha Cruz",
