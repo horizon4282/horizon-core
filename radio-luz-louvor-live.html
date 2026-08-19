@@ -201,7 +201,6 @@ const fallbackData={
  message:{pt:{title:"Mensagem do Dia",text:"Permanecei em Mim, e Eu permanecerei em vós. — João 15,4"},en:{title:"Daily Message",text:"Remain in Me, and I will remain in you. — John 15:4"}},
  platforms:[{title:"Spotify",text:"Streaming",url:"#"},{title:"YouTube Music",text:"Canal oficial",url:"#"},{title:"Deezer",text:"Álbuns oficiais",url:"#"},{title:"Apple Music",text:"Ouça também",url:"#"}]
 };
-function toggleSidebar(){if(window.innerWidth<=900){document.body.classList.toggle("mobile-menu-open")}else{document.body.classList.toggle("sidebar-collapsed")}}
 function setLanguage(lang){currentLang=lang;document.documentElement.lang=lang==="pt"?"pt-BR":"en";document.getElementById("ptBtn").classList.toggle("active",lang==="pt");document.getElementById("enBtn").classList.toggle("active",lang==="en");document.querySelectorAll("[data-pt][data-en]").forEach(el=>{el.textContent=el.dataset[lang]});localStorage.setItem("horizonLanguage",lang);if(radioData){renderStaticContent();renderSchedule();renderPlatforms();if(activeTrack)renderNowPlaying(activeTrack,activeSource)}}
 
 async function loadRadioJson(){
@@ -842,7 +841,6 @@ document.getElementById("radioPlayer").addEventListener("ended", () => {
   }
 });
 
-function scrollToBlock(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});if(window.innerWidth<=900)document.body.classList.remove("mobile-menu-open")}
 
 const banners = [
       "https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor-01.webp",
@@ -1117,7 +1115,6 @@ async function sharePage(){
 
 
 
-window.addEventListener("resize",()=>{if(window.innerWidth<=900)document.body.classList.add("sidebar-collapsed")})
 
 document.addEventListener("DOMContentLoaded", () => {
  
