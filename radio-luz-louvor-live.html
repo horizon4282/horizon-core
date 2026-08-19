@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live</title>
+<title>Rádio Luz e Louvor — Live 1.1</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <style>
@@ -53,9 +53,9 @@ body::before{
 @keyframes pulse{50%{opacity:.45;transform:scale(.82)}}
 .main-grid{
   position:absolute;z-index:3;left:3.2vw;right:3.2vw;top:15.5vh;bottom:15vh;
-  display:grid;grid-template-columns:minmax(290px,36%) 1fr;gap:3vw;align-items:center;
+  display:grid;grid-template-columns:minmax(320px,39%) 1fr;gap:2.6vw;align-items:center;
 }
-.cover-wrap{position:relative;width:100%;max-width:min(34vw,440px);aspect-ratio:1/1;justify-self:center}
+.cover-wrap{position:relative;width:100%;max-width:min(37vw,478px);aspect-ratio:1/1;justify-self:center}
 .cover-glow{position:absolute;inset:6%;border-radius:50%;background:rgba(14,165,233,.24);filter:blur(35px);opacity:.65}
 .cover{
   position:absolute;inset:0;border:1px solid var(--line-strong);background:#071423 center/cover no-repeat;
@@ -65,27 +65,36 @@ body::before{
 .cover::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.04);pointer-events:none}
 .meta{min-width:0;align-self:center}
 .eyebrow{color:var(--gold);font-size:clamp(11px,1vw,15px);letter-spacing:.25em;text-transform:uppercase;margin-bottom:1.5vh}
-#nowTitle{margin:0;font-size:clamp(32px,4.4vw,68px);line-height:1.02;letter-spacing:.025em;text-wrap:balance;text-shadow:0 4px 28px rgba(0,0,0,.45)}
-.program-line{margin-top:2.1vh;padding-left:14px;border-left:3px solid var(--accent)}
+#nowTitle{margin:0;font-size:clamp(30px,3.85vw,58px);line-height:1.03;letter-spacing:.02em;text-wrap:balance;text-shadow:0 4px 28px rgba(0,0,0,.45);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:100%}
+.program-line{margin-top:1.55vh;padding-left:14px;border-left:3px solid var(--accent)}
 .program-line span{display:block;color:var(--muted);font-size:clamp(10px,.9vw,13px);letter-spacing:.16em;text-transform:uppercase;margin-bottom:5px}
 .program-line strong{font-size:clamp(16px,1.7vw,25px);color:#dff6ff}
-.progress-shell{height:5px;margin-top:3.2vh;background:rgba(255,255,255,.08);overflow:hidden}
+.progress-shell{height:7px;margin-top:2.7vh;background:rgba(255,255,255,.08);overflow:hidden}
 #liveProgressFill{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--accent),#dff6ff);box-shadow:0 0 14px rgba(125,211,252,.45);transition:width .5s linear}
 .time-row{display:flex;justify-content:space-between;color:var(--muted);font-size:clamp(10px,.9vw,13px);margin-top:7px}
-.info-row{display:grid;grid-template-columns:1fr 1fr;gap:1.3vw;margin-top:2.7vh}
-.info-card{min-height:85px;border:1px solid var(--line);background:rgba(8,21,38,.62);padding:14px 16px;overflow:hidden}
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:1.3vw;margin-top:2.35vh}
+.info-card{min-height:92px;border:1px solid var(--line);background:rgba(8,21,38,.62);padding:14px 16px;overflow:hidden}
 .info-card span{display:block;color:var(--gold);font-size:clamp(9px,.8vw,12px);letter-spacing:.18em;text-transform:uppercase;margin-bottom:7px}
 .info-card.next-program span{color:var(--accent)}
-.info-card strong{display:block;font-size:clamp(14px,1.35vw,20px);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.info-card strong{display:block;font-size:clamp(15px,1.5vw,22px);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .info-card small{display:block;color:var(--muted);font-size:clamp(9px,.75vw,11px);margin-top:5px}
 .bottom-strip{
-  position:absolute;z-index:4;left:0;right:0;bottom:0;height:11.5vh;min-height:72px;
-  display:grid;grid-template-columns:minmax(240px,38%) 1fr;align-items:center;gap:3vw;padding:0 3.2vw;
+  position:absolute;z-index:4;left:0;right:0;bottom:0;height:12.5vh;min-height:82px;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:3vw;padding:0 3.2vw;
   border-top:1px solid var(--line-strong);background:rgba(3,7,18,.94);backdrop-filter:blur(16px)
 }
-.message strong{display:block;color:var(--gold);font-size:clamp(9px,.85vw,12px);letter-spacing:.19em;text-transform:uppercase;margin-bottom:5px}
-.message p{margin:0;color:#dbeafe;font-size:clamp(12px,1.1vw,16px);line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.visualizer{height:42px;display:flex;align-items:flex-end;justify-content:flex-end;gap:5px;opacity:.8}
+.footer-channel{position:relative;min-width:0;height:64px;overflow:hidden;display:flex;align-items:center}
+.footer-slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(12px);transition:opacity .75s ease,transform .75s ease;pointer-events:none}
+.footer-slide.active{opacity:1;transform:translateY(0)}
+.footer-slide strong{display:block;color:var(--gold);font-size:clamp(9px,.85vw,12px);letter-spacing:.19em;text-transform:uppercase;margin-bottom:6px}
+.footer-slide p{margin:0;color:#dbeafe;font-size:clamp(12px,1.1vw,16px);line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.footer-slide[data-tone="accent"] strong{color:var(--accent)}
+.footer-slide[data-tone="green"] strong{color:var(--green)}
+.footer-slide[data-tone="gold"] strong{color:var(--gold)}
+.footer-dots{position:absolute;right:0;bottom:1px;display:flex;gap:5px}
+.footer-dots i{width:4px;height:4px;border-radius:50%;background:rgba(140,163,189,.35);transition:.35s}
+.footer-dots i.active{background:var(--gold);box-shadow:0 0 8px rgba(245,183,64,.5)}
+.visualizer{height:46px;display:flex;align-items:flex-end;justify-content:flex-end;gap:5px;opacity:.8;min-width:250px}
 .visualizer i{display:block;width:5px;height:18%;background:linear-gradient(to top,var(--accent),#eef6ff);animation:bar 1.1s ease-in-out infinite alternate;transform-origin:bottom}
 .visualizer i:nth-child(2n){animation-duration:.72s}.visualizer i:nth-child(3n){animation-duration:1.34s}.visualizer i:nth-child(5n){animation-duration:.92s}
 @keyframes bar{0%{height:12%}100%{height:100%}}
@@ -129,7 +138,14 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
   </main>
 
   <footer class="bottom-strip">
-    <div class="message"><strong id="messageTitle">Mensagem do Dia</strong><p id="messageText">Permanecei em Mim, e Eu permanecerei em vós.</p></div>
+    <div class="footer-channel" id="footerChannel">
+      <div class="footer-slide active" data-tone="gold"><strong id="messageTitle">Mensagem do Dia</strong><p id="messageText">Permanecei em Mim, e Eu permanecerei em vós.</p></div>
+      <div class="footer-slide" data-tone="gold"><strong>Apoie a Rádio Luz e Louvor</strong><p>Sua colaboração ajuda esta missão de evangelização a chegar cada vez mais longe.</p></div>
+      <div class="footer-slide" data-tone="accent"><strong>Ouça também pelo app</strong><p>Rádio Luz e Louvor com você no celular, no computador e agora também ao vivo no YouTube.</p></div>
+      <div class="footer-slide" data-tone="green"><strong>Paróquia Divino Pai Eterno · Botucatu — SP</strong><p>Uma comunidade em oração, evangelização e serviço.</p></div>
+      <div class="footer-slide" data-tone="accent"><strong>Intenções de oração</strong><p>Participe da comunidade da Rádio Luz e Louvor e envie suas intenções para rezarmos juntos.</p></div>
+      <div class="footer-dots" id="footerDots" aria-hidden="true"></div>
+    </div>
     <div class="visualizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   </footer>
 
@@ -137,7 +153,7 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 1.1 · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -1239,6 +1255,27 @@ if ("serviceWorker" in navigator) {
   player?.addEventListener('timeupdate', updateLiveProgress);
   player?.addEventListener('durationchange', updateLiveProgress);
 
+  // Canal inferior rotativo: mantém a tela viva sem cobrir a informação principal.
+  const footerSlides = Array.from(document.querySelectorAll('.footer-slide'));
+  const footerDots = document.getElementById('footerDots');
+  let footerIndex = 0;
+
+  if(footerDots && footerSlides.length){
+    footerSlides.forEach((_, index)=>{
+      const dot = document.createElement('i');
+      if(index === 0) dot.classList.add('active');
+      footerDots.appendChild(dot);
+    });
+  }
+
+  function showFooterSlide(index){
+    if(!footerSlides.length) return;
+    footerIndex = ((index % footerSlides.length) + footerSlides.length) % footerSlides.length;
+    footerSlides.forEach((slide,i)=>slide.classList.toggle('active',i===footerIndex));
+    footerDots?.querySelectorAll('i').forEach((dot,i)=>dot.classList.toggle('active',i===footerIndex));
+  }
+
+  setInterval(()=>showFooterSlide(footerIndex + 1), 14000);
   setInterval(updateProgramLabel, 6000);
   setInterval(updateLiveProgress, 1000);
 })();
