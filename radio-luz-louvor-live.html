@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live 1.2</title>
+<title>Rádio Luz e Louvor — Live 1.4</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <style>
@@ -157,7 +157,7 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live 1.2 · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 1.4 · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -507,6 +507,11 @@ function updateTrackCover(track) {
       "https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png";
 
     lastCoverTrackKey = trackKey;
+
+    // Na Live, cada nova faixa recebe um novo conjunto de partículas.
+    if (typeof window.refreshLiveParticles === "function") {
+      window.refreshLiveParticles();
+    }
   }
 
   if (coverBox) {
@@ -1270,7 +1275,7 @@ if ("serviceWorker" in navigator) {
     tickerSlides.forEach((slide,i)=>slide.classList.toggle('active',i===tickerIndex));
   }
 
-  setInterval(()=>showTickerSlide(tickerIndex + 1), 9000);
+  setInterval(()=>showTickerSlide(tickerIndex + 1), 18000);
 
   // Visualizador decorativo em largura total. Mantido leve para o Dell dedicado à Live.
   const visualizer = document.getElementById('visualizer');
@@ -1285,29 +1290,52 @@ if ("serviceWorker" in navigator) {
     }
   }
 
-  // Partículas ambientais discretas: flores, folhas, nuvens, corações e notas.
+  // Partículas Live 1.4: o conjunto visual muda a cada nova faixa.
   const particleField = document.getElementById('particleField');
-  if(particleField){
-    const symbols = ['✦','♡','☁','❀','❧','♪','✧'];
-    const colors = ['rgba(125,211,252,.62)','rgba(245,183,64,.54)','rgba(238,246,255,.44)'];
-    const total = 22;
+  const particleThemes = [
+    { symbols:['🌸','❀','✿','✦'], colors:['rgba(245,183,64,.56)','rgba(238,246,255,.48)','rgba(244,114,182,.48)'] },
+    { symbols:['🍃','❧','🍂','✧'], colors:['rgba(134,239,172,.48)','rgba(245,183,64,.48)','rgba(125,211,252,.48)'] },
+    { symbols:['☁','☁','✦','✧'], colors:['rgba(238,246,255,.50)','rgba(125,211,252,.54)','rgba(186,230,253,.48)'] },
+    { symbols:['♡','♥','♡','✦'], colors:['rgba(251,113,133,.48)','rgba(244,114,182,.48)','rgba(245,183,64,.46)'] },
+    { symbols:['♪','♫','♬','✦'], colors:['rgba(125,211,252,.58)','rgba(245,183,64,.54)','rgba(238,246,255,.46)'] },
+    { symbols:['🕊','✦','✧','☁'], colors:['rgba(238,246,255,.52)','rgba(125,211,252,.50)','rgba(245,183,64,.44)'] }
+  ];
+  let lastParticleTheme = -1;
+
+  function buildParticleTheme(themeIndex){
+    if(!particleField) return;
+    particleField.replaceChildren();
+    const theme = particleThemes[themeIndex];
+    const total = 18;
     for(let i=0;i<total;i++){
       const particle = document.createElement('span');
       particle.className = 'particle';
-      particle.textContent = symbols[Math.floor(Math.random()*symbols.length)];
-      particle.style.setProperty('--x', `${Math.random()*96}%`);
-      particle.style.setProperty('--y', `${7 + Math.random()*72}%`);
-      particle.style.setProperty('--size', `${34 + Math.random()*44}px`);
-      particle.style.setProperty('--opacity', `${0.28 + Math.random()*0.22}`);
-      particle.style.setProperty('--duration', `${9 + Math.random()*9}s`);
-      particle.style.setProperty('--delay', `${-Math.random()*18}s`);
-      particle.style.setProperty('--dx', `${180 + Math.random()*260}px`);
+      particle.textContent = theme.symbols[Math.floor(Math.random()*theme.symbols.length)];
+      particle.style.setProperty('--x', `${-6 + Math.random()*98}%`);
+      particle.style.setProperty('--y', `${6 + Math.random()*72}%`);
+      particle.style.setProperty('--size', `${42 + Math.random()*50}px`);
+      particle.style.setProperty('--opacity', `${0.32 + Math.random()*0.18}`);
+      particle.style.setProperty('--duration', `${8 + Math.random()*8}s`);
+      particle.style.setProperty('--delay', `${-Math.random()*14}s`);
+      particle.style.setProperty('--dx', `${220 + Math.random()*300}px`);
       particle.style.setProperty('--r1', `${-18 + Math.random()*36}deg`);
-      particle.style.setProperty('--r2', `${-30 + Math.random()*60}deg`);
-      particle.style.setProperty('--particle-color', colors[Math.floor(Math.random()*colors.length)]);
+      particle.style.setProperty('--r2', `${-32 + Math.random()*64}deg`);
+      particle.style.setProperty('--particle-color', theme.colors[Math.floor(Math.random()*theme.colors.length)]);
       particleField.appendChild(particle);
     }
   }
+
+  window.refreshLiveParticles = function(){
+    if(!particleField || !particleThemes.length) return;
+    let nextTheme;
+    do{
+      nextTheme = Math.floor(Math.random()*particleThemes.length);
+    }while(particleThemes.length > 1 && nextTheme === lastParticleTheme);
+    lastParticleTheme = nextTheme;
+    buildParticleTheme(nextTheme);
+  };
+
+  window.refreshLiveParticles();
 
   setInterval(updateProgramLabel, 6000);
   setInterval(updateLiveProgress, 1000);
