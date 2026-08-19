@@ -62,15 +62,17 @@ a{color:inherit;text-decoration:none}
   color:var(--accent);cursor:pointer;font-size:18px;font-family:var(--font)
 }
 
-
-.btn-banner {
+.btn-banner{
+    width: 8%;
     position: absolute;
-    bottom: 14vh;
-    left: 27%;
+    right: 86px;
+    top: 7px;
+    z-index: 20;
 }
 
-.btn-banner img {
-    width: 29%;
+.btn-banner img{
+    width:100%;
+    display:block;
 }
 
 .btn-banner a {
@@ -454,6 +456,10 @@ left:-9999px;
 
 </head>
 <body>
+  
+ <div class="btn-banner" id="bannerPlayButton">
+<a onclick="startRadioFromTop()"><img src="https://songs.horizon4282.com.br/file/horizon4282/images/bt-play-radio.png"/></a></div>
+  
 <div class="bottom-player" id="bottomPlayer">
 
   <div class="bottom-track">
@@ -535,19 +541,23 @@ left:-9999px;
     <button id="ptBtn" onclick="setLanguage('pt')">PT</button>
     <button id="enBtn" onclick="setLanguage('en')">EN</button>
   </div>
-       <div><img id="heroBanner" src="https://songs.horizon4282.com.br/file/horizon4282/images/banner--radio-luz-e-louvor.webp" style="width:100%" /></div>
+   
+       <div>
+              <img id="heroBanner" src="https://songs.horizon4282.com.br/file/horizon4282/images/banner-radio-luz-e-louvor.webp" style="width:100%" />
   
-
+       </div>
   <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
     <a style="display:none;" class="home-link" href="/" data-pt="Início" data-en="Home">Início</a>
-  </div>
-</div>
+  </div> 
+ </div>
+   
+ 
+
 
   
   <div id="loadState" class="loading">Loading radio JSON...</div>
 
- <div class="btn-banner">
-   <a onclick="startRadioFromTop()"><img src="https://songs.horizon4282.com.br/file/horizon4282/images/btn-play-banner.png"/></div></a>
+
      
   <section class="radio-grid">
     <div class="panel" id="playerBlock">
@@ -638,7 +648,7 @@ let audioLoadId = 0;
 let currentLang=localStorage.getItem("horizonLanguage")||"pt";
 let radioData=null,activeTrack=null,activeSource="schedule";
   
-const JSON_URL="https://horizon4282.com.br/data/radio-luz-louvor.json";
+const JSON_URL="https://horizon4282.com.br/data/radio-grade-01.json";
 const MESSAGES_URL = "https://horizon4282.com.br/data/radio-messages-pt-en.json";
 let messagesData = [];
 
@@ -1170,11 +1180,13 @@ function initializeBottomPlayer() {
   player.addEventListener("play", () => {
     playButton.textContent = "❚❚";
     playButton.setAttribute("aria-label", "Pausar");
+    updateBannerPlayButton();
   });
 
   player.addEventListener("pause", () => {
     playButton.textContent = "▶";
     playButton.setAttribute("aria-label", "Reproduzir");
+    updateBannerPlayButton();
   });
 
   player.addEventListener("loadedmetadata", () => {
@@ -1397,6 +1409,19 @@ window.addEventListener("appinstalled", () => {
   updateInstallButton();
 });
 
+//
+function updateBannerPlayButton() {
+    const banner = document.getElementById("bannerPlayButton");
+    const player = document.getElementById("radioPlayer");
+
+    if (!banner || !player) return;
+
+    // Em celular já fica escondido pelo CSS
+    if (window.innerWidth <= 900) return;
+
+    banner.style.display = player.paused ? "block" : "none";
+}
+
 
 //sorteio sem repetir a última capa///////////
 
@@ -1592,7 +1617,7 @@ player.ontimeupdate = null;
     setLanguage(currentLang);
     initializeBottomPlayer();
     loadRadioJson();
-   
+    updateBannerPlayButton();
 
 });
 
