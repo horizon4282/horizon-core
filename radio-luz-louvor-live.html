@@ -1407,7 +1407,7 @@ if ("serviceWorker" in navigator) {
     const grows = Math.random() < .5;
 
     particle.style.setProperty('--x', `${randomBetween(2,94)}%`);
-    particle.style.setProperty('--y', `${randomBetween(9,74)}%`);
+    particle.style.setProperty('--y', `${randomBetween(0,74)}%`);
     particle.style.setProperty('--size', `${baseSize}px`);
     particle.style.setProperty('--glyph-size', `${baseSize * randomBetween(.72,.98)}px`);
     particle.style.setProperty('--opacity', `${randomBetween(.18,.42)}`);
