@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live 1.5</title>
+<title>Rádio Luz e Louvor — Live 1.6 Ambient Shapes</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <style>
@@ -80,12 +80,54 @@ body::before{
 .info-card strong{display:block;font-size:clamp(15px,1.5vw,22px);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .info-card small{display:block;color:var(--muted);font-size:clamp(9px,.75vw,11px);margin-top:5px}
 .particle-field{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
-.particle{position:absolute;left:var(--x);top:var(--y);font-size:var(--size);color:var(--particle-color);opacity:0;filter:drop-shadow(0 2px 8px rgba(70,60,45,.16));animation:particleDrift var(--duration) linear var(--delay) infinite;will-change:transform,opacity}
-@keyframes particleDrift{
-  0%,100%{opacity:0;transform:translate3d(0,24px,0) rotate(var(--r1)) scale(.82)}
-  16%{opacity:var(--opacity)}
-  50%{opacity:calc(var(--opacity) * .72);transform:translate3d(var(--dx),-26px,0) rotate(var(--r2)) scale(1.04)}
-  84%{opacity:var(--opacity)}
+.particle{
+  position:absolute;
+  left:var(--x);
+  top:var(--y);
+  width:var(--size);
+  height:var(--size);
+  color:var(--particle-color);
+  opacity:0;
+  transform-origin:center;
+  will-change:transform,opacity;
+  filter:drop-shadow(0 3px 12px rgba(70,60,45,.14));
+  animation:ambientShapeLife var(--duration) cubic-bezier(.35,.02,.25,1) forwards;
+}
+.particle .shape{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:var(--glyph-size);
+  line-height:1;
+}
+.particle .shape-outline{
+  position:absolute;
+  inset:12%;
+  border:var(--stroke) solid currentColor;
+  transform:rotate(var(--shape-rotation));
+  border-radius:var(--radius);
+}
+@keyframes ambientShapeLife{
+  0%{
+    opacity:0;
+    transform:translate3d(0,0,0) rotate(var(--r1)) scale(var(--s0));
+  }
+  14%{
+    opacity:var(--opacity);
+  }
+  52%{
+    opacity:calc(var(--opacity) * .86);
+    transform:translate3d(var(--dx-mid),var(--dy-mid),0) rotate(var(--r-mid)) scale(var(--s-mid));
+  }
+  82%{
+    opacity:calc(var(--opacity) * .46);
+  }
+  100%{
+    opacity:0;
+    transform:translate3d(var(--dx),var(--dy),0) rotate(var(--r2)) scale(var(--s1));
+  }
 }
 .bottom-strip{
   position:absolute;z-index:4;left:0;right:0;bottom:0;height:18.5vh;min-height:118px;
@@ -158,7 +200,7 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live 1.4 · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 1.6 · Ambient Shapes · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -183,7 +225,7 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
 let lastCoverTrackKey = "";
 let currentCoverUrl = "";
 let lastCoverIndex = -1;
-let radioWasPlaying = false;  
+let radioWasPlaying = false;
 let activeScheduleHour = null;
 let currentPlaylist = [];
 let currentTrackIndex = 0;
@@ -191,7 +233,7 @@ let audioRetryTimer = null;
 let audioLoadId = 0;
 let currentLang=localStorage.getItem("horizonLanguage")||"pt";
 let radioData=null,activeTrack=null,activeSource="schedule";
-  
+
 const JSON_URL="https://horizon4282.com.br/data/radio-luz-louvor.json";
 const MESSAGES_URL = "https://horizon4282.com.br/data/radio-messages-pt-en.json";
 let messagesData = [];
@@ -213,7 +255,7 @@ const radioCovers = [
   "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--13.webp",
   "https://songs.horizon4282.com.br/file/horizon4282/images/capa-radio--14.webp"
 ];
-  
+
 const fallbackData={
  page:{pt:{eyebrow:"Rádio Luz e Louvor",title:"Rádio Luz e Louvor",text:"Música, oração, Palavra e esperança. Uma estação devocional dentro do Horizon 4282.",onAir:"Áudio HD · 24h"},en:{eyebrow:"Light & Praise Radio",title:"Light & Praise Radio",text:"Music, prayer, Word and hope. A devotional station inside Horizon 4282.",onAir:"HD Audio · 24h"}},
  defaultCover:"https://songs.horizon4282.com.br/file/horizon4282/images/default-cover.webp",
@@ -241,7 +283,7 @@ async function loadRadioJson(){
   }catch(error){
     radioData = normalizeData(fallbackData);
     state.className = "error";
-    state.innerHTML = "JSON externo não carregado. Usando fallback interno.<br>Arquivo esperado: " + JSON_URL;
+    state.innerHTML = "JSON externo não carregado. Usando fallback interno.Arquivo esperado: " + JSON_URL;
   }
 
   renderStaticContent();
@@ -285,28 +327,28 @@ function getDailyMessage(){
   document.getElementById("heroTitle").textContent=page.title;document.getElementById("heroText").textContent=page.text;
   document.getElementById("onAirText").textContent=page.onAir||"HD Audio · 24h";
   document.getElementById("languageText").textContent=currentLang==="pt"?"PT-BR":"EN";
-                               
+
 const message = getDailyMessage();
 document.getElementById("messageTitle").textContent = message.title;
 document.getElementById("messageText").textContent = message.text;
   }
-    
+
 function renderSchedule(){
   const list=document.getElementById("scheduleList");list.innerHTML="";
   const currentSchedule=getCurrentSchedule();
   radioData.schedule.slice().sort((a,b)=>a.hour-b.hour).forEach(item=>{
     const localized=item[currentLang]||item.pt||item.en;const article=document.createElement("article");
             article.className="schedule-item";
-    
+
             if(currentSchedule && currentSchedule.hour === item.hour){
   article.classList.add("active");
   article.id = "currentScheduleItem";
 }
-    
+
             article.innerHTML=
             `<time>${String(item.hour).padStart(2,"0")}:00</time>
             <div><strong>${localized.title}</strong><span>${localized.description||""}</span></div>`;
-            
+
            // article.onclick=()=>{
                // activeSource="schedule";activeTrack=item;renderNowPlaying(item,"schedule")
               //  };
@@ -327,7 +369,7 @@ function scrollScheduleToCurrent(){
 
   list.scrollTop += currentTop - listTop - 12;
 }
-  
+
 function renderPlatforms(){const row=document.getElementById("platformsBlock");row.innerHTML="";radioData.platforms.forEach(platform=>{const a=document.createElement("a");a.className="platform";a.href=platform.url||"#";a.target="_blank";a.innerHTML=`<strong>${platform.title}</strong><span>${platform.text||""}</span>`;row.appendChild(a)})}
 function startRadioFlow(){const params=new URLSearchParams(window.location.search);const requestedTrackId=params.get("track");if(requestedTrackId&&radioData.tracks[requestedTrackId]){activeSource="request";activeTrack=radioData.tracks[requestedTrackId];renderNowPlaying(activeTrack,"request")}else{loadCurrentSchedule()}}
 
@@ -377,7 +419,7 @@ function getCurrentSchedule() {
 
   return current;
 }
-  
+
 function renderNowPlaying(item, source){
   if(!item) return;
 
@@ -393,7 +435,7 @@ function renderNowPlaying(item, source){
 }
 
   const localized = item[currentLang] || item.pt || item.en || item;
- 
+
 const player = document.getElementById("radioPlayer");
 
   // volume inicial
@@ -492,7 +534,7 @@ if(item.playlist && item.playlist.length){
 }
 
 
-  
+
 function updateTrackCover(track) {
   const coverBox = document.getElementById("coverBox");
   const bottomCover = document.querySelector(".bottom-cover");
@@ -561,7 +603,7 @@ function getImageMimeType(url) {
 
   return "image/png";
 }
-  
+
 function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   const track = currentPlaylist[index];
   const player = document.getElementById("radioPlayer");
@@ -827,7 +869,7 @@ function startRadioFromTop() {
 
   player.addEventListener("canplay", startWhenReady);
 }
-  
+
 function playRadio() {
   const player = document.getElementById("radioPlayer");
 
@@ -835,7 +877,7 @@ function playRadio() {
     console.warn("Não foi possível iniciar a rádio:", error);
   });
 }
-  
+
 function pauseRadio(){document.getElementById("radioPlayer").pause()}
 
 document.getElementById("radioPlayer").addEventListener("ended", () => {
@@ -992,7 +1034,7 @@ function getRandomCover() {
 
   return radioCovers[newIndex];
 }
-  
+
 //next attraction//////////////////////
 function updateNextAttraction() {
   const element = document.getElementById("nextTrackTitle");
@@ -1081,7 +1123,7 @@ function updateNextProgram() {
       ? `Começa às ${formattedHour}`
       : `Starts at ${formattedHour}`;
 }
-//randomBanner///////////////////////////  
+//randomBanner///////////////////////////
 function loadRandomBanner(){
 
     const storageKey = "radio-last-banner";
@@ -1102,7 +1144,7 @@ function loadRandomBanner(){
     hero.src = `${banners[newIndex]}`;
 }
 
-  
+
 async function sharePage(){
 
   const url = "https://horizon4282.com.br/radio-luz-louvor";
@@ -1143,7 +1185,7 @@ async function sharePage(){
 
 
 document.addEventListener("DOMContentLoaded", () => {
- 
+
     loadRandomBanner();
 
     if (isRunningAsInstalledApp()) {
@@ -1293,47 +1335,170 @@ if ("serviceWorker" in navigator) {
 
   // Partículas Live 1.4: o conjunto visual muda a cada nova faixa.
   const particleField = document.getElementById('particleField');
-  const particleThemes = [
-    { symbols:['🌸','❀','✿','✦'], colors:['rgba(185,133,47,.58)','rgba(155,103,128,.48)','rgba(191,91,130,.48)'] },
-    { symbols:['🍃','❧','🍂','✧'], colors:['rgba(72,132,91,.48)','rgba(176,126,44,.48)','rgba(59,134,163,.48)'] },
-    { symbols:['☁','☁','✦','✧'], colors:['rgba(116,139,151,.38)','rgba(59,134,163,.48)','rgba(105,160,181,.42)'] },
-    { symbols:['♡','♥','♡','✦'], colors:['rgba(182,80,98,.48)','rgba(178,83,127,.46)','rgba(185,133,47,.44)'] },
-    { symbols:['♪','♫','♬','✦'], colors:['rgba(59,134,163,.58)','rgba(185,133,47,.54)','rgba(90,111,124,.44)'] },
-    { symbols:['🕊','✦','✧','☁'], colors:['rgba(110,130,140,.44)','rgba(59,134,163,.48)','rgba(185,133,47,.42)'] }
-  ];
-  let lastParticleTheme = -1;
-
-  function buildParticleTheme(themeIndex){
-    if(!particleField) return;
-    particleField.replaceChildren();
-    const theme = particleThemes[themeIndex];
-    const total = 18;
-    for(let i=0;i<total;i++){
-      const particle = document.createElement('span');
-      particle.className = 'particle';
-      particle.textContent = theme.symbols[Math.floor(Math.random()*theme.symbols.length)];
-      particle.style.setProperty('--x', `${-6 + Math.random()*98}%`);
-      particle.style.setProperty('--y', `${6 + Math.random()*72}%`);
-      particle.style.setProperty('--size', `${42 + Math.random()*50}px`);
-      particle.style.setProperty('--opacity', `${0.32 + Math.random()*0.18}`);
-      particle.style.setProperty('--duration', `${8 + Math.random()*8}s`);
-      particle.style.setProperty('--delay', `${-Math.random()*14}s`);
-      particle.style.setProperty('--dx', `${220 + Math.random()*300}px`);
-      particle.style.setProperty('--r1', `${-18 + Math.random()*36}deg`);
-      particle.style.setProperty('--r2', `${-32 + Math.random()*64}deg`);
-      particle.style.setProperty('--particle-color', theme.colors[Math.floor(Math.random()*theme.colors.length)]);
-      particleField.appendChild(particle);
+  const ambientShapeThemes = [
+    {
+      glyphs:['♡','✚','＋'],
+      outlines:['circle','square','diamond'],
+      colors:['rgba(185,133,47,.50)','rgba(59,134,163,.42)','rgba(181,93,118,.38)']
+    },
+    {
+      glyphs:['♡','✝','✚'],
+      outlines:['circle','diamond','triangle'],
+      colors:['rgba(59,134,163,.48)','rgba(185,133,47,.46)','rgba(117,105,158,.34)']
+    },
+    {
+      glyphs:['✚','＋','♡'],
+      outlines:['square','circle','diamond'],
+      colors:['rgba(185,133,47,.48)','rgba(86,139,159,.42)','rgba(169,91,127,.36)']
+    },
+    {
+      glyphs:['♡','✝','＋'],
+      outlines:['diamond','triangle','circle'],
+      colors:['rgba(104,144,160,.44)','rgba(185,133,47,.44)','rgba(183,102,125,.34)']
     }
+  ];
+
+  let lastParticleTheme = -1;
+  let particleSpawnTimer = null;
+  const liveParticles = new Set();
+  const MAX_LIVE_PARTICLES = 15;
+
+  function randomBetween(min,max){
+    return min + Math.random() * (max - min);
+  }
+
+  function makeOutlineShape(node,type){
+    const outline = document.createElement('span');
+    outline.className = 'shape-outline';
+
+    if(type === 'circle'){
+      outline.style.setProperty('--radius','50%');
+    }else if(type === 'diamond'){
+      outline.style.setProperty('--radius','8%');
+      outline.style.setProperty('--shape-rotation','45deg');
+    }else if(type === 'triangle'){
+      outline.style.inset = '18% 12% 10%';
+      outline.style.border = '0';
+      outline.style.width = '0';
+      outline.style.height = '0';
+      outline.style.margin = 'auto';
+      outline.style.borderLeft = 'calc(var(--size) * .26) solid transparent';
+      outline.style.borderRight = 'calc(var(--size) * .26) solid transparent';
+      outline.style.borderBottom = 'calc(var(--size) * .48) solid currentColor';
+      outline.style.opacity = '.72';
+    }else{
+      outline.style.setProperty('--radius','5%');
+    }
+
+    node.appendChild(outline);
+  }
+
+  function spawnAmbientShape(themeIndex){
+    if(!particleField || liveParticles.size >= MAX_LIVE_PARTICLES) return;
+
+    const theme = ambientShapeThemes[themeIndex];
+    if(!theme) return;
+
+    const particle = document.createElement('span');
+    particle.className = 'particle';
+
+    const useGlyph = Math.random() < .56;
+    const baseSize = randomBetween(54,122);
+    const grows = Math.random() < .5;
+
+    particle.style.setProperty('--x', `${randomBetween(2,94)}%`);
+    particle.style.setProperty('--y', `${randomBetween(9,74)}%`);
+    particle.style.setProperty('--size', `${baseSize}px`);
+    particle.style.setProperty('--glyph-size', `${baseSize * randomBetween(.72,.98)}px`);
+    particle.style.setProperty('--opacity', `${randomBetween(.18,.42)}`);
+    particle.style.setProperty('--duration', `${randomBetween(6.8,12.5)}s`);
+    particle.style.setProperty('--stroke', `${randomBetween(1.4,2.7)}px`);
+    particle.style.setProperty('--shape-rotation', `${randomBetween(-18,18)}deg`);
+
+    // Tiny drift only: no more left-to-right conveyor-belt motion.
+    const dx = randomBetween(-42,42);
+    const dy = randomBetween(-34,34);
+    particle.style.setProperty('--dx', `${dx}px`);
+    particle.style.setProperty('--dy', `${dy}px`);
+    particle.style.setProperty('--dx-mid', `${dx * .42}px`);
+    particle.style.setProperty('--dy-mid', `${dy * .42}px`);
+
+    particle.style.setProperty('--r1', `${randomBetween(-22,22)}deg`);
+    particle.style.setProperty('--r-mid', `${randomBetween(-10,10)}deg`);
+    particle.style.setProperty('--r2', `${randomBetween(-35,35)}deg`);
+
+    // Half of the forms grow while fading; the others shrink while fading.
+    if(grows){
+      particle.style.setProperty('--s0', `${randomBetween(.22,.48)}`);
+      particle.style.setProperty('--s-mid', `${randomBetween(.78,1.05)}`);
+      particle.style.setProperty('--s1', `${randomBetween(1.30,1.90)}`);
+    }else{
+      particle.style.setProperty('--s0', `${randomBetween(1.30,1.85)}`);
+      particle.style.setProperty('--s-mid', `${randomBetween(.82,1.04)}`);
+      particle.style.setProperty('--s1', `${randomBetween(.18,.48)}`);
+    }
+
+    particle.style.setProperty(
+      '--particle-color',
+      theme.colors[Math.floor(Math.random() * theme.colors.length)]
+    );
+
+    if(useGlyph){
+      const glyph = document.createElement('span');
+      glyph.className = 'shape';
+      glyph.textContent = theme.glyphs[Math.floor(Math.random() * theme.glyphs.length)];
+      particle.appendChild(glyph);
+    }else{
+      makeOutlineShape(
+        particle,
+        theme.outlines[Math.floor(Math.random() * theme.outlines.length)]
+      );
+    }
+
+    particleField.appendChild(particle);
+    liveParticles.add(particle);
+
+    particle.addEventListener('animationend', () => {
+      liveParticles.delete(particle);
+      particle.remove();
+    }, {once:true});
+  }
+
+  function beginAmbientShapes(themeIndex){
+    if(!particleField) return;
+
+    if(particleSpawnTimer){
+      clearInterval(particleSpawnTimer);
+      particleSpawnTimer = null;
+    }
+
+    liveParticles.forEach(p => p.remove());
+    liveParticles.clear();
+
+    // Seed a few shapes immediately so the screen never starts empty.
+    for(let i=0;i<7;i++){
+      setTimeout(() => spawnAmbientShape(themeIndex), i * 180);
+    }
+
+    // New forms continuously appear in fresh random positions.
+    particleSpawnTimer = setInterval(() => {
+      const burst = Math.random() < .22 ? 2 : 1;
+      for(let i=0;i<burst;i++){
+        spawnAmbientShape(themeIndex);
+      }
+    }, 720);
   }
 
   window.refreshLiveParticles = function(){
-    if(!particleField || !particleThemes.length) return;
+    if(!particleField || !ambientShapeThemes.length) return;
+
     let nextTheme;
     do{
-      nextTheme = Math.floor(Math.random()*particleThemes.length);
-    }while(particleThemes.length > 1 && nextTheme === lastParticleTheme);
+      nextTheme = Math.floor(Math.random() * ambientShapeThemes.length);
+    }while(ambientShapeThemes.length > 1 && nextTheme === lastParticleTheme);
+
     lastParticleTheme = nextTheme;
-    buildParticleTheme(nextTheme);
+    beginAmbientShapes(nextTheme);
   };
 
   window.refreshLiveParticles();
