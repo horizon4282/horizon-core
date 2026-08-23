@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live 1.6 Ambient Shapes</title>
+<title>Rádio Luz e Louvor — Live 1.7 Três Temas</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -168,10 +168,170 @@ body.radio-paused .visualizer i{animation-play-state:paused;height:10%}
 .compat{position:fixed!important;left:-10000px!important;top:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important}
 audio{position:fixed;left:-10000px;width:1px;height:1px}
 @media(max-height:650px){.topbar{top:2vh}.main-grid{top:13vh;bottom:22vh}.info-card{min-height:68px;padding:10px 14px}.program-line{margin-top:1.2vh}.progress-shell{margin-top:1.8vh}.info-row{margin-top:1.5vh}.bottom-strip{height:19vh}.ticker-slide strong{font-size:clamp(17px,2vw,28px)}}
+
+/* =========================================================
+   LIVE 1.7 — TRÊS TEMAS AUTOMÁTICOS
+   Cada tema permanece por duas músicas.
+   O rodapé/streaming mantém sua identidade atual.
+   ========================================================= */
+
+.live-stage{
+  transition:background 1.8s ease,color 1.25s ease;
+}
+
+.topbar,
+.brand-copy strong,
+.brand-copy span,
+.live-pill,
+.meta,
+.eyebrow,
+#nowTitle,
+.program-line,
+.program-line span,
+.program-line strong,
+.progress-shell,
+#liveProgressFill,
+.time-row,
+.info-card,
+.info-card span,
+.info-card strong,
+.info-card small,
+.cover,
+.cover-glow{
+  transition:
+    color 1.35s ease,
+    background-color 1.8s ease,
+    background 1.8s ease,
+    border-color 1.35s ease,
+    box-shadow 1.8s ease,
+    text-shadow 1.35s ease;
+}
+
+/* Tema 1 — Marfim / Céu */
+.live-stage.theme-ivory{
+  --bg:#f4efe4;
+  --panel:rgba(255,252,245,.80);
+  --line:rgba(69,106,126,.24);
+  --line-strong:rgba(69,106,126,.46);
+  --text:#183042;
+  --muted:#6d7c86;
+  --accent:#3b86a3;
+  --gold:#b9852f;
+  --green:#208a55;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 16% 14%,rgba(115,176,201,.26),transparent 34%),
+    radial-gradient(circle at 84% 76%,rgba(219,181,112,.22),transparent 31%),
+    radial-gradient(circle at 54% 45%,rgba(255,255,255,.70),transparent 46%),
+    linear-gradient(145deg,#f8f4eb 0%,#eee7d9 54%,#f5efe3 100%);
+}
+
+/* Tema 2 — Azul Noturno */
+.live-stage.theme-night{
+  --bg:#071521;
+  --panel:rgba(8,29,46,.68);
+  --line:rgba(111,186,217,.25);
+  --line-strong:rgba(111,186,217,.48);
+  --text:#edf6fa;
+  --muted:#9bb7c5;
+  --accent:#69c4e3;
+  --gold:#deb35b;
+  --green:#52c887;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 13% 18%,rgba(46,128,165,.28),transparent 35%),
+    radial-gradient(circle at 83% 72%,rgba(197,144,55,.17),transparent 31%),
+    radial-gradient(circle at 53% 44%,rgba(25,71,98,.28),transparent 43%),
+    linear-gradient(145deg,#071521 0%,#0a2032 53%,#06111c 100%);
+}
+
+/* Tema 3 — Verde Esperança */
+.live-stage.theme-sage{
+  --bg:#e8eee4;
+  --panel:rgba(246,248,239,.76);
+  --line:rgba(74,111,96,.24);
+  --line-strong:rgba(74,111,96,.44);
+  --text:#1d3b35;
+  --muted:#667a70;
+  --accent:#5d8f7e;
+  --gold:#aa7d32;
+  --green:#2c865c;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 14% 16%,rgba(127,172,151,.24),transparent 34%),
+    radial-gradient(circle at 86% 73%,rgba(205,169,96,.19),transparent 32%),
+    radial-gradient(circle at 53% 45%,rgba(255,255,255,.58),transparent 45%),
+    linear-gradient(145deg,#edf2e8 0%,#dfe8dc 55%,#eef1e5 100%);
+}
+
+/* Elementos principais acompanham o tema */
+.live-stage.theme-night #nowTitle{
+  text-shadow:0 2px 20px rgba(0,0,0,.34);
+}
+.live-stage.theme-night .program-line strong{
+  color:#dbeef6;
+}
+.live-stage.theme-night .info-card{
+  background:rgba(9,30,46,.46);
+}
+.live-stage.theme-night .cover{
+  background-color:#0a1a27;
+}
+.live-stage.theme-night .cover::after{
+  border-color:rgba(255,255,255,.14);
+}
+.live-stage.theme-night .live-pill{
+  background:rgba(82,200,135,.10);
+}
+
+.live-stage.theme-sage #nowTitle{
+  text-shadow:0 2px 16px rgba(255,255,255,.72);
+}
+.live-stage.theme-sage .program-line strong{
+  color:#315c50;
+}
+.live-stage.theme-sage .info-card{
+  background:rgba(248,250,243,.44);
+}
+
+/* O conic ambient também acompanha a paleta do tema */
+.live-stage.theme-night::after{
+  background:conic-gradient(
+    from 180deg at 50% 50%,
+    transparent,
+    rgba(105,196,227,.10),
+    transparent 30%,
+    rgba(222,179,91,.09),
+    transparent 65%
+  );
+}
+.live-stage.theme-sage::after{
+  background:conic-gradient(
+    from 180deg at 50% 50%,
+    transparent,
+    rgba(93,143,126,.11),
+    transparent 30%,
+    rgba(170,125,50,.09),
+    transparent 65%
+  );
+}
+
+/* IMPORTANTE:
+   congela as cores do rodapé/streaming para que a troca de tema
+   afete apenas a área principal da transmissão. */
+.bottom-strip{
+  --accent:#3b86a3;
+  --gold:#b9852f;
+  --text:#183042;
+  --muted:#6d7c86;
+  --line:rgba(69,106,126,.24);
+  --line-strong:rgba(69,106,126,.46);
+}
+
 </style>
 </head>
 <body class="radio-paused">
-<div class="live-stage">
+<div class="live-stage theme-ivory" id="liveStage">
   <header class="topbar">
     <div class="brand">
       <img class="brand-logo" src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="Rádio Luz e Louvor">
@@ -213,7 +373,7 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live 1.6 · Ambient Shapes · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 1.7 · Três Temas · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -246,6 +406,49 @@ let audioRetryTimer = null;
 let audioLoadId = 0;
 let currentLang=localStorage.getItem("horizonLanguage")||"pt";
 let radioData=null,activeTrack=null,activeSource="schedule";
+
+
+/* Live 1.7 — rotação automática de cores */
+const LIVE_COLOR_THEMES = ['theme-ivory','theme-night','theme-sage'];
+let currentLiveColorTheme = 0;
+let tracksInCurrentColorTheme = 0;
+let lastThemeTrackKey = '';
+
+function applyLiveColorTheme(index, refreshParticles = true){
+  const stage = document.getElementById('liveStage');
+  if(!stage || !LIVE_COLOR_THEMES.length) return;
+
+  currentLiveColorTheme =
+    ((index % LIVE_COLOR_THEMES.length) + LIVE_COLOR_THEMES.length) %
+    LIVE_COLOR_THEMES.length;
+
+  stage.classList.remove(...LIVE_COLOR_THEMES);
+  stage.classList.add(LIVE_COLOR_THEMES[currentLiveColorTheme]);
+
+  if(refreshParticles && typeof window.refreshLiveParticles === 'function'){
+    window.refreshLiveParticles();
+  }
+}
+
+function registerTrackForColorTheme(track){
+  const key =
+    track?.audio ||
+    `${track?.title || 'radio'}-${currentTrackIndex}`;
+
+  if(!key || key === lastThemeTrackKey) return;
+
+  lastThemeTrackKey = key;
+
+  /* O tema atual toca DUAS músicas completas.
+     Na terceira música, avança para o próximo tema. */
+  if(tracksInCurrentColorTheme >= 2){
+    tracksInCurrentColorTheme = 0;
+    applyLiveColorTheme(currentLiveColorTheme + 1, false);
+  }
+
+  tracksInCurrentColorTheme++;
+}
+
 
 const JSON_URL="https://horizon4282.com.br/data/radio-luz-louvor.json";
 const MESSAGES_URL = "https://horizon4282.com.br/data/radio-messages-pt-en.json";
@@ -564,7 +767,10 @@ function updateTrackCover(track) {
 
     lastCoverTrackKey = trackKey;
 
-    // Na Live, cada nova faixa recebe um novo conjunto de partículas.
+    // Live 1.7: mantém o tema por duas músicas e então avança.
+    registerTrackForColorTheme(track);
+
+    // Cada nova faixa recebe um novo conjunto de partículas.
     if (typeof window.refreshLiveParticles === "function") {
       window.refreshLiveParticles();
     }
@@ -1505,15 +1711,30 @@ if ("serviceWorker" in navigator) {
   window.refreshLiveParticles = function(){
     if(!particleField || !ambientShapeThemes.length) return;
 
-    let nextTheme;
-    do{
-      nextTheme = Math.floor(Math.random() * ambientShapeThemes.length);
-    }while(ambientShapeThemes.length > 1 && nextTheme === lastParticleTheme);
+    /* Liga a ambientação à cor da tela:
+       Marfim usa paletas 0/1, Azul usa 1/2, Verde usa 2/3.
+       Ainda alterna entre duas variações para não ficar repetitivo. */
+    const visualThemePools = [
+      [0,1],
+      [1,2],
+      [2,3]
+    ];
+
+    const pool =
+      visualThemePools[currentLiveColorTheme] ||
+      visualThemePools[0];
+
+    let nextTheme = pool[Math.floor(Math.random() * pool.length)];
+
+    if(pool.length > 1 && nextTheme === lastParticleTheme){
+      nextTheme = pool.find(i => i !== lastParticleTheme) ?? nextTheme;
+    }
 
     lastParticleTheme = nextTheme;
     beginAmbientShapes(nextTheme);
   };
 
+  applyLiveColorTheme(0, false);
   window.refreshLiveParticles();
 
   setInterval(updateProgramLabel, 6000);
