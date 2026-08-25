@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live 1.7 Três Temas</title>
+<title>Rádio Luz e Louvor — Live 1.7.1 Horário Estável</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -373,7 +373,7 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live 1.7 · Três Temas · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 1.7.1 · Horário estável · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -669,12 +669,12 @@ function renderNowPlaying(item, source){
   activeTrack = item;
   activeSource = source;
 
-  if (source === "schedule") {
-  updateNextProgram();
-}
-
   if (source === "schedule" && item.hour !== undefined) {
   activeScheduleHour = item.hour;
+}
+
+  if (source === "schedule") {
+  updateNextProgram();
 }
 
   const localized = item[currentLang] || item.pt || item.en || item;
@@ -1311,22 +1311,21 @@ function getNextScheduleItem() {
     .slice()
     .sort((a, b) => a.hour - b.hour);
 
-  const currentHour =
-    activeScheduleHour !== null
-      ? activeScheduleHour
-      : getCurrentSchedule()?.hour;
+  const currentSchedule = getCurrentSchedule();
+
+  if (!currentSchedule) {
+    return sorted[0] || null;
+  }
 
   const currentIndex = sorted.findIndex(
-    item => item.hour === currentHour
+    item => item.hour === currentSchedule.hour
   );
 
   if (currentIndex === -1) {
-    return sorted[0];
+    return sorted[0] || null;
   }
 
-  return sorted[
-    (currentIndex + 1) % sorted.length
-  ];
+  return sorted[(currentIndex + 1) % sorted.length] || null;
 }
 
 function updateNextProgram() {
@@ -1474,6 +1473,7 @@ setInterval(() => {
     activeTrack = currentSchedule;
     activeScheduleHour = currentSchedule.hour;
     currentPlaylist = currentSchedule.playlist || [];
+    updateNextProgram();
 
 // Na mudança real de programa, começa pela introdução.
 currentTrackIndex = 0;
@@ -1763,6 +1763,32 @@ if ("serviceWorker" in navigator) {
 
   applyLiveColorTheme(0, false);
   window.refreshLiveParticles();
+
+  
+  // Live 1.7.1 — sincronização visual resiliente.
+  // Recalcula os rótulos diretamente da grade, sem depender de estado antigo.
+  function refreshScheduleLabelsFromClock(){
+    if(!radioData || activeSource === "request") return;
+
+    const currentSchedule = getCurrentSchedule();
+    if(!currentSchedule) return;
+
+    const localized =
+      currentSchedule[currentLang] ||
+      currentSchedule.pt ||
+      currentSchedule.en ||
+      currentSchedule;
+
+    if(programTitle){
+      programTitle.textContent =
+        localized.title || "Rádio Luz e Louvor";
+    }
+
+    updateNextProgram();
+  }
+
+  refreshScheduleLabelsFromClock();
+  setInterval(refreshScheduleLabelsFromClock, 30000);
 
   setInterval(updateProgramLabel, 6000);
   setInterval(updateLiveProgress, 1000);
