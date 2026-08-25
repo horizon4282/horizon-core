@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live 1.7.1 Horário Estável</title>
+<title>Rádio Luz e Louvor — Live 1.8 Relógio e Liturgia</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -328,6 +328,134 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
   --line-strong:rgba(69,106,126,.46);
 }
 
+
+/* =========================================================
+   LIVE 1.8 — GADGETS: RELÓGIO + DATA + DIA LITÚRGICO
+   ========================================================= */
+.live-tools{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:12px;
+  min-width:0;
+}
+
+.clock-gadget,
+.liturgy-gadget{
+  border:1px solid var(--line);
+  background:color-mix(in srgb, var(--panel) 60%, transparent);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border-radius:16px;
+  transition:
+    color 1.35s ease,
+    background-color 1.8s ease,
+    border-color 1.35s ease,
+    box-shadow 1.8s ease;
+}
+
+.clock-gadget{
+  min-width:145px;
+  padding:8px 13px 9px;
+  text-align:right;
+}
+
+.clock-time{
+  display:block;
+  font-size:clamp(21px,2vw,30px);
+  line-height:1;
+  letter-spacing:.055em;
+  color:var(--text);
+  font-variant-numeric:tabular-nums;
+}
+
+.clock-date{
+  display:block;
+  margin-top:5px;
+  font-size:clamp(9px,.75vw,11px);
+  line-height:1.1;
+  letter-spacing:.13em;
+  color:var(--muted);
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.liturgy-gadget{
+  position:relative;
+  min-width:245px;
+  max-width:330px;
+  padding:8px 13px 9px 17px;
+  overflow:hidden;
+}
+
+.liturgy-gadget::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:5px;
+  background:var(--liturgical-color,#208a55);
+  box-shadow:0 0 14px color-mix(in srgb, var(--liturgical-color,#208a55) 48%, transparent);
+}
+
+.liturgy-label{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:var(--gold);
+  font-size:clamp(8px,.68vw,10px);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.liturgy-title{
+  display:block;
+  margin-top:5px;
+  color:var(--text);
+  font-size:clamp(11px,1vw,15px);
+  line-height:1.15;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.liturgy-meta{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:clamp(8px,.68vw,10px);
+  line-height:1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.liturgy-dot{
+  display:inline-block;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--liturgical-color,#208a55);
+  box-shadow:0 0 10px color-mix(in srgb, var(--liturgical-color,#208a55) 54%, transparent);
+  flex:0 0 auto;
+}
+
+/* mantém o selo AO VIVO como último elemento do topo */
+.live-pill{flex:0 0 auto}
+
+/* ajustes para telas menores/altura baixa */
+@media(max-width:1200px){
+  .liturgy-gadget{min-width:210px;max-width:260px}
+  .clock-gadget{min-width:128px}
+}
+@media(max-height:650px){
+  .clock-gadget,.liturgy-gadget{padding-top:6px;padding-bottom:6px}
+  .clock-time{font-size:20px}
+  .liturgy-title{font-size:11px}
+}
+
 </style>
 </head>
 <body class="radio-paused">
@@ -337,7 +465,20 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
       <img class="brand-logo" src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="Rádio Luz e Louvor">
       <div class="brand-copy"><strong>Rádio Luz e Louvor</strong><span>Paróquia Divino Pai Eterno · Botucatu — SP</span></div>
     </div>
-    <div class="live-pill"><span class="live-dot"></span> Ao vivo</div>
+    <div class="live-tools">
+      <div class="clock-gadget" aria-label="Horário de Brasília">
+        <strong class="clock-time" id="liveClock">--:--:--</strong>
+        <span class="clock-date" id="liveDate">Carregando data...</span>
+      </div>
+
+      <div class="liturgy-gadget" id="liturgyGadget" aria-label="Calendário litúrgico">
+        <span class="liturgy-label"><i class="liturgy-dot"></i> Calendário litúrgico</span>
+        <strong class="liturgy-title" id="liturgyTitle">Carregando...</strong>
+        <small class="liturgy-meta" id="liturgyMeta">CNBB · Brasil</small>
+      </div>
+
+      <div class="live-pill"><span class="live-dot"></span> Ao vivo</div>
+    </div>
   </header>
 
   <main class="main-grid">
@@ -373,7 +514,7 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live 1.7.1 · Horário estável · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 1.8 · Relógio e Liturgia · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -452,6 +593,11 @@ function registerTrackForColorTheme(track){
 
 const JSON_URL="https://horizon4282.com.br/data/radio-luz-louvor.json";
 const MESSAGES_URL = "https://horizon4282.com.br/data/radio-messages-pt-en.json";
+
+const LITURGY_URL =
+  "https://horizon4282.com.br/data/calendario-liturgico.json";
+let liturgyData = null;
+
 let messagesData = [];
 
 
@@ -508,6 +654,129 @@ const fallbackData={
  platforms:[{title:"Spotify",text:"Streaming",url:"#"},{title:"YouTube Music",text:"Canal oficial",url:"#"},{title:"Deezer",text:"Álbuns oficiais",url:"#"},{title:"Apple Music",text:"Ouça também",url:"#"}]
 };
 function setLanguage(lang){currentLang=lang;document.documentElement.lang=lang==="pt"?"pt-BR":"en";document.getElementById("ptBtn").classList.toggle("active",lang==="pt");document.getElementById("enBtn").classList.toggle("active",lang==="en");document.querySelectorAll("[data-pt][data-en]").forEach(el=>{el.textContent=el.dataset[lang]});localStorage.setItem("horizonLanguage",lang);if(radioData){renderStaticContent();renderSchedule();renderPlatforms();if(activeTrack)renderNowPlaying(activeTrack,activeSource)}}
+
+
+/* =========================================================
+   LIVE 1.8 — RELÓGIO + CALENDÁRIO LITÚRGICO
+   ========================================================= */
+
+function getSaoPauloDateParts(){
+  const parts = new Intl.DateTimeFormat("pt-BR", {
+    timeZone: "America/Sao_Paulo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  }).formatToParts(new Date());
+
+  const get = type => parts.find(p => p.type === type)?.value || "";
+
+  return {
+    year:get("year"),
+    month:get("month"),
+    day:get("day"),
+    weekday:get("weekday"),
+    hour:get("hour"),
+    minute:get("minute"),
+    second:get("second")
+  };
+}
+
+function getSaoPauloDateKey(){
+  const p = getSaoPauloDateParts();
+  return `${p.year}-${p.month}-${p.day}`;
+}
+
+function updateLiveClock(){
+  const timeEl = document.getElementById("liveClock");
+  const dateEl = document.getElementById("liveDate");
+  if(!timeEl || !dateEl) return;
+
+  const p = getSaoPauloDateParts();
+
+  timeEl.textContent = `${p.hour}:${p.minute}:${p.second}`;
+
+  const weekday = (p.weekday || "")
+    .replace(".", "")
+    .toUpperCase();
+
+  dateEl.textContent = `${weekday} · ${p.day}/${p.month}/${p.year}`;
+}
+
+const LITURGY_COLORS = {
+  verde:"#2f8a5f",
+  branco:"#d8cba6",
+  vermelho:"#bb4545",
+  roxo:"#76528e",
+  rosa:"#c87993",
+  dourado:"#b9852f"
+};
+
+function renderLiturgyDay(){
+  const gadget = document.getElementById("liturgyGadget");
+  const title = document.getElementById("liturgyTitle");
+  const meta = document.getElementById("liturgyMeta");
+
+  if(!gadget || !title || !meta) return;
+
+  const key = getSaoPauloDateKey();
+  const day = liturgyData?.dias?.[key];
+
+  if(!day){
+    title.textContent = "Calendário não disponível";
+    meta.textContent = key.split("-").reverse().join("/") + " · CNBB";
+    gadget.style.setProperty("--liturgical-color", "#6d7c86");
+    return;
+  }
+
+  title.textContent =
+    day.tituloExibicao ||
+    day.celebracao ||
+    day.semana ||
+    "Liturgia do dia";
+
+  const details = [
+    day.grau,
+    day.tempoLiturgico,
+    day.cor ? `cor ${day.cor}` : ""
+  ].filter(Boolean);
+
+  meta.textContent = details.join(" · ") || "CNBB · Brasil";
+
+  gadget.style.setProperty(
+    "--liturgical-color",
+    LITURGY_COLORS[String(day.cor || "").toLowerCase()] || "#6d7c86"
+  );
+}
+
+async function loadLiturgyCalendar(){
+  try{
+    const response = await fetch(LITURGY_URL, {cache:"no-store"});
+    if(!response.ok) throw new Error("Calendário litúrgico não encontrado");
+    liturgyData = await response.json();
+    renderLiturgyDay();
+  }catch(error){
+    console.warn("Calendário litúrgico não carregado:", error);
+    liturgyData = null;
+    renderLiturgyDay();
+  }
+}
+
+function initializeLiveGadgets(){
+  updateLiveClock();
+  setInterval(updateLiveClock, 1000);
+
+  loadLiturgyCalendar();
+
+  /* Reconfere a data litúrgica a cada minuto.
+     Assim, se a live atravessar a meia-noite, o gadget muda sozinho. */
+  setInterval(renderLiturgyDay, 60000);
+}
+
 
 async function loadRadioJson(){
   const state = document.getElementById("loadState");
@@ -1437,6 +1706,7 @@ document.addEventListener("DOMContentLoaded", () => {
   localStorage.setItem(INSTALL_STORAGE_KEY, "true");
 }
     updateInstallButton();
+    initializeLiveGadgets();
 
     const player = document.getElementById("radioPlayer");
 
