@@ -1,0 +1,1304 @@
+{
+  "meta": {
+    "nome": "Calendário Litúrgico 2026 — Rádio Luz e Louvor",
+    "periodo": {
+      "inicio": "2026-08-25",
+      "fim": "2026-12-31"
+    },
+    "fusoHorario": "America/Sao_Paulo",
+    "referenciaPrimaria": "CNBB / Edições CNBB — Igreja em Oração / Liturgia Diária",
+    "notaVerificacao": "Calendário estruturado para uso no gadget; conferir alterações locais/diocesanas antes da publicação."
+  },
+  "dias": {
+    "2026-08-25": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "21ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "21ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-08-26": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "21ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "21ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-08-27": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "Santa Mônica",
+      "tituloExibicao": "Santa Mônica",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "21ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-08-28": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "Santo Agostinho, bispo e doutor da Igreja",
+      "tituloExibicao": "Santo Agostinho, bispo e doutor da Igreja",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "21ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-08-29": {
+      "diaSemana": "sábado",
+      "celebracao": "Martírio de São João Batista",
+      "tituloExibicao": "Martírio de São João Batista",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "21ª Semana do Tempo Comum",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-08-30": {
+      "diaSemana": "domingo",
+      "celebracao": "22º Domingo do Tempo Comum",
+      "tituloExibicao": "22º Domingo do Tempo Comum",
+      "grau": "Domingo",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "22ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-08-31": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "",
+      "tituloExibicao": "22ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "22ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-01": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "22ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "22ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-02": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "22ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "22ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-03": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "São Gregório Magno, papa e doutor da Igreja",
+      "tituloExibicao": "São Gregório Magno, papa e doutor da Igreja",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "22ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-09-04": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "22ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "22ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-05": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "22ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "22ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-06": {
+      "diaSemana": "domingo",
+      "celebracao": "23º Domingo do Tempo Comum",
+      "tituloExibicao": "23º Domingo do Tempo Comum",
+      "grau": "Domingo",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "23ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-07": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "",
+      "tituloExibicao": "23ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "23ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-08": {
+      "diaSemana": "terça-feira",
+      "celebracao": "Natividade de Nossa Senhora",
+      "tituloExibicao": "Natividade de Nossa Senhora",
+      "grau": "Festa",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "23ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-09-09": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "23ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "23ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-10": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "23ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "23ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-11": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "23ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "23ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-12": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "23ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "23ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-13": {
+      "diaSemana": "domingo",
+      "celebracao": "24º Domingo do Tempo Comum",
+      "tituloExibicao": "24º Domingo do Tempo Comum",
+      "grau": "Domingo",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "24ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-14": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "Exaltação da Santa Cruz",
+      "tituloExibicao": "Exaltação da Santa Cruz",
+      "grau": "Festa",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "24ª Semana do Tempo Comum",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-09-15": {
+      "diaSemana": "terça-feira",
+      "celebracao": "Nossa Senhora das Dores",
+      "tituloExibicao": "Nossa Senhora das Dores",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "24ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-09-16": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "Santos Cornélio e Cipriano",
+      "tituloExibicao": "Santos Cornélio e Cipriano",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "24ª Semana do Tempo Comum",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-09-17": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "24ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "24ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-18": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "24ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "24ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-19": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "24ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "24ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-20": {
+      "diaSemana": "domingo",
+      "celebracao": "25º Domingo do Tempo Comum",
+      "tituloExibicao": "25º Domingo do Tempo Comum",
+      "grau": "Domingo",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "25ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-21": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "São Mateus, apóstolo e evangelista",
+      "tituloExibicao": "São Mateus, apóstolo e evangelista",
+      "grau": "Festa",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "25ª Semana do Tempo Comum",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-09-22": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "25ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "25ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-23": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "São Pio de Pietrelcina, presbítero",
+      "tituloExibicao": "São Pio de Pietrelcina, presbítero",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "25ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-09-24": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "25ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "25ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-25": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "25ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "25ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-26": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "25ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "25ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-27": {
+      "diaSemana": "domingo",
+      "celebracao": "26º Domingo do Tempo Comum",
+      "tituloExibicao": "26º Domingo do Tempo Comum",
+      "grau": "Domingo",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "26ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-28": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "",
+      "tituloExibicao": "26ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "26ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-09-29": {
+      "diaSemana": "terça-feira",
+      "celebracao": "Santos Miguel, Gabriel e Rafael, Arcanjos",
+      "tituloExibicao": "Santos Miguel, Gabriel e Rafael, Arcanjos",
+      "grau": "Festa",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "26ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-09-30": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "São Jerônimo, presbítero e doutor da Igreja",
+      "tituloExibicao": "São Jerônimo, presbítero e doutor da Igreja",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "26ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-10-01": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "Santa Teresinha do Menino Jesus",
+      "tituloExibicao": "Santa Teresinha do Menino Jesus",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "26ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-10-02": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "Santos Anjos da Guarda",
+      "tituloExibicao": "Santos Anjos da Guarda",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "26ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-10-03": {
+      "diaSemana": "sábado",
+      "celebracao": "Beatos André de Soveral, Ambrósio Francisco Ferro e companheiros mártires",
+      "tituloExibicao": "Beatos André de Soveral, Ambrósio Francisco Ferro e companheiros mártires",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "26ª Semana do Tempo Comum",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-10-04": {
+      "diaSemana": "domingo",
+      "celebracao": "27º Domingo do Tempo Comum",
+      "tituloExibicao": "27º Domingo do Tempo Comum",
+      "grau": "Domingo",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "27ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-05": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "",
+      "tituloExibicao": "27ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "27ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-06": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "27ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "27ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-07": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "Nossa Senhora do Rosário",
+      "tituloExibicao": "Nossa Senhora do Rosário",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "27ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-10-08": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "27ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "27ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-09": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "27ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "27ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-10": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "27ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "27ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-11": {
+      "diaSemana": "domingo",
+      "celebracao": "28º Domingo do Tempo Comum",
+      "tituloExibicao": "28º Domingo do Tempo Comum",
+      "grau": "Domingo",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "28ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-12": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "Nossa Senhora da Conceição Aparecida, Padroeira do Brasil",
+      "tituloExibicao": "Nossa Senhora da Conceição Aparecida, Padroeira do Brasil",
+      "grau": "Solenidade",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "28ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-10-13": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "28ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "28ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-14": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "28ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "28ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-15": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "Santa Teresa de Jesus, virgem e doutora da Igreja",
+      "tituloExibicao": "Santa Teresa de Jesus, virgem e doutora da Igreja",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "28ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-10-16": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "28ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "28ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-17": {
+      "diaSemana": "sábado",
+      "celebracao": "Santo Inácio de Antioquia, bispo e mártir",
+      "tituloExibicao": "Santo Inácio de Antioquia, bispo e mártir",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "28ª Semana do Tempo Comum",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-10-18": {
+      "diaSemana": "domingo",
+      "celebracao": "29º Domingo do Tempo Comum",
+      "tituloExibicao": "29º Domingo do Tempo Comum",
+      "grau": "Domingo",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "29ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-19": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "",
+      "tituloExibicao": "29ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "29ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-20": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "29ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "29ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-21": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "29ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "29ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-22": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "29ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "29ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-23": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "29ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "29ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-24": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "29ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "29ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-25": {
+      "diaSemana": "domingo",
+      "celebracao": "30º Domingo do Tempo Comum",
+      "tituloExibicao": "30º Domingo do Tempo Comum",
+      "grau": "Domingo",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "30ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-26": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "",
+      "tituloExibicao": "30ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "30ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-27": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "30ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "30ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-28": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "São Simão e São Judas Tadeu, apóstolos",
+      "tituloExibicao": "São Simão e São Judas Tadeu, apóstolos",
+      "grau": "Festa",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "30ª Semana do Tempo Comum",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-10-29": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "30ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "30ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-30": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "30ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "30ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-10-31": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "30ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "30ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-01": {
+      "diaSemana": "domingo",
+      "celebracao": "Todos os Santos",
+      "tituloExibicao": "Todos os Santos",
+      "grau": "Solenidade",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "31ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-11-02": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "Comemoração de Todos os Fiéis Defuntos",
+      "tituloExibicao": "Comemoração de Todos os Fiéis Defuntos",
+      "grau": "Comemoração",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "31ª Semana do Tempo Comum",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-11-03": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "31ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "31ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-04": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "São Carlos Borromeu, bispo",
+      "tituloExibicao": "São Carlos Borromeu, bispo",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "31ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-11-05": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "31ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "31ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-06": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "31ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "31ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-07": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "31ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "31ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-08": {
+      "diaSemana": "domingo",
+      "celebracao": "32º Domingo do Tempo Comum",
+      "tituloExibicao": "32º Domingo do Tempo Comum",
+      "grau": "Domingo",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "32ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-09": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "Dedicação da Basílica de Latrão",
+      "tituloExibicao": "Dedicação da Basílica de Latrão",
+      "grau": "Festa",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "32ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-11-10": {
+      "diaSemana": "terça-feira",
+      "celebracao": "São Leão Magno, papa e doutor da Igreja",
+      "tituloExibicao": "São Leão Magno, papa e doutor da Igreja",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "32ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-11-11": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "São Martinho de Tours, bispo",
+      "tituloExibicao": "São Martinho de Tours, bispo",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "32ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-11-12": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "São Josafá, bispo e mártir",
+      "tituloExibicao": "São Josafá, bispo e mártir",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "32ª Semana do Tempo Comum",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-11-13": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "32ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "32ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-14": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "32ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "32ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-15": {
+      "diaSemana": "domingo",
+      "celebracao": "33º Domingo do Tempo Comum",
+      "tituloExibicao": "33º Domingo do Tempo Comum",
+      "grau": "Domingo",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "33ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-16": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "",
+      "tituloExibicao": "33ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "33ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-17": {
+      "diaSemana": "terça-feira",
+      "celebracao": "Santa Isabel da Hungria, religiosa",
+      "tituloExibicao": "Santa Isabel da Hungria, religiosa",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "33ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-11-18": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "33ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "33ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-19": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "Santos Roque González, Afonso Rodríguez e João del Castillo, mártires",
+      "tituloExibicao": "Santos Roque González, Afonso Rodríguez e João del Castillo, mártires",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "33ª Semana do Tempo Comum",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-11-20": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "33ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "33ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-21": {
+      "diaSemana": "sábado",
+      "celebracao": "Apresentação de Nossa Senhora",
+      "tituloExibicao": "Apresentação de Nossa Senhora",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "33ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-11-22": {
+      "diaSemana": "domingo",
+      "celebracao": "Nosso Senhor Jesus Cristo, Rei do Universo",
+      "tituloExibicao": "Nosso Senhor Jesus Cristo, Rei do Universo",
+      "grau": "Solenidade",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "34ª Semana do Tempo Comum",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-11-23": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "",
+      "tituloExibicao": "34ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "34ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-24": {
+      "diaSemana": "terça-feira",
+      "celebracao": "Santo André Dung-Lac e companheiros mártires",
+      "tituloExibicao": "Santo André Dung-Lac e companheiros mártires",
+      "grau": "Memória",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "34ª Semana do Tempo Comum",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-11-25": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "34ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "34ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-26": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "34ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "34ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-27": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "34ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "34ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-28": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "34ª Semana do Tempo Comum",
+      "grau": "",
+      "tempoLiturgico": "Tempo Comum",
+      "semana": "34ª Semana do Tempo Comum",
+      "cor": "verde",
+      "observacao": ""
+    },
+    "2026-11-29": {
+      "diaSemana": "domingo",
+      "celebracao": "1º Domingo do Advento",
+      "tituloExibicao": "1º Domingo do Advento",
+      "grau": "Domingo",
+      "tempoLiturgico": "Advento",
+      "semana": "1ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-11-30": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "Santo André, apóstolo",
+      "tituloExibicao": "Santo André, apóstolo",
+      "grau": "Festa",
+      "tempoLiturgico": "Advento",
+      "semana": "1ª Semana do Advento",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-12-01": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "1ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "1ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-02": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "1ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "1ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-03": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "São Francisco Xavier, presbítero",
+      "tituloExibicao": "São Francisco Xavier, presbítero",
+      "grau": "Memória",
+      "tempoLiturgico": "Advento",
+      "semana": "1ª Semana do Advento",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-12-04": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "1ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "1ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-05": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "1ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "1ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-06": {
+      "diaSemana": "domingo",
+      "celebracao": "2º Domingo do Advento",
+      "tituloExibicao": "2º Domingo do Advento",
+      "grau": "Domingo",
+      "tempoLiturgico": "Advento",
+      "semana": "2ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-07": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "Santo Ambrósio, bispo e doutor da Igreja",
+      "tituloExibicao": "Santo Ambrósio, bispo e doutor da Igreja",
+      "grau": "Memória",
+      "tempoLiturgico": "Advento",
+      "semana": "2ª Semana do Advento",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-12-08": {
+      "diaSemana": "terça-feira",
+      "celebracao": "Imaculada Conceição de Nossa Senhora",
+      "tituloExibicao": "Imaculada Conceição de Nossa Senhora",
+      "grau": "Solenidade",
+      "tempoLiturgico": "Advento",
+      "semana": "2ª Semana do Advento",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-12-09": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "2ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "2ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-10": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "2ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "2ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-11": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "2ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "2ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-12": {
+      "diaSemana": "sábado",
+      "celebracao": "Nossa Senhora de Guadalupe",
+      "tituloExibicao": "Nossa Senhora de Guadalupe",
+      "grau": "Festa",
+      "tempoLiturgico": "Advento",
+      "semana": "2ª Semana do Advento",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-12-13": {
+      "diaSemana": "domingo",
+      "celebracao": "3º Domingo do Advento",
+      "tituloExibicao": "3º Domingo do Advento",
+      "grau": "Domingo",
+      "tempoLiturgico": "Advento",
+      "semana": "3ª Semana do Advento",
+      "cor": "rosa",
+      "observacao": "Domingo Gaudete"
+    },
+    "2026-12-14": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "São João da Cruz, presbítero e doutor da Igreja",
+      "tituloExibicao": "São João da Cruz, presbítero e doutor da Igreja",
+      "grau": "Memória",
+      "tempoLiturgico": "Advento",
+      "semana": "3ª Semana do Advento",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-12-15": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "3ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "3ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-16": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "3ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "3ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-17": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "3ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "3ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-18": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "",
+      "tituloExibicao": "3ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "3ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-19": {
+      "diaSemana": "sábado",
+      "celebracao": "",
+      "tituloExibicao": "3ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "3ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-20": {
+      "diaSemana": "domingo",
+      "celebracao": "4º Domingo do Advento",
+      "tituloExibicao": "4º Domingo do Advento",
+      "grau": "Domingo",
+      "tempoLiturgico": "Advento",
+      "semana": "4ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-21": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "",
+      "tituloExibicao": "4ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "4ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-22": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "4ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "4ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-23": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "4ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "4ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-24": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "4ª Semana do Advento",
+      "grau": "",
+      "tempoLiturgico": "Advento",
+      "semana": "4ª Semana do Advento",
+      "cor": "roxo",
+      "observacao": ""
+    },
+    "2026-12-25": {
+      "diaSemana": "sexta-feira",
+      "celebracao": "Natal do Senhor",
+      "tituloExibicao": "Natal do Senhor",
+      "grau": "Solenidade",
+      "tempoLiturgico": "Tempo do Natal",
+      "semana": "Oitava do Natal",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-12-26": {
+      "diaSemana": "sábado",
+      "celebracao": "Santo Estêvão, primeiro mártir",
+      "tituloExibicao": "Santo Estêvão, primeiro mártir",
+      "grau": "Festa",
+      "tempoLiturgico": "Tempo do Natal",
+      "semana": "Oitava do Natal",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-12-27": {
+      "diaSemana": "domingo",
+      "celebracao": "Sagrada Família de Jesus, Maria e José",
+      "tituloExibicao": "Sagrada Família de Jesus, Maria e José",
+      "grau": "Festa",
+      "tempoLiturgico": "Tempo do Natal",
+      "semana": "Oitava do Natal",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-12-28": {
+      "diaSemana": "segunda-feira",
+      "celebracao": "Santos Inocentes, mártires",
+      "tituloExibicao": "Santos Inocentes, mártires",
+      "grau": "Festa",
+      "tempoLiturgico": "Tempo do Natal",
+      "semana": "Oitava do Natal",
+      "cor": "vermelho",
+      "observacao": ""
+    },
+    "2026-12-29": {
+      "diaSemana": "terça-feira",
+      "celebracao": "",
+      "tituloExibicao": "Oitava do Natal",
+      "grau": "",
+      "tempoLiturgico": "Tempo do Natal",
+      "semana": "Oitava do Natal",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-12-30": {
+      "diaSemana": "quarta-feira",
+      "celebracao": "",
+      "tituloExibicao": "Oitava do Natal",
+      "grau": "",
+      "tempoLiturgico": "Tempo do Natal",
+      "semana": "Oitava do Natal",
+      "cor": "branco",
+      "observacao": ""
+    },
+    "2026-12-31": {
+      "diaSemana": "quinta-feira",
+      "celebracao": "",
+      "tituloExibicao": "Oitava do Natal",
+      "grau": "",
+      "tempoLiturgico": "Tempo do Natal",
+      "semana": "Oitava do Natal",
+      "cor": "branco",
+      "observacao": ""
+    }
+  }
+}
