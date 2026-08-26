@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live 1.8 Relógio e Liturgia</title>
+<title>Rádio Luz e Louvor — Live 1.8.1 Performance</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -343,7 +343,6 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
 .clock-gadget,
 .liturgy-gadget{
   border:1px solid var(--line);
-  background:color-mix(in srgb, var(--panel) 60%, transparent);
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
   border-radius:16px;
@@ -456,6 +455,13 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
   .liturgy-title{font-size:11px}
 }
 
+
+/* Live 1.8.1 — visual limpo */
+.clock-gadget{border:none!important;box-shadow:none!important}
+.brand-logo{border:none!important;box-shadow:none!important}
+.cover{border:none!important;box-shadow:0 24px 70px rgba(65,54,40,.18)!important}
+.cover::after{border:none!important}
+
 </style>
 </head>
 <body class="radio-paused">
@@ -514,7 +520,7 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live 1.8 · Relógio e Liturgia · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 1.8.1 · Performance · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -545,6 +551,10 @@ let currentPlaylist = [];
 let currentTrackIndex = 0;
 let audioRetryTimer = null;
 let audioLoadId = 0;
+let visualUpdateTimer=null;
+let particleUpdateTimer=null;
+let mediaSessionUpdateTimer=null;
+let preloadedCoverImage=null;
 let currentLang=localStorage.getItem("horizonLanguage")||"pt";
 let radioData=null,activeTrack=null,activeSource="schedule";
 
@@ -1047,44 +1057,54 @@ if(item.playlist && item.playlist.length){
 
 
 
-function updateTrackCover(track) {
-  const coverBox = document.getElementById("coverBox");
-  const bottomCover = document.querySelector(".bottom-cover");
-
-  const trackKey =
-    track?.audio ||
-    `${track?.title || "radio"}-${currentTrackIndex}`;
-
-  if (trackKey !== lastCoverTrackKey || !currentCoverUrl) {
-    currentCoverUrl =
-      getRandomCover() ||
-      radioData?.defaultCover ||
-      "https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png";
-
-    lastCoverTrackKey = trackKey;
-
-    // Live 1.7: mantém o tema por duas músicas e então avança.
-    registerTrackForColorTheme(track);
-
-    // Cada nova faixa recebe um novo conjunto de partículas.
-    if (typeof window.refreshLiveParticles === "function") {
-      window.refreshLiveParticles();
-    }
-  }
-
-  if (coverBox) {
-    coverBox.style.backgroundImage = `url("${currentCoverUrl}")`;
-    coverBox.textContent = "";
-  }
-
-  if (bottomCover) {
-    bottomCover.style.backgroundImage = `url("${currentCoverUrl}")`;
-    bottomCover.textContent = "";
-  }
-
-  updateMediaSession(track, currentCoverUrl);
+function preloadCoverUrl(url){
+  if(!url) return;
+  const img=new Image();
+  img.decoding="async";
+  img.src=url;
+  preloadedCoverImage=img;
 }
 
+function updateTrackCover(track, deferVisuals=false) {
+  const coverBox=document.getElementById("coverBox");
+  const bottomCover=document.querySelector(".bottom-cover");
+  const trackKey=track?.audio || `${track?.title || "radio"}-${currentTrackIndex}`;
+  const isNew=trackKey!==lastCoverTrackKey || !currentCoverUrl;
+
+  if(isNew){
+    currentCoverUrl=getRandomCover() || radioData?.defaultCover ||
+      "https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png";
+    lastCoverTrackKey=trackKey;
+    registerTrackForColorTheme(track);
+  }
+
+  const paint=()=>{
+    if(coverBox){coverBox.style.backgroundImage=`url("${currentCoverUrl}")`;coverBox.textContent="";}
+    if(bottomCover){bottomCover.style.backgroundImage=`url("${currentCoverUrl}")`;bottomCover.textContent="";}
+  };
+
+  clearTimeout(visualUpdateTimer);
+  clearTimeout(particleUpdateTimer);
+  clearTimeout(mediaSessionUpdateTimer);
+
+  if(deferVisuals && isNew){
+    visualUpdateTimer=setTimeout(paint,450);
+    particleUpdateTimer=setTimeout(()=>{
+      if(typeof window.refreshLiveParticles==="function") window.refreshLiveParticles();
+    },1100);
+    mediaSessionUpdateTimer=setTimeout(()=>updateMediaSession(track,currentCoverUrl),1500);
+  }else{
+    paint();
+    if(isNew) particleUpdateTimer=setTimeout(()=>{
+      if(typeof window.refreshLiveParticles==="function") window.refreshLiveParticles();
+    },650);
+    updateMediaSession(track,currentCoverUrl);
+  }
+
+  setTimeout(()=>{
+    if(radioCovers.length) preloadCoverUrl(radioCovers[Math.floor(Math.random()*radioCovers.length)]);
+  },2200);
+}
 
 
 function updateMediaSession(track, coverUrl) {
@@ -1134,7 +1154,6 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
 
   currentTrackIndex = index;
 
-  updateTrackCover(track);
   updateNextAttraction();
 
   document.getElementById("nowTitle").textContent =
@@ -1155,6 +1174,9 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
 
   player.src = track.audio;
   player.load();
+
+  // Prioriza áudio e distribui as mudanças visuais no tempo.
+  updateTrackCover(track, true);
 
   player.onloadedmetadata = () => {
     if (loadId !== audioLoadId) return;
