@@ -1,4 +1,17 @@
 {
+  "schedule": [
+    {
+      "hour": 13,
+      "pt": {
+        "title": "Meia-Noite com Deus",
+        "description": "Um momento de paz, oração e confiança na divina presença de Deus."
+      },
+      "en": {
+        "title": "Midnight with God",
+        "description": "A moment of peace, prayer and trust in God's presence."
+      },
+      "playlist": [
+  {
   "page": {
     "pt": {
       "eyebrow": "Rádio Luz e Louvor",
@@ -77,16 +90,5 @@
         }
       ]
     }
-  ],
-  "message": {
-    "pt": {
-      "title": "Teste técnico",
-      "text": "Grade exclusiva para validação da Live 1.9."
-    },
-    "en": {
-      "title": "Technical test",
-      "text": "Schedule exclusively for Live 1.9 validation."
-    }
-  },
-  "platforms": []
+  ]
 }
