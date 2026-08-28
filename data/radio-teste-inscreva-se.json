@@ -1,0 +1,92 @@
+{
+  "page": {
+    "pt": {
+      "eyebrow": "Rádio Luz e Louvor",
+      "title": "Teste — Chamadas Especiais",
+      "text": "Grade fictícia para validar a cena Inscreva-se no Canal.",
+      "onAir": "TESTE · Live 1.9"
+    },
+    "en": {
+      "eyebrow": "Light & Praise Radio",
+      "title": "Test — Special Calls",
+      "text": "Fictitious schedule for validating the Subscribe scene.",
+      "onAir": "TEST · Live 1.9"
+    }
+  },
+  "defaultCover": "https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png",
+  "tracks": {},
+  "schedule": [
+    {
+      "hour": 0,
+      "pt": {
+        "title": "Teste Inscreva-se",
+        "description": "Grade fictícia para validação da animação especial."
+      },
+      "en": {
+        "title": "Subscribe Test",
+        "description": "Fictitious schedule for validating the special animation."
+      },
+      "playlist": [
+        {
+          "title": "Inscreva-se no canal",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3",
+          "duration": 20,
+          "visualMode": "subscribe"
+        },
+        {
+          "title": "Inscreva-se",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3",
+          "duration": 20,
+          "visualMode": "subscribe"
+        },
+        {
+          "title": "Inscreva se no canal",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3",
+          "duration": 20,
+          "visualMode": "subscribe"
+        },
+        {
+          "title": "Inscreva-se na Rádio Luz e Louvor",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3",
+          "duration": 20,
+          "visualMode": "subscribe"
+        },
+        {
+          "title": "Inscreva-se e ative o sininho",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3",
+          "duration": 20,
+          "visualMode": "subscribe"
+        },
+        {
+          "title": "Inscreva-se no nosso canal",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3",
+          "duration": 20,
+          "visualMode": "subscribe"
+        },
+        {
+          "title": "Inscreva-se no canal da Rádio Luz e Louvor",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3",
+          "duration": 20,
+          "visualMode": "subscribe"
+        },
+        {
+          "title": "Subscribe to the channel",
+          "audio": "https://f005.backblazeb2.com/file/horizon4282/audio/recebe-hoje-o-meu-sim.mp3",
+          "duration": 20,
+          "visualMode": "subscribe"
+        }
+      ]
+    }
+  ],
+  "message": {
+    "pt": {
+      "title": "Teste técnico",
+      "text": "Grade exclusiva para validação da Live 1.9."
+    },
+    "en": {
+      "title": "Technical test",
+      "text": "Schedule exclusively for Live 1.9 validation."
+    }
+  },
+  "platforms": []
+}
