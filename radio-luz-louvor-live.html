@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live 1.8.1 Performance</title>
+<title>Rádio Luz e Louvor — Live 2.1 Cenas Automáticas</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -343,6 +343,7 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
 .clock-gadget,
 .liturgy-gadget{
   border:1px solid var(--line);
+  background:color-mix(in srgb, var(--panel) 60%, transparent);
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
   border-radius:16px;
@@ -462,6 +463,358 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
 .cover{border:none!important;box-shadow:0 24px 70px rgba(65,54,40,.18)!important}
 .cover::after{border:none!important}
 
+
+
+/* =========================================================
+   LIVE 2.0 — CENAS AUTOMÁTICAS POR TÍTULO
+   Modos: subscribe | support | like | rosary
+   As animações usam somente transform/opacity para poupar CPU.
+   ========================================================= */
+
+.special-scene{
+  position:absolute;
+  z-index:3;
+  left:3.2vw;
+  right:3.2vw;
+  top:15.5vh;
+  bottom:21.5vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:scale(.985);
+  transition:opacity .42s ease,transform .52s ease,visibility .42s;
+}
+
+.live-stage.special-mode-active .main-grid{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.live-stage .main-grid{
+  transition:opacity .42s ease,visibility .42s;
+}
+
+.live-stage.special-mode-active .special-scene{
+  opacity:1;
+  visibility:visible;
+  transform:scale(1);
+}
+
+.special-card{
+  --scene-accent:#ffd34f;
+  --scene-accent-rgb:255,211,79;
+  --scene-bg1:rgba(6,23,36,.94);
+  --scene-bg2:rgba(9,37,55,.90);
+  position:relative;
+  width:min(1080px,90vw);
+  min-height:min(410px,49vh);
+  display:grid;
+  grid-template-columns:220px minmax(0,1fr);
+  gap:38px;
+  align-items:center;
+  padding:40px 50px;
+  border-radius:30px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 16% 50%,rgba(var(--scene-accent-rgb),.17),transparent 31%),
+    linear-gradient(135deg,var(--scene-bg1),var(--scene-bg2));
+  box-shadow:0 26px 74px rgba(0,0,0,.23);
+}
+
+.special-card::before{
+  content:"";
+  position:absolute;
+  inset:-42%;
+  background:conic-gradient(
+    from 0deg,
+    transparent 0 33%,
+    rgba(var(--scene-accent-rgb),.11) 40%,
+    transparent 48% 76%,
+    rgba(255,255,255,.055) 82%,
+    transparent 89%
+  );
+  animation:specialAmbient 14s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes specialAmbient{to{transform:rotate(360deg)}}
+
+.special-icon-wrap{
+  position:relative;
+  z-index:1;
+  width:200px;
+  height:156px;
+  border-radius:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(var(--scene-accent-rgb),.16);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.26),
+    0 0 0 0 rgba(var(--scene-accent-rgb),.34);
+  animation:specialPulse 2.3s ease-in-out infinite;
+}
+
+.special-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  color:#fff;
+  font-size:94px;
+  line-height:1;
+  text-shadow:0 5px 20px rgba(0,0,0,.25);
+}
+
+.special-icon.youtube{
+  background:#e62626;
+  border-radius:34px;
+}
+
+.special-icon .play-triangle{
+  width:0;
+  height:0;
+  border-top:29px solid transparent;
+  border-bottom:29px solid transparent;
+  border-left:48px solid white;
+  margin-left:12px;
+}
+
+@keyframes specialPulse{
+  0%,100%{
+    transform:scale(1);
+    box-shadow:0 18px 45px rgba(0,0,0,.26),0 0 0 0 rgba(var(--scene-accent-rgb),.33);
+  }
+  50%{
+    transform:scale(1.045);
+    box-shadow:0 18px 45px rgba(0,0,0,.26),0 0 0 20px rgba(var(--scene-accent-rgb),0);
+  }
+}
+
+.special-copy{
+  position:relative;
+  z-index:1;
+  min-width:0;
+}
+
+.special-kicker{
+  display:block;
+  margin-bottom:9px;
+  color:var(--scene-accent);
+  font-size:clamp(12px,1.05vw,16px);
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+
+.special-title{
+  margin:0;
+  color:#fff;
+  font-size:clamp(38px,5vw,76px);
+  line-height:.94;
+  letter-spacing:.01em;
+  text-transform:uppercase;
+  text-shadow:0 5px 26px rgba(0,0,0,.30);
+}
+
+.special-title em{
+  display:block;
+  margin-top:7px;
+  color:var(--scene-accent);
+  font-style:normal;
+}
+
+.special-subtitle{
+  margin:20px 0 0;
+  max-width:720px;
+  color:#dcecf3;
+  font-size:clamp(16px,1.5vw,23px);
+  line-height:1.32;
+}
+
+.special-action{
+  margin-top:24px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  color:#fff;
+  font-size:clamp(14px,1.25vw,19px);
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+.special-action strong{color:var(--scene-accent)}
+
+.special-action-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:52px;
+  height:52px;
+  font-size:30px;
+}
+
+.special-action-icon.ring{
+  transform-origin:50% 14%;
+  animation:specialRing 1.8s ease-in-out infinite;
+}
+
+@keyframes specialRing{
+  0%,68%,100%{transform:rotate(0)}
+  73%{transform:rotate(14deg)}
+  78%{transform:rotate(-12deg)}
+  83%{transform:rotate(9deg)}
+  88%{transform:rotate(-6deg)}
+  93%{transform:rotate(0)}
+}
+
+.special-wave{
+  position:absolute;
+  z-index:0;
+  right:-7%;
+  bottom:-48%;
+  width:440px;
+  height:440px;
+  border:2px solid rgba(var(--scene-accent-rgb),.18);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 46px rgba(var(--scene-accent-rgb),.052),
+    0 0 0 92px rgba(var(--scene-accent-rgb),.023);
+  animation:specialWave 4.4s ease-in-out infinite;
+}
+
+@keyframes specialWave{
+  0%,100%{transform:scale(.88);opacity:.42}
+  50%{transform:scale(1.08);opacity:.80}
+}
+
+/* INSCRAVA-SE */
+.live-stage.special-mode-subscribe .special-card{
+  --scene-accent:#ffd34f;
+  --scene-accent-rgb:255,211,79;
+  --scene-bg1:rgba(5,22,37,.95);
+  --scene-bg2:rgba(10,42,62,.91);
+}
+
+/* APOIO À RÁDIO */
+.live-stage.special-mode-support .special-card{
+  --scene-accent:#f4c45e;
+  --scene-accent-rgb:244,196,94;
+  --scene-bg1:rgba(40,28,13,.95);
+  --scene-bg2:rgba(82,59,20,.90);
+}
+.live-stage.special-mode-support .special-icon-wrap{
+  background:rgba(244,196,94,.15);
+}
+
+/* CURTIR O CANAL */
+.live-stage.special-mode-like .special-card{
+  --scene-accent:#84d7ff;
+  --scene-accent-rgb:132,215,255;
+  --scene-bg1:rgba(7,25,48,.95);
+  --scene-bg2:rgba(14,58,88,.91);
+}
+
+/* SANTO TERÇO — propositalmente mais contemplativo */
+.live-stage.special-mode-rosary .special-card{
+  --scene-accent:#e4c982;
+  --scene-accent-rgb:228,201,130;
+  --scene-bg1:rgba(18,25,48,.96);
+  --scene-bg2:rgba(42,40,71,.92);
+}
+.live-stage.special-mode-rosary .special-icon-wrap{
+  animation:rosaryBreathe 4.8s ease-in-out infinite;
+  background:rgba(228,201,130,.10);
+}
+.live-stage.special-mode-rosary .special-card::before{
+  animation-duration:24s;
+  opacity:.75;
+}
+@keyframes rosaryBreathe{
+  0%,100%{transform:scale(.985);opacity:.90}
+  50%{transform:scale(1.035);opacity:1}
+}
+
+/* Pequenas contas decorativas na cena do terço */
+.rosary-dots{
+  display:none;
+  position:absolute;
+  z-index:0;
+  left:32px;
+  bottom:28px;
+  gap:9px;
+  align-items:center;
+}
+.live-stage.special-mode-rosary .rosary-dots{display:flex}
+.rosary-dots i{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:rgba(228,201,130,.66);
+  box-shadow:0 0 10px rgba(228,201,130,.13);
+}
+.rosary-dots i:nth-child(5n){width:16px;height:16px}
+
+
+/* COMPARTILHE */
+.live-stage.special-mode-share .special-card{
+  --scene-accent:#7de6c2;
+  --scene-accent-rgb:125,230,194;
+  --scene-bg1:rgba(7,35,40,.96);
+  --scene-bg2:rgba(13,69,67,.91);
+}
+
+/* OREMOS JUNTOS — cena serena de oração */
+.live-stage.special-mode-prayer .special-card{
+  --scene-accent:#e8d69d;
+  --scene-accent-rgb:232,214,157;
+  --scene-bg1:rgba(26,28,52,.96);
+  --scene-bg2:rgba(55,48,81,.92);
+}
+.live-stage.special-mode-prayer .special-icon-wrap{
+  animation:prayerBreathe 4.4s ease-in-out infinite;
+  background:rgba(232,214,157,.10);
+}
+.live-stage.special-mode-prayer .special-card::before{
+  animation-duration:22s;
+  opacity:.72;
+}
+@keyframes prayerBreathe{
+  0%,100%{transform:scale(.985);opacity:.91}
+  50%{transform:scale(1.035);opacity:1}
+}
+
+/* PALAVRA QUE ILUMINA */
+.live-stage.special-mode-word .special-card{
+  --scene-accent:#ffd878;
+  --scene-accent-rgb:255,216,120;
+  --scene-bg1:rgba(35,25,10,.96);
+  --scene-bg2:rgba(76,53,18,.92);
+}
+.live-stage.special-mode-word .special-icon-wrap{
+  background:rgba(255,216,120,.12);
+}
+
+@media(max-width:900px){
+  .special-card{
+    grid-template-columns:150px minmax(0,1fr);
+    gap:24px;
+    padding:28px 30px;
+  }
+  .special-icon-wrap{width:145px;height:112px;border-radius:24px}
+  .special-icon{font-size:68px}
+  .special-icon.youtube{border-radius:24px}
+  .special-icon .play-triangle{
+    border-top-width:22px;
+    border-bottom-width:22px;
+    border-left-width:36px;
+  }
+}
+
 </style>
 </head>
 <body class="radio-paused">
@@ -503,6 +856,31 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
     </section>
   </main>
 
+  <section class="special-scene" id="specialScene" aria-hidden="true">
+    <div class="special-card">
+      <div class="special-icon-wrap" aria-hidden="true">
+        <div class="special-icon" id="specialIcon"></div>
+      </div>
+
+      <div class="special-copy">
+        <span class="special-kicker" id="specialKicker">Rádio Luz e Louvor</span>
+        <h2 class="special-title" id="specialTitle">Rádio <em>Luz e Louvor</em></h2>
+        <p class="special-subtitle" id="specialSubtitle"></p>
+        <div class="special-action">
+          <span class="special-action-icon" id="specialActionIcon" aria-hidden="true"></span>
+          <span id="specialActionText"></span>
+        </div>
+      </div>
+
+      <div class="special-wave" aria-hidden="true"></div>
+
+      <div class="rosary-dots" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </div>
+  </section>
+
   <div class="particle-field" id="particleField" aria-hidden="true"></div>
 
   <footer class="bottom-strip">
@@ -520,7 +898,7 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live 1.8.1 · Performance · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 2.1 · Cenas Automáticas · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -909,6 +1287,8 @@ function loadCurrentSchedule(){
   activeSource = "schedule";
   activeTrack = getCurrentSchedule();
 
+  // Garante que nenhuma chamada especial fique presa ao trocar de bloco.
+  applyTrackVisualMode(activeTrack);
   renderNowPlaying(activeTrack, "schedule");
 }
 
@@ -947,6 +1327,9 @@ function renderNowPlaying(item, source){
 
   activeTrack = item;
   activeSource = source;
+
+  // Também funciona para uma faixa direta fora de playlist.
+  applyTrackVisualMode(item);
 
   if (source === "schedule" && item.hour !== undefined) {
   activeScheduleHour = item.hour;
@@ -1139,6 +1522,280 @@ function getImageMimeType(url) {
   return "image/png";
 }
 
+
+
+function normalizeVisualTitle(value){
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .toLowerCase()
+    .replace(/[–—]/g,"-")
+    .replace(/\s+/g," ")
+    .trim();
+}
+
+function getTrackTitleForVisual(track){
+  return (
+    track?.title ||
+    track?.pt?.title ||
+    track?.en?.title ||
+    ""
+  );
+}
+
+function getTrackVisualMode(track){
+  /* visualMode continua aceito, mas é OPCIONAL.
+     A grade oficial não precisa receber essa propriedade. */
+  const explicitMode = normalizeVisualTitle(
+    track?.visualMode ||
+    track?.visual_mode ||
+    track?.specialVisual ||
+    track?.special_visual ||
+    ""
+  );
+
+  const explicitAliases = {
+    "subscribe":"subscribe",
+    "inscreva-se":"subscribe",
+    "inscreva se":"subscribe",
+    "support":"support",
+    "apoio":"support",
+    "like":"like",
+    "curtir":"like",
+    "rosary":"rosary",
+    "terco":"rosary",
+    "santo terco":"rosary",
+    "share":"share",
+    "compartilhe":"share",
+    "prayer":"prayer",
+    "oracao":"prayer",
+    "oremos juntos":"prayer",
+    "word":"word",
+    "palavra":"word",
+    "palavra que ilumina":"word"
+  };
+
+  if(explicitAliases[explicitMode]) return explicitAliases[explicitMode];
+
+  const title = normalizeVisualTitle(getTrackTitleForVisual(track));
+
+  /* Ordem específica: cenas mais particulares primeiro. */
+  if(
+    title.includes("palavra que ilumina") ||
+    title.includes("a palavra que ilumina")
+  ){
+    return "word";
+  }
+
+  if(
+    title.includes("santo terco") ||
+    title.includes("terco mariano") ||
+    title.includes("terco bizantino") ||
+    title.includes("terco da misericordia") ||
+    title.includes("rezemos o terco") ||
+    title.includes("rezando o terco")
+  ){
+    return "rosary";
+  }
+
+  if(
+    title.includes("oremos juntos") ||
+    title.includes("oremos todos juntos") ||
+    title.includes("vamos rezar juntos") ||
+    title.includes("vamos orar juntos") ||
+    title.includes("rezemos juntos") ||
+    title.includes("oracao em comunidade")
+  ){
+    return "prayer";
+  }
+
+  if(
+    title.includes("compartilhe a radio") ||
+    title.includes("compartilhe nossa radio") ||
+    title.includes("compartilhe esta radio") ||
+    title.includes("compartilhe o canal") ||
+    title.includes("compartilhe esta transmissao") ||
+    title.includes("compartilhe a transmissao") ||
+    title === "compartilhe"
+  ){
+    return "share";
+  }
+
+  if(
+    title.includes("apoie a radio") ||
+    title.includes("apoie nossa radio") ||
+    title.includes("apoie esta radio") ||
+    title.includes("ajude a radio") ||
+    title.includes("ajude nossa radio") ||
+    title.includes("apoio a radio") ||
+    title.includes("apoio radio luz e louvor") ||
+    title.includes("seja um apoiador")
+  ){
+    return "support";
+  }
+
+  if(
+    title.includes("curta o canal") ||
+    title.includes("curtir o canal") ||
+    title.includes("deixe seu like") ||
+    title.includes("deixe o seu like") ||
+    title.includes("de seu like") ||
+    title.includes("like no canal") ||
+    title.includes("curta este video") ||
+    title.includes("curta esta transmissao")
+  ){
+    return "like";
+  }
+
+  if(
+    title.includes("inscreva-se no canal") ||
+    title.includes("inscreva se no canal") ||
+    title.includes("inscreva-se") ||
+    title.includes("inscreva se") ||
+    title.includes("subscribe")
+  ){
+    return "subscribe";
+  }
+
+  return "";
+}
+
+const SPECIAL_SCENES = {
+  subscribe:{
+    kicker:"Rádio Luz e Louvor",
+    title:"Inscreva-se",
+    accent:"no canal",
+    subtitle:"Ajude esta missão de evangelização a chegar a mais pessoas.",
+    actionIcon:"🔔",
+    actionHtml:"<strong>Ative o sininho</strong> e acompanhe nossa programação",
+    iconHtml:'<div class="special-icon youtube"><span class="play-triangle"></span></div>',
+    ring:true
+  },
+  support:{
+    kicker:"Esta missão também é sua",
+    title:"Apoie",
+    accent:"a nossa Rádio",
+    subtitle:"Sua colaboração nos ajuda a manter esta missão de evangelização.",
+    actionIcon:"♡",
+    actionHtml:"<strong>Acesse</strong> -  www.radioluzelouvor.com.br",
+    iconHtml:'<div class="special-icon">♡</div>',
+    ring:false
+  },
+  like:{
+    kicker:"Você faz parte desta comunidade",
+    title:"Curta",
+    accent:"o canal",
+    subtitle:"Seu like ajuda o YouTube a levar esta transmissão a novas pessoas.",
+    actionIcon:"↗",
+    actionHtml:"<strong>Deixe seu like</strong> e compartilhe esta transmissão",
+    iconHtml:'<div class="special-icon">👍</div>',
+    ring:false
+  },
+  rosary:{
+    kicker:"Momento de oração",
+    title:"Santo",
+    accent:"Terço",
+    subtitle:"Em comunhão, colocamos nossas intenções nas mãos de Deus ✝",
+    actionIcon:"",
+    actionHtml:"<strong>Reze conosco</strong> e apresente suas intenções",
+    iconHtml:'<div class="special-icon">✝</div>',
+    ring:false
+  },
+  share:{
+    kicker:"Leve esta mensagem mais longe",
+    title:"Compartilhe",
+    accent:"a Rádio",
+    subtitle:"Uma partilha pode fazer esta mensagem chegar a quem precisa de esperança.",
+    actionIcon:"↗",
+    actionHtml:"<strong>Compartilhe</strong> esta transmissão com alguém",
+    iconHtml:'<div class="special-icon">↗</div>',
+    ring:false
+  },
+  prayer:{
+    kicker:"Um só coração em oração",
+    title:"Oremos",
+    accent:"Juntos",
+    subtitle:"Onde dois ou três estão reunidos em meu nome, Eu estou no meio deles.",
+    actionIcon:"✝",
+    actionHtml:"<strong>Coloque sua intenção</strong> e reze conosco",
+    iconHtml:'<div class="special-icon">🙏</div>',
+    ring:false
+  },
+  word:{
+    kicker:"Uma mensagem para nossa caminhada",
+    title:"Palavra que",
+    accent:"Ilumina",
+    subtitle:"Abra o coração para uma palavra de fé, esperança e reflexão.",
+    actionIcon:"✦",
+    actionHtml:"<strong>Escute com o coração</strong> e deixe a Palavra iluminar seu dia",
+    iconHtml:'<div class="special-icon">📖</div>',
+    ring:false
+  }
+};
+
+function renderSpecialScene(mode, track){
+  const scene = SPECIAL_SCENES[mode];
+  if(!scene) return;
+
+  const icon = document.getElementById("specialIcon");
+  const kicker = document.getElementById("specialKicker");
+  const title = document.getElementById("specialTitle");
+  const subtitle = document.getElementById("specialSubtitle");
+  const actionIcon = document.getElementById("specialActionIcon");
+  const actionText = document.getElementById("specialActionText");
+
+  if(icon) icon.innerHTML = scene.iconHtml;
+  if(kicker) kicker.textContent = scene.kicker;
+  if(title) title.innerHTML = `${scene.title} <em>${scene.accent}</em>`;
+  if(subtitle) subtitle.textContent = scene.subtitle;
+  if(actionIcon){
+    actionIcon.textContent = scene.actionIcon;
+    actionIcon.classList.toggle("ring", !!scene.ring);
+  }
+  if(actionText) actionText.innerHTML = scene.actionHtml;
+
+  /* No Santo Terço, se o título trouxer uma especificação,
+     mostramos o próprio título da faixa no subtítulo. */
+  if(mode === "rosary" && subtitle){
+    const rawTitle = String(getTrackTitleForVisual(track) || "").trim();
+    const normalized = normalizeVisualTitle(rawTitle);
+    if(
+      rawTitle &&
+      normalized !== "santo terco" &&
+      normalized !== "terco"
+    ){
+      subtitle.textContent = rawTitle + " · Reze conosco e apresente suas intenções.";
+    }
+  }
+}
+
+function applyTrackVisualMode(track){
+  const stage = document.getElementById("liveStage");
+  const specialScene = document.getElementById("specialScene");
+
+  if(!stage) return;
+
+  const mode = getTrackVisualMode(track);
+  const modes = ["subscribe","support","like","rosary","share","prayer","word"];
+
+  stage.classList.remove(
+    "special-mode-active",
+    ...modes.map(item => `special-mode-${item}`)
+  );
+
+  if(!mode || !modes.includes(mode)){
+    if(specialScene) specialScene.setAttribute("aria-hidden","true");
+    return;
+  }
+
+  renderSpecialScene(mode, track);
+  stage.classList.add("special-mode-active", `special-mode-${mode}`);
+
+  if(specialScene){
+    specialScene.setAttribute("aria-hidden","false");
+  }
+}
+
 function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   const track = currentPlaylist[index];
   const player = document.getElementById("radioPlayer");
@@ -1153,6 +1810,9 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   }
 
   currentTrackIndex = index;
+
+  // Live 2.1: ativa/restaura automaticamente a cena adequada ao título.
+  applyTrackVisualMode(track);
 
   updateNextAttraction();
 
@@ -2029,6 +2689,10 @@ if ("serviceWorker" in navigator) {
 
   window.refreshLiveParticles = function(){
     if(!particleField || !ambientShapeThemes.length) return;
+
+    // Durante a chamada especial, evita recriar partículas e poupa CPU.
+    const stage = document.getElementById("liveStage");
+    if(stage?.classList.contains("special-mode-active")) return;
 
     /* Liga a ambientação à cor da tela:
        Marfim usa paletas 0/1, Azul usa 1/2, Verde usa 2/3.
