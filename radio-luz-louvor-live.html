@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live 2.1 Cenas Automáticas</title>
+<title>Rádio Luz e Louvor — Live 3.1 Cinema Minimal</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -815,10 +815,394 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
   }
 }
 
+
+/* =========================================================
+   LIVE 3.0 — MODO CINEMA
+   Tela normal: imagem estática em 100% do navegador.
+   Cenas automáticas 2.1 permanecem intactas.
+   ========================================================= */
+
+body{
+  background:#050708;
+}
+
+.cinema-normal{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  overflow:hidden;
+  opacity:1;
+  visibility:visible;
+  transition:opacity .42s ease,visibility .42s;
+  color:#fff;
+}
+
+.cinema-background{
+  position:absolute;
+  inset:0;
+  background:#090b0d center center / cover no-repeat;
+  transform:translateZ(0);
+  transition:opacity .38s ease;
+}
+
+.cinema-background::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.08) 40%,rgba(0,0,0,.18) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.18) 0%,transparent 28%,transparent 65%,rgba(0,0,0,.28) 100%);
+  pointer-events:none;
+}
+
+.cinema-brand{
+  position:absolute;
+  z-index:3;
+  left:54vw;
+  top:4vh;
+  min-width:min(410px,35vw);
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:14px 20px;
+  border-radius:4px;
+  background:rgba(247,250,244,.93);
+  color:#17352f;
+  box-shadow:0 12px 34px rgba(0,0,0,.18);
+}
+
+.cinema-brand img{
+  width:48px;
+  height:48px;
+  object-fit:contain;
+  border-radius:8px;
+}
+
+.cinema-brand-copy strong{
+  display:block;
+  font-size:clamp(18px,1.7vw,29px);
+  line-height:1;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+
+.cinema-brand-copy span{
+  display:block;
+  margin-top:7px;
+  font-size:clamp(8px,.69vw,11px);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  opacity:.77;
+  white-space:nowrap;
+}
+
+.cinema-live-clock{
+  position:absolute;
+  z-index:3;
+  right:4vw;
+  top:4vh;
+  display:flex;
+  align-items:stretch;
+  gap:12px;
+}
+
+.cinema-live-box,
+.cinema-clock-box{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:22px;
+  background:rgba(3,5,7,.22);
+  box-shadow:0 12px 34px rgba(0,0,0,.24);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+
+.cinema-live-box{
+  gap:12px;
+  padding:0 28px;
+  font-size:clamp(20px,2vw,34px);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.cinema-live-dot{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#ff3535;
+  box-shadow:0 0 16px rgba(255,53,53,.70);
+  animation:cinemaLivePulse 1.45s ease-in-out infinite;
+}
+
+@keyframes cinemaLivePulse{
+  50%{opacity:.48;transform:scale(.84)}
+}
+
+.cinema-clock-box{
+  min-width:245px;
+  flex-direction:column;
+  padding:9px 24px 8px;
+  display:none;
+}
+
+.cinema-clock-time{
+  display:none;
+  color:#fff;
+  font-size:clamp(28px,2.7vw,45px);
+  line-height:1;
+  letter-spacing:.04em;
+  font-variant-numeric:tabular-nums;
+  text-shadow:0 3px 18px rgba(0,0,0,.40);
+}
+
+.cinema-clock-date{
+  display:block;
+  margin-top:5px;
+  color:rgba(255,255,255,.72);
+  font-size:clamp(8px,.72vw,11px);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.cinema-now{
+  position:absolute;
+  z-index:3;
+  left:27vw;
+  right:4vw;
+  top:27vh;
+  padding:30px 38px 28px;
+  border-radius:30px;
+  background:rgba(0,0,0,.69);
+  box-shadow:0 22px 55px rgba(0,0,0,.20);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+}
+
+.cinema-now-label{
+  display:block;
+  margin-bottom:9px;
+  color:#e9bc4d;
+  font-size:clamp(12px,1.15vw,18px);
+  letter-spacing:.19em;
+  text-transform:uppercase;
+}
+
+.cinema-now h1{
+  margin:0;
+  color:#fff;
+  font-size:clamp(38px,5vw,80px);
+  line-height:.98;
+  letter-spacing:.01em;
+  text-transform:uppercase;
+  text-shadow:0 5px 22px rgba(0,0,0,.45);
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.cinema-program{
+  position:absolute;
+  z-index:3;
+  left:29vw;
+  top:58vh;
+  max-width:50vw;
+  padding:15px 24px 16px;
+  border-radius:17px;
+  background:rgba(0,0,0,.68);
+  box-shadow:0 14px 38px rgba(0,0,0,.18);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+}
+
+.cinema-program span{
+  display:block;
+  color:#e9bc4d;
+  font-size:clamp(9px,.82vw,12px);
+  letter-spacing:.17em;
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+
+.cinema-program strong{
+  display:block;
+  color:#fff;
+  font-size:clamp(18px,2vw,31px);
+  line-height:1.12;
+  text-transform:uppercase;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.cinema-cta{
+  position:absolute;
+  z-index:3;
+  left:15vw;
+  bottom:16vh;
+  max-width:59vw;
+  padding:11px 20px 12px;
+  border-radius:15px;
+  background:rgba(0,0,0,.70);
+  color:#fff;
+  box-shadow:0 12px 32px rgba(0,0,0,.17);
+  font-size:clamp(16px,1.75vw,28px);
+  line-height:1.1;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  transition:opacity .35s ease,transform .35s ease;
+}
+
+.cinema-liturgy{
+  position:absolute;
+  z-index:3;
+  right:4vw;
+  bottom:4vh;
+  max-width:360px;
+  padding:11px 15px 12px 19px;
+  border-radius:15px;
+  background:rgba(0,0,0,.63);
+  color:#fff;
+  box-shadow:0 12px 32px rgba(0,0,0,.18);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+}
+
+.cinema-liturgy::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:5px;
+  border-radius:15px 0 0 15px;
+  background:var(--cinema-liturgical-color,#2f8a5f);
+}
+
+.cinema-liturgy small{
+  display:block;
+  color:#e9bc4d;
+  font-size:clamp(8px,.66vw,10px);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.cinema-liturgy strong{
+  display:block;
+  margin-top:4px;
+  color:#fff;
+  font-size:clamp(11px,1vw,15px);
+  line-height:1.15;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.cinema-liturgy span{
+  display:block;
+  margin-top:3px;
+  color:rgba(255,255,255,.64);
+  font-size:clamp(8px,.65vw,10px);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* No modo normal, escondemos o antigo dashboard.
+   Ele continua no DOM e volta intacto durante as cenas automáticas. */
+.live-stage:not(.special-mode-active) > .topbar,
+.live-stage:not(.special-mode-active) > .main-grid,
+.live-stage:not(.special-mode-active) > .particle-field,
+.live-stage:not(.special-mode-active) > .bottom-strip{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+/* Remove a animação de fundo antiga enquanto a imagem cinematográfica está ativa. */
+.live-stage:not(.special-mode-active)::after{
+  opacity:0!important;
+  animation:none!important;
+}
+
+/* Ao entrar numa cena automática, desaparece apenas a tela Cinema. */
+.live-stage.special-mode-active .cinema-normal{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+/* Cenas automáticas mantêm o dashboard 2.1 como antes. */
+.live-stage.special-mode-active > .topbar,
+.live-stage.special-mode-active > .bottom-strip{
+  opacity:1;
+  visibility:visible;
+}
+
+@media(max-width:1100px){
+  .cinema-brand{min-width:320px}
+  .cinema-now{left:20vw;right:3vw}
+  .cinema-program{left:22vw;max-width:62vw}
+  .cinema-cta{left:8vw;max-width:72vw}
+  .cinema-clock-box{min-width:200px}
+}
+
+@media(max-height:680px){
+  .cinema-brand{top:2.5vh}
+  .cinema-live-clock{top:2.5vh}
+  .cinema-now{top:24vh;padding:22px 30px}
+  .cinema-program{top:56vh}
+  .cinema-cta{bottom:12vh}
+  .cinema-liturgy{bottom:2.5vh}
+}
+
+
+/* =========================================================
+   LIVE 3.1 — CINEMA MINIMAL
+   Imagem full-screen + identidade + AO VIVO + relógio.
+   ========================================================= */
+.cinema-now,
+.cinema-program,
+.cinema-cta,
+.cinema-liturgy{
+  display:none!important;
+}
+
 </style>
 </head>
 <body class="radio-paused">
 <div class="live-stage theme-ivory" id="liveStage">
+
+  <!-- ======================================================
+       LIVE 3.0 — TELA CINEMATOGRÁFICA NORMAL
+       A cada faixa, cinemaBackground recebe uma nova imagem.
+       ====================================================== -->
+  <section class="cinema-normal" id="cinemaNormal" aria-label="Rádio Luz e Louvor ao vivo">
+    <div class="cinema-background" id="cinemaBackground"></div>
+
+    <div class="cinema-brand">
+      <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
+      <div class="cinema-brand-copy">
+        <strong>Rádio Luz e Louvor</strong>
+        <span>Paróquia Divino Pai Eterno · Botucatu — SP</span>
+      </div>
+    </div>
+
+    <div class="cinema-live-clock" aria-label="Transmissão ao vivo e horário de Brasília">
+      <div class="cinema-live-box">
+        <i class="cinema-live-dot"></i>
+        <strong>Ao vivo</strong>
+      </div>
+      <div class="cinema-clock-box">
+        <strong class="cinema-clock-time" id="cinemaClock">--:--:--</strong>
+        <span class="cinema-clock-date" id="cinemaDate">Carregando data...</span>
+      </div>
+    </div>
+</section>
+
   <header class="topbar">
     <div class="brand">
       <img class="brand-logo" src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="Rádio Luz e Louvor">
@@ -898,7 +1282,7 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live 2.1 · Cenas Automáticas · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 3.1 · Cinema Minimal · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -990,48 +1374,9 @@ let messagesData = [];
 
 
 const radioCovers = [
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-05.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-06.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-08.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-09.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-10.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-11.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-12.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-13.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-16.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-17.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-18.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-20.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-21.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-22.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-23.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-24.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-25.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-26.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-27.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-28.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-29.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-30.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-31.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-33.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-34.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-35.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-36.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-37.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-38.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-39.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-40.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-41.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-42.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-43.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-44.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-45.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-46.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-47.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-48.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-49.webp",
-  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/capa-live-50.webp"
-];
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/backdrop-24h-001.webp",
+  "https://songs.horizon4282.com.br/file/horizon4282/images/capas-live-webp/backdrop-24h-002.webp"
+  ];
   
 const fallbackData={
  page:{pt:{eyebrow:"Rádio Luz e Louvor",title:"Rádio Luz e Louvor",text:"Música, oração, Palavra e esperança. Uma estação devocional dentro do Horizon 4282.",onAir:"Áudio HD · 24h"},en:{eyebrow:"Light & Praise Radio",title:"Light & Praise Radio",text:"Music, prayer, Word and hope. A devotional station inside Horizon 4282.",onAir:"HD Audio · 24h"}},
@@ -1086,13 +1431,22 @@ function updateLiveClock(){
 
   const p = getSaoPauloDateParts();
 
-  timeEl.textContent = `${p.hour}:${p.minute}:${p.second}`;
+  const clockText = `${p.hour}:${p.minute}:${p.second}`;
+
+  timeEl.textContent = clockText;
 
   const weekday = (p.weekday || "")
     .replace(".", "")
     .toUpperCase();
 
-  dateEl.textContent = `${weekday} · ${p.day}/${p.month}/${p.year}`;
+  const dateText = `${weekday} · ${p.day}/${p.month}/${p.year}`;
+  dateEl.textContent = dateText;
+
+  // Live 3.0 — relógio independente da tela antiga.
+  const cinemaClock = document.getElementById("cinemaClock");
+  const cinemaDate = document.getElementById("cinemaDate");
+  if(cinemaClock) cinemaClock.textContent = clockText;
+  if(cinemaDate) cinemaDate.textContent = dateText;
 }
 
 const LITURGY_COLORS = {
@@ -1118,6 +1472,13 @@ function renderLiturgyDay(){
     title.textContent = "Calendário não disponível";
     meta.textContent = key.split("-").reverse().join("/") + " · CNBB";
     gadget.style.setProperty("--liturgical-color", "#6d7c86");
+
+    const cinemaTitle = document.getElementById("cinemaLiturgyTitle");
+    const cinemaMeta = document.getElementById("cinemaLiturgyMeta");
+    const cinemaBox = document.getElementById("cinemaLiturgy");
+    if(cinemaTitle) cinemaTitle.textContent = "Calendário não disponível";
+    if(cinemaMeta) cinemaMeta.textContent = key.split("-").reverse().join("/") + " · CNBB";
+    if(cinemaBox) cinemaBox.style.setProperty("--cinema-liturgical-color", "#6d7c86");
     return;
   }
 
@@ -1135,10 +1496,22 @@ function renderLiturgyDay(){
 
   meta.textContent = details.join(" · ") || "CNBB · Brasil";
 
+  const liturgicalColor =
+    LITURGY_COLORS[String(day.cor || "").toLowerCase()] || "#6d7c86";
+
   gadget.style.setProperty(
     "--liturgical-color",
-    LITURGY_COLORS[String(day.cor || "").toLowerCase()] || "#6d7c86"
+    liturgicalColor
   );
+
+  // Live 3.0 — calendário litúrgico independente.
+  const cinemaTitle = document.getElementById("cinemaLiturgyTitle");
+  const cinemaMeta = document.getElementById("cinemaLiturgyMeta");
+  const cinemaBox = document.getElementById("cinemaLiturgy");
+
+  if(cinemaTitle) cinemaTitle.textContent = title.textContent;
+  if(cinemaMeta) cinemaMeta.textContent = meta.textContent;
+  if(cinemaBox) cinemaBox.style.setProperty("--cinema-liturgical-color", liturgicalColor);
 }
 
 async function loadLiturgyCalendar(){
@@ -1379,6 +1752,12 @@ if(item.playlist && item.playlist.length){
   document.getElementById("nowDescription").textContent =
     localized.description || "";
 
+  updateCinemaMetadata({
+    ...item,
+    title: localized.title || item.title || "Rádio Luz e Louvor"
+  });
+  updateTrackCover(item, true);
+
   player.src = item.audio || "";
   player.load();
 }
@@ -1464,6 +1843,16 @@ function updateTrackCover(track, deferVisuals=false) {
   const paint=()=>{
     if(coverBox){coverBox.style.backgroundImage=`url("${currentCoverUrl}")`;coverBox.textContent="";}
     if(bottomCover){bottomCover.style.backgroundImage=`url("${currentCoverUrl}")`;bottomCover.textContent="";}
+
+    // Live 3.0 — a capa passa a ocupar 100% da área do navegador.
+    const cinemaBackground = document.getElementById("cinemaBackground");
+    if(cinemaBackground){
+      cinemaBackground.style.opacity = "0.72";
+      setTimeout(()=>{
+        cinemaBackground.style.backgroundImage = `url("${currentCoverUrl}")`;
+        requestAnimationFrame(()=>{ cinemaBackground.style.opacity = "1"; });
+      },120);
+    }
   };
 
   clearTimeout(visualUpdateTimer);
@@ -1796,6 +2185,33 @@ function applyTrackVisualMode(track){
   }
 }
 
+
+function updateCinemaMetadata(track){
+  const titleEl = document.getElementById("cinemaTrackTitle");
+  const programEl = document.getElementById("cinemaProgramTitle");
+
+  if(titleEl){
+    titleEl.textContent =
+      track?.title ||
+      track?.pt?.title ||
+      track?.en?.title ||
+      "Rádio Luz e Louvor";
+  }
+
+  if(programEl && radioData){
+    const scheduleItem = getCurrentSchedule();
+    const localized =
+      scheduleItem?.[currentLang] ||
+      scheduleItem?.pt ||
+      scheduleItem?.en ||
+      scheduleItem;
+
+    programEl.textContent =
+      localized?.title ||
+      "Rádio Luz e Louvor";
+  }
+}
+
 function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
   const track = currentPlaylist[index];
   const player = document.getElementById("radioPlayer");
@@ -1818,6 +2234,9 @@ function loadPlaylistTrack(index, offset = 0, autoPlay = false) {
 
   document.getElementById("nowTitle").textContent =
     track.title || "Rádio Luz e Louvor";
+
+  // Live 3.0 — informações da tela cinematográfica.
+  updateCinemaMetadata(track);
 
   document.getElementById("nowDescription").textContent =
     currentLang === "pt"
@@ -2473,6 +2892,11 @@ if ("serviceWorker" in navigator) {
     const item = getCurrentSchedule();
     const localized = item && (item[currentLang] || item.pt || item.en || item);
     if(localized && programTitle) programTitle.textContent = localized.title || 'Rádio Luz e Louvor';
+
+    const cinemaProgram = document.getElementById("cinemaProgramTitle");
+    if(localized && cinemaProgram){
+      cinemaProgram.textContent = localized.title || 'Rádio Luz e Louvor';
+    }
   }
 
   function updateLiveProgress(){
@@ -2514,7 +2938,22 @@ if ("serviceWorker" in navigator) {
     if(!tickerSlides.length) return;
     tickerIndex = ((index % tickerSlides.length) + tickerSlides.length) % tickerSlides.length;
     tickerSlides.forEach((slide,i)=>slide.classList.toggle('active',i===tickerIndex));
+
+    // Live 3.0 — o mesmo conteúdo vira o Call To Action sobre a imagem.
+    const cinemaCta = document.getElementById("cinemaCta");
+    const activeText = tickerSlides[tickerIndex]?.querySelector("strong")?.textContent;
+    if(cinemaCta && activeText){
+      cinemaCta.style.opacity = "0";
+      cinemaCta.style.transform = "translateY(8px)";
+      setTimeout(()=>{
+        cinemaCta.textContent = activeText;
+        cinemaCta.style.opacity = "1";
+        cinemaCta.style.transform = "translateY(0)";
+      },220);
+    }
   }
+
+  showTickerSlide(0);
 
   setInterval(()=>showTickerSlide(tickerIndex + 1), 18000);
 
