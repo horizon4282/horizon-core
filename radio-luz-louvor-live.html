@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live 3.1 Cinema Minimal</title>
+<title>Rádio Luz e Louvor — Live 3.4 Cinema Boxes</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1173,6 +1173,120 @@ body{
   display:none!important;
 }
 
+
+/* =========================================================
+   LIVE 3.2 — BOXES SOBRE O BACKGROUND
+   Ajustes de desempenho sem alterar a lógica da rádio.
+   ========================================================= */
+
+/* Ícones/formas ambientais atrás da tela: desativados. */
+.particle-field,
+.special-wave,
+.rosary-dots{
+  display:none!important;
+}
+
+/* Remove somente a animação decorativa giratória do box.
+   Animações locais dos ícones (sininho, Bíblia etc.) permanecem. */
+.special-card::before{
+  display:none!important;
+  animation:none!important;
+}
+
+/* Live 3.3: substituído pelo fundo independente com opacity:50%. */
+
+/* A imagem atual continua visível atrás das cenas automáticas. */
+.live-stage.special-mode-active .cinema-normal{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:none!important;
+}
+
+/* Durante a cena automática fica somente o background + box central. */
+.live-stage.special-mode-active .cinema-brand,
+.live-stage.special-mode-active .cinema-live-clock,
+.live-stage.special-mode-active > .topbar,
+.live-stage.special-mode-active > .main-grid,
+.live-stage.special-mode-active > .particle-field,
+.live-stage.special-mode-active > .bottom-strip{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+/* Garante que o box central permaneça acima do background. */
+.live-stage.special-mode-active .special-scene{
+  z-index:5;
+}
+
+/* Novas cenas: reutilizam cores e estilo já existentes. */
+.live-stage.special-mode-hope .special-card{
+  --scene-accent:#e8d69d;
+  --scene-accent-rgb:232,214,157;
+  --scene-bg1:rgba(26,28,52,.96);
+  --scene-bg2:rgba(55,48,81,.92);
+}
+.live-stage.special-mode-between .special-card{
+  --scene-accent:#ffd878;
+  --scene-accent-rgb:255,216,120;
+  --scene-bg1:rgba(35,25,10,.96);
+  --scene-bg2:rgba(76,53,18,.92);
+}
+.live-stage.special-mode-minute .special-card{
+  --scene-accent:#84d7ff;
+  --scene-accent-rgb:132,215,255;
+  --scene-bg1:rgba(7,25,48,.95);
+  --scene-bg2:rgba(14,58,88,.91);
+}
+
+
+/* =========================================================
+   LIVE 3.3 — BOX COM FUNDO 50%
+   A transparência afeta somente o fundo do box.
+   Textos e ícones permanecem em 100% para legibilidade.
+   ========================================================= */
+
+.special-card{
+  background:transparent!important;
+}
+
+/* Usa a mesma paleta atual, agora com a camada visual em 50%. */
+.special-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  border-radius:inherit;
+  opacity:.50;
+  background:
+    radial-gradient(circle at 16% 50%,rgba(var(--scene-accent-rgb),.17),transparent 31%),
+    linear-gradient(135deg,var(--scene-bg1),var(--scene-bg2));
+}
+
+/* Conteúdo sempre acima da camada de 50%. */
+.special-icon-wrap,
+.special-copy{
+  position:relative;
+  z-index:1;
+}
+
+
+/* =========================================================
+   LIVE 3.4 — MANTER IDENTIDADE E AO VIVO NAS CENAS
+   Mantém todos os ajustes anteriores.
+   ========================================================= */
+
+/* Durante as cenas automáticas, preserva a identidade da rádio
+   e o selo AO VIVO exatamente como no modo normal. */
+.live-stage.special-mode-active .cinema-brand,
+.live-stage.special-mode-active .cinema-live-clock{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:none!important;
+  display:flex!important;
+}
+
 </style>
 </head>
 <body class="radio-paused">
@@ -1284,7 +1398,7 @@ body{
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live 3.1 · Cinema Minimal · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 3.4 · Cinema Boxes · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -1561,11 +1675,9 @@ function initializeLiveGadgets(){
   updateLiveClock();
   setInterval(updateLiveClock, 1000);
 
-  loadLiturgyCalendar();
-
-  /* Reconfere a data litúrgica a cada minuto.
-     Assim, se a live atravessar a meia-noite, o gadget muda sozinho. */
-  setInterval(renderLiturgyDay, 60000);
+  /* Live 3.3:
+     calendário litúrgico não é exibido no Cinema Minimal.
+     Evita a requisição HTTP desnecessária durante a abertura. */
 }
 
 
@@ -1891,15 +2003,9 @@ function updateTrackCover(track, deferVisuals=false) {
 
   if(deferVisuals && isNew){
     visualUpdateTimer=setTimeout(paint,450);
-    particleUpdateTimer=setTimeout(()=>{
-      if(typeof window.refreshLiveParticles==="function") window.refreshLiveParticles();
-    },1100);
     mediaSessionUpdateTimer=setTimeout(()=>updateMediaSession(track,currentCoverUrl),1500);
   }else{
     paint();
-    if(isNew) particleUpdateTimer=setTimeout(()=>{
-      if(typeof window.refreshLiveParticles==="function") window.refreshLiveParticles();
-    },650);
     updateMediaSession(track,currentCoverUrl);
   }
 
@@ -1991,7 +2097,11 @@ function getTrackVisualMode(track){
     "oremos juntos":"prayer",
     "word":"word",
     "palavra":"word",
-    "palavra que ilumina":"word"
+    "palavra que ilumina":"word",
+    "mensagem de esperanca":"hope",
+    "entre nos":"between",
+    "um minuto pra voce":"minute",
+    "um minuto para voce":"minute"
   };
 
   if(explicitAliases[explicitMode]) return explicitAliases[explicitMode];
@@ -1999,6 +2109,27 @@ function getTrackVisualMode(track){
   const title = normalizeVisualTitle(getTrackTitleForVisual(track));
 
   /* Ordem específica: cenas mais particulares primeiro. */
+  if(
+    title.includes("mensagem de esperanca")
+  ){
+    return "hope";
+  }
+
+  if(
+    title === "entre nos" ||
+    title.includes("programa entre nos") ||
+    title.includes("entre nos -")
+  ){
+    return "between";
+  }
+
+  if(
+    title.includes("um minuto pra voce") ||
+    title.includes("um minuto para voce")
+  ){
+    return "minute";
+  }
+
   if(
     title.includes("palavra que ilumina") ||
     title.includes("a palavra que ilumina")
@@ -2149,6 +2280,36 @@ const SPECIAL_SCENES = {
     actionHtml:"<strong>Escute com o coração</strong> e deixe a Palavra iluminar seu dia",
     iconHtml:'<div class="special-icon">📖</div>',
     ring:false
+  },
+  hope:{
+    kicker:"Uma palavra para o seu coração",
+    title:"Mensagem de",
+    accent:"Esperança",
+    subtitle:"Uma pausa para renovar a fé, fortalecer o coração e seguir em frente.",
+    actionIcon:"✦",
+    actionHtml:"<strong>Receba esta mensagem</strong> com fé e esperança",
+    iconHtml:'<div class="special-icon">♡</div>',
+    ring:false
+  },
+  between:{
+    kicker:"Rádio Luz e Louvor",
+    title:"Entre",
+    accent:"Nós",
+    subtitle:"Um momento de proximidade, reflexão e partilha em nossa caminhada.",
+    actionIcon:"",
+    actionHtml:"<strong>Fique conosco</strong> neste momento especial",
+    iconHtml:'<div class="special-icon">💬</div>',
+    ring:false
+  },
+  minute:{
+    kicker:"Uma pausa no seu dia",
+    title:"Um minuto",
+    accent:"pra você",
+    subtitle:"Sessenta segundos para respirar, refletir e cuidar do que realmente importa.",
+    actionIcon:"",
+    actionHtml:"<strong>Um minuto</strong> que pode fazer diferença no seu dia",
+    iconHtml:'<div class="special-icon">⏱</div>',
+    ring:false
   }
 };
 
@@ -2195,7 +2356,7 @@ function applyTrackVisualMode(track){
   if(!stage) return;
 
   const mode = getTrackVisualMode(track);
-  const modes = ["subscribe","support","like","rosary","share","prayer","word"];
+  const modes = ["subscribe","support","like","rosary","share","prayer","word","hope","between","minute"];
 
   stage.classList.remove(
     "special-mode-active",
@@ -2952,14 +3113,71 @@ if ("serviceWorker" in navigator) {
 
   startButton?.addEventListener('click', async ()=>{
     try{
-      // Mantém exatamente a mesma regra de sincronização usada na versão web.
+      /* Live 3.3:
+         a faixa atual já foi carregada durante a inicialização.
+         No clique, apenas ressincroniza a posição e toca.
+         Evita remover o src, chamar load() novamente e esperar
+         um segundo download do mesmo áudio. */
+      const currentSchedule = getCurrentSchedule();
+      const playlist = currentSchedule?.playlist || [];
+
+      if(playlist.length){
+        const synced = getSyncedPlaylistPosition(currentSchedule);
+
+        if(
+          currentPlaylist === playlist ||
+          (
+            currentPlaylist.length === playlist.length &&
+            currentPlaylist[synced.index]?.audio === playlist[synced.index]?.audio
+          )
+        ){
+          if(synced.index !== currentTrackIndex){
+            currentPlaylist = playlist;
+            loadPlaylistTrack(synced.index, synced.offset, true);
+            return;
+          }
+
+          if(
+            Number.isFinite(player.duration) &&
+            synced.offset >= 0 &&
+            synced.offset < player.duration
+          ){
+            try{ player.currentTime = synced.offset; }catch(e){}
+          }
+
+          try{
+            await player.play();
+          }catch(e){
+            const begin = async ()=>{
+              player.removeEventListener('canplay', begin);
+              try{ await player.play(); }catch(err){
+                console.warn('Não foi possível iniciar a rádio:',err);
+              }
+            };
+            player.addEventListener('canplay', begin, {once:true});
+          }
+          return;
+        }
+      }
+
+      /* Fallback: somente se a faixa ainda não estiver preparada. */
       loadCurrentSchedule();
+
       const begin = async ()=>{
         player.removeEventListener('canplay', begin);
-        try{ await player.play(); }catch(e){ console.warn('Não foi possível iniciar a rádio:',e); }
+        try{ await player.play(); }catch(e){
+          console.warn('Não foi possível iniciar a rádio:',e);
+        }
       };
-      player.addEventListener('canplay', begin);
-    }catch(e){ console.warn(e); }
+
+      if(player.readyState >= 2){
+        await player.play();
+      }else{
+        player.addEventListener('canplay', begin, {once:true});
+      }
+    }catch(e){
+      console.warn(e);
+    }
   });
 
   player?.addEventListener('play', ()=>{
@@ -2997,20 +3215,9 @@ if ("serviceWorker" in navigator) {
 
   showTickerSlide(0);
 
-  setInterval(()=>showTickerSlide(tickerIndex + 1), 18000);
+  // Live 3.2: ticker oculto; rotação periódica desativada.
 
-  // Visualizador decorativo em largura total. Mantido leve para o Dell dedicado à Live.
-  const visualizer = document.getElementById('visualizer');
-  if(visualizer){
-    const bars = 92;
-    for(let i=0;i<bars;i++){
-      const bar = document.createElement('i');
-      bar.style.setProperty('--bar-height', `${34 + Math.round(Math.random()*66)}%`);
-      bar.style.setProperty('--bar-speed', `${0.62 + Math.random()*1.05}s`);
-      bar.style.setProperty('--bar-delay', `${-Math.random()*1.5}s`);
-      visualizer.appendChild(bar);
-    }
-  }
+  // Live 3.2: visualizador oculto; geração das barras desativada.
 
   // Partículas Live 1.4: o conjunto visual muda a cada nova faixa.
   const particleField = document.getElementById('particleField');
@@ -3144,64 +3351,23 @@ if ("serviceWorker" in navigator) {
   }
 
   function beginAmbientShapes(themeIndex){
-    if(!particleField) return;
-
     if(particleSpawnTimer){
       clearInterval(particleSpawnTimer);
       particleSpawnTimer = null;
     }
-
     liveParticles.forEach(p => p.remove());
     liveParticles.clear();
-
-    // Seed a few shapes immediately so the screen never starts empty.
-    for(let i=0;i<7;i++){
-      setTimeout(() => spawnAmbientShape(themeIndex), i * 180);
-    }
-
-    // New forms continuously appear in fresh random positions.
-    particleSpawnTimer = setInterval(() => {
-      const burst = Math.random() < .22 ? 2 : 1;
-      for(let i=0;i<burst;i++){
-        spawnAmbientShape(themeIndex);
-      }
-    }, 720);
+    if(particleField) particleField.innerHTML = "";
   }
 
   window.refreshLiveParticles = function(){
-    if(!particleField || !ambientShapeThemes.length) return;
-
-    // Durante a chamada especial, evita recriar partículas e poupa CPU.
-    const stage = document.getElementById("liveStage");
-    if(stage?.classList.contains("special-mode-active")) return;
-
-    /* Liga a ambientação à cor da tela:
-       Marfim usa paletas 0/1, Azul usa 1/2, Verde usa 2/3.
-       Ainda alterna entre duas variações para não ficar repetitivo. */
-    const visualThemePools = [
-      [0,1],
-      [1,2],
-      [2,3]
-    ];
-
-    const pool =
-      visualThemePools[currentLiveColorTheme] ||
-      visualThemePools[0];
-
-    let nextTheme = pool[Math.floor(Math.random() * pool.length)];
-
-    if(pool.length > 1 && nextTheme === lastParticleTheme){
-      nextTheme = pool.find(i => i !== lastParticleTheme) ?? nextTheme;
-    }
-
-    lastParticleTheme = nextTheme;
-    beginAmbientShapes(nextTheme);
+    // Live 3.2: função mantida por compatibilidade; animações ambientais desativadas.
+    return;
   };
 
   applyLiveColorTheme(0, false);
-  window.refreshLiveParticles();
 
-  
+
   // Live 1.7.1 — sincronização visual resiliente.
   // Recalcula os rótulos diretamente da grade, sem depender de estado antigo.
   function refreshScheduleLabelsFromClock(){
@@ -3225,10 +3391,10 @@ if ("serviceWorker" in navigator) {
   }
 
   refreshScheduleLabelsFromClock();
-  setInterval(refreshScheduleLabelsFromClock, 30000);
+  // Live 3.2: dashboard oculto; atualização periódica de rótulos desativada.
 
-  setInterval(updateProgramLabel, 6000);
-  setInterval(updateLiveProgress, 1000);
+  // Live 3.2: rótulo de programa é atualizado pelos eventos relevantes.
+  // Live 3.2: progresso já é atualizado por timeupdate/durationchange.
 })();
 </script>
 </body>
