@@ -1309,6 +1309,8 @@ body{
 let lastCoverTrackKey = "";
 let currentCoverUrl = "";
 let lastCoverIndex = -1;
+let coverQueue = [];
+let lastCoverUrl = "";
 let radioWasPlaying = false;
 let activeScheduleHour = null;
 let currentPlaylist = [];
@@ -2658,25 +2660,37 @@ function updateBannerPlayButton() {
 
 //sorteio sem repetir a última capa///////////
 
+function shuffleCovers() {
+  const shuffled = [...radioCovers];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  if (
+    shuffled.length > 1 &&
+    shuffled[0] === lastCoverUrl
+  ) {
+    [shuffled[0], shuffled[1]] = [shuffled[1], shuffled[0]];
+  }
+
+  coverQueue = shuffled;
+}
+
 function getRandomCover() {
   if (!radioCovers.length) {
     return radioData?.defaultCover || "";
   }
 
-  if (radioCovers.length === 1) {
-    lastCoverIndex = 0;
-    return radioCovers[0];
+  if (!coverQueue.length) {
+    shuffleCovers();
   }
 
-  let newIndex;
+  const cover = coverQueue.shift();
+  lastCoverUrl = cover;
 
-  do {
-    newIndex = Math.floor(Math.random() * radioCovers.length);
-  } while (newIndex === lastCoverIndex);
-
-  lastCoverIndex = newIndex;
-
-  return radioCovers[newIndex];
+  return cover;
 }
 
 //next attraction//////////////////////
