@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live 3.4 Cinema Boxes</title>
+<title>Rádio Luz e Louvor — Live 3.5 Cinema Boxes</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -720,17 +720,20 @@ audio{position:fixed;left:-10000px;width:1px;height:1px}
 }
 
 /* SANTO TERÇO — propositalmente mais contemplativo */
-.live-stage.special-mode-rosary .special-card{
+.live-stage.special-mode-rosary .special-card,
+.live-stage.special-mode-byzantine .special-card{
   --scene-accent:#e4c982;
   --scene-accent-rgb:228,201,130;
   --scene-bg1:rgba(18,25,48,.96);
   --scene-bg2:rgba(42,40,71,.92);
 }
-.live-stage.special-mode-rosary .special-icon-wrap{
+.live-stage.special-mode-rosary .special-icon-wrap,
+.live-stage.special-mode-byzantine .special-icon-wrap{
   animation:rosaryBreathe 4.8s ease-in-out infinite;
   background:rgba(228,201,130,.10);
 }
-.live-stage.special-mode-rosary .special-card::before{
+.live-stage.special-mode-rosary .special-card::before,
+.live-stage.special-mode-byzantine .special-card::before{
   animation-duration:24s;
   opacity:.75;
 }
@@ -1398,7 +1401,7 @@ body{
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live 3.4 · Cinema Boxes · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 3.5 · Cinema Boxes · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -2127,6 +2130,7 @@ function getTrackVisualMode(track){
     "rosary":"rosary",
     "terco":"rosary",
     "santo terco":"rosary",
+    "terco bizantino":"byzantine",
     "share":"share",
     "compartilhe":"share",
     "prayer":"prayer",
@@ -2175,9 +2179,14 @@ function getTrackVisualMode(track){
   }
 
   if(
+    title.includes("terco bizantino")
+  ){
+    return "byzantine";
+  }
+
+  if(
     title.includes("santo terco") ||
     title.includes("terco mariano") ||
-    title.includes("terco bizantino") ||
     title.includes("terco da misericordia") ||
     title.includes("rezemos o terco") ||
     title.includes("rezando o terco")
@@ -2288,6 +2297,16 @@ const SPECIAL_SCENES = {
     iconHtml:'<div class="special-icon">✝</div>',
     ring:false
   },
+  byzantine:{
+    kicker:"Momento de oração",
+    title:"Terço",
+    accent:"Bizantino",
+    subtitle:"Em oração, repetimos com fé o nome de Jesus e confiamos em Sua misericórdia.",
+    actionIcon:"",
+    actionHtml:"<strong>Reze conosco</strong> e coloque sua intenção diante de Deus",
+    iconHtml:'<div class="special-icon">✝</div>',
+    ring:false
+  },
   share:{
     kicker:"Leve esta mensagem mais longe",
     title:"Compartilhe",
@@ -2393,7 +2412,7 @@ function applyTrackVisualMode(track){
   if(!stage) return;
 
   const mode = getTrackVisualMode(track);
-  const modes = ["subscribe","support","like","rosary","share","prayer","word","hope","between","minute"];
+  const modes = ["subscribe","support","like","rosary","byzantine","share","prayer","word","hope","between","minute"];
 
   stage.classList.remove(
     "special-mode-active",
