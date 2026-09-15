@@ -58,5 +58,5 @@ events.innerHTML=DATA.events.map(e=>`<div class="event"><div class="date">${e.id
 diagnosisTitle.textContent=lang==="pt"?DATA.diagnosis.title_pt:DATA.diagnosis.title_en;diagnosisText.textContent=lang==="pt"?DATA.diagnosis.text_pt:DATA.diagnosis.text_en;diagnosisConclusion.textContent=lang==="pt"?DATA.diagnosis.conclusion_pt:DATA.diagnosis.conclusion_en;simgrid.innerHTML=SIM[lang].map(x=>`<div class="simitem"><b>${x[0]}</b><span>${x[1]}</span></div>`).join("");
 flow.innerHTML=FLOW[lang].map((x,i)=>`<div>${x}</div>${i<FLOW[lang].length-1?"<i>↓</i>":""}`).join("");}
 document.querySelectorAll("[data-setlang]").forEach(b=>b.onclick=()=>setLang(b.dataset.setlang));
-fetch("./data/observatorio.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{DATA=d;setLang(lang)}).catch(e=>{console.error(e);metrics.innerHTML="<p>Data loading error / Erro ao carregar dados.</p>"});
+fetch("https://horizon4282.com.br/data/observatorio.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{DATA=d;setLang(lang)}).catch(e=>{console.error(e);metrics.innerHTML="<p>Data loading error / Erro ao carregar dados.</p>"});
 </script></body></html>
