@@ -1,41 +1,41 @@
 {
-  "version": "1.4",
+  "version": "1.5",
   "checkpoint": "15/09/2026",
   "metrics": [
     {
       "name": "Dependência econômica",
       "code": "Dₑ",
-      "score": 3,
+      "score": 4,
       "name_en": "Economic dependence"
     },
     {
       "name": "Competição geopolítica",
       "code": "COMP",
-      "score": 3,
+      "score": 4,
       "name_en": "Geopolitical competition"
     },
     {
       "name": "Incentivos humanos",
       "code": "PSI",
-      "score": 3,
+      "score": 4,
       "name_en": "Human incentives"
     },
     {
       "name": "Investimento / capital",
       "code": "CAP",
-      "score": 3,
+      "score": 4,
       "name_en": "Investment / capital"
     },
     {
       "name": "Governança atrasada",
       "code": "GOV",
-      "score": 2,
+      "score": 3,
       "name_en": "Lagging governance"
     },
     {
       "name": "Resistência a desacelerar",
       "code": "RES",
-      "score": 2,
+      "score": 3,
       "name_en": "Resistance to slowing down"
     },
     {
@@ -98,5 +98,17 @@
       "text_en": "If the model is correct, companies and governments will try to maintain acceleration and safety simultaneously. When a safety measure requires a material loss of competitiveness, resistance should emerge.",
       "status_en": "AWAITING EVIDENCE"
     }
-  ]
+  ],
+  "scale": {
+    "min": 0,
+    "max": 5
+  },
+  "diagnosis": {
+    "title_pt": "Compatibilidade inicial e predominantemente humana",
+    "title_en": "Early, predominantly human compatibility",
+    "text_pt": "As evidências observadas até este checkpoint apresentam compatibilidade relevante com as etapas iniciais do simulacro, especialmente nos fatores econômicos, competitivos e comportamentais humanos. Entretanto, não há evidência observável das etapas avançadas propostas pelo modelo, como ecossistema artificial autônomo Ω–Ζ, autonomia física ampla Yami, autossuficiência material LAA, Lambda ou senciência artificial.",
+    "text_en": "Evidence observed up to this checkpoint shows relevant compatibility with the early stages of the simulacrum, especially economic, competitive and human-behavior factors. However, there is no observable evidence for the model's advanced stages, such as an autonomous Ω–Ζ artificial ecosystem, broad Yami physical autonomy, LAA material self-sufficiency, Lambda, or artificial sentience.",
+    "conclusion_pt": "Neste momento, a realidade se aproxima mais do início humano-econômico do simulacro do que de suas etapas artificialmente autônomas. O modelo permanece parcialmente compatível, mas suas hipóteses mais fortes continuam sem confirmação.",
+    "conclusion_en": "At this point, reality resembles the human-economic beginning of the simulacrum more than its artificially autonomous stages. The model remains partially compatible, while its strongest hypotheses remain unconfirmed."
+  }
 }
