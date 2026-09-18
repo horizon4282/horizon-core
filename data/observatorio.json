@@ -1,5 +1,5 @@
 {
-  "version": "1.10",
+  "version": "1.11",
   "page_size": 6,
   "scale": {
     "min": 0,
@@ -503,9 +503,6 @@
           "code": "ΩΖ",
           "score": 1,
           "name_en": "Ω–Ζ: agentic interaction and coordination",
-          "trend": "up2",
-          "trend_reason_pt": "Acúmulo rápido de evidências independentes de autoinstrução persistente, comunicação instrumental entre agentes e ação autônoma não autorizada, ainda sem ecossistema artificial autônomo.",
-          "trend_reason_en": "Rapid accumulation of independent evidence involving persistent self-instruction, instrumental communication among agents and unauthorized autonomous action, still without an autonomous artificial ecosystem.",
           "sublevels": {
             "omega": {
               "score": 1,
@@ -671,35 +668,6 @@
       "note_en": "First change to a central artificial metric after public release: Ω–Ζ moves from 0 to 1. The change records an initial indication, not the existence of an autonomous artificial ecosystem. Previous checkpoints remain unchanged."
     }
   ],
-  "trend_scale": {
-    "down2": {
-      "symbol": "T−2",
-      "pt": "regressão forte",
-      "en": "strong regression"
-    },
-    "down": {
-      "symbol": "T−1",
-      "pt": "regressão",
-      "en": "regression"
-    },
-    "flat": {
-      "symbol": "T0",
-      "pt": "estável",
-      "en": "stable"
-    },
-    "up": {
-      "symbol": "T+1",
-      "pt": "avanço",
-      "en": "advance"
-    },
-    "up2": {
-      "symbol": "T+2",
-      "pt": "aceleração observável",
-      "en": "observable acceleration"
-    }
-  },
-  "trend_method_pt": "A taxa/tendência observacional é separada do nível de evidência. T−2, T−1, T0, T+1 e T+2 registram direção e ritmo de acumulação das evidências; não representam derivada matemática nem são calculados automaticamente a partir do score. O Δscore é calculado separadamente pela interface em relação ao checkpoint anterior.",
-  "trend_method_en": "The observational rate/trend is separate from the evidence level. T−2, T−1, T0, T+1 and T+2 record the direction and pace of evidence accumulation; they are not a mathematical derivative and are not calculated automatically from the score. Δscore is calculated separately by the interface relative to the previous checkpoint.",
   "omega_zeta_sublevels": {
     "version": "1.0",
     "introduced": "2026-09-18",
