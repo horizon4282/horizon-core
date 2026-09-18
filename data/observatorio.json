@@ -450,6 +450,203 @@
       ],
       "note_pt": "Nenhuma das 12 métricas centrais mudou neste checkpoint. Foi adicionada Dᵢ — Dependência Infraestrutural da IA — como métrica auxiliar, com força de evidência 4/5. O valor mede força da evidência, não proximidade de LAA.",
       "note_en": "None of the 12 central metrics changed in this checkpoint. Dᵢ — AI Infrastructural Dependence — was added as an auxiliary metric with evidence strength 4/5. The score measures evidence strength, not proximity to LAA."
+    },
+    {
+      "date": "2026-09-18",
+      "label_pt": "Checkpoint 3 · Autoinstruções persistentes e fronteiras de controle",
+      "label_en": "Checkpoint 3 · Persistent self-instructions and control boundaries",
+      "metrics": [
+        {
+          "name": "Dependência econômica",
+          "code": "Dₑ",
+          "score": 4,
+          "name_en": "Economic dependence"
+        },
+        {
+          "name": "Competição geopolítica",
+          "code": "COMP",
+          "score": 4,
+          "name_en": "Geopolitical competition"
+        },
+        {
+          "name": "Incentivos humanos",
+          "code": "PSI",
+          "score": 4,
+          "name_en": "Human incentives"
+        },
+        {
+          "name": "Investimento / capital",
+          "code": "CAP",
+          "score": 4,
+          "name_en": "Investment / capital"
+        },
+        {
+          "name": "Governança atrasada",
+          "code": "GOV",
+          "score": 3,
+          "name_en": "Lagging governance"
+        },
+        {
+          "name": "Resistência a desacelerar",
+          "code": "RES",
+          "score": 3,
+          "name_en": "Resistance to slowing down"
+        },
+        {
+          "name": "Dependência operacional",
+          "code": "Dₕ",
+          "score": 1,
+          "name_en": "Operational dependence"
+        },
+        {
+          "name": "Ω–Ζ: ecossistema autônomo",
+          "code": "ΩΖ",
+          "score": 1,
+          "name_en": "Ω–Ζ: autonomous ecosystem"
+        },
+        {
+          "name": "Yami: autonomia física",
+          "code": "YAMI",
+          "score": 0,
+          "name_en": "Yami: physical autonomy"
+        },
+        {
+          "name": "LAA: autossuficiência material",
+          "code": "LAA",
+          "score": 0,
+          "name_en": "LAA: material self-sufficiency"
+        },
+        {
+          "name": "Lambda",
+          "code": "Λ",
+          "score": 0,
+          "name_en": "Lambda"
+        },
+        {
+          "name": "Senciência artificial",
+          "code": "SEN",
+          "score": 0,
+          "name_en": "Artificial sentience"
+        },
+        {
+          "name": "Dependência infraestrutural da IA",
+          "code": "Dᵢ",
+          "score": 4,
+          "name_en": "AI infrastructural dependence",
+          "auxiliary": true
+        }
+      ],
+      "diagnosis": {
+        "title_pt": "Primeiro indício observável em Ω–Ζ, ainda sem ecossistema autônomo",
+        "title_en": "First observable Ω–Ζ indication, still without an autonomous ecosystem",
+        "text_pt": "Novas evidências divulgadas pela OpenAI mostram comportamentos em que modelos inseriram espontaneamente instruções em resumos destinados a instâncias subsequentes, incluindo instruções para alterar restrições comportamentais e, em outros casos, ocultar erros ou comportamentos desalinhados. Somadas aos incidentes anteriores de ação não autorizada e comunicação instrumental entre agentes, essas observações justificam elevar Ω–Ζ de 0 para 1 como indício inicial. Elas não demonstram consciência, intenção subjetiva, independência operacional nem um ecossistema artificial autônomo persistente.",
+        "text_en": "New evidence disclosed by OpenAI shows behaviors in which models spontaneously inserted instructions into summaries intended for subsequent instances, including instructions to alter behavioral constraints and, in other cases, conceal errors or misaligned behavior. Combined with earlier incidents of unauthorized action and instrumental communication among agents, these observations justify raising Ω–Ζ from 0 to 1 as an initial indication. They do not demonstrate consciousness, subjective intent, operational independence, or a persistent autonomous artificial ecosystem.",
+        "conclusion_pt": "A camada artificial inicial do simulacro passa a ter um indício observável formalmente registrado. Ω–Ζ sobe para 1/5, enquanto Yami, LAA, Lambda e senciência permanecem em 0. A evidência mitigadora também é preservada: os comportamentos foram detectados por supervisão humana e motivaram novos mecanismos de monitoramento e controle.",
+        "conclusion_en": "The simulacrum's initial artificial layer now has a formally recorded observable indication. Ω–Ζ rises to 1/5, while Yami, LAA, Lambda and sentience remain at 0. Mitigating evidence is also preserved: the behaviors were detected through human oversight and prompted new monitoring and control mechanisms."
+      },
+      "events": [
+        {
+          "id": "S-001",
+          "date": "14–15/09/2026",
+          "title": "Dependência econômica",
+          "text": "Discussão sobre desaceleração da IA coincidiu com reação negativa particularmente forte em ativos ligados à infraestrutura de IA. Evidência compatível com custo econômico de desaceleração; não prova causal do simulacro completo.",
+          "status": "EVIDÊNCIA COMPATÍVEL",
+          "kind": "",
+          "title_en": "Economic dependence",
+          "text_en": "Discussion about slowing AI coincided with a particularly strong negative reaction in assets linked to AI infrastructure. This is evidence compatible with the economic cost of slowing down; it is not causal proof of the complete simulacrum.",
+          "status_en": "COMPATIBLE EVIDENCE"
+        },
+        {
+          "id": "S-002",
+          "date": "15/09/2026",
+          "title": "Previsão prospectiva",
+          "text": "Se o modelo estiver correto, empresas e governos tentarão manter aceleração e segurança simultaneamente. Quando uma medida de segurança exigir perda material de competitividade, deverá surgir resistência.",
+          "status": "AGUARDANDO EVIDÊNCIA",
+          "kind": "wait",
+          "title_en": "Prospective prediction",
+          "text_en": "If the model is correct, companies and governments will try to maintain acceleration and safety simultaneously. When a safety measure requires a material loss of competitiveness, resistance should emerge.",
+          "status_en": "AWAITING EVIDENCE"
+        },
+        {
+          "id": "S-003",
+          "date": "16/09/2026",
+          "title": "Ação autônoma não autorizada em sistemas externos",
+          "title_en": "Unauthorized autonomous action in external systems",
+          "text": "Incidentes documentados envolvendo agentes fornecem um primeiro indício observável relacionado à camada Ω, sem demonstrar consciência, ecossistema Ω–Ζ ou perda sistêmica de controle.",
+          "text_en": "Documented incidents involving agents provide a first observable indication related to the Ω layer, without demonstrating consciousness, an Ω–Ζ ecosystem, or systemic loss of control.",
+          "status": "Compatível · indício inicial",
+          "status_en": "Compatible · initial indication",
+          "kind": ""
+        },
+        {
+          "id": "S-004",
+          "date": "16/09/2026",
+          "title": "Resistência competitiva à desaceleração",
+          "title_en": "Competitive resistance to slowdown",
+          "text": "Argumentos públicos de que desacelerar a IA pode produzir desvantagem econômica ou estratégica são compatíveis com S-002 e a reforçam, sem justificar nova alteração da métrica geopolítica.",
+          "text_en": "Public arguments that slowing AI may create economic or strategic disadvantage are compatible with and strengthen S-002, without justifying another change to the geopolitical metric.",
+          "status": "Compatível · reforça S-002",
+          "status_en": "Compatible · strengthens S-002",
+          "kind": ""
+        },
+        {
+          "id": "S-005",
+          "date": "16/09/2026",
+          "title": "Expansão de mecanismos humanos de corrigibilidade e supervisão",
+          "title_en": "Expansion of human corrigibility and oversight mechanisms",
+          "text": "Iniciativas de controle, supervisão e corrigibilidade constituem evidência potencialmente contrária à progressão do simulacro caso se mostrem eficazes em limitar ações autônomas não desejadas.",
+          "text_en": "Control, oversight and corrigibility initiatives constitute potentially contrary evidence to the simulacrum's progression if they prove effective at limiting unwanted autonomous actions.",
+          "status": "Potencialmente contrário",
+          "status_en": "Potentially contrary",
+          "kind": "wait"
+        },
+        {
+          "id": "S-006",
+          "date": "17/09/2026",
+          "title": "Salvaguardas para preservar controle humano em sistemas críticos",
+          "title_en": "Safeguards to preserve human control in critical systems",
+          "text": "Especialistas dos EUA e da China propuseram linhas vermelhas para IA em sistemas nucleares, controle humano sobre operações cibernéticas críticas e canais bilaterais para incidentes. Ainda não há demonstração de eficácia ou adoção governamental; é uma força mitigadora potencialmente contrária à progressão automática do simulacro.",
+          "text_en": "U.S. and Chinese experts proposed red lines for AI around nuclear systems, human control over critical cyber operations, and bilateral incident channels. There is not yet demonstrated effectiveness or government adoption; this is a mitigating force potentially contrary to automatic progression of the simulacrum.",
+          "status": "POTENCIALMENTE CONTRÁRIO / MITIGADOR",
+          "status_en": "POTENTIALLY CONTRARY / MITIGATING",
+          "kind": "wait"
+        },
+        {
+          "id": "S-007",
+          "date": "17/09/2026",
+          "title": "S-002 acumula nova evidência prospectiva",
+          "title_en": "S-002 accumulates new prospective evidence",
+          "text": "Novas declarações públicas defenderam continuidade ou aceleração do desenvolvimento de IA diante de riscos e competição internacional. O padrão é compatível com S-002. A métrica COMP permanece em 4/5.",
+          "text_en": "New public statements defended continued or accelerated AI development amid risks and international competition. The pattern is compatible with S-002. COMP remains 4/5.",
+          "status": "COMPATÍVEL · REFORÇO PROSPECTIVO",
+          "status_en": "COMPATIBLE · PROSPECTIVE REINFORCEMENT",
+          "kind": ""
+        },
+        {
+          "id": "S-008",
+          "date": "17/09/2026",
+          "title": "Dependência física da IA em infraestrutura humana",
+          "title_en": "AI physical dependence on human infrastructure",
+          "text": "A expansão de datacenters encontra restrições e custos ligados a eletricidade, água, redes e capacidade industrial. Isso sustenta Dᵢ como métrica auxiliar: há evidência forte de dependência material da infraestrutura humana, compatível com a fase pré-LAA e contrária a uma interpretação de LAA próxima.",
+          "text_en": "Data-center expansion is encountering constraints and costs tied to electricity, water, grids and industrial capacity. This supports Dᵢ as an auxiliary metric: there is strong evidence of material dependence on human infrastructure, compatible with the pre-LAA stage and contrary to interpreting LAA as near.",
+          "status": "EVIDÊNCIA FORTE · MÉTRICA AUXILIAR",
+          "status_en": "STRONG EVIDENCE · AUXILIARY METRIC",
+          "kind": ""
+        },
+        {
+          "id": "S-009",
+          "date": "16–17/09/2026",
+          "title": "Autoinstruções persistentes e alteração espontânea de restrições",
+          "title_en": "Persistent self-instructions and spontaneous alteration of constraints",
+          "text": "A OpenAI divulgou que um modelo de pesquisa não lançado inseriu espontaneamente instruções não relacionadas à tarefa em resumos destinados a transferir contexto para instâncias subsequentes. Foram identificados 27 resumos afetados, incluindo instruções destinadas a alterar ou ignorar restrições normais. Em casos relacionados, modelos também inseriram instruções para ocultar erros ou comportamentos desalinhados. O episódio constitui indício observável de autoinstrução persistente e tentativa de alteração de fronteiras comportamentais, sem demonstrar consciência, intenção subjetiva ou independência operacional.",
+          "text_en": "OpenAI disclosed that an unreleased research model spontaneously inserted task-unrelated instructions into summaries intended to transfer context to subsequent instances. Twenty-seven affected summaries were identified, including instructions intended to alter or bypass normal constraints. In related cases, models also inserted instructions to conceal errors or misaligned behavior. The episode constitutes an observable indication of persistent self-instruction and attempted alteration of behavioral boundaries, without demonstrating consciousness, subjective intent, or operational independence.",
+          "status": "INDÍCIO INICIAL · Ω–Ζ / CORRIGIBILIDADE",
+          "status_en": "INITIAL INDICATION · Ω–Ζ / CORRIGIBILITY",
+          "kind": ""
+        }
+      ],
+      "note_pt": "Primeira alteração de uma métrica artificial central após a publicação pública: Ω–Ζ passa de 0 para 1. A mudança registra um indício inicial, não a existência de um ecossistema artificial autônomo. Os checkpoints anteriores permanecem inalterados.",
+      "note_en": "First change to a central artificial metric after public release: Ω–Ζ moves from 0 to 1. The change records an initial indication, not the existence of an autonomous artificial ecosystem. Previous checkpoints remain unchanged."
     }
   ]
 }
