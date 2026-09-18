@@ -1,5 +1,5 @@
 {
-  "version": "1.9",
+  "version": "1.10",
   "page_size": 6,
   "scale": {
     "min": 0,
@@ -505,7 +505,26 @@
           "name_en": "Ω–Ζ: agentic interaction and coordination",
           "trend": "up2",
           "trend_reason_pt": "Acúmulo rápido de evidências independentes de autoinstrução persistente, comunicação instrumental entre agentes e ação autônoma não autorizada, ainda sem ecossistema artificial autônomo.",
-          "trend_reason_en": "Rapid accumulation of independent evidence involving persistent self-instruction, instrumental communication among agents and unauthorized autonomous action, still without an autonomous artificial ecosystem."
+          "trend_reason_en": "Rapid accumulation of independent evidence involving persistent self-instruction, instrumental communication among agents and unauthorized autonomous action, still without an autonomous artificial ecosystem.",
+          "sublevels": {
+            "omega": {
+              "score": 1,
+              "label_pt": "Autonomia operacional",
+              "label_en": "Operational autonomy"
+            },
+            "zeta": {
+              "score": 1,
+              "label_pt": "Interação/coordenação",
+              "label_en": "Interaction/coordination"
+            },
+            "coordination_autonomy": {
+              "value": "E",
+              "label_pt": "Autonomia da coordenação",
+              "label_en": "Coordination autonomy",
+              "legend_pt": "H humana/orquestrada · M mista · E emergente/não especificada",
+              "legend_en": "H human/orchestrated · M mixed · E emergent/not specified"
+            }
+          }
         },
         {
           "name": "Yami: autonomia física",
@@ -654,31 +673,45 @@
   ],
   "trend_scale": {
     "down2": {
-      "symbol": "↓↓",
+      "symbol": "T−2",
       "pt": "regressão forte",
       "en": "strong regression"
     },
     "down": {
-      "symbol": "↓",
+      "symbol": "T−1",
       "pt": "regressão",
       "en": "regression"
     },
     "flat": {
-      "symbol": "→",
+      "symbol": "T0",
       "pt": "estável",
       "en": "stable"
     },
     "up": {
-      "symbol": "↑",
+      "symbol": "T+1",
       "pt": "avanço",
       "en": "advance"
     },
     "up2": {
-      "symbol": "↑↑",
+      "symbol": "T+2",
       "pt": "aceleração observável",
       "en": "observable acceleration"
     }
   },
-  "trend_method_pt": "A tendência é uma síntese observacional separada do nível de evidência. Ela registra direção e ritmo de acumulação das evidências e não é calculada automaticamente a partir da mudança do score. O Δscore é calculado separadamente pela interface em relação ao checkpoint anterior.",
-  "trend_method_en": "Trend is an observational summary separate from the evidence level. It records the direction and pace of evidence accumulation and is not calculated automatically from score changes. Δscore is calculated separately by the interface relative to the previous checkpoint."
+  "trend_method_pt": "A taxa/tendência observacional é separada do nível de evidência. T−2, T−1, T0, T+1 e T+2 registram direção e ritmo de acumulação das evidências; não representam derivada matemática nem são calculados automaticamente a partir do score. O Δscore é calculado separadamente pela interface em relação ao checkpoint anterior.",
+  "trend_method_en": "The observational rate/trend is separate from the evidence level. T−2, T−1, T0, T+1 and T+2 record the direction and pace of evidence accumulation; they are not a mathematical derivative and are not calculated automatically from the score. Δscore is calculated separately by the interface relative to the previous checkpoint.",
+  "omega_zeta_sublevels": {
+    "version": "1.0",
+    "introduced": "2026-09-18",
+    "pt": {
+      "omega": "Ω — Autonomia operacional: planejamento, uso de ferramentas, execução e persistência.",
+      "zeta": "Ζ — Interação/coordenação: troca funcional entre agentes, delegação, estado compartilhado e cooperação.",
+      "coordination_autonomy": "Aᶜ — Autonomia da coordenação: H = humana/orquestrada; M = mista; E = emergente/não especificada."
+    },
+    "en": {
+      "omega": "Ω — Operational autonomy: planning, tool use, execution and persistence.",
+      "zeta": "Ζ — Interaction/coordination: functional exchange among agents, delegation, shared state and cooperation.",
+      "coordination_autonomy": "Aᶜ — Coordination autonomy: H = human/orchestrated; M = mixed; E = emergent/not specified."
+    }
+  }
 }
