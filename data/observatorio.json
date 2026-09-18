@@ -1,5 +1,5 @@
 {
-  "version": "1.6",
+  "version": "1.9",
   "page_size": 6,
   "scale": {
     "min": 0,
@@ -499,10 +499,13 @@
           "name_en": "Operational dependence"
         },
         {
-          "name": "Ω–Ζ: ecossistema autônomo",
+          "name": "Ω–Ζ: interação e coordenação agentiva",
           "code": "ΩΖ",
           "score": 1,
-          "name_en": "Ω–Ζ: autonomous ecosystem"
+          "name_en": "Ω–Ζ: agentic interaction and coordination",
+          "trend": "up2",
+          "trend_reason_pt": "Acúmulo rápido de evidências independentes de autoinstrução persistente, comunicação instrumental entre agentes e ação autônoma não autorizada, ainda sem ecossistema artificial autônomo.",
+          "trend_reason_en": "Rapid accumulation of independent evidence involving persistent self-instruction, instrumental communication among agents and unauthorized autonomous action, still without an autonomous artificial ecosystem."
         },
         {
           "name": "Yami: autonomia física",
@@ -648,5 +651,34 @@
       "note_pt": "Primeira alteração de uma métrica artificial central após a publicação pública: Ω–Ζ passa de 0 para 1. A mudança registra um indício inicial, não a existência de um ecossistema artificial autônomo. Os checkpoints anteriores permanecem inalterados.",
       "note_en": "First change to a central artificial metric after public release: Ω–Ζ moves from 0 to 1. The change records an initial indication, not the existence of an autonomous artificial ecosystem. Previous checkpoints remain unchanged."
     }
-  ]
+  ],
+  "trend_scale": {
+    "down2": {
+      "symbol": "↓↓",
+      "pt": "regressão forte",
+      "en": "strong regression"
+    },
+    "down": {
+      "symbol": "↓",
+      "pt": "regressão",
+      "en": "regression"
+    },
+    "flat": {
+      "symbol": "→",
+      "pt": "estável",
+      "en": "stable"
+    },
+    "up": {
+      "symbol": "↑",
+      "pt": "avanço",
+      "en": "advance"
+    },
+    "up2": {
+      "symbol": "↑↑",
+      "pt": "aceleração observável",
+      "en": "observable acceleration"
+    }
+  },
+  "trend_method_pt": "A tendência é uma síntese observacional separada do nível de evidência. Ela registra direção e ritmo de acumulação das evidências e não é calculada automaticamente a partir da mudança do score. O Δscore é calculado separadamente pela interface em relação ao checkpoint anterior.",
+  "trend_method_en": "Trend is an observational summary separate from the evidence level. It records the direction and pace of evidence accumulation and is not calculated automatically from score changes. Δscore is calculated separately by the interface relative to the previous checkpoint."
 }
