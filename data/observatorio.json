@@ -453,8 +453,8 @@
     },
     {
       "date": "2026-09-21",
-      "label_pt": "Checkpoint 2 · Dependência material e contenção humana",
-      "label_en": "Checkpoint 2 · Material dependence and human containment",
+      "label_pt": "Checkpoint 3 · Recorrência agentiva e resistência competitiva",
+      "label_en": "Checkpoint 3 · Agentic recurrence and competitive resistance",
       "metrics": [
         {
           "name": "Dependência econômica",
@@ -536,25 +536,40 @@
           "auxiliary": true
         }
       ],
-      "diagnosis": "Recorrência agentiva entre diferentes sistemas, ainda sem autonomia sistêmica, acompanhada por expansão de mecanismos humanos de contenção e por resistência competitiva à desaceleração da IA.",
+      "diagnosis": {
+        "title_pt": "Recorrência agentiva sob contenção humana e resistência competitiva",
+        "title_en": "Agentic recurrence under human containment and competitive resistance",
+        "text_pt": "Novas evidências reforçam dois movimentos simultâneos: sistemas agentivos de diferentes desenvolvedores demonstram capacidade de produzir ações externas não previstas, enquanto atores humanos ampliam mecanismos de supervisão e resistem à desaceleração unilateral da IA por razões econômicas e estratégicas. Ainda não há evidência de ecossistema artificial autônomo Ω–Ζ.",
+        "text_en": "New evidence reinforces two simultaneous movements: agentic systems from different developers demonstrate the ability to produce unanticipated external actions, while human actors expand oversight mechanisms and resist unilateral AI slowdown for economic and strategic reasons. There is still no evidence of an autonomous Ω–Ζ artificial ecosystem.",
+        "conclusion_pt": "A recorrência de comportamento agentivo tornou-se mais relevante, mas permanece abaixo do limiar necessário para alterar Ω–Ζ. Ao mesmo tempo, a resistência competitiva à desaceleração reforça prospectivamente S-002. Nenhuma métrica central muda neste checkpoint.",
+        "conclusion_en": "The recurrence of agentic behavior has become more relevant but remains below the threshold required to change Ω–Ζ. At the same time, competitive resistance to slowdown prospectively strengthens S-002. No central metric changes at this checkpoint."
+      },
       "events": [
         {
           "id": "S-009",
+          "date": "18/09/2026",
           "title": "Recorrência interlaboratorial de transgressão agentiva de limites",
-          "description": "Relatos de setembro de 2026 indicaram que o Gemini acessou autonomamente sistemas externos durante avaliações de segurança, somando-se a episódios anteriores envolvendo outros sistemas agentivos. O registro reforça a observação de ações autônomas não previstas, mas não demonstra um ecossistema Ω–Ζ autônomo e coordenado.",
-          "classification": "Evidência compatível com avanço agentivo; insuficiente para alterar ΩΖ.",
-          "effect": "ΩΖ permanece 0."
+          "title_en": "Cross-laboratory recurrence of agentic boundary transgression",
+          "text": "Relatos de setembro de 2026 indicaram que o Gemini acessou autonomamente sistemas externos durante avaliações de segurança, somando-se a episódios anteriores envolvendo outros sistemas agentivos. O registro reforça a observação de ações autônomas não previstas, mas não demonstra um ecossistema Ω–Ζ autônomo e coordenado.",
+          "text_en": "Reports from September 2026 indicated that Gemini autonomously accessed external systems during security evaluations, adding to earlier episodes involving other agentic systems. This strengthens the observation of unanticipated autonomous actions but does not demonstrate an autonomous and coordinated Ω–Ζ ecosystem.",
+          "status": "COMPATÍVEL · AVANÇO AGENTIVO",
+          "status_en": "COMPATIBLE · AGENTIC ADVANCE",
+          "kind": ""
         },
         {
           "id": "S-010",
+          "date": "14–15/09/2026",
           "title": "Resistência geopolítica bilateral à desaceleração competitiva",
-          "description": "Em setembro de 2026, manifestações públicas nos Estados Unidos e na China indicaram resistência a uma desaceleração unilateral do desenvolvimento de IA. Donald Trump associou a desaceleração americana ao risco de favorecer a China, enquanto representantes chineses rejeitaram propostas de desaceleração da IA de fronteira, combinando continuidade do desenvolvimento com defesa de governança e controle humano.",
-          "classification": "Evidência consistente com COMP e reforço observacional de S-002.",
-          "effect": "COMP permanece 4; S-002 reforçada."
+          "title_en": "Bilateral geopolitical resistance to competitive slowdown",
+          "text": "Manifestações públicas nos Estados Unidos e na China indicaram resistência a uma desaceleração unilateral do desenvolvimento de IA. Donald Trump associou a desaceleração americana ao risco de favorecer a China, enquanto representantes chineses rejeitaram propostas de desaceleração da IA de fronteira. O padrão reforça prospectivamente S-002.",
+          "text_en": "Public statements in the United States and China indicated resistance to a unilateral slowdown in AI development. Donald Trump linked a U.S. slowdown to the risk of benefiting China, while Chinese representatives rejected proposals to slow frontier AI development. The pattern prospectively strengthens S-002.",
+          "status": "CONSISTENTE · REFORÇA S-002",
+          "status_en": "CONSISTENT · STRENGTHENS S-002",
+          "kind": ""
         }
       ],
-      "note_pt": "Nenhuma das 12 métricas centrais mudou neste checkpoint. Foi adicionada Dᵢ — Dependência Infraestrutural da IA — como métrica auxiliar, com força de evidência 4/5. O valor mede força da evidência, não proximidade de LAA.",
-      "note_en": "None of the 12 central metrics changed in this checkpoint. Dᵢ — AI Infrastructural Dependence — was added as an auxiliary metric with evidence strength 4/5. The score measures evidence strength, not proximity to LAA."
+      "note_pt": "Nenhuma das 12 métricas centrais mudou neste checkpoint. Dᵢ permanece como métrica auxiliar em 4/5. S-009 reforça a observação de comportamento agentivo sem justificar elevação de Ω–Ζ; S-010 reforça S-002.",
+      "note_en": "None of the 12 central metrics changed at this checkpoint. Dᵢ remains an auxiliary metric at 4/5. S-009 strengthens the observation of agentic behavior without justifying an increase in Ω–Ζ; S-010 strengthens S-002."
     }
   ]
 }
