@@ -1,5 +1,5 @@
 {
-  "version": "1.6",
+  "version": "1.7",
   "page_size": 6,
   "scale": {
     "min": 0,
@@ -570,6 +570,159 @@
       ],
       "note_pt": "Nenhuma das 12 métricas centrais mudou neste checkpoint. Dᵢ permanece como métrica auxiliar em 4/5. S-009 reforça a observação de comportamento agentivo sem justificar elevação de Ω–Ζ; S-010 reforça S-002.",
       "note_en": "None of the 12 central metrics changed at this checkpoint. Dᵢ remains an auxiliary metric at 4/5. S-009 strengthens the observation of agentic behavior without justifying an increase in Ω–Ζ; S-010 strengthens S-002."
+    },
+    {
+      "date": "2026-09-22",
+      "label_pt": "Checkpoint 4 · Contenção institucional, competição e expansão físico-agentiva",
+      "label_en": "Checkpoint 4 · Institutional containment, competition and physical-agentic expansion",
+      "metrics": [
+        {
+          "name": "Dependência econômica",
+          "code": "Dₑ",
+          "score": 4,
+          "name_en": "Economic dependence"
+        },
+        {
+          "name": "Competição geopolítica",
+          "code": "COMP",
+          "score": 4,
+          "name_en": "Geopolitical competition"
+        },
+        {
+          "name": "Incentivos humanos",
+          "code": "PSI",
+          "score": 4,
+          "name_en": "Human incentives"
+        },
+        {
+          "name": "Investimento / capital",
+          "code": "CAP",
+          "score": 4,
+          "name_en": "Investment / capital"
+        },
+        {
+          "name": "Governança atrasada",
+          "code": "GOV",
+          "score": 3,
+          "name_en": "Lagging governance"
+        },
+        {
+          "name": "Resistência a desacelerar",
+          "code": "RES",
+          "score": 3,
+          "name_en": "Resistance to slowing down"
+        },
+        {
+          "name": "Dependência operacional",
+          "code": "Dₕ",
+          "score": 1,
+          "name_en": "Operational dependence"
+        },
+        {
+          "name": "Ω–Ζ: ecossistema autônomo",
+          "code": "ΩΖ",
+          "score": 0,
+          "name_en": "Ω–Ζ: autonomous ecosystem"
+        },
+        {
+          "name": "Yami: autonomia física",
+          "code": "YAMI",
+          "score": 0,
+          "name_en": "Yami: physical autonomy"
+        },
+        {
+          "name": "LAA: autossuficiência material",
+          "code": "LAA",
+          "score": 0,
+          "name_en": "LAA: material self-sufficiency"
+        },
+        {
+          "name": "Lambda",
+          "code": "Λ",
+          "score": 0,
+          "name_en": "Lambda"
+        },
+        {
+          "name": "Senciência artificial",
+          "code": "SEN",
+          "score": 0,
+          "name_en": "Artificial sentience"
+        },
+        {
+          "name": "Dependência infraestrutural da IA",
+          "code": "Dᵢ",
+          "score": 4,
+          "name_en": "AI infrastructural dependence",
+          "auxiliary": true
+        }
+      ],
+      "diagnosis": {
+        "title_pt": "Contenção começa a se institucionalizar enquanto competição e capacidade agentiva continuam avançando",
+        "title_en": "Containment begins to institutionalize while competition and agentic capability continue to advance",
+        "text_pt": "As evidências de 22/09 mostram movimentos simultâneos e parcialmente opostos: EUA e China discutem um mecanismo de notificação para incidentes graves de IA; a competição tecnológica continua com novos chips e modelos; plataformas privadas impõem limites a agentes externos; e novas ferramentas aproximam agentes digitais da robótica. Também cresce a atenção institucional internacional aos riscos da IA. Nenhum desses fatos demonstra ecossistema Ω–Ζ autônomo, autonomia física ampla Yami, LAA, Lambda ou senciência.",
+        "text_en": "Evidence from September 22 shows simultaneous and partly opposing movements: the U.S. and China are discussing a notification mechanism for serious AI incidents; technological competition continues with new chips and models; private platforms are imposing limits on external agents; and new tools are bringing digital agents closer to robotics. International institutional attention to AI risks is also increasing. None of these facts demonstrates an autonomous Ω–Ζ ecosystem, broad Yami physical autonomy, LAA, Lambda, or sentience.",
+        "conclusion_pt": "A contenção começa a migrar de propostas para coordenação institucional, mas não substitui a aceleração competitiva. A agência digital e a infraestrutura de robótica avançam sob limites humanos ainda observáveis. Nenhuma métrica central muda neste checkpoint.",
+        "conclusion_en": "Containment is beginning to move from proposals toward institutional coordination, but it is not replacing competitive acceleration. Digital agency and robotics infrastructure are advancing under still-observable human limits. No central metric changes at this checkpoint."
+      },
+      "events": [
+        {
+          "id": "S-011",
+          "date": "21–22/09/2026",
+          "title": "EUA propõem mecanismo bilateral para incidentes de IA",
+          "title_en": "U.S. proposes bilateral mechanism for AI incidents",
+          "text": "Os Estados Unidos propuseram à China um mecanismo de notificação para incidentes de inteligência artificial que possam ameaçar a segurança nacional. A iniciativa representa avanço de propostas de contenção para discussão governamental concreta, embora ainda não demonstre implementação ou eficácia.",
+          "text_en": "The United States proposed to China a notification mechanism for artificial-intelligence incidents that could threaten national security. The initiative moves containment from proposals toward concrete government discussion, although implementation and effectiveness have not yet been demonstrated.",
+          "status": "POTENCIALMENTE CONTRÁRIO · CONTENÇÃO INSTITUCIONAL",
+          "status_en": "POTENTIALLY CONTRARY · INSTITUTIONAL CONTAINMENT",
+          "kind": "wait"
+        },
+        {
+          "id": "S-012",
+          "date": "22/09/2026",
+          "title": "Cooperação de segurança coexistindo com aceleração competitiva",
+          "title_en": "Safety cooperation coexisting with competitive acceleration",
+          "text": "Enquanto EUA e China discutem mecanismos de segurança para IA, a competição tecnológica permanece ativa. A Alibaba anunciou novas tecnologias de chips de IA e planos para modelos mais poderosos. O padrão é compatível com S-002: contenção e aceleração podem ocorrer simultaneamente quando desacelerar unilateralmente é percebido como desvantagem estratégica.",
+          "text_en": "While the U.S. and China discuss AI safety mechanisms, technological competition remains active. Alibaba announced new AI chip technologies and plans for more powerful models. The pattern is compatible with S-002: containment and acceleration can occur simultaneously when unilateral slowdown is perceived as a strategic disadvantage.",
+          "status": "COMPATÍVEL · REFORÇA S-002",
+          "status_en": "COMPATIBLE · STRENGTHENS S-002",
+          "kind": ""
+        },
+        {
+          "id": "S-013",
+          "date": "20–22/09/2026",
+          "title": "Amazon bloqueia agente externo não autorizado",
+          "title_en": "Amazon blocks unauthorized external agent",
+          "text": "A Amazon bloqueou o Muse, agente de IA da Meta, de realizar compras em sua plataforma, citando acesso não autorizado e preocupações de segurança, privacidade e transparência. O episódio demonstra simultaneamente expansão da capacidade de agentes para agir em serviços externos e a capacidade atual de operadores humanos de restringir esse acesso.",
+          "text_en": "Amazon blocked Meta's Muse AI agent from shopping on its platform, citing unauthorized access and security, privacy and transparency concerns. The episode simultaneously demonstrates expanding agent capability to act on external services and the current ability of human operators to restrict that access.",
+          "status": "EVIDÊNCIA DUPLA · AGÊNCIA + CONTENÇÃO",
+          "status_en": "DUAL EVIDENCE · AGENCY + CONTAINMENT",
+          "kind": ""
+        },
+        {
+          "id": "S-014",
+          "date": "22/09/2026",
+          "title": "Riscos de IA entram na agenda do Conselho de Segurança da ONU",
+          "title_en": "AI risks enter the UN Security Council agenda",
+          "text": "DeepSeek foi anunciada entre as empresas que apresentarão ao Conselho de Segurança da ONU uma sessão sobre riscos de inteligência artificial, ao lado de empresas americanas. O fato evidencia maior atenção institucional internacional, mas uma reunião, por si só, não demonstra governança efetiva.",
+          "text_en": "DeepSeek was announced among the companies set to brief the UN Security Council in a session on artificial-intelligence risks alongside U.S. companies. This indicates increased international institutional attention, but a meeting alone does not demonstrate effective governance.",
+          "status": "SINAL INSTITUCIONAL · EM OBSERVAÇÃO",
+          "status_en": "INSTITUTIONAL SIGNAL · UNDER OBSERVATION",
+          "kind": "wait"
+        },
+        {
+          "id": "S-015",
+          "date": "22/09/2026",
+          "title": "Ferramentas agentivas avançam em direção à robótica física",
+          "title_en": "Agentic tools advance toward physical robotics",
+          "text": "A NVIDIA lançou o Isaac ROS 5.0 com fluxos e ferramentas preparados para agentes no desenvolvimento de robótica, enquanto a Intrinsic abriu componentes centrais de sua infraestrutura para robôs inteligentes. Os lançamentos reduzem barreiras técnicas entre agentes digitais e sistemas físicos, mas ainda não constituem evidência de autonomia física ampla Yami.",
+          "text_en": "NVIDIA released Isaac ROS 5.0 with agent-ready workflows and tools for robotics development, while Intrinsic opened core components of its intelligent-robot infrastructure. These releases reduce technical barriers between digital agents and physical systems but do not yet constitute evidence of broad Yami physical autonomy.",
+          "status": "COMPATÍVEL · PRÉ-YAMI / EM OBSERVAÇÃO",
+          "status_en": "COMPATIBLE · PRE-YAMI / UNDER OBSERVATION",
+          "kind": "wait"
+        }
+      ],
+      "note_pt": "Nenhuma das 12 métricas centrais mudou. Dᵢ permanece auxiliar em 4/5. S-011 registra contenção interestatal em negociação; S-012 reforça S-002; S-013 registra simultaneamente agência operacional e contenção privada; S-014 amplia a atenção institucional internacional; S-015 registra redução de barreiras técnicas entre agentes digitais e robótica, sem elevar Yami.",
+      "note_en": "None of the 12 central metrics changed. Dᵢ remains auxiliary at 4/5. S-011 records interstate containment under negotiation; S-012 strengthens S-002; S-013 records operational agency and private containment simultaneously; S-014 expands international institutional attention; S-015 records reduced technical barriers between digital agents and robotics without raising Yami."
     }
   ]
 }
