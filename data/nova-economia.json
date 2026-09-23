@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "simulacro": "Simulacro III",
+    "nome": "Economia de Participação Universal",
+    "sigla": "EPU",
+    "versao": "1.0",
+    "data_base": "2026-09-23",
+    "natureza": "hipotese prospectiva acompanhada por evidencias observaveis",
+    "objetivo": "Testar se a automacao por IA e robotica, combinada com pressao climatica, desigualdade, fome, deficit educacional e concentracao geopolitica, esta empurrando a economia global para um modelo em que a sobrevivencia material depende menos do emprego tradicional."
+  },
+  "pergunta_abertura": "Se máquinas e inteligências artificiais produzirem grande parte da riqueza do mundo, de onde virá a renda de quem já não for necessário para produzi-la?",
+  "hipotese": {
+    "id": "EPU-01",
+    "texto": "A automação crescente da produção intelectual e física provocará uma redução estrutural da dependência do trabalho humano como mecanismo primário de distribuição de renda, favorecendo o surgimento de uma economia híbrida de mercado com propriedade privada, produção automatizada, serviços essenciais universais e distribuição social de parte dos ganhos de produtividade.",
+    "nao_afirma": [
+      "que o capitalismo desaparecerá",
+      "que o trabalho humano deixará de existir",
+      "que a transição será inevitável, uniforme ou pacífica",
+      "que renda básica universal isoladamente constituirá o novo modelo"
+    ]
+  },
+  "modelo_proposto": {
+    "nome": "Economia de Participação Universal",
+    "descricao": "Mercados, empresas, propriedade privada, investimento e diferenças de renda permanecem, mas um piso material e uma parcela dos ganhos de produtividade automatizada passam a ser distribuídos por mecanismos menos dependentes do emprego.",
+    "fluxo_atual": "trabalho -> salario -> consumo -> subsistencia",
+    "fluxo_hipotetico": "capital + humanos + IA + robos -> producao -> mercado + lucro + mecanismos sociais de participacao -> populacao"
+  },
+  "pilares": [
+    {
+      "id": "P1",
+      "nome": "Produção automatizada",
+      "descricao": "IA e robótica assumem parcela crescente da produção intelectual e física."
+    },
+    {
+      "id": "P2",
+      "nome": "Mercados permanecem",
+      "descricao": "Empresas, preços, concorrência, propriedade, investimento e empreendedorismo continuam relevantes."
+    },
+    {
+      "id": "P3",
+      "nome": "Participação social na produtividade",
+      "descricao": "Parte dos ganhos extraordinários de produtividade retorna à população por transferências, dividendos, fundos sociais, tributação ou mecanismos equivalentes."
+    },
+    {
+      "id": "P4",
+      "nome": "Serviços essenciais",
+      "descricao": "Acesso mínimo a alimentação, saúde, educação, conectividade, energia ou outros serviços essenciais torna-se menos dependente do emprego."
+    },
+    {
+      "id": "P5",
+      "nome": "Desvinculação parcial trabalho-subsistência",
+      "descricao": "Trabalhar continua elevando renda e oportunidades, mas perde gradualmente a condição de único caminho para a subsistência."
+    },
+    {
+      "id": "P6",
+      "nome": "Soberania tecnológica",
+      "descricao": "Computação, energia, dados, semicondutores e IA passam a ser tratados como infraestrutura econômica estratégica."
+    }
+  ],
+  "nivel_atual": 0,
+  "niveis": [
+    {
+      "nivel": 0,
+      "nome": "Continuidade",
+      "criterio": "O modelo dominante absorve IA e demais pressões sem mudança estrutural na relação trabalho-renda."
+    },
+    {
+      "nivel": 1,
+      "nome": "Pressão",
+      "criterio": "Automação, clima, desigualdade e concentração provocam respostas pontuais e debate institucional crescente."
+    },
+    {
+      "nivel": 2,
+      "nome": "Adaptação",
+      "criterio": "Reformas relevantes de jornada, proteção social, tributação, qualificação e redistribuição aparecem em múltiplas economias."
+    },
+    {
+      "nivel": 3,
+      "nome": "Transição",
+      "criterio": "Mecanismos permanentes começam a desvincular parcela relevante da renda e dos serviços essenciais do emprego tradicional."
+    },
+    {
+      "nivel": 4,
+      "nome": "Ruptura",
+      "criterio": "O emprego deixa de ser o principal mecanismo de distribuição de poder de compra em parte significativa das economias monitoradas."
+    },
+    {
+      "nivel": 5,
+      "nome": "Novo paradigma",
+      "criterio": "Uma arquitetura econômica estável e internacionalmente difundida apresenta características suficientemente distintas do modelo centrado no emprego para ser tratada como novo paradigma."
+    }
+  ],
+  "metricas": {
+    "ITE": {
+      "nome": "Índice de Transição Econômica",
+      "escala": "0-100",
+      "valor_inicial": 0,
+      "descricao": "Mede evidências de afastamento estrutural do modelo centrado em emprego-salário."
+    },
+    "DTE": {
+      "nome": "Dependência do Trabalho para Existência",
+      "escala": "100-0",
+      "valor_inicial": 100,
+      "descricao": "100 representa forte dependência da renda do trabalho para subsistência; queda sustentada indica desvinculação."
+    }
+  },
+  "vetores": [
+    "IA e automação",
+    "Trabalho e renda",
+    "Concentração econômica",
+    "Geopolítica e grandes potências",
+    "Clima, energia e recursos",
+    "Fome, pobreza, alfabetização e educação",
+    "Resposta institucional e novos mecanismos econômicos"
+  ],
+  "validacao": [
+    {
+      "id": "V01",
+      "sinal": "Queda estrutural da necessidade de trabalho humano por unidade produzida",
+      "efeito": "confirma"
+    },
+    {
+      "id": "V02",
+      "sinal": "Ganhos de produtividade por IA acompanhados de redução persistente de emprego ou horas em setores relevantes",
+      "efeito": "confirma"
+    },
+    {
+      "id": "V03",
+      "sinal": "Expansão permanente de renda mínima, dividendos sociais ou transferências desvinculadas de emprego",
+      "efeito": "confirma"
+    },
+    {
+      "id": "V04",
+      "sinal": "Expansão de serviços essenciais universais financiados por novas bases tributárias ou ganhos de produtividade",
+      "efeito": "confirma"
+    },
+    {
+      "id": "V05",
+      "sinal": "Tributação, fundos públicos ou mecanismos de participação ligados a capital, automação, dados ou IA",
+      "efeito": "confirma"
+    },
+    {
+      "id": "V06",
+      "sinal": "Redução sustentada da jornada sem queda proporcional de padrão de vida",
+      "efeito": "confirma"
+    },
+    {
+      "id": "V07",
+      "sinal": "Emprego e salários continuam crescendo proporcionalmente à produtividade apesar da automação avançada",
+      "efeito": "refuta"
+    },
+    {
+      "id": "V08",
+      "sinal": "Novas ocupações humanas absorvem de forma duradoura a maior parte dos trabalhadores deslocados",
+      "efeito": "refuta"
+    },
+    {
+      "id": "V09",
+      "sinal": "Transferências universais permanecem marginais ou temporárias mesmo com automação elevada",
+      "efeito": "refuta"
+    },
+    {
+      "id": "V10",
+      "sinal": "Concentração tecnológica cresce sem mecanismos compensatórios, produzindo modelo hiperconcentrado em vez da EPU",
+      "efeito": "alternativa"
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "C0",
+      "estado": "aberto",
+      "titulo": "Marco Zero",
+      "pergunta": "O vínculo emprego -> renda -> subsistência continua sendo a arquitetura dominante?",
+      "resultado": "A acompanhar"
+    },
+    {
+      "id": "C1",
+      "estado": "pendente",
+      "titulo": "Pressão mensurável",
+      "pergunta": "Há evidência internacional persistente de que IA reduz a necessidade relativa de trabalho humano?"
+    },
+    {
+      "id": "C2",
+      "estado": "pendente",
+      "titulo": "Resposta econômica",
+      "pergunta": "Múltiplos países criaram mecanismos permanentes de distribuição menos dependentes do emprego?"
+    },
+    {
+      "id": "C3",
+      "estado": "pendente",
+      "titulo": "Mudança estrutural",
+      "pergunta": "A participação econômica básica passou a depender menos do salário em parcela relevante da população?"
+    },
+    {
+      "id": "C4",
+      "estado": "pendente",
+      "titulo": "Novo paradigma",
+      "pergunta": "O conjunto das mudanças forma uma arquitetura econômica distinta, estável e replicada internacionalmente?"
+    }
+  ],
+  "evidencias": [],
+  "sinais_de_paradigma": [
+    "renda desvinculada do emprego",
+    "dividendos sociais ou fundos soberanos tecnológicos",
+    "tributação relacionada à automação, IA ou capital altamente automatizado",
+    "redução estrutural de jornada",
+    "serviços universais ampliados",
+    "redistribuição explícita de ganhos de produtividade",
+    "infraestrutura pública ou compartilhada de IA e computação",
+    "novas formas de propriedade econômica ou participação coletiva"
+  ],
+  "alternativas": [
+    {
+      "id": "A1",
+      "nome": "Capitalismo adaptativo",
+      "descricao": "O modelo atual absorve a IA com novas ocupações e proteção social sem mudar sua estrutura central."
+    },
+    {
+      "id": "A2",
+      "nome": "Capitalismo hiperconcentrado",
+      "descricao": "Automação amplia a concentração de renda, infraestrutura e poder econômico sem distribuição equivalente."
+    },
+    {
+      "id": "A3",
+      "nome": "Fragmentação por blocos",
+      "descricao": "Não surge um modelo global; diferentes potências adotam arquiteturas econômicas incompatíveis."
+    }
+  ],
+  "resumo": {
+    "estado": "Hipótese aberta",
+    "texto": "A versão 1.0 estabelece o modelo a ser testado e os critérios de confirmação, refutação e alternativas. Nenhuma conclusão é atribuída antes da entrada sistemática de evidências.",
+    "tendencia": "indeterminada",
+    "T1": "não calculado",
+    "T2": "não calculado"
+  }
+}
