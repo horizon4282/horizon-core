@@ -3,7 +3,7 @@
     "simulacro": "Simulacro III",
     "nome": "Economia de Participação Universal",
     "sigla": "EPU",
-    "versao": "1.0",
+    "versao": "1.1",
     "data_base": "2026-09-23",
     "natureza": "hipotese prospectiva acompanhada por evidencias observaveis",
     "objetivo": "Testar se a automacao por IA e robotica, combinada com pressao climatica, desigualdade, fome, deficit educacional e concentracao geopolitica, esta empurrando a economia global para um modelo em que a sobrevivencia material depende menos do emprego tradicional."
@@ -57,7 +57,7 @@
       "descricao": "Computação, energia, dados, semicondutores e IA passam a ser tratados como infraestrutura econômica estratégica."
     }
   ],
-  "nivel_atual": 0,
+  "nivel_atual": 1,
   "niveis": [
     {
       "nivel": 0,
@@ -94,16 +94,280 @@
     "ITE": {
       "nome": "Índice de Transição Econômica",
       "escala": "0-100",
-      "valor_inicial": 0,
-      "descricao": "Mede evidências de afastamento estrutural do modelo centrado em emprego-salário."
+      "valor_inicial": 15,
+      "status": "provisorio",
+      "descricao": "Leitura inicial da distância estrutural em relação ao modelo centrado em emprego-salário. Será recalculada quando a metodologia ponderada dos oito indicadores for consolidada."
     },
     "DTE": {
       "nome": "Dependência do Trabalho para Existência",
       "escala": "100-0",
-      "valor_inicial": 100,
-      "descricao": "100 representa forte dependência da renda do trabalho para subsistência; queda sustentada indica desvinculação."
+      "valor_inicial": 94,
+      "status": "provisorio",
+      "descricao": "O trabalho permanece a principal fonte de subsistência para a maioria das famílias; valor inicial conservador até consolidação da fórmula."
     }
   },
+  "indicadores_estruturais": [
+    {
+      "id": "AUT",
+      "nome": "IA e automação",
+      "valor": null,
+      "status": "aguardando_formula",
+      "leitura": "Pressão mensurável já existe, mas exposição à IA não equivale automaticamente a substituição de empregos.",
+      "componentes": [
+        {
+          "metrica": "Trabalhadores em ocupações com algum grau de exposição à IA generativa",
+          "valor": 25,
+          "unidade": "%",
+          "ano": 2025,
+          "fonte": "OIT",
+          "url": "https://www.ilo.org/publications/generative-ai-and-jobs-2025-update"
+        },
+        {
+          "metrica": "Empregos mundiais potencialmente afetados pela IA em definição ampla",
+          "valor": 40,
+          "unidade": "% aproximadamente",
+          "fonte": "FMI",
+          "observacao": "Métrica mais ampla que a estimativa da OIT; não deve ser somada diretamente."
+        },
+        {
+          "metrica": "Risco de automação por GenAI em países de alta renda",
+          "valor": 14.2,
+          "unidade": "% dos empregos",
+          "fonte": "Banco Mundial"
+        },
+        {
+          "metrica": "Risco de automação por GenAI em países de renda baixa e média",
+          "valor": 4.5,
+          "unidade": "% dos empregos",
+          "fonte": "Banco Mundial"
+        }
+      ]
+    },
+    {
+      "id": "TRB",
+      "nome": "Trabalho e renda",
+      "valor": null,
+      "status": "aguardando_formula",
+      "leitura": "A economia mundial continua fortemente dependente do trabalho como mecanismo de distribuição de renda.",
+      "componentes": [
+        {
+          "metrica": "Participação global da renda do trabalho no PIB",
+          "valor": 53.0,
+          "unidade": "%",
+          "ano": 2015,
+          "fonte": "OIT/ILOSTAT"
+        },
+        {
+          "metrica": "Participação global da renda do trabalho no PIB",
+          "valor": 52.6,
+          "unidade": "%",
+          "ano": 2025,
+          "fonte": "OIT/ILOSTAT",
+          "url": "https://ilostat.ilo.org/blog/the-world-of-work-and-the-2030-agenda-a-ten-year-review/"
+        }
+      ]
+    },
+    {
+      "id": "CON",
+      "nome": "Concentração econômica",
+      "valor": null,
+      "status": "aguardando_formula",
+      "leitura": "Há forte concentração de P&D, computação e infraestrutura de IA.",
+      "componentes": [
+        {
+          "metrica": "Participação de 100 empresas no P&D empresarial mundial em IA",
+          "valor": 40,
+          "unidade": "%",
+          "ano": 2022,
+          "fonte": "UNCTAD",
+          "url": "https://unctad.org/publication/technology-and-innovation-report-2025"
+        },
+        {
+          "metrica": "Capacidade mundial de data centers em países de alta renda",
+          "valor": 77,
+          "unidade": "%",
+          "ano": 2025,
+          "fonte": "Banco Mundial"
+        },
+        {
+          "metrica": "Capacidade mundial de data centers em países de baixa renda",
+          "valor": "<0.1",
+          "unidade": "%",
+          "ano": 2025,
+          "fonte": "Banco Mundial"
+        }
+      ]
+    },
+    {
+      "id": "GEO",
+      "nome": "Geopolítica e grandes potências",
+      "valor": null,
+      "status": "aguardando_formula",
+      "leitura": "Infraestrutura e propriedade tecnológica permanecem concentradas em poucas grandes economias.",
+      "componentes": [
+        {
+          "metrica": "Concentração de patentes de IA em EUA e China",
+          "valor": 60,
+          "unidade": "% aproximadamente",
+          "fonte": "UNCTAD",
+          "url": "https://unctad.org/publication/technology-and-innovation-report-2025"
+        },
+        {
+          "metrica": "Participação dos EUA entre os principais supercomputadores",
+          "valor": 33,
+          "unidade": "% aproximadamente",
+          "fonte": "UNCTAD"
+        },
+        {
+          "metrica": "Participação dos EUA na capacidade computacional mundial",
+          "valor": ">50",
+          "unidade": "%",
+          "fonte": "UNCTAD"
+        }
+      ]
+    },
+    {
+      "id": "CLI",
+      "nome": "Clima, energia e recursos",
+      "valor": null,
+      "status": "aguardando_formula",
+      "leitura": "A expansão da infraestrutura digital ocorre simultaneamente a pressões climáticas e energéticas.",
+      "componentes": [
+        {
+          "metrica": "Temperatura global acima da média pré-industrial 1850-1900",
+          "valor": 1.43,
+          "incerteza": 0.13,
+          "unidade": "°C",
+          "ano": 2025,
+          "fonte": "WMO",
+          "url": "https://wmo.int/sites/default/files/2026-03/State%20of%20the%20Climate%202025_1%20pager_final.pdf"
+        },
+        {
+          "metrica": "Consumo elétrico de data centers",
+          "valor": 460,
+          "unidade": "TWh aproximadamente",
+          "ano": 2024,
+          "fonte": "IEA"
+        },
+        {
+          "metrica": "Consumo elétrico projetado de data centers",
+          "valor": ">1000",
+          "unidade": "TWh",
+          "ano": 2030,
+          "tipo": "projecao",
+          "fonte": "IEA"
+        }
+      ]
+    },
+    {
+      "id": "HUM",
+      "nome": "Fome, pobreza e educação",
+      "valor": null,
+      "status": "aguardando_formula",
+      "leitura": "Persistem grandes déficits humanos e digitais apesar do avanço tecnológico.",
+      "componentes": [
+        {
+          "metrica": "Pessoas em situação de fome",
+          "valor": 673,
+          "unidade": "milhões",
+          "ano": 2024,
+          "fonte": "FAO",
+          "url": "https://www.fao.org/newsroom/detail/global-hunger-declines--but-rises-in-africa-and-western-asia--un-report/"
+        },
+        {
+          "metrica": "Pessoas abaixo da linha internacional de pobreza extrema de US$3/dia",
+          "valor": 838,
+          "unidade": "milhões",
+          "ano": 2022,
+          "fonte": "Banco Mundial"
+        },
+        {
+          "metrica": "Adultos sem habilidades básicas de alfabetização",
+          "valor": 739,
+          "unidade": "milhões",
+          "fonte": "UNESCO"
+        },
+        {
+          "metrica": "Pessoas offline",
+          "valor": 2.2,
+          "unidade": "bilhões",
+          "ano": 2025,
+          "fonte": "ITU"
+        }
+      ]
+    },
+    {
+      "id": "INS",
+      "nome": "Resposta institucional",
+      "valor": null,
+      "status": "aguardando_formula",
+      "leitura": "Governança e adaptação institucional estão crescendo, mas ainda há pouca evidência de redistribuição estrutural dos ganhos da automação.",
+      "componentes": [
+        {
+          "metrica": "Aplicação de novas etapas do AI Act da União Europeia",
+          "valor": "em vigor",
+          "data": "2026-08-02",
+          "fonte": "União Europeia",
+          "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/faq/when-does-enforcement-start"
+        },
+        {
+          "metrica": "Global Dialogue on AI Governance",
+          "valor": 163,
+          "unidade": "países/delegações participantes reportados",
+          "data": "2026-07",
+          "fonte": "ONU"
+        },
+        {
+          "metrica": "Cenários sobre IA, base tributária do trabalho e proteção social",
+          "valor": "debate prospectivo",
+          "ano": 2026,
+          "fonte": "FMI",
+          "url": "https://www.elibrary.imf.org/view/journals/068/2026/002/article-A001-en.xml"
+        }
+      ]
+    },
+    {
+      "id": "EPU",
+      "nome": "Sinais de novo paradigma",
+      "valor": null,
+      "status": "aguardando_formula",
+      "leitura": "Há condições de pressão compatíveis com a hipótese, mas ainda não há evidência suficiente de uma EPU estruturalmente estabelecida.",
+      "componentes": [
+        {
+          "sinal": "renda estruturalmente desvinculada do emprego",
+          "estado": "fraco"
+        },
+        {
+          "sinal": "dividendos sociais ligados à produtividade automatizada",
+          "estado": "fraco"
+        },
+        {
+          "sinal": "tributação estrutural de automação/IA para redistribuição",
+          "estado": "fraco"
+        },
+        {
+          "sinal": "redução estrutural e internacionalmente difundida da jornada",
+          "estado": "fraco"
+        },
+        {
+          "sinal": "serviços essenciais progressivamente desvinculados do emprego",
+          "estado": "parcial"
+        },
+        {
+          "sinal": "debate institucional sobre proteção social menos vinculada ao emprego",
+          "estado": "presente"
+        }
+      ]
+    }
+  ],
+  "historico_metricas": [
+    {
+      "data": "2026-09-23",
+      "ITE": 15,
+      "DTE": 94,
+      "status": "marco_zero_provisorio"
+    }
+  ],
   "vetores": [
     "IA e automação",
     "Trabalho e renda",
@@ -117,52 +381,62 @@
     {
       "id": "V01",
       "sinal": "Queda estrutural da necessidade de trabalho humano por unidade produzida",
-      "efeito": "confirma"
+      "efeito": "confirma",
+      "estado": "em_observacao"
     },
     {
       "id": "V02",
       "sinal": "Ganhos de produtividade por IA acompanhados de redução persistente de emprego ou horas em setores relevantes",
-      "efeito": "confirma"
+      "efeito": "confirma",
+      "estado": "em_observacao"
     },
     {
       "id": "V03",
       "sinal": "Expansão permanente de renda mínima, dividendos sociais ou transferências desvinculadas de emprego",
-      "efeito": "confirma"
+      "efeito": "confirma",
+      "estado": "fraco"
     },
     {
       "id": "V04",
       "sinal": "Expansão de serviços essenciais universais financiados por novas bases tributárias ou ganhos de produtividade",
-      "efeito": "confirma"
+      "efeito": "confirma",
+      "estado": "em_observacao"
     },
     {
       "id": "V05",
       "sinal": "Tributação, fundos públicos ou mecanismos de participação ligados a capital, automação, dados ou IA",
-      "efeito": "confirma"
+      "efeito": "confirma",
+      "estado": "fraco"
     },
     {
       "id": "V06",
       "sinal": "Redução sustentada da jornada sem queda proporcional de padrão de vida",
-      "efeito": "confirma"
+      "efeito": "confirma",
+      "estado": "em_observacao"
     },
     {
       "id": "V07",
       "sinal": "Emprego e salários continuam crescendo proporcionalmente à produtividade apesar da automação avançada",
-      "efeito": "refuta"
+      "efeito": "refuta",
+      "estado": "em_observacao"
     },
     {
       "id": "V08",
       "sinal": "Novas ocupações humanas absorvem de forma duradoura a maior parte dos trabalhadores deslocados",
-      "efeito": "refuta"
+      "efeito": "refuta",
+      "estado": "em_observacao"
     },
     {
       "id": "V09",
       "sinal": "Transferências universais permanecem marginais ou temporárias mesmo com automação elevada",
-      "efeito": "refuta"
+      "efeito": "refuta",
+      "estado": "presente"
     },
     {
       "id": "V10",
       "sinal": "Concentração tecnológica cresce sem mecanismos compensatórios, produzindo modelo hiperconcentrado em vez da EPU",
-      "efeito": "alternativa"
+      "efeito": "alternativa",
+      "estado": "presente"
     }
   ],
   "checkpoints": [
@@ -171,13 +445,14 @@
       "estado": "aberto",
       "titulo": "Marco Zero",
       "pergunta": "O vínculo emprego -> renda -> subsistência continua sendo a arquitetura dominante?",
-      "resultado": "A acompanhar"
+      "resultado": "Sim. O vínculo permanece dominante, embora existam pressões tecnológicas e institucionais crescentes."
     },
     {
       "id": "C1",
-      "estado": "pendente",
+      "estado": "aberto",
       "titulo": "Pressão mensurável",
-      "pergunta": "Há evidência internacional persistente de que IA reduz a necessidade relativa de trabalho humano?"
+      "pergunta": "Há evidência internacional persistente de que IA reduz a necessidade relativa de trabalho humano?",
+      "resultado": "Há exposição e potencial de transformação mensuráveis; substituição estrutural global ainda não está demonstrada."
     },
     {
       "id": "C2",
@@ -198,7 +473,52 @@
       "pergunta": "O conjunto das mudanças forma uma arquitetura econômica distinta, estável e replicada internacionalmente?"
     }
   ],
-  "evidencias": [],
+  "evidencias": [
+    {
+      "id": "E001",
+      "titulo": "Exposição global do trabalho à IA generativa",
+      "efeito": "confirma",
+      "forca": "moderada",
+      "fonte": "OIT",
+      "ano": 2025,
+      "resumo": "Um em cada quatro trabalhadores está em ocupação com algum grau de exposição à GenAI; transformação é mais provável que substituição completa."
+    },
+    {
+      "id": "E002",
+      "titulo": "Concentração do P&D empresarial em IA",
+      "efeito": "alternativa",
+      "forca": "forte",
+      "fonte": "UNCTAD",
+      "ano": 2022,
+      "resumo": "100 empresas responderam por cerca de 40% do P&D empresarial mundial em IA."
+    },
+    {
+      "id": "E003",
+      "titulo": "Concentração da infraestrutura de data centers",
+      "efeito": "alternativa",
+      "forca": "forte",
+      "fonte": "Banco Mundial",
+      "ano": 2025,
+      "resumo": "Países de alta renda detinham cerca de 77% da capacidade mundial de data centers."
+    },
+    {
+      "id": "E004",
+      "titulo": "Persistência de déficits humanos básicos",
+      "efeito": "confirma",
+      "forca": "contextual",
+      "fonte": "FAO / Banco Mundial / UNESCO / ITU",
+      "resumo": "Fome, pobreza, analfabetismo e exclusão digital permanecem em grande escala enquanto a capacidade tecnológica cresce."
+    },
+    {
+      "id": "E005",
+      "titulo": "Resposta institucional internacional à IA",
+      "efeito": "confirma",
+      "forca": "fraca",
+      "fonte": "UE / ONU / FMI",
+      "ano": 2026,
+      "resumo": "Governança da IA e cenários de adaptação fiscal e social avançam, mas ainda não configuram redistribuição estrutural dos ganhos de automação."
+    }
+  ],
   "sinais_de_paradigma": [
     "renda desvinculada do emprego",
     "dividendos sociais ou fundos soberanos tecnológicos",
@@ -227,10 +547,14 @@
     }
   ],
   "resumo": {
-    "estado": "Hipótese aberta",
-    "texto": "A versão 1.0 estabelece o modelo a ser testado e os critérios de confirmação, refutação e alternativas. Nenhuma conclusão é atribuída antes da entrada sistemática de evidências.",
-    "tendencia": "indeterminada",
-    "T1": "não calculado",
-    "T2": "não calculado"
+    "estado": "Pressão mensurável",
+    "texto": "O Marco Zero identifica pressões reais de automação, concentração tecnológica, clima, desigualdade de acesso e resposta institucional. Entretanto, o trabalho continua sendo o mecanismo dominante de distribuição de renda e ainda não há evidência suficiente de uma Economia de Participação Universal estabelecida. A hipótese permanece aberta.",
+    "tendencia": "pressão crescente",
+    "T1": "sinais de adaptação institucional",
+    "T2": "transição estrutural ainda não demonstrada"
+  },
+  "metodologia": {
+    "nota": "Os dados observados e os índices derivados são mantidos separados. Valores AUT, TRB, CON, GEO, CLI, HUM, INS e EPU permanecem nulos até que pesos, normalização e limites sejam formalmente definidos.",
+    "proximo_passo": "Definir fórmula reproduzível 0-100 para cada indicador e então calcular o Marco Zero definitivo."
   }
 }
