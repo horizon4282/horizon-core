@@ -1,0 +1,292 @@
+{
+  "meta": {
+    "projeto": "SIMULACRO 150",
+    "versao": "1.4",
+    "atualizado_em": "2026-09-23",
+    "modo": "observatorio_longitudinal",
+    "coleta_automatica": false
+  },
+  "hipotese": {
+    "texto": "Já nasceu o ser humano que viverá 150 anos ou mais?",
+    "alvo_anos": 150,
+    "regra": "O estado da hipótese muda somente com evidências reais verificadas. Evidências favoráveis e contrárias permanecem no histórico."
+  },
+  "estado_observado": {
+    "recorde_historico": {
+      "pessoa": "Jeanne Calment",
+      "nascimento": "1875-02-21",
+      "falecimento": "1997-08-04",
+      "anos": 122,
+      "dias": 164,
+      "anos_decimais": 122.449,
+      "status": "validado",
+      "fonte_id": "GWR-CALMENT"
+    },
+    "mais_velho_vivo": {
+      "pessoa": "Ethel Caterham",
+      "nascimento": "1909-08-21",
+      "idade_anos": 117,
+      "idade_dias_apos_aniversario": 33,
+      "status": "validado",
+      "fonte_id": "GWR-CATERHAM"
+    },
+    "caso_em_validacao": {
+      "pessoa": "José Flores",
+      "nascimento_declarado": "1907-07-11",
+      "idade_reivindicada_anos": 119,
+      "status": "pendente",
+      "fonte_id": "REUTERS-FLORES"
+    },
+    "delta_150_anos": 27.551,
+    "percentual_cronologico_do_marco": 81.63,
+    "nota_percentual": "Mede apenas a distância cronológica entre o recorde validado e 150 anos; não é probabilidade nem grau de validação científica."
+  },
+  "metodo": {
+    "descricao": "Matriz de validação baseada em evidências observadas. Os níveis não representam probabilidade de viver 150 anos.",
+    "escala_validacao": {
+      "min": 0,
+      "max": 5,
+      "rotulos": [
+        "0 — sem evidência",
+        "1 — indício inicial",
+        "2 — evidência experimental",
+        "3 — evidência humana limitada",
+        "4 — evidência humana robusta/reproduzida",
+        "5 — efeito populacional observado"
+      ]
+    }
+  },
+  "validacoes": [
+    {
+      "id": "V1",
+      "nome": "Demografia",
+      "nivel": 2,
+      "descricao": "Nascimentos, mortes, população e estrutura etária.",
+      "criterio": "Acompanhar se a composição populacional amplia o contingente que alcança idades extremas.",
+      "evidencias": [
+        "EV-0005"
+      ]
+    },
+    {
+      "id": "V2",
+      "nome": "Longevidade real",
+      "nivel": 2,
+      "descricao": "Expectativa de vida, centenários, supercentenários e recordes validados.",
+      "criterio": "Detectar deslocamento real da fronteira de sobrevivência humana.",
+      "evidencias": [
+        "EV-0001",
+        "EV-0002",
+        "EV-0006",
+        "EV-0007"
+      ]
+    },
+    {
+      "id": "V3",
+      "nome": "Mortalidade",
+      "nivel": 2,
+      "descricao": "Mortalidade por idade e causas de morte, sobretudo em idades avançadas.",
+      "criterio": "Verificar redução sustentada do risco de morte em idades extremas.",
+      "evidencias": [
+        "EV-0002",
+        "EV-0003"
+      ]
+    },
+    {
+      "id": "V4",
+      "nome": "Medicina",
+      "nivel": 2,
+      "descricao": "Prevenção, diagnóstico, medicamentos, tratamentos, técnicas e procedimentos.",
+      "criterio": "Registrar avanços clínicos que aumentem sobrevivência e depois procurar efeito populacional.",
+      "evidencias": [
+        "EV-0004"
+      ]
+    },
+    {
+      "id": "V5",
+      "nome": "Biotecnologia",
+      "nivel": 1,
+      "descricao": "Terapia gênica, células, senolíticos, reprogramação e mecanismos do envelhecimento.",
+      "criterio": "Exigir evidência humana antes de promover avanços de nível alto.",
+      "evidencias": [
+        "EV-0004"
+      ]
+    },
+    {
+      "id": "V6",
+      "nome": "Regeneração",
+      "nivel": 1,
+      "descricao": "Regeneração, transplantes, órgãos artificiais e reparação tecidual.",
+      "criterio": "Medir ganho funcional e de sobrevivência em humanos.",
+      "evidencias": []
+    },
+    {
+      "id": "V7",
+      "nome": "Alimentação",
+      "nivel": 1,
+      "descricao": "Nutrição, indústria alimentícia e mudanças com efeito mensurável na saúde.",
+      "criterio": "Não pontuar alegações comerciais; exigir resultados epidemiológicos ou clínicos robustos.",
+      "evidencias": []
+    },
+    {
+      "id": "V8",
+      "nome": "Bem-estar",
+      "nivel": 2,
+      "descricao": "Atividade física, sono, obesidade, tabaco, álcool, prevenção e ambiente.",
+      "criterio": "Acompanhar mudanças populacionais associadas a mortalidade e vida saudável.",
+      "evidencias": [
+        "EV-0005"
+      ]
+    },
+    {
+      "id": "V9",
+      "nome": "Healthspan",
+      "nivel": 2,
+      "descricao": "Anos vividos com saúde, autonomia e capacidade funcional.",
+      "criterio": "Separar viver mais de viver mais tempo com saúde.",
+      "evidencias": [
+        "EV-0005"
+      ]
+    },
+    {
+      "id": "V10",
+      "nome": "Ponte para 150",
+      "nivel": 0,
+      "descricao": "Convergência entre realidade demográfica e capacidade tecnológica.",
+      "criterio": "Só avança quando V1–V9, em conjunto, sustentarem uma trajetória observável compatível com 150+.",
+      "evidencias": [
+        "EV-0002",
+        "EV-0003",
+        "EV-0004"
+      ]
+    }
+  ],
+  "evidencias": [
+    {
+      "id": "EV-0001",
+      "data": "1997-08-04",
+      "categoria": "longevidade_humana",
+      "titulo": "Recorde humano validado: 122 anos e 164 dias",
+      "direcao": "observada",
+      "fonte_id": "GWR-CALMENT",
+      "nota": "Define a fronteira histórica validada; não demonstra que 150 anos seja alcançável."
+    },
+    {
+      "id": "EV-0002",
+      "data": "2024-10-07",
+      "categoria": "demografia",
+      "titulo": "Ganhos de expectativa de vida desaceleraram nas populações longevas analisadas",
+      "direcao": "contraria",
+      "fonte_id": "NATURE-2024-00702",
+      "nota": "A análise de 1990–2019 encontrou desaceleração dos ganhos de longevidade e maior resistência a novas melhorias."
+    },
+    {
+      "id": "EV-0003",
+      "data": "2024-10-07",
+      "categoria": "mortalidade",
+      "titulo": "Extensão radical exigiria reduções extraordinárias da mortalidade",
+      "direcao": "contraria",
+      "fonte_id": "NATURE-2024-00702",
+      "nota": "O estudo mostra que uma expectativa de vida de 110 anos exigiria mudanças muito além das tendências observadas."
+    },
+    {
+      "id": "EV-0004",
+      "data": "2024-10-07",
+      "categoria": "gerosciencia",
+      "titulo": "Desacelerar biologicamente o envelhecimento aparece como condição crítica",
+      "direcao": "condicional",
+      "fonte_id": "NATURE-2024-00702",
+      "nota": "Avanços em gerociência são relevantes, mas ainda precisam produzir efeito humano e populacional demonstrável."
+    },
+    {
+      "id": "EV-0005",
+      "data": "2024-05-21",
+      "categoria": "saude_global",
+      "titulo": "OMS mantém acompanhamento integrado de expectativa de vida, vida saudável e fatores de saúde",
+      "direcao": "observada",
+      "fonte_id": "WHO-WHS-2024",
+      "nota": "A base de saúde global permite acompanhar conjuntamente sobrevivência e healthspan, incluindo efeitos recentes sobre expectativa de vida."
+    },
+    {
+      "id": "EV-0006",
+      "data": "2026-08-21",
+      "categoria": "longevidade_humana",
+      "titulo": "Ethel Caterham completa 117 anos",
+      "direcao": "observada",
+      "fonte_id": "GWR-CATERHAM",
+      "nota": "É a pessoa viva mais velha validada. Sua idade acompanha a fronteira humana viva, mas não altera o recorde histórico de 122 anos e 164 dias."
+    },
+    {
+      "id": "EV-0007",
+      "data": "2026-09-09",
+      "categoria": "longevidade_humana",
+      "titulo": "José Flores reivindica 119 anos; validação internacional permanece pendente",
+      "direcao": "pendente",
+      "fonte_id": "REUTERS-FLORES",
+      "nota": "O caso é monitorado, mas não altera nenhuma métrica validada até que a documentação seja autenticada."
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "CP-001",
+      "data": "2026-09-22",
+      "titulo": "Checkpoint inicial",
+      "estado": "Hipótese aberta — sem validação observacional para 150+",
+      "resumo": "A fronteira humana validada continua muito abaixo de 150 anos. Os dados demográficos das populações mais longevas mostram desaceleração dos ganhos de expectativa de vida, enquanto a gerociência identifica o envelhecimento biológico como uma possível nova fronteira de intervenção. Há avanços científicos a acompanhar, mas ainda não existe convergência entre mortalidade observada e capacidade tecnológica que sustente a ponte para 150 anos.",
+      "o_que_falta": [
+        "Redução sustentada da mortalidade em idades muito avançadas",
+        "Evidência humana reproduzida de desaceleração ou reversão relevante de processos do envelhecimento",
+        "Aumento de healthspan acompanhando o aumento de sobrevivência",
+        "Efeito populacional mensurável de novas técnicas, tratamentos, alimentação e prevenção",
+        "Convergência quantitativa de V1–V9 suficiente para elevar V10"
+      ]
+    },
+    {
+      "id": "CP-002",
+      "data": "2026-09-23",
+      "titulo": "Fronteira humana em destaque",
+      "estado": "Hipótese aberta — fronteira validada permanece em 122 anos e 164 dias",
+      "resumo": "O simulacro passa a usar a longevidade humana validada como métrica-âncora. Jeanne Calment permanece como recorde histórico, com 122 anos e 164 dias. Ethel Caterham, nascida em 21/08/1909, é a pessoa viva mais velha validada e completou 117 anos. O caso de José Flores, que reivindica 119 anos, permanece separado como pendente e não altera as métricas oficiais. A distância cronológica entre o recorde validado e o marco de 150 anos é de aproximadamente 27,55 anos.",
+      "o_que_falta": [
+        "Um novo recorde humano plenamente validado que desloque a fronteira histórica",
+        "Redução sustentada da mortalidade em idades muito avançadas",
+        "Evidência humana reproduzida de desaceleração ou reversão relevante de processos do envelhecimento",
+        "Aumento de healthspan acompanhando o aumento de sobrevivência",
+        "Convergência quantitativa de V1–V9 suficiente para elevar V10"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "GWR-CALMENT",
+      "nome": "Guinness World Records — Oldest person ever",
+      "url": "https://www.guinnessworldrecords.com/world-records/oldest-person"
+    },
+    {
+      "id": "NATURE-2024-00702",
+      "nome": "Nature Aging — Implausibility of radical life extension in humans in the twenty-first century",
+      "url": "https://www.nature.com/articles/s43587-024-00702-3",
+      "doi": "10.1038/s43587-024-00702-3"
+    },
+    {
+      "id": "WHO-WHS-2024",
+      "nome": "WHO — World health statistics 2024",
+      "url": "https://www.who.int/publications/i/item/9789240094703"
+    },
+    {
+      "id": "GWR-CATERHAM",
+      "nome": "Guinness World Records — Ethel Caterham completa 117 anos",
+      "url": "https://www.guinnessworldrecords.com/news/2026/8/worlds-oldest-person-ethel-caterham-becomes-first-ever-brit-to-reach-age-117"
+    },
+    {
+      "id": "REUTERS-FLORES",
+      "nome": "Reuters — Costa Rican man, 119, seeks recognition as world’s oldest person",
+      "url": "https://www.reuters.com/world/americas/costa-rican-man-119-seeks-recognition-worlds-oldest-person-2026-09-09/"
+    }
+  ],
+  "avisos": [
+    "Os níveis V1–V10 são indicadores de maturidade da evidência, não probabilidades.",
+    "V10 não é calculado por média simples: depende de convergência real entre os demais itens.",
+    "Nenhum produto, técnica ou alegação comercial é tratado como evidência sem suporte verificável.",
+    "O sistema recalcula e renderiza automaticamente ao carregar dados.json; não há botão de recalcular."
+  ]
+}
