@@ -3,10 +3,11 @@
     "simulacro": "Simulacro III",
     "nome": "Economia de Participação Universal",
     "sigla": "EPU",
-    "versao": "1.1",
+    "versao": "1.2",
     "data_base": "2026-09-23",
     "natureza": "hipotese prospectiva acompanhada por evidencias observaveis",
-    "objetivo": "Testar se a automacao por IA e robotica, combinada com pressao climatica, desigualdade, fome, deficit educacional e concentracao geopolitica, esta empurrando a economia global para um modelo em que a sobrevivencia material depende menos do emprego tradicional."
+    "objetivo": "Testar se a automacao por IA e robotica, combinada com pressao climatica, desigualdade, fome, deficit educacional e concentracao geopolitica, esta empurrando a economia global para um modelo em que a sobrevivencia material depende menos do emprego tradicional.",
+    "ultima_atualizacao": "2026-09-23"
   },
   "pergunta_abertura": "Se máquinas e inteligências artificiais produzirem grande parte da riqueza do mundo, de onde virá a renda de quem já não for necessário para produzi-la?",
   "hipotese": {
@@ -110,9 +111,9 @@
     {
       "id": "AUT",
       "nome": "IA e automação",
-      "valor": null,
-      "status": "aguardando_formula",
-      "leitura": "Pressão mensurável já existe, mas exposição à IA não equivale automaticamente a substituição de empregos.",
+      "valor": 25,
+      "status": "calculado_marco_zero",
+      "leitura": "Pressão inicial mensurável: exposição relevante à GenAI, sem evidência equivalente de substituição estrutural do emprego.",
       "componentes": [
         {
           "metrica": "Trabalhadores em ocupações com algum grau de exposição à IA generativa",
@@ -141,14 +142,21 @@
           "unidade": "% dos empregos",
           "fonte": "Banco Mundial"
         }
-      ]
+      ],
+      "pontuacao": {
+        "valor": 25,
+        "escala": "0-100",
+        "tipo": "índice experimental do simulacro",
+        "data": "2026-09-23",
+        "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
+      }
     },
     {
       "id": "TRB",
       "nome": "Trabalho e renda",
-      "valor": null,
-      "status": "aguardando_formula",
-      "leitura": "A economia mundial continua fortemente dependente do trabalho como mecanismo de distribuição de renda.",
+      "valor": 12,
+      "status": "calculado_marco_zero",
+      "leitura": "O vínculo trabalho-renda permanece dominante; há pressão, mas não ruptura estrutural.",
       "componentes": [
         {
           "metrica": "Participação global da renda do trabalho no PIB",
@@ -165,14 +173,21 @@
           "fonte": "OIT/ILOSTAT",
           "url": "https://ilostat.ilo.org/blog/the-world-of-work-and-the-2030-agenda-a-ten-year-review/"
         }
-      ]
+      ],
+      "pontuacao": {
+        "valor": 12,
+        "escala": "0-100",
+        "tipo": "índice experimental do simulacro",
+        "data": "2026-09-23",
+        "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
+      }
     },
     {
       "id": "CON",
       "nome": "Concentração econômica",
-      "valor": null,
-      "status": "aguardando_formula",
-      "leitura": "Há forte concentração de P&D, computação e infraestrutura de IA.",
+      "valor": 72,
+      "status": "calculado_marco_zero",
+      "leitura": "Concentração elevada de P&D, computação e infraestrutura de IA em poucas empresas e economias.",
       "componentes": [
         {
           "metrica": "Participação de 100 empresas no P&D empresarial mundial em IA",
@@ -196,14 +211,21 @@
           "ano": 2025,
           "fonte": "Banco Mundial"
         }
-      ]
+      ],
+      "pontuacao": {
+        "valor": 72,
+        "escala": "0-100",
+        "tipo": "índice experimental do simulacro",
+        "data": "2026-09-23",
+        "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
+      }
     },
     {
       "id": "GEO",
       "nome": "Geopolítica e grandes potências",
-      "valor": null,
-      "status": "aguardando_formula",
-      "leitura": "Infraestrutura e propriedade tecnológica permanecem concentradas em poucas grandes economias.",
+      "valor": 68,
+      "status": "calculado_marco_zero",
+      "leitura": "Capacidade computacional, patentes e infraestrutura estratégica permanecem fortemente concentradas.",
       "componentes": [
         {
           "metrica": "Concentração de patentes de IA em EUA e China",
@@ -224,14 +246,21 @@
           "unidade": "%",
           "fonte": "UNCTAD"
         }
-      ]
+      ],
+      "pontuacao": {
+        "valor": 68,
+        "escala": "0-100",
+        "tipo": "índice experimental do simulacro",
+        "data": "2026-09-23",
+        "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
+      }
     },
     {
       "id": "CLI",
       "nome": "Clima, energia e recursos",
-      "valor": null,
-      "status": "aguardando_formula",
-      "leitura": "A expansão da infraestrutura digital ocorre simultaneamente a pressões climáticas e energéticas.",
+      "valor": 46,
+      "status": "calculado_marco_zero",
+      "leitura": "Pressão climática e energética relevante, incluindo crescimento da demanda da infraestrutura digital.",
       "componentes": [
         {
           "metrica": "Temperatura global acima da média pré-industrial 1850-1900",
@@ -257,14 +286,21 @@
           "tipo": "projecao",
           "fonte": "IEA"
         }
-      ]
+      ],
+      "pontuacao": {
+        "valor": 46,
+        "escala": "0-100",
+        "tipo": "índice experimental do simulacro",
+        "data": "2026-09-23",
+        "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
+      }
     },
     {
       "id": "HUM",
       "nome": "Fome, pobreza e educação",
-      "valor": null,
-      "status": "aguardando_formula",
-      "leitura": "Persistem grandes déficits humanos e digitais apesar do avanço tecnológico.",
+      "valor": 58,
+      "status": "calculado_marco_zero",
+      "leitura": "Persistem déficits expressivos de fome, pobreza, alfabetização e conectividade.",
       "componentes": [
         {
           "metrica": "Pessoas em situação de fome",
@@ -294,14 +330,21 @@
           "ano": 2025,
           "fonte": "ITU"
         }
-      ]
+      ],
+      "pontuacao": {
+        "valor": 58,
+        "escala": "0-100",
+        "tipo": "índice experimental do simulacro",
+        "data": "2026-09-23",
+        "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
+      }
     },
     {
       "id": "INS",
       "nome": "Resposta institucional",
-      "valor": null,
-      "status": "aguardando_formula",
-      "leitura": "Governança e adaptação institucional estão crescendo, mas ainda há pouca evidência de redistribuição estrutural dos ganhos da automação.",
+      "valor": 20,
+      "status": "calculado_marco_zero",
+      "leitura": "Respostas regulatórias e multilaterais existem, mas mecanismos econômicos permanentes de redistribuição da automação ainda são limitados.",
       "componentes": [
         {
           "metrica": "Aplicação de novas etapas do AI Act da União Europeia",
@@ -324,14 +367,21 @@
           "fonte": "FMI",
           "url": "https://www.elibrary.imf.org/view/journals/068/2026/002/article-A001-en.xml"
         }
-      ]
+      ],
+      "pontuacao": {
+        "valor": 20,
+        "escala": "0-100",
+        "tipo": "índice experimental do simulacro",
+        "data": "2026-09-23",
+        "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
+      }
     },
     {
       "id": "EPU",
       "nome": "Sinais de novo paradigma",
-      "valor": null,
-      "status": "aguardando_formula",
-      "leitura": "Há condições de pressão compatíveis com a hipótese, mas ainda não há evidência suficiente de uma EPU estruturalmente estabelecida.",
+      "valor": 8,
+      "status": "calculado_marco_zero",
+      "leitura": "Há condições de pressão compatíveis com a hipótese, mas pouca evidência de uma EPU estruturalmente estabelecida.",
       "componentes": [
         {
           "sinal": "renda estruturalmente desvinculada do emprego",
@@ -357,7 +407,14 @@
           "sinal": "debate institucional sobre proteção social menos vinculada ao emprego",
           "estado": "presente"
         }
-      ]
+      ],
+      "pontuacao": {
+        "valor": 8,
+        "escala": "0-100",
+        "tipo": "índice experimental do simulacro",
+        "data": "2026-09-23",
+        "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
+      }
     }
   ],
   "historico_metricas": [
@@ -365,7 +422,17 @@
       "data": "2026-09-23",
       "ITE": 15,
       "DTE": 94,
-      "status": "marco_zero_provisorio"
+      "status": "marco_zero_provisorio",
+      "indicadores": {
+        "AUT": 25,
+        "TRB": 12,
+        "CON": 72,
+        "GEO": 68,
+        "CLI": 46,
+        "HUM": 58,
+        "INS": 20,
+        "EPU": 8
+      }
     }
   ],
   "vetores": [
@@ -554,7 +621,23 @@
     "T2": "transição estrutural ainda não demonstrada"
   },
   "metodologia": {
-    "nota": "Os dados observados e os índices derivados são mantidos separados. Valores AUT, TRB, CON, GEO, CLI, HUM, INS e EPU permanecem nulos até que pesos, normalização e limites sejam formalmente definidos.",
-    "proximo_passo": "Definir fórmula reproduzível 0-100 para cada indicador e então calcular o Marco Zero definitivo."
-  }
+    "nota": "Marco Zero iniciado. Os valores 0-100 são índices experimentais, separados dos dados observados em componentes.",
+    "proximo_passo": "A cada atualização, registrar novas evidências, índices afetados, direção, força e justificativa; depois recalcular a fotografia diária.",
+    "regra_cumulativa": "Novas evidências são adicionadas com data e fonte. Evidências válidas anteriores não são apagadas; podem ser marcadas como superadas, contraditas, corrigidas ou enfraquecidas."
+  },
+  "historico_indicadores": [
+    {
+      "data": "2026-09-23",
+      "tipo": "marco_zero",
+      "AUT": 25,
+      "TRB": 12,
+      "CON": 72,
+      "GEO": 68,
+      "CLI": 46,
+      "HUM": 58,
+      "INS": 20,
+      "EPU": 8,
+      "nota": "Primeira fotografia. Evidências futuras são cumulativas; pontuações podem subir ou cair."
+    }
+  ]
 }
