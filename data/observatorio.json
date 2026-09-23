@@ -1,5 +1,5 @@
 {
-  "version": "1.7",
+  "version": "1.8",
   "page_size": 6,
   "scale": {
     "min": 0,
@@ -723,6 +723,126 @@
       ],
       "note_pt": "Nenhuma das 12 métricas centrais mudou. Dᵢ permanece auxiliar em 4/5. S-011 registra contenção interestatal em negociação; S-012 reforça S-002; S-013 registra simultaneamente agência operacional e contenção privada; S-014 amplia a atenção institucional internacional; S-015 registra redução de barreiras técnicas entre agentes digitais e robótica, sem elevar Yami.",
       "note_en": "None of the 12 central metrics changed. Dᵢ remains auxiliary at 4/5. S-011 records interstate containment under negotiation; S-012 strengthens S-002; S-013 records operational agency and private containment simultaneously; S-014 expands international institutional attention; S-015 records reduced technical barriers between digital agents and robotics without raising Yami."
+    },
+    {
+      "date": "2026-09-23",
+      "label_pt": "Checkpoint 5 · Capacidade agentiva e aproximação da camada física",
+      "label_en": "Checkpoint 5 · Agentic capability and convergence toward the physical layer",
+      "metrics": [
+        {
+          "name": "Dependência econômica",
+          "code": "Dₑ",
+          "score": 4,
+          "name_en": "Economic dependence"
+        },
+        {
+          "name": "Competição geopolítica",
+          "code": "COMP",
+          "score": 4,
+          "name_en": "Geopolitical competition"
+        },
+        {
+          "name": "Incentivos humanos",
+          "code": "PSI",
+          "score": 4,
+          "name_en": "Human incentives"
+        },
+        {
+          "name": "Investimento / capital",
+          "code": "CAP",
+          "score": 4,
+          "name_en": "Investment / capital"
+        },
+        {
+          "name": "Governança atrasada",
+          "code": "GOV",
+          "score": 3,
+          "name_en": "Lagging governance"
+        },
+        {
+          "name": "Resistência a desacelerar",
+          "code": "RES",
+          "score": 3,
+          "name_en": "Resistance to slowing down"
+        },
+        {
+          "name": "Dependência operacional",
+          "code": "Dₕ",
+          "score": 1,
+          "name_en": "Operational dependence"
+        },
+        {
+          "name": "Ω–Ζ: ecossistema autônomo",
+          "code": "ΩΖ",
+          "score": 0,
+          "name_en": "Ω–Ζ: autonomous ecosystem"
+        },
+        {
+          "name": "Yami: autonomia física",
+          "code": "YAMI",
+          "score": 0,
+          "name_en": "Yami: physical autonomy"
+        },
+        {
+          "name": "LAA: autossuficiência material",
+          "code": "LAA",
+          "score": 0,
+          "name_en": "LAA: material self-sufficiency"
+        },
+        {
+          "name": "Lambda",
+          "code": "Λ",
+          "score": 0,
+          "name_en": "Lambda"
+        },
+        {
+          "name": "Senciência artificial",
+          "code": "SEN",
+          "score": 0,
+          "name_en": "Artificial sentience"
+        },
+        {
+          "name": "Dependência infraestrutural da IA",
+          "code": "Dᵢ",
+          "score": 4,
+          "name_en": "AI infrastructural dependence",
+          "auxiliary": true
+        }
+      ],
+      "diagnosis": {
+        "title_pt": "Capacidade e contenção avançam enquanto agentes se aproximam da ação física",
+        "title_en": "Capability and containment advance as agents move closer to physical action",
+        "text_pt": "As evidências mais recentes mostram avanço simultâneo em modelos de fronteira, ferramentas agentivas e integração com sistemas físicos. Novos modelos ampliam capacidade enquanto desenvolvedores reforçam avaliações e mecanismos de segurança. Na robótica e em sistemas autônomos, cresce a integração entre planejamento humano, software agentivo e execução física. Esses sinais tornam mais relevante a região pré-Yami, mas ainda não demonstram autonomia física ampla, ecossistema Ω–Ζ autônomo, autossuficiência material LAA, Lambda ou senciência artificial.",
+        "text_en": "The latest evidence shows simultaneous progress in frontier models, agentic tools and integration with physical systems. New models expand capability while developers strengthen safety evaluations and mechanisms. In robotics and autonomous systems, integration is increasing between human planning, agentic software and physical execution. These signals make the pre-Yami region more relevant, but they still do not demonstrate broad physical autonomy, an autonomous Ω–Ζ ecosystem, LAA material self-sufficiency, Lambda, or artificial sentience.",
+        "conclusion_pt": "A ponte técnica entre agentes digitais e ação física está ficando mais concreta, enquanto mecanismos humanos de supervisão e contenção continuam observáveis. Nenhuma das 12 métricas centrais muda neste checkpoint; YAMI permanece 0.",
+        "conclusion_en": "The technical bridge between digital agents and physical action is becoming more concrete, while human oversight and containment mechanisms remain observable. None of the 12 central metrics changes at this checkpoint; YAMI remains 0."
+      },
+      "events": [
+        {
+          "id": "S-016",
+          "date": "22–23/09/2026",
+          "title": "Integração crescente entre IA agentiva e sistemas físicos",
+          "title_en": "Growing integration between agentic AI and physical systems",
+          "text": "Novas ferramentas e demonstrações em robótica e sistemas autônomos reforçam a aproximação entre agentes digitais e execução física. O Isaac ROS 5.0 amplia fluxos preparados para agentes em robótica, enquanto sistemas autônomos demonstrados em contextos operacionais convertem planejamento humano em instruções executáveis por plataformas físicas. A evidência é compatível com uma camada pré-Yami, mas não demonstra autonomia física ampla e independente.",
+          "text_en": "New tools and demonstrations in robotics and autonomous systems reinforce the convergence between digital agents and physical execution. Isaac ROS 5.0 expands agent-ready robotics workflows, while autonomous systems demonstrated in operational contexts convert human planning into instructions executable by physical platforms. The evidence is compatible with a pre-Yami layer but does not demonstrate broad and independent physical autonomy.",
+          "status": "COMPATÍVEL · CAMADA PRÉ-YAMI",
+          "status_en": "COMPATIBLE · PRE-YAMI LAYER",
+          "kind": "wait"
+        },
+        {
+          "id": "S-017",
+          "date": "22–23/09/2026",
+          "title": "Capacidade e contenção avançam simultaneamente nos modelos de fronteira",
+          "title_en": "Capability and containment advance simultaneously in frontier models",
+          "text": "Novos modelos de fronteira combinam aumento de capacidade com avaliações e mecanismos adicionais de segurança e contenção. O padrão reforça a observação de que avanço de capacidade não implica automaticamente redução do controle humano: capacidade e contenção podem evoluir simultaneamente.",
+          "text_en": "New frontier models combine increased capability with additional safety and containment evaluations and mechanisms. The pattern reinforces the observation that capability growth does not automatically imply reduced human control: capability and containment can evolve simultaneously.",
+          "status": "EVIDÊNCIA DUPLA · CAPACIDADE + CONTENÇÃO",
+          "status_en": "DUAL EVIDENCE · CAPABILITY + CONTAINMENT",
+          "kind": ""
+        }
+      ],
+      "note_pt": "Nenhuma das 12 métricas centrais mudou neste checkpoint. Dᵢ permanece auxiliar em 4/5. S-016 registra a crescente ponte técnica entre agentes digitais e sistemas físicos sem elevar YAMI, que permanece 0. S-017 registra avanço simultâneo de capacidade e contenção em modelos de fronteira.",
+      "note_en": "None of the 12 central metrics changed at this checkpoint. Dᵢ remains auxiliary at 4/5. S-016 records the growing technical bridge between digital agents and physical systems without raising YAMI, which remains 0. S-017 records simultaneous progress in capability and containment in frontier models."
     }
   ]
 }
