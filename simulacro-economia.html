@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simulacro III — Economia de Participação Universal</title>
+<style>
+:root{--bg:#06080d;--panel:#0d1119;--line:#263143;--text:#eaf0f7;--muted:#8f9bad;--accent:#d7e6ff;--hot:#b8cfff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% 10%,#151d2b 0,#080b11 38%,#05070b 100%);color:var(--text);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+button{font:inherit}.intro{position:fixed;inset:0;z-index:10;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at center,#121a27,#05070b 68%)}
+.hyp{
+  font-size: 20px !important;
+}
+.intro.hide{opacity:0;pointer-events:none;transition:.7s}.introBox{max-width:930px;text-align:center}.kicker{letter-spacing:.28em;text-transform:uppercase;color:#91a0b5;font-size:12px}.question{font-size:clamp(50px,3vw,66px);line-height:1.08;margin:25px 0 28px;font-weight:650}.enter{border:1px solid #8094b1;background:transparent;color:#fff;padding:13px 28px;border-radius:999px;cursor:pointer}.enter:hover{background:#eaf0f7;color:#080b11}
+main{max-width:1180px;margin:auto;padding:42px 20px 80px}.top{display:flex;justify-content:space-between;gap:20px;align-items:end;border-bottom:1px solid var(--line);padding-bottom:22px}.top h1{font-size:clamp(28px,4vw,48px);margin:4px 0}.badge{border:1px solid var(--line);border-radius:99px;padding:7px 12px;color:#b9c4d3;white-space:nowrap}
+.hero{padding:52px 0}.hero h2{font-size:clamp(25px,3vw,40px);max-width:950px}.hero p{color:#b5c0ce;max-width:900px;font-size:17px}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{grid-column:span 4;background:rgba(13,17,25,.78);border:1px solid var(--line);border-radius:16px;padding:20px}.wide{grid-column:span 8}.full{grid-column:1/-1}.metric{font-size:40px;font-weight:700;color:yellow}.muted{color:var(--muted)}h3{margin:0 0 10px}.flow{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;padding:13px;background:#070a10;border-radius:10px;color:#cbd9ed;margin:8px 0}.bar{height:8px;background:#171e29;border-radius:20px;overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;width:0;background:#c6d8f2}.levels{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.lvl{padding:12px;border:1px solid var(--line);border-radius:12px}.lvl.active{background:#172131;border-color:#7187a7}.lvl b{display:block;font-size:22px}.tag{display:inline-block;border:1px solid #344156;border-radius:99px;padding:5px 9px;margin:3px;color:#aebbd0}.sectionTitle{margin:44px 0 15px;font-size:23px}.item{padding:13px 0;border-bottom:1px solid #1c2533}.status{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#9db0cb}.footer{margin-top:55px;padding-top:20px;border-top:1px solid var(--line);color:#788599;font-size:13px}
+@media(max-width:800px){.card,.wide{grid-column:1/-1}.levels{grid-template-columns:repeat(2,1fr)}.top{align-items:start;flex-direction:column}}
+</style></head>
+<body>
+<section class="intro" id="intro"><div class="introBox">
+<div class="kicker">Simulacro III · Hipótese EPU-01</div>
+<div class="question" id="openingQuestion">Se máquinas e inteligências artificiais produzirem grande parte da riqueza do mundo, de onde virá a renda de quem já não for necessário para produzi-la?</div>
+<button class="enter" id="enter">SAIBA O QUE ESTAMOS DESCOBRINDO</button>
+</div></section>
+
+<main>
+<header class="top"><div><div class="kicker">Horizon 4282 · Simulacro III</div><h1>Economia de Participação Universal</h1><div class="muted">EPU · versão <span id="version">1.0</span> · base <span id="date"></span></div></div><div class="badge" id="state">HIPÓTESE ABERTA</div></header>
+<section class="hero"><div class="status">HIPÓTESE EPU-01</div><h2 id="hyp" class="hyp"></h2><p>O simulacro não tenta provar a hipótese. Ele procura sinais capazes de confirmá-la, enfraquecê-la ou apontar para um modelo alternativo.</p></section>
+
+<div class="grid">
+<div class="card"><h3>ITE</h3><div class="metric" id="ite">0</div><div class="muted">Índice de Transição Econômica · 0–100</div><div class="bar"><i id="itebar"></i></div></div>
+<div class="card"><h3>DTE</h3><div class="metric" id="dte">100</div><div class="muted">Dependência do Trabalho para Existência · 100–0</div></div>
+<div class="card"><h3>Nível atual</h3><div class="metric" id="level">0</div><div class="muted" id="levelName">Continuidade</div></div>
+<div class="card wide"><h3>A mudança que estamos procurando</h3><div class="flow">HOJE · trabalho → salário → consumo → subsistência</div><div class="flow">HIPÓTESE · capital + humanos + IA + robôs → produção → mercado + lucro + participação social → população</div></div>
+<div class="card"><h3>Tendência</h3><div class="metric" style="font-size:24px" id="trend">Indeterminada</div><div class="muted">T+1: <span id="t1"></span><br>T+2: <span id="t2"></span></div></div>
+</div>
+
+
+<h2 class="sectionTitle">Indicadores estruturais</h2>
+<div class="grid" id="structuralIndicators"></div>
+
+<h2 class="sectionTitle">Leitura gráfica</h2>
+<div class="grid">
+  <div class="card wide"><h3>ITE × DTE</h3><canvas id="iteDteChart" width="720" height="260" style="width:100%;height:260px"></canvas><div class="muted">Série histórica alimentada pelo JSON quando houver histórico disponível.</div></div>
+  <div class="card"><h3>Balanço das evidências</h3><canvas id="evidenceBalanceChart" width="340" height="260" style="width:100%;height:260px"></canvas></div>
+  <div class="card full"><h3>Pressão dos vetores</h3><canvas id="vectorPressureChart" width="1080" height="300" style="width:100%;height:300px"></canvas><div class="muted">Os valores só aparecem quando existirem medições no JSON.</div></div>
+</div>
+
+<h2 class="sectionTitle">Escala do simulacro</h2><div class="levels" id="levels"></div>
+<h2 class="sectionTitle">Vetores observados</h2><div id="vectors"></div>
+<h2 class="sectionTitle">Pilares da hipótese</h2><div class="grid" id="pillars"></div>
+<h2 class="sectionTitle">Checkpoints</h2><div class="card full" id="checks"></div>
+<h2 class="sectionTitle">Itens de validação e refutação</h2><div class="card full" id="validation"></div>
+<h2 class="sectionTitle">Sinais de paradigma</h2><div id="signals"></div>
+<h2 class="sectionTitle">Hipóteses alternativas</h2><div class="grid" id="alts"></div>
+<h2 class="sectionTitle">Evidências catalogadas</h2><div class="card full" id="evidence"><div class="muted">Nenhuma evidência catalogada nesta versão inicial.</div></div>
+<h2 class="sectionTitle">Resumo do estado atual</h2><div class="card full"><h3 id="summaryState"></h3><p id="summaryText"></p></div>
+<div class="footer">SIMULACRO III · EPU · O nível não representa desejo, aprovação política ou previsão. Representa apenas a força acumulada das evidências cadastradas.</div>
+</main>
+
+<script>
+const fallback = {"meta": {"simulacro": "Simulacro III", "nome": "Economia de Participação Universal", "sigla": "EPU", "versao": "1.0", "data_base": "2026-09-23", "natureza": "hipotese prospectiva acompanhada por evidencias observaveis", "objetivo": "Testar se a automacao por IA e robotica, combinada com pressao climatica, desigualdade, fome, deficit educacional e concentracao geopolitica, esta empurrando a economia global para um modelo em que a sobrevivencia material depende menos do emprego tradicional."}, "pergunta_abertura": "Se máquinas e inteligências artificiais produzirem grande parte da riqueza do mundo, de onde virá a renda de quem já não for necessário para produzi-la?", "hipotese": {"id": "EPU-01", "texto": "A automação crescente da produção intelectual e física provocará uma redução estrutural da dependência do trabalho humano como mecanismo primário de distribuição de renda, favorecendo o surgimento de uma economia híbrida de mercado com propriedade privada, produção automatizada, serviços essenciais universais e distribuição social de parte dos ganhos de produtividade.", "nao_afirma": ["que o capitalismo desaparecerá", "que o trabalho humano deixará de existir", "que a transição será inevitável, uniforme ou pacífica", "que renda básica universal isoladamente constituirá o novo modelo"]}, "modelo_proposto": {"nome": "Economia de Participação Universal", "descricao": "Mercados, empresas, propriedade privada, investimento e diferenças de renda permanecem, mas um piso material e uma parcela dos ganhos de produtividade automatizada passam a ser distribuídos por mecanismos menos dependentes do emprego.", "fluxo_atual": "trabalho -> salario -> consumo -> subsistencia", "fluxo_hipotetico": "capital + humanos + IA + robos -> producao -> mercado + lucro + mecanismos sociais de participacao -> populacao"}, "pilares": [{"id": "P1", "nome": "Produção automatizada", "descricao": "IA e robótica assumem parcela crescente da produção intelectual e física."}, {"id": "P2", "nome": "Mercados permanecem", "descricao": "Empresas, preços, concorrência, propriedade, investimento e empreendedorismo continuam relevantes."}, {"id": "P3", "nome": "Participação social na produtividade", "descricao": "Parte dos ganhos extraordinários de produtividade retorna à população por transferências, dividendos, fundos sociais, tributação ou mecanismos equivalentes."}, {"id": "P4", "nome": "Serviços essenciais", "descricao": "Acesso mínimo a alimentação, saúde, educação, conectividade, energia ou outros serviços essenciais torna-se menos dependente do emprego."}, {"id": "P5", "nome": "Desvinculação parcial trabalho-subsistência", "descricao": "Trabalhar continua elevando renda e oportunidades, mas perde gradualmente a condição de único caminho para a subsistência."}, {"id": "P6", "nome": "Soberania tecnológica", "descricao": "Computação, energia, dados, semicondutores e IA passam a ser tratados como infraestrutura econômica estratégica."}], "nivel_atual": 0, "niveis": [{"nivel": 0, "nome": "Continuidade", "criterio": "O modelo dominante absorve IA e demais pressões sem mudança estrutural na relação trabalho-renda."}, {"nivel": 1, "nome": "Pressão", "criterio": "Automação, clima, desigualdade e concentração provocam respostas pontuais e debate institucional crescente."}, {"nivel": 2, "nome": "Adaptação", "criterio": "Reformas relevantes de jornada, proteção social, tributação, qualificação e redistribuição aparecem em múltiplas economias."}, {"nivel": 3, "nome": "Transição", "criterio": "Mecanismos permanentes começam a desvincular parcela relevante da renda e dos serviços essenciais do emprego tradicional."}, {"nivel": 4, "nome": "Ruptura", "criterio": "O emprego deixa de ser o principal mecanismo de distribuição de poder de compra em parte significativa das economias monitoradas."}, {"nivel": 5, "nome": "Novo paradigma", "criterio": "Uma arquitetura econômica estável e internacionalmente difundida apresenta características suficientemente distintas do modelo centrado no emprego para ser tratada como novo paradigma."}], "metricas": {"ITE": {"nome": "Índice de Transição Econômica", "escala": "0-100", "valor_inicial": 0, "descricao": "Mede evidências de afastamento estrutural do modelo centrado em emprego-salário."}, "DTE": {"nome": "Dependência do Trabalho para Existência", "escala": "100-0", "valor_inicial": 100, "descricao": "100 representa forte dependência da renda do trabalho para subsistência; queda sustentada indica desvinculação."}}, "vetores": ["IA e automação", "Trabalho e renda", "Concentração econômica", "Geopolítica e grandes potências", "Clima, energia e recursos", "Fome, pobreza, alfabetização e educação", "Resposta institucional e novos mecanismos econômicos"], "validacao": [{"id": "V01", "sinal": "Queda estrutural da necessidade de trabalho humano por unidade produzida", "efeito": "confirma"}, {"id": "V02", "sinal": "Ganhos de produtividade por IA acompanhados de redução persistente de emprego ou horas em setores relevantes", "efeito": "confirma"}, {"id": "V03", "sinal": "Expansão permanente de renda mínima, dividendos sociais ou transferências desvinculadas de emprego", "efeito": "confirma"}, {"id": "V04", "sinal": "Expansão de serviços essenciais universais financiados por novas bases tributárias ou ganhos de produtividade", "efeito": "confirma"}, {"id": "V05", "sinal": "Tributação, fundos públicos ou mecanismos de participação ligados a capital, automação, dados ou IA", "efeito": "confirma"}, {"id": "V06", "sinal": "Redução sustentada da jornada sem queda proporcional de padrão de vida", "efeito": "confirma"}, {"id": "V07", "sinal": "Emprego e salários continuam crescendo proporcionalmente à produtividade apesar da automação avançada", "efeito": "refuta"}, {"id": "V08", "sinal": "Novas ocupações humanas absorvem de forma duradoura a maior parte dos trabalhadores deslocados", "efeito": "refuta"}, {"id": "V09", "sinal": "Transferências universais permanecem marginais ou temporárias mesmo com automação elevada", "efeito": "refuta"}, {"id": "V10", "sinal": "Concentração tecnológica cresce sem mecanismos compensatórios, produzindo modelo hiperconcentrado em vez da EPU", "efeito": "alternativa"}], "checkpoints": [{"id": "C0", "estado": "aberto", "titulo": "Marco Zero", "pergunta": "O vínculo emprego -> renda -> subsistência continua sendo a arquitetura dominante?", "resultado": "A acompanhar"}, {"id": "C1", "estado": "pendente", "titulo": "Pressão mensurável", "pergunta": "Há evidência internacional persistente de que IA reduz a necessidade relativa de trabalho humano?"}, {"id": "C2", "estado": "pendente", "titulo": "Resposta econômica", "pergunta": "Múltiplos países criaram mecanismos permanentes de distribuição menos dependentes do emprego?"}, {"id": "C3", "estado": "pendente", "titulo": "Mudança estrutural", "pergunta": "A participação econômica básica passou a depender menos do salário em parcela relevante da população?"}, {"id": "C4", "estado": "pendente", "titulo": "Novo paradigma", "pergunta": "O conjunto das mudanças forma uma arquitetura econômica distinta, estável e replicada internacionalmente?"}], "evidencias": [], "sinais_de_paradigma": ["renda desvinculada do emprego", "dividendos sociais ou fundos soberanos tecnológicos", "tributação relacionada à automação, IA ou capital altamente automatizado", "redução estrutural de jornada", "serviços universais ampliados", "redistribuição explícita de ganhos de produtividade", "infraestrutura pública ou compartilhada de IA e computação", "novas formas de propriedade econômica ou participação coletiva"], "alternativas": [{"id": "A1", "nome": "Capitalismo adaptativo", "descricao": "O modelo atual absorve a IA com novas ocupações e proteção social sem mudar sua estrutura central."}, {"id": "A2", "nome": "Capitalismo hiperconcentrado", "descricao": "Automação amplia a concentração de renda, infraestrutura e poder econômico sem distribuição equivalente."}, {"id": "A3", "nome": "Fragmentação por blocos", "descricao": "Não surge um modelo global; diferentes potências adotam arquiteturas econômicas incompatíveis."}], "resumo": {"estado": "Hipótese aberta", "texto": "A versão 1.0 estabelece o modelo a ser testado e os critérios de confirmação, refutação e alternativas. Nenhuma conclusão é atribuída antes da entrada sistemática de evidências.", "tendencia": "indeterminada", "T1": "não calculado", "T2": "não calculado"}};
+async function loadData(){
+  try{ const r=await fetch('https://horizon4282.com.br/data/nova-economia.json',{cache:'no-store'}); if(r.ok)return await r.json(); }catch(e){}
+  return fallback;
+}
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+
+function _ctx(id){
+ const c=document.getElementById(id), rect=c.getBoundingClientRect(), ratio=window.devicePixelRatio||1;
+ const cssH=parseInt(c.style.height)||260;
+ c.width=Math.max(320,Math.round(rect.width*ratio)); c.height=Math.round(cssH*ratio);
+ const x=c.getContext('2d'); x.setTransform(ratio,0,0,ratio,0,0);
+ return {c,x,w:rect.width,h:cssH};
+}
+function _lineChart(id,rows){
+ const {x,w,h}=_ctx(id), L=42,R=16,T=18,B=32,H=h-T-B,W=w-L-R;
+ x.clearRect(0,0,w,h); x.font='11px system-ui'; x.fillStyle='#8f9bad'; x.strokeStyle='#263143'; x.lineWidth=1;
+ [0,25,50,75,100].forEach(v=>{const y=T+(100-v)/100*H;x.beginPath();x.moveTo(L,y);x.lineTo(w-R,y);x.stroke();x.fillText(v,8,y+4)});
+ if(!rows.length){x.fillText('Sem histórico suficiente',L+20,T+H/2);return}
+ [['ITE','#eaf0f7'],['DTE','#8094b1']].forEach(([key,color])=>{
+   x.strokeStyle=color;x.lineWidth=2;x.beginPath();
+   rows.forEach((r,i)=>{const px=L+(rows.length===1?W/2:(i/(rows.length-1))*W), py=T+(100-(+r[key]||0))/100*H;i?x.lineTo(px,py):x.moveTo(px,py)});
+   x.stroke();
+ });
+ x.fillStyle='#eaf0f7';x.fillText('ITE',L,T+12);x.fillStyle='#8094b1';x.fillText('DTE',L+34,T+12);
+}
+function _bars(id,rows){
+ const {x,w,h}=_ctx(id);x.clearRect(0,0,w,h);x.font='11px system-ui';
+ if(!rows.length){x.fillStyle='#8f9bad';x.fillText('Aguardando medições no JSON',20,h/2);return}
+ const label=190, top=12, gap=8, bh=Math.min(24,(h-24)/rows.length-gap);
+ rows.forEach((r,i)=>{const y=top+i*(bh+gap),v=Math.max(0,Math.min(100,+r.valor||0));
+ x.fillStyle='#aebbd0';x.fillText(String(r.nome||'').slice(0,29),8,y+bh*.72);
+ x.fillStyle='#171e29';x.fillRect(label,y,Math.max(20,w-label-40),bh);
+ x.fillStyle='#c6d8f2';x.fillRect(label,y,Math.max(20,w-label-40)*v/100,bh);
+ x.fillStyle='#eaf0f7';x.fillText(v+'%',label+6,y+bh*.72)});
+}
+function _evidenceChart(id,d){
+ const {x,w,h}=_ctx(id), ev=d.evidencias||[];
+ const parts=[
+  ['Confirma',ev.filter(e=>e.efeito==='confirma').length],
+  ['Refuta',ev.filter(e=>e.efeito==='refuta').length],
+  ['Alternativa',ev.filter(e=>e.efeito==='alternativa').length]
+ ], total=parts.reduce((s,p)=>s+p[1],0);
+ x.clearRect(0,0,w,h);x.font='12px system-ui';
+ if(!total){x.fillStyle='#8f9bad';x.fillText('Nenhuma evidência catalogada',20,h/2);return}
+ const max=Math.max(...parts.map(p=>p[1]),1), left=90;
+ parts.forEach((p,i)=>{const y=45+i*58;x.fillStyle='#aebbd0';x.fillText(p[0],12,y+14);x.fillStyle='#171e29';x.fillRect(left,y,w-left-25,20);x.fillStyle='#c6d8f2';x.fillRect(left,y,(w-left-25)*p[1]/max,20);x.fillStyle='#eaf0f7';x.fillText(p[1],left+6,y+14)});
+}
+function renderNewLogic(d){
+ const defs=d.indicadores_estruturais||[
+  {id:'AUT',nome:'IA e automação',valor:null},
+  {id:'TRB',nome:'Trabalho e renda',valor:null},
+  {id:'CON',nome:'Concentração econômica',valor:null},
+  {id:'GEO',nome:'Geopolítica e grandes potências',valor:null},
+  {id:'CLI',nome:'Clima, energia e recursos',valor:null},
+  {id:'HUM',nome:'Fome, pobreza e educação',valor:null},
+  {id:'INS',nome:'Resposta institucional',valor:null},
+  {id:'EPU',nome:'Sinais de novo paradigma',valor:null}
+ ];
+ structuralIndicators.innerHTML=defs.map(q=>`<div class="card"><div class="status">${esc(q.id)}</div><h3>${esc(q.nome)}</h3><div class="metric">${q.valor==null?'—':esc(q.valor)}</div><div class="muted">${q.valor==null?'Aguardando dados':'Índice · 0–100'}</div><div class="bar"><i style="width:${q.valor==null?0:q.valor}%"></i></div></div>`).join('');
+ const hist=d.historico_metricas||[{data:d.meta.data_base,ITE:d.metricas.ITE.valor_inicial,DTE:d.metricas.DTE.valor_inicial}];
+ _lineChart('iteDteChart',hist);
+ _bars('vectorPressureChart',defs.filter(q=>q.valor!=null));
+ _evidenceChart('evidenceBalanceChart',d);
+}
+
+function render(d){
+ document.querySelector('#openingQuestion').textContent=d.pergunta_abertura;
+ version.textContent=d.meta.versao; date.textContent=d.meta.data_base; hyp.textContent=d.hipotese.texto;
+ ite.textContent=d.metricas.ITE.valor_inicial; itebar.style.width=d.metricas.ITE.valor_inicial+'%';
+ dte.textContent=d.metricas.DTE.valor_inicial; level.textContent=d.nivel_atual;
+ const cur=d.niveis.find(x=>x.nivel===d.nivel_atual); levelName.textContent=cur.nome;
+ trend.textContent=d.resumo.tendencia; t1.textContent=d.resumo.T1; t2.textContent=d.resumo.T2; state.textContent=d.resumo.estado.toUpperCase();
+ levels.innerHTML=d.niveis.map(x=>`<div class="lvl ${x.nivel===d.nivel_atual?'active':''}"><b>${x.nivel}</b><strong>${esc(x.nome)}</strong><div class="muted">${esc(x.criterio)}</div></div>`).join('');
+ vectors.innerHTML=d.vetores.map(x=>`<span class="tag">${esc(x)}</span>`).join('');
+ pillars.innerHTML=d.pilares.map(x=>`<div class="card"><div class="status">${x.id}</div><h3>${esc(x.nome)}</h3><div class="muted">${esc(x.descricao)}</div></div>`).join('');
+ checks.innerHTML=d.checkpoints.map(x=>`<div class="item"><span class="status">${esc(x.id)} · ${esc(x.estado)}</span><h3>${esc(x.titulo)}</h3><div>${esc(x.pergunta)}</div>${x.resultado?`<div class="muted">Resultado: ${esc(x.resultado)}</div>`:''}</div>`).join('');
+ validation.innerHTML=d.validacao.map(x=>`<div class="item"><span class="status">${esc(x.id)} · ${esc(x.efeito)}</span><div>${esc(x.sinal)}</div></div>`).join('');
+ signals.innerHTML=d.sinais_de_paradigma.map(x=>`<span class="tag">${esc(x)}</span>`).join('');
+ alts.innerHTML=d.alternativas.map(x=>`<div class="card"><div class="status">${esc(x.id)}</div><h3>${esc(x.nome)}</h3><div class="muted">${esc(x.descricao)}</div></div>`).join('');
+ if(d.evidencias.length) evidence.innerHTML=d.evidencias.map(x=>`<div class="item">${esc(x.titulo||x.sinal||'Evidência')}</div>`).join('');
+ summaryState.textContent=d.resumo.estado; summaryText.textContent=d.resumo.texto;
+ renderNewLogic(d);
+}
+enter.onclick=()=>{intro.classList.add('hide');setTimeout(()=>intro.style.display='none',750)};
+loadData().then(render);
+</script></body></html>
