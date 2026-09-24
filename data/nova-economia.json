@@ -3,11 +3,11 @@
     "simulacro": "Simulacro III",
     "nome": "Economia de Participação Universal",
     "sigla": "EPU",
-    "versao": "1.2",
+    "versao": "1.3",
     "data_base": "2026-09-23",
     "natureza": "hipotese prospectiva acompanhada por evidencias observaveis",
     "objetivo": "Testar se a automacao por IA e robotica, combinada com pressao climatica, desigualdade, fome, deficit educacional e concentracao geopolitica, esta empurrando a economia global para um modelo em que a sobrevivencia material depende menos do emprego tradicional.",
-    "ultima_atualizacao": "2026-09-23"
+    "ultima_atualizacao": "2026-09-24"
   },
   "pergunta_abertura": "Se máquinas e inteligências artificiais produzirem grande parte da riqueza do mundo, de onde virá a renda de quem já não for necessário para produzi-la?",
   "hipotese": {
@@ -111,7 +111,7 @@
     {
       "id": "AUT",
       "nome": "IA e automação",
-      "valor": 25,
+      "valor": 27,
       "status": "calculado_marco_zero",
       "leitura": "Pressão inicial mensurável: exposição relevante à GenAI, sem evidência equivalente de substituição estrutural do emprego.",
       "componentes": [
@@ -144,10 +144,10 @@
         }
       ],
       "pontuacao": {
-        "valor": 25,
+        "valor": 27,
         "escala": "0-100",
         "tipo": "índice experimental do simulacro",
-        "data": "2026-09-23",
+        "data": "2026-09-24",
         "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
       }
     },
@@ -178,7 +178,7 @@
         "valor": 12,
         "escala": "0-100",
         "tipo": "índice experimental do simulacro",
-        "data": "2026-09-23",
+        "data": "2026-09-24",
         "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
       }
     },
@@ -216,14 +216,14 @@
         "valor": 72,
         "escala": "0-100",
         "tipo": "índice experimental do simulacro",
-        "data": "2026-09-23",
+        "data": "2026-09-24",
         "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
       }
     },
     {
       "id": "GEO",
       "nome": "Geopolítica e grandes potências",
-      "valor": 68,
+      "valor": 70,
       "status": "calculado_marco_zero",
       "leitura": "Capacidade computacional, patentes e infraestrutura estratégica permanecem fortemente concentradas.",
       "componentes": [
@@ -248,10 +248,10 @@
         }
       ],
       "pontuacao": {
-        "valor": 68,
+        "valor": 70,
         "escala": "0-100",
         "tipo": "índice experimental do simulacro",
-        "data": "2026-09-23",
+        "data": "2026-09-24",
         "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
       }
     },
@@ -291,14 +291,14 @@
         "valor": 46,
         "escala": "0-100",
         "tipo": "índice experimental do simulacro",
-        "data": "2026-09-23",
+        "data": "2026-09-24",
         "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
       }
     },
     {
       "id": "HUM",
       "nome": "Fome, pobreza e educação",
-      "valor": 58,
+      "valor": 59,
       "status": "calculado_marco_zero",
       "leitura": "Persistem déficits expressivos de fome, pobreza, alfabetização e conectividade.",
       "componentes": [
@@ -332,17 +332,17 @@
         }
       ],
       "pontuacao": {
-        "valor": 58,
+        "valor": 59,
         "escala": "0-100",
         "tipo": "índice experimental do simulacro",
-        "data": "2026-09-23",
+        "data": "2026-09-24",
         "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
       }
     },
     {
       "id": "INS",
       "nome": "Resposta institucional",
-      "valor": 20,
+      "valor": 22,
       "status": "calculado_marco_zero",
       "leitura": "Respostas regulatórias e multilaterais existem, mas mecanismos econômicos permanentes de redistribuição da automação ainda são limitados.",
       "componentes": [
@@ -369,10 +369,10 @@
         }
       ],
       "pontuacao": {
-        "valor": 20,
+        "valor": 22,
         "escala": "0-100",
         "tipo": "índice experimental do simulacro",
-        "data": "2026-09-23",
+        "data": "2026-09-24",
         "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
       }
     },
@@ -412,7 +412,7 @@
         "valor": 8,
         "escala": "0-100",
         "tipo": "índice experimental do simulacro",
-        "data": "2026-09-23",
+        "data": "2026-09-24",
         "observacao": "Pontuação inicial conservadora; não é uma estatística publicada pelas fontes."
       }
     }
@@ -584,6 +584,63 @@
       "fonte": "UE / ONU / FMI",
       "ano": 2026,
       "resumo": "Governança da IA e cenários de adaptação fiscal e social avançam, mas ainda não configuram redistribuição estrutural dos ganhos de automação."
+    },
+    {
+      "id": "E006",
+      "data": "2026-09-24",
+      "titulo": "Automação e envelhecimento populacional",
+      "efeito": "confirma",
+      "forca": "moderada",
+      "indicadores": [
+        "AUT",
+        "TRB"
+      ],
+      "fonte": "BIS",
+      "url": "https://www.bis.org/publications/bulletin-135-old-workers-young-machines-can-ai-and-automation-offset-population-ageing",
+      "resumo": "BIS analisa mais de 130 economias: IA e robôs podem compensar parte das pressões do envelhecimento, mas o potencial de automação varia fortemente por setor."
+    },
+    {
+      "id": "E007",
+      "data": "2026-09-24",
+      "titulo": "Adaptação do trabalho à IA",
+      "efeito": "alternativa",
+      "forca": "moderada",
+      "indicadores": [
+        "TRB",
+        "INS"
+      ],
+      "alternativa": "A1",
+      "fonte": "Federal Reserve Bank of New York",
+      "url": "https://www.newyorkfed.org/newsevents/events/regional_outreach/2026/0924-2026",
+      "resumo": "Evento enfatiza qualificação, retenção, melhores empregos e mobilidade econômica, fortalecendo a hipótese de capitalismo adaptativo."
+    },
+    {
+      "id": "E008",
+      "data": "2026-09-24",
+      "titulo": "Produtividade potencial e exclusão digital",
+      "efeito": "confirma",
+      "forca": "moderada",
+      "indicadores": [
+        "AUT",
+        "HUM"
+      ],
+      "fonte": "ITU / World Bank",
+      "url": "https://aiforgood.itu.int/event/closing-the-ai-skills-gap-a-global-call-to-action/",
+      "resumo": "16,2% dos empregos em economias em desenvolvimento podem obter ganhos significativos de produtividade com IA, enquanto 2,2 bilhões de pessoas permanecem offline."
+    },
+    {
+      "id": "E009",
+      "data": "2026-09-24",
+      "titulo": "Chips Act 2.0 e soberania tecnológica europeia",
+      "efeito": "confirma",
+      "forca": "moderada",
+      "indicadores": [
+        "GEO",
+        "CON"
+      ],
+      "fonte": "Council of the European Union",
+      "url": "https://www.consilium.europa.eu/sv/meetings/compet/2026/09/24/",
+      "resumo": "Ministros da UE debateram fortalecimento do ecossistema europeu de semicondutores e redução de dependências estratégicas."
     }
   ],
   "sinais_de_paradigma": [
@@ -615,8 +672,8 @@
   ],
   "resumo": {
     "estado": "Pressão mensurável",
-    "texto": "O Marco Zero identifica pressões reais de automação, concentração tecnológica, clima, desigualdade de acesso e resposta institucional. Entretanto, o trabalho continua sendo o mecanismo dominante de distribuição de renda e ainda não há evidência suficiente de uma Economia de Participação Universal estabelecida. A hipótese permanece aberta.",
-    "tendencia": "pressão crescente",
+    "texto": "Em 24/09/2026, novas evidências reforçam automação, desigualdade de acesso tecnológico e resposta institucional. Estratégias de qualificação também fortalecem a hipótese alternativa de capitalismo adaptativo. Não surgiu evidência suficiente de renda estruturalmente desvinculada do emprego; EPU permanece estável.",
+    "tendencia": "pressão crescente, sem transição EPU demonstrada",
     "T1": "sinais de adaptação institucional",
     "T2": "transição estrutural ainda não demonstrada"
   },
@@ -638,6 +695,29 @@
       "INS": 20,
       "EPU": 8,
       "nota": "Primeira fotografia. Evidências futuras são cumulativas; pontuações podem subir ou cair."
+    },
+    {
+      "data": "2026-09-24",
+      "tipo": "atualizacao_diaria",
+      "AUT": 27,
+      "TRB": 12,
+      "CON": 72,
+      "GEO": 70,
+      "CLI": 46,
+      "HUM": 59,
+      "INS": 22,
+      "EPU": 8,
+      "variacao": {
+        "AUT": 2,
+        "TRB": 0,
+        "CON": 0,
+        "GEO": 2,
+        "CLI": 0,
+        "HUM": 1,
+        "INS": 2,
+        "EPU": 0
+      },
+      "nota": "Novas evidências sobre automação, adaptação do trabalho, exclusão digital e soberania de semicondutores. EPU permanece estável."
     }
   ]
 }
