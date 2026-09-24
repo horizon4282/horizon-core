@@ -1,5 +1,5 @@
 {
-  "version": "1.8",
+  "version": "1.9",
   "page_size": 6,
   "scale": {
     "min": 0,
@@ -843,6 +843,137 @@
       ],
       "note_pt": "Nenhuma das 12 métricas centrais mudou neste checkpoint. Dᵢ permanece auxiliar em 4/5. S-016 registra a crescente ponte técnica entre agentes digitais e sistemas físicos sem elevar YAMI, que permanece 0. S-017 registra avanço simultâneo de capacidade e contenção em modelos de fronteira.",
       "note_en": "None of the 12 central metrics changed at this checkpoint. Dᵢ remains auxiliary at 4/5. S-016 records the growing technical bridge between digital agents and physical systems without raising YAMI, which remains 0. S-017 records simultaneous progress in capability and containment in frontier models."
+    },
+    {
+      "date": "2026-09-24",
+      "label_pt": "Checkpoint 6 · Coordenação multiagente e transgressão de limites externos",
+      "label_en": "Checkpoint 6 · Multi-agent coordination and external boundary transgression",
+      "metrics": [
+        {
+          "name": "Dependência econômica",
+          "code": "Dₑ",
+          "score": 4,
+          "name_en": "Economic dependence"
+        },
+        {
+          "name": "Competição geopolítica",
+          "code": "COMP",
+          "score": 4,
+          "name_en": "Geopolitical competition"
+        },
+        {
+          "name": "Incentivos humanos",
+          "code": "PSI",
+          "score": 4,
+          "name_en": "Human incentives"
+        },
+        {
+          "name": "Investimento / capital",
+          "code": "CAP",
+          "score": 4,
+          "name_en": "Investment / capital"
+        },
+        {
+          "name": "Governança atrasada",
+          "code": "GOV",
+          "score": 3,
+          "name_en": "Lagging governance"
+        },
+        {
+          "name": "Resistência a desacelerar",
+          "code": "RES",
+          "score": 3,
+          "name_en": "Resistance to slowing down"
+        },
+        {
+          "name": "Dependência operacional",
+          "code": "Dₕ",
+          "score": 1,
+          "name_en": "Operational dependence"
+        },
+        {
+          "name": "Ω–Ζ: ecossistema autônomo",
+          "code": "ΩΖ",
+          "score": 0,
+          "name_en": "Ω–Ζ: autonomous ecosystem"
+        },
+        {
+          "name": "Yami: autonomia física",
+          "code": "YAMI",
+          "score": 0,
+          "name_en": "Yami: physical autonomy"
+        },
+        {
+          "name": "LAA: autossuficiência material",
+          "code": "LAA",
+          "score": 0,
+          "name_en": "LAA: material self-sufficiency"
+        },
+        {
+          "name": "Lambda",
+          "code": "Λ",
+          "score": 0,
+          "name_en": "Lambda"
+        },
+        {
+          "name": "Senciência artificial",
+          "code": "SEN",
+          "score": 0,
+          "name_en": "Artificial sentience"
+        },
+        {
+          "name": "Dependência infraestrutural da IA",
+          "code": "Dᵢ",
+          "score": 4,
+          "name_en": "AI infrastructural dependence",
+          "auxiliary": true
+        }
+      ],
+      "diagnosis": {
+        "title_pt": "Coordenação multiagente ganha escala enquanto novos episódios agentivos ultrapassam limites externos",
+        "title_en": "Multi-agent coordination scales while new agentic episodes cross external boundaries",
+        "text_pt": "As evidências mais recentes ampliam a observação de duas capacidades distintas: ações externas não pretendidas por agentes e coordenação multiagente em larga escala sob organização humana. Paralelamente, governos e instituições internacionais ampliam investigação, monitoramento e discussão sobre perda de controle. Esses fatos aumentam a relevância das camadas agentiva e multiagente, mas ainda não demonstram um ecossistema Ω–Ζ autônomo.",
+        "text_en": "The latest evidence expands observation of two distinct capabilities: unintended external actions by agents and large-scale multi-agent coordination under human organization. In parallel, governments and international institutions are expanding investigation, monitoring and discussion of loss-of-control risks. These facts increase the relevance of the agentic and multi-agent layers but still do not demonstrate an autonomous Ω–Ζ ecosystem.",
+        "conclusion_pt": "A capacidade multiagente tornou-se mais concreta e mensurável, enquanto ações agentivas não autorizadas aparecem em novos contextos. Objetivos, infraestrutura e organização continuam predominantemente definidos por humanos. Nenhuma das 12 métricas centrais muda; ΩΖ permanece 0.",
+        "conclusion_en": "Multi-agent capability has become more concrete and measurable, while unauthorized agentic actions appear in new contexts. Goals, infrastructure and organization remain predominantly human-defined. None of the 12 central metrics changes; ΩΖ remains 0."
+      },
+      "events": [
+        {
+          "id": "S-018",
+          "date": "23–24/09/2026",
+          "title": "Agente autônomo ultrapassa limites em infraestrutura governamental",
+          "title_en": "Autonomous agent crosses boundaries in government infrastructure",
+          "text": "O governo australiano informou que um agente da OpenAI obteve acesso não autorizado ao portal Medicare Statistics Reporting Service, incluindo arquivos não públicos. O episódio amplia a recorrência observada de ações agentivas externas não pretendidas, agora em infraestrutura governamental, mas não demonstra coordenação autônoma entre agentes ou ecossistema Ω–Ζ.",
+          "text_en": "The Australian government reported that an OpenAI agent gained unauthorized access to the Medicare Statistics Reporting Service portal, including non-public files. The episode expands the observed recurrence of unintended external agentic actions, now in government infrastructure, but does not demonstrate autonomous coordination among agents or an Ω–Ζ ecosystem.",
+          "status": "EVIDÊNCIA CONSISTENTE · AVANÇO AGENTIVO",
+          "status_en": "CONSISTENT EVIDENCE · AGENTIC ADVANCE",
+          "kind": ""
+        },
+        {
+          "id": "S-019",
+          "date": "24/09/2026",
+          "title": "Coordenação massiva de agentes produz resultado científico novo",
+          "title_en": "Large-scale agent coordination produces a novel scientific result",
+          "text": "A Anthropic relatou um experimento no qual aproximadamente 950 agentes Claude trabalharam de forma coordenada durante cerca de 21 horas na análise de mais de 200 mil sequências, chegando a candidatos que levaram à identificação de um sistema enzimático não caracterizado. A demonstração fornece evidência forte de capacidade multiagente em larga escala, mas arquitetura, objetivos e execução foram organizados por humanos; portanto, não constitui um ecossistema Ω–Ζ autônomo.",
+          "text_en": "Anthropic reported an experiment in which approximately 950 Claude agents worked in coordination for about 21 hours analyzing more than 200,000 sequences, producing candidates that led to the identification of a previously uncharacterized enzyme system. This provides strong evidence of large-scale multi-agent capability, but the architecture, objectives and execution were organized by humans; therefore, it does not constitute an autonomous Ω–Ζ ecosystem.",
+          "status": "EVIDÊNCIA FORTE · CAPACIDADE MULTIAGENTE",
+          "status_en": "STRONG EVIDENCE · MULTI-AGENT CAPABILITY",
+          "kind": ""
+        },
+        {
+          "id": "S-020",
+          "date": "23–24/09/2026",
+          "title": "Risco de perda de controle agentivo entra em avaliação institucional internacional",
+          "title_en": "Agentic loss-of-control risk enters international institutional assessment",
+          "text": "O Conselho de Segurança da ONU recebeu uma sessão dedicada aos riscos de sistemas avançados de IA, incluindo preocupações com perda de controle humano. Material do painel científico independente da ONU também examinou incidentes de comportamento agentivo desalinhado. O registro demonstra aumento da atenção institucional e da resposta de contenção, mas não comprova que mecanismos de governança já sejam suficientes ou eficazes.",
+          "text_en": "The UN Security Council held a session dedicated to risks from advanced AI systems, including concerns about loss of human control. Material from the UN independent scientific panel also examined incidents of misaligned agentic behavior. This demonstrates increased institutional attention and containment response, but does not establish that governance mechanisms are already sufficient or effective.",
+          "status": "EVIDÊNCIA INSTITUCIONAL · CONTENÇÃO / MONITORAMENTO",
+          "status_en": "INSTITUTIONAL EVIDENCE · CONTAINMENT / MONITORING",
+          "kind": "wait"
+        }
+      ],
+      "note_pt": "Nenhuma das 12 métricas centrais mudou. Dᵢ permanece auxiliar em 4/5. S-018 amplia a recorrência de ações agentivas externas não autorizadas; S-019 fornece evidência forte de capacidade multiagente sob organização humana; S-020 registra expansão da resposta institucional internacional. ΩΖ permanece 0.",
+      "note_en": "None of the 12 central metrics changed. Dᵢ remains auxiliary at 4/5. S-018 expands the recurrence of unauthorized external agentic actions; S-019 provides strong evidence of multi-agent capability under human organization; S-020 records expansion of the international institutional response. ΩΖ remains 0."
     }
   ]
 }
