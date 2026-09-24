@@ -1,8 +1,8 @@
 {
   "meta": {
     "projeto": "SIMULACRO 150",
-    "versao": "1.4",
-    "atualizado_em": "2026-09-23",
+    "versao": "1.5",
+    "atualizado_em": "2026-09-24",
     "modo": "observatorio_longitudinal",
     "coleta_automatica": false
   },
@@ -26,7 +26,7 @@
       "pessoa": "Ethel Caterham",
       "nascimento": "1909-08-21",
       "idade_anos": 117,
-      "idade_dias_apos_aniversario": 33,
+      "idade_dias_apos_aniversario": 34,
       "status": "validado",
       "fonte_id": "GWR-CATERHAM"
     },
@@ -223,6 +223,30 @@
       "direcao": "pendente",
       "fonte_id": "REUTERS-FLORES",
       "nota": "O caso é monitorado, mas não altera nenhuma métrica validada até que a documentação seja autenticada."
+    },
+    {
+      "id": "EV-20260924-01",
+      "data": "2026-09-24",
+      "categoria": "biotecnologia",
+      "titulo": "Mecanismos comuns associados à longevidade excepcional entre espécies",
+      "nota": "Revisão publicada em Aging reúne mecanismos recorrentes em organismos excepcionalmente longevos, incluindo manutenção do DNA, preservação de características de células-tronco e resistência ao estresse. É evidência biológica favorável para compreender mecanismos de longevidade, mas não demonstra extensão da vida humana.",
+      "tipo": "experimental",
+      "impacto": "positivo",
+      "validacao": "evidencia_biologica",
+      "verificado": true,
+      "fonte_id": "AGING-EXCEPTIONAL-20260924"
+    },
+    {
+      "id": "EV-20260924-02",
+      "data": "2026-09-24",
+      "categoria": "healthspan",
+      "titulo": "Neisseria flavescens associada à desaceleração do envelhecimento em humanos",
+      "nota": "Estudo publicado em Nature Aging associa a bactéria oral Neisseria flavescens a envelhecimento desacelerado em humanos e relata efeitos geroprotetores em modelos de vermes e camundongos. O achado é relevante para healthspan e biologia do envelhecimento, mas ainda não demonstra aumento da longevidade máxima humana.",
+      "tipo": "observado_experimental",
+      "impacto": "positivo",
+      "validacao": "associacao_humana_com_suporte_preclinico",
+      "verificado": true,
+      "fonte_id": "NATURE-AGING-NF-20260924"
     }
   ],
   "checkpoints": [
@@ -281,6 +305,16 @@
       "id": "REUTERS-FLORES",
       "nome": "Reuters — Costa Rican man, 119, seeks recognition as world’s oldest person",
       "url": "https://www.reuters.com/world/americas/costa-rican-man-119-seeks-recognition-worlds-oldest-person-2026-09-09/"
+    },
+    {
+      "id": "AGING-EXCEPTIONAL-20260924",
+      "nome": "Aging — Exceptional Longevity Across Species",
+      "url": "https://www.aging-us.com/news-room/press-release-archive"
+    },
+    {
+      "id": "NATURE-AGING-NF-20260924",
+      "nome": "Nature Aging — Neisseria flavescens e envelhecimento desacelerado",
+      "url": "https://www.nature.com/nataging"
     }
   ],
   "avisos": [
