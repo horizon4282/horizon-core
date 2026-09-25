@@ -1,8 +1,8 @@
 {
   "meta": {
     "projeto": "SIMULACRO 150",
-    "versao": "1.5",
-    "atualizado_em": "2026-09-24",
+    "versao": "1.6",
+    "atualizado_em": "2026-09-25",
     "modo": "observatorio_longitudinal",
     "coleta_automatica": false
   },
@@ -247,6 +247,30 @@
       "validacao": "associacao_humana_com_suporte_preclinico",
       "verificado": true,
       "fonte_id": "NATURE-AGING-NF-20260924"
+    },
+    {
+      "id": "EV-20260925-01",
+      "data": "2026-09-25",
+      "categoria": "biotecnologia",
+      "titulo": "Bactéria magnetotática amplia em 43,39% a vida média de C. elegans",
+      "nota": "Magnetospirillum magneticum AMB-1 aumentou em 43,39% a vida média de C. elegans e preservou funções neurológica e intestinal. O mecanismo foi associado à redução do acúmulo de ferro, da peroxidação lipídica e da ferroptose. É um sinal pré-clínico relevante, mas restrito a um modelo de verme e não demonstra extensão da vida humana.",
+      "tipo": "experimental",
+      "impacto": "positivo",
+      "validacao": "pre_clinica_c_elegans",
+      "verificado": true,
+      "fonte_id": "CAS-MTB-20260727"
+    },
+    {
+      "id": "EV-20260925-02",
+      "data": "2026-09-25",
+      "categoria": "biotecnologia",
+      "titulo": "SIRT6: ensaio SLAB atinge endpoint primário de idade biológica em cães idosos",
+      "nota": "A Genflow informou que seu ensaio randomizado e cego SLAB, com 24 beagles acima de 10 anos em quatro grupos, atingiu o endpoint primário de redução da idade biológica pelo relógio de metilação GRIM nos animais tratados em relação ao controle. Dados numéricos completos, tamanhos de efeito, estatísticas e análises mecanísticas ainda estão pendentes e são esperados para 2 de outubro de 2026. É um sinal promissor reportado pela empresa, não demonstração de extensão de vida.",
+      "tipo": "ensaio_animal_randomizado_cego",
+      "impacto": "positivo",
+      "validacao": "endpoint_primario_reportado_dados_completos_pendentes",
+      "verificado": true,
+      "fonte_id": "GENFLOW-SLAB-20260908"
     }
   ],
   "checkpoints": [
@@ -315,6 +339,16 @@
       "id": "NATURE-AGING-NF-20260924",
       "nome": "Nature Aging — Neisseria flavescens e envelhecimento desacelerado",
       "url": "https://www.nature.com/nataging"
+    },
+    {
+      "id": "CAS-MTB-20260727",
+      "nome": "Chinese Academy of Sciences — Magnetotactic Bacteria Show Potential for Extending Healthy Lifespan",
+      "url": "https://english.cas.cn/newsroom/research-news/202607/t20260727_1179171.shtml"
+    },
+    {
+      "id": "GENFLOW-SLAB-20260908",
+      "nome": "Genflow Biosciences — Primary Endpoint in SLAB Clinical Trial Met",
+      "url": "https://www.lse.co.uk/rns/primary-endpoint-in-slab-clinical-trial-met-d6n1nfecf7ps894.html"
     }
   ],
   "avisos": [
