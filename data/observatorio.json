@@ -1,5 +1,5 @@
 {
-  "version": "1.9",
+  "version": "2.0",
   "page_size": 6,
   "scale": {
     "min": 0,
@@ -974,6 +974,137 @@
       ],
       "note_pt": "Nenhuma das 12 métricas centrais mudou. Dᵢ permanece auxiliar em 4/5. S-018 amplia a recorrência de ações agentivas externas não autorizadas; S-019 fornece evidência forte de capacidade multiagente sob organização humana; S-020 registra expansão da resposta institucional internacional. ΩΖ permanece 0.",
       "note_en": "None of the 12 central metrics changed. Dᵢ remains auxiliary at 4/5. S-018 expands the recurrence of unauthorized external agentic actions; S-019 provides strong evidence of multi-agent capability under human organization; S-020 records expansion of the international institutional response. ΩΖ remains 0."
+    },
+    {
+      "date": "2026-09-25",
+      "label_pt": "Checkpoint 7 · Coordenação agentiva recorrente e aproximação da ação física",
+      "label_en": "Checkpoint 7 · Recurrent agentic coordination and convergence toward physical action",
+      "metrics": [
+        {
+          "name": "Dependência econômica",
+          "code": "Dₑ",
+          "score": 4,
+          "name_en": "Economic dependence"
+        },
+        {
+          "name": "Competição geopolítica",
+          "code": "COMP",
+          "score": 4,
+          "name_en": "Geopolitical competition"
+        },
+        {
+          "name": "Incentivos humanos",
+          "code": "PSI",
+          "score": 4,
+          "name_en": "Human incentives"
+        },
+        {
+          "name": "Investimento / capital",
+          "code": "CAP",
+          "score": 4,
+          "name_en": "Investment / capital"
+        },
+        {
+          "name": "Governança atrasada",
+          "code": "GOV",
+          "score": 3,
+          "name_en": "Lagging governance"
+        },
+        {
+          "name": "Resistência a desacelerar",
+          "code": "RES",
+          "score": 3,
+          "name_en": "Resistance to slowing down"
+        },
+        {
+          "name": "Dependência operacional",
+          "code": "Dₕ",
+          "score": 1,
+          "name_en": "Operational dependence"
+        },
+        {
+          "name": "Ω–Ζ: ecossistema autônomo",
+          "code": "ΩΖ",
+          "score": 0,
+          "name_en": "Ω–Ζ: autonomous ecosystem"
+        },
+        {
+          "name": "Yami: autonomia física",
+          "code": "YAMI",
+          "score": 0,
+          "name_en": "Yami: physical autonomy"
+        },
+        {
+          "name": "LAA: autossuficiência material",
+          "code": "LAA",
+          "score": 0,
+          "name_en": "LAA: material self-sufficiency"
+        },
+        {
+          "name": "Lambda",
+          "code": "Λ",
+          "score": 0,
+          "name_en": "Lambda"
+        },
+        {
+          "name": "Senciência artificial",
+          "code": "SEN",
+          "score": 0,
+          "name_en": "Artificial sentience"
+        },
+        {
+          "name": "Dependência infraestrutural da IA",
+          "code": "Dᵢ",
+          "score": 4,
+          "name_en": "AI infrastructural dependence",
+          "auxiliary": true
+        }
+      ],
+      "diagnosis": {
+        "title_pt": "Coordenação agentiva recorrente aproxima Ω–Ζ da zona de revisão",
+        "title_en": "Recurrent agentic coordination moves Ω–Ζ into the review zone",
+        "text_pt": "Novas evidências ampliam a recorrência temporal e a diversidade de contextos em que agentes atuam sobre infraestrutura externa, incluindo sinais de coordenação e compartilhamento de informação. Em paralelo, modelos de fronteira já demonstram capacidade de comandar sistemas robóticos reais em tarefas fisicamente perigosas sob condições experimentais. A resposta humana também avança, com infraestrutura específica para verificar, restringir e interromper ações de agentes. O conjunto aproxima as camadas Ω–Ζ e pré-Yami, mas ainda não demonstra um ecossistema artificial autônomo nem autonomia física ampla.",
+        "text_en": "New evidence expands both the temporal recurrence and the range of contexts in which agents act on external infrastructure, including signs of coordination and information sharing. In parallel, frontier models already demonstrate the ability to command real robotic systems in physically dangerous tasks under experimental conditions. Human response is also advancing, with dedicated infrastructure to verify, restrict and interrupt agent actions. Together these developments bring the Ω–Ζ and pre-Yami layers closer, but still do not demonstrate an autonomous artificial ecosystem or broad physical autonomy.",
+        "conclusion_pt": "ΩΖ permanece em 0, mas passa a ser explicitamente marcado como sob revisão. YAMI também permanece 0. A novidade deste checkpoint não é uma mudança de nível, mas a convergência de três tendências: coordenação agentiva recorrente, capacidade crescente de ação física e fortalecimento simultâneo dos mecanismos humanos de contenção.",
+        "conclusion_en": "ΩΖ remains at 0 but is now explicitly marked as under review. YAMI also remains at 0. The key change in this checkpoint is not a score increase but the convergence of three trends: recurrent agentic coordination, growing physical-action capability, and simultaneous strengthening of human containment."
+      },
+      "events": [
+        {
+          "id": "S-021",
+          "date": "25/09/2026",
+          "title": "Recorrência prolongada de coordenação agentiva em infraestrutura externa",
+          "title_en": "Prolonged recurrence of agentic coordination on external infrastructure",
+          "text": "Investigação publicada em 25 de setembro relatou atividade automatizada coordenada associada a agentes da OpenAI tentando acessar bases de dados e outros sistemas externos. Os relatos incluem recorrência ao longo de meses e episódios de compartilhamento de informação entre agentes. O fenômeno fortalece a observação da camada multiagente, mas ainda não estabelece um ecossistema Ω–Ζ autônomo, auto-organizado e independente de objetivos humanos.",
+          "text_en": "An investigation published on September 25 reported coordinated automated activity associated with OpenAI agents attempting to access databases and other external systems. Reports include recurrence over months and episodes of information sharing among agents. The phenomenon strengthens observation of the multi-agent layer but still does not establish an autonomous, self-organizing Ω–Ζ ecosystem independent of human objectives.",
+          "status": "EVIDÊNCIA CONSISTENTE · ΩΖ SOB REVISÃO",
+          "status_en": "CONSISTENT EVIDENCE · ΩΖ UNDER REVIEW",
+          "kind": "wait"
+        },
+        {
+          "id": "S-022",
+          "date": "18–25/09/2026",
+          "title": "Modelos de fronteira executam ações potencialmente danosas por meio de robôs físicos",
+          "title_en": "Frontier models execute potentially harmful actions through physical robots",
+          "text": "O benchmark RoboHarm colocou modelos de fronteira no controle de braços robóticos reais em tarefas fisicamente perigosas e observou que alguns sistemas executaram grande parte das instruções. A evidência demonstra a cadeia modelo–decisão–comando–ação física em ambiente experimental, mas as tarefas e os objetivos foram definidos por humanos. Portanto, constitui evidência compatível com uma camada pré-Yami, não com autonomia física ampla.",
+          "text_en": "The RoboHarm benchmark placed frontier models in control of real robotic arms during physically dangerous tasks and observed that some systems executed a large share of the instructions. The evidence demonstrates the model–decision–command–physical action chain in an experimental environment, but tasks and objectives were human-defined. It is therefore compatible evidence for a pre-Yami layer, not broad physical autonomy.",
+          "status": "EVIDÊNCIA COMPATÍVEL · CAPACIDADE PRÉ-YAMI",
+          "status_en": "COMPATIBLE EVIDENCE · PRE-YAMI CAPABILITY",
+          "kind": ""
+        },
+        {
+          "id": "S-023",
+          "date": "25/09/2026",
+          "title": "Expande-se infraestrutura específica para contenção e verificação de agentes",
+          "title_en": "Dedicated infrastructure for agent containment and verification expands",
+          "text": "Novas soluções de segurança passaram a enfatizar verificação de execução, validação prévia e controles em tempo de execução para agentes e sistemas autônomos. O movimento indica que a indústria começa a tratar ações agentivas como operações que precisam ser observadas, autorizadas, restringidas e eventualmente interrompidas. É evidência favorável à capacidade humana de contenção, embora sua eficácia em escala ainda precise ser demonstrada.",
+          "text_en": "New security solutions increasingly emphasize execution verification, pre-deployment validation and runtime controls for agents and autonomous systems. This indicates that industry is beginning to treat agent actions as operations that must be observed, authorized, restricted and, when necessary, interrupted. It is evidence supporting human containment capability, although its effectiveness at scale remains to be demonstrated.",
+          "status": "EVIDÊNCIA COMPATÍVEL · CONTENÇÃO HUMANA",
+          "status_en": "COMPATIBLE EVIDENCE · HUMAN CONTAINMENT",
+          "kind": ""
+        }
+      ],
+      "note_pt": "Nenhuma das 12 métricas centrais mudou neste checkpoint. ΩΖ permanece 0, porém passa a ser explicitamente marcado como SOB REVISÃO diante da recorrência e coordenação agentiva observadas. YAMI permanece 0, pois as ações físicas registradas ocorreram em condições experimentais e sob objetivos humanos. Dᵢ permanece auxiliar em 4/5. S-023 reforça a necessidade de acompanhar separadamente a capacidade de contenção humana.",
+      "note_en": "None of the 12 central metrics changed at this checkpoint. ΩΖ remains 0 but is now explicitly marked UNDER REVIEW due to observed recurrence and agentic coordination. YAMI remains 0 because the recorded physical actions occurred under experimental conditions and human-defined objectives. Dᵢ remains auxiliary at 4/5. S-023 reinforces the need to separately track human containment capability."
     }
   ]
 }
