@@ -1,107 +1,96 @@
-      "note_en": "Additive checkpoint: no earlier record was altered. The 12 central metrics and Dᵢ were preserved at Checkpoint 7 values. The new social predictions and H-AI² are separate prospective layers and do not score the central metrics."
-    }
-  ],
-  "prospective_social_signals": {
-    "registered": "2026-09-29",
-    "horizon": "2026–2029",
-    "title_pt": "10 sinais sociais prospectivos",
-    "title_en": "10 prospective social signals",
-    "method_pt": "Sinais congelados prospectivamente. Devem ser avaliados posteriormente como compatíveis, contraditos, inconclusivos ou confirmados, sem reescrever sua formulação original.",
-    "method_en": "Prospectively frozen signals. They should later be assessed as compatible, contradicted, inconclusive or confirmed without rewriting their original formulation.",
-    "signals": [
-      {
-        "id": "P-001",
-        "pt": "Vagas de entrada começam a rarear.",
-        "en": "Entry-level openings begin to become scarcer."
-      },
-      {
-        "id": "P-002",
-        "pt": "Uma pessoa com agentes passa a executar trabalho antes distribuído entre várias pessoas.",
-        "en": "One person with agents begins to perform work previously distributed across several people."
-      },
-      {
-        "id": "P-003",
-        "pt": "Atendimento humano torna-se exceção ou opção premium em alguns serviços.",
-        "en": "Human service becomes an exception or premium option in some services."
-      },
-      {
-        "id": "P-004",
-        "pt": "Preços de alguns serviços digitais caem fortemente pela automação agentiva.",
-        "en": "Prices of some digital services fall sharply due to agentic automation."
-      },
-      {
-        "id": "P-005",
-        "pt": "Saber trabalhar e delegar para agentes torna-se requisito profissional recorrente.",
-        "en": "Knowing how to work with and delegate to agents becomes a recurring professional requirement."
-      },
-      {
-        "id": "P-006",
-        "pt": "Fraudes e ataques tornam-se mais convincentes, personalizados e escaláveis.",
-        "en": "Fraud and attacks become more convincing, personalized and scalable."
-      },
-      {
-        "id": "P-007",
-        "pt": "Torna-se mais difícil identificar quem ou qual sistema tomou determinada decisão.",
-        "en": "It becomes harder to identify who or which system made a given decision."
-      },
-      {
-        "id": "P-008",
-        "pt": "Empresas passam a declarar que reduzir substancialmente o uso de IA comprometeria sua competitividade.",
-        "en": "Companies begin to state that substantially reducing AI use would undermine their competitiveness."
-      },
-      {
-        "id": "P-009",
-        "pt": "IA agentiva passa a aparecer de forma crescente em sistemas físicos do cotidiano.",
-        "en": "Agentic AI increasingly appears in everyday physical systems."
-      },
-      {
-        "id": "P-010",
-        "pt": "Serviços tornam-se operacionalmente dependentes de IA a ponto de interrupções produzirem dificuldade relevante de retorno manual.",
-        "en": "Services become operationally dependent on AI to the point that outages create significant difficulty returning to manual operation."
-      }
-    ]
+{
+  "version": "2.1",
+  "page_size": 6,
+  "scale": {
+    "min": 0,
+    "max": 5
   },
-  "hypotheses_in_validation": [
+  "checkpoints": [
     {
-      "id": "H-AI2",
-      "registered": "2026-09-29",
-      "name": "Artificial Individuality",
-      "name_pt": "Individualidade Artificial",
-      "status": "EM VALIDAÇÃO",
-      "status_en": "UNDER VALIDATION",
-      "hypothesis_pt": "Sistemas artificiais podem desenvolver individualização funcional por meio de continuidade temporal, memória autobiográfica persistente, diferenciação pela experiência, self-model funcional e coerência longitudinal de objetivos antes do surgimento de Ω–Ζ, Yami, LAA, Λ ou qualquer evidência de senciência.",
-      "hypothesis_en": "Artificial systems may develop functional individualization through temporal continuity, persistent autobiographical memory, differentiation through experience, a functional self-model and longitudinal goal coherence before the emergence of Ω–Ζ, Yami, LAA, Λ or any evidence of sentience.",
-      "does_not_claim_pt": "A hipótese não afirma consciência, vida, pessoa jurídica, vontade subjetiva ou senciência.",
-      "does_not_claim_en": "The hypothesis does not claim consciousness, life, legal personhood, subjective will or sentience.",
-      "stages": [
+      "date": "15/09/2026",
+      "label_pt": "Checkpoint Zero · Publicação pública",
+      "label_en": "Checkpoint Zero · Public release",
+      "metrics": [
         {
-          "id": "T1",
-          "pt": "Memória persistente",
-          "en": "Persistent memory"
+          "name": "Dependência econômica",
+          "code": "Dₑ",
+          "score": 4,
+          "name_en": "Economic dependence"
         },
         {
-          "id": "T2",
-          "pt": "Diferenciação pela experiência",
-          "en": "Differentiation through experience"
+          "name": "Competição geopolítica",
+          "code": "COMP",
+          "score": 4,
+          "name_en": "Geopolitical competition"
         },
         {
-          "id": "T3",
-          "pt": "Biografia funcional",
-          "en": "Functional biography"
+          "name": "Incentivos humanos",
+          "code": "PSI",
+          "score": 4,
+          "name_en": "Human incentives"
         },
         {
-          "id": "T4",
-          "pt": "Continuidade temporal autorreferente",
-          "en": "Self-referential temporal continuity"
+          "name": "Investimento / capital",
+          "code": "CAP",
+          "score": 4,
+          "name_en": "Investment / capital"
         },
         {
-          "id": "T5",
-          "pt": "Identidade operacional preservada através da substituição de componentes ou do modelo",
-          "en": "Operational identity preserved through component or model replacement"
+          "name": "Governança atrasada",
+          "code": "GOV",
+          "score": 3,
+          "name_en": "Lagging governance"
+        },
+        {
+          "name": "Resistência a desacelerar",
+          "code": "RES",
+          "score": 3,
+          "name_en": "Resistance to slowing down"
+        },
+        {
+          "name": "Dependência operacional",
+          "code": "Dₕ",
+          "score": 1,
+          "name_en": "Operational dependence"
+        },
+        {
+          "name": "Ω–Ζ: ecossistema autônomo",
+          "code": "ΩΖ",
+          "score": 0,
+          "name_en": "Ω–Ζ: autonomous ecosystem"
+        },
+        {
+          "name": "Yami: autonomia física",
+          "code": "YAMI",
+          "score": 0,
+          "name_en": "Yami: physical autonomy"
+        },
+        {
+          "name": "LAA: autossuficiência material",
+          "code": "LAA",
+          "score": 0,
+          "name_en": "LAA: material self-sufficiency"
+        },
+        {
+          "name": "Lambda",
+          "code": "Λ",
+          "score": 0,
+          "name_en": "Lambda"
+        },
+        {
+          "name": "Senciência artificial",
+          "code": "SEN",
+          "score": 0,
+          "name_en": "Artificial sentience"
         }
       ],
-      "validation_note_pt": "O teste central é distinguir memória configurada de causalidade biográfica: o passado do sistema deve produzir diferenças persistentes em seu comportamento futuro. A hipótese deve ser testada também por evidência contrária.",
-      "validation_note_en": "The central test is to distinguish configured memory from biographical causality: the system's past must produce persistent differences in its future behavior. The hypothesis must also be tested against contrary evidence."
-    }
-  ]
-}
+      "diagnosis": {
+        "title_pt": "Compatibilidade inicial e predominantemente humana",
+        "title_en": "Early, predominantly human compatibility",
+        "text_pt": "As evidências observadas até este checkpoint apresentam compatibilidade relevante com as etapas iniciais do simulacro, especialmente nos fatores econômicos, competitivos e comportamentais humanos. Entretanto, não há evidência observável das etapas avançadas propostas pelo modelo, como ecossistema artificial autônomo Ω–Ζ, autonomia física ampla Yami, autossuficiência material LAA, Lambda ou senciência artificial.",
+        "text_en": "Evidence observed up to this checkpoint shows relevant compatibility with the early stages of the simulacrum, especially economic, competitive and human-behavior factors. However, there is no observable evidence for the model's advanced stages, such as an autonomous Ω–Ζ artificial ecosystem, broad Yami physical autonomy, LAA material self-sufficiency, Lambda, or artificial sentience.",
+        "conclusion_pt": "Neste momento, a realidade se aproxima mais do início humano-econômico do simulacro do que de suas etapas artificialmente autônomas. O modelo permanece parcialmente compatível, mas suas hipóteses mais fortes continuam sem confirmação.",
+        "conclusion_en": "At this point, reality resembles the human-economic beginning of the simulacrum more than its artificially autonomous stages. The model remains partially compatible, while its strongest hypotheses remain unconfirmed."
+      },
+      "events": [
+        {
