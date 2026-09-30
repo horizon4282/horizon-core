@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rádio Luz e Louvor — Live 3.5 Cinema Boxes</title>
+<title>Rádio Luz e Louvor — Live 3.6 Cinema Boxes</title>
 <meta name="author" content="Roque Fernando Marcos Sousa">
 <link rel="icon" type="image/png" href="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1235,7 +1235,8 @@ body{
   --scene-bg1:rgba(35,25,10,.96);
   --scene-bg2:rgba(76,53,18,.92);
 }
-.live-stage.special-mode-minute .special-card{
+.live-stage.special-mode-minute .special-card,
+.live-stage.special-mode-note .special-card{
   --scene-accent:#84d7ff;
   --scene-accent-rgb:132,215,255;
   --scene-bg1:rgba(7,25,48,.95);
@@ -1401,7 +1402,7 @@ body{
     <div class="start-card">
       <img src="https://songs.horizon4282.com.br/file/horizon4282/images/icon-radio-app-1.png" alt="">
       <h1>Rádio Luz e Louvor</h1>
-      <p>Versão Live 3.5 · Cinema Boxes · transmissão sincronizada com a programação da rádio.</p>
+      <p>Versão Live 3.6 · Cinema Boxes · transmissão sincronizada com a programação da rádio.</p>
       <button id="liveStartButton" type="button">Iniciar rádio</button>
     </div>
   </div>
@@ -2182,7 +2183,8 @@ function getTrackVisualMode(track){
     "mensagem de esperanca":"hope",
     "entre nos":"between",
     "um minuto pra voce":"minute",
-    "um minuto para voce":"minute"
+    "um minuto para voce":"minute",
+    "nota suave":"note"
   };
 
   if(explicitAliases[explicitMode]) return explicitAliases[explicitMode];
@@ -2190,6 +2192,14 @@ function getTrackVisualMode(track){
   const title = normalizeVisualTitle(getTrackTitleForVisual(track));
 
   /* Ordem específica: cenas mais particulares primeiro. */
+  if(
+    title === "nota suave" ||
+    title.includes("nota suave -") ||
+    title.includes("programa nota suave")
+  ){
+    return "note";
+  }
+
   if(
     title.includes("mensagem de esperanca")
   ){
@@ -2406,6 +2416,16 @@ const SPECIAL_SCENES = {
     actionHtml:"<strong>Um minuto</strong> que pode fazer diferença no seu dia",
     iconHtml:'<div class="special-icon">⏱</div>',
     ring:false
+  },
+  note:{
+    kicker:"Ciência e saúde",
+    title:"Nota",
+    accent:"Suave",
+    subtitle:"Um toque de reflexão em ciência e saúde para tornar seu dia melhor.",
+    actionIcon:"",
+    actionHtml:"com <strong>Andrea Tomazela</strong> · Psicóloga e Neuropsicóloga",
+    iconHtml:'<div class="special-icon">☕</div>',
+    ring:false
   }
 };
 
@@ -2452,7 +2472,7 @@ function applyTrackVisualMode(track){
   if(!stage) return;
 
   const mode = getTrackVisualMode(track);
-  const modes = ["subscribe","support","like","rosary","byzantine","share","prayer","word","hope","between","minute"];
+  const modes = ["subscribe","support","like","rosary","byzantine","share","prayer","word","hope","between","minute","note"];
 
   stage.classList.remove(
     "special-mode-active",
