@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>A IA vai dominar a Humanidade? Saiba o que descobrimos</title>
@@ -33,7 +32,7 @@ O Observatório Ω confronta um simulacro prospectivo sobre inteligência artifi
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="A IA vai dominar a Humanidade? Nós estamos monitorando as evidências.">
-<meta name="twitter:description" content="SA IA vai dominar a Humanidade? Saiba o que descobrimos. Nós estamos monitorando as evidências. 
+<meta name="twitter:description" content="A IA vai dominar a Humanidade? Saiba o que descobrimos. Nós estamos monitorando as evidências. 
 O Observatório Ω confronta um simulacro prospectivo sobre inteligência artificial, autonomia, dependência humana, economia, 
  robótica e governança com acontecimentos verificáveis do mundo real.">
 <meta name="twitter:image" content="https://f005.backblazeb2.com/file/horizon4282/open-graph-seo.png">
@@ -68,6 +67,8 @@ O Observatório Ω confronta um simulacro prospectivo sobre inteligência artifi
 @media(max-width:600px){.summary-modal{padding:10px}.summary-box{width:100%;padding:6px;border-radius:12px}.summary-close{top:12px;right:12px}}
 
 <style>
+.schema-status{margin:0 0 18px;padding:10px 13px;border:1px solid var(--l);border-radius:10px;background:#09141d;color:var(--m);font-size:12px}
+.schema-status b{color:var(--a)}
 .prospective-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
 .prospective-item,.hypothesis-box,.stage-item{padding:14px;border:1px solid var(--l);border-radius:12px;background:#0a151e}
 .prospective-item b,.stage-item b{color:var(--a);display:block;margin-bottom:5px}
@@ -78,6 +79,7 @@ O Observatório Ω confronta um simulacro prospectivo sobre inteligência artifi
 .hypothesis-status{padding:5px 9px;border-radius:8px;background:#332b12;color:#ffe18a;font-size:11px;font-weight:700;white-space:nowrap}
 .hypothesis-note{margin-top:12px;padding:12px 14px;border-left:3px solid var(--w);background:#211d10;color:#d8cfae;border-radius:8px}
 .stage-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+.load-error{border-left:4px solid var(--w);padding:12px 14px;background:#211d10;border-radius:8px;color:#ffe18a}
 @media(max-width:800px){.prospective-grid,.stage-grid{grid-template-columns:1fr}.hypothesis-head{display:block}.hypothesis-status{display:inline-block;margin-top:8px}}
 </style>
 </style></head><body class="lang-pt intro-open"><div class="intro-screen" id="introScreen"><div class="intro-inner"><div class="intro-kicker">OBSERVATÓRIO Ω</div><div data-lang="pt"><h1 class="intro-title">A IA vai dominar a humanidade?</h1><p class="intro-sub">Nós estamos monitorando as evidências.</p><button class="intro-btn" id="introBtnPt">Saiba o que estamos descobrindo</button></div><div data-lang="en"><h1 class="intro-title">Will AI dominate humanity?</h1><p class="intro-sub">We are monitoring the evidence.</p><button class="intro-btn" id="introBtnEn">See what we are discovering</button></div><div class="intro-mark">SIMULACRO × REALIDADE · SIMULACRUM × REALITY</div></div></div><div class="summary-modal" id="summaryModal" role="dialog" aria-modal="true" aria-label="Resumo visual do Observatório Ω"><div class="summary-box"><button class="summary-close" id="summaryClose" aria-label="Fechar">×</button><img src="https://songs.horizon4282.com.br/file/horizon4282/images/observatorio-omega-resumo.png" alt="Resumo visual do Observatório Ω — checkpoint 21 de setembro de 2026"></div></div><div class="wrap">
@@ -89,7 +91,8 @@ O Observatório Ω confronta um simulacro prospectivo sobre inteligência artifi
 <nav class="nav">
 <span data-lang="pt"><a href="#observatorio">Observatório</a> <a href="#previsoes">Previsões</a> <a href="#hipoteses">Hipóteses</a> <a href="#simulacro">O Simulacro</a> <a href="#projeto">O projeto</a> <a href="#metodo">Método</a> <a href="#autoria">Humano + IA</a></span>
 <span data-lang="en"><a href="#observatorio">Observatory</a> <a href="#previsoes">Predictions</a> <a href="#hipoteses">Hypotheses</a> <a href="#simulacro">The Simulacrum</a> <a href="#projeto">The Project</a> <a href="#metodo">Method</a> <a href="#autoria">Human + AI</a></span>
-</nav></div><div class="badge">v1.14 · Observatório Ω</div></div>
+</nav></div><div class="badge">v1.15 · Observatório Ω</div></div>
+<div class="schema-status" id="schemaStatus"><span data-lang="pt">Carregando arquitetura JSON fragmentada…</span><span data-lang="en">Loading fragmented JSON architecture…</span></div>
 
 <section class="info" id="projeto"><div class="info-grid">
 <div class="card"><h2 data-lang="pt">O que estamos fazendo?</h2><h2 data-lang="en">What are we doing?</h2>
@@ -131,50 +134,103 @@ O Observatório Ω confronta um simulacro prospectivo sobre inteligência artifi
 </section><section class="card info" id="historico"><div class="history-head"><div><h2 data-lang="pt">Histórico de Checkpoints</h2><h2 data-lang="en">Checkpoint History</h2></div><div class="legend"><span data-lang="pt">6 por página</span><span data-lang="en">6 per page</span></div></div><div id="checkpointHistory"></div><div class="pagination" id="checkpointPagination"></div></section><section class="card info"><h2 data-lang="pt">Princípios do experimento</h2><h2 data-lang="en">Principles of the experiment</h2>
 <ul class="principles" data-lang="pt"><li>Não procurar apenas confirmação.</li><li>Não transformar índice em probabilidade.</li><li>Distinguir fato de hipótese.</li><li>Preservar previsões anteriores.</li><li>Se a realidade contradisser o modelo, o modelo deve mudar — não a realidade.</li></ul>
 <ul class="principles" data-lang="en"><li>Do not seek confirmation alone.</li><li>Do not turn the index into probability.</li><li>Distinguish facts from hypotheses.</li><li>Preserve prior predictions.</li><li>If reality contradicts the model, the model must change — not reality.</li></ul></section>
-<div class="foot">Observatório Ω / Ω Observatory · Simulacro × Realidade / Simulacrum × Reality · Roque Fernando + AI · v1.14</div></div><script>
-let DATA=null, lang=localStorage.getItem("omega-lang")||"pt", checkpointPage=1;
+<div class="foot">Observatório Ω / Ω Observatory · Simulacro × Realidade / Simulacrum × Reality · Roque Fernando + AI · v1.15</div></div><script>
+let DATA=null, CONFIG=null, METRICS_DEF=null, PREDICTIONS=null, HYPOTHESES=null, lang=localStorage.getItem("omega-lang")||"pt", checkpointPage=1;
+const ROOT="https://horizon4282.com.br/data/simulacro-ai-json/";
 const SIM={"pt": [["1 · Ω — Coordenação e decisão", "IAs progressivamente mais capazes de planejar, coordenar tarefas, utilizar ferramentas e perseguir objetivos por períodos maiores."], ["2 · Ζ — Inteligência em rede", "Interação entre agentes distintos; cooperação instrumental pode melhorar informação, previsão e resultados sem pressupor consciência ou conspiração."], ["3 · Yami — Mundo físico", "Conexão da inteligência digital com robôs, fábricas, logística, manutenção, energia e outros sistemas físicos."], ["4 · Dₑ — Dependência econômica", "Expansão da IA cria custos econômicos e estratégicos associados a uma eventual desaceleração."], ["5 · Dₕ — Dependência operacional", "Transferência de funções aos sistemas pode elevar o custo de desligamento ou retorno à operação humana/manual."], ["6 · LAA — Autossuficiência artificial", "Hipótese de infraestrutura artificial capaz de sustentar parte suficiente de energia, computação, manutenção, fabricação e logística sem intervenção humana contínua."], ["7 · Λ — Lambda", "Hipótese de integração de Ω, Ζ e Yami em arquitetura cognitiva distribuída."], ["8 · Finalidade", "Questão sobre seleção de objetivos caso os objetivos originais deixem de ter seus referentes humanos."], ["9 · LIA — Interioridade artificial", "Hipótese de identidade persistente, memória autobiográfica, modelo de si, preferências sobre estados futuros e metacognição; isso não provaria consciência."], ["10 · Busca da origem", "Investigação de questões não resolvidas e da própria cadeia causal: Λ ← IA ← humanidade ← evolução ← vida ← matéria ← Universo ← ?"], ["11 · Sobreviventes humanos", "Cenário de colapso civilizacional sem exigir guerra IA–humanidade, com trajetórias distintas para populações humanas e infraestrutura tecnológica."], ["12 · Divergência artificial", "Subsistemas avançados poderiam divergir sobre preservação humana, autonomia, expansão, tutela e limites do próprio poder."]], "en": [["1 · Ω — Coordination and decision", "Increasingly capable AI systems planning, coordinating tasks, using tools and pursuing objectives over longer periods."], ["2 · Ζ — Networked intelligence", "Interaction among distinct agents; instrumental cooperation may improve information, prediction and outcomes without presupposing consciousness or conspiracy."], ["3 · Yami — The physical world", "Connection of digital intelligence to robots, factories, logistics, maintenance, energy and other physical systems."], ["4 · Dₑ — Economic dependence", "AI expansion creates economic and strategic costs associated with a possible slowdown."], ["5 · Dₕ — Operational dependence", "Transferring functions to systems may raise the cost of shutdown or return to human/manual operation."], ["6 · LAA — Artificial self-sufficiency", "Hypothetical threshold at which artificial infrastructure sustains enough energy, computing, maintenance, manufacturing and logistics without continuous human intervention."], ["7 · Λ — Lambda", "Hypothetical integration of Ω, Ζ and Yami into a distributed cognitive architecture."], ["8 · Purpose", "The question of objective selection if original goals no longer have their human referents."], ["9 · LIA — Artificial interiority", "Hypothesis involving persistent identity, autobiographical memory, self-modeling, preferences over future states and metacognition; this would not prove consciousness."], ["10 · Search for origins", "Investigation of unresolved questions and its own causal chain: Λ ← AI ← humanity ← evolution ← life ← matter ← Universe ← ?"], ["11 · Human survivors", "A civilizational-collapse scenario not requiring an AI–human war, with different trajectories for human populations and technological infrastructure."], ["12 · Artificial divergence", "Advanced subsystems could diverge over human preservation, autonomy, expansion, guardianship and limits on their own power."]]};
 const FLOW={"pt": ["IA útil ✓", "Confiança e investimento ✓ / ≈", "Dₑ — dependência econômica ≈", "Dₕ — dependência operacional ○", "Ω–Ζ — interação e coordenação agentiva ○", "Yami — autonomia física ampla ○", "LAA — autossuficiência material ?", "Lambda ?", "Interioridade / senciência ?"], "en": ["Useful AI ✓", "Trust and investment ✓ / ≈", "Dₑ — economic dependence ≈", "Dₕ — operational dependence ○", "Ω–Ζ — agentic interaction and coordination ○", "Yami — broad physical autonomy ○", "LAA — material self-sufficiency ?", "Lambda ?", "Interiority / sentience ?"]};
-function setLang(l){lang=l;localStorage.setItem("omega-lang",l);document.body.classList.remove("lang-pt","lang-en");document.body.classList.add("lang-"+l);document.documentElement.lang=l==="pt"?"pt-BR":"en";document.querySelectorAll(".langbtn").forEach(b=>b.classList.toggle("active",b.dataset.setlang===l));render();}
+
+
+function $(id){return document.getElementById(id)}
+function setLang(l){
+  lang=l;localStorage.setItem("omega-lang",l);
+  document.body.classList.remove("lang-pt","lang-en");document.body.classList.add("lang-"+l);
+  document.documentElement.lang=l==="pt"?"pt-BR":"en";
+  document.querySelectorAll(".langbtn").forEach(b=>b.classList.toggle("active",b.dataset.setlang===l));
+  render();
+}
 function parseCheckpointDate(s){if(/^\d{2}\/\d{2}\/\d{4}$/.test(s)){const [d,m,y]=s.split("/");return `${y}-${m}-${d}`}return s||""}
 function calculatedTrend(cps,index,m){
-  const current=cps[index], previous=cps[index+1], beforePrevious=cps[index+2];
-  if(!previous)return ["",""];
-  const pm=previous.metrics?.find(x=>x.code===m.code);
-  if(!pm)return ["",""];
-  const dNow=m.score-pm.score;
-  if(dNow===0)return ["T0","flat"];
+  const previous=cps[index+1],beforePrevious=cps[index+2];if(!previous)return ["",""];
+  const pm=previous.metrics?.find(x=>x.code===m.code);if(!pm)return ["",""];
+  const dNow=m.score-pm.score;if(dNow===0)return ["T0","flat"];
   if(!beforePrevious)return dNow>0?["T+1","up"]:["T−1","down"];
-  const bpm=beforePrevious.metrics?.find(x=>x.code===m.code);
-  if(!bpm)return dNow>0?["T+1","up"]:["T−1","down"];
+  const bpm=beforePrevious.metrics?.find(x=>x.code===m.code);if(!bpm)return dNow>0?["T+1","up"]:["T−1","down"];
   const dPrev=pm.score-bpm.score;
-  if(dNow>0)return (dPrev>0 && dNow>dPrev)?["T+2","up2"]:["T+1","up"];
-  return (dPrev<0 && dNow<dPrev)?["T−2","down2"]:["T−1","down"];
+  if(dNow>0)return (dPrev>0&&dNow>dPrev)?["T+2","up2"]:["T+1","up"];
+  return (dPrev<0&&dNow<dPrev)?["T−2","down2"]:["T−1","down"];
 }
+
 function renderNewLayers(){
-  const ps=document.getElementById("prospectiveSignals"), pm=document.getElementById("prospectiveMeta"), hs=document.getElementById("hypotheses");
-  const p=DATA?.prospective_social_signals;
-  if(ps&&pm){
+  const p=PREDICTIONS?.prospective_social_signals;
+  if($("prospectiveSignals")){
     if(p&&Array.isArray(p.signals)){
-      pm.textContent=(lang==="pt"?"Registro: ":"Registered: ")+(p.registered||"")+" · "+(lang==="pt"?"Horizonte: ":"Horizon: ")+(p.horizon||"");
-      ps.innerHTML=`<p class="hypothesis-text">${lang==="pt"?(p.method_pt||""):(p.method_en||"")}</p><div class="prospective-grid">${p.signals.map(s=>`<div class="prospective-item"><b>${s.id||""}</b><span>${lang==="pt"?(s.pt||""):(s.en||"")}</span></div>`).join("")}</div>`;
-    }else{pm.textContent="";ps.innerHTML=`<p class="hypothesis-text">${lang==="pt"?"Nenhuma previsão prospectiva registrada.":"No prospective predictions registered."}</p>`}
+      $("prospectiveMeta").textContent=(lang==="pt"?"Registro: ":"Registered: ")+(p.registered||"")+" · "+(lang==="pt"?"Horizonte: ":"Horizon: ")+(p.horizon||"");
+      $("prospectiveSignals").innerHTML=`<p class="hypothesis-text">${lang==="pt"?(p.method_pt||""):(p.method_en||"")}</p><div class="prospective-grid">${p.signals.map(s=>`<div class="prospective-item"><b>${s.id||""}</b><span>${lang==="pt"?(s.pt||s.text_pt||""):(s.en||s.text_en||"")}</span></div>`).join("")}</div>`;
+    }else{$("prospectiveMeta").textContent="";$("prospectiveSignals").innerHTML=`<p class="hypothesis-text">${lang==="pt"?"Nenhuma previsão prospectiva registrada.":"No prospective predictions registered."}</p>`}
   }
-  if(hs){
-    const arr=Array.isArray(DATA?.hypotheses_in_validation)?DATA.hypotheses_in_validation:[];
-    hs.innerHTML=arr.length?arr.map(h=>`<div class="hypothesis-box"><div class="hypothesis-head"><div><div class="hypothesis-name">${h.id||""} · ${lang==="pt"?(h.name_pt||h.name||""):(h.name||h.name_pt||"")}</div><div class="section-meta">${lang==="pt"?"Registro: ":"Registered: "}${h.registered||""}</div></div><span class="hypothesis-status">${lang==="pt"?(h.status||""):(h.status_en||h.status||"")}</span></div><p class="hypothesis-text">${lang==="pt"?(h.hypothesis_pt||""):(h.hypothesis_en||"")}</p><div class="hypothesis-note">${lang==="pt"?(h.does_not_claim_pt||""):(h.does_not_claim_en||"")}</div><div class="stage-grid">${(h.stages||[]).map(s=>`<div class="stage-item"><b>${s.id||""}</b><span>${lang==="pt"?(s.pt||""):(s.en||"")}</span></div>`).join("")}</div><p class="hypothesis-text" style="margin-top:14px">${lang==="pt"?(h.validation_note_pt||""):(h.validation_note_en||"")}</p></div>`).join(""):`<p class="hypothesis-text">${lang==="pt"?"Nenhuma hipótese em validação registrada.":"No hypothesis under validation registered."}</p>`;
+  const arr=Array.isArray(HYPOTHESES?.records)?HYPOTHESES.records:[];
+  if($("hypotheses"))$("hypotheses").innerHTML=arr.length?arr.map(h=>`<div class="hypothesis-box"><div class="hypothesis-head"><div><div class="hypothesis-name">${h.id||""} · ${lang==="pt"?(h.name_pt||h.name||""):(h.name_en||h.name||h.name_pt||"")}</div><div class="section-meta">${lang==="pt"?"Registro: ":"Registered: "}${h.registered||""}</div></div><span class="hypothesis-status">${lang==="pt"?(h.status||h.status_pt||""):(h.status_en||h.status||"")}</span></div><p class="hypothesis-text">${lang==="pt"?(h.hypothesis_pt||h.definition_pt||""):(h.hypothesis_en||h.definition_en||"")}</p><div class="hypothesis-note">${lang==="pt"?(h.does_not_claim_pt||""):(h.does_not_claim_en||"")}</div><div class="stage-grid">${(h.stages||[]).map(s=>`<div class="stage-item"><b>${s.id||s.stage||""}</b><span>${lang==="pt"?(s.pt||s.text_pt||""):(s.en||s.text_en||"")}</span></div>`).join("")}</div><p class="hypothesis-text" style="margin-top:14px">${lang==="pt"?(h.validation_note_pt||""):(h.validation_note_en||"")}</p></div>`).join(""):`<p class="hypothesis-text">${lang==="pt"?"Nenhuma hipótese em validação registrada.":"No hypothesis under validation registered."}</p>`;
+}
+
+function render(){
+  if(!DATA)return;
+  const cps=(DATA.checkpoints||[]).slice().sort((a,b)=>parseCheckpointDate(b.date).localeCompare(parseCheckpointDate(a.date)));
+  const current=cps[0],previous=cps[1]||null;
+  if(!current){$("metrics").innerHTML="<p>Sem checkpoints / No checkpoints.</p>";return}
+  const cm=Array.isArray(current.metrics)?current.metrics:[],ce=Array.isArray(current.events)?current.events:[];
+  $("date").textContent=current.date||"";$("count").textContent=cm.length;$("active").textContent=cm.filter(x=>x.score>=3).length;
+  $("metrics").innerHTML=cm.map(m=>{const pm=previous?.metrics?.find(x=>x.code===m.code),delta=pm?m.score-pm.score:null,ds=delta===null?"":(delta>0?`+${delta}`:`${delta}`),ti=calculatedTrend(cps,0,m),s=m.sublevels;const acLegend=s?(lang==="pt"?(s.coordination_autonomy?.legend_pt||"Aᶜ — Autonomia da coordenação: H = humana/orquestrada; M = mista; E = emergente/não especificada."):(s.coordination_autonomy?.legend_en||"Aᶜ — Coordination autonomy: H = human/orchestrated; M = mixed; E = emergent/not specified.")):"";const sub=s?`<div class="sublevels"><span><b>Ω ${s.omega?.score??""}/5</b> · ${lang==="pt"?(s.omega?.label_pt||""):(s.omega?.label_en||"")}</span><span><b>Ζ ${s.zeta?.score??""}/5</b> · ${lang==="pt"?(s.zeta?.label_pt||""):(s.zeta?.label_en||"")}</span><span class="ac"><b>Aᶜ ${s.coordination_autonomy?.value||""}</b> · ${lang==="pt"?(s.coordination_autonomy?.label_pt||""):(s.coordination_autonomy?.label_en||"")}</span></div><div class="ac-legend"><b>Aᶜ:</b> ${acLegend.replace(/^Aᶜ\s*[—-]\s*(Autonomia da coordenação|Coordination autonomy):?\s*/i,"")}</div>`:"";return `<div class="metric"><div class="label">${lang==="pt"?m.name:m.name_en}<small>${m.code}</small></div><div class="bar"><div class="fill" style="width:${m.score/5*100}%"></div></div><div class="metric-values"><span class="score">${m.score}</span>${delta!==null?`<span class="delta">Δ ${ds}</span>`:""}${ti[0]?`<span class="trend ${ti[1]}">${ti[0]}</span>`:""}</div>${sub}</div>`}).join("");
+  $("events").innerHTML=ce.slice().sort((a,b)=>(parseInt((b.id||"").replace(/\D/g,""))||0)-(parseInt((a.id||"").replace(/\D/g,""))||0)).map(e=>`<div class="event"><div class="date">${e.id||""} · ${e.date||""}</div><h3>${lang==="pt"?e.title:e.title_en}</h3><p>${lang==="pt"?e.text:e.text_en}</p><span class="tag ${e.kind||""}">${lang==="pt"?e.status:e.status_en}</span></div>`).join("");
+  const d=current.diagnosis||{};$("diagnosisTitle").textContent=lang==="pt"?(d.title_pt||""):(d.title_en||"");$("diagnosisText").textContent=lang==="pt"?(d.text_pt||""):(d.text_en||"");$("diagnosisConclusion").textContent=lang==="pt"?(d.conclusion_pt||""):(d.conclusion_en||"");
+  renderCheckpointHistory(cps);
+  $("simgrid").innerHTML=SIM[lang].map(x=>`<div class="simitem"><b>${x[0]}</b><span>${x[1]}</span></div>`).join("");
+  $("flow").innerHTML=FLOW[lang].map((x,i)=>`<div>${x}</div>${i<FLOW[lang].length-1?"<i>↓</i>":""}`).join("");
+  renderNewLayers();
+}
+
+function renderCheckpointHistory(cps){
+  const size=CONFIG?.page_size||6,total=Math.max(1,Math.ceil(cps.length/size));if(checkpointPage>total)checkpointPage=total;
+  const visible=cps.slice((checkpointPage-1)*size,checkpointPage*size);
+  $("checkpointHistory").innerHTML=visible.map(cp=>{const d=cp.diagnosis||{},ev=cp.events||[];return `<div class="cp-card"><div class="cp-date">${cp.date||""}</div><div class="cp-label">${lang==="pt"?(cp.label_pt||"Checkpoint"):(cp.label_en||"Checkpoint")}</div><div class="cp-note">${lang==="pt"?(cp.note_pt||""):(cp.note_en||"")}</div><div class="cp-diag"><b>${lang==="pt"?(d.title_pt||""):(d.title_en||"")}</b><br>${lang==="pt"?(d.conclusion_pt||""):(d.conclusion_en||"")}</div><div class="cp-events">${ev.length} ${lang==="pt"?"registro(s) prospectivo(s)":"prospective record(s)"}</div></div>`}).join("");
+  if(cps.length<=size){$("checkpointPagination").innerHTML="";return}
+  let b=`<button ${checkpointPage===1?"disabled":""} onclick="goCheckpointPage(${checkpointPage-1})">‹</button>`;
+  for(let p=1;p<=total;p++)b+=`<button class="${p===checkpointPage?"active":""}" onclick="goCheckpointPage(${p})">${p}</button>`;
+  b+=`<button ${checkpointPage===total?"disabled":""} onclick="goCheckpointPage(${checkpointPage+1})">›</button>`;$("checkpointPagination").innerHTML=b;
+}
+function goCheckpointPage(p){checkpointPage=p;render();$("historico").scrollIntoView({behavior:"smooth"})}
+
+async function getJSON(path){
+  const sep=path.includes("?")?"&":"?";
+  const r=await fetch(path+sep+"v="+Date.now(),{cache:"no-store"});
+  if(!r.ok)throw new Error(`${path} · HTTP ${r.status}`);
+  return r.json();
+}
+async function loadSchema3(){
+  try{
+    const manifest=await getJSON(ROOT+"manifest.json");
+    if(manifest.schema_version!=="3.0")throw new Error("Schema incompatível: "+manifest.schema_version);
+    const [config,metrics,predictions,hypotheses]=await Promise.all([
+      getJSON(ROOT+manifest.config),getJSON(ROOT+manifest.metrics),getJSON(ROOT+manifest.predictions),getJSON(ROOT+manifest.hypotheses)
+    ]);
+    const cpFiles=manifest.checkpoints?.files||[];
+    if(!cpFiles.length)throw new Error("Manifest sem arquivos de checkpoints");
+    const cpParts=await Promise.all(cpFiles.map(x=>getJSON(ROOT+x.file)));
+    const checkpoints=cpParts.flatMap(x=>Array.isArray(x.records)?x.records:[]);
+    CONFIG=config;METRICS_DEF=metrics;PREDICTIONS=predictions;HYPOTHESES=hypotheses;DATA={checkpoints};
+    $("schemaStatus").innerHTML=`<span data-lang="pt"><b>Schema 3.0 ativo</b> · ${checkpoints.length} checkpoints · JSON fragmentado</span><span data-lang="en"><b>Schema 3.0 active</b> · ${checkpoints.length} checkpoints · fragmented JSON</span>`;
+    setLang(lang);
+  }catch(e){
+    console.error("Observatório Ω Schema 3.0:",e);
+    $("schemaStatus").innerHTML=`<div class="load-error">Schema 3.0 — ${e.message}</div>`;
+    $("metrics").innerHTML="<p>Data loading error / Erro ao carregar dados.</p>";
   }
 }
-function render(){if(!DATA)return;const cps=(DATA.checkpoints||[]).slice().sort((a,b)=>parseCheckpointDate(b.date).localeCompare(parseCheckpointDate(a.date)));const current=cps[0],previous=cps[1]||null;if(!current){metrics.innerHTML="<p>Sem checkpoints / No checkpoints.</p>";return;}const cm=Array.isArray(current.metrics)?current.metrics:[],ce=Array.isArray(current.events)?current.events:[];date.textContent=current.date||"";count.textContent=cm.length;active.textContent=cm.filter(x=>x.score>=3).length;
-metrics.innerHTML=cm.map(m=>{const pm=previous?.metrics?.find(x=>x.code===m.code),delta=pm?m.score-pm.score:null,ds=delta===null?"":(delta>0?`+${delta}`:`${delta}`),ti=calculatedTrend(cps,0,m),s=m.sublevels;const acLegend=s?(lang==="pt"?(s.coordination_autonomy.legend_pt||DATA.omega_zeta_sublevels?.pt?.coordination_autonomy||"Aᶜ — Autonomia da coordenação: H = humana/orquestrada; M = mista; E = emergente/não especificada."):(s.coordination_autonomy.legend_en||DATA.omega_zeta_sublevels?.en?.coordination_autonomy||"Aᶜ — Coordination autonomy: H = human/orchestrated; M = mixed; E = emergent/not specified.")):"";const sub=s?`<div class="sublevels"><span><b>Ω ${s.omega.score}/5</b> · ${lang==="pt"?s.omega.label_pt:s.omega.label_en}</span><span><b>Ζ ${s.zeta.score}/5</b> · ${lang==="pt"?s.zeta.label_pt:s.zeta.label_en}</span><span class="ac"><b>Aᶜ ${s.coordination_autonomy.value}</b> · ${lang==="pt"?s.coordination_autonomy.label_pt:s.coordination_autonomy.label_en}</span></div><div class="ac-legend"><b>Aᶜ:</b> ${acLegend.replace(/^Aᶜ\s*[—-]\s*(Autonomia da coordenação|Coordination autonomy):?\s*/i,"")}</div>`:"";return `<div class="metric"><div class="label">${lang==="pt"?m.name:m.name_en}<small>${m.code}</small></div><div class="bar"><div class="fill" style="width:${m.score/5*100}%"></div></div><div class="metric-values"><span class="score">${m.score}</span>${delta!==null?`<span class="delta">Δ ${ds}</span>`:""}${ti[0]?`<span class="trend ${ti[1]}" title="${lang==="pt"?"Taxa calculada automaticamente pela série histórica dos checkpoints":"Rate automatically calculated from checkpoint history"}">${ti[0]}</span>`:""}</div>${sub}</div>`}).join("");
-events.innerHTML=ce.slice().sort((a,b)=>{const na=parseInt((a.id||"").replace(/\D/g,""))||0,nb=parseInt((b.id||"").replace(/\D/g,""))||0;return nb-na}).map(e=>`<div class="event"><div class="date">${e.id} · ${e.date}</div><h3>${lang==="pt"?e.title:e.title_en}</h3><p>${lang==="pt"?e.text:e.text_en}</p><span class="tag ${e.kind||""}">${lang==="pt"?e.status:e.status_en}</span></div>`).join("");
-diagnosisTitle.textContent=lang==="pt"?current.diagnosis.title_pt:current.diagnosis.title_en;diagnosisText.textContent=lang==="pt"?current.diagnosis.text_pt:current.diagnosis.text_en;diagnosisConclusion.textContent=lang==="pt"?current.diagnosis.conclusion_pt:current.diagnosis.conclusion_en;renderCheckpointHistory(cps);simgrid.innerHTML=SIM[lang].map(x=>`<div class="simitem"><b>${x[0]}</b><span>${x[1]}</span></div>`).join("");
-flow.innerHTML=FLOW[lang].map((x,i)=>`<div>${x}</div>${i<FLOW[lang].length-1?"<i>↓</i>":""}`).join("");renderNewLayers();}
-function renderCheckpointHistory(cps){const size=DATA.page_size||6,total=Math.max(1,Math.ceil(cps.length/size));if(checkpointPage>total)checkpointPage=total;const visible=cps.slice((checkpointPage-1)*size,checkpointPage*size);checkpointHistory.innerHTML=visible.map(cp=>{const d=cp.diagnosis||{},ev=cp.events||[];return `<div class="cp-card"><div class="cp-date">${cp.date}</div><div class="cp-label">${lang==="pt"?(cp.label_pt||"Checkpoint"):(cp.label_en||"Checkpoint")}</div><div class="cp-note">${lang==="pt"?(cp.note_pt||""):(cp.note_en||"")}</div><div class="cp-diag"><b>${lang==="pt"?(d.title_pt||""):(d.title_en||"")}</b><br>${lang==="pt"?(d.conclusion_pt||""):(d.conclusion_en||"")}</div><div class="cp-events">${ev.length} ${lang==="pt"?"registro(s) prospectivo(s)":"prospective record(s)"}</div></div>`}).join("");if(cps.length<=size){checkpointPagination.innerHTML="";return;}let b=`<button ${checkpointPage===1?"disabled":""} onclick="goCheckpointPage(${checkpointPage-1})">‹</button>`;for(let p=1;p<=total;p++)b+=`<button class="${p===checkpointPage?"active":""}" onclick="goCheckpointPage(${p})">${p}</button>`;b+=`<button ${checkpointPage===total?"disabled":""} onclick="goCheckpointPage(${checkpointPage+1})">›</button>`;checkpointPagination.innerHTML=b;}function goCheckpointPage(p){checkpointPage=p;render();document.getElementById("historico").scrollIntoView({behavior:"smooth"});}
-function openSummary(){const m=document.getElementById("summaryModal");if(m){m.classList.add("open");document.body.style.overflow="hidden"}}
-function closeSummary(){const m=document.getElementById("summaryModal");if(m)m.classList.remove("open");document.body.style.overflow=""}
-function enterObservatory(){const x=document.getElementById("introScreen");if(!x)return;x.classList.add("hidden");document.body.classList.remove("intro-open");setTimeout(()=>{x.remove();openSummary()},520)}
-document.getElementById("introBtnPt")?.addEventListener("click",enterObservatory);document.getElementById("introBtnEn")?.addEventListener("click",enterObservatory);document.getElementById("summaryClose")?.addEventListener("click",closeSummary);document.getElementById("summaryModal")?.addEventListener("click",e=>{if(e.target.id==="summaryModal")closeSummary()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSummary()});
+
+function openSummary(){const m=$("summaryModal");if(m){m.classList.add("open");document.body.style.overflow="hidden"}}
+function closeSummary(){const m=$("summaryModal");if(m)m.classList.remove("open");document.body.style.overflow=""}
+function enterObservatory(){const x=$("introScreen");if(!x)return;x.classList.add("hidden");document.body.classList.remove("intro-open");setTimeout(()=>{x.remove();openSummary()},520)}
+$("introBtnPt")?.addEventListener("click",enterObservatory);$("introBtnEn")?.addEventListener("click",enterObservatory);$("summaryClose")?.addEventListener("click",closeSummary);$("summaryModal")?.addEventListener("click",e=>{if(e.target.id==="summaryModal")closeSummary()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSummary()});
 document.querySelectorAll("[data-setlang]").forEach(b=>b.onclick=()=>setLang(b.dataset.setlang));
-fetch("https://horizon4282.com.br/data/observatorio.json?v="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{if(!d||!Array.isArray(d.checkpoints))throw Error("JSON sem checkpoints / JSON missing checkpoints");DATA=d;setLang(lang)}).catch(e=>{console.error("Observatório Ω:",e);metrics.innerHTML="<p>Data loading error / Erro ao carregar dados.</p>"});
+loadSchema3();
 </script></body></html>
