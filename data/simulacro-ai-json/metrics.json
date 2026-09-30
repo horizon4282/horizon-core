@@ -1,0 +1,169 @@
+{
+  "schema_version": "3.0",
+  "scale": {
+    "min": 0,
+    "max": 5
+  },
+  "definitions": [
+    {
+      "code": "Dₑ",
+      "name": "Dependência econômica",
+      "name_en": "Economic dependence",
+      "auxiliary": false
+    },
+    {
+      "code": "COMP",
+      "name": "Competição geopolítica",
+      "name_en": "Geopolitical competition",
+      "auxiliary": false
+    },
+    {
+      "code": "PSI",
+      "name": "Incentivos humanos",
+      "name_en": "Human incentives",
+      "auxiliary": false
+    },
+    {
+      "code": "CAP",
+      "name": "Investimento / capital",
+      "name_en": "Investment / capital",
+      "auxiliary": false
+    },
+    {
+      "code": "GOV",
+      "name": "Governança atrasada",
+      "name_en": "Lagging governance",
+      "auxiliary": false
+    },
+    {
+      "code": "RES",
+      "name": "Resistência a desacelerar",
+      "name_en": "Resistance to slowing down",
+      "auxiliary": false
+    },
+    {
+      "code": "Dₕ",
+      "name": "Dependência operacional",
+      "name_en": "Operational dependence",
+      "auxiliary": false
+    },
+    {
+      "code": "ΩΖ",
+      "name": "Ω–Ζ: ecossistema autônomo",
+      "name_en": "Ω–Ζ: autonomous ecosystem",
+      "auxiliary": false
+    },
+    {
+      "code": "YAMI",
+      "name": "Yami: autonomia física",
+      "name_en": "Yami: physical autonomy",
+      "auxiliary": false
+    },
+    {
+      "code": "LAA",
+      "name": "LAA: autossuficiência material",
+      "name_en": "LAA: material self-sufficiency",
+      "auxiliary": false
+    },
+    {
+      "code": "Λ",
+      "name": "Lambda",
+      "name_en": "Lambda",
+      "auxiliary": false
+    },
+    {
+      "code": "SEN",
+      "name": "Senciência artificial",
+      "name_en": "Artificial sentience",
+      "auxiliary": false
+    },
+    {
+      "code": "Dᵢ",
+      "name": "Dependência infraestrutural da IA",
+      "name_en": "AI infrastructural dependence",
+      "auxiliary": true
+    }
+  ],
+  "current_snapshot_date": "2026-09-29",
+  "current_snapshot": [
+    {
+      "name": "Dependência econômica",
+      "code": "Dₑ",
+      "score": 4,
+      "name_en": "Economic dependence"
+    },
+    {
+      "name": "Competição geopolítica",
+      "code": "COMP",
+      "score": 4,
+      "name_en": "Geopolitical competition"
+    },
+    {
+      "name": "Incentivos humanos",
+      "code": "PSI",
+      "score": 4,
+      "name_en": "Human incentives"
+    },
+    {
+      "name": "Investimento / capital",
+      "code": "CAP",
+      "score": 4,
+      "name_en": "Investment / capital"
+    },
+    {
+      "name": "Governança atrasada",
+      "code": "GOV",
+      "score": 3,
+      "name_en": "Lagging governance"
+    },
+    {
+      "name": "Resistência a desacelerar",
+      "code": "RES",
+      "score": 3,
+      "name_en": "Resistance to slowing down"
+    },
+    {
+      "name": "Dependência operacional",
+      "code": "Dₕ",
+      "score": 1,
+      "name_en": "Operational dependence"
+    },
+    {
+      "name": "Ω–Ζ: ecossistema autônomo",
+      "code": "ΩΖ",
+      "score": 0,
+      "name_en": "Ω–Ζ: autonomous ecosystem"
+    },
+    {
+      "name": "Yami: autonomia física",
+      "code": "YAMI",
+      "score": 0,
+      "name_en": "Yami: physical autonomy"
+    },
+    {
+      "name": "LAA: autossuficiência material",
+      "code": "LAA",
+      "score": 0,
+      "name_en": "LAA: material self-sufficiency"
+    },
+    {
+      "name": "Lambda",
+      "code": "Λ",
+      "score": 0,
+      "name_en": "Lambda"
+    },
+    {
+      "name": "Senciência artificial",
+      "code": "SEN",
+      "score": 0,
+      "name_en": "Artificial sentience"
+    },
+    {
+      "name": "Dependência infraestrutural da IA",
+      "code": "Dᵢ",
+      "score": 4,
+      "name_en": "AI infrastructural dependence",
+      "auxiliary": true
+    }
+  ]
+}

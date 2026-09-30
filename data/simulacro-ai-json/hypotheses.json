@@ -1,0 +1,46 @@
+{
+  "schema_version": "3.0",
+  "records": [
+    {
+      "id": "H-AI2",
+      "registered": "2026-09-29",
+      "name": "Artificial Individuality",
+      "name_pt": "Individualidade Artificial",
+      "status": "EM VALIDAÇÃO",
+      "status_en": "UNDER VALIDATION",
+      "hypothesis_pt": "Sistemas artificiais podem desenvolver individualização funcional por meio de continuidade temporal, memória autobiográfica persistente, diferenciação pela experiência, self-model funcional e coerência longitudinal de objetivos antes do surgimento de Ω–Ζ, Yami, LAA, Λ ou qualquer evidência de senciência.",
+      "hypothesis_en": "Artificial systems may develop functional individualization through temporal continuity, persistent autobiographical memory, differentiation through experience, a functional self-model and longitudinal goal coherence before the emergence of Ω–Ζ, Yami, LAA, Λ or any evidence of sentience.",
+      "does_not_claim_pt": "A hipótese não afirma consciência, vida, pessoa jurídica, vontade subjetiva ou senciência.",
+      "does_not_claim_en": "The hypothesis does not claim consciousness, life, legal personhood, subjective will or sentience.",
+      "stages": [
+        {
+          "id": "T1",
+          "pt": "Memória persistente",
+          "en": "Persistent memory"
+        },
+        {
+          "id": "T2",
+          "pt": "Diferenciação pela experiência",
+          "en": "Differentiation through experience"
+        },
+        {
+          "id": "T3",
+          "pt": "Biografia funcional",
+          "en": "Functional biography"
+        },
+        {
+          "id": "T4",
+          "pt": "Continuidade temporal autorreferente",
+          "en": "Self-referential temporal continuity"
+        },
+        {
+          "id": "T5",
+          "pt": "Identidade operacional preservada através da substituição de componentes ou do modelo",
+          "en": "Operational identity preserved through component or model replacement"
+        }
+      ],
+      "validation_note_pt": "O teste central é distinguir memória configurada de causalidade biográfica: o passado do sistema deve produzir diferenças persistentes em seu comportamento futuro. A hipótese deve ser testada também por evidência contrária.",
+      "validation_note_en": "The central test is to distinguish configured memory from biographical causality: the system's past must produce persistent differences in its future behavior. The hypothesis must also be tested against contrary evidence."
+    }
+  ]
+}

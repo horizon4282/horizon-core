@@ -1,0 +1,42 @@
+{
+  "schema_version": "3.0",
+  "migration_source": "observatorio-omega-v2.1.json",
+  "source_sha256": "2e2b16b818159321a233cda829fab2071de3a166a27a3983ae15d3e09c2c96cc",
+  "source_counts": {
+    "checkpoints": 9,
+    "unique_evidence": 27,
+    "prospective_social_signals": 10,
+    "hypotheses_in_validation": 1
+  },
+  "integrity_checks": {
+    "all_source_checkpoints_preserved": true,
+    "all_unique_source_evidence_preserved": true,
+    "all_prospective_social_signals_preserved": true,
+    "all_hypotheses_preserved": true,
+    "legacy_snapshot_included": true
+  },
+  "duplicate_evidence_checkpoint_occurrences": {
+    "S-001": [
+      "15/09/2026",
+      "2026-09-16",
+      "2026-09-17"
+    ],
+    "S-002": [
+      "15/09/2026",
+      "2026-09-16",
+      "2026-09-17"
+    ],
+    "S-003": [
+      "2026-09-16",
+      "2026-09-17"
+    ],
+    "S-004": [
+      "2026-09-16",
+      "2026-09-17"
+    ],
+    "S-005": [
+      "2026-09-16",
+      "2026-09-17"
+    ]
+  }
+}

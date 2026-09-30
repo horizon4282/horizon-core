@@ -1,0 +1,17 @@
+{
+  "schema_version": "3.0",
+  "project": "Observatório Ω / Simulacro × Realidade",
+  "source_legacy_version": "2.1",
+  "page_size": 6,
+  "fragment_limits": {
+    "evidence_records_per_file": 50,
+    "checkpoints_per_file": 50
+  },
+  "id_policy": {
+    "evidence": "S-001, S-002, ...; IDs are never reused.",
+    "prospective_social": "P-001, P-002, ...; IDs are never reused.",
+    "hypotheses": "Stable hypothesis IDs; IDs are never reused."
+  },
+  "history_policy_pt": "Fragmentos fechados não recebem novos registros. Correções técnicas excepcionais devem ser documentadas.",
+  "history_policy_en": "Closed fragments receive no new records. Exceptional technical corrections must be documented."
+}

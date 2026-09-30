@@ -1,0 +1,34 @@
+{
+  "schema_version": "3.0",
+  "project": "Observatório Ω",
+  "root": "/data/simulacro-ai-json/",
+  "config": "config.json",
+  "metrics": "metrics.json",
+  "predictions": "predictions.json",
+  "hypotheses": "hypotheses.json",
+  "checkpoints": {
+    "limit_per_file": 50,
+    "files": [
+      {
+        "file": "checkpoints/checkpoints-001.json",
+        "first_index": 1,
+        "last_index": 9,
+        "record_count": 9,
+        "closed": false
+      }
+    ]
+  },
+  "evidence": {
+    "limit_per_file": 50,
+    "files": [
+      {
+        "file": "evidence/evidence-json-001.json",
+        "first": "S-001",
+        "last": "S-027",
+        "last_capacity": "S-050",
+        "record_count": 27,
+        "closed": false
+      }
+    ]
+  }
+}

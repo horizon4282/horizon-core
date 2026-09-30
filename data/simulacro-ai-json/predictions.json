@@ -1,0 +1,71 @@
+{
+  "schema_version": "3.0",
+  "prospective_social_signals": {
+    "registered": "2026-09-29",
+    "horizon": "2026–2029",
+    "title_pt": "10 sinais sociais prospectivos",
+    "title_en": "10 prospective social signals",
+    "method_pt": "Sinais congelados prospectivamente. Devem ser avaliados posteriormente como compatíveis, contraditos, inconclusivos ou confirmados, sem reescrever sua formulação original.",
+    "method_en": "Prospectively frozen signals. They should later be assessed as compatible, contradicted, inconclusive or confirmed without rewriting their original formulation.",
+    "signals": [
+      {
+        "id": "P-001",
+        "pt": "Vagas de entrada começam a rarear.",
+        "en": "Entry-level openings begin to become scarcer."
+      },
+      {
+        "id": "P-002",
+        "pt": "Uma pessoa com agentes passa a executar trabalho antes distribuído entre várias pessoas.",
+        "en": "One person with agents begins to perform work previously distributed across several people."
+      },
+      {
+        "id": "P-003",
+        "pt": "Atendimento humano torna-se exceção ou opção premium em alguns serviços.",
+        "en": "Human service becomes an exception or premium option in some services."
+      },
+      {
+        "id": "P-004",
+        "pt": "Preços de alguns serviços digitais caem fortemente pela automação agentiva.",
+        "en": "Prices of some digital services fall sharply due to agentic automation."
+      },
+      {
+        "id": "P-005",
+        "pt": "Saber trabalhar e delegar para agentes torna-se requisito profissional recorrente.",
+        "en": "Knowing how to work with and delegate to agents becomes a recurring professional requirement."
+      },
+      {
+        "id": "P-006",
+        "pt": "Fraudes e ataques tornam-se mais convincentes, personalizados e escaláveis.",
+        "en": "Fraud and attacks become more convincing, personalized and scalable."
+      },
+      {
+        "id": "P-007",
+        "pt": "Torna-se mais difícil identificar quem ou qual sistema tomou determinada decisão.",
+        "en": "It becomes harder to identify who or which system made a given decision."
+      },
+      {
+        "id": "P-008",
+        "pt": "Empresas passam a declarar que reduzir substancialmente o uso de IA comprometeria sua competitividade.",
+        "en": "Companies begin to state that substantially reducing AI use would undermine their competitiveness."
+      },
+      {
+        "id": "P-009",
+        "pt": "IA agentiva passa a aparecer de forma crescente em sistemas físicos do cotidiano.",
+        "en": "Agentic AI increasingly appears in everyday physical systems."
+      },
+      {
+        "id": "P-010",
+        "pt": "Serviços tornam-se operacionalmente dependentes de IA a ponto de interrupções produzirem dificuldade relevante de retorno manual.",
+        "en": "Services become operationally dependent on AI to the point that outages create significant difficulty returning to manual operation."
+      }
+    ]
+  },
+  "evidence_prediction_refs": [
+    {
+      "id": "S-002",
+      "source": "evidence/evidence-json-001.json",
+      "note_pt": "Registro S explicitamente classificado no histórico como Previsão prospectiva.",
+      "note_en": "S record explicitly classified in the history as a prospective prediction."
+    }
+  ]
+}
