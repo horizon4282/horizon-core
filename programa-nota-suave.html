@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nota Suave | Rádio Luz e Louvor</title>
+
+<style>
+
+:root{
+    --green-dark:#173f34;
+    --green:#536f3d;
+    --green-light:#849b62;
+    --cream:#f8f4e9;
+    --cream-2:#fffdf7;
+    --terracotta:#ca694f;
+    --text:#183b32;
+    --muted:#738078;
+    --line:rgba(23,63,52,.12);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--cream);
+    color:var(--text);
+}
+
+.radio-logo{
+  position:absolute;
+  z-index: 1000; 
+  width:60vw;
+/*border:1px solid #000;*/
+  background-color: #536f3d51;
+  border-radius: 0 100% 0 100%;
+}
+.radio-logo img{
+    width:300px;
+    display: block;
+    position:relative;
+    left:55%;
+    top:40px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:570px;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,255,255,.95),
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #fffdf7 0%,
+            #f5efdf 58%,
+            #e7e4d2 100%
+        );
+}
+
+.hero-inner{
+    width:min(1180px, calc(100% - 40px));
+    min-height:570px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:55% 45%;
+    align-items:center;
+
+    position:relative;
+    z-index:2;
+}
+
+/* =========================
+   TEXTO HERO
+========================= */
+
+.hero-content{
+    padding:70px 20px 80px 0;
+    position:relative;
+    z-index:4;
+}
+
+.radio-label{
+    font-size:12px;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:var(--green-light);
+    margin-bottom:18px;
+}
+
+.brand-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:5px;
+}
+
+.brand-symbol{
+    width:62px;
+    height:62px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+    border:2px solid var(--green-light);
+
+    font-size:28px;
+    color:var(--green);
+}
+
+h1{
+    margin:0;
+
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:76px;
+    line-height:.92;
+    font-weight:normal;
+
+    color:var(--green-dark);
+}
+
+h1 span{
+    display:block;
+    color:var(--green-light);
+}
+
+.tagline{
+    max-width:530px;
+
+    margin:30px 0 26px;
+
+    font-size:22px;
+    line-height:1.5;
+
+    color:var(--green-dark);
+}
+
+.divider{
+    width:150px;
+    height:3px;
+
+    background:var(--terracotta);
+
+    border-radius:10px;
+
+    margin:26px 0;
+}
+
+.presenter-small{
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    color:var(--terracotta);
+}
+
+.presenter-name{
+    margin-top:4px;
+
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:34px;
+
+    color:var(--green-dark);
+}
+
+.presenter-title{
+    margin-top:5px;
+
+    font-size:13px;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+
+    color:#66736c;
+}
+
+/* =========================
+   FOTO ANDREA
+========================= */
+
+.hero-photo{
+    height:570px;
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+
+    position:relative;
+}
+
+.hero-photo::before{
+    content:"";
+
+    position:absolute;
+
+    width:430px;
+    height:430px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(132,155,98,.24),
+            rgba(132,155,98,.04) 68%,
+            transparent 69%
+        );
+
+    bottom:45px;
+    right:0;
+}
+
+.andrea{
+    position:relative;
+    z-index:2;
+
+    display:block;
+
+    max-width:520px;
+    width:110%;
+    max-height:550px;
+
+    object-fit:contain;
+    object-position:center bottom;
+
+    filter:
+        drop-shadow(
+            0 18px 20px rgba(25,50,40,.14)
+        );
+}
+
+/* =========================
+   ONDAS
+========================= */
+
+.wave{
+    position:absolute;
+    left:-5%;
+    bottom:-45px;
+
+    width:110%;
+    height:100px;
+
+    background:var(--green);
+
+    border-radius:50% 50% 0 0 / 35% 35% 0 0;
+
+    opacity:.96;
+    z-index:1;
+}
+
+.wave2{
+    position:absolute;
+    left:25%;
+    bottom:-66px;
+
+    width:90%;
+    height:110px;
+
+    background:var(--green-dark);
+
+    border-radius:50% 50% 0 0 / 35% 35% 0 0;
+
+    opacity:.78;
+    z-index:1;
+}
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.categories{
+    background:var(--green-dark);
+    padding:28px 20px 31px;
+}
+
+.category-inner{
+    width:min(950px,100%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.category{
+    text-align:center;
+
+    color:white;
+
+    padding:8px 18px;
+
+    border-right:1px solid rgba(255,255,255,.18);
+}
+
+.category:last-child{
+    border-right:none;
+}
+
+.category-icon{
+    width:47px;
+    height:47px;
+
+    margin:0 auto 9px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.1);
+
+    font-size:21px;
+}
+
+.category-name{
+    font-size:11px;
+    line-height:1.4;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+}
+
+/* =========================
+   EPISÓDIOS
+========================= */
+
+.content{
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(132,155,98,.12),
+            transparent 32%
+        ),
+        var(--cream-2);
+
+    padding:75px 20px 90px;
+}
+
+.content-inner{
+    width:min(820px,100%);
+    margin:auto;
+}
+
+.section-label{
+    text-align:center;
+
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+    color:var(--terracotta);
+}
+
+h2{
+    text-align:center;
+
+    margin:9px 0 12px;
+
+    font-family:Georgia, "Times New Roman", serif;
+    font-weight:normal;
+    font-size:43px;
+
+    color:var(--green-dark);
+}
+
+.section-description{
+    max-width:600px;
+
+    margin:0 auto 40px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    line-height:1.7;
+    font-size:15px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.episodes{
+    display:flex;
+    flex-direction:column;
+    gap:17px;
+}
+
+.episode{
+    position:relative;
+
+    background:white;
+
+    border:1px solid var(--line);
+    border-radius:20px;
+
+    padding:23px 25px;
+
+    box-shadow:
+        0 8px 30px rgba(31,65,54,.06);
+
+    transition:.25s;
+}
+
+.episode::before{
+    content:"";
+
+    position:absolute;
+    left:0;
+    top:19px;
+    bottom:19px;
+
+    width:4px;
+
+    border-radius:0 4px 4px 0;
+
+    background:var(--green-light);
+
+    opacity:0;
+    transition:.25s;
+}
+
+.episode:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 14px 38px rgba(31,65,54,.1);
+}
+
+.episode.active{
+    border-color:
+        rgba(83,111,61,.38);
+}
+
+.episode.active::before{
+    opacity:1;
+}
+
+.episode-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:7px;
+}
+
+.episode-number{
+    font-size:10px;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    color:var(--terracotta);
+}
+
+.badge{
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    background:#f0f4e9;
+
+    color:var(--green);
+
+    font-size:9px;
+
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.episode-title{
+    margin-bottom:19px;
+
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:23px;
+
+    color:var(--green-dark);
+}
+
+/* =========================
+   PLAYER
+========================= */
+
+.controls{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.play{
+    width:52px;
+    height:52px;
+    min-width:52px;
+
+    border:none;
+    border-radius:50%;
+
+    background:var(--green);
+    color:white;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    box-shadow:
+        0 5px 15px rgba(83,111,61,.22);
+
+    transition:.2s;
+}
+
+.play:hover{
+    transform:scale(1.06);
+    background:var(--green-dark);
+}
+
+.progress-area{
+    flex:1;
+}
+
+.progress{
+    width:100%;
+    height:6px;
+
+    background:#e4e9df;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+}
+
+.progress-bar{
+    width:0;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--green-light),
+            var(--green)
+        );
+
+    border-radius:10px;
+}
+
+.time{
+    display:flex;
+    justify-content:space-between;
+
+    margin-top:7px;
+
+    font-size:10px;
+
+    color:#929b95;
+}
+
+/* =========================
+   SOBRE
+========================= */
+
+.about{
+    padding:65px 20px;
+
+    background:#f1eddf;
+}
+
+.about-inner{
+    width:min(820px,100%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:auto 1fr;
+
+    gap:25px;
+
+    align-items:center;
+}
+
+.about-circle{
+    width:76px;
+    height:76px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--green);
+
+    color:white;
+
+    font-family:Georgia,serif;
+    font-size:32px;
+}
+
+.about-title{
+    font-family:Georgia,serif;
+
+    font-size:24px;
+
+    color:var(--green-dark);
+
+    margin-bottom:7px;
+}
+
+.about-text{
+    color:#6b7770;
+
+    font-size:14px;
+    line-height:1.65;
+}
+
+/* =========================
+   CONTATOS
+========================= */
+
+.contact{
+    margin-top:12px;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+
+    font-size:12px;
+}
+
+.contact a{
+    color:var(--green);
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.contact a:hover{
+    text-decoration:underline;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:var(--green-dark);
+
+    padding:33px 20px;
+
+    text-align:center;
+
+    color:rgba(255,255,255,.67);
+
+    font-size:11px;
+    line-height:1.8;
+}
+
+footer strong{
+    color:white;
+
+    font-family:Georgia,serif;
+
+    font-size:17px;
+    font-weight:normal;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:760px){
+
+ 
+
+    .radio-logo{
+        position:relative;
+        width:300px;
+        background-color: #536f3d6c;
+        border-radius: 0 100% 0 100%;
+        margin:0 0 30px 0;
+}
+
+.radio-logo img{
+    width:200px;
+    display: block;
+    position:relative;
+    left:25%;
+    top:40px;
+}
+
+    .hero{
+        min-height:auto;
+    }
+
+    .hero-inner{
+        width:100%;
+        min-height:auto;
+
+        display:flex;
+        flex-direction:column;
+    }
+
+    .hero-content{
+        width:100%;
+
+        text-align:center;
+
+        padding:
+            45px 25px
+            10px;
+    }
+
+    .brand-row{
+        justify-content:center;
+    }
+
+    .brand-symbol{
+        display:none;
+    }
+
+    h1{
+        font-size:58px;
+    }
+
+    .tagline{
+        margin:
+            25px auto
+            22px;
+
+        font-size:19px;
+    }
+
+    .divider{
+        margin:
+            22px auto;
+    }
+
+    .presenter-name{
+        font-size:29px;
+    }
+
+    .hero-photo{
+        width:100%;
+        height:390px;
+
+        margin-top:5px;
+    }
+
+    .hero-photo::before{
+        width:330px;
+        height:330px;
+
+        right:50%;
+
+        transform:
+            translateX(50%);
+
+        bottom:20px;
+    }
+
+    .andrea{
+        width:auto;
+        max-width:100%;
+        max-height:390px;
+    }
+
+    .category-inner{
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:0;
+    }
+
+    .category{
+        margin:6px 0;
+    }
+
+    .category:nth-child(2){
+        border-right:none;
+    }
+
+    h2{
+        font-size:35px;
+    }
+
+    .content{
+        padding:
+            58px 16px
+            70px;
+    }
+
+    .episode{
+        padding:
+            21px 18px;
+    }
+
+    .about-inner{
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .about-circle{
+        margin:auto;
+    }
+
+    .contact{
+        justify-content:center;
+    }
+}
+
+@media(max-width:420px){
+
+    h1{
+        font-size:51px;
+    }
+
+    .hero-photo{
+        height:350px;
+    }
+
+    .andrea{
+        max-height:350px;
+    }
+
+    .category{
+        padding:
+            8px 8px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ======================
+     HERO
+====================== -->
+
+<div class="radio-logo">
+    <img
+        src="https://songs.horizon4282.com.br/file/horizon4282/images/logo-radio-luz-louvor.png"
+        alt="Rádio Luz e Louvor"
+    >
+</div>
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <div class="hero-content">
+
+            <div class="radio-label">
+                Rádio Luz e Louvor apresenta
+            </div>
+
+            <div class="brand-row">
+
+                <div class="brand-symbol">
+                    ♡
+                </div>
+
+                <h1>
+                    Nota
+                    <span>Suave</span>
+                </h1>
+
+            </div>
+
+            <div class="tagline">
+                Um toque de reflexão em ciência e saúde
+                para tornar seu dia melhor.
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="presenter-small">
+                com
+            </div>
+
+            <div class="presenter-name">
+                Andrea Tomazela
+            </div>
+
+            <div class="presenter-title">
+                Psicóloga e Neuropsicóloga
+            </div>
+
+        </div>
+
+
+        <div class="hero-photo">
+
+            <!--
+            Coloque a imagem recortada da Andrea
+            na mesma pasta do HTML com o nome:
+            andrea-nota-suave.png
+            -->
+
+            <img
+                src="https://songs.horizon4282.com.br/file/horizon4282/images/andrea-nota-suave.png"
+                alt="Andrea Tomazela"
+                class="andrea"
+            >
+
+        </div>
+
+    </div>
+
+    <div class="wave"></div>
+    <div class="wave2"></div>
+
+</section>
+
+
+<!-- ======================
+     TEMAS
+====================== -->
+
+<section class="categories">
+
+    <div class="category-inner">
+
+        <div class="category">
+
+            <div class="category-icon">
+                ♡
+            </div>
+
+            <div class="category-name">
+                Família e<br>
+                Relacionamentos
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-icon">
+                ◯
+            </div>
+
+            <div class="category-name">
+                Saúde<br>
+                Emocional
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-icon">
+                ♡
+            </div>
+
+            <div class="category-name">
+                Acolhimento<br>
+                e Esperança
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-icon">
+                ❧
+            </div>
+
+            <div class="category-name">
+                Qualidade<br>
+                de Vida
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================
+     EPISÓDIOS
+====================== -->
+
+<section class="content">
+
+<div class="content-inner">
+
+    <div class="section-label">
+        Nota Suave
+    </div>
+
+    <h2>
+        Ouça quando quiser
+    </h2>
+
+    <div class="section-description">
+        Escolha um episódio e reserve alguns minutos
+        para refletir, aprender e cuidar de você.
+    </div>
+
+
+    <div class="episodes">
+
+
+        <!-- EPISÓDIO 001 -->
+
+        <div class="episode">
+
+            <div class="episode-top">
+
+                <div class="episode-number">
+                    Episódio 001
+                </div>
+
+                <div class="badge">
+                    Nota Suave
+                </div>
+
+            </div>
+
+            <div class="episode-title">
+                Nota Suave #001
+            </div>
+
+
+            <div class="controls">
+
+                <button
+                    class="play"
+                    onclick="toggleAudio(this)"
+                    aria-label="Ouvir episódio 001">
+                    ▶
+                </button>
+
+
+                <div class="progress-area">
+
+                    <div
+                        class="progress"
+                        onclick="seekAudio(event,this)">
+
+                        <div class="progress-bar"></div>
+
+                    </div>
+
+
+                    <div class="time">
+
+                        <span class="current">
+                            0:00
+                        </span>
+
+                        <span class="duration">
+                            --:--
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <audio
+                preload="metadata"
+                src="https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/andrea-nota-suave-001.mp3">
+            </audio>
+
+        </div>
+
+
+
+        <!-- EPISÓDIO 002 -->
+
+        <div class="episode">
+
+            <div class="episode-top">
+
+                <div class="episode-number">
+                    Episódio 002
+                </div>
+
+                <div class="badge">
+                    Nota Suave
+                </div>
+
+            </div>
+
+            <div class="episode-title">
+                Nota Suave #002
+            </div>
+
+
+            <div class="controls">
+
+                <button
+                    class="play"
+                    onclick="toggleAudio(this)"
+                    aria-label="Ouvir episódio 002">
+                    ▶
+                </button>
+
+
+                <div class="progress-area">
+
+                    <div
+                        class="progress"
+                        onclick="seekAudio(event,this)">
+
+                        <div class="progress-bar"></div>
+
+                    </div>
+
+
+                    <div class="time">
+
+                        <span class="current">
+                            0:00
+                        </span>
+
+                        <span class="duration">
+                            --:--
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <audio
+                preload="metadata"
+                src="https://songs.horizon4282.com.br/file/horizon4282/chamadas-radio/andrea-nota-suave-002.mp3">
+            </audio>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ======================
+     SOBRE ANDREA
+====================== -->
+
+<section class="about">
+
+<div class="about-inner">
+
+    <div class="about-circle">
+        NS
+    </div>
+
+    <div>
+
+        <div class="about-title">
+            Andrea Tomazela
+        </div>
+
+        <div class="about-text">
+            Psicóloga e neuropsicóloga.
+            No Nota Suave, Andrea compartilha reflexões
+            sobre saúde, relações, acolhimento e qualidade
+            de vida em pequenos momentos preparados
+            especialmente para você.
+        </div>
+
+        <div class="contact">
+
+            <a
+                href="https://www.instagram.com/psicologadraandreatomazela/"
+                target="_blank"
+                rel="noopener">
+                @psicologadraandreatomazela
+            </a>
+
+            <a
+                href="https://www.andreatomazela.com.br/"
+                target="_blank"
+                rel="noopener">
+                andreatomazela.com.br
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+    <strong>
+        Nota Suave
+    </strong>
+
+    <br>
+
+    Um programa da Rádio Luz e Louvor
+
+    <br>
+
+    Paróquia Divino Pai Eterno
+
+</footer>
+
+
+
+<script>
+
+let currentAudio = null;
+let currentButton = null;
+let currentEpisode = null;
+
+
+/* ======================
+   PLAY / PAUSE
+====================== */
+
+function toggleAudio(button){
+
+    const episode =
+        button.closest(".episode");
+
+    const audio =
+        episode.querySelector("audio");
+
+
+    /*
+    Pausa automaticamente
+    outro episódio.
+    */
+
+    if(
+        currentAudio &&
+        currentAudio !== audio
+    ){
+
+        currentAudio.pause();
+
+        if(currentButton){
+            currentButton.innerHTML = "▶";
+        }
+
+        if(currentEpisode){
+            currentEpisode.classList.remove(
+                "active"
+            );
+        }
+
+    }
+
+
+    if(audio.paused){
+
+        audio.play();
+
+        button.innerHTML = "❚❚";
+
+        episode.classList.add(
+            "active"
+        );
+
+        currentAudio = audio;
+        currentButton = button;
+        currentEpisode = episode;
+
+    }else{
+
+        audio.pause();
+
+        button.innerHTML = "▶";
+
+        episode.classList.remove(
+            "active"
+        );
+
+    }
+
+}
+
+
+/* ======================
+   CONFIGURA PLAYERS
+====================== */
+
+document
+.querySelectorAll(".episode")
+.forEach(episode => {
+
+    const audio =
+        episode.querySelector("audio");
+
+    const bar =
+        episode.querySelector(
+            ".progress-bar"
+        );
+
+    const current =
+        episode.querySelector(
+            ".current"
+        );
+
+    const duration =
+        episode.querySelector(
+            ".duration"
+        );
+
+    const button =
+        episode.querySelector(
+            ".play"
+        );
+
+
+    audio.addEventListener(
+        "loadedmetadata",
+        () => {
+
+            duration.textContent =
+                formatTime(
+                    audio.duration
+                );
+
+        }
+    );
+
+
+    audio.addEventListener(
+        "timeupdate",
+        () => {
+
+            if(!audio.duration){
+                return;
+            }
+
+            const percent =
+                (
+                    audio.currentTime /
+                    audio.duration
+                ) * 100;
+
+            bar.style.width =
+                percent + "%";
+
+            current.textContent =
+                formatTime(
+                    audio.currentTime
+                );
+
+        }
+    );
+
+
+    audio.addEventListener(
+        "ended",
+        () => {
+
+            button.innerHTML = "▶";
+
+            bar.style.width = "0%";
+
+            current.textContent = "0:00";
+
+            episode.classList.remove(
+                "active"
+            );
+
+            audio.currentTime = 0;
+
+        }
+    );
+
+});
+
+
+/* ======================
+   BARRA DE PROGRESSO
+====================== */
+
+function seekAudio(event,progress){
+
+    const episode =
+        progress.closest(".episode");
+
+    const audio =
+        episode.querySelector("audio");
+
+    if(!audio.duration){
+        return;
+    }
+
+    const rect =
+        progress.getBoundingClientRect();
+
+    const position =
+        (
+            event.clientX -
+            rect.left
+        ) / rect.width;
+
+    audio.currentTime =
+        position *
+        audio.duration;
+
+}
+
+
+/* ======================
+   TEMPO
+====================== */
+
+function formatTime(seconds){
+
+    if(!isFinite(seconds)){
+        return "--:--";
+    }
+
+    const minutes =
+        Math.floor(
+            seconds / 60
+        );
+
+    const secs =
+        Math.floor(
+            seconds % 60
+        )
+        .toString()
+        .padStart(2,"0");
+
+    return (
+        minutes +
+        ":" +
+        secs
+    );
+
+}
+
+</script>
+
+</body>
+</html>
