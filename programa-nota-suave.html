@@ -130,6 +130,76 @@ body{
 
 
 /* =========================
+   PAGINAÇÃO
+========================= */
+
+.pagination{
+    display:none;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:35px;
+    flex-wrap:wrap;
+}
+
+.pagination.visible{
+    display:flex;
+}
+
+.page-button{
+    min-width:40px;
+    height:40px;
+    padding:0 12px;
+
+    border:1px solid var(--line);
+    border-radius:50%;
+
+    background:white;
+    color:var(--green);
+
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    box-shadow:
+        0 4px 14px rgba(31,65,54,.05);
+}
+
+.page-button:hover{
+    background:#f0f4e9;
+    border-color:rgba(83,111,61,.3);
+}
+
+.page-button.active{
+    background:var(--green);
+    color:white;
+    border-color:var(--green);
+
+    box-shadow:
+        0 5px 15px rgba(83,111,61,.22);
+}
+
+.page-arrow{
+    border-radius:20px;
+    padding:0 15px;
+}
+
+.page-button:disabled{
+    opacity:.35;
+    cursor:default;
+}
+
+.page-button:disabled:hover{
+    background:white;
+    border-color:var(--line);
+}
+
+
+/* =========================
    HERO
 ========================= */
 
@@ -1101,10 +1171,15 @@ footer strong{
         ============================================
         -->
 
-        <div
-            class="episodes"
-            id="episodes">
-        </div>
+<div
+    class="episodes"
+    id="episodes">
+</div>
+
+<div
+    class="pagination"
+    id="pagination">
+</div>
 
     </div>
 
@@ -1244,12 +1319,23 @@ const AUDIO_BASE =
 const AUDIO_PREFIX =
 "andrea-nota-suave-";
 
+/* ==========================================================
+   PAGINAÇÃO
+========================================================== */
+
+const EPISODIOS_POR_PAGINA = 8;
+
+let paginaAtual = 1;
 
 
 /* ==========================================================
    GERA OS EPISÓDIOS
 ========================================================== */
 
+
+/* ==========================================================
+   GERA OS EPISÓDIOS COM PAGINAÇÃO
+========================================================== */
 
 function carregarEpisodios(){
 
@@ -1258,11 +1344,38 @@ function carregarEpisodios(){
             "episodes"
         );
 
-
     container.innerHTML = "";
 
 
-    episodios.forEach(
+    /* =========================
+       CALCULA A PÁGINA
+    ========================= */
+
+    const inicio =
+        (
+            paginaAtual - 1
+        )
+        *
+        EPISODIOS_POR_PAGINA;
+
+
+    const fim =
+        inicio +
+        EPISODIOS_POR_PAGINA;
+
+
+    const episodiosPagina =
+        episodios.slice(
+            inicio,
+            fim
+        );
+
+
+    /* =========================
+       CRIA OS CARDS
+    ========================= */
+
+    episodiosPagina.forEach(
         episodio => {
 
 
@@ -1359,6 +1472,254 @@ function carregarEpisodios(){
 
 
     configurarPlayers();
+
+    criarPaginacao();
+
+}
+
+/* ==========================================================
+   CRIA PAGINAÇÃO
+========================================================== */
+
+function criarPaginacao(){
+
+    const pagination =
+        document.getElementById(
+            "pagination"
+        );
+
+
+    const totalPaginas =
+        Math.ceil(
+            episodios.length /
+            EPISODIOS_POR_PAGINA
+        );
+
+
+    pagination.innerHTML = "";
+
+
+    /*
+    Até 8 episódios,
+    não mostra paginação.
+    */
+
+    if(totalPaginas <= 1){
+
+        pagination.classList.remove(
+            "visible"
+        );
+
+        return;
+
+    }
+
+
+    pagination.classList.add(
+        "visible"
+    );
+
+
+    /* =========================
+       ANTERIOR
+    ========================= */
+
+    const anterior =
+        document.createElement(
+            "button"
+        );
+
+
+    anterior.className =
+        "page-button page-arrow";
+
+    anterior.innerHTML =
+        "‹";
+
+    anterior.setAttribute(
+        "aria-label",
+        "Página anterior"
+    );
+
+
+    anterior.disabled =
+        paginaAtual === 1;
+
+
+    anterior.onclick =
+        () => {
+
+            if(paginaAtual > 1){
+
+                trocarPagina(
+                    paginaAtual - 1
+                );
+
+            }
+
+        };
+
+
+    pagination.appendChild(
+        anterior
+    );
+
+
+    /* =========================
+       NÚMEROS DAS PÁGINAS
+    ========================= */
+
+    for(
+        let pagina = 1;
+        pagina <= totalPaginas;
+        pagina++
+    ){
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+
+        button.className =
+            "page-button";
+
+
+        if(
+            pagina === paginaAtual
+        ){
+
+            button.classList.add(
+                "active"
+            );
+
+        }
+
+
+        button.textContent =
+            pagina;
+
+
+        button.setAttribute(
+            "aria-label",
+            "Página " + pagina
+        );
+
+
+        button.onclick =
+            () => {
+
+                trocarPagina(
+                    pagina
+                );
+
+            };
+
+
+        pagination.appendChild(
+            button
+        );
+
+    }
+
+
+    /* =========================
+       PRÓXIMA
+    ========================= */
+
+    const proxima =
+        document.createElement(
+            "button"
+        );
+
+
+    proxima.className =
+        "page-button page-arrow";
+
+    proxima.innerHTML =
+        "›";
+
+    proxima.setAttribute(
+        "aria-label",
+        "Próxima página"
+    );
+
+
+    proxima.disabled =
+        paginaAtual === totalPaginas;
+
+
+    proxima.onclick =
+        () => {
+
+            if(
+                paginaAtual <
+                totalPaginas
+            ){
+
+                trocarPagina(
+                    paginaAtual + 1
+                );
+
+            }
+
+        };
+
+
+    pagination.appendChild(
+        proxima
+    );
+
+}
+/* ==========================================================
+   TROCA DE PÁGINA
+========================================================== */
+
+function trocarPagina(
+    novaPagina
+){
+
+    /* =========================
+       PARA O ÁUDIO ATUAL
+    ========================= */
+
+    if(currentAudio){
+
+        currentAudio.pause();
+
+    }
+
+
+    currentAudio = null;
+    currentButton = null;
+    currentEpisode = null;
+
+
+    /* =========================
+       MUDA A PÁGINA
+    ========================= */
+
+    paginaAtual =
+        novaPagina;
+
+
+    carregarEpisodios();
+
+
+    /* =========================
+       VOLTA PARA OS EPISÓDIOS
+    ========================= */
+
+    const content =
+        document.querySelector(
+            ".content"
+        );
+
+
+    content.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
 
 }
 
