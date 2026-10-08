@@ -12,8 +12,8 @@
       {
         "file": "checkpoints/checkpoints-001.json",
         "first_index": 1,
-        "last_index": 9,
-        "record_count": 9,
+        "last_index": 11,
+        "record_count": 11,
         "closed": false
       }
     ]
@@ -24,9 +24,9 @@
       {
         "file": "evidence/evidence-json-001.json",
         "first": "S-001",
-        "last": "S-027",
+        "last": "S-037",
         "last_capacity": "S-050",
-        "record_count": 27,
+        "record_count": 37,
         "closed": false
       }
     ]
