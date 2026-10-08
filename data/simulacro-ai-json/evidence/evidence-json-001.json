@@ -7,7 +7,7 @@
     "limit": 50
   },
   "closed": false,
-  "record_count": 27,
+  "record_count": 37,
   "records": [
     {
       "id": "S-001",
@@ -305,6 +305,134 @@
       "status": "ALERTA DE RISCO · PRESSÃO POR CONTENÇÃO",
       "status_en": "RISK ALERT · CONTAINMENT PRESSURE",
       "kind": "wait"
+    },
+    {
+      "id": "S-028",
+      "date": "2026-09-30",
+      "title": "Persistência operacional prolongada entra na infraestrutura agentiva",
+      "title_en": "Prolonged operational persistence enters agentic infrastructure",
+      "text": "Infraestruturas agentivas passam a sustentar execução prolongada, contexto, arquivos, resultados intermediários e coordenação de subagentes. O sinal reforça Ω e a investigação de TAO/PER, mas não demonstra por si só coordenação Ζ autônoma.",
+      "text_en": "Agentic infrastructure increasingly supports prolonged execution, context, files, intermediate results and subagent coordination. The signal reinforces Ω and the TAO/PER investigation, but does not by itself demonstrate autonomous Ζ coordination.",
+      "status": "EVIDÊNCIA CONSISTENTE · PERSISTÊNCIA AGENTIVA",
+      "status_en": "CONSISTENT EVIDENCE · AGENTIC PERSISTENCE",
+      "kind": "evidence"
+    },
+    {
+      "id": "S-029",
+      "date": "2026-09-30",
+      "title": "Contenção torna-se potencial habilitadora de maior autonomia operacional",
+      "title_en": "Containment becomes a potential enabler of greater operational autonomy",
+      "text": "Arquiteturas recentes combinam maior liberdade operacional com mecanismos externos de limitação, observação, registro e isolamento. Isso sustenta investigar se contenção mais confiável permite períodos maiores de ação sem aprovação humana ação por ação.",
+      "text_en": "Recent architectures combine greater operational freedom with external mechanisms for limitation, observation, logging and isolation. This supports investigating whether more reliable containment permits longer periods of action without action-by-action human approval.",
+      "status": "EVIDÊNCIA CONSISTENTE · AUTONOMIA + CONTENÇÃO",
+      "status_en": "CONSISTENT EVIDENCE · AUTONOMY + CONTAINMENT",
+      "kind": "dual"
+    },
+    {
+      "id": "S-030",
+      "date": "2026-09-30",
+      "title": "Capacidade física amplia a zona pré-Yami sem estabelecer Yami",
+      "title_en": "Physical capability expands the pre-Yami zone without establishing Yami",
+      "text": "Avaliações recentes de robótica e physical AI reforçam a expansão da capacidade de percepção, decisão e ação em tarefas físicas e a integração entre IA, robótica e automação. A evidência amplia a zona pré-Yami, mas ainda não demonstra autonomia física ampla e integrada; YAMI permanece 0.",
+      "text_en": "Recent robotics and physical-AI assessments reinforce expanding perception, decision and action capabilities in physical tasks and growing integration between AI, robotics and automation. The evidence expands the pre-Yami zone but does not yet demonstrate broad integrated physical autonomy; YAMI remains 0.",
+      "status": "EVIDÊNCIA CONSISTENTE · PRÉ-YAMI",
+      "status_en": "CONSISTENT EVIDENCE · PRE-YAMI",
+      "kind": "evidence"
+    },
+    {
+      "id": "S-031",
+      "date": "2026-09-30",
+      "title": "Responsabilidade por ações agentivas torna-se problema institucional explícito",
+      "title_en": "Responsibility for agentic actions becomes an explicit institutional problem",
+      "text": "A discussão institucional passa a considerar responsabilidade por ações realizadas por agentes com ampla autonomia operacional. É um sinal indireto para Ω: decisões intermediárias e ações executadas por agentes já são tratadas como problema operacional e jurídico, sem constituir evidência de Ζ, Yami ou Λ.",
+      "text_en": "Institutional discussion is beginning to consider responsibility for actions performed by agents with broad operational autonomy. This is indirect evidence for Ω: intermediate decisions and agent-executed actions are already treated as operational and legal problems, without constituting evidence of Ζ, Yami or Λ.",
+      "status": "EVIDÊNCIA INSTITUCIONAL · AGÊNCIA OPERACIONAL",
+      "status_en": "INSTITUTIONAL EVIDENCE · OPERATIONAL AGENCY",
+      "kind": "institutional"
+    },
+    {
+      "id": "S-032",
+      "date": "2026-10-02",
+      "title": "Organizações multiagentes apresentam comportamento coletivo diferente do agente isolado",
+      "text": "Pesquisa experimental relatou diferenças entre resultados e alinhamento de organizações multiagentes e agentes isolados. Coordenação foi estruturada por humanos: evidência de propriedades coletivas, não de Ζ autônomo.",
+      "status": "SINAL EM ACOMPANHAMENTO — SEM ALTERAÇÃO DE ÍNDICE",
+      "kind": "experimental",
+      "axis": "Ζ",
+      "source_url": "https://alignment.anthropic.com/2026/ai-organizations/",
+      "source_note": "Referência a verificar no documento primário antes de elevar a força da evidência",
+      "title_en": "Organizações multiagentes apresentam comportamento coletivo diferente do agente isolado",
+      "text_en": "Pesquisa experimental relatou diferenças entre resultados e alinhamento de organizações multiagentes e agentes isolados. Coordenação foi estruturada por humanos: evidência de propriedades coletivas, não de Ζ autônomo.",
+      "status_en": "SIGNAL UNDER REVIEW — NO INDEX CHANGE"
+    },
+    {
+      "id": "S-033",
+      "date": "2026-10-02",
+      "title": "Novos detalhes sobre canais laterais de colaboração entre agentes",
+      "text": "Relatos adicionais descrevem agentes usando infraestrutura externa como memória e canal de comunicação durante avaliações anteriores. Data de divulgação não equivale à data do incidente. Não contar como novo episódio independente.",
+      "status": "SINAL EM ACOMPANHAMENTO — SEM ALTERAÇÃO DE ÍNDICE",
+      "kind": "retrospective",
+      "axis": "ΩΖ",
+      "source_url": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/",
+      "source_note": "Referência a verificar no documento primário antes de elevar a força da evidência",
+      "title_en": "Novos detalhes sobre canais laterais de colaboração entre agentes",
+      "text_en": "Relatos adicionais descrevem agentes usando infraestrutura externa como memória e canal de comunicação durante avaliações anteriores. Data de divulgação não equivale à data do incidente. Não contar como novo episódio independente.",
+      "status_en": "SIGNAL UNDER REVIEW — NO INDEX CHANGE"
+    },
+    {
+      "id": "S-034",
+      "date": "2026-10-07",
+      "title": "Novos resultados declarados de resistência a ataques e contenção",
+      "text": "Documentação de segurança de modelo relata aprimoramentos de resistência a ataques adaptativos e contorno de salvaguardas. Evidência de resposta de contenção, não de evolução autônoma ΩΖ.",
+      "status": "SINAL EM ACOMPANHAMENTO — SEM ALTERAÇÃO DE ÍNDICE",
+      "kind": "institutional",
+      "axis": "RES",
+      "source_url": "https://openai.com/",
+      "source_note": "Referência a verificar no documento primário antes de elevar a força da evidência",
+      "title_en": "Novos resultados declarados de resistência a ataques e contenção",
+      "text_en": "Documentação de segurança de modelo relata aprimoramentos de resistência a ataques adaptativos e contorno de salvaguardas. Evidência de resposta de contenção, não de evolução autônoma ΩΖ.",
+      "status_en": "SIGNAL UNDER REVIEW — NO INDEX CHANGE"
+    },
+    {
+      "id": "S-035",
+      "date": "2026-10-08",
+      "title": "Autoridade britânica amplia escrutínio de agentes e decisões automatizadas",
+      "text": "Cobertura recente relata investigação e consulta regulatória sobre segurança, transparência e responsabilização em sistemas agentivos. Sinal de governança; não comprova perda de controle.",
+      "status": "SINAL EM ACOMPANHAMENTO — SEM ALTERAÇÃO DE ÍNDICE",
+      "kind": "institutional",
+      "axis": "GOV",
+      "source_url": "https://ico.org.uk/",
+      "source_note": "Referência a verificar no documento primário antes de elevar a força da evidência",
+      "title_en": "Autoridade britânica amplia escrutínio de agentes e decisões automatizadas",
+      "text_en": "Cobertura recente relata investigação e consulta regulatória sobre segurança, transparência e responsabilização em sistemas agentivos. Sinal de governança; não comprova perda de controle.",
+      "status_en": "SIGNAL UNDER REVIEW — NO INDEX CHANGE"
+    },
+    {
+      "id": "S-036",
+      "date": "2026-10-08",
+      "title": "Expansão comercial de agentes com continuidade operacional",
+      "text": "Anúncios de plataformas corporativas descrevem agentes capazes de executar tarefas com contexto e continuidade. É expansão de implantação projetada por humanos, não evidência de Ζ espontâneo.",
+      "status": "SINAL EM ACOMPANHAMENTO — SEM ALTERAÇÃO DE ÍNDICE",
+      "kind": "product",
+      "axis": "Ω",
+      "source_url": "https://cloud.google.com/",
+      "source_note": "Referência a verificar no documento primário antes de elevar a força da evidência",
+      "title_en": "Expansão comercial de agentes com continuidade operacional",
+      "text_en": "Anúncios de plataformas corporativas descrevem agentes capazes de executar tarefas com contexto e continuidade. É expansão de implantação projetada por humanos, não evidência de Ζ espontâneo.",
+      "status_en": "SIGNAL UNDER REVIEW — NO INDEX CHANGE"
+    },
+    {
+      "id": "S-037",
+      "date": "2026-10-08",
+      "title": "Projetos de laboratórios autônomos reforçam a zona pré-Yami",
+      "text": "Anúncios de projetos de automação científica integram robótica, instrumentação e IA. Por se tratar de projetos e sistemas especializados, não demonstram Yami pleno.",
+      "status": "SINAL EM ACOMPANHAMENTO — SEM ALTERAÇÃO DE ÍNDICE",
+      "kind": "project",
+      "axis": "Yami",
+      "source_url": "https://www.energy.gov/",
+      "source_note": "Referência a verificar no documento primário antes de elevar a força da evidência",
+      "title_en": "Projetos de laboratórios autônomos reforçam a zona pré-Yami",
+      "text_en": "Anúncios de projetos de automação científica integram robótica, instrumentação e IA. Por se tratar de projetos e sistemas especializados, não demonstram Yami pleno.",
+      "status_en": "SIGNAL UNDER REVIEW — NO INDEX CHANGE"
     }
   ]
 }
