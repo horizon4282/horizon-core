@@ -204,11 +204,11 @@ function processWords(raw){
  // Prioridade absoluta aos comandos específicos; frases comuns não disparam os genéricos.
  if(/\b(nos vemos no futuro)\b/.test(s))cmd='fechar';
  else if(/\b(obrigado nexus|muito bem nexus)\b/.test(s))cmd='voltar';
- else if(/\b(cantando cecilia luz)\b/.test(s))cmd='play';
+ else if(/\b([no ar cecilia luz)\b/.test(s))cmd='play';
  else if(/\b(video da cecilia)\b/.test(s))cmd='video';
  else if(/\b(nexus ativar|ativar nexus)\b/.test(s))cmd='ativar';
  else if(/\b(mais sobre luz e louvor)\b/.test(s))cmd='ministerio';
- else if(/\b(radio da paróquia)\b/.test(s))cmd='radio';
+ else if(/\b(radio da nossa igreja)\b/.test(s))cmd='radio';
  else if(/\b(cecilia luz)\b/.test(s))cmd='cecilia';
  else if(/\b(instituto)\b/.test(s))cmd='proodos';
  if(!cmd||closing||closed)return;
