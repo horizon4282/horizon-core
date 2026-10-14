@@ -210,7 +210,7 @@ function processWords(raw){
  else if(/\b(ministerio luz e louvor)\b/.test(s))cmd='ministerio';
  else if(/\b(radio luz e louvor)\b/.test(s))cmd='radio';
  else if(/\b(cecilia luz)\b/.test(s))cmd='cecilia';
- else if(/\b(proodos)\b/.test(s))cmd='proodos';
+ else if(/\b(instituto)\b/.test(s))cmd='proodos';
  if(!cmd||closing||closed)return;
  const now=performance.now();if(lastCommand===cmd&&now-lastCommandAt<2400)return;
  lastCommand=cmd;lastCommandAt=now;
