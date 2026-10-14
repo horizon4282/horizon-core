@@ -1,4 +1,4 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nexus V9 | Rádio Luz e Louvor</title><style>*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at center,#10243b 0%,#070c18 60%,#03050a 100%);color:#eaf5ff;font-family:Arial,sans-serif;min-height:100vh;overflow:hidden}main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:5vh 20px 4vh;text-align:center}header small{letter-spacing:.32em;color:#d8b976;font-size:clamp(12px,1.3vw,18px)}h1{font-size:clamp(28px,4vw,58px);letter-spacing:.16em;margin:14px 0 0;font-weight:400}.stage{position:relative;width:min(82vw,74vh,760px);aspect-ratio:1;display:grid;place-items:center}.halo{position:absolute;inset:5%;border:1px solid #72dfff33;border-radius:50%;box-shadow:0 0 80px #1b9ff522}.halo:nth-child(2){inset:0;border-color:#d9b76a22;animation:spin 28s linear infinite;border-style:dashed}canvas{width:100%;height:100%;filter:drop-shadow(0 0 25px #32c8ff77)}@keyframes spin{to{transform:rotate(360deg)}}.subtitle{color:#b5c6d7;letter-spacing:.13em;font-size:clamp(12px,1.3vw,18px)}.controls{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}button{background:#132940;border:1px solid #4385a8;color:#eaf7ff;padding:12px 18px;border-radius:24px;cursor:pointer;font-size:14px}button:hover{background:#205078}.controls.hidden,#status.hidden{display:none}#fullFallback{display:none;position:fixed;bottom:22px;right:22px;z-index:10}#fullFallback.visible{display:block}#status{font-size:13px;color:#d5b878;margin-top:14px;min-height:20px}footer{font-size:12px;color:#7890a5}@media(max-width:600px){.stage{width:94vw}main{padding:35px 12px}}
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nexus V10 | Rádio Luz e Louvor</title><style>*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at center,#10243b 0%,#070c18 60%,#03050a 100%);color:#eaf5ff;font-family:Arial,sans-serif;min-height:100vh;overflow:hidden}main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:5vh 20px 4vh;text-align:center}header small{letter-spacing:.32em;color:#d8b976;font-size:clamp(12px,1.3vw,18px)}h1{font-size:clamp(28px,4vw,58px);letter-spacing:.16em;margin:14px 0 0;font-weight:400}.stage{position:relative;width:min(82vw,74vh,760px);aspect-ratio:1;display:grid;place-items:center}.halo{position:absolute;inset:5%;border:1px solid #72dfff33;border-radius:50%;box-shadow:0 0 80px #1b9ff522}.halo:nth-child(2){inset:0;border-color:#d9b76a22;animation:spin 28s linear infinite;border-style:dashed}canvas{width:100%;height:100%;filter:drop-shadow(0 0 25px #32c8ff77)}@keyframes spin{to{transform:rotate(360deg)}}.subtitle{color:#b5c6d7;letter-spacing:.13em;font-size:clamp(12px,1.3vw,18px)}.controls{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}button{background:#132940;border:1px solid #4385a8;color:#eaf7ff;padding:12px 18px;border-radius:24px;cursor:pointer;font-size:14px}button:hover{background:#205078}.controls.hidden,#status.hidden{display:none}#fullFallback{display:none;position:fixed;bottom:22px;right:22px;z-index:10}#fullFallback.visible{display:block}#status{font-size:13px;color:#d5b878;margin-top:14px;min-height:20px}footer{font-size:12px;color:#7890a5}@media(max-width:600px){.stage{width:94vw}main{padding:35px 12px}}
 body.waiting main{opacity:0;pointer-events:none}main{transition:opacity 1.2s}
 body.booting main{opacity:1}body.booting .stage{animation:nexusWake 9s ease-in-out both}body.closing .stage{animation:nexusSleep 6s ease-in-out forwards}body.closing header,body.closing .subtitle,body.closing footer{animation:fadeOut 5s ease forwards}
 @keyframes nexusWake{0%{transform:scale(.008);opacity:0;filter:brightness(.15)}15%{transform:scale(.045);opacity:.65;filter:brightness(.6)}33%{transform:scale(.14);opacity:1;filter:brightness(1.3)}55%{transform:scale(.38);filter:brightness(1.9)}78%{transform:scale(.85);filter:brightness(1.5)}100%{transform:scale(1);opacity:1;filter:brightness(1)}}@keyframes nexusSleep{0%{transform:scale(1);opacity:1;filter:brightness(1)}40%{transform:scale(.6);filter:brightness(1.6)}75%{transform:scale(.12);opacity:.8;filter:brightness(1.3)}100%{transform:scale(0);opacity:0;filter:brightness(0)}}@keyframes fadeOut{to{opacity:0}}
@@ -78,7 +78,7 @@ function draw(t){
 }requestAnimationFrame(draw);
 </script><div id="waiting" aria-label="Nexus em espera"><div class="wait-center"><div class="seed"></div><div class="wait-label">NEXUS EM ESPERA</div><button id="waitActivate" type="button">Ativar Nexus</button></div></div>
 <div id="slide"><div class="empty" id="slideEmpty"></div><img id="slideImg" hidden alt="Imagem da apresentação"><video id="slideVideo" hidden playsinline controls></video></div>
-<div id="setupPanel"><h2>Preparação • Nexus V9</h2><p>Conecte o áudio da aba do ChatGPT para animar a esfera. A esfera usa o áudio compartilhado. As palavras-chave ainda dependem do microfone (experimental): a captura de áudio da aba NÃO é transcrita automaticamente. Prepare as mídias e teste o vídeo antes do evento. Os controles ficam ocultos durante a apresentação.</p>
+<div id="setupPanel"><h2>Preparação • Nexus V10</h2><p>Conecte o áudio da aba do ChatGPT para animar a esfera. A esfera usa o áudio compartilhado. As palavras-chave ainda dependem do microfone (experimental): a captura de áudio da aba NÃO é transcrita automaticamente. Prepare as mídias e teste o vídeo antes do evento. Os controles ficam ocultos durante a apresentação.</p>
 <div class="actions"><button id="setupConnect">Conectar áudio da aba</button><button id="setupListen">Ativar reconhecimento</button><button id="setupDemo">Testar esfera</button><button id="setupClose">Pronto para apresentar</button><button id="setupPlay">Testar vídeo da Cecília</button></div>
 <label>Proodos — imagem</label><input id="mediaProodos" placeholder="https://.../proodos.jpg">
 <label>Cecília Luz — imagem 1</label><input id="mediaCecilia1" placeholder="https://.../cecilia-1.jpg">
@@ -89,13 +89,15 @@ function draw(t){
 <label>Ministério Luz e Louvor — imagem 2</label><input id="mediaMinisterio2" placeholder="https://.../ministerio-2.jpg">
 <label>Ministério Luz e Louvor — imagem 3</label><input id="mediaMinisterio3" placeholder="https://.../ministerio-3.jpg">
 <label>Rádio Luz e Louvor — imagem</label><input id="mediaRadio" placeholder="https://.../radio.jpg">
+<label>Projetos validados — imagem</label><input id="mediaProjetos" placeholder="https://.../projetos-validados.jpg">
+<label>Apoio à catequese infantil — imagem</label><input id="mediaCatequese" placeholder="https://.../catequese-infantil.jpg">
 <div class="actions"><button id="setupActivate">Ativar Nexus</button><button id="setupBack">Voltar à esfera</button><button id="setupReset">Reiniciar sessão</button></div>
-<p>Atalhos: <b>Alt+S</b> configurações · <b>Alt+A</b> ativar · <b>Alt+1/2/3/4</b> Proodos/Cecília/Ministério/Rádio · <b>Alt+V</b> preparar vídeo · <b>Alt+P</b> reproduzir · <b>Alt+B</b> esfera · <b>Alt+F</b> encerrar · <b>Alt+R</b> reiniciar · <b>Esc</b> sair da tela cheia.</p><div class="state" id="stateV5">Aguardando configuração.</div></div>
+<p>Atalhos: <b>Alt+S</b> configurações · <b>Alt+A</b> ativar · <b>Alt+1/2/3/4/5/6</b> Proodos/Cecília/Ministério/Rádio/Projetos/Catequese · <b>Alt+V</b> preparar vídeo · <b>Alt+P</b> reproduzir · <b>Alt+B</b> esfera · <b>Alt+F</b> encerrar · <b>Alt+R</b> reiniciar · <b>Esc</b> sair da tela cheia.</p><div class="state" id="stateV5">Aguardando configuração.</div></div>
 <div id="hint"></div>
 <script>
 const $=id=>document.getElementById(id);window.addEventListener('error',e=>{const x=document.getElementById('stateV5');if(x)x.textContent='Erro: '+e.message});
-const mediaKeys={proodos:'mediaProodos',cecilia1:'mediaCecilia1',cecilia2:'mediaCecilia2',cecilia3:'mediaCecilia3',cecilia:'mediaCecilia',ministerio1:'mediaMinisterio1',ministerio2:'mediaMinisterio2',ministerio3:'mediaMinisterio3',radio:'mediaRadio'};
-const labels={proodos:'PROODOS',cecilia:'CECÍLIA LUZ',ministerio:'MINISTÉRIO LUZ E LOUVOR',radio:'RÁDIO LUZ E LOUVOR',video:'CECÍLIA LUZ — APRESENTAÇÃO'};
+const mediaKeys={proodos:'mediaProodos',cecilia1:'mediaCecilia1',cecilia2:'mediaCecilia2',cecilia3:'mediaCecilia3',cecilia:'mediaCecilia',ministerio1:'mediaMinisterio1',ministerio2:'mediaMinisterio2',ministerio3:'mediaMinisterio3',radio:'mediaRadio',projetos:'mediaProjetos',catequese:'mediaCatequese'};
+const labels={proodos:'PROODOS',cecilia:'CECÍLIA LUZ',ministerio:'MINISTÉRIO LUZ E LOUVOR',radio:'RÁDIO LUZ E LOUVOR',projetos:'PROJETOS VALIDADOS',catequese:'APOIO À CATEQUESE INFANTIL',video:'CECÍLIA LUZ — APRESENTAÇÃO'};
 let activated=false,booting=false,closing=false,closed=false,activeSlide=null,recognition=null,recognizing=false;
 const mediaKey='nexus-v9-media';
 const oldMedia=JSON.parse(localStorage.getItem('nexus-v5-media')||'{}');
@@ -203,8 +205,10 @@ function processWords(raw){
  let cmd=null;
  // Prioridade absoluta aos comandos específicos; frases comuns não disparam os genéricos.
  if(/\b(nos vemos no futuro)\b/.test(s))cmd='fechar';
- else if(/\b(obrigado nexus|muito bem nexus)\b/.test(s))cmd='voltar';
+ else if(/\b(seguinte)\b/.test(s))cmd='voltar';
  else if(/\b(nossa artista digital)\b/.test(s))cmd='play';
+ else if(/\b(projetos validados)\b/.test(s))cmd='projetos';
+ else if(/\b(apoio a catequese infantil)\b/.test(s))cmd='catequese';
  else if(/\b(video da cecilia)\b/.test(s))cmd='video';
  else if(/\b(nexus ativar|ativar nexus)\b/.test(s))cmd='ativar';
  else if(/\b(mais sobre luz e louvor)\b/.test(s))cmd='ministerio';
@@ -236,7 +240,7 @@ $('setupReset').onclick=reset;
 document.addEventListener('keydown',e=>{
  if(!e.altKey)return;
  const k=e.key.toLowerCase();
- if(!['s','a','b','r','p','v','f','1','2','3','4'].includes(k))return;
+ if(!['s','a','b','r','p','v','f','1','2','3','4','5','6'].includes(k))return;
  e.preventDefault();
  if(k==='s')panel($('setupPanel').classList.contains('hidden'));
  else if(k==='a')activate();
@@ -245,7 +249,7 @@ document.addEventListener('keydown',e=>{
  else if(k==='p')playCecilia();
  else if(k==='v')prepareVideo();
  else if(k==='f')farewell();
- else if('1234'.includes(k))showAnchor(['proodos','cecilia','ministerio','radio'][Number(k)-1]);
+ else if('123456'.includes(k))showAnchor(['proodos','cecilia','ministerio','radio','projetos','catequese'][Number(k)-1]);
 });
 // Comandos de retorno repetíveis; os demais só uma vez por sessão.
 </script></body></html>
