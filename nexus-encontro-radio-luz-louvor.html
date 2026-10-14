@@ -163,7 +163,7 @@ function prepareVideo(){
 }
 async function playCecilia(){
  if(!activated||closing||closed||used.has('play'))return;
- if(activeSlide!=='video'){status('Primeiro use “Conheçam Cecília Luz”.');return}
+ if(activeSlide!=='video'){status('Primeiro use “Video da Cecilia”.');return}
  const v=$('slideVideo');
  if(!v.getAttribute('src')){status('Configure o vídeo da Cecília Luz.');return}
  used.add('play');
@@ -205,7 +205,7 @@ function processWords(raw){
  if(/\b(nos vemos no futuro)\b/.test(s))cmd='fechar';
  else if(/\b(obrigado nexus|muito bem nexus)\b/.test(s))cmd='voltar';
  else if(/\b(no palco cecilia luz)\b/.test(s))cmd='play';
- else if(/\b(conheçam cecilia luz)\b/.test(s))cmd='video';
+ else if(/\b(video da cecilia)\b/.test(s))cmd='video';
  else if(/\b(nexus ativar|ativar nexus)\b/.test(s))cmd='ativar';
  else if(/\b(mais sobre luz e louvor)\b/.test(s))cmd='ministerio';
  else if(/\b(radio luz e louvor)\b/.test(s))cmd='radio';
