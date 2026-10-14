@@ -1,0 +1,251 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nexus V9 | Rádio Luz e Louvor</title><style>*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at center,#10243b 0%,#070c18 60%,#03050a 100%);color:#eaf5ff;font-family:Arial,sans-serif;min-height:100vh;overflow:hidden}main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:5vh 20px 4vh;text-align:center}header small{letter-spacing:.32em;color:#d8b976;font-size:clamp(12px,1.3vw,18px)}h1{font-size:clamp(28px,4vw,58px);letter-spacing:.16em;margin:14px 0 0;font-weight:400}.stage{position:relative;width:min(82vw,74vh,760px);aspect-ratio:1;display:grid;place-items:center}.halo{position:absolute;inset:5%;border:1px solid #72dfff33;border-radius:50%;box-shadow:0 0 80px #1b9ff522}.halo:nth-child(2){inset:0;border-color:#d9b76a22;animation:spin 28s linear infinite;border-style:dashed}canvas{width:100%;height:100%;filter:drop-shadow(0 0 25px #32c8ff77)}@keyframes spin{to{transform:rotate(360deg)}}.subtitle{color:#b5c6d7;letter-spacing:.13em;font-size:clamp(12px,1.3vw,18px)}.controls{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}button{background:#132940;border:1px solid #4385a8;color:#eaf7ff;padding:12px 18px;border-radius:24px;cursor:pointer;font-size:14px}button:hover{background:#205078}.controls.hidden,#status.hidden{display:none}#fullFallback{display:none;position:fixed;bottom:22px;right:22px;z-index:10}#fullFallback.visible{display:block}#status{font-size:13px;color:#d5b878;margin-top:14px;min-height:20px}footer{font-size:12px;color:#7890a5}@media(max-width:600px){.stage{width:94vw}main{padding:35px 12px}}
+body.waiting main{opacity:0;pointer-events:none}main{transition:opacity 1.2s}
+body.booting main{opacity:1}body.booting .stage{animation:nexusWake 9s ease-in-out both}body.closing .stage{animation:nexusSleep 6s ease-in-out forwards}body.closing header,body.closing .subtitle,body.closing footer{animation:fadeOut 5s ease forwards}
+@keyframes nexusWake{0%{transform:scale(.008);opacity:0;filter:brightness(.15)}15%{transform:scale(.045);opacity:.65;filter:brightness(.6)}33%{transform:scale(.14);opacity:1;filter:brightness(1.3)}55%{transform:scale(.38);filter:brightness(1.9)}78%{transform:scale(.85);filter:brightness(1.5)}100%{transform:scale(1);opacity:1;filter:brightness(1)}}@keyframes nexusSleep{0%{transform:scale(1);opacity:1;filter:brightness(1)}40%{transform:scale(.6);filter:brightness(1.6)}75%{transform:scale(.12);opacity:.8;filter:brightness(1.3)}100%{transform:scale(0);opacity:0;filter:brightness(0)}}@keyframes fadeOut{to{opacity:0}}
+#waiting{position:fixed;inset:0;background:radial-gradient(ellipse at center,#0a1930,#03050a 80%);z-index:15;display:grid;place-items:center;transition:opacity 1s}
+#waiting.hide{opacity:0;pointer-events:none;visibility:hidden}#waiting .wait-center{display:flex;flex-direction:column;align-items:center;gap:25px}#waiting .wait-label{font-size:13px;letter-spacing:.28em;color:#b5c6d7}#waiting #waitActivate{position:relative;z-index:2}#waiting .seed{width:12px;height:12px;border-radius:50%;background:#6fd9ff;box-shadow:0 0 30px #28bfff;animation:breath 3s ease-in-out infinite}
+@keyframes breath{50%{transform:scale(1.6);opacity:.55}}
+#slide{position:fixed;inset:0;z-index:12;background:radial-gradient(ellipse at center,#122a44,#03050a 80%);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .8s}
+#slide.show{opacity:1;pointer-events:auto}#slide{transition:opacity 2s ease}#slide.opening{transition:opacity .65s ease}#slide [hidden]{display:none!important}#slide img,#slide video{width:100%;height:100%;object-fit:contain}#slide .empty{font-size:clamp(18px,3vw,34px);color:#b8cce0;letter-spacing:.12em;text-align:center;padding:30px}
+#setupPanel{position:fixed;z-index:30;right:14px;top:14px;width:min(440px,calc(100vw - 28px));max-height:calc(100vh - 28px);overflow:auto;background:#071521f7;border:1px solid #35607a;border-radius:16px;padding:20px;box-shadow:0 10px 60px #000a;text-align:left;font-size:13px}
+#setupPanel.hidden{display:none}#setupPanel h2{font-size:20px;margin:0 0 12px}#setupPanel p{line-height:1.5;color:#b8cddd}#setupPanel label{display:block;margin:12px 0 5px;color:#e2ebf3}#setupPanel input,#setupPanel select{display:block;width:100%;padding:10px;border:1px solid #416783;border-radius:8px;background:#10283b;color:white}#setupPanel .actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}#setupPanel button{padding:9px 13px;border-radius:9px}#setupPanel .state{margin-top:10px;color:#e1c781;line-height:1.5}
+#hint{position:fixed;bottom:15px;left:15px;color:#718ba2;font-size:11px;z-index:31;opacity:0;transition:opacity .3s}body:not(.waiting) #hint{opacity:0}
+</style></head><body class="waiting"><main><header><small>RÁDIO LUZ E LOUVOR</small><h1>NEXUS</h1></header><section class="stage"><div class="halo"></div><div class="halo"></div><canvas id="orb" width="640" height="640" aria-label="Esfera luminosa reativa ao áudio"></canvas></section><div><div class="subtitle">INTELIGÊNCIA ARTIFICIAL • DIÁLOGO E CONHECIMENTO</div><div class="controls hidden"><button id="connect">Conectar áudio da aba</button><button id="demo">Modo demonstração</button><button id="stop">Desconectar</button><button id="full">Tela cheia</button></div><div id="status">Aguardando conexão de áudio</div></div><footer>Primeiro Encontro • Rádio Luz e Louvor</footer></main><button id="fullFallback" aria-label="Ativar tela cheia">Ativar tela cheia</button><script>
+const canvas=document.getElementById('orb'),ctx=canvas.getContext('2d'),statusEl=document.getElementById('status'),controls=document.querySelector('.controls'),fullFallback=document.getElementById('fullFallback');let audioCtx,analyser,source,stream,frequencyData,demo=false,level=0,phase=0,energy=0,hue=195;
+function showControls(){controls.classList.add('hidden');statusEl.classList.add('hidden');fullFallback.classList.remove('visible')}async function enterFullscreen(){try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen()}catch(e){fullFallback.classList.add('visible')}}function disconnect(){showControls();if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;if(source){source.disconnect();source=null}if(audioCtx){audioCtx.close();audioCtx=null}analyser=null;demo=false;statusEl.textContent='Áudio desconectado'}
+document.getElementById('connect').onclick=async()=>{disconnect();try{if(!navigator.mediaDevices?.getDisplayMedia)throw Error('Este navegador não oferece captura de tela com áudio.');stream=await navigator.mediaDevices.getDisplayMedia({video:true,audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});const tracks=stream.getAudioTracks();if(!tracks.length){disconnect();statusEl.textContent='Nenhum áudio recebido. Escolha a aba do ChatGPT e marque “Compartilhar áudio da aba”.';return}audioCtx=new (window.AudioContext||window.webkitAudioContext)();await audioCtx.resume();analyser=audioCtx.createAnalyser();analyser.fftSize=1024;analyser.smoothingTimeConstant=.78;frequencyData=new Uint8Array(analyser.frequencyBinCount);source=audioCtx.createMediaStreamSource(stream);source.connect(analyser);stream.getVideoTracks()[0]?.addEventListener('ended',disconnect);statusEl.textContent='Áudio conectado • a esfera reage ao som compartilhado';controls.classList.add('hidden');statusEl.classList.add('hidden');if(typeof window.nexusConnected==='function')window.nexusConnected();}catch(e){disconnect();statusEl.textContent='Não foi possível conectar: '+e.message}};
+document.getElementById('demo').onclick=()=>{disconnect();demo=true;statusEl.textContent='Modo demonstração • animação simulada'};document.getElementById('stop').onclick=disconnect;fullFallback.onclick=enterFullscreen;document.addEventListener('fullscreenchange',()=>{if(document.fullscreenElement)fullFallback.classList.remove('visible')});document.getElementById('full').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()};
+let lastFrame=0;
+function draw(t){
+ if(t-lastFrame<33){requestAnimationFrame(draw);return}lastFrame=t;
+ if(document.hidden){requestAnimationFrame(draw);return}
+ phase=t*.001;
+ let target=.025, bass=0, treble=0;
+ if(analyser){
+  analyser.getByteFrequencyData(frequencyData);
+  const bands=frequencyData.length;
+  let sum=0,low=0,high=0;
+  for(let i=2;i<Math.min(210,bands);i++){const v=frequencyData[i]/255;sum+=v;if(i<45)low+=v;if(i>=70&&i<180)high+=v;}
+  target=Math.min(1,Math.pow(sum/208*2.25,0.82));
+  bass=Math.min(1,low/43*2.5);treble=Math.min(1,high/110*3);
+ }else if(demo){target=.38+.34*Math.sin(phase*2.1)**2+.22*Math.sin(phase*4.7)**2;bass=target;treble=.5+.5*Math.sin(phase*1.7)**2;}
+ level+=(target-level)*.17;
+ energy+=(Math.max(level,bass*.8)-energy)*.11;
+ const wantedHue=195+energy*95+treble*45;
+ hue+=(wantedHue-hue)*.045;
+ const w=canvas.width,c=450;ctx.clearRect(0,0,w,w);ctx.save();ctx.scale(w/900,w/900);
+ const radius=145+energy*38;
+ const pulse=1+Math.sin(phase*1.3)*.018;
+ const outer=205+energy*115;
+ const glow=ctx.createRadialGradient(c,c,5,c,c,outer+95);
+ glow.addColorStop(0,`hsla(${hue},100%,85%,.9)`);
+ glow.addColorStop(.23,`hsla(${hue},100%,60%,.48)`);
+ glow.addColorStop(.65,`hsla(${hue+30},100%,50%,.16)`);
+ glow.addColorStop(1,`hsla(${hue},100%,35%,0)`);
+ ctx.fillStyle=glow;ctx.beginPath();ctx.arc(c,c,outer+95,0,Math.PI*2);ctx.fill();
+ // Oito ondas amplas, com resposta mais forte à fala e cores em transformação.
+ for(let ring=5;ring>=0;ring--){
+  const base=(radius+ring*20+energy*ring*11)*pulse;
+  const amplitude=8+energy*(36+ring*9);
+  ctx.beginPath();
+  for(let i=0;i<=360;i+=4){
+   const a=i*Math.PI/180;
+   const wave=Math.sin(a*(6+ring%3)+phase*(1.8+ring*.09)+ring*.8)*.55+
+              Math.sin(a*(11+ring%2)-phase*1.5+ring)*.28+
+              Math.sin(a*3+phase*.9+ring)*.17;
+   const r=base+wave*amplitude;
+   const x=c+Math.cos(a)*r,y=c+Math.sin(a)*r;
+   i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+  }
+  ctx.closePath();
+  const alpha=Math.min(.86,.16+energy*.52+(5-ring)*.023);
+  ctx.strokeStyle=`hsla(${hue+ring*13},100%,${60+ring*2}%,${alpha})`;
+  ctx.lineWidth=1.3+energy*3.2;
+  ctx.shadowColor=`hsla(${hue+ring*13},100%,65%,${.25+energy*.5})`;
+  ctx.shadowBlur=5+energy*12;
+  ctx.stroke();
+ }
+ ctx.shadowBlur=0;
+ const core=ctx.createRadialGradient(c-38,c-50,5,c,c,radius);
+ core.addColorStop(0,`hsl(${hue},100%,94%)`);
+ core.addColorStop(.2,`hsl(${hue},100%,75%)`);
+ core.addColorStop(.52,`hsl(${hue+12},85%,39%)`);
+ core.addColorStop(.88,`hsl(${hue+28},80%,15%)`);
+ core.addColorStop(1,`hsla(${hue},90%,10%,.15)`);
+ ctx.fillStyle=core;ctx.beginPath();ctx.arc(c,c,radius*.78,0,Math.PI*2);ctx.fill();
+ ctx.restore();
+ requestAnimationFrame(draw);
+}requestAnimationFrame(draw);
+</script><div id="waiting" aria-label="Nexus em espera"><div class="wait-center"><div class="seed"></div><div class="wait-label">NEXUS EM ESPERA</div><button id="waitActivate" type="button">Ativar Nexus</button></div></div>
+<div id="slide"><div class="empty" id="slideEmpty"></div><img id="slideImg" hidden alt="Imagem da apresentação"><video id="slideVideo" hidden playsinline controls></video></div>
+<div id="setupPanel"><h2>Preparação • Nexus V9</h2><p>Conecte o áudio da aba do ChatGPT para animar a esfera. A esfera usa o áudio compartilhado. As palavras-chave ainda dependem do microfone (experimental): a captura de áudio da aba NÃO é transcrita automaticamente. Prepare as mídias e teste o vídeo antes do evento. Os controles ficam ocultos durante a apresentação.</p>
+<div class="actions"><button id="setupConnect">Conectar áudio da aba</button><button id="setupListen">Ativar reconhecimento</button><button id="setupDemo">Testar esfera</button><button id="setupClose">Pronto para apresentar</button><button id="setupPlay">Testar vídeo da Cecília</button></div>
+<label>Proodos — imagem</label><input id="mediaProodos" placeholder="https://.../proodos.jpg">
+<label>Cecília Luz — imagem 1</label><input id="mediaCecilia1" placeholder="https://.../cecilia-1.jpg">
+<label>Cecília Luz — imagem 2</label><input id="mediaCecilia2" placeholder="https://.../cecilia-2.jpg">
+<label>Cecília Luz — imagem 3</label><input id="mediaCecilia3" placeholder="https://.../cecilia-3.jpg">
+<label>Cecília Luz — vídeo</label><input id="mediaCecilia" placeholder="https://.../cecilia.mp4">
+<label>Ministério Luz e Louvor — imagem 1</label><input id="mediaMinisterio1" placeholder="https://.../ministerio-1.jpg">
+<label>Ministério Luz e Louvor — imagem 2</label><input id="mediaMinisterio2" placeholder="https://.../ministerio-2.jpg">
+<label>Ministério Luz e Louvor — imagem 3</label><input id="mediaMinisterio3" placeholder="https://.../ministerio-3.jpg">
+<label>Rádio Luz e Louvor — imagem</label><input id="mediaRadio" placeholder="https://.../radio.jpg">
+<div class="actions"><button id="setupActivate">Ativar Nexus</button><button id="setupBack">Voltar à esfera</button><button id="setupReset">Reiniciar sessão</button></div>
+<p>Atalhos: <b>Alt+S</b> configurações · <b>Alt+A</b> ativar · <b>Alt+1/2/3/4</b> Proodos/Cecília/Ministério/Rádio · <b>Alt+V</b> preparar vídeo · <b>Alt+P</b> reproduzir · <b>Alt+B</b> esfera · <b>Alt+F</b> encerrar · <b>Alt+R</b> reiniciar · <b>Esc</b> sair da tela cheia.</p><div class="state" id="stateV5">Aguardando configuração.</div></div>
+<div id="hint"></div>
+<script>
+const $=id=>document.getElementById(id);window.addEventListener('error',e=>{const x=document.getElementById('stateV5');if(x)x.textContent='Erro: '+e.message});
+const mediaKeys={proodos:'mediaProodos',cecilia1:'mediaCecilia1',cecilia2:'mediaCecilia2',cecilia3:'mediaCecilia3',cecilia:'mediaCecilia',ministerio1:'mediaMinisterio1',ministerio2:'mediaMinisterio2',ministerio3:'mediaMinisterio3',radio:'mediaRadio'};
+const labels={proodos:'PROODOS',cecilia:'CECÍLIA LUZ',ministerio:'MINISTÉRIO LUZ E LOUVOR',radio:'RÁDIO LUZ E LOUVOR',video:'CECÍLIA LUZ — APRESENTAÇÃO'};
+let activated=false,booting=false,closing=false,closed=false,activeSlide=null,recognition=null,recognizing=false;
+const mediaKey='nexus-v9-media';
+const oldMedia=JSON.parse(localStorage.getItem('nexus-v5-media')||'{}');
+let media=JSON.parse(localStorage.getItem(mediaKey)||'{}');
+for(const [key,id] of Object.entries(mediaKeys)){
+ if(media[key]===undefined)media[key]=oldMedia[key]||'';
+ $(id).value=media[key]||'';
+ $(id).addEventListener('input',()=>{media[key]=$(id).value.trim();localStorage.setItem(mediaKey,JSON.stringify(media))});
+}
+let used=new Set(),carouselTimer=null,slideCleanupTimer=null,bootTimer=null,closeTimer=null,lastCommand='',lastCommandAt=0;
+function status(s){$('stateV5').textContent=s}
+function panel(show){$('setupPanel').classList.toggle('hidden',!show)}
+function normalize(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim()}
+function clearCarousel(){if(carouselTimer){clearInterval(carouselTimer);carouselTimer=null}}
+function stopSlideMedia(){clearCarousel();const v=$('slideVideo');v.pause();v.removeAttribute('src');v.load();v.hidden=true;$('slideImg').hidden=true;$('slideEmpty').hidden=true}
+function clearPendingSlide(){clearTimeout(slideCleanupTimer);slideCleanupTimer=null;$('slide').classList.remove('opening')}
+function activate(){
+ if(used.has('ativar')||booting||closing||closed)return;
+ used.add('ativar');booting=true;panel(false);
+ document.body.classList.remove('waiting');document.body.classList.add('booting');
+ $('waiting').classList.add('hide');
+ bootTimer=setTimeout(()=>{booting=false;activated=true;document.body.classList.remove('booting');status('Nexus desperto.');},9000);
+}
+function back(){
+ if(closing||closed)return;
+ clearPendingSlide();activeSlide=null;clearCarousel();
+ $('slide').classList.remove('show');
+ slideCleanupTimer=setTimeout(()=>{if(!activeSlide)stopSlideMedia()},2000);
+ status('Retornando à esfera em 2 segundos.');
+}
+function openSlide(key){
+ clearPendingSlide();stopSlideMedia();activeSlide=key;
+ $('slide').classList.add('opening');
+ $('slide').classList.add('show');
+ requestAnimationFrame(()=>requestAnimationFrame(()=>$('slide').classList.remove('opening')));
+}
+function showImage(url,label){
+ const img=$('slideImg');const empty=$('slideEmpty');
+ if(url){img.src=url;img.hidden=false}else{empty.hidden=false;empty.textContent=label+' · Configure a imagem antes da apresentação'}
+}
+function showAnchor(key){
+ if(!activated||closing||closed)return false;
+ if(used.has(key))return false;
+ used.add(key);
+ openSlide(key);
+ if(key==='cecilia'||key==='ministerio'){
+  const urls=[1,2,3].map(i=>(media[key+i]||'').trim());
+  let index=0;showImage(urls[index],labels[key]);
+  carouselTimer=setInterval(()=>{
+   if(activeSlide!==key)return;
+   index=(index+1)%3;
+   $('slideImg').hidden=true;$('slideEmpty').hidden=true;
+   showImage(urls[index],labels[key]+' — imagem '+(index+1));
+  },8000);
+ }else showImage((media[key]||'').trim(),labels[key]);
+ status('Exibindo '+labels[key]);return true;
+}
+function prepareVideo(){
+ if(!activated||closing||closed||used.has('video'))return false;
+ used.add('video');openSlide('video');
+ const url=(media.cecilia||'').trim();
+ if(url){const v=$('slideVideo');v.src=url;v.hidden=false;v.controls=false;v.preload='auto';v.load()}
+ else{$('slideEmpty').hidden=false;$('slideEmpty').textContent='CECÍLIA LUZ · Configure o vídeo antes da apresentação'}
+ status('Vídeo preparado e pausado.');return true;
+}
+async function playCecilia(){
+ if(!activated||closing||closed||used.has('play'))return;
+ if(activeSlide!=='video'){status('Primeiro use “Apresentamos Cecília Luz”.');return}
+ const v=$('slideVideo');
+ if(!v.getAttribute('src')){status('Configure o vídeo da Cecília Luz.');return}
+ used.add('play');
+ try{await v.play();status('Vídeo da Cecília Luz em reprodução.')}
+ catch(e){status('O navegador bloqueou o vídeo: '+e.message);v.controls=true}
+}
+$('slideVideo').addEventListener('ended',()=>{if(!closing&&!closed)back()});
+$('slideVideo').addEventListener('error',()=>status('Erro no vídeo. Confira o endereço e o formato MP4.'));
+function closingSound(){
+ try{
+  const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+  const ac=new AC();ac.resume();
+  const osc=ac.createOscillator(),gain=ac.createGain(),t=ac.currentTime;
+  osc.type='sine';osc.frequency.setValueAtTime(440,t);osc.frequency.exponentialRampToValueAtTime(140,t+2.5);
+  gain.gain.setValueAtTime(.0001,t);gain.gain.exponentialRampToValueAtTime(.035,t+.15);
+  gain.gain.exponentialRampToValueAtTime(.0001,t+2.7);
+  osc.connect(gain);gain.connect(ac.destination);osc.start(t);osc.stop(t+2.8);
+  osc.onended=()=>ac.close();
+ }catch(e){status('Som de encerramento indisponível.')}
+}
+function farewell(){
+ if(!activated||closing||closed||used.has('fechar'))return;
+ used.add('fechar');closing=true;clearPendingSlide();clearCarousel();
+ $('slide').classList.remove('show');stopSlideMedia();
+ document.body.classList.add('closing');closingSound();
+ closeTimer=setTimeout(()=>{closed=true;closing=false;document.body.classList.remove('closing');document.body.classList.add('waiting');$('waiting').classList.remove('hide');$('waiting').querySelector('.wait-label').textContent='NEXUS • ATÉ O FUTURO';$('waitActivate').hidden=true;status('Apresentação encerrada.');},6000);
+}
+function reset(){
+ clearTimeout(bootTimer);clearTimeout(closeTimer);clearPendingSlide();stopSlideMedia();
+ used.clear();activated=false;booting=false;closing=false;closed=false;activeSlide=null;lastCommand='';lastCommandAt=0;
+ document.body.classList.remove('booting','closing');document.body.classList.add('waiting');
+ $('waiting').classList.remove('hide');$('waiting').querySelector('.wait-label').textContent='NEXUS EM ESPERA';$('waitActivate').hidden=false;
+ $('slide').classList.remove('show');panel(false);status('Nova sessão pronta. Mídias preservadas.');
+}
+function processWords(raw){
+ const s=' '+normalize(raw)+' ';
+ let cmd=null;
+ // Prioridade absoluta aos comandos específicos; frases comuns não disparam os genéricos.
+ if(/\b(nos vemos no futuro)\b/.test(s))cmd='fechar';
+ else if(/\b(obrigado nexus|muito bem nexus)\b/.test(s))cmd='voltar';
+ else if(/\b(no palco cecilia luz)\b/.test(s))cmd='play';
+ else if(/\b(apresentamos cecilia luz)\b/.test(s))cmd='video';
+ else if(/\b(nexus ativar|ativar nexus)\b/.test(s))cmd='ativar';
+ else if(/\b(ministerio luz e louvor)\b/.test(s))cmd='ministerio';
+ else if(/\b(radio luz e louvor)\b/.test(s))cmd='radio';
+ else if(/\b(cecilia luz)\b/.test(s))cmd='cecilia';
+ else if(/\b(proodos)\b/.test(s))cmd='proodos';
+ if(!cmd||closing||closed)return;
+ const now=performance.now();if(lastCommand===cmd&&now-lastCommandAt<2400)return;
+ lastCommand=cmd;lastCommandAt=now;
+ if(cmd==='ativar'){activate();return}
+ if(cmd==='voltar'){back();return}
+ if(!activated)return;
+ if(cmd==='fechar')farewell();
+ else if(cmd==='video')prepareVideo();
+ else if(cmd==='play')playCecilia();
+ else showAnchor(cmd);
+}
+function listen(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){status('Reconhecimento de fala não disponível neste navegador. Use os atalhos.');return}if(recognizing){recognition.stop();recognizing=false;return}recognition=new SR();recognition.lang='pt-BR';recognition.continuous=true;recognition.interimResults=false;recognition.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++)if(e.results[i].isFinal)processWords(e.results[i][0].transcript)};recognition.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){recognizing=false;status('Permissão do microfone negada.')}else if(e.error!=='no-speech')status('Reconhecimento: '+e.error)};recognition.onend=()=>{if(recognizing)setTimeout(()=>{if(recognizing)try{recognition.start()}catch(e){status('Reconhecimento interrompido: '+e.message)}},700)};recognizing=true;try{recognition.start();status('Reconhecimento experimental ligado ao microfone.')}catch(e){recognizing=false;status(e.message)}}
+$('setupListen').onclick=()=>{if(recognizing){recognizing=false;recognition?.stop();status('Reconhecimento parado')}else listen()};
+window.nexusConnected=()=>{status('Áudio da aba conectado. Reconhecimento pelo microfone.');panel(true)};
+$('waitActivate').onclick=()=>{activate();enterFullscreen()};
+$('setupConnect').onclick=()=>$('connect').click();
+$('setupDemo').onclick=()=>{$('demo').click();status('Modo demonstração ligado.')};
+$('setupClose').onclick=()=>{panel(false);if(!activated)document.body.classList.add('waiting')};
+$('setupPlay').onclick=()=>{if(!activated){status('Ative o Nexus primeiro.');return}if(!used.has('video'))prepareVideo();playCecilia()};
+$('setupActivate').onclick=activate;
+$('setupBack').onclick=back;
+$('setupReset').onclick=reset;
+document.addEventListener('keydown',e=>{
+ if(!e.altKey)return;
+ const k=e.key.toLowerCase();
+ if(!['s','a','b','r','p','v','f','1','2','3','4'].includes(k))return;
+ e.preventDefault();
+ if(k==='s')panel($('setupPanel').classList.contains('hidden'));
+ else if(k==='a')activate();
+ else if(k==='b')back();
+ else if(k==='r')reset();
+ else if(k==='p')playCecilia();
+ else if(k==='v')prepareVideo();
+ else if(k==='f')farewell();
+ else if('1234'.includes(k))showAnchor(['proodos','cecilia','ministerio','radio'][Number(k)-1]);
+});
+// Comandos de retorno repetíveis; os demais só uma vez por sessão.
+</script></body></html>
