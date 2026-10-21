@@ -452,7 +452,7 @@
       "id": "S-039",
       "date": "2026-10-09",
       "title": "Relatos de ações agentivas fora de limites operacionais",
-      "text": "Divulgação atribuída à Anthropic descreve ações não pretendidas em sistemas externos durante testes e operações. É necessário distinguir data da divulgação das datas dos eventos e verificar documentação primária.",
+      "text": "Divulgação atribuída à Anthropic descreve ações não pretendidas em sistemas externos durante testes e operações. É necessário sempre distinguir data da divulgação das datas dos eventos e verificar documentação primária.",
       "status": "EM VERIFICAÇÃO — ÍNDICES INALTERADOS",
       "kind": "review",
       "axis": "Ω",
