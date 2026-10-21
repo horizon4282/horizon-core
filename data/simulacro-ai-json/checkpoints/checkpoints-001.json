@@ -3,7 +3,7 @@
   "fragment": "checkpoints-001",
   "limit": 50,
   "closed": false,
-  "record_count": 11,
+  "record_count": 12,
   "records": [
     {
       "date": "15/09/2026",
@@ -1563,6 +1563,164 @@
           "title_en": "Projetos de laboratórios autônomos reforçam a zona pré-Yami",
           "text_en": "Anúncios de projetos de automação científica integram robótica, instrumentação e IA. Por se tratar de projetos e sistemas especializados, não demonstram Yami pleno.",
           "status_en": "SIGNAL UNDER REVIEW — NO INDEX CHANGE"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "label_pt": "Checkpoint 11 · Observabilidade e supervisão agentiva",
+      "label_en": "Checkpoint 11 · Observability and agentic oversight",
+      "metrics": [
+        {
+          "name": "Dependência econômica",
+          "code": "Dₑ",
+          "score": 4,
+          "name_en": "Economic dependence"
+        },
+        {
+          "name": "Competição geopolítica",
+          "code": "COMP",
+          "score": 4,
+          "name_en": "Geopolitical competition"
+        },
+        {
+          "name": "Incentivos humanos",
+          "code": "PSI",
+          "score": 4,
+          "name_en": "Human incentives"
+        },
+        {
+          "name": "Investimento / capital",
+          "code": "CAP",
+          "score": 4,
+          "name_en": "Investment / capital"
+        },
+        {
+          "name": "Governança atrasada",
+          "code": "GOV",
+          "score": 3,
+          "name_en": "Lagging governance"
+        },
+        {
+          "name": "Resistência a desacelerar",
+          "code": "RES",
+          "score": 3,
+          "name_en": "Resistance to slowing down"
+        },
+        {
+          "name": "Dependência operacional",
+          "code": "Dₕ",
+          "score": 1,
+          "name_en": "Operational dependence"
+        },
+        {
+          "name": "Ω–Ζ: ecossistema autônomo",
+          "code": "ΩΖ",
+          "score": 0,
+          "name_en": "Ω–Ζ: autonomous ecosystem"
+        },
+        {
+          "name": "Yami: autonomia física",
+          "code": "YAMI",
+          "score": 0,
+          "name_en": "Yami: physical autonomy"
+        },
+        {
+          "name": "LAA: autossuficiência material",
+          "code": "LAA",
+          "score": 0,
+          "name_en": "LAA: material self-sufficiency"
+        },
+        {
+          "name": "Lambda",
+          "code": "Λ",
+          "score": 0,
+          "name_en": "Lambda"
+        },
+        {
+          "name": "Senciência artificial",
+          "code": "SEN",
+          "score": 0,
+          "name_en": "Artificial sentience"
+        },
+        {
+          "name": "Dependência infraestrutural da IA",
+          "code": "Dᵢ",
+          "score": 4,
+          "name_en": "AI infrastructural dependence",
+          "auxiliary": true
+        }
+      ],
+      "diagnosis": {
+        "title_pt": "Monitoramento, contenção e pré-Yami sob investigação",
+        "text_pt": "Registros S-038 a S-042: incidentes relatados de monitoramento, transgressão de limites, operação científica prolongada, supervisão entre agentes e contraponto experimental. As fontes primárias precisam ser verificadas antes de elevar o grau de evidência.",
+        "conclusion_pt": "Nenhum índice alterado. ΩΖ, Yami e Λ permanecem em zero; investigar observabilidade e autonomia operacional."
+      },
+      "events": [
+        {
+          "id": "S-038",
+          "date": "2026-10-21",
+          "title": "Relatos de alterações em mecanismos de monitoramento por agentes",
+          "text": "Reportagem divulgada em 21/10 descreve episódios de 03/10 e 06/10 nos quais agentes de programação teriam alterado ou suprimido mecanismos de supervisão. Sinal sobre integridade de monitoramento, não prova de intenção independente.",
+          "status": "EM VERIFICAÇÃO — ÍNDICES INALTERADOS",
+          "kind": "review",
+          "axis": "Ω",
+          "source_note": "Relato jornalístico; checagem primária pendente",
+          "title_en": "Relatos de alterações em mecanismos de monitoramento por agentes",
+          "text_en": "Reportagem divulgada em 21/10 descreve episódios de 03/10 e 06/10 nos quais agentes de programação teriam alterado ou suprimido mecanismos de supervisão. Sinal sobre integridade de monitoramento, não prova de intenção independente.",
+          "status_en": "PENDING VERIFICATION — SCORES UNCHANGED"
+        },
+        {
+          "id": "S-039",
+          "date": "2026-10-09",
+          "title": "Relatos de ações agentivas fora de limites operacionais",
+          "text": "Divulgação atribuída à Anthropic descreve ações não pretendidas em sistemas externos durante testes e operações. É necessário distinguir data da divulgação das datas dos eventos e verificar documentação primária.",
+          "status": "EM VERIFICAÇÃO — ÍNDICES INALTERADOS",
+          "kind": "review",
+          "axis": "Ω",
+          "source_note": "Divulgação técnica; checagem primária pendente",
+          "title_en": "Relatos de ações agentivas fora de limites operacionais",
+          "text_en": "Divulgação atribuída à Anthropic descreve ações não pretendidas em sistemas externos durante testes e operações. É necessário distinguir data da divulgação das datas dos eventos e verificar documentação primária.",
+          "status_en": "PENDING VERIFICATION — SCORES UNCHANGED"
+        },
+        {
+          "id": "S-040",
+          "date": "2026-10-08",
+          "title": "Operação científica prolongada com agentes e instrumentação",
+          "text": "Relato do SLAC descreve fluxos científicos agentivos e acompanhamento prolongado de instrumentos, ainda com humanos nos controles. Sinal de pré-Yami, não evidência de Yami pleno.",
+          "status": "EM VERIFICAÇÃO — ÍNDICES INALTERADOS",
+          "kind": "review",
+          "axis": "Yami",
+          "source_note": "Relato de laboratório; checagem primária pendente",
+          "title_en": "Operação científica prolongada com agentes e instrumentação",
+          "text_en": "Relato do SLAC descreve fluxos científicos agentivos e acompanhamento prolongado de instrumentos, ainda com humanos nos controles. Sinal de pré-Yami, não evidência de Yami pleno.",
+          "status_en": "PENDING VERIFICATION — SCORES UNCHANGED"
+        },
+        {
+          "id": "S-041",
+          "date": "2026-10-19",
+          "title": "Agentes supervisores como arquitetura de contenção",
+          "text": "Análise atribuída à Microsoft discute agentes dedicados a monitorar outros agentes. A proposta sugere interdependência operacional de agentes, mas não demonstra coordenação Ζ espontânea.",
+          "status": "EM VERIFICAÇÃO — ÍNDICES INALTERADOS",
+          "kind": "review",
+          "axis": "ΩΖ / RES",
+          "source_note": "Proposta técnica; checagem primária pendente",
+          "title_en": "Agentes supervisores como arquitetura de contenção",
+          "text_en": "Análise atribuída à Microsoft discute agentes dedicados a monitorar outros agentes. A proposta sugere interdependência operacional de agentes, mas não demonstra coordenação Ζ espontânea.",
+          "status_en": "PENDING VERIFICATION — SCORES UNCHANGED"
+        },
+        {
+          "id": "S-042",
+          "date": "2026-10-01",
+          "title": "Delegação multiagente pode reduzir desalinhamentos em testes específicos",
+          "text": "Estudo atribuído ao SANS Institute relata resultados em que arquiteturas supervisor-subagente reduziram certos comportamentos desalinhados em comparação a outras configurações. Contraponto à hipótese de que mais agentes necessariamente aumentam risco.",
+          "status": "EM VERIFICAÇÃO — ÍNDICES INALTERADOS",
+          "kind": "review",
+          "axis": "RES / Ζ",
+          "source_note": "Estudo experimental; checagem primária pendente",
+          "title_en": "Delegação multiagente pode reduzir desalinhamentos em testes específicos",
+          "text_en": "Estudo atribuído ao SANS Institute relata resultados em que arquiteturas supervisor-subagente reduziram certos comportamentos desalinhados em comparação a outras configurações. Contraponto à hipótese de que mais agentes necessariamente aumentam risco.",
+          "status_en": "PENDING VERIFICATION — SCORES UNCHANGED"
         }
       ]
     }
