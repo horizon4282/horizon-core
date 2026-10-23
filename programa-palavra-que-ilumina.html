@@ -8,9 +8,8 @@
 
 <title>Palavra que Ilumina | Rádio Luz e Louvor</title>
 
-<meta name="author" content="Pe. João Vitor">
+<meta name="author" content="Rádio Luz e Louvor">
 <meta name="robots" content="index,follow">
-
 <link rel="manifest" href="/manifest.webmanifest">
 
 <link
@@ -958,6 +957,27 @@ footer strong{
 
 }
 
+
+/* =========================
+   ACESSE A RÁDIO
+========================= */
+.radio-access{
+    padding:70px 20px 80px;
+    background:linear-gradient(145deg,#f7f3e8,#fffdf8);
+}
+.radio-access-inner{max-width:1000px;margin:auto;text-align:center}
+.radio-access .section-description{margin-bottom:30px}
+.radio-access-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;text-align:left}
+.radio-access-card{background:white;border:1px solid var(--line);border-radius:20px;padding:27px 23px;box-shadow:0 8px 25px rgba(23,58,89,.06);display:flex;flex-direction:column;align-items:flex-start}
+.radio-access-icon{width:52px;height:52px;border-radius:16px;background:#eef3f7;color:var(--green);display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:18px}
+.radio-access-card h3{font:normal 24px Georgia,serif;color:var(--green-dark);margin:0 0 10px}
+.radio-access-card p{font-size:14px;line-height:1.7;color:var(--muted);margin:0 0 23px;flex:1}
+.radio-access-link{display:inline-flex;align-items:center;justify-content:center;text-align:center;padding:12px 18px;background:var(--green);border-radius:30px;color:white;text-decoration:none;font-size:13px;font-weight:bold;transition:background .2s}
+.radio-access-link:hover{background:var(--green-dark)}
+.radio-access-site{margin-top:32px;font-size:14px;color:var(--muted);line-height:1.7}
+.radio-access-site a{color:var(--green-dark);font-weight:bold;text-underline-offset:3px}
+@media(max-width:760px){.radio-access-grid{grid-template-columns:1fr}.radio-access{padding:55px 16px 65px}.radio-access-card{padding:24px}}
+
 </style>
 
 </head>
@@ -1192,6 +1212,42 @@ footer strong{
 
 </section>
 
+
+
+<!-- ======================
+     ACESSE A RÁDIO LUZ E LOUVOR
+====================== -->
+<section class="radio-access" aria-labelledby="radio-access-title">
+    <div class="radio-access-inner">
+        <div class="section-label">Rádio Luz e Louvor</div>
+        <h2 id="radio-access-title">Sempre com você</h2>
+        <p class="section-description">
+            Música, oração e a Palavra de Deus para acompanhar o seu dia.
+            Escolha como prefere ouvir e estar conosco.
+        </p>
+        <div class="radio-access-grid">
+            <article class="radio-access-card">
+                <div class="radio-access-icon" aria-hidden="true">♫</div>
+                <h3>Web Rádio</h3>
+                <p>Ouça a programação diretamente no navegador, pelo computador ou celular.</p>
+                <a class="radio-access-link" href="https://horizon4282.com.br/radio-luz-louvor" target="_blank" rel="noopener noreferrer">Ouvir a rádio ↗</a>
+            </article>
+            <article class="radio-access-card">
+                <div class="radio-access-icon" aria-hidden="true">▣</div>
+                <h3>Aplicativo</h3>
+                <p>Leve a Rádio Luz e Louvor no celular e encontre as opções de acesso pelo App oficial.</p>
+                <a class="radio-access-link" href="https://play.google.com/store/search?q=R%C3%A1dio%20Luz%20e%20Louvor&c=apps" target="_blank" rel="noopener noreferrer">Acessar pelo celular ↗</a>
+            </article>
+            <article class="radio-access-card">
+                <div class="radio-access-icon" aria-hidden="true">▶</div>
+                <h3>YouTube ao Vivo</h3>
+                <p>Acompanhe a transmissão ao vivo e descubra outros conteúdos da rádio no YouTube.</p>
+                <a class="radio-access-link" href="https://www.youtube.com/@radioluzlouvor/live" target="_blank" rel="noopener noreferrer">Visitar o canal ↗</a>
+            </article>
+        </div>
+        <p class="radio-access-site">Conheça a programação e os projetos da rádio em <a href="https://www.radioluzelouvor.com.br" target="_blank" rel="noopener noreferrer">Rádio Luz e Louvor ↗</a></p>
+    </div>
+</section>
 
 <footer>
 
