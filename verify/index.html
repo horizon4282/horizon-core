@@ -1,64 +1,15 @@
 <!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Proodos | Certificate Verification</title>
-  <style>
-    :root{font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#1c2a3b;background:#f3f6fa}
-    body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;box-sizing:border-box}
-    main{width:min(100%,560px);background:white;padding:32px;border-radius:18px;box-shadow:0 8px 35px #18263b14}
-    .eyebrow{color:#45668c;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-    h1{font-size:1.7rem;margin:8px 0 20px}dl{display:grid;grid-template-columns:145px 1fr;gap:12px;margin:24px 0}
-    dt{color:#64748b}dd{margin:0;font-weight:600;overflow-wrap:anywhere}.state{font-weight:700;color:#12643b}
-    .error{color:#a52b2b}.muted{color:#64748b;font-size:.9rem}footer{margin-top:24px;border-top:1px solid #e6ebf0;padding-top:18px}
-    @media(max-width:440px){main{padding:24px}dl{grid-template-columns:1fr;gap:4px}dd{margin-bottom:10px}}
-  </style>
-</head>
-<body>
-<main>
-  <div class="eyebrow">Missão Proodos · Hope Class 2026</div>
-  <h1>Verificação de certificado</h1>
-  <div id="result" role="status" aria-live="polite">Consultando registro...</div>
-  <footer class="muted">Este registro confirma apenas os dados publicados pela instituição emissora. Certificado de conclusão de curso livre.</footer>
-</main>
-<script>
-(async () => {
-  const result = document.getElementById('result');
-  const parts = location.pathname.split('/').filter(Boolean);
-  const verifyIndex = parts.indexOf('verify');
-  const id = verifyIndex >= 0 ? (parts[verifyIndex + 1] || '').toUpperCase() : '';
-  if (!/^HC-2026-\d{4}$/.test(id) || parts.length !== verifyIndex + 2) {
-    result.innerHTML = '<p class="error">Código de certificado inválido ou ausente.</p>';
-    return;
-  }
-  try {
-    const response = await fetch('/verify/certificates.json', {cache:'no-store'});
-    if (!response.ok) throw new Error('Registro indisponível');
-    const records = await response.json();
-    const record = Object.hasOwn(records, id) ? records[id] : null;
-    if (!record || !record.name?.trim()) {
-      result.innerHTML = '<p class="error">Certificado não localizado ou ainda não cadastrado.</p>';
-      return;
-    }
-    const dl = document.createElement('dl');
-    const add = (label, value, className='') => {
-      const dt=document.createElement('dt'),dd=document.createElement('dd');
-      dt.textContent=label;dd.textContent=value;if(className)dd.className=className;
-      dl.append(dt,dd);
-    };
-    add('Registro',id);
-    add('Aluno(a)',record.name);
-    add('Curso',record.course || 'Hope Class — English Course');
-    add('Instituição','Missão Proodos');
-    add('Ano',String(record.year || 2026));
-    const valid=record.status==='valid';
-    add('Situação',valid?'Certificado válido':'Certificado não válido',valid?'state':'error');
-    result.replaceChildren(dl);
-  } catch(e) {
-    result.innerHTML='<p class="error">Não foi possível consultar o registro. Tente novamente mais tarde.</p>';
-  }
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Proodos | Registro de Certificados</title><style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#203149;background:#f3f6fa}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px}.panel{background:white;border-radius:18px;box-shadow:0 12px 40px #17315318;padding:36px;width:min(100%,580px);border-top:6px solid #b68a45}.eyebrow{color:#936b31;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}h1{font-size:clamp(25px,5vw,36px);margin:12px 0}p{line-height:1.55}.muted{color:#66758a}.field{padding:14px 0;border-top:1px solid #e6ebf1}.field small{display:block;color:#68788c;margin-bottom:5px}.field strong{font-size:17px;overflow-wrap:anywhere}.state{padding:11px 14px;background:#eef6f1;color:#245a3b;border-radius:9px;font-weight:700}.error{background:#fff2ee;color:#933d29}.footer{font-size:12px;color:#69798b;margin-top:24px}.hide{display:none}a{color:#285a92}
+</style></head><body><main class="panel"><div class="eyebrow">Missão Proodos · Hope Class 2026</div><h1>Registro de certificados</h1><p class="muted" id="message" aria-live="polite">Consultando o registro...</p><section id="result" class="hide" aria-live="polite"><div class="state" id="state">Registro localizado</div><div class="field"><small>Código do certificado</small><strong id="code"></strong></div><div class="field"><small>Aluno(a)</small><strong id="student"></strong></div><div class="field"><small>Curso</small><strong id="program"></strong></div><div class="field"><small>Instituição</small><strong id="institution"></strong></div><div class="field"><small>Ano</small><strong id="year"></strong></div><div class="field"><small>Situação do registro</small><strong id="status"></strong></div></section><p class="footer">Consulta aos registros publicados pela Missão Proodos. Esta página não substitui a apresentação do certificado original.</p></main><script>
+(async function(){
+const msg=document.getElementById('message'),result=document.getElementById('result');
+const id=(new URLSearchParams(location.search).get('id')||'').trim().toUpperCase();
+if(!/^HC-2026-\d{4}$/.test(id)){msg.textContent='Informe um código válido na URL, por exemplo: ?id=HC-2026-0001';return;}
+try{const response=await fetch('./certificates.json',{cache:'no-store'});if(!response.ok)throw new Error('Falha de leitura');const records=await response.json();const cert=Object.prototype.hasOwnProperty.call(records,id)?records[id]:null;
+if(!cert){msg.textContent='Nenhum registro encontrado para o código '+id+'.';return;}
+for(const [key,value] of Object.entries({code:id,student:cert.name,program:cert.program,institution:cert.institution,year:cert.year,status:cert.status})){document.getElementById(key).textContent=String(value??'—');}
+msg.textContent='Dados encontrados no cadastro institucional.';result.classList.remove('hide');
+}catch(e){msg.textContent='Não foi possível carregar o cadastro. Tente novamente mais tarde.';}
 })();
-</script>
-</body>
-</html>
+</script></body></html>
